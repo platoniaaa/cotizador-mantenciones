@@ -112,14 +112,14 @@ def leer_stock(ruta, con_rubro):
         precio = int(round(precio)) if isinstance(precio, (int, float)) and precio else None
         descs = str(desc).strip() if desc else None
         bod = str(bodega).strip() if bodega and str(bodega).strip() else None
-        e = idx.setdefault(nc, {"stock": 0, "desc": None, "precio": None, "bodegas": set()})
+        e = idx.setdefault(nc, {"stock": 0, "desc": None, "precio": None, "porBodega": {}})
         e["stock"] += stock
         if descs and not e["desc"]:
             e["desc"] = descs
         if precio and not e["precio"]:
             e["precio"] = precio
-        if bod:
-            e["bodegas"].add(bod)
+        if bod and stock:
+            e["porBodega"][bod] = e["porBodega"].get(bod, 0) + stock
         # tokens de la descripción (separados por no-alfanuméricos) para cruce por código
         tokens = frozenset(t for t in re.split(r"[^A-Z0-9]+", descs.upper()) if t) if descs else frozenset()
         crudo.append((nc, tokens, stock, descs, precio, bod))
@@ -134,7 +134,7 @@ def buscar_secundario(nc, crudo):
     COMPLETO de la descripción (no un substring embebido). Devuelve dict acumulado o None."""
     if len(nc) < 6:
         return None
-    acc = {"stock": 0, "desc": None, "precio": None, "bodegas": set()}
+    acc = {"stock": 0, "desc": None, "precio": None, "porBodega": {}}
     encontrado = False
     for codigoNorm, tokens, stock, desc, precio, bod in crudo:
         match = False
@@ -151,8 +151,8 @@ def buscar_secundario(nc, crudo):
                 acc["desc"] = desc
             if precio and not acc["precio"]:
                 acc["precio"] = precio
-            if bod:
-                acc["bodegas"].add(bod)
+            if bod and stock:
+                acc["porBodega"][bod] = acc["porBodega"].get(bod, 0) + stock
     return acc if encontrado else None
 
 
@@ -217,13 +217,19 @@ def main(descargar=False):
             n_aprox += 1
         desc = (ec or ef or {}).get("desc")
         precio = (ec or ef or {}).get("precio")
-        bod = sorted((ec or {}).get("bodegas", set()) | (ef or {}).get("bodegas", set()))
+        # desglose por bodega (cantidad), ordenado por stock desc, top 5
+        por_bodega = {}
+        for src in (ec, ef):
+            for b, q in (src or {}).get("porBodega", {}).items():
+                por_bodega[b] = por_bodega.get(b, 0) + q
+        bodegas = [{"n": b, "q": int(q)} for b, q in
+                   sorted(por_bodega.items(), key=lambda kv: -kv[1]) if q > 0][:5]
         items[nc] = {
             "c": sc,          # stock giro Curifor (None si no está catalogado)
             "f": sf,          # stock giro Frontera
             "desc": desc,
             "precio": precio,
-            "bodegas": bod[:4],
+            "bodegas": bodegas,   # [{n: bodega, q: cantidad}] top 5 por stock
             "aprox": aprox,   # match difuso (por presentación/descripción)
         }
 

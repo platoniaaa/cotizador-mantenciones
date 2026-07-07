@@ -72,13 +72,20 @@
     if (!state.stock || !codigo) return null;
     return state.stock.items[normCod(codigo)] || null;
   }
+  const num = (n) => (n == null ? "" : Number(n).toLocaleString("es-CL"));
+  function bodegasTxt(bodegas, max) {
+    if (!bodegas || !bodegas.length) return "";
+    return bodegas.slice(0, max).map((b) => `${b.n} (${num(b.q)})`).join(" · ") +
+      (bodegas.length > max ? ` · +${bodegas.length - max} más` : "");
+  }
   function badgeStock(codigo) {
     const s = stockDe(codigo);
-    if (!s) return { clase: "sd", texto: "s/d", titulo: "Sin dato de stock para este código" };
+    if (!s) return { clase: "sd", texto: "s/d", bodegas: [], titulo: "Sin dato de stock para este código" };
     const c = s.c || 0, f = s.f || 0;
-    if (c > 0) return { clase: "ok", texto: `${c} u.`, titulo: `Stock Curifor: ${c} unidades${s.bodegas && s.bodegas.length ? " (" + s.bodegas.join(", ") + ")" : ""}${s.aprox ? " · cruce aproximado" : ""}` };
-    if (f > 0) return { clase: "fro", texto: `${f} u. Frontera`, titulo: `Stock Frontera: ${f} unidades` };
-    return { clase: "no", texto: "Sin stock", titulo: "Producto catalogado pero sin stock disponible" };
+    const detalle = bodegasTxt(s.bodegas, 6);
+    if (c > 0) return { clase: "ok", texto: `${num(c)} u.`, bodegas: s.bodegas || [], titulo: `Stock Curifor: ${num(c)} u.${detalle ? " · " + detalle : ""}${s.aprox ? " · cruce aproximado" : ""}` };
+    if (f > 0) return { clase: "fro", texto: `${num(f)} u. Frontera`, bodegas: s.bodegas || [], titulo: `Stock Frontera: ${num(f)} u.${detalle ? " · " + detalle : ""}` };
+    return { clase: "no", texto: "Sin stock", bodegas: [], titulo: "Producto catalogado pero sin stock disponible" };
   }
 
   function llenarMarcas() {
@@ -353,6 +360,7 @@
       grupos[g].forEach((it) => {
         const cod = it.codigo ? `<span class="dg-cod">Cód. ${it.codigo}${it.cantidad ? " · x" + it.cantidad : ""}</span>` : "";
         let celdaStock = "<td></td>";
+        let lineaBodega = "";
         if (hayStock && g !== "material" && it.codigo) {
           conCod++;
           const b = badgeStock(it.codigo);
@@ -360,8 +368,11 @@
           else if (b.clase === "no") sinStock.push(it.nombre);
           else sinDato.push(it.nombre);
           celdaStock = `<td class="dg-stock"><span class="stk stk--${b.clase}" title="${b.titulo}">${b.texto}</span></td>`;
+          if (b.bodegas.length) {
+            lineaBodega = `<span class="dg-bodega" title="${b.titulo}">📍 ${bodegasTxt(b.bodegas, 3)}</span>`;
+          }
         }
-        filas.push(`<tr><td class="dg-nombre">${it.nombre}${cod}</td>${celdaStock}<td>${money(it.subtotal)}</td></tr>`);
+        filas.push(`<tr><td class="dg-nombre">${it.nombre}${cod}${lineaBodega}</td>${celdaStock}<td>${money(it.subtotal)}</td></tr>`);
       });
     }
     if (itv.manoObra) {
@@ -494,18 +505,18 @@
     if (itv.meses) A.push(["Periodicidad", `${itv.meses} meses`]);
     if (state.stock) A.push(["Inventario al", state.stock.actualizado]);
     A.push([]);
-    A.push(["DETALLE", "", "Código", "Cantidad", "Valor (CLP)", "Stock bodega"]);
+    A.push(["DETALLE", "", "Código", "Cantidad", "Valor (CLP)", "Stock total", "Bodegas (cantidad)"]);
 
     const filaItem = (it, tipo) => {
-      let stkTxt = "";
+      let stkTxt = "", bodTxt = "";
       if (state.stock && tipo !== "Materiales" && it.codigo) {
         const s = stockDe(it.codigo);
         if (!s) stkTxt = "s/d";
-        else if ((s.c || 0) > 0) stkTxt = `${s.c} u. Curifor`;
-        else if ((s.f || 0) > 0) stkTxt = `${s.f} u. Frontera`;
+        else if ((s.c || 0) > 0) { stkTxt = `${s.c} u. Curifor`; bodTxt = bodegasTxt(s.bodegas, 6); }
+        else if ((s.f || 0) > 0) { stkTxt = `${s.f} u. Frontera`; bodTxt = bodegasTxt(s.bodegas, 6); }
         else stkTxt = "Sin stock";
       }
-      return [it.nombre, "", it.codigo || "", it.cantidad || "", it.subtotal || "", stkTxt];
+      return [it.nombre, "", it.codigo || "", it.cantidad || "", it.subtotal || "", stkTxt, bodTxt];
     };
     const grupos = { repuesto: "Repuestos", lubricante: "Lubricantes", material: "Materiales" };
     for (const g of ["repuesto", "lubricante", "material"]) {
@@ -531,7 +542,7 @@
     A.push([]);
     (p.notas || []).forEach((n) => A.push([n]));
     const ws1 = XLSX.utils.aoa_to_sheet(A);
-    ws1["!cols"] = [{ wch: 42 }, { wch: 2 }, { wch: 18 }, { wch: 9 }, { wch: 14 }, { wch: 18 }];
+    ws1["!cols"] = [{ wch: 42 }, { wch: 2 }, { wch: 18 }, { wch: 9 }, { wch: 14 }, { wch: 16 }, { wch: 42 }];
     XLSX.utils.book_append_sheet(wb, ws1, "Cotización");
 
     // ---- Hoja 2: Plan completo ----

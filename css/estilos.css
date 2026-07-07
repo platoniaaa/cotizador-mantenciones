@@ -586,26 +586,25 @@ a { color: var(--blue); }
 
 /* ---------------- Impresión ---------------- */
 @media print {
-  @page { margin: 14mm; }
+  @page { margin: 12mm; }
   body { background: #fff; color: #000; font-size: 12px; border-top: none; }
-  .topbar, .hero, .foot, .carrusel, .stepbar, .selector,
-  .rv__acciones, .btn-volver, .rv__aniobox, .detalle__eyebrow,
-  .adicionales__list input, .nav-link { display: none !important; }
+  /* el encabezado de impresión ya trae los datos del vehículo -> se oculta la barra */
+  .topbar, .hero, .foot, .carrusel, .stepbar, .selector, .resumen-vehiculo,
+  .detalle__eyebrow, .adicionales__list input, .nav-link { display: none !important; }
   .wrap { margin: 0; padding: 0; max-width: none; }
-  .card, .detalle, .resumen-vehiculo, .packs, .notas {
-    box-shadow: none; border: 1px solid #ccc; break-inside: avoid; margin-bottom: 10px;
+  .print-header { display: block; margin-bottom: 12px; }
+  /* los bloques FLUYEN entre páginas (sin break-inside: avoid, que dejaba la 1a hoja en blanco) */
+  .detalle, .packs, .notas {
+    box-shadow: none; border: none; margin: 0 0 10px; padding: 0;
   }
-  .print-header { display: block; }
-  .resumen-vehiculo { padding: 0 0 6px; border: none; }
-  .rv__marca { color: #000; }
-  .rv__titulo { font-size: 16px; }
-  .detalle { padding: 12px 0; border: none; }
+  .detalle__head { padding-bottom: 8px; border-bottom: 1px solid #999; }
   .detalle__titulo { color: #000; }
   .detalle__precio { background: none; border: none; padding: 0; }
   .detalle__precio-valor { font-size: 22px; color: #000; }
-  .detalle__cols { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .detalle__cols { grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
   .stk { border: 1px solid #999; }
   .ops-badge { border: 1px solid #999; }
-  .packs, .notas { padding: 8px 0; }
+  /* evita cortar a la mitad una fila de repuesto o una operación */
+  .desglose tr, .ops-list li, .packs .pack { break-inside: avoid; }
   a[href]:after { content: ""; }
 }

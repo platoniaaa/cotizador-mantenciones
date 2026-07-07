@@ -105,7 +105,7 @@ MODELOS_MULTIPALABRA = {
 SEGMENTOS = ["suv alto", "suv medio", "suv bajo", "camioneta", "comercial", "hatchback", "sedan", "city car"]
 
 NOTAS_DEFECTO = [
-    "El valor de las mantenciones es un valor referencial sugerido; confírmalo con tu concesionario Curifor.",
+    "Valor referencial sugerido de la mantención; confirmar precio final con el sistema.",
     "En el costo de las mantenciones no se incluyen reparaciones ni piezas de desgaste (pastillas de freno, neumáticos, plumillas, etc.).",
     "Se recomienda su realización según kilometraje o tiempo, lo que ocurra primero.",
 ]

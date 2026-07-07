@@ -36,6 +36,7 @@
     detTitulo: $("#detTitulo"), detSub: $("#detSub"), detPrecio: $("#detPrecio"),
     detOperaciones: $("#detOperaciones"), detDesglose: $("#detDesglose"),
     stockResumen: $("#stockResumen"), btnExcel: $("#btnExcel"),
+    btnImprimir: $("#btnImprimir"), printDatos: $("#printDatos"),
     adicionalesBox: $("#adicionalesBox"), detAdicionales: $("#detAdicionales"),
     totalConAdicionales: $("#totalConAdicionales"),
     packsBox: $("#packsBox"), packsList: $("#packsList"),
@@ -98,6 +99,23 @@
     el.navPrev.addEventListener("click", () => moverActivo(-1));
     el.navNext.addEventListener("click", () => moverActivo(1));
     el.btnExcel.addEventListener("click", exportarExcel);
+    el.btnImprimir.addEventListener("click", imprimir);
+  }
+
+  function imprimir() {
+    const p = state.pauta, itv = state.plan[state.activo];
+    if (!p || !itv) return;
+    const filas = [
+      ["Marca / Modelo", `${p.marcaNombre} · ${p.modelo}`],
+      ["Versión", p.version],
+    ];
+    if (state.anio) filas.push(["Año", state.anio]);
+    filas.push(["Mantención", `Revisión ${itv.n} — ${itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega")}${itv.meses ? " · " + itv.meses + " meses" : ""}`]);
+    filas.push(["Valor referencial", itv.gratis ? "Sin costo" : money(itv.totalConIva) + " (IVA incl.)"]);
+    if (state.stock) filas.push(["Inventario al", state.stock.actualizado]);
+    filas.push(["Fecha impresión", new Date().toLocaleDateString("es-CL")]);
+    el.printDatos.innerHTML = filas.map((f) => `<tr><td>${f[0]}</td><td>${f[1]}</td></tr>`).join("");
+    window.print();
   }
 
   // ============================================================
@@ -327,6 +345,7 @@
     const titulos = { repuesto: "Repuestos", lubricante: "Lubricantes", material: "Materiales" };
     const hayStock = !!state.stock;
     let conCod = 0, disp = 0;
+    const sinStock = [], sinDato = [];
 
     for (const g of ["repuesto", "lubricante", "material"]) {
       if (!grupos[g].length) continue;
@@ -338,6 +357,8 @@
           conCod++;
           const b = badgeStock(it.codigo);
           if (b.clase === "ok" || b.clase === "fro") disp++;
+          else if (b.clase === "no") sinStock.push(it.nombre);
+          else sinDato.push(it.nombre);
           celdaStock = `<td class="dg-stock"><span class="stk stk--${b.clase}" title="${b.titulo}">${b.texto}</span></td>`;
         }
         filas.push(`<tr><td class="dg-nombre">${it.nombre}${cod}</td>${celdaStock}<td>${money(it.subtotal)}</td></tr>`);
@@ -356,13 +377,27 @@
     }
     el.detDesglose.innerHTML = filas.join("");
 
-    // resumen de disponibilidad
+    // resumen de disponibilidad (3 estados claros para el mecánico)
     if (hayStock && conCod > 0) {
       el.stockResumen.hidden = false;
-      const pct = Math.round((disp / conCod) * 100);
+      const fecha = `<span class="stock-fecha">· inventario al ${state.stock.actualizado}</span>`;
+      let estado, icono, linea, detalle = "";
+      if (sinStock.length) {
+        estado = "warn"; icono = "⚠";
+        linea = `<strong>${disp} de ${conCod}</strong> repuestos con stock — <strong>${sinStock.length} sin stock</strong>`;
+        detalle = `<p class="stock-resumen__faltan">Sin stock en bodega: ${sinStock.join(", ")}.` +
+          (sinDato.length ? ` Sin dato (revisar en sistema): ${sinDato.join(", ")}.` : "") + `</p>`;
+      } else if (sinDato.length) {
+        estado = "info"; icono = "ℹ";
+        linea = `<strong>${disp} de ${conCod}</strong> repuestos con stock confirmado`;
+        detalle = `<p class="stock-resumen__faltan">Sin dato de stock (revisar en sistema): ${sinDato.join(", ")}.</p>`;
+      } else {
+        estado = "ok"; icono = "✓";
+        linea = `<strong>Todos los repuestos con stock</strong> (${disp} de ${conCod})`;
+      }
+      el.stockResumen.className = "stock-resumen stock-resumen--" + estado;
       el.stockResumen.innerHTML =
-        `<span class="stk-dot"></span><strong>${disp} de ${conCod}</strong> repuestos con stock en bodega ` +
-        `<span class="stock-fecha">· inventario al ${state.stock.actualizado}</span>`;
+        `<div class="stock-resumen__linea"><span class="stk-icono">${icono}</span> ${linea} ${fecha}</div>` + detalle;
     } else {
       el.stockResumen.hidden = true;
     }

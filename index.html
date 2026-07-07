@@ -16,19 +16,20 @@
       <div class="brand">
         <span class="brand__logo">CURIFOR</span>
         <span class="brand__sep"></span>
-        <span class="brand__sub">Servicio &amp; Postventa</span>
+        <span class="brand__sub">Cotizador de mantenciones</span>
+        <span class="brand__badge">Uso interno</span>
       </div>
       <nav class="topbar__nav">
-        <a href="#" id="btnReiniciar" class="nav-link">Nueva cotización</a>
+        <a href="#" id="btnReiniciar" class="nav-link">Nueva consulta</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
     <div class="hero__inner">
-      <p class="hero__eyebrow">Mantenciones preventivas</p>
-      <h1 class="hero__title">Precios sugeridos de mantención</h1>
-      <p class="hero__lead">Selecciona tu vehículo y conoce el detalle y el valor referencial de cada mantención programada.</p>
+      <p class="hero__eyebrow">Servicio y Postventa · Mantenciones preventivas</p>
+      <h1 class="hero__title">Consulta de mantenciones y repuestos</h1>
+      <p class="hero__lead">Selecciona el vehículo para ver las operaciones, los repuestos con su disponibilidad en bodega y el valor referencial de cada mantención programada.</p>
     </div>
   </section>
 
@@ -66,7 +67,7 @@
         <label class="field" id="fieldAnio" hidden>
           <span class="field__title">Año
             <span class="tip" tabindex="0" aria-label="Ayuda">?
-              <span class="tip__bubble">Encuentras el año de tu vehículo en el permiso de circulación o el padrón.</span>
+              <span class="tip__bubble">Año modelo del vehículo. Solo aplica a Ford; en las demás marcas la vigencia va por versión.</span>
             </span>
           </span>
           <div class="field__control">
@@ -79,13 +80,21 @@
 
       <div class="selector__actions">
         <button id="btnCotizar" class="btn btn--primary" disabled>Ver plan de mantención</button>
-        <a class="btn btn--ghost" href="https://www.curifor.cl" target="_blank" rel="noopener">Ubica un concesionario</a>
       </div>
-      <p class="selector__hint">Los valores son referenciales, con IVA incluido y en pesos chilenos (CLP).</p>
+      <p class="selector__hint">Valores referenciales sugeridos, con IVA incluido y en pesos chilenos (CLP). Herramienta de apoyo para Servicio; confirmar precios y stock con el sistema.</p>
     </section>
 
     <!-- ====================== PASO 2: RESULTADOS ====================== -->
     <section id="paso2" class="resultados" hidden aria-label="Plan de mantención">
+
+      <!-- encabezado solo para impresión (orden de trabajo) -->
+      <div id="printHeader" class="print-header" aria-hidden="true">
+        <div class="print-header__top">
+          <span class="print-header__logo">CURIFOR</span>
+          <span class="print-header__meta">Servicio y Postventa · Orden de mantención referencial</span>
+        </div>
+        <table class="print-header__datos"><tbody id="printDatos"></tbody></table>
+      </div>
 
       <div class="resumen-vehiculo">
         <button id="btnVolver" class="btn-volver" type="button">← Cambiar vehículo</button>
@@ -100,9 +109,14 @@
             <select id="selAnio2" class="select select--sm"></select>
           </label>
         </div>
-        <button id="btnExcel" class="btn btn--excel" type="button">
-          <span aria-hidden="true">⬇</span> Descargar cotización (Excel)
-        </button>
+        <div class="rv__acciones">
+          <button id="btnImprimir" class="btn btn--print" type="button">
+            <span aria-hidden="true">🖨</span> Imprimir orden
+          </button>
+          <button id="btnExcel" class="btn btn--excel" type="button">
+            <span aria-hidden="true">⬇</span> Excel
+          </button>
+        </div>
       </div>
 
       <!-- carrusel de revisiones -->

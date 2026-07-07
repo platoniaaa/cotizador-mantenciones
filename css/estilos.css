@@ -66,6 +66,11 @@ a { color: var(--azul-2); }
 }
 .brand__sep { width: 1px; height: 22px; background: rgba(255,255,255,.35); }
 .brand__sub { font-size: 13px; color: #b9c4ff; letter-spacing: .3px; }
+.brand__badge {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px;
+  color: var(--azul); background: var(--amarillo);
+  padding: 3px 8px; border-radius: 5px;
+}
 .nav-link {
   color: #fff;
   text-decoration: none;
@@ -277,7 +282,9 @@ a { color: var(--azul-2); }
 .btn--ghost:hover { background: var(--azul-claro); }
 .btn--excel { background: #107c41; color: #fff; font-size: 14px; padding: 11px 18px; }
 .btn--excel:hover { background: #0b5c30; transform: translateY(-1px); }
-.resumen-vehiculo .btn--excel { margin-left: auto; }
+.btn--print { background: #fff; color: var(--azul-2); border-color: var(--azul-borde); font-size: 14px; padding: 11px 16px; }
+.btn--print:hover { background: var(--azul-claro); }
+.rv__acciones { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* ---------------- Resultados ---------------- */
 .resultados { animation: fade .25s ease; }
@@ -438,17 +445,26 @@ a { color: var(--azul-2); }
 .stk--sd  { background: var(--gris-bg); color: var(--gris-3); font-weight: 600; }
 
 .stock-resumen {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--azul-claro);
   border-radius: var(--radio-sm);
-  padding: 9px 13px;
+  padding: 10px 13px;
   font-size: 13px;
   color: var(--gris-txt);
   margin-bottom: 12px;
 }
-.stock-resumen .stk-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--verde); flex: 0 0 auto; }
+.stock-resumen__linea { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.stock-resumen .stk-icono { font-weight: 800; flex: 0 0 auto; }
 .stock-resumen strong { color: var(--azul); }
 .stock-fecha { color: var(--gris-3); font-size: 11.5px; }
+.stock-resumen__faltan { margin: 7px 0 0; font-size: 12.5px; }
+.stock-resumen--ok   { background: #e7f4ee; }
+.stock-resumen--ok   .stk-icono { color: var(--verde); }
+.stock-resumen--info { background: var(--azul-claro); }
+.stock-resumen--info .stk-icono { color: var(--azul-2); }
+.stock-resumen--info .stock-resumen__faltan { color: var(--gris-2); }
+.stock-resumen--warn { background: #fff5da; border: 1px solid #ffe08a; }
+.stock-resumen--warn .stk-icono { color: #b7791f; }
+.stock-resumen--warn strong { color: #8a5a00; }
+.stock-resumen--warn .stock-resumen__faltan { color: #8a5a00; }
 
 /* ---------------- Adicionales ---------------- */
 .adicionales { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--gris-linea); }
@@ -528,3 +544,36 @@ a { color: var(--azul-2); }
 }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+/* ---------------- Encabezado de impresión (orden de trabajo) ---------------- */
+.print-header { display: none; }
+.print-header__top { display: flex; align-items: baseline; gap: 12px; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 8px; }
+.print-header__logo { font-size: 20px; font-weight: 800; letter-spacing: 2px; }
+.print-header__meta { font-size: 12px; color: #333; }
+.print-header__datos { width: 100%; border-collapse: collapse; font-size: 12px; }
+.print-header__datos td { padding: 2px 8px 2px 0; vertical-align: top; }
+.print-header__datos td:first-child { font-weight: 700; white-space: nowrap; width: 1%; }
+
+/* ---------------- Impresión ---------------- */
+@media print {
+  @page { margin: 14mm; }
+  body { background: #fff; color: #000; font-size: 12px; }
+  .topbar, .hero, .foot, .carrusel, .stepbar, .selector,
+  .rv__acciones, .btn-volver, .rv__aniobox, .detalle__eyebrow,
+  .adicionales__list input, .nav-link { display: none !important; }
+  .wrap { margin: 0; padding: 0; max-width: none; }
+  .card, .detalle, .resumen-vehiculo, .packs, .notas {
+    box-shadow: none; border: 1px solid #ccc; break-inside: avoid; margin-bottom: 10px;
+  }
+  .print-header { display: block; }
+  .resumen-vehiculo { padding: 0 0 6px; border: none; }
+  .rv__marca { color: #000; }
+  .rv__titulo { font-size: 16px; }
+  .detalle { padding: 12px 0; border: none; }
+  .detalle__cols { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .detalle__precio-valor { font-size: 22px; }
+  .stk { border: 1px solid #999; }
+  .ops-badge { border: 1px solid #999; }
+  .packs, .notas { padding: 8px 0; }
+  a[href]:after { content: ""; }
+}

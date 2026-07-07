@@ -459,6 +459,8 @@ a { color: var(--blue); }
 .desglose .dg-nombre { color: var(--ink); }
 .desglose .dg-cod { display: block; font-size: 11.5px; color: var(--ink-3); }
 .desglose .dg-bodega { display: block; font-size: 11.5px; color: var(--navy); margin-top: 2px; }
+.desglose .dg-alt { display: block; font-size: 11.5px; color: var(--verde); font-weight: 600; margin-top: 2px; }
+.desglose .dg-aplica { display: block; font-size: 11px; color: var(--ink-3); margin-top: 2px; font-style: italic; }
 .desglose .dg-cat { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--ink-3); font-weight: 700; padding-top: 12px; }
 .desglose .dg-stock { text-align: center; white-space: nowrap; width: 1%; padding: 7px 10px; }
 .desglose .dg-total td { border-top: 2px solid var(--ink); border-bottom: none; padding-top: 10px; font-weight: 800; font-size: 15px; }
@@ -466,6 +468,7 @@ a { color: var(--blue); }
 /* badges de disponibilidad */
 .stk { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 2px 9px; white-space: nowrap; cursor: help; }
 .stk--ok  { background: var(--verde-bg); color: var(--verde); }
+.stk--eq  { background: var(--verde-bg); color: var(--verde); border: 1px dashed var(--verde); }
 .stk--fro { background: var(--tint); color: var(--navy); }
 .stk--no  { background: var(--rojo-bg); color: var(--rojo); }
 .stk--sd  { background: var(--bg); color: var(--ink-3); font-weight: 600; }
@@ -592,7 +595,7 @@ a { color: var(--blue); }
      el stock (badge, bodegas y resumen) NO se imprime: la orden de taller va limpia. */
   .topbar, .hero, .foot, .carrusel, .stepbar, .selector, .resumen-vehiculo,
   .detalle__eyebrow, .adicionales__list input, .nav-link,
-  .stock-resumen, .dg-stock, .dg-bodega { display: none !important; }
+  .stock-resumen, .dg-stock, .dg-bodega, .dg-alt, .dg-aplica { display: none !important; }
   .wrap { margin: 0; padding: 0; max-width: none; }
   .print-header { display: block; margin-bottom: 12px; }
   /* los bloques FLUYEN entre páginas (sin break-inside: avoid, que dejaba la 1a hoja en blanco) */

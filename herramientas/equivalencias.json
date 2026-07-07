@@ -1,0 +1,10 @@
+{
+  "_doc": "Mapeo manual de codigos de pauta -> stock, para repuestos/lubricantes cuyo SKU en bodega difiere del codigo de la pauta (tipico: lubricantes a granel vs presentacion). EDITABLE POR SERVICIO. Cada entrada: 'tokens' = todas las palabras deben aparecer en la descripcion del producto en stock (mayusculas, sin importar orden); o 'codigo' = fuerza un SKU exacto de stock. 'nota' = descripcion legible. Verificado contra 'Stock bodegas.xlsx' el 07-07-2026.",
+  "mapeo": {
+    "100255": { "tokens": ["MOBILUBE", "GX", "80W-90"], "nota": "Mobilube GX 80W-90 (granel)" },
+    "100214": { "tokens": ["MOBILUBE", "HD", "PLUS", "80W-90"], "nota": "Mobilube HD Plus 80W-90" },
+    "100332": { "tokens": ["MOBILGREASE", "XHP", "222"], "nota": "Mobilgrease XHP 222" },
+    "100050": { "tokens": ["FRENO", "MOBIL", "DOT"], "nota": "Liquido de freno Mobil DOT-4" },
+    "103985": { "tokens": ["REFRIGERANTE", "MOBIL"], "nota": "Refrigerante Mobil" }
+  }
+}

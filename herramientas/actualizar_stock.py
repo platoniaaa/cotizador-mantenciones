@@ -138,33 +138,112 @@ def leer_stock(ruta, con_rubro):
     return idx, crudo
 
 
-def buscar_secundario(nc, crudo):
-    """Cruce difuso para códigos que no matchean directo (típico: lubricantes a granel
-    catalogados como presentaciones '104406-AG' o con el código como token de la descripción).
-    Evita falsos positivos: el código debe ser un prefijo con sufijo de letras, o un token
-    COMPLETO de la descripción (no un substring embebido). Devuelve dict acumulado o None."""
-    if len(nc) < 6:
-        return None
+def _acumular_matches(filas, es_match):
+    """Agrega stock/bodega de las filas de crudo que cumplen es_match(fila).
+    Devuelve (acc, alt) donde alt = código del SKU con más stock. (None, None) si nada."""
     acc = {"stock": 0, "desc": None, "precio": None, "porBodega": {}}
+    por_codigo = {}
     encontrado = False
-    for codigoNorm, tokens, stock, desc, precio, bod in crudo:
-        match = False
-        # presentación con sufijo de letras: 104406 -> 104406-AG (norm 104406AG)
+    for codigoNorm, tokens, stock, desc, precio, bod in filas:
+        if not es_match(codigoNorm, tokens, desc):
+            continue
+        encontrado = True
+        acc["stock"] += stock or 0
+        por_codigo[codigoNorm] = por_codigo.get(codigoNorm, 0) + (stock or 0)
+        if desc and not acc["desc"]:
+            acc["desc"] = desc
+        if precio and not acc["precio"]:
+            acc["precio"] = precio
+        if bod and stock:
+            acc["porBodega"][bod] = acc["porBodega"].get(bod, 0) + stock
+    if not encontrado:
+        return None, None
+    alt = max(por_codigo, key=por_codigo.get) if por_codigo else None
+    return acc, alt
+
+
+def buscar_secundario(nc, crudo):
+    """Cruce difuso: el código como prefijo con sufijo de letras (104406 -> 104406-AG)
+    o como token COMPLETO de la descripción. Devuelve (acc, alt) o (None, None)."""
+    if len(nc) < 6:
+        return None, None
+    def es_match(codigoNorm, tokens, desc):
         if codigoNorm.startswith(nc) and (len(codigoNorm) == len(nc) or codigoNorm[len(nc)].isalpha()):
-            match = True
-        # el código aparece como token completo en la descripción
-        elif nc in tokens:
-            match = True
-        if match:
-            encontrado = True
-            acc["stock"] += stock or 0
-            if desc and not acc["desc"]:
-                acc["desc"] = desc
-            if precio and not acc["precio"]:
-                acc["precio"] = precio
-            if bod and stock:
-                acc["porBodega"][bod] = acc["porBodega"].get(bod, 0) + stock
-    return acc if encontrado else None
+            return True
+        return nc in tokens
+    return _acumular_matches(crudo, es_match)
+
+
+def buscar_por_tokens(tokens, crudo):
+    """Cruce por NOMBRE: la descripción del producto en stock contiene TODAS las palabras.
+    Usado para lubricantes cuyo SKU en bodega difiere del código de tambor de la pauta
+    (mapeo curado en equivalencias.json). Devuelve (acc, alt) o (None, None)."""
+    toks = [t.upper() for t in tokens]
+    def es_match(codigoNorm, tks, desc):
+        return bool(desc) and all(t in desc.upper() for t in toks)
+    return _acumular_matches(crudo, es_match)
+
+
+ARCHIVO_COMPLETO = "StockCurifor_completo.xlsx"
+
+
+def leer_catalogo_completo():
+    """Lee StockCurifor_completo.xlsx (catálogo enriquecido Ford, snapshot estable).
+    Devuelve (equiv, aplic):
+      equiv = {codNorm: set(codigos equivalentes norm)}  (Reemplazo + Equivalente Scrap + Supersesión)
+      aplic = {codNorm: 'MODELOS...'}                     (Aplicabilidad por modelo)
+    Si el archivo no está, devuelve mapas vacíos (la plataforma funciona igual)."""
+    import openpyxl
+    ruta = os.path.join(FUENTE, ARCHIVO_COMPLETO)
+    equiv, aplic = {}, {}
+    if not os.path.exists(ruta):
+        print(f"  (aviso: {ARCHIVO_COMPLETO} no está; sin equivalencias/aplicabilidad Ford)")
+        return equiv, aplic
+    wb = openpyxl.load_workbook(ruta, read_only=True, data_only=True)
+    ws = wb.worksheets[0]
+    filas = ws.iter_rows(min_row=1, values_only=True)
+    encab = next(filas)
+    col = {str(v).strip().lower(): i for i, v in enumerate(encab) if v is not None}
+
+    def gi(row, nombre):
+        i = col.get(nombre)
+        return row[i] if i is not None and i < len(row) else None
+
+    def limpio_normal(prod):
+        p = str(prod).strip()
+        return norm(p.split(" ", 1)[1] if " " in p else p)
+
+    def enlazar(a, b):
+        a, b = norm(a), norm(b)
+        if a and b and a != b:
+            equiv.setdefault(a, set()).add(b)
+            equiv.setdefault(b, set()).add(a)
+
+    for row in filas:
+        prod = gi(row, "producto")
+        if prod is None:
+            continue
+        limpio = gi(row, "código limpio") or gi(row, "codigo limpio")
+        base = norm(limpio) if limpio else limpio_normal(prod)
+        for campo in ("reemplazo", "código equivalente (scrap)", "supersesión (scrap)", "supersesion (scrap)"):
+            v = gi(row, campo)
+            if v and str(v).strip() not in ("", "-", "0", "#N/A"):
+                enlazar(base, v)
+        ap = gi(row, "aplicabilidad (modelos)")
+        if ap and str(ap).strip() not in ("", "-", "0", "#N/A") and base not in aplic:
+            aplic[base] = re.sub(r"\s*\|\s*", " · ", str(ap).strip())[:180]
+    wb.close()
+    print(f"Catálogo completo: {len(equiv)} códigos con equivalencia, {len(aplic)} con aplicabilidad")
+    return equiv, aplic
+
+
+def cargar_mapeo_manual():
+    """equivalencias.json: {codNorm: {'tokens': [...] | 'codigo': 'XXX', 'nota': ...}}."""
+    ruta = os.path.join(AQUI, "equivalencias.json")
+    if not os.path.exists(ruta):
+        return {}
+    data = json.load(open(ruta, encoding="utf-8")).get("mapeo", {})
+    return {norm(k): v for k, v in data.items()}
 
 
 def codigos_de_pautas():
@@ -195,54 +274,77 @@ def main(descargar=False):
     fro, fro_crudo = leer_stock(os.path.join(FUENTE, ARCHIVO_FRONTERA), con_rubro=False)
     print(f"Stock Curifor:  {len(cur)} códigos")
     print(f"Stock Frontera: {len(fro)} códigos")
+    equiv_map, aplic_map = leer_catalogo_completo()
+    mapeo = cargar_mapeo_manual()
 
     usados = codigos_de_pautas()
     print(f"Códigos de repuestos en pautas (reales): {len(usados)}")
 
+    def resolver_curifor(nc):
+        """Resuelve el stock Curifor de un código con precedencia:
+        directo -> mapeo manual por nombre -> difuso -> equivalencia (catálogo).
+        Devuelve (entry, alt, via) o (None, None, None)."""
+        e = cur.get(nc)
+        if e:
+            return e, None, "directo"
+        if nc in mapeo:
+            m = mapeo[nc]
+            if m.get("codigo"):
+                e = cur.get(norm(m["codigo"]))
+                if e:
+                    return e, m["codigo"], "producto"
+            if m.get("tokens"):
+                e, alt = buscar_por_tokens(m["tokens"], cur_crudo)
+                if e:
+                    return e, alt, "producto"
+        e, alt = buscar_secundario(nc, cur_crudo)
+        if e:
+            return e, (alt if alt != nc else None), "difuso"
+        for eq in equiv_map.get(nc, ()):          # equivalencia/supersesión (catálogo Ford)
+            if eq in cur:
+                return cur[eq], eq, "equivalente"
+        return None, None, None
+
     items = {}
     n_cur = n_fro = n_aprox = 0
+    via_cnt = {}
     for nc, original in usados.items():
-        ec = cur.get(nc)
-        ef = fro.get(nc)
-        aprox = False
-        # cruce secundario (lubricantes a granel, presentaciones con sufijo, código en descripción)
-        if not ec:
-            sec = buscar_secundario(nc, cur_crudo)
-            if sec:
-                ec = sec
-                aprox = True
+        ec, alt, via = resolver_curifor(nc)
+        ef, _ = (fro.get(nc), None)
         if not ef:
-            secf = buscar_secundario(nc, fro_crudo)
-            if secf:
-                ef = secf
-                aprox = True
+            ef, _ = buscar_secundario(nc, fro_crudo)
         if not ec and not ef:
             continue
+        aprox = bool(via and via != "directo")
         sc = int(ec["stock"]) if ec else None
         sf = int(ef["stock"]) if ef else None
         if ec:
             n_cur += 1
+            via_cnt[via] = via_cnt.get(via, 0) + 1
         if ef:
             n_fro += 1
         if aprox:
             n_aprox += 1
         desc = (ec or ef or {}).get("desc")
         precio = (ec or ef or {}).get("precio")
-        # desglose por bodega (cantidad), ordenado por stock desc, top 5
         por_bodega = {}
         for src in (ec, ef):
             for b, q in (src or {}).get("porBodega", {}).items():
                 por_bodega[b] = por_bodega.get(b, 0) + q
         bodegas = [{"n": b, "q": int(q)} for b, q in
                    sorted(por_bodega.items(), key=lambda kv: -kv[1]) if q > 0][:5]
-        items[nc] = {
-            "c": sc,          # stock giro Curifor (None si no está catalogado)
-            "f": sf,          # stock giro Frontera
-            "desc": desc,
-            "precio": precio,
-            "bodegas": bodegas,   # [{n: bodega, q: cantidad}] top 5 por stock
-            "aprox": aprox,   # match difuso (por presentación/descripción)
+        item = {
+            "c": sc, "f": sf, "desc": desc, "precio": precio,
+            "bodegas": bodegas,
+            "aprox": aprox,
         }
+        if alt:
+            item["alt"] = alt          # SKU alternativo bajo el que está el stock
+            item["via"] = via          # 'producto' | 'difuso' | 'equivalente'
+        ap = aplic_map.get(nc) or (aplic_map.get(norm(alt)) if alt else None)
+        if ap:
+            item["aplica"] = ap        # modelos a los que aplica (referencia Ford)
+        items[nc] = item
 
     # fecha del snapshot (mtime del archivo Curifor)
     try:
@@ -267,18 +369,23 @@ def main(descargar=False):
         f"- Snapshot: **{fecha}**",
         f"- Códigos de repuestos en pautas (reales): **{len(usados)}**",
         f"- Con registro en stock: **{len(items)}** (Curifor {n_cur}, Frontera {n_fro})",
-        f"- De ellos por cruce aproximado (lubricantes/presentaciones): **{n_aprox}**",
+        f"- Cruce: directo **{via_cnt.get('directo', 0)}**, por nombre/producto **{via_cnt.get('producto', 0)}**, "
+        f"difuso **{via_cnt.get('difuso', 0)}**, equivalente/supersesión **{via_cnt.get('equivalente', 0)}**",
         f"- Con stock disponible (>0): **{con_stock}**",
         f"- Sin catalogar en stock: **{len(usados) - len(items)}**",
         "",
-        "La plataforma marca cada repuesto de la cotización con su disponibilidad "
-        "en bodega (Curifor / Frontera). Los repuestos sin registro se muestran sin dato de stock.",
+        "La plataforma marca cada repuesto con su disponibilidad y bodega. Cuando el SKU de la "
+        "pauta difiere del de bodega (lubricantes, presentaciones, supersesión), se muestra el "
+        "código alternativo bajo el que está el stock. El mapeo manual de lubricantes vive en "
+        "`herramientas/equivalencias.json` (editable por Servicio).",
     ]
     with open(os.path.join(AQUI, "stock_reporte.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(rep))
 
     print(f"OK: stock.json con {len(items)} códigos ({con_stock} con stock >0). "
           f"Sin catalogar: {len(usados) - len(items)}.")
+    print(f"    cruce -> directo {via_cnt.get('directo',0)}, nombre {via_cnt.get('producto',0)}, "
+          f"difuso {via_cnt.get('difuso',0)}, equivalente {via_cnt.get('equivalente',0)}")
 
 
 if __name__ == "__main__":

@@ -112,14 +112,25 @@ def leer_stock(ruta, con_rubro):
         precio = int(round(precio)) if isinstance(precio, (int, float)) and precio else None
         descs = str(desc).strip() if desc else None
         bod = str(bodega).strip() if bodega and str(bodega).strip() else None
-        e = idx.setdefault(nc, {"stock": 0, "desc": None, "precio": None, "porBodega": {}})
-        e["stock"] += stock
-        if descs and not e["desc"]:
-            e["desc"] = descs
-        if precio and not e["precio"]:
-            e["precio"] = precio
-        if bod and stock:
-            e["porBodega"][bod] = e["porBodega"].get(bod, 0) + stock
+
+        def acumular(clave):
+            e = idx.setdefault(clave, {"stock": 0, "desc": None, "precio": None, "porBodega": {}})
+            e["stock"] += stock
+            if descs and not e["desc"]:
+                e["desc"] = descs
+            if precio and not e["precio"]:
+                e["precio"] = precio
+            if bod and stock:
+                e["porBodega"][bod] = e["porBodega"].get(bod, 0) + stock
+
+        acumular(nc)
+        # el mismo stock también queda indexado por su código de REEMPLAZO (supersesión):
+        # si la pauta usa el SKU antiguo y el stock lo tiene bajo el nuevo (o viceversa),
+        # así igual cruza. Solo el stock Curifor tiene esta columna.
+        reempl = gi(row, "reemplazo")
+        nr = norm(reempl)
+        if nr and nr != nc:
+            acumular(nr)
         # tokens de la descripción (separados por no-alfanuméricos) para cruce por código
         tokens = frozenset(t for t in re.split(r"[^A-Z0-9]+", descs.upper()) if t) if descs else frozenset()
         crudo.append((nc, tokens, stock, descs, precio, bod))

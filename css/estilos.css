@@ -300,7 +300,27 @@ a { color: var(--blue); }
 .btn--excel:hover { background: #0b5c30; transform: translateY(-1px); }
 .btn--print { background: #fff; color: var(--navy); border-color: var(--tint-borde); font-size: 14px; padding: 11px 16px; }
 .btn--print:hover { background: var(--tint); border-color: var(--navy); }
-.rv__acciones { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+.rv__acciones { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* toggle Particular / Interno */
+.modo-toggle { display: inline-flex; border: 1.5px solid var(--tint-borde); border-radius: 999px; overflow: hidden; background: var(--blanco); }
+.modo-btn { font-family: inherit; font-size: 13px; font-weight: 700; color: var(--ink-2); background: transparent; border: none; padding: 9px 15px; cursor: pointer; transition: background .15s, color .15s; }
+.modo-btn:hover { background: var(--tint); }
+.modo-btn.is-active { background: var(--navy); color: #fff; }
+
+/* línea de referencia (precio pauta) bajo el valor */
+.detalle__precio-ref { display: block; font-size: 12px; color: var(--ink-3); margin-top: 4px; }
+
+/* selector de reemplazo en el desglose */
+.dg-reemplazo { display: flex; align-items: center; gap: 6px; margin-top: 4px; font-size: 11.5px; color: var(--ink-2); font-weight: 600; }
+.sel-reemplazo {
+  font-family: inherit; font-size: 11.5px; color: var(--ink); background: var(--blanco);
+  border: 1.3px solid var(--verde); border-radius: 7px; padding: 3px 22px 3px 8px;
+  cursor: pointer; appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M1 3l4 4 4-4' stroke='%230a7d43' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 7px center; max-width: 320px;
+}
+.sel-reemplazo:focus { outline: none; box-shadow: 0 0 0 3px rgba(10,125,67,.15); }
 
 /* ---------------- Resultados ---------------- */
 .resultados { animation: fade .25s ease; }
@@ -595,7 +615,7 @@ a { color: var(--blue); }
      el stock (badge, bodegas y resumen) NO se imprime: la orden de taller va limpia. */
   .topbar, .hero, .foot, .carrusel, .stepbar, .selector, .resumen-vehiculo,
   .detalle__eyebrow, .adicionales__list input, .nav-link,
-  .stock-resumen, .dg-stock, .dg-bodega, .dg-alt, .dg-aplica { display: none !important; }
+  .stock-resumen, .dg-stock, .dg-bodega, .dg-alt, .dg-aplica, .dg-reemplazo { display: none !important; }
   .wrap { margin: 0; padding: 0; max-width: none; }
   .print-header { display: block; margin-bottom: 12px; }
   /* los bloques FLUYEN entre páginas (sin break-inside: avoid, que dejaba la 1a hoja en blanco) */

@@ -110,6 +110,10 @@
           </label>
         </div>
         <div class="rv__acciones">
+          <div class="modo-toggle" role="group" aria-label="Tipo de cliente">
+            <button type="button" class="modo-btn is-active" data-modo="particular">Cliente particular</button>
+            <button type="button" class="modo-btn" data-modo="interno">Interno</button>
+          </div>
           <button id="btnImprimir" class="btn btn--print" type="button">
             <span aria-hidden="true">🖨</span> Imprimir orden
           </button>
@@ -137,9 +141,10 @@
             <p id="detSub" class="detalle__sub"></p>
           </div>
           <div class="detalle__precio">
-            <span class="detalle__precio-label">Precio sugerido</span>
+            <span class="detalle__precio-label">Valor mantención</span>
             <span id="detPrecio" class="detalle__precio-valor"></span>
-            <span class="detalle__precio-moneda">IVA incluido · CLP</span>
+            <span id="detMoneda" class="detalle__precio-moneda">neto s/IVA · CLP</span>
+            <span id="detRef" class="detalle__precio-ref" hidden></span>
           </div>
         </div>
 

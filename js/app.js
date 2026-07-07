@@ -21,6 +21,9 @@
     plan: null,      // intervalos del año/plan activo
     activo: 0,       // índice de revisión activa
     adicionales: new Set(),
+    modo: "particular",   // "particular" (precio lista) | "interno" (costo/0.8)
+    seleccion: {},        // idx de item -> idx de SKU elegido (0 = principal)
+    totalCalc: 0,         // total calculado desde stock (modo activo)
   };
 
   // ---- referencias DOM ----
@@ -34,6 +37,7 @@
     rvAnioBox: $("#rvAnioBox"), selAnio2: $("#selAnio2"),
     track: $("#carruselTrack"), navPrev: $("#navPrev"), navNext: $("#navNext"),
     detTitulo: $("#detTitulo"), detSub: $("#detSub"), detPrecio: $("#detPrecio"),
+    detMoneda: $("#detMoneda"), detRef: $("#detRef"), modoBtns: document.querySelectorAll(".modo-btn"),
     detOperaciones: $("#detOperaciones"), detDesglose: $("#detDesglose"),
     stockResumen: $("#stockResumen"), btnExcel: $("#btnExcel"),
     btnImprimir: $("#btnImprimir"), printDatos: $("#printDatos"),
@@ -110,6 +114,12 @@
     el.navNext.addEventListener("click", () => moverActivo(1));
     el.btnExcel.addEventListener("click", exportarExcel);
     el.btnImprimir.addEventListener("click", imprimir);
+    el.modoBtns.forEach((btn) => btn.addEventListener("click", () => {
+      state.modo = btn.dataset.modo;
+      el.modoBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
+      pintarCarrusel();
+      pintarDetalle();
+    }));
   }
 
   function imprimir() {
@@ -120,8 +130,9 @@
       ["Versión", p.version],
     ];
     if (state.anio) filas.push(["Año", state.anio]);
+    filas.push(["Tipo", state.modo === "particular" ? "Cliente particular" : "Interno"]);
     filas.push(["Mantención", `Revisión ${itv.n} — ${itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega")}${itv.meses ? " · " + itv.meses + " meses" : ""}`]);
-    filas.push(["Valor referencial", itv.gratis ? "Sin costo" : money(itv.totalConIva) + " (IVA incl.)"]);
+    filas.push(["Valor", itv.gratis ? "Sin costo" : money(state.totalCalc) + " (neto s/IVA)"]);
     if (state.stock) filas.push(["Inventario al", state.stock.actualizado]);
     filas.push(["Fecha impresión", new Date().toLocaleDateString("es-CL")]);
     el.printDatos.innerHTML = filas.map((f) => `<tr><td>${f[0]}</td><td>${f[1]}</td></tr>`).join("");
@@ -262,6 +273,7 @@
     state.plan = (plan && plan.intervalos) ? plan.intervalos : [];
     state.activo = 0;
     state.adicionales.clear();
+    state.seleccion = {};
     pintarCarrusel();
     pintarDetalle();
   }
@@ -270,7 +282,7 @@
     el.track.innerHTML = state.plan.map((itv, i) => {
       const km = itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega");
       const meses = itv.meses ? `${itv.meses} meses` : (itv.gratis ? "Primer servicio" : "");
-      const precio = itv.gratis ? '<span class="rev-card__gratis">Sin costo</span>' : money(itv.totalConIva);
+      const precio = itv.gratis ? '<span class="rev-card__gratis">Sin costo</span>' : money(totalIntervalo(itv));
       return `<li class="rev-card${i === 0 ? " is-active" : ""}" data-i="${i}" role="button" tabindex="0">
         <div class="rev-card__n">Rev. ${itv.n}</div>
         <div class="rev-card__km">${km}</div>
@@ -288,6 +300,7 @@
   function setActivo(i) {
     state.activo = i;
     state.adicionales.clear();
+    state.seleccion = {};
     el.track.querySelectorAll(".rev-card").forEach((c, j) => c.classList.toggle("is-active", j === i));
     posicionarTrack();
     pintarDetalle();
@@ -324,14 +337,6 @@
     if (itv.horas) sub.push(`${itv.horas} h de mano de obra`);
     el.detSub.textContent = sub.join(" · ");
 
-    if (itv.gratis || itv.totalConIva === 0) {
-      el.detPrecio.textContent = "Sin costo";
-      el.detPrecio.classList.add("gratis");
-    } else {
-      el.detPrecio.textContent = money(itv.totalConIva);
-      el.detPrecio.classList.remove("gratis");
-    }
-
     // operaciones
     if (itv.operaciones && itv.operaciones.length) {
       el.detOperaciones.innerHTML = itv.operaciones.map((o) => {
@@ -342,26 +347,92 @@
       el.detOperaciones.innerHTML = '<li class="ops-empty">Consulta el detalle de operaciones con tu concesionario.</li>';
     }
 
-    // desglose repuestos/lubricantes/MO
-    pintarDesglose(itv);
+    // desglose (valoriza desde stock según modo) -> devuelve el total calculado
+    const totalCalc = pintarDesglose(itv);
+    state.totalCalc = totalCalc;
+
+    // precio destacado = total calculado (neto, según modo)
+    if (itv.gratis || totalCalc === 0) {
+      el.detPrecio.textContent = "Sin costo";
+      el.detPrecio.classList.add("gratis");
+    } else {
+      el.detPrecio.textContent = money(totalCalc);
+      el.detPrecio.classList.remove("gratis");
+    }
+    el.detMoneda.textContent = `${state.modo === "particular" ? "Cliente particular" : "Interno"} · neto s/IVA · CLP`;
+    // referencia: precio oficial de la pauta
+    if (itv.totalConIva && !itv.gratis) {
+      el.detRef.hidden = false;
+      el.detRef.textContent = `Precio pauta (ref.): ${money(itv.totalConIva)}`;
+    } else {
+      el.detRef.hidden = true;
+    }
     // adicionales
     pintarAdicionales(itv);
   }
 
+  // ---- valorización desde stock (neto, según modo) ----
+  // SKUs pickeables de un item de pauta: [principal en stock, ...equivalentes]. [] si no hay stock.
+  function skusDe(it) {
+    if (!state.stock || !it.codigo) return [];
+    const s = stockDe(it.codigo);
+    if (!s || !((s.c || 0) > 0 || (s.f || 0) > 0)) return [];
+    const principal = {
+      cod: s.alt || it.codigo, desc: s.desc, c: s.c, f: s.f, pv: s.pv, co: s.co,
+      bodegas: s.bodegas || [], aplica: s.aplica || null, via: s.via || null,
+    };
+    return [principal, ...(s.opciones || [])];
+  }
+  function skuActivo(it, idx) {
+    const lista = skusDe(it);
+    if (!lista.length) return null;
+    const sel = state.seleccion[idx] || 0;
+    return lista[Math.min(sel, lista.length - 1)];
+  }
+  function precioUnit(sku) {
+    if (!sku) return null;
+    if (state.modo === "interno") return sku.co != null ? Math.round(sku.co / 0.8) : null;
+    return sku.pv != null ? sku.pv : null;   // particular = precio lista (neto)
+  }
+  // subtotal de un item: desde stock (unit×cantidad) si se puede; si no, valor de la pauta
+  function subtotalItem(it, idx) {
+    const sku = skuActivo(it, idx);
+    const unit = precioUnit(sku);
+    if (sku && unit != null && it.cantidad) return Math.round(unit * it.cantidad);
+    return it.subtotal || 0;   // respaldo: precio de la pauta (materiales, sin cantidad, o s/d)
+  }
+  // total de un intervalo con SKU principal (para el carrusel), según modo
+  function totalIntervalo(itv) {
+    if (itv.gratis) return 0;
+    if (!(itv.items && itv.items.length)) return itv.totalConIva || 0;
+    let t = 0;
+    itv.items.forEach((it) => {
+      const sku = (skusDe(it) || [])[0] || null;
+      const unit = precioUnit(sku);
+      t += (sku && unit != null && it.cantidad) ? Math.round(unit * it.cantidad) : (it.subtotal || 0);
+    });
+    return t + (itv.manoObra || 0);
+  }
+
   function pintarDesglose(itv) {
     const filas = [];
-    const grupos = { repuesto: [], lubricante: [], material: [] };
-    (itv.items || []).forEach((it) => (grupos[it.tipo] || grupos.repuesto).push(it));
     const titulos = { repuesto: "Repuestos", lubricante: "Lubricantes", material: "Materiales" };
     const hayStock = !!state.stock;
-    let conCod = 0, disp = 0;
+    let conCod = 0, disp = 0, total = 0;
     const sinStock = [], sinDato = [];
+    const items = itv.items || [];
 
     for (const g of ["repuesto", "lubricante", "material"]) {
-      if (!grupos[g].length) continue;
+      const idxs = items.map((it, i) => [it, i]).filter(([it]) => (it.tipo || "repuesto") === g);
+      if (!idxs.length) continue;
       filas.push(`<tr><td class="dg-cat" colspan="3">${titulos[g]}</td></tr>`);
-      grupos[g].forEach((it) => {
-        const cod = it.codigo ? `<span class="dg-cod">Cód. ${it.codigo}${it.cantidad ? " · x" + it.cantidad : ""}</span>` : "";
+      for (const [it, idx] of idxs) {
+        const sub = subtotalItem(it, idx);
+        total += sub;
+        const skus = skusDe(it);
+        const sku = skuActivo(it, idx);
+        const codMostrado = sku ? sku.cod : it.codigo;
+        const cod = it.codigo ? `<span class="dg-cod">Cód. ${codMostrado}${it.cantidad ? " · x" + it.cantidad : ""}</span>` : "";
         let celdaStock = "<td></td>";
         let extra = "";
         if (hayStock && g !== "material" && it.codigo) {
@@ -370,26 +441,44 @@
           if (b.clase === "ok" || b.clase === "fro" || b.clase === "eq") disp++;
           else if (b.clase === "no") sinStock.push(it.nombre);
           else sinDato.push(it.nombre);
-          celdaStock = `<td class="dg-stock"><span class="stk stk--${b.clase}" title="${b.titulo}">${b.texto}</span></td>`;
-          if (b.alt) extra += `<span class="dg-alt" title="${b.titulo}">≈ en bodega como <strong>${b.alt}</strong></span>`;
-          if (b.bodegas.length) extra += `<span class="dg-bodega" title="${b.titulo}">📍 ${bodegasTxt(b.bodegas, 3)}</span>`;
-          if (b.aplica) extra += `<span class="dg-aplica" title="Modelos a los que aplica esta pieza">Aplica: ${b.aplica}</span>`;
+          const txt = sku ? `${num(sku.c)} u.` : b.texto;
+          const clase = sku ? (sku.c > 0 ? "ok" : "no") : b.clase;
+          celdaStock = `<td class="dg-stock"><span class="stk stk--${clase}" title="${b.titulo}">${txt}</span></td>`;
+          // selector de reemplazo (si hay >1 SKU pickeable)
+          if (skus.length > 1) {
+            const opts = skus.map((k, ki) => {
+              const u = precioUnit(k);
+              const et = `${k.cod} · ${num(k.c)} u.${u != null ? " · " + money(u) : ""}`;
+              return `<option value="${ki}"${(state.seleccion[idx] || 0) === ki ? " selected" : ""}>${et}</option>`;
+            }).join("");
+            extra += `<label class="dg-reemplazo">Reemplazo: <select data-idx="${idx}" class="sel-reemplazo">${opts}</select></label>`;
+          }
+          const bod = sku ? sku.bodegas : b.bodegas;
+          if (bod && bod.length) extra += `<span class="dg-bodega">📍 ${bodegasTxt(bod, 3)}</span>`;
+          const apl = (sku && sku.aplica) || b.aplica;
+          if (apl) extra += `<span class="dg-aplica" title="Modelos a los que aplica esta pieza">Aplica: ${apl}</span>`;
         }
-        filas.push(`<tr><td class="dg-nombre">${it.nombre}${cod}${extra}</td>${celdaStock}<td>${money(it.subtotal)}</td></tr>`);
-      });
+        filas.push(`<tr><td class="dg-nombre">${it.nombre}${cod}${extra}</td>${celdaStock}<td>${money(sub)}</td></tr>`);
+      }
     }
     if (itv.manoObra) {
+      total += itv.manoObra;
       filas.push(`<tr><td class="dg-cat" colspan="3">Mano de obra</td></tr>`);
       filas.push(`<tr><td class="dg-nombre">Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}</td><td></td><td>${money(itv.manoObra)}</td></tr>`);
     }
     if (!filas.length) {
-      filas.push(`<tr><td class="dg-nombre" colspan="3" style="color:var(--gris-3);font-style:italic">El valor corresponde al precio total sugerido de la mantención.</td></tr>`);
+      filas.push(`<tr><td class="dg-nombre" colspan="3" style="color:var(--ink-3);font-style:italic">El valor corresponde al precio total sugerido de la mantención.</td></tr>`);
+      total = itv.gratis ? 0 : (itv.totalConIva || 0);
     }
-    filas.push(`<tr class="dg-total"><td>Total mantención</td><td></td><td>${itv.gratis ? "Sin costo" : money(itv.totalConIva)}</td></tr>`);
-    if (itv.totalNeto) {
-      filas.push(`<tr><td class="dg-nombre" style="color:var(--gris-3)">Valor neto (sin IVA)</td><td></td><td style="color:var(--gris-3)">${money(itv.totalNeto)}</td></tr>`);
-    }
+    filas.push(`<tr class="dg-total"><td>Total mantención (${state.modo === "particular" ? "particular" : "interno"})</td><td></td><td>${itv.gratis ? "Sin costo" : money(total)}</td></tr>`);
     el.detDesglose.innerHTML = filas.join("");
+    // enlazar selectores de reemplazo
+    el.detDesglose.querySelectorAll(".sel-reemplazo").forEach((sel) => {
+      sel.addEventListener("change", () => {
+        state.seleccion[+sel.dataset.idx] = +sel.value;
+        pintarDetalle();
+      });
+    });
 
     // resumen de disponibilidad (3 estados claros para el mecánico)
     if (hayStock && conCod > 0) {
@@ -415,6 +504,7 @@
     } else {
       el.stockResumen.hidden = true;
     }
+    return total;
   }
 
   function pintarAdicionales(itv) {
@@ -438,7 +528,7 @@
   function recalcularTotal(itv) {
     let extra = 0;
     el.detAdicionales.querySelectorAll("input:checked").forEach((c) => (extra += +c.dataset.precio));
-    const base = itv.gratis ? 0 : (itv.totalConIva || 0);
+    const base = itv.gratis ? 0 : (state.totalCalc || 0);
     el.totalConAdicionales.textContent = money(base + extra);
   }
 
@@ -504,38 +594,38 @@
     if (p.motor) A.push(["Motor", p.motor]);
     if (state.anio) A.push(["Año", state.anio]);
     if (p.segmento) A.push(["Segmento", p.segmento]);
+    A.push(["Tipo", state.modo === "particular" ? "Cliente particular (precio lista)" : "Interno (costo ÷ 0,8)"]);
     A.push(["Mantención", `Revisión ${itv.n} — ${itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega")}`]);
     if (itv.meses) A.push(["Periodicidad", `${itv.meses} meses`]);
     if (state.stock) A.push(["Inventario al", state.stock.actualizado]);
     A.push([]);
-    A.push(["DETALLE", "", "Código", "Cantidad", "Valor (CLP)", "Stock total", "Código en bodega", "Bodegas (cantidad)", "Aplica a (modelos)"]);
+    A.push(["DETALLE", "", "Código en bodega", "Cantidad", "Valor neto (CLP)", "Stock", "Bodegas (cantidad)", "Aplica a (modelos)"]);
 
-    const filaItem = (it, tipo) => {
-      let stkTxt = "", bodTxt = "", altTxt = "", aplTxt = "";
+    const filaItem = (it, idx, tipo) => {
+      const sub = subtotalItem(it, idx);
+      let cod = it.codigo || "", stkTxt = "", bodTxt = "", aplTxt = "";
       if (state.stock && tipo !== "Materiales" && it.codigo) {
-        const s = stockDe(it.codigo);
-        if (!s) stkTxt = "s/d";
-        else if ((s.c || 0) > 0) { stkTxt = `${s.c} u. Curifor`; bodTxt = bodegasTxt(s.bodegas, 6); }
-        else if ((s.f || 0) > 0) { stkTxt = `${s.f} u. Frontera`; bodTxt = bodegasTxt(s.bodegas, 6); }
-        else stkTxt = "Sin stock";
-        if (s) { altTxt = s.alt || ""; aplTxt = s.aplica || ""; }
+        const sku = skuActivo(it, idx);
+        if (sku) { cod = sku.cod; stkTxt = `${num(sku.c)} u.`; bodTxt = bodegasTxt(sku.bodegas, 6); aplTxt = sku.aplica || ""; }
+        else { const s = stockDe(it.codigo); stkTxt = s ? ((s.c || 0) > 0 ? `${num(s.c)} u.` : "Sin stock") : "s/d"; }
       }
-      return [it.nombre, "", it.codigo || "", it.cantidad || "", it.subtotal || "", stkTxt, altTxt, bodTxt, aplTxt];
+      return [it.nombre, "", cod, it.cantidad || "", sub, stkTxt, bodTxt, aplTxt];
     };
     const grupos = { repuesto: "Repuestos", lubricante: "Lubricantes", material: "Materiales" };
     for (const g of ["repuesto", "lubricante", "material"]) {
-      const its = (itv.items || []).filter((x) => x.tipo === g);
-      if (!its.length) continue;
+      const idxs = (itv.items || []).map((x, i) => [x, i]).filter(([x]) => (x.tipo || "repuesto") === g);
+      if (!idxs.length) continue;
       A.push([grupos[g]]);
-      its.forEach((it) => A.push(filaItem(it, grupos[g])));
+      idxs.forEach(([it, idx]) => A.push(filaItem(it, idx, grupos[g])));
     }
     if (itv.manoObra) { A.push(["Mano de obra"]); A.push([`Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}`, "", "", "", itv.manoObra, ""]); }
     A.push([]);
-    A.push(["TOTAL MANTENCIÓN (IVA incl.)", "", "", "", itv.gratis ? 0 : itv.totalConIva, ""]);
-    if (itv.totalNeto) A.push(["Valor neto (sin IVA)", "", "", "", itv.totalNeto, ""]);
+    const totalM = itv.gratis ? 0 : (state.totalCalc || 0);
+    A.push([`TOTAL MANTENCIÓN (${state.modo === "particular" ? "particular" : "interno"}, neto s/IVA)`, "", "", "", totalM, ""]);
+    A.push(["Precio pauta (referencia)", "", "", "", itv.gratis ? 0 : (itv.totalConIva || 0), ""]);
     if (adicSel.length) {
       A.push([]); A.push(["SERVICIOS ADICIONALES"]);
-      let tot = itv.gratis ? 0 : (itv.totalConIva || 0);
+      let tot = totalM;
       adicSel.forEach((a) => { A.push([a.nombre, "", "", "", a.precio, ""]); tot += a.precio; });
       A.push(["TOTAL CON ADICIONALES", "", "", "", tot, ""]);
     }
@@ -546,17 +636,18 @@
     A.push([]);
     (p.notas || []).forEach((n) => A.push([n]));
     const ws1 = XLSX.utils.aoa_to_sheet(A);
-    ws1["!cols"] = [{ wch: 42 }, { wch: 2 }, { wch: 18 }, { wch: 9 }, { wch: 14 }, { wch: 15 }, { wch: 16 }, { wch: 40 }, { wch: 44 }];
+    ws1["!cols"] = [{ wch: 42 }, { wch: 2 }, { wch: 18 }, { wch: 9 }, { wch: 15 }, { wch: 12 }, { wch: 42 }, { wch: 44 }];
     XLSX.utils.book_append_sheet(wb, ws1, "Cotización");
 
     // ---- Hoja 2: Plan completo ----
-    const B = [["Rev.", "Kilometraje", "Meses", "Precio sugerido (IVA incl.)"]];
+    const modoTxt = state.modo === "particular" ? "particular" : "interno";
+    const B = [["Rev.", "Kilometraje", "Meses", `Valor ${modoTxt} neto (CLP)`, "Precio pauta (ref.)"]];
     state.plan.forEach((x) => B.push([
       x.n, x.km ? etiquetaKm(x.km) : (x.etiqueta || "Entrega"), x.meses || "",
-      x.gratis ? "Sin costo" : (x.totalConIva || ""),
+      x.gratis ? "Sin costo" : totalIntervalo(x), x.gratis ? "" : (x.totalConIva || ""),
     ]));
     const ws2 = XLSX.utils.aoa_to_sheet(B);
-    ws2["!cols"] = [{ wch: 6 }, { wch: 16 }, { wch: 8 }, { wch: 26 }];
+    ws2["!cols"] = [{ wch: 6 }, { wch: 16 }, { wch: 8 }, { wch: 22 }, { wch: 20 }];
     XLSX.utils.book_append_sheet(wb, ws2, "Plan completo");
 
     // ---- Hoja 3: Packs (si aplica) ----

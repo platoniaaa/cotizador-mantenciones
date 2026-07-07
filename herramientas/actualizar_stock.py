@@ -107,19 +107,23 @@ def leer_stock(ruta, con_rubro):
         if not isinstance(stock, (int, float)):
             stock = 0
         desc = gi(row, "descripción", "descripcion")
-        precio = gi(row, "precio venta")
+        precio = gi(row, "precio venta")   # NETO (sin IVA)
+        costo = gi(row, "costo")           # NETO (sin IVA)
         bodega = gi(row, "bodega")
         precio = int(round(precio)) if isinstance(precio, (int, float)) and precio else None
+        costo = int(round(costo)) if isinstance(costo, (int, float)) and costo else None
         descs = str(desc).strip() if desc else None
         bod = str(bodega).strip() if bodega and str(bodega).strip() else None
 
         def acumular(clave):
-            e = idx.setdefault(clave, {"stock": 0, "desc": None, "precio": None, "porBodega": {}})
+            e = idx.setdefault(clave, {"stock": 0, "desc": None, "precio": None, "costo": None, "porBodega": {}})
             e["stock"] += stock
             if descs and not e["desc"]:
                 e["desc"] = descs
             if precio and not e["precio"]:
                 e["precio"] = precio
+            if costo and not e["costo"]:
+                e["costo"] = costo
             if bod and stock:
                 e["porBodega"][bod] = e["porBodega"].get(bod, 0) + stock
 
@@ -133,7 +137,7 @@ def leer_stock(ruta, con_rubro):
             acumular(nr)
         # tokens de la descripción (separados por no-alfanuméricos) para cruce por código
         tokens = frozenset(t for t in re.split(r"[^A-Z0-9]+", descs.upper()) if t) if descs else frozenset()
-        crudo.append((nc, tokens, stock, descs, precio, bod))
+        crudo.append((nc, tokens, stock, descs, precio, costo, bod))
     wb.close()
     return idx, crudo
 
@@ -141,10 +145,10 @@ def leer_stock(ruta, con_rubro):
 def _acumular_matches(filas, es_match):
     """Agrega stock/bodega de las filas de crudo que cumplen es_match(fila).
     Devuelve (acc, alt) donde alt = código del SKU con más stock. (None, None) si nada."""
-    acc = {"stock": 0, "desc": None, "precio": None, "porBodega": {}}
+    acc = {"stock": 0, "desc": None, "precio": None, "costo": None, "porBodega": {}}
     por_codigo = {}
     encontrado = False
-    for codigoNorm, tokens, stock, desc, precio, bod in filas:
+    for codigoNorm, tokens, stock, desc, precio, costo, bod in filas:
         if not es_match(codigoNorm, tokens, desc):
             continue
         encontrado = True
@@ -154,6 +158,8 @@ def _acumular_matches(filas, es_match):
             acc["desc"] = desc
         if precio and not acc["precio"]:
             acc["precio"] = precio
+        if costo and not acc["costo"]:
+            acc["costo"] = costo
         if bod and stock:
             acc["porBodega"][bod] = acc["porBodega"].get(bod, 0) + stock
     if not encontrado:
@@ -305,9 +311,26 @@ def main(descargar=False):
                 return cur[eq], eq, "equivalente"
         return None, None, None
 
+    def bodegas_de(entry):
+        pb = (entry or {}).get("porBodega", {})
+        return [{"n": b, "q": int(q)} for b, q in sorted(pb.items(), key=lambda kv: -kv[1]) if q > 0][:5]
+
+    def opcion(cod, entry):
+        """Formatea un SKU pickeable con su precio (pv/co netos) y bodegas."""
+        return {
+            "cod": cod,
+            "desc": entry.get("desc"),
+            "c": int(entry["stock"]),
+            "pv": entry.get("precio"),   # Precio Venta neto
+            "co": entry.get("costo"),    # Costo neto
+            "bodegas": bodegas_de(entry),
+            "aplica": aplic_map.get(norm(cod)),
+        }
+
     items = {}
     n_cur = n_fro = n_aprox = 0
     via_cnt = {}
+    n_con_opciones = 0
     for nc, original in usados.items():
         ec, alt, via = resolver_curifor(nc)
         ef, _ = (fro.get(nc), None)
@@ -326,24 +349,30 @@ def main(descargar=False):
         if aprox:
             n_aprox += 1
         desc = (ec or ef or {}).get("desc")
-        precio = (ec or ef or {}).get("precio")
-        por_bodega = {}
-        for src in (ec, ef):
-            for b, q in (src or {}).get("porBodega", {}).items():
-                por_bodega[b] = por_bodega.get(b, 0) + q
-        bodegas = [{"n": b, "q": int(q)} for b, q in
-                   sorted(por_bodega.items(), key=lambda kv: -kv[1]) if q > 0][:5]
         item = {
-            "c": sc, "f": sf, "desc": desc, "precio": precio,
-            "bodegas": bodegas,
+            "c": sc, "f": sf, "desc": desc,
+            "pv": (ec or ef or {}).get("precio"),   # Precio Venta neto (particular)
+            "co": (ec or ef or {}).get("costo"),    # Costo neto (interno = co/0.8)
+            "bodegas": bodegas_de(ec) or bodegas_de(ef),
             "aprox": aprox,
         }
+        cod_primario = alt or original
         if alt:
-            item["alt"] = alt          # SKU alternativo bajo el que está el stock
-            item["via"] = via          # 'producto' | 'difuso' | 'equivalente'
+            item["alt"] = alt
+            item["via"] = via
         ap = aplic_map.get(nc) or (aplic_map.get(norm(alt)) if alt else None)
         if ap:
-            item["aplica"] = ap        # modelos a los que aplica (referencia Ford)
+            item["aplica"] = ap
+        # opciones de reemplazo (solo equivalencias/supersesión en stock, precisas)
+        opciones, vistos = [], {norm(cod_primario)}
+        for eq in equiv_map.get(nc, ()):
+            neq = norm(eq)
+            if neq in cur and neq not in vistos:
+                vistos.add(neq)
+                opciones.append(opcion(eq, cur[neq]))
+        if opciones:
+            item["opciones"] = opciones
+            n_con_opciones += 1
         items[nc] = item
 
     # fecha del snapshot (mtime del archivo Curifor)
@@ -386,6 +415,7 @@ def main(descargar=False):
           f"Sin catalogar: {len(usados) - len(items)}.")
     print(f"    cruce -> directo {via_cnt.get('directo',0)}, nombre {via_cnt.get('producto',0)}, "
           f"difuso {via_cnt.get('difuso',0)}, equivalente {via_cnt.get('equivalente',0)}")
+    print(f"    con opciones de reemplazo (equivalencias en stock): {n_con_opciones}")
 
 
 if __name__ == "__main__":

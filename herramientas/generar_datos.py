@@ -195,6 +195,12 @@ def partes_item(fila, primera_col_km):
             codigo = t
     if nombre is None:
         return None, None, None, None
+    # código puramente numérico (típico de lubricantes: 104406, 55004597301):
+    # el patrón es nombre | código | cantidad | precio, así que si no hay código
+    # de texto y hay 3+ números con el primero entero y "grande", ese es el código.
+    if codigo is None and len(numeros) >= 3 and numeros[0] == int(numeros[0]) and numeros[0] >= 10000:
+        codigo = str(int(numeros[0]))
+        numeros = numeros[1:]
     precio = numeros[-1] if numeros else None
     cantidad = numeros[-2] if len(numeros) >= 2 else 1
     if cantidad is not None and cantidad > 400:  # dos precios seguidos, no hay cantidad real
@@ -545,6 +551,62 @@ def modelo_de(nombre, marca_id, marca_nombre):
 
 # ----------------------------------------------------------------------------- omoda / jaecoo
 
+# tipo de repuesto Omoda por columna en la hoja REPUESTOS 2025
+OMODA_COL_REP = {
+    2: "filtro_aire", 3: "filtro_aceite", 4: "filtro_combustible", 5: "filtro_ac",
+    6: "bujia", 7: "correa", 8: "pastilla_del", 9: "pastilla_tra", 10: "filtro_transmision",
+}
+
+
+def clasificar_repuesto_omoda(nombre):
+    n = norm(nombre)
+    if "filtro" in n and ("transmision" in n or "cvt" in n or "caja" in n or "dct" in n):
+        return "filtro_transmision"
+    if "filtro" in n and "aceite" in n:
+        return "filtro_aceite"
+    if "filtro" in n and "aire" in n:
+        return "filtro_aire"
+    if "filtro" in n and ("a/c" in n or "a c" in n or "polen" in n or "cabina" in n or n.endswith("ac")):
+        return "filtro_ac"
+    if "filtro" in n and "combustible" in n:
+        return "filtro_combustible"
+    if "bujia" in n:
+        return "bujia"
+    if "correa" in n:
+        return "correa"
+    return None
+
+
+def leer_repuestos_omoda(wb):
+    """{modeloNorm: {tipo_repuesto: codigo}} desde la hoja REPUESTOS 2025."""
+    if "REPUESTOS 2025" not in wb.sheets:
+        return {}
+    with wb.get_sheet("REPUESTOS 2025") as ws:
+        filas = []
+        for row in ws.rows():
+            fila = [None] * 15
+            for c in row[:15]:
+                if c.c is not None and c.c < 15:
+                    fila[c.c] = c.v
+            filas.append(fila)
+    mapa = {}
+    modelo_actual = None
+    for f in filas:
+        etq0 = texto(f[0])
+        etq1 = norm(f[1]) if len(f) > 1 else ""
+        if etq0 and not etq1:
+            modelo_actual = etq0
+        if etq1 == "codigo" and modelo_actual:
+            d = {}
+            for col, tipo in OMODA_COL_REP.items():
+                cod = texto(f[col]) if col < len(f) else None
+                if cod and cod.upper() not in ("N/A", "-"):
+                    d[tipo] = cod
+            if d:
+                mapa[norm(modelo_actual)] = d
+    return mapa
+
+
 def procesar_omoda():
     from pyxlsb import open_workbook
     ruta = os.path.join(BASE, OMODA_FILE)
@@ -552,6 +614,7 @@ def procesar_omoda():
     packs_por_version = {}
 
     with open_workbook(ruta) as wb:
+        repuestos_map = leer_repuestos_omoda(wb)
         # MPP: packs por versión
         if "MPP" in wb.sheets:
             with wb.get_sheet("MPP") as ws:
@@ -593,7 +656,7 @@ def procesar_omoda():
                     filas.append(fila)
                     if len(filas) > 70:
                         break
-            v = parsear_modelo_omoda(nombre, filas, packs_por_version)
+            v = parsear_modelo_omoda(nombre, filas, packs_por_version, repuestos_map)
             if v:
                 versiones.append(v)
             else:
@@ -610,7 +673,8 @@ def fila_omoda(filas, patron, max_row=30):
     return None
 
 
-def parsear_modelo_omoda(nombre_hoja, filas, packs_map):
+def parsear_modelo_omoda(nombre_hoja, filas, packs_map, repuestos_map=None):
+    repuestos_map = repuestos_map or {}
     i_km = fila_omoda(filas, r"^kilometros")
     i_mo = fila_omoda(filas, r"^mano de obra$|^mano de obra")
     if i_km is None or i_mo is None:
@@ -672,6 +736,17 @@ def parsear_modelo_omoda(nombre_hoja, filas, packs_map):
             tipo = "material" if "insumo" in ne else seccion
             items.append((tipo, etiqueta, aplicacion))
 
+    # códigos de repuestos por tipo (hoja REPUESTOS 2025), match difuso del modelo
+    codigos_rep = {}
+    if repuestos_map:
+        mejor, sc = None, 0.55
+        for k, d in repuestos_map.items():
+            s = max(similar(k, nombre), similar(k, nombre_hoja))
+            if s > sc:
+                mejor, sc = k, s
+        if mejor:
+            codigos_rep = repuestos_map[mejor]
+
     # operaciones (TEMPARIO & OPERACIONES): filas con minutos por km
     i_ops = fila_omoda(filas, r"tempario", max_row=60)
     operaciones = {km: [] for km in km_cols.values()}
@@ -724,7 +799,9 @@ def parsear_modelo_omoda(nombre_hoja, filas, packs_map):
         for tipo, etq, aplicacion in items:
             if c in aplicacion:
                 suma += aplicacion[c]
-                its.append({"tipo": tipo, "nombre": etq, "codigo": None, "cantidad": None,
+                clase = clasificar_repuesto_omoda(etq)
+                codigo = codigos_rep.get(clase) if clase else None
+                its.append({"tipo": tipo, "nombre": etq, "codigo": codigo, "cantidad": None,
                             "precioUnitario": None, "subtotal": rnd(aplicacion[c])})
         if con_iva is None and neto is not None:
             con_iva = neto * 1.19

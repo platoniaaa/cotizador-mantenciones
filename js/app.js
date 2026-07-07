@@ -12,6 +12,7 @@
   // ---- estado ----
   const state = {
     indice: null,
+    stock: null,     // { actualizado, items: { codigoNorm: {c,f,desc,precio,bodegas,aprox} } }
     marca: null,     // objeto marca del índice
     modelo: null,    // objeto modelo
     version: null,   // {id, nombre, ...}
@@ -34,6 +35,7 @@
     track: $("#carruselTrack"), navPrev: $("#navPrev"), navNext: $("#navNext"),
     detTitulo: $("#detTitulo"), detSub: $("#detSub"), detPrecio: $("#detPrecio"),
     detOperaciones: $("#detOperaciones"), detDesglose: $("#detDesglose"),
+    stockResumen: $("#stockResumen"), btnExcel: $("#btnExcel"),
     adicionalesBox: $("#adicionalesBox"), detAdicionales: $("#detAdicionales"),
     totalConAdicionales: $("#totalConAdicionales"),
     packsBox: $("#packsBox"), packsList: $("#packsList"),
@@ -54,8 +56,28 @@
       return;
     }
     el.footFecha.textContent = "Datos: " + state.indice.actualizado;
+    // stock es opcional: si falta, la plataforma funciona igual (sin disponibilidad)
+    try {
+      const rs = await fetch("data/stock.json");
+      if (rs.ok) state.stock = await rs.json();
+    } catch (e) { state.stock = null; }
     llenarMarcas();
     enlazarEventos();
+  }
+
+  // ---- stock ----
+  const normCod = (c) => (c == null ? "" : String(c).toUpperCase().replace(/[^A-Z0-9]/g, ""));
+  function stockDe(codigo) {
+    if (!state.stock || !codigo) return null;
+    return state.stock.items[normCod(codigo)] || null;
+  }
+  function badgeStock(codigo) {
+    const s = stockDe(codigo);
+    if (!s) return { clase: "sd", texto: "s/d", titulo: "Sin dato de stock para este código" };
+    const c = s.c || 0, f = s.f || 0;
+    if (c > 0) return { clase: "ok", texto: `${c} u.`, titulo: `Stock Curifor: ${c} unidades${s.bodegas && s.bodegas.length ? " (" + s.bodegas.join(", ") + ")" : ""}${s.aprox ? " · cruce aproximado" : ""}` };
+    if (f > 0) return { clase: "fro", texto: `${f} u. Frontera`, titulo: `Stock Frontera: ${f} unidades` };
+    return { clase: "no", texto: "Sin stock", titulo: "Producto catalogado pero sin stock disponible" };
   }
 
   function llenarMarcas() {
@@ -75,6 +97,7 @@
     el.selAnio2.addEventListener("change", (e) => { state.anio = e.target.value; cargarPlan(); });
     el.navPrev.addEventListener("click", () => moverActivo(-1));
     el.navNext.addEventListener("click", () => moverActivo(1));
+    el.btnExcel.addEventListener("click", exportarExcel);
   }
 
   // ============================================================
@@ -302,27 +325,47 @@
     const grupos = { repuesto: [], lubricante: [], material: [] };
     (itv.items || []).forEach((it) => (grupos[it.tipo] || grupos.repuesto).push(it));
     const titulos = { repuesto: "Repuestos", lubricante: "Lubricantes", material: "Materiales" };
+    const hayStock = !!state.stock;
+    let conCod = 0, disp = 0;
 
     for (const g of ["repuesto", "lubricante", "material"]) {
       if (!grupos[g].length) continue;
-      filas.push(`<tr><td class="dg-cat" colspan="2">${titulos[g]}</td></tr>`);
+      filas.push(`<tr><td class="dg-cat" colspan="3">${titulos[g]}</td></tr>`);
       grupos[g].forEach((it) => {
         const cod = it.codigo ? `<span class="dg-cod">Cód. ${it.codigo}${it.cantidad ? " · x" + it.cantidad : ""}</span>` : "";
-        filas.push(`<tr><td class="dg-nombre">${it.nombre}${cod}</td><td>${money(it.subtotal)}</td></tr>`);
+        let celdaStock = "<td></td>";
+        if (hayStock && g !== "material" && it.codigo) {
+          conCod++;
+          const b = badgeStock(it.codigo);
+          if (b.clase === "ok" || b.clase === "fro") disp++;
+          celdaStock = `<td class="dg-stock"><span class="stk stk--${b.clase}" title="${b.titulo}">${b.texto}</span></td>`;
+        }
+        filas.push(`<tr><td class="dg-nombre">${it.nombre}${cod}</td>${celdaStock}<td>${money(it.subtotal)}</td></tr>`);
       });
     }
     if (itv.manoObra) {
-      filas.push(`<tr><td class="dg-cat" colspan="2">Mano de obra</td></tr>`);
-      filas.push(`<tr><td class="dg-nombre">Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}</td><td>${money(itv.manoObra)}</td></tr>`);
+      filas.push(`<tr><td class="dg-cat" colspan="3">Mano de obra</td></tr>`);
+      filas.push(`<tr><td class="dg-nombre">Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}</td><td></td><td>${money(itv.manoObra)}</td></tr>`);
     }
     if (!filas.length) {
-      filas.push(`<tr><td class="dg-nombre" colspan="2" style="color:var(--gris-3);font-style:italic">El valor corresponde al precio total sugerido de la mantención.</td></tr>`);
+      filas.push(`<tr><td class="dg-nombre" colspan="3" style="color:var(--gris-3);font-style:italic">El valor corresponde al precio total sugerido de la mantención.</td></tr>`);
     }
-    filas.push(`<tr class="dg-total"><td>Total mantención</td><td>${itv.gratis ? "Sin costo" : money(itv.totalConIva)}</td></tr>`);
+    filas.push(`<tr class="dg-total"><td>Total mantención</td><td></td><td>${itv.gratis ? "Sin costo" : money(itv.totalConIva)}</td></tr>`);
     if (itv.totalNeto) {
-      filas.push(`<tr><td class="dg-nombre" style="color:var(--gris-3)">Valor neto (sin IVA)</td><td style="color:var(--gris-3)">${money(itv.totalNeto)}</td></tr>`);
+      filas.push(`<tr><td class="dg-nombre" style="color:var(--gris-3)">Valor neto (sin IVA)</td><td></td><td style="color:var(--gris-3)">${money(itv.totalNeto)}</td></tr>`);
     }
     el.detDesglose.innerHTML = filas.join("");
+
+    // resumen de disponibilidad
+    if (hayStock && conCod > 0) {
+      el.stockResumen.hidden = false;
+      const pct = Math.round((disp / conCod) * 100);
+      el.stockResumen.innerHTML =
+        `<span class="stk-dot"></span><strong>${disp} de ${conCod}</strong> repuestos con stock en bodega ` +
+        `<span class="stock-fecha">· inventario al ${state.stock.actualizado}</span>`;
+    } else {
+      el.stockResumen.hidden = true;
+    }
   }
 
   function pintarAdicionales(itv) {
@@ -383,6 +426,101 @@
     el.vehiculoMeta.hidden = true;
     el.btnCotizar.disabled = true;
     volver();
+  }
+
+  // ============================================================
+  //  Exportar a Excel (SheetJS)
+  // ============================================================
+  function exportarExcel() {
+    if (typeof XLSX === "undefined") { alert("No se pudo cargar el generador de Excel."); return; }
+    const p = state.pauta;
+    const itv = state.plan[state.activo];
+    if (!p || !itv) return;
+    const wb = XLSX.utils.book_new();
+
+    // adicionales seleccionados
+    const adicSel = [];
+    el.detAdicionales.querySelectorAll("input:checked").forEach((c) => {
+      const li = c.closest("li");
+      adicSel.push({ nombre: li.querySelector("span").textContent, precio: +c.dataset.precio });
+    });
+
+    // ---- Hoja 1: Cotización (revisión activa) ----
+    const A = [];
+    A.push(["COTIZACIÓN DE MANTENCIÓN — CURIFOR"]);
+    A.push([]);
+    A.push(["Marca", p.marcaNombre]);
+    A.push(["Modelo", p.modelo]);
+    A.push(["Versión", p.version]);
+    if (p.motor) A.push(["Motor", p.motor]);
+    if (state.anio) A.push(["Año", state.anio]);
+    if (p.segmento) A.push(["Segmento", p.segmento]);
+    A.push(["Mantención", `Revisión ${itv.n} — ${itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega")}`]);
+    if (itv.meses) A.push(["Periodicidad", `${itv.meses} meses`]);
+    if (state.stock) A.push(["Inventario al", state.stock.actualizado]);
+    A.push([]);
+    A.push(["DETALLE", "", "Código", "Cantidad", "Valor (CLP)", "Stock bodega"]);
+
+    const filaItem = (it, tipo) => {
+      let stkTxt = "";
+      if (state.stock && tipo !== "Materiales" && it.codigo) {
+        const s = stockDe(it.codigo);
+        if (!s) stkTxt = "s/d";
+        else if ((s.c || 0) > 0) stkTxt = `${s.c} u. Curifor`;
+        else if ((s.f || 0) > 0) stkTxt = `${s.f} u. Frontera`;
+        else stkTxt = "Sin stock";
+      }
+      return [it.nombre, "", it.codigo || "", it.cantidad || "", it.subtotal || "", stkTxt];
+    };
+    const grupos = { repuesto: "Repuestos", lubricante: "Lubricantes", material: "Materiales" };
+    for (const g of ["repuesto", "lubricante", "material"]) {
+      const its = (itv.items || []).filter((x) => x.tipo === g);
+      if (!its.length) continue;
+      A.push([grupos[g]]);
+      its.forEach((it) => A.push(filaItem(it, grupos[g])));
+    }
+    if (itv.manoObra) { A.push(["Mano de obra"]); A.push([`Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}`, "", "", "", itv.manoObra, ""]); }
+    A.push([]);
+    A.push(["TOTAL MANTENCIÓN (IVA incl.)", "", "", "", itv.gratis ? 0 : itv.totalConIva, ""]);
+    if (itv.totalNeto) A.push(["Valor neto (sin IVA)", "", "", "", itv.totalNeto, ""]);
+    if (adicSel.length) {
+      A.push([]); A.push(["SERVICIOS ADICIONALES"]);
+      let tot = itv.gratis ? 0 : (itv.totalConIva || 0);
+      adicSel.forEach((a) => { A.push([a.nombre, "", "", "", a.precio, ""]); tot += a.precio; });
+      A.push(["TOTAL CON ADICIONALES", "", "", "", tot, ""]);
+    }
+    if (itv.operaciones && itv.operaciones.length) {
+      A.push([]); A.push(["OPERACIONES INCLUIDAS"]);
+      itv.operaciones.forEach((o) => A.push([(o.accion === "R" ? "Reemplazar" : "Inspeccionar") + ": " + o.nombre]));
+    }
+    A.push([]);
+    (p.notas || []).forEach((n) => A.push([n]));
+    const ws1 = XLSX.utils.aoa_to_sheet(A);
+    ws1["!cols"] = [{ wch: 42 }, { wch: 2 }, { wch: 18 }, { wch: 9 }, { wch: 14 }, { wch: 18 }];
+    XLSX.utils.book_append_sheet(wb, ws1, "Cotización");
+
+    // ---- Hoja 2: Plan completo ----
+    const B = [["Rev.", "Kilometraje", "Meses", "Precio sugerido (IVA incl.)"]];
+    state.plan.forEach((x) => B.push([
+      x.n, x.km ? etiquetaKm(x.km) : (x.etiqueta || "Entrega"), x.meses || "",
+      x.gratis ? "Sin costo" : (x.totalConIva || ""),
+    ]));
+    const ws2 = XLSX.utils.aoa_to_sheet(B);
+    ws2["!cols"] = [{ wch: 6 }, { wch: 16 }, { wch: 8 }, { wch: 26 }];
+    XLSX.utils.book_append_sheet(wb, ws2, "Plan completo");
+
+    // ---- Hoja 3: Packs (si aplica) ----
+    if (p.packs && p.packs.length) {
+      const C = [["Pack", "Precio (IVA incl.)"]];
+      p.packs.forEach((k) => C.push([k.nombre, k.precio]));
+      const ws3 = XLSX.utils.aoa_to_sheet(C);
+      ws3["!cols"] = [{ wch: 34 }, { wch: 18 }];
+      XLSX.utils.book_append_sheet(wb, ws3, "Packs");
+    }
+
+    const nombre = `Cotizacion_${p.marcaNombre}_${p.modelo}_${itv.km ? itv.km / 1000 + "k" : "rev" + itv.n}`
+      .replace(/[^A-Za-z0-9_]+/g, "_") + ".xlsx";
+    XLSX.writeFile(wb, nombre);
   }
 
   // ---- utilidades ----

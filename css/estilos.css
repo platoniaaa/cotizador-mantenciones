@@ -275,6 +275,9 @@ a { color: var(--azul-2); }
 .btn--primary:disabled { background: var(--gris-linea); color: var(--gris-3); box-shadow: none; cursor: not-allowed; }
 .btn--ghost { background: transparent; color: var(--azul-2); border-color: var(--azul-borde); }
 .btn--ghost:hover { background: var(--azul-claro); }
+.btn--excel { background: #107c41; color: #fff; font-size: 14px; padding: 11px 18px; }
+.btn--excel:hover { background: #0b5c30; transform: translateY(-1px); }
+.resumen-vehiculo .btn--excel { margin-left: auto; }
 
 /* ---------------- Resultados ---------------- */
 .resultados { animation: fade .25s ease; }
@@ -424,7 +427,28 @@ a { color: var(--azul-2); }
 .desglose .dg-nombre { color: var(--gris-txt); }
 .desglose .dg-cod { display: block; font-size: 11.5px; color: var(--gris-3); }
 .desglose .dg-cat { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--gris-3); font-weight: 700; padding-top: 12px; }
+.desglose .dg-stock { text-align: center; white-space: nowrap; width: 1%; padding: 7px 10px; }
 .desglose .dg-total td { border-top: 2px solid var(--gris-txt); border-bottom: none; padding-top: 10px; font-weight: 800; font-size: 15px; }
+
+/* badges de disponibilidad */
+.stk { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 2px 9px; white-space: nowrap; cursor: help; }
+.stk--ok  { background: #e7f4ee; color: var(--verde); }
+.stk--fro { background: #eef1fb; color: var(--azul-2); }
+.stk--no  { background: #fdeaea; color: #b42318; }
+.stk--sd  { background: var(--gris-bg); color: var(--gris-3); font-weight: 600; }
+
+.stock-resumen {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--azul-claro);
+  border-radius: var(--radio-sm);
+  padding: 9px 13px;
+  font-size: 13px;
+  color: var(--gris-txt);
+  margin-bottom: 12px;
+}
+.stock-resumen .stk-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--verde); flex: 0 0 auto; }
+.stock-resumen strong { color: var(--azul); }
+.stock-fecha { color: var(--gris-3); font-size: 11.5px; }
 
 /* ---------------- Adicionales ---------------- */
 .adicionales { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--gris-linea); }

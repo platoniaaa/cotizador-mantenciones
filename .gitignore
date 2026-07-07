@@ -9,3 +9,7 @@ Thumbs.db
 ../*.xlsx
 ../*.xlsm
 ../*.xlsb
+
+# Snapshots de stock descargados de SharePoint (pesados, se refrescan con --descargar).
+# El stock.json generado (chico) SÍ se versiona.
+herramientas/stock_fuente/*.xlsx

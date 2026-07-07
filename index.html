@@ -100,6 +100,9 @@
             <select id="selAnio2" class="select select--sm"></select>
           </label>
         </div>
+        <button id="btnExcel" class="btn btn--excel" type="button">
+          <span aria-hidden="true">⬇</span> Descargar cotización (Excel)
+        </button>
       </div>
 
       <!-- carrusel de revisiones -->
@@ -133,6 +136,7 @@
           </div>
           <div class="detalle__col">
             <h4 class="detalle__subtitulo">Repuestos, lubricantes y mano de obra</h4>
+            <div id="stockResumen" class="stock-resumen" hidden></div>
             <table class="desglose">
               <tbody id="detDesglose"></tbody>
             </table>
@@ -179,6 +183,7 @@
     </div>
   </footer>
 
+  <script src="js/vendor/xlsx.full.min.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

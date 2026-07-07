@@ -1,0 +1,11 @@
+# Dependencias / temporales
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Los Excel fuente viven en la carpeta superior; no se versionan aquí.
+../*.xlsx
+../*.xlsm
+../*.xlsb

@@ -1,0 +1,1829 @@
+{
+ "actualizado": "Enero 2026 (Ford: junio 2026, Omoda/Jaecoo: julio 2025)",
+ "marcas": [
+  {
+   "id": "baic",
+   "nombre": "BAIC",
+   "modelos": [
+    {
+     "nombre": "BJ40P",
+     "versiones": [
+      {
+       "id": "baic__bj40p-gasolina",
+       "nombre": "BJ40P Gasolina",
+       "vigencia": "Activo",
+       "segmento": "SUV Alto",
+       "anios": null
+      },
+      {
+       "id": "baic__bj40p-diesel",
+       "nombre": "BJ40P Diesel",
+       "vigencia": "Activo",
+       "segmento": "SUV Alto",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "PLUS",
+     "versiones": [
+      {
+       "id": "baic__plus-1-2-euro-v",
+       "nombre": "PLUS 1.2 EURO V",
+       "vigencia": "Hasta 2018",
+       "segmento": "Comercial",
+       "anios": null
+      },
+      {
+       "id": "baic__plus-1-3-euro-iv",
+       "nombre": "PLUS 1.3 EURO IV",
+       "vigencia": "Hasta 2015",
+       "segmento": "Comercial",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "UP",
+     "versiones": [
+      {
+       "id": "baic__up-hb",
+       "nombre": "UP HATCHBACK",
+       "vigencia": "Hasta 2017",
+       "segmento": "City car",
+       "anios": null
+      },
+      {
+       "id": "baic__up-sd",
+       "nombre": "UP SEDAN",
+       "vigencia": "Hasta 2017",
+       "segmento": "Sedan",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "X25",
+     "versiones": [
+      {
+       "id": "baic__x25",
+       "nombre": "X25",
+       "vigencia": "Hasta 2021",
+       "segmento": "City Car",
+       "anios": null
+      },
+      {
+       "id": "baic__x25-at",
+       "nombre": "X25 AT",
+       "vigencia": "Hasta 2021",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "X35",
+     "versiones": [
+      {
+       "id": "baic__x35-fl-mt-euro-6",
+       "nombre": "X35 (FL) MT Euro 6",
+       "vigencia": "Activo",
+       "segmento": "SUV Bajo",
+       "anios": null
+      },
+      {
+       "id": "baic__x35-fl-cvt-euro-6",
+       "nombre": "X35 (FL) CVT Euro 6",
+       "vigencia": "Activo",
+       "segmento": "SUV Bajo",
+       "anios": null
+      },
+      {
+       "id": "baic__x35-fl",
+       "nombre": "X35 (FL)",
+       "vigencia": "Hasta 2023",
+       "segmento": "SUV Bajo",
+       "anios": null
+      },
+      {
+       "id": "baic__x35",
+       "nombre": "X35",
+       "vigencia": "Hasta 2020",
+       "segmento": "SUV Bajo",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "X55",
+     "versiones": [
+      {
+       "id": "baic__x55-fl-mt-euro-5y6",
+       "nombre": "X55 (FL) MT",
+       "vigencia": "Hasta 2023",
+       "segmento": "SUV Bajo",
+       "anios": null
+      },
+      {
+       "id": "baic__x55-fl-cvt",
+       "nombre": "X55 (FL) CVT",
+       "vigencia": "Hasta 2023",
+       "segmento": "SUV Bajo",
+       "anios": null
+      },
+      {
+       "id": "baic__x55-mt",
+       "nombre": "X55 MT",
+       "vigencia": "Hasta 2018",
+       "segmento": "SUV Bajo",
+       "anios": null
+      },
+      {
+       "id": "baic__x55-cvt",
+       "nombre": "X55 CVT",
+       "vigencia": "Hasta 2018",
+       "segmento": "SUV Bajo",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "X55 PLUS",
+     "versiones": [
+      {
+       "id": "baic__x55-plus",
+       "nombre": "X55 PLUS",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "X7",
+     "versiones": [
+      {
+       "id": "baic__x7",
+       "nombre": "BAIC X7",
+       "vigencia": "Activo",
+       "segmento": "SUV Alto",
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "jac",
+   "nombre": "JAC",
+   "modelos": [
+    {
+     "nombre": "E30X",
+     "versiones": [
+      {
+       "id": "jac__e30x",
+       "nombre": "E30X",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "EJS1",
+     "versiones": [
+      {
+       "id": "jac__ejs1",
+       "nombre": "EJS1",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "EJS4",
+     "versiones": [
+      {
+       "id": "jac__ejs4",
+       "nombre": "EJS4",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "JS2",
+     "versiones": [
+      {
+       "id": "jac__js2-5-mt",
+       "nombre": "JS2 5 MT",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "jac__js2-cvt",
+       "nombre": "JS2 CVT",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "JS3",
+     "versiones": [
+      {
+       "id": "jac__js3-6mt",
+       "nombre": "JS3 6MT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__js3-cvt",
+       "nombre": "JS3 CVT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "JS4",
+     "versiones": [
+      {
+       "id": "jac__js4-1-6-6mt",
+       "nombre": "JS4 1.6 6MT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__js4-1-5t-6mt",
+       "nombre": "JS4 1.5T 6MT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__js4-1-5t-cvt",
+       "nombre": "JS4 1.5T CVT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "JS6",
+     "versiones": [
+      {
+       "id": "jac__js6-dct",
+       "nombre": "JS6 DCT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__js6-phev",
+       "nombre": "JS6 PHEV",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "JS8",
+     "versiones": [
+      {
+       "id": "jac__js8-6mt",
+       "nombre": "JS8 6MT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__js8-6-dct",
+       "nombre": "JS8 6 DCT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__js8-pro-7-dct",
+       "nombre": "JS8 PRO 7 DCT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "M3",
+     "versiones": [
+      {
+       "id": "jac__m3-ev-refine-cargo-ev",
+       "nombre": "M3 EV (refine cargo EV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "REFINE",
+     "versiones": [
+      {
+       "id": "jac__refine-2-0",
+       "nombre": "REFINE 2.0",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "S5",
+     "versiones": [
+      {
+       "id": "jac__s5-turbo",
+       "nombre": "S5 Turbo",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__s5-2-0-vvt",
+       "nombre": "S5 2.0 vvt",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "SUNRAY",
+     "versiones": [
+      {
+       "id": "jac__sunray-2-7",
+       "nombre": "SUNRAY 2.7",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "T6",
+     "versiones": [
+      {
+       "id": "jac__t6-2-0-d-4x2",
+       "nombre": "T6 2.0 D 4x2",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__t6-2-0-d-4x4",
+       "nombre": "T6 2.0 D 4x4",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__t6-g-mt-4x2",
+       "nombre": "T6 G MT 4x2",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__t6-g-mt-4x4",
+       "nombre": "T6 G MT 4x4",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "T8",
+     "versiones": [
+      {
+       "id": "jac__t8-mt-e5-4x2",
+       "nombre": "T8 MT E5 4x2",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__t8-mt-e5-4x4",
+       "nombre": "T8 MT E5 4x4",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__t8-mt-e6-4x2",
+       "nombre": "T8 MT E6 4x2",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__t8-mt-e6-4x4",
+       "nombre": "T8 MT E6 4x4",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__t8-at-pro-4x4",
+       "nombre": "T8 AT Pro  4x4",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__t8-mt-e6-4x4-2-5-vm",
+       "nombre": "T8 MT E6 4x4 2.5 VM",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "T9",
+     "versiones": [
+      {
+       "id": "jac__t9-at-4x4",
+       "nombre": "T9 AT  4x4",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__t9-ev-4x4",
+       "nombre": "T9 EV 4x4",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "X200",
+     "versiones": [
+      {
+       "id": "jac__x200-e6",
+       "nombre": "X200 E6",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jac__x200-e5",
+       "nombre": "X200 E5",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "jim",
+   "nombre": "JIM",
+   "modelos": [
+    {
+     "nombre": "Remax",
+     "versiones": [
+      {
+       "id": "jim__jim-remax-4x2",
+       "nombre": "JIM Remax 4x2 MT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jim__jim-remax-4x4",
+       "nombre": "JIM Remax 4x4 MT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jim__jim-remax-4x2-at",
+       "nombre": "JIM Remax 4x2 AT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "jim__jim-remax-4x4-at",
+       "nombre": "JIM Remax 4x4 AT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mahindra",
+   "nombre": "Mahindra",
+   "modelos": [
+    {
+     "nombre": "KUV100",
+     "versiones": [
+      {
+       "id": "mahindra__kuv-100-gasolina",
+       "nombre": "KUV100 - Mfalcon 1.2",
+       "vigencia": "Activo",
+       "segmento": "City car",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Pik Up",
+     "versiones": [
+      {
+       "id": "mahindra__pik-up-euro-vi-4x2-refresh",
+       "nombre": "Pik Up REFRESH - Mhawk 2.2 4x2  Euro 6",
+       "vigencia": "Activo",
+       "segmento": "Camioneta",
+       "anios": null
+      },
+      {
+       "id": "mahindra__pik-up-euro-vi-4x4-refresh",
+       "nombre": "Pik Up REFRESH - Mhawk 2.2 4x4 Euro 6",
+       "vigencia": "Activo",
+       "segmento": "Camioneta",
+       "anios": null
+      },
+      {
+       "id": "mahindra__pik-up-euro-vi-4x4-refresh-at",
+       "nombre": "Pik Up REFRESH - Mhawk 2.2 4x4  AT Euro 6",
+       "vigencia": "Activo",
+       "segmento": "Camioneta",
+       "anios": null
+      },
+      {
+       "id": "mahindra__pik-up-euro-v-4x2-refresh",
+       "nombre": "Pik Up - Mhawk 2.2 4x2 EURO V",
+       "vigencia": "Hasta 2020",
+       "segmento": "Camioneta",
+       "anios": null
+      },
+      {
+       "id": "mahindra__pik-up-euro-v-4x4-refresh",
+       "nombre": "Pik Up - Mhawk 2.2 4x4 EURO V",
+       "vigencia": "Hasta 2020",
+       "segmento": "Camioneta",
+       "anios": null
+      },
+      {
+       "id": "mahindra__pik-up-euro-v-4x2",
+       "nombre": "Pik Up REFRESH - Mhawk 2.2 4x2",
+       "vigencia": "Hasta 2023",
+       "segmento": "Camioneta",
+       "anios": null
+      },
+      {
+       "id": "mahindra__pik-up-euro-v-4x4",
+       "nombre": "Pik Up REFRESH - Mhawk 2.2 4x4",
+       "vigencia": "Hasta 2023",
+       "segmento": "Camioneta",
+       "anios": null
+      },
+      {
+       "id": "mahindra__pik-up-euro-v-4x4-brasil",
+       "nombre": "Pik Up - Mhawk 2.2 4x4 EURO V BRASIL",
+       "vigencia": "Hasta 2020",
+       "segmento": "Camioneta",
+       "anios": null
+      },
+      {
+       "id": "mahindra__pik-up-euro-v-4x2-brasil",
+       "nombre": "Pik Up - Mhawk 2.2 4x2 EURO V BRASIL",
+       "vigencia": "Hasta 2020",
+       "segmento": "Camioneta",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Scorpio",
+     "versiones": [
+      {
+       "id": "mahindra__scorpio-euro-v-4x2",
+       "nombre": "Scorpio - Mhawk 2.2 4x2 EURO V",
+       "vigencia": "Hasta 2020",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "mahindra__scorpio-euro-v-4x4",
+       "nombre": "Scorpio - Mhawk 2.2 4x4 EURO V",
+       "vigencia": "Hasta 2020",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "XUV300",
+     "versiones": [
+      {
+       "id": "mahindra__xuv-300-vi",
+       "nombre": "XUV300 - 1.2 Turbo Euro VI",
+       "vigencia": "Activo",
+       "segmento": "SUV Bajo",
+       "anios": null
+      },
+      {
+       "id": "mahindra__3xo-e6",
+       "nombre": "XUV300 - 1.2 Turbo Euro VI",
+       "vigencia": "Activo",
+       "segmento": "SUV Bajo",
+       "anios": null
+      },
+      {
+       "id": "mahindra__xuv-300",
+       "nombre": "XUV300 - 1.2 Turbo",
+       "vigencia": "Hasta 2023",
+       "segmento": "SUV Bajo",
+       "anios": null
+      },
+      {
+       "id": "mahindra__xuv-300-2",
+       "nombre": "XUV300 - 1.2 Turbo",
+       "vigencia": "Hasta 2023",
+       "segmento": "SUV Bajo",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "XUV500",
+     "versiones": [
+      {
+       "id": "mahindra__xuv500-2wd-gasolina",
+       "nombre": "XUV500 - Mhawk 2.2 2wd GASOLINA",
+       "vigencia": "Hasta 2020",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "mahindra__xuv500-awd-gasolina",
+       "nombre": "XUV500 - Mhawk 2.2 Awd GASOLINA",
+       "vigencia": "Hasta 2020",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "mahindra__xuv500-2wd-euro-v",
+       "nombre": "XUV500 - Mhawk 2.2 Awd EURO V",
+       "vigencia": "Hasta 2023",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "mahindra__xuv500-4wd-euro-v",
+       "nombre": "XUV500 - Mhawk 2.2 Awd EURO V",
+       "vigencia": "Hasta 2023",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "shineray",
+   "nombre": "Shineray",
+   "modelos": [
+    {
+     "nombre": "G03",
+     "versiones": [
+      {
+       "id": "shineray__x30l-ev",
+       "nombre": "G03 1.5",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "T30",
+     "versiones": [
+      {
+       "id": "shineray__t30-t32-x30",
+       "nombre": "T30 - T32 - X30",
+       "vigencia": "Activo",
+       "segmento": "Comercial",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "T30-T32",
+     "versiones": [
+      {
+       "id": "shineray__t30-t32-euro-6",
+       "nombre": "T30-T32 Euro 6",
+       "vigencia": "Activo",
+       "segmento": "Comercial",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "T50",
+     "versiones": [
+      {
+       "id": "shineray__t50-t52",
+       "nombre": "T50 - T52",
+       "vigencia": "Activo",
+       "segmento": "Comercial",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "T50-T52",
+     "versiones": [
+      {
+       "id": "shineray__t50-t52-euro-6",
+       "nombre": "T50-T52 Euro 6",
+       "vigencia": "Activo",
+       "segmento": "Comercial",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "X30",
+     "versiones": [
+      {
+       "id": "shineray__x30-euro-6",
+       "nombre": "X30 Euro 6",
+       "vigencia": "Activo",
+       "segmento": "Comercial",
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "swm",
+   "nombre": "SWM",
+   "modelos": [
+    {
+     "nombre": "G03",
+     "versiones": [
+      {
+       "id": "swm__g03-1-5",
+       "nombre": "G03 1.5",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "swm__x30l-ev",
+       "nombre": "G03 1.5",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "G05",
+     "versiones": [
+      {
+       "id": "swm__g05-2-0",
+       "nombre": "G05 2.0",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "swm__g05-1-5t-dct",
+       "nombre": "G05 1.5",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "swm__g05-1-5t",
+       "nombre": "G05 1.5",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "omoda",
+   "nombre": "Omoda",
+   "modelos": [
+    {
+     "nombre": "C5",
+     "versiones": [
+      {
+       "id": "omoda__omoda-c5-1-5-urban",
+       "nombre": "C5 1.5 Urban",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      },
+      {
+       "id": "omoda__omoda-c5-1-5-turbo",
+       "nombre": "C5 1.5 Turbo",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      },
+      {
+       "id": "omoda__omoda-c5-1-6-turbo",
+       "nombre": "C5 1.6 Turbo",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "E5",
+     "versiones": [
+      {
+       "id": "omoda__omoda-e5-ev",
+       "nombre": "E5",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      },
+      {
+       "id": "omoda__omoda-e5-ev-fleet",
+       "nombre": "E5 FLEET",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "jaecoo",
+   "nombre": "Jaecoo",
+   "modelos": [
+    {
+     "nombre": "J5",
+     "versiones": [
+      {
+       "id": "jaecoo__jaecoo-5",
+       "nombre": "J5 1.5 Turbo",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "J6",
+     "versiones": [
+      {
+       "id": "jaecoo__jaecoo-j6-ev",
+       "nombre": "J6 EV",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "J7",
+     "versiones": [
+      {
+       "id": "jaecoo__jaecoo-j7-1-6t-fwd",
+       "nombre": "J7 1.6T FWD",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      },
+      {
+       "id": "jaecoo__jaecoo-j7-1-6t-awd",
+       "nombre": "J7 1.6T AWD",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      },
+      {
+       "id": "jaecoo__jaecoo-7-phev",
+       "nombre": "J7 PHEV",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "J8",
+     "versiones": [
+      {
+       "id": "jaecoo__jaecoo-8",
+       "nombre": "8",
+       "vigencia": "Activo",
+       "segmento": "SUV",
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ford",
+   "nombre": "Ford",
+   "modelos": [
+    {
+     "nombre": "Bronco Sport",
+     "versiones": [
+      {
+       "id": "ford__bronco-sport--big-bend-1-5l-gtdi",
+       "nombre": "Big Bend · 1.5L GTDI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024",
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__bronco-sport--wildtrak-2-0l-ecoboost",
+       "nombre": "Wildtrak · 2.0L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024",
+        "2023",
+        "2022",
+        "2021"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "EcoSport",
+     "versiones": [
+      {
+       "id": "ford__ecosport--at-titanium-1-5l-dragon",
+       "nombre": "AT Titanium · 1.5L Dragon",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ecosport--at-trend-1-5l-dragon",
+       "nombre": "AT Trend · 1.5L Dragon",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ecosport--mt-titanium-1-5l-dragon",
+       "nombre": "MT Titanium · 1.5L Dragon",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ecosport--mt-trend-1-5l-dragon",
+       "nombre": "MT Trend · 1.5L Dragon",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2021"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Edge",
+     "versiones": [
+      {
+       "id": "ford__edge--sel-4x2-2-0l-ecoboost",
+       "nombre": "SEL 4x2 · 2.0L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__edge--sel-4x4-2-0l-ecoboost",
+       "nombre": "SEL 4x4 · 2.0L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__edge--st-2-7l-ecoboost",
+       "nombre": "ST · 2.7L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Escape",
+     "versiones": [
+      {
+       "id": "ford__escape--platinium-hev-2-5l-fhev-atkinson",
+       "nombre": "Platinium HEV · 2.5L FHEV Atkinson",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__escape--platinium-2-0l-ecoboost",
+       "nombre": "Platinium · 2.0L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__escape--se-2-5l-fhev-atkinson",
+       "nombre": "SE · 2.5L FHEV Atkinson",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022"
+       ]
+      },
+      {
+       "id": "ford__escape--st-line-hev-2-5l-fhev-atkinson",
+       "nombre": "ST-Line HEV · 2.5L FHEV Atkinson",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__escape--titanium-2-0l-ecoboost",
+       "nombre": "Titanium · 2.0L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__escape--titanium-2-5l-fhev-atkinson",
+       "nombre": "Titanium · 2.5L FHEV Atkinson",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Expedition",
+     "versiones": [
+      {
+       "id": "ford__expedition--limited-3-5l-ecoboost",
+       "nombre": "Limited · 3.5L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Explorer",
+     "versiones": [
+      {
+       "id": "ford__explorer--limited-4x2-2-3l-ecoboost",
+       "nombre": "Limited 4x2 · 2.3L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__explorer--limited-4x4-2-3l-ecoboost",
+       "nombre": "Limited 4x4 · 2.3L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__explorer--st-3-0l-gtdi",
+       "nombre": "ST · 3.0L GTDI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__explorer--xlt-4x2-2-3l-ecoboost",
+       "nombre": "XLT 4x2 · 2.3L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__explorer--xlt-4x4-2-3l-ecoboost",
+       "nombre": "XLT 4x4 · 2.3L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "F-150",
+     "versiones": [
+      {
+       "id": "ford__f-150--fhev-platinium-4x4-3-5l-powerboost",
+       "nombre": "FHEV Platinium 4x4 · 3.5L PowerBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__f-150--lariat-sport-luxury-5-0l-ti-vct-v8",
+       "nombre": "Lariat Sport Luxury · 5.0L TI-VCT V8",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__f-150--lariat-sport-5-0l-ti-vct-v8",
+       "nombre": "Lariat Sport · 5.0L TI-VCT V8",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__f-150--platinium-4x4-3-5l-v6-ecoboost",
+       "nombre": "Platinium 4x4 · 3.5L V6 EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__f-150--raptor-3-5l-gtdi",
+       "nombre": "Raptor · 3.5L GTDI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__f-150--raptor-3-5l-v6-ecoboost",
+       "nombre": "Raptor · 3.5L V6 EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__f-150--xlt-4x2-3-3l-ti-vct",
+       "nombre": "XLT 4x2 · 3.3L TI-VCT",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__f-150--xlt-4x4-3-0l-diesel",
+       "nombre": "XLT 4x4 · 3.0L Diesel",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__f-150--xlt-4x4-3-3l-ti-vct",
+       "nombre": "XLT 4x4 · 3.3L TI-VCT",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__f-150--xlt-4x4-5-0l-ti-vct-v8",
+       "nombre": "XLT 4x4 · 5.0L TI-VCT V8",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Maverick",
+     "versiones": [
+      {
+       "id": "ford__maverick--lariat-4x2-hev-2-5l-fhev-atkinson",
+       "nombre": "Lariat 4x2 HEV · 2.5L FHEV Atkinson",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__maverick--lariat-4x4-2-0l-ecoboost",
+       "nombre": "Lariat 4x4 · 2.0L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022"
+       ]
+      },
+      {
+       "id": "ford__maverick--xlt-4x2-2-0l-ecoboost",
+       "nombre": "XLT 4x2 · 2.0L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022"
+       ]
+      },
+      {
+       "id": "ford__maverick--xlt-4x4-2-0l-ecoboost",
+       "nombre": "XLT 4x4 · 2.0L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Mustang",
+     "versiones": [
+      {
+       "id": "ford__mustang--convertible-5-0l-v8",
+       "nombre": "Convertible · 5.0L V8",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__mustang--gt-premium-5-0l-v8",
+       "nombre": "GT Premium · 5.0L V8",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__mustang--gt-5-0l-v8",
+       "nombre": "GT · 5.0L V8",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__mustang--mach-1-5-0l-v8",
+       "nombre": "Mach 1 · 5.0L V8",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023",
+        "2022",
+        "2021"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Ranger",
+     "versiones": [
+      {
+       "id": "ford__ranger--fx4-4x4-puma-3-2l-tdci",
+       "nombre": "FX4 4x4 · Puma 3.2L TDCi",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022"
+       ]
+      },
+      {
+       "id": "ford__ranger--limited-lion-3-0l",
+       "nombre": "Limited + · Lion 3.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__ranger--limited-4x2-2-5l-ivct-l4",
+       "nombre": "Limited 4x2 · 2.5L iVCT L4",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ranger--limited-4x4-puma-3-2l-tdci",
+       "nombre": "Limited 4x4 · Puma 3.2L TDCi",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ranger--raptor-cc-diesel-panther-bi-turbo-2-0l",
+       "nombre": "Raptor CC Diesel · Panther Bi-Turbo 2.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ranger--raptor-nano-3-0l",
+       "nombre": "Raptor · Nano 3.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__ranger--xl-4x2-manual-panther-2-0l",
+       "nombre": "XL 4x2 Manual · Panther 2.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__ranger--xl-4x2-puma-2-2l",
+       "nombre": "XL 4x2 · Puma 2.2L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ranger--xl-4x4-manual-panther-2-0l",
+       "nombre": "XL 4x4 Manual · Panther 2.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__ranger--xl-4x4-puma-2-2l",
+       "nombre": "XL 4x4 · Puma 2.2L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ranger--xls-4x2-manual-panther-2-0l",
+       "nombre": "XLS 4x2 Manual · Panther 2.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__ranger--xls-4x4-manual-panther-2-0l",
+       "nombre": "XLS 4x4 Manual · Panther 2.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__ranger--xls-4x4-puma-3-2l-tdci",
+       "nombre": "XLS 4x4 · Puma 3.2L TDCi",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ranger--xlt-4x2-automatica-panther-bi-turbo-2-0l",
+       "nombre": "XLT 4x2 Automatica · Panther Bi-Turbo 2.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__ranger--xlt-4x2-manual-puma-3-2l-tdci",
+       "nombre": "XLT 4x2 Manual · Puma 3.2L TDCi",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ranger--xlt-4x2-2-5l-ivct-l4",
+       "nombre": "XLT 4x2 · 2.5L iVCT L4",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ranger--xlt-4x4-automatica-lion-3-0l",
+       "nombre": "XLT 4x4 Automatica · Lion 3.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__ranger--xlt-4x4-automatica-panther-bi-turbo-2-0l",
+       "nombre": "XLT 4x4 Automatica · Panther Bi-Turbo 2.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__ranger--xlt-4x4-automatica-puma-3-2l-tdci",
+       "nombre": "XLT 4x4 Automática · Puma 3.2L TDCi",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__ranger--xlt-4x4-manual-panther-bi-turbo-2-0l",
+       "nombre": "XLT 4x4 Manual · Panther Bi-Turbo 2.0L",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__ranger--xlt-4x4-manual-puma-3-2l-tdci",
+       "nombre": "XLT 4x4 Manual · Puma 3.2L TDCi",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Territory",
+     "versiones": [
+      {
+       "id": "ford__territory--titanium-plus-7dct-4x2-fwd-1-5l-ecoboost",
+       "nombre": "Titanium Plus 7DCT 4x2 FWD · 1.5L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__territory--titanium-plus-ctv-4x2-fwd-1-5l-ecoboost",
+       "nombre": "Titanium Plus CTV 4x2 FWD · 1.5L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__territory--titanium-1-5l-gtdi",
+       "nombre": "Titanium · 1.5L GTDI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022"
+       ]
+      },
+      {
+       "id": "ford__territory--titaniums-plus-1-5l-gtdi",
+       "nombre": "Titaniums Plus · 1.5L GTDI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022"
+       ]
+      },
+      {
+       "id": "ford__territory--trend-ctv-4x2-fwd-1-5l-ecoboost",
+       "nombre": "Trend CTV 4x2 FWD · 1.5L EcoBoost",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      },
+      {
+       "id": "ford__territory--trend-1-5l-gtdi",
+       "nombre": "Trend · 1.5L GTDI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Transit",
+     "versiones": [
+      {
+       "id": "ford__transit--bus-2-2l-tdci",
+       "nombre": "Bus · 2.2L TDCI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__transit--chasis-bev-4x2-rwd-battery-electric-motor",
+       "nombre": "Chasis BEV 4x2 RWD · Battery Electric Motor",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__transit--chasis-2-2l-tdci",
+       "nombre": "Chasis · 2.2L TDCI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__transit--custom-2-2l-tdci",
+       "nombre": "Custom · 2.2L TDCI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__transit--van-10-7-2-2l-tdci",
+       "nombre": "Van 10.7 · 2.2L TDCI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__transit--van-12-4-2-2l-tdci",
+       "nombre": "Van 12.4 · 2.2L TDCI",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2022",
+        "2021"
+       ]
+      },
+      {
+       "id": "ford__transit--van-bev-4x2-rwd-battery-electric-motor",
+       "nombre": "Van BEV 4x2 RWD · Battery Electric Motor",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Transit V362",
+     "versiones": [
+      {
+       "id": "ford__transit-v362--custom-van-vmt6-4x2-fwd-2-0l-panther",
+       "nombre": "Custom Van VMT6 4x2 FWD · 2.0L Panther",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2023"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Transit V363",
+     "versiones": [
+      {
+       "id": "ford__transit-v363--bus-10r80-4x2-rwd-2-0l-panther",
+       "nombre": "Bus 10R80 4x2 RWD · 2.0L Panther",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__transit-v363--bus-mt82-4x2-rwd-2-0l-panther",
+       "nombre": "Bus MT82 4x2 RWD · 2.0L Panther",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__transit-v363--chasis-vmt6-4x2-rwd-2-0l-panther",
+       "nombre": "Chasis VMT6 4x2 RWD · 2.0L Panther",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__transit-v363--van-10r80-4x2-rwd-2-0l-panther",
+       "nombre": "Van 10R80 4x2 RWD · 2.0L Panther",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__transit-v363--van-mt82-4x2-rwd-2-0l-panther",
+       "nombre": "Van MT82 4x2 RWD · 2.0L Panther",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      }
+     ]
+    },
+    {
+     "nombre": "Transit V710",
+     "versiones": [
+      {
+       "id": "ford__transit-v710--custom-van-8f57-4x2-fwd-2-0l-panther",
+       "nombre": "Custom Van 8F57 4x2 FWD · 2.0L Panther",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      },
+      {
+       "id": "ford__transit-v710--custom-van-vmt6-4x2-fwd-2-0l-panther",
+       "nombre": "Custom Van VMT6 4x2 FWD · 2.0L Panther",
+       "vigencia": null,
+       "segmento": null,
+       "anios": [
+        "2024"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

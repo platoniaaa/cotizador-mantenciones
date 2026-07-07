@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador de Mantenciones · Curifor</title>
+  <meta name="description" content="Precios sugeridos de mantención preventiva por marca, modelo, versión y kilometraje.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <span class="brand__logo">CURIFOR</span>
+        <span class="brand__sep"></span>
+        <span class="brand__sub">Servicio &amp; Postventa</span>
+      </div>
+      <nav class="topbar__nav">
+        <a href="#" id="btnReiniciar" class="nav-link">Nueva cotización</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Mantenciones preventivas</p>
+      <h1 class="hero__title">Precios sugeridos de mantención</h1>
+      <p class="hero__lead">Selecciona tu vehículo y conoce el detalle y el valor referencial de cada mantención programada.</p>
+    </div>
+  </section>
+
+  <main class="wrap">
+
+    <!-- ====================== PASO 1: SELECTOR ====================== -->
+    <section id="paso1" class="card selector" aria-label="Selección de vehículo">
+      <ol class="stepbar">
+        <li class="stepbar__item is-active" data-step="1"><span>1</span> Tu vehículo</li>
+        <li class="stepbar__item" data-step="2"><span>2</span> Plan de mantención</li>
+      </ol>
+
+      <div class="selector__grid">
+        <label class="field">
+          <span class="field__title">Marca</span>
+          <div class="field__control">
+            <select id="selMarca" class="select"><option value="">Elige la marca</option></select>
+          </div>
+        </label>
+
+        <label class="field">
+          <span class="field__title">Modelo</span>
+          <div class="field__control">
+            <select id="selModelo" class="select" disabled><option value="">Elige el modelo</option></select>
+          </div>
+        </label>
+
+        <label class="field">
+          <span class="field__title">Versión</span>
+          <div class="field__control">
+            <select id="selVersion" class="select" disabled><option value="">Elige la versión</option></select>
+          </div>
+        </label>
+
+        <label class="field" id="fieldAnio" hidden>
+          <span class="field__title">Año
+            <span class="tip" tabindex="0" aria-label="Ayuda">?
+              <span class="tip__bubble">Encuentras el año de tu vehículo en el permiso de circulación o el padrón.</span>
+            </span>
+          </span>
+          <div class="field__control">
+            <select id="selAnio" class="select" disabled><option value="">Elige el año</option></select>
+          </div>
+        </label>
+      </div>
+
+      <div id="vehiculoMeta" class="vehiculo-meta" hidden></div>
+
+      <div class="selector__actions">
+        <button id="btnCotizar" class="btn btn--primary" disabled>Ver plan de mantención</button>
+        <a class="btn btn--ghost" href="https://www.curifor.cl" target="_blank" rel="noopener">Ubica un concesionario</a>
+      </div>
+      <p class="selector__hint">Los valores son referenciales, con IVA incluido y en pesos chilenos (CLP).</p>
+    </section>
+
+    <!-- ====================== PASO 2: RESULTADOS ====================== -->
+    <section id="paso2" class="resultados" hidden aria-label="Plan de mantención">
+
+      <div class="resumen-vehiculo">
+        <button id="btnVolver" class="btn-volver" type="button">← Cambiar vehículo</button>
+        <div class="resumen-vehiculo__datos">
+          <span id="rvMarca" class="rv__marca"></span>
+          <h2 id="rvTitulo" class="rv__titulo"></h2>
+          <p id="rvSub" class="rv__sub"></p>
+        </div>
+        <div id="rvAnioBox" class="rv__aniobox" hidden>
+          <label class="field field--inline">
+            <span class="field__title">Año</span>
+            <select id="selAnio2" class="select select--sm"></select>
+          </label>
+        </div>
+      </div>
+
+      <!-- carrusel de revisiones -->
+      <div class="carrusel">
+        <button class="carrusel__nav carrusel__nav--prev" id="navPrev" aria-label="Anterior">‹</button>
+        <div class="carrusel__viewport">
+          <ul id="carruselTrack" class="carrusel__track"></ul>
+        </div>
+        <button class="carrusel__nav carrusel__nav--next" id="navNext" aria-label="Siguiente">›</button>
+      </div>
+
+      <!-- detalle de la revisión activa -->
+      <div class="detalle">
+        <div class="detalle__head">
+          <div>
+            <p class="detalle__eyebrow">Información de la mantención</p>
+            <h3 id="detTitulo" class="detalle__titulo"></h3>
+            <p id="detSub" class="detalle__sub"></p>
+          </div>
+          <div class="detalle__precio">
+            <span class="detalle__precio-label">Precio sugerido</span>
+            <span id="detPrecio" class="detalle__precio-valor"></span>
+            <span class="detalle__precio-moneda">IVA incluido · CLP</span>
+          </div>
+        </div>
+
+        <div class="detalle__cols">
+          <div class="detalle__col">
+            <h4 class="detalle__subtitulo">Operaciones incluidas</h4>
+            <ul id="detOperaciones" class="ops-list"></ul>
+          </div>
+          <div class="detalle__col">
+            <h4 class="detalle__subtitulo">Repuestos, lubricantes y mano de obra</h4>
+            <table class="desglose">
+              <tbody id="detDesglose"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- adicionales -->
+        <div id="adicionalesBox" class="adicionales" hidden>
+          <h4 class="detalle__subtitulo">Servicios adicionales sugeridos</h4>
+          <ul id="detAdicionales" class="adicionales__list"></ul>
+          <div class="adicionales__total">
+            <span>Total con adicionales seleccionados</span>
+            <strong id="totalConAdicionales"></strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- packs (Omoda / Jaecoo) -->
+      <div id="packsBox" class="packs" hidden>
+        <h3 class="packs__titulo">Packs de mantención prepagada</h3>
+        <p class="packs__lead">Contrata varias mantenciones por adelantado a un valor preferente.</p>
+        <ul id="packsList" class="packs__list"></ul>
+      </div>
+
+      <!-- notas -->
+      <div class="notas">
+        <h4 class="notas__titulo">Consideraciones</h4>
+        <ul id="detNotas" class="notas__list"></ul>
+        <p id="detFuente" class="notas__fuente"></p>
+      </div>
+    </section>
+
+    <!-- estado de error -->
+    <div id="errorBox" class="errorbox" hidden>
+      <p>No pudimos cargar la información. Verifica que estés abriendo la plataforma a través del servidor local e inténtalo nuevamente.</p>
+    </div>
+
+  </main>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <span>Curifor S.A. · Cotizador de Mantenciones</span>
+      <span id="footFecha" class="foot__fecha"></span>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

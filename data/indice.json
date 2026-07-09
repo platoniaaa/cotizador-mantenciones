@@ -956,6 +956,671 @@
    ]
   },
   {
+   "id": "hyundai",
+   "nombre": "Hyundai",
+   "modelos": [
+    {
+     "nombre": "Accent",
+     "versiones": [
+      {
+       "id": "hyundai__accent-rb-crdi-costo",
+       "nombre": "Accent (RB) 1.6 CRDI Euro V",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__accent-hci-1-4-costo",
+       "nombre": "Accent 1.4 (HCi)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__accent-rb-costo",
+       "nombre": "Accent 1.4 y 1.6 (RB)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__accent-bn7i-costo",
+       "nombre": "Accent 1.5 (BN7i)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__accent-hci-1-6-costo",
+       "nombre": "Accent 1.6 (HCi)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Atos",
+     "versiones": [
+      {
+       "id": "hyundai__atos-ah2-costo",
+       "nombre": "Atos 1.1 (AH2)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Azera",
+     "versiones": [
+      {
+       "id": "hyundai__azera-ig-3-0-costo",
+       "nombre": "Azera 3.0 GDI (IG)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Creta",
+     "versiones": [
+      {
+       "id": "hyundai__creta-su2i-t-gdi-costo",
+       "nombre": "Creta 1.4 T-GDI (SU2i)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__creta-su2i-costo",
+       "nombre": "Creta 1.5 (SU2i)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__creta-su2id-costo",
+       "nombre": "Creta 1.5 (SU2id)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__creta-gs-costo",
+       "nombre": "Creta 1.6 (GS)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__creta-fl-su2id-costo",
+       "nombre": "Creta FL 1.5 (SU2id)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Creta Grand",
+     "versiones": [
+      {
+       "id": "hyundai__creta-grand-fl-ps7i-2-0-costo",
+       "nombre": "Creta Grand (PS7i FL) 2.0",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__creta-grand-ps7i-2-0-gas-cost",
+       "nombre": "Creta Grand 2.0 (PS7i)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Elantra",
+     "versiones": [
+      {
+       "id": "hyundai__elantra-ad-1-6-costo",
+       "nombre": "Elantra 1.6 (AD)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__elantra-cn7-1-6-costo",
+       "nombre": "Elantra 1.6 (CN7)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__elantra-ad-2-0-costo",
+       "nombre": "Elantra 2.0 (AD)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__elantra-cn7-2-0-costo",
+       "nombre": "Elantra 2.0 (CN7)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Grand Santa Fe",
+     "versiones": [
+      {
+       "id": "hyundai__grand-s-fe-nc-2-2-crdi-costo",
+       "nombre": "Grand Santa Fe (NC) CRDI EURO V",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Grand i10",
+     "versiones": [
+      {
+       "id": "hyundai__grand-i10-ai3-fl-1-0-costo",
+       "nombre": "Grand i10 1.0 (Ai3 F/L)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__grand-i10-ba-1-0-costo",
+       "nombre": "Grand i10 1.0 (BA)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__grand-i10-ai3-y-fl-1-2-costo",
+       "nombre": "Grand i10 1.2 (Ai3 y Ai3 F/L)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__grand-i10-ba-1-2-costo",
+       "nombre": "Grand i10 1.2 (BA)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "H1",
+     "versiones": [
+      {
+       "id": "hyundai__h1-tq-crdi-costo",
+       "nombre": "H1 (TQ) CRDI EURO V",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Inster",
+     "versiones": [
+      {
+       "id": "hyundai__inster-ax-costo",
+       "nombre": "Inster (AX)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Ioniq",
+     "versiones": [
+      {
+       "id": "hyundai__ioniq-ae-ev-costo",
+       "nombre": "Ioniq Eléctrico (AE EV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__ioniq-ae-fl-ev-costo",
+       "nombre": "Ioniq Eléctrico FL (AE FL EV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__ioniq-ae-hev-costo",
+       "nombre": "Ioniq Híbrido 1.6 (AE HEV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Ioniq 5",
+     "versiones": [
+      {
+       "id": "hyundai__ioniq-5-ne-costo",
+       "nombre": "Ioniq 5 (NE)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Kona",
+     "versiones": [
+      {
+       "id": "hyundai__kona-sx2-1-6-costo",
+       "nombre": "Kona 1.6 T-GDI (SX2)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__kona-sx2-2-0-costo",
+       "nombre": "Kona 2.0 (SX2)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__kona-os-fl-ev-costo",
+       "nombre": "Kona Eléctrico (OS EV) 39,2 y 64 kWh",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__kona-sx2-ev-costo",
+       "nombre": "Kona Eléctrico (SX2 EV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__kona-os-hev-costo",
+       "nombre": "Kona Híbrido 1.6 (OS HEV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__kona-sx2-hev-costo",
+       "nombre": "Kona Híbrido 1.6 GDI (SX2 HEV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Palisade",
+     "versiones": [
+      {
+       "id": "hyundai__palisade-lx2-y-fl-crdi-costo",
+       "nombre": "Palisade (LX2 y LX2 F/L) 2.2 CRDI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__palisade-lx2-y-fl-3-5-costo",
+       "nombre": "Palisade 3.5 (LX2 y LX2 F/L)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__palisade-lx3-hev-costo",
+       "nombre": "Palisade HEV 2.5 T-GDI (LX3)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Porter",
+     "versiones": [
+      {
+       "id": "hyundai__porter-hr-crdi-costo",
+       "nombre": "Porter (HR) 2.5 CRDI EURO V",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__porter-hr-crdi-e6-costo",
+       "nombre": "Porter (HR) 2.5 CRDI EURO VI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Santa Fe",
+     "versiones": [
+      {
+       "id": "hyundai__santa-fe-tm-cdri-costo",
+       "nombre": "Santa Fe (TM FL) 2.2 CRDI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__santa-fe-tm-fl-crdi-costo",
+       "nombre": "Santa Fe (TM FL) 2.2 CRDI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__santa-fe-dm-2-4-costo",
+       "nombre": "Santa Fe 2.4 (DM)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__santa-fe-tm-gas-costo",
+       "nombre": "Santa Fe 2.4 (TM)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__santa-fe-tm-fl-gasolina-costo",
+       "nombre": "Santa Fe 2.5 (TM FL)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__santa-fe-mx5-gasolina-costo",
+       "nombre": "Santa Fe 2.5 GDI y T-GDI (MX5)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__santa-fe-dm-y-nc-3-3-costo",
+       "nombre": "Santa Fe 3.3 (DM) y Grand Santa Fe (NC) 3.3",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__santa-fe-mx5-hev-costo",
+       "nombre": "Santa Fe HEV 1.6 T-GDI (MX5)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Sonata",
+     "versiones": [
+      {
+       "id": "hyundai__sonata-lf-costo",
+       "nombre": "Sonata 2.0 (LF)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__sonata-lf-hev-costo",
+       "nombre": "Sonata Híbrido 2.0 (LF HEV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Staria",
+     "versiones": [
+      {
+       "id": "hyundai__staria-us4-costo",
+       "nombre": "Staria (US4) 2.2 CRDI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Tucson",
+     "versiones": [
+      {
+       "id": "hyundai__tucson-nx4-fl-1-6-tgdi-costo",
+       "nombre": "Tucson (NX4 FL) 1.6 T-GDI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-nx4-fl-crdi-costo",
+       "nombre": "Tucson (NX4 FL) 2.0 CRDi",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-nx4-fl-2-0-mpi-costo",
+       "nombre": "Tucson (NX4 FL) 2.0 MPI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-nx4-crdi-costo",
+       "nombre": "Tucson (NX4) CRDI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-nx4c-1-5-tgdi-costo",
+       "nombre": "Tucson (NX4c) 1.5 TGDI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-nx4c-2-0-mpi-costo",
+       "nombre": "Tucson (NX4c) 2.0 MPI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-tl-crdi-costo",
+       "nombre": "Tucson (TL) CRDI EURO VI",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-nx4-t-gdi-costo",
+       "nombre": "Tucson 1.6 T-GDI (NX4)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-tl-t-gdi-costo",
+       "nombre": "Tucson 1.6 T-GDI (TL)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-nx4-2-0-gas-costo",
+       "nombre": "Tucson 2.0 (NX4)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-tl-gas-costo",
+       "nombre": "Tucson 2.0 (TL)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-hev-nx4-fl-costo",
+       "nombre": "Tucson Híbrido 1.6 Turbo GDI (NX4e HEV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__tucson-hev-nx4e-costo",
+       "nombre": "Tucson Híbrido 1.6 Turbo GDI (NX4e HEV)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Veloster",
+     "versiones": [
+      {
+       "id": "hyundai__veloster-js-1-6-t-gdi-costo",
+       "nombre": "Veloster 1.6 T-GDI (JS)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__veloster-js-2-0-costo",
+       "nombre": "Veloster 2.0 (JS)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__veloster-n-2-0-t-gdi-costo",
+       "nombre": "Veloster N 2.0 T-GDI (JSN)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Venue",
+     "versiones": [
+      {
+       "id": "hyundai__venue-qx-costo",
+       "nombre": "Venue 1.6 (QX)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Verna",
+     "versiones": [
+      {
+       "id": "hyundai__verna-cb-costo",
+       "nombre": "Verna 1.4 (CB)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "i20",
+     "versiones": [
+      {
+       "id": "hyundai__i20-t-gdi-bi3-fl-costo",
+       "nombre": "i20 1.0 T-GDI (Bi3 F/L)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__i20-t-gdi-bi3-costo",
+       "nombre": "i20 1.0 T-GDI (Bi3)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__i20-ib-costo",
+       "nombre": "i20 1.2 y 1.4 (IB)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__i20-bi3-fl-costo",
+       "nombre": "i20 1.4 (Bi3 F/L)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__i20-bi3-costo",
+       "nombre": "i20 1.4 (Bi3)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "i30",
+     "versiones": [
+      {
+       "id": "hyundai__i30-pd-1-6-costo",
+       "nombre": "i30 1.6 (PD)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__i30-pd-2-0-costo",
+       "nombre": "i30 2.0 GDI (PD)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "hyundai__i30-n-2-0-t-gdi-costo",
+       "nombre": "i30 N 2.0 T-GDI (PDeN)",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "ford",
    "nombre": "Ford",
    "modelos": [

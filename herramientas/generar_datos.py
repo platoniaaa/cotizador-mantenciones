@@ -89,6 +89,15 @@ ARCHIVOS = {
 }
 OMODA_FILE = "Pauta Mantencion OMODA JAECOO Julio 2025 (1).xlsb"
 FORD_FILE = "Pauta Servicio Ford - 17-06-2026.xlsm"
+HYUNDAI_FILE = "Pauta Mantención Hyundai 2026.xlsx"
+
+# prefijos de modelo Hyundai (longest-first para separar modelo de versión)
+HYU_MODELOS = [
+    "Grand Santa Fe", "Santa Fe", "Creta Grand", "Grand i10", "Ioniq 5", "Ioniq",
+    "Tucson", "Palisade", "Elantra", "Sonata", "Veloster", "Azera", "Accent",
+    "Staria", "Venue", "Verna", "Inster", "Porter", "Creta", "Kona", "Atos",
+    "H1", "i30", "i20", "i10",
+]
 
 # hojas que NO son de costos por modelo
 EXCLUIR = re.compile(
@@ -866,6 +875,200 @@ def parsear_modelo_omoda(nombre_hoja, filas, packs_map, repuestos_map=None):
     }
 
 
+# ----------------------------------------------------------------------------- hyundai
+
+# marcas de actividad Hyundai -> esquema común (R=reemplazar/cambiar, I=inspeccionar/revisar)
+HYU_ACCION = {"C": "R", "R": "I", "I": "I", "A": "I", "AJ": "I"}
+
+
+def modelo_hyundai(nombre):
+    n = re.sub(r"\s+", " ", str(nombre)).strip()
+    for pref in HYU_MODELOS:
+        if norm(n).startswith(norm(pref)):
+            return pref
+    return n.split()[0] if n.split() else n
+
+
+def parsear_costo_hyundai(ws):
+    """Hoja '<modelo> costo' de Hyundai: columnas fijas B=nombre, C=código, D=valor,
+    E=cantidad, F+=subtotales por km. Devuelve el mismo shape que parsear_hoja_estandar."""
+    filas = celdas(ws, max_row=70, max_col=28)
+    idx_eje, km_cols, km_etq = encontrar_eje_km(filas)
+    if idx_eje is None:
+        return None
+    orden = sorted(km_cols)
+
+    nombre = texto(filas[0][1]) or texto(filas[0][2]) or ws.title.strip()
+    tarifa = None
+    for v in filas[0][2:7]:
+        n = to_num(v)
+        if n and 20000 <= n <= 150000:
+            tarifa = rnd(n)
+            break
+    categoria = None
+    for v in filas[0][2:8]:
+        if norm(v) in ("alta", "media", "baja"):
+            categoria = texto(v)
+
+    # meses (fila con 'mes' cerca del eje)
+    meses_cols = {}
+    for j in (idx_eje - 1, idx_eje + 1, idx_eje + 2):
+        if 0 <= j < len(filas) and "mes" in " ".join(norm(x) for x in filas[j][:3] if x):
+            for c in orden:
+                m = to_num(filas[j][c]) if c < len(filas[j]) else None
+                if m and m < 400:
+                    meses_cols[c] = int(m)
+            break
+
+    mano_obra, items, total_iva, descuentos = {}, [], {}, {}
+    notas = []
+    seccion = "repuesto"
+    en_notas = False
+    for f in filas[idx_eje + 1:]:
+        b = norm(f[1]) if len(f) > 1 else ""
+        c_ = norm(f[2]) if len(f) > 2 else ""
+        if en_notas:
+            t = texto(f[1])
+            if t and re.match(r"^\d", t.strip()):
+                notas.append(re.sub(r"^\d+\.\-?\s*", "", t.strip()))
+            continue
+        if b.startswith("meses") or b.startswith("kilometros") or b.startswith("motor") or b.startswith("transmision"):
+            continue
+        if b.startswith("mano obra") or b.startswith("mano de obra"):
+            for c in orden:
+                mano_obra[c] = to_num(f[c]) if c < len(f) else None
+        elif b.startswith("repuestos") or c_.startswith("n° repuesto") or c_.startswith("n repuesto"):
+            seccion = "repuesto"
+        elif b.startswith("lubricantes"):
+            seccion = "lubricante"
+        elif b.startswith("materiales"):
+            aplic = {c: to_num(f[c]) for c in orden if c < len(f) and to_num(f[c]) and to_num(f[c]) > 0}
+            if aplic:
+                items.append(("material", "Materiales", None, 1, None, aplic))
+        elif re.match(r"^total(\s|$)", b):
+            for c in orden:
+                total_iva[c] = to_num(f[c]) if c < len(f) else None
+        elif b.startswith("descuento"):
+            for c in orden:
+                descuentos[c] = to_num(f[c]) if c < len(f) else None
+        elif b.startswith("nota"):
+            en_notas = True
+        elif b.startswith("valores con iva") or b.startswith("costo de mantencion") or b.startswith("emitido"):
+            continue
+        else:
+            nombre_it = texto(f[1])
+            if nombre_it:
+                codigo = texto(f[2]) if len(f) > 2 else None
+                valor = to_num(f[3]) if len(f) > 3 else None
+                cant = to_num(f[4]) if len(f) > 4 else None
+                if cant is not None and cant > 400:  # sin cantidad; ese número era otra cosa
+                    cant = 1
+                aplic = {c: to_num(f[c]) for c in orden if c < len(f) and to_num(f[c]) and to_num(f[c]) > 0}
+                if aplic:
+                    items.append((seccion, nombre_it, codigo, cant if cant else 1, valor, aplic))
+
+    if not mano_obra and not items:
+        return None
+    tarifa = tarifa or 60095
+    intervalos = []
+    for n_rev, c in enumerate(orden, 1):
+        km = km_cols[c]
+        mo = mano_obra.get(c)
+        its, suma = [], (mo or 0)
+        for tipo, nom, cod, cant, unit, aplic in items:
+            if c in aplic:
+                sub = aplic[c]
+                suma += sub
+                its.append({
+                    "tipo": tipo, "nombre": nom, "codigo": cod,
+                    "cantidad": rnd(cant, 2) if cant else None,
+                    "precioUnitario": rnd(unit) if unit else None,
+                    "subtotal": rnd(sub),
+                })
+        tot = total_iva.get(c)
+        dcto = descuentos.get(c)
+        meses = meses_cols.get(c) or (int(km / 10000 * 12) if km and km % 10000 == 0 else None)
+        intervalos.append({
+            "n": n_rev, "km": km, "etiqueta": km_etq[c], "meses": meses,
+            "horas": rnd((mo or 0) / tarifa, 1) if mo else None,
+            "manoObra": rnd(mo) if mo else 0, "items": its,
+            "totalConIva": rnd(tot) if tot else None, "totalNeto": None,
+            "conDescuento": rnd(dcto) if dcto else None, "gratis": False,
+            "operaciones": None, "totalCalculado": rnd(suma),
+        })
+    return {
+        "nombreHoja": ws.title.strip(), "nombre": nombre,
+        "segmento": None, "categoria": categoria, "vigencia": "Activo",
+        "tarifaMO": tarifa, "intervalos": intervalos, "adicionales": [],
+        "notas": notas or [
+            "Valor referencial sugerido de la mantención; confirmar precio final con el sistema.",
+            "En el costo no se incluyen reparaciones ni piezas de desgaste (pastillas, neumáticos, plumillas).",
+            "Realizar según kilometraje o tiempo, lo que ocurra primero.",
+        ],
+    }
+
+
+def procesar_hyundai():
+    import openpyxl
+    ruta = os.path.join(BASE, HYUNDAI_FILE)
+    if not os.path.exists(ruta):
+        log("WARN", "Hyundai: archivo no encontrado, se omite")
+        return []
+    wb = openpyxl.load_workbook(ruta, read_only=True, data_only=True)
+    versiones, planes = [], {}
+    for ws in wb.worksheets:
+        if ws.sheet_state != "visible":
+            continue
+        titulo = ws.title.strip()
+        low = titulo.lower()
+        if low.endswith("plan"):
+            try:
+                p = parsear_hoja_pauta(ws)
+                if p:
+                    # remap de marcas Hyundai (C=cambiar->R, R=revisar->I)
+                    for km, acts in p["actividades"].items():
+                        for a in acts:
+                            a["accion"] = HYU_ACCION.get(a["accion"], a["accion"])
+                    planes[titulo] = p
+            except Exception as e:
+                log("WARN", f"Hyundai: plan '{titulo}' no parseado: {e}")
+        elif low.endswith("cost") or low.endswith("costo"):
+            try:
+                v = parsear_costo_hyundai(ws)
+                if v:
+                    versiones.append(v)
+                else:
+                    log("WARN", f"Hyundai: costo '{titulo}' sin estructura reconocible")
+            except Exception as e:
+                log("ERROR", f"Hyundai: costo '{titulo}' falló: {e}")
+    wb.close()
+
+    # emparejar cada versión (costo) con su hoja de actividades (plan) por similitud
+    def base(t):
+        return norm(re.sub(r"\b(costo|cost|plan)\b", "", t, flags=re.I))
+    n_pauta = 0
+    for v in versiones:
+        obj = base(v["nombreHoja"])
+        mejor, score = None, 0.55
+        for pn, p in planes.items():
+            s = similar(base(pn), obj)
+            if s > score:
+                mejor, score = pn, s
+        if mejor:
+            p = planes[mejor]
+            for itv in v["intervalos"]:
+                if itv["km"] and itv["km"] in p["actividades"]:
+                    itv["operaciones"] = p["actividades"][itv["km"]]
+                    if p["meses"].get(itv["km"]) and not itv["meses"]:
+                        itv["meses"] = p["meses"][itv["km"]]
+            v["hojaPauta"] = mejor
+            n_pauta += 1
+        else:
+            v["hojaPauta"] = None
+    log("INFO", f"Hyundai: {len(versiones)} versiones, {len(planes)} planes, {n_pauta} emparejadas")
+    return versiones
+
+
 # ----------------------------------------------------------------------------- ford
 
 def procesar_ford():
@@ -1125,6 +1328,44 @@ def construir():
                 "id": marca_id, "nombre": marca_nombre.capitalize() if marca_nombre != "OMODA" else "Omoda",
                 "modelos": [{"nombre": m, "versiones": vs} for m, vs in sorted(modelos.items())],
             })
+
+    # ---- hyundai
+    try:
+        versiones_hyu = procesar_hyundai()
+    except Exception as e:
+        log("ERROR", f"Hyundai: archivo no procesado: {e}")
+        versiones_hyu = []
+    modelos = {}
+    for v in versiones_hyu:
+        nombre = v["nombre"] if v["nombre"] and len(v["nombre"]) < 70 else v["nombreHoja"]
+        modelo = modelo_hyundai(nombre)
+        vid = f"hyundai__{slug(v['nombreHoja'])}"
+        pauta = {
+            "marca": "hyundai", "marcaNombre": "Hyundai",
+            "modelo": modelo, "version": nombre, "motor": None,
+            "segmento": v["segmento"], "categoria": v["categoria"], "vigencia": v["vigencia"],
+            "tarifaMO": v["tarifaMO"], "anios": None,
+            "planes": [{"anio": None, "intervalos": v["intervalos"]}],
+            "adicionales": v["adicionales"], "packs": [],
+            "notas": v["notas"],
+            "fuente": f"{HYUNDAI_FILE} / hoja '{v['nombreHoja']}'",
+        }
+        guardar_pauta(vid, pauta)
+        for itv in v["intervalos"]:
+            if itv["totalConIva"] and itv["totalCalculado"]:
+                ok = abs(itv["totalConIva"] - itv["totalCalculado"]) <= max(3000, itv["totalConIva"] * 0.03)
+                CHEQUEOS.append(("Hyundai", v["nombreHoja"], itv["etiqueta"],
+                                 itv["totalConIva"], itv["totalCalculado"], ok))
+        modelos.setdefault(modelo, []).append({
+            "id": vid, "nombre": nombre, "vigencia": v["vigencia"], "segmento": v["segmento"], "anios": None,
+        })
+        total_versiones += 1
+    if modelos:
+        indice["marcas"].append({
+            "id": "hyundai", "nombre": "Hyundai",
+            "modelos": [{"nombre": m, "versiones": sorted(vs, key=lambda x: x["nombre"])}
+                        for m, vs in sorted(modelos.items())],
+        })
 
     # ---- ford
     try:

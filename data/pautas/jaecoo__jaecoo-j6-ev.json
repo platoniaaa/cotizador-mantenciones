@@ -1,1 +1,2171 @@
-{"marca":"jaecoo","marcaNombre":"JAECOO","modelo":"J6","version":"J6 EV","motor":null,"segmento":"SUV","categoria":null,"vigencia":"Activo","tarifaMO":60000,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":1.7,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":163724},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":2.0,"manoObra":120000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Reductora","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":29343}],"totalConIva":220062,"totalNeto":184926,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Cambio aceite reductora","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":220062},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":1.7,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":163724},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":2.65,"manoObra":159000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126},{"tipo":"lubricante","nombre":"Refrigerante","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":74199},{"tipo":"lubricante","nombre":"Reductora","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":29343}],"totalConIva":362057,"totalNeto":304250,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Cambio liquido refrigerante","accion":"R"},{"nombre":"Cambio liquido de freno","accion":"R"},{"nombre":"Cambio aceite reductora","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":362057},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":1.7,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":163724},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":1.7,"manoObra":120000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":185144,"totalNeto":155583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":185144},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":2.0,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Reductora","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":29343}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Cambio aceite reductora","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":198642},{"n":8,"km":80000,"etiqueta":"80.000 km","meses":96,"horas":2.35,"manoObra":159000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126},{"tipo":"lubricante","nombre":"Refrigerante","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":74199}],"totalConIva":327140,"totalNeto":274907,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Cambio liquido refrigerante","accion":"R"},{"nombre":"Cambio liquido de freno","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":327140},{"n":9,"km":90000,"etiqueta":"90.000 km","meses":108,"horas":1.7,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":163724},{"n":10,"km":100000,"etiqueta":"100.000 km","meses":120,"horas":2.0,"manoObra":120000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Reductora","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":29343}],"totalConIva":220062,"totalNeto":184926,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Cambio aceite reductora","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":220062},{"n":11,"km":110000,"etiqueta":"110.000 km","meses":12,"horas":1.7,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":163724},{"n":12,"km":120000,"etiqueta":"120.000 km","meses":24,"horas":2.35,"manoObra":141000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126},{"tipo":"lubricante","nombre":"Refrigerante","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":74199}],"totalConIva":305720,"totalNeto":256907,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Cambio liquido refrigerante","accion":"R"},{"nombre":"Cambio liquido de freno","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":305720},{"n":13,"km":130000,"etiqueta":"130.000 km","meses":36,"horas":2.0,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Reductora","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":29343}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Cambio aceite reductora","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":198642},{"n":14,"km":140000,"etiqueta":"140.000 km","meses":48,"horas":1.7,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":163724},{"n":15,"km":150000,"etiqueta":"150.000 km","meses":60,"horas":1.7,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":163724},{"n":16,"km":160000,"etiqueta":"160.000 km","meses":72,"horas":2.65,"manoObra":141000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126},{"tipo":"lubricante","nombre":"Refrigerante","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":74199},{"tipo":"lubricante","nombre":"Reductora","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":29343}],"totalConIva":340637,"totalNeto":286250,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Cambio liquido refrigerante","accion":"R"},{"nombre":"Cambio liquido de freno","accion":"R"},{"nombre":"Cambio aceite reductora","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":340637},{"n":17,"km":170000,"etiqueta":"170.000 km","meses":84,"horas":1.7,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Estado de carga bateria 12v y conexión","accion":"I"},{"nombre":"Revisar conector y arnes alto voltaje","accion":"I"},{"nombre":"Revisar conector y arnes bajo voltaje","accion":"I"},{"nombre":"Estado de carga bateria alta tensión y conexión","accion":"I"},{"nombre":"Revisar puerto de carga y tapa de carga","accion":"I"},{"nombre":"Cambio de filtro polen","accion":"R"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Realizar rotación y Balanceo","accion":"I"},{"nombre":"Verificar Sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verificar Presion de los neumáticos","accion":"I"},{"nombre":"Funcionamiento de Cinturon de seguridad x5","accion":"I"},{"nombre":"Funcionamiento de comandos interiores todos","accion":"I"},{"nombre":"Funcionamiento de luces, bocina","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431","accion":"I"}],"totalCalculado":163724},{"n":18,"km":180000,"etiqueta":"180.000 km","meses":96,"horas":1.7,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":null,"totalCalculado":163724},{"n":19,"km":190000,"etiqueta":"190.000 km","meses":108,"horas":2.0,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Reductora","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":29343}],"totalConIva":163724,"totalNeto":137583,"conDescuento":null,"gratis":false,"operaciones":null,"totalCalculado":198642},{"n":20,"km":200000,"etiqueta":"200.000 km","meses":120,"horas":2.35,"manoObra":141000,"items":[{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"301002487AA","cantidad":null,"precioUnitario":null,"subtotal":25583},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":10000},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126},{"tipo":"lubricante","nombre":"Refrigerante","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":74199}],"totalConIva":305720,"totalNeto":256907,"conDescuento":null,"gratis":false,"operaciones":null,"totalCalculado":305720}]}],"adicionales":[{"nombre":"Alineación y Rotación Sugerida cada 20.000 Km.","precio":29990,"porKm":{}}],"packs":[{"nombre":"Pack 1 (1ª y 2ª mantención)","precio":568475},{"nombre":"Pack 2 (1ª a 3ª mantención)","precio":899378},{"nombre":"Pack 3 (1ª a 4ª mantención)","precio":1444194}],"notas":["Valores con IVA incluido, referenciales y sugeridos.","Las mantenciones no incluyen piezas de desgaste (pastillas de freno, neumáticos, plumillas).","Primera mantención: 3.000 Km y/o 18 Meses."],"fuente":"Pauta Mantencion OMODA JAECOO Julio 2025 (1).xlsb / hoja 'JAECOO J6 EV'"}
+{
+ "marca": "jaecoo",
+ "marcaNombre": "JAECOO",
+ "modelo": "J6",
+ "version": "J6 EV",
+ "motor": null,
+ "segmento": "SUV",
+ "categoria": null,
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163724
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Reductora",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29343
+      }
+     ],
+     "totalConIva": 220062,
+     "totalNeto": 184926,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio aceite reductora",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 220062
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163724
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 2.65,
+     "manoObra": 133825,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Refrigerante",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 74199
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Reductora",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29343
+      }
+     ],
+     "totalConIva": 362057,
+     "totalNeto": 304250,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido refrigerante",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido de freno",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio aceite reductora",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 362057
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163724
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 185144,
+     "totalNeto": 155583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 185144
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Reductora",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29343
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio aceite reductora",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 198642
+    },
+    {
+     "n": 8,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 96,
+     "horas": 2.35,
+     "manoObra": 118675,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Refrigerante",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 74199
+      }
+     ],
+     "totalConIva": 327140,
+     "totalNeto": 274907,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido refrigerante",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido de freno",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 327140
+    },
+    {
+     "n": 9,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 108,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163724
+    },
+    {
+     "n": 10,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 120,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Reductora",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29343
+      }
+     ],
+     "totalConIva": 220062,
+     "totalNeto": 184926,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio aceite reductora",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 220062
+    },
+    {
+     "n": 11,
+     "km": 110000,
+     "etiqueta": "110.000 km",
+     "meses": 12,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163724
+    },
+    {
+     "n": 12,
+     "km": 120000,
+     "etiqueta": "120.000 km",
+     "meses": 24,
+     "horas": 2.35,
+     "manoObra": 118675,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Refrigerante",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 74199
+      }
+     ],
+     "totalConIva": 305720,
+     "totalNeto": 256907,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido refrigerante",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido de freno",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 305720
+    },
+    {
+     "n": 13,
+     "km": 130000,
+     "etiqueta": "130.000 km",
+     "meses": 36,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Reductora",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29343
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio aceite reductora",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 198642
+    },
+    {
+     "n": 14,
+     "km": 140000,
+     "etiqueta": "140.000 km",
+     "meses": 48,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163724
+    },
+    {
+     "n": 15,
+     "km": 150000,
+     "etiqueta": "150.000 km",
+     "meses": 60,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163724
+    },
+    {
+     "n": 16,
+     "km": 160000,
+     "etiqueta": "160.000 km",
+     "meses": 72,
+     "horas": 2.65,
+     "manoObra": 133825,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Refrigerante",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 74199
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Reductora",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29343
+      }
+     ],
+     "totalConIva": 340637,
+     "totalNeto": 286250,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido refrigerante",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido de freno",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio aceite reductora",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 340637
+    },
+    {
+     "n": 17,
+     "km": 170000,
+     "etiqueta": "170.000 km",
+     "meses": 84,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Estado de carga bateria 12v y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes alto voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar conector y arnes bajo voltaje",
+       "accion": "I"
+      },
+      {
+       "nombre": "Estado de carga bateria alta tensión y conexión",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar puerto de carga y tapa de carga",
+       "accion": "I"
+      },
+      {
+       "nombre": "Cambio de filtro polen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y Balanceo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar Presion de los neumáticos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de Cinturon de seguridad x5",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de comandos interiores todos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner LAUNCH X-431 , impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Carga electrica y Revision con Herramienta Diagnostico LAUNCH X431",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163724
+    },
+    {
+     "n": 18,
+     "km": 180000,
+     "etiqueta": "180.000 km",
+     "meses": 96,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 163724
+    },
+    {
+     "n": 19,
+     "km": 190000,
+     "etiqueta": "190.000 km",
+     "meses": 108,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Reductora",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29343
+      }
+     ],
+     "totalConIva": 163724,
+     "totalNeto": 137583,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 198642
+    },
+    {
+     "n": 20,
+     "km": 200000,
+     "etiqueta": "200.000 km",
+     "meses": 120,
+     "horas": 2.35,
+     "manoObra": 118675,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "301002487AA",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 25583
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 10000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Refrigerante",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 74199
+      }
+     ],
+     "totalConIva": 305720,
+     "totalNeto": 256907,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 305720
+    }
+   ]
+  }
+ ],
+ "adicionales": [
+  {
+   "nombre": "Alineación y Rotación Sugerida cada 20.000 Km.",
+   "precio": 29990,
+   "porKm": {}
+  }
+ ],
+ "packs": [
+  {
+   "nombre": "Pack 1 (1ª y 2ª mantención)",
+   "precio": 568475
+  },
+  {
+   "nombre": "Pack 2 (1ª a 3ª mantención)",
+   "precio": 899378
+  },
+  {
+   "nombre": "Pack 3 (1ª a 4ª mantención)",
+   "precio": 1444194
+  }
+ ],
+ "notas": [
+  "Valores con IVA incluido, referenciales y sugeridos.",
+  "Las mantenciones no incluyen piezas de desgaste (pastillas de freno, neumáticos, plumillas).",
+  "Primera mantención: 3.000 Km y/o 18 Meses."
+ ],
+ "fuente": "Pauta Mantencion OMODA JAECOO Julio 2025 (1).xlsb / hoja 'JAECOO J6 EV'"
+}

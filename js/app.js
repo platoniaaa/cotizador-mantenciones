@@ -431,7 +431,10 @@
         total += sub;
         const skus = skusDe(it);
         const sku = skuActivo(it, idx);
-        const codMostrado = sku ? sku.cod : it.codigo;
+        const selIdx = state.seleccion[idx] || 0;
+        // El código visible es SIEMPRE el de la pauta. Solo cambia si el usuario
+        // elige explícitamente un reemplazo en el selector.
+        const codMostrado = (selIdx === 0 || !sku) ? it.codigo : sku.cod;
         const cod = it.codigo ? `<span class="dg-cod">Cód. ${codMostrado}${it.cantidad ? " · x" + it.cantidad : ""}</span>` : "";
         let celdaStock = "<td></td>";
         let extra = "";
@@ -444,12 +447,17 @@
           const txt = sku ? `${num(sku.c)} u.` : b.texto;
           const clase = sku ? (sku.c > 0 ? "ok" : "no") : b.clase;
           celdaStock = `<td class="dg-stock"><span class="stk stk--${clase}" title="${b.titulo}">${txt}</span></td>`;
+          // el stock tiene la misma pieza bajo otro SKU interno -> se avisa, pero el
+          // código de la pauta se mantiene arriba
+          if (sku && selIdx === 0 && normCod(sku.cod) !== normCod(it.codigo)) {
+            extra += `<span class="dg-alt" title="Misma pieza; en bodega está catalogada con este código">≈ en bodega como <strong>${sku.cod}</strong></span>`;
+          }
           // selector de reemplazo (si hay >1 SKU pickeable)
           if (skus.length > 1) {
             const opts = skus.map((k, ki) => {
               const u = precioUnit(k);
-              const et = `${k.cod} · ${num(k.c)} u.${u != null ? " · " + money(u) : ""}`;
-              return `<option value="${ki}"${(state.seleccion[idx] || 0) === ki ? " selected" : ""}>${et}</option>`;
+              const et = `${ki === 0 ? "Pauta: " + it.codigo : k.cod} · ${num(k.c)} u.${u != null ? " · " + money(u) : ""}`;
+              return `<option value="${ki}"${selIdx === ki ? " selected" : ""}>${et}</option>`;
             }).join("");
             extra += `<label class="dg-reemplazo">Reemplazo: <select data-idx="${idx}" class="sel-reemplazo">${opts}</select></label>`;
           }
@@ -599,17 +607,23 @@
     if (itv.meses) A.push(["Periodicidad", `${itv.meses} meses`]);
     if (state.stock) A.push(["Inventario al", state.stock.actualizado]);
     A.push([]);
-    A.push(["DETALLE", "", "Código en bodega", "Cantidad", "Valor neto (CLP)", "Stock", "Bodegas (cantidad)", "Aplica a (modelos)"]);
+    A.push(["DETALLE", "", "Código (pauta)", "Código en bodega", "Cantidad", "Valor neto (CLP)", "Stock", "Bodegas (cantidad)", "Aplica a (modelos)"]);
 
     const filaItem = (it, idx, tipo) => {
       const sub = subtotalItem(it, idx);
-      let cod = it.codigo || "", stkTxt = "", bodTxt = "", aplTxt = "";
+      const codPauta = it.codigo || "";
+      let codBodega = "", stkTxt = "", bodTxt = "", aplTxt = "";
       if (state.stock && tipo !== "Materiales" && it.codigo) {
         const sku = skuActivo(it, idx);
-        if (sku) { cod = sku.cod; stkTxt = `${num(sku.c)} u.`; bodTxt = bodegasTxt(sku.bodegas, 6); aplTxt = sku.aplica || ""; }
-        else { const s = stockDe(it.codigo); stkTxt = s ? ((s.c || 0) > 0 ? `${num(s.c)} u.` : "Sin stock") : "s/d"; }
+        if (sku) {
+          if (normCod(sku.cod) !== normCod(codPauta)) codBodega = sku.cod;
+          stkTxt = `${num(sku.c)} u.`; bodTxt = bodegasTxt(sku.bodegas, 6); aplTxt = sku.aplica || "";
+        } else {
+          const s = stockDe(it.codigo);
+          stkTxt = s ? ((s.c || 0) > 0 ? `${num(s.c)} u.` : "Sin stock") : "s/d";
+        }
       }
-      return [it.nombre, "", cod, it.cantidad || "", sub, stkTxt, bodTxt, aplTxt];
+      return [it.nombre, "", codPauta, codBodega, it.cantidad || "", sub, stkTxt, bodTxt, aplTxt];
     };
     const grupos = { repuesto: "Repuestos", lubricante: "Lubricantes", material: "Materiales" };
     for (const g of ["repuesto", "lubricante", "material"]) {
@@ -618,16 +632,16 @@
       A.push([grupos[g]]);
       idxs.forEach(([it, idx]) => A.push(filaItem(it, idx, grupos[g])));
     }
-    if (itv.manoObra) { A.push(["Mano de obra"]); A.push([`Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}`, "", "", "", itv.manoObra, ""]); }
+    if (itv.manoObra) { A.push(["Mano de obra"]); A.push([`Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}`, "", "", "", "", itv.manoObra, ""]); }
     A.push([]);
     const totalM = itv.gratis ? 0 : (state.totalCalc || 0);
-    A.push([`TOTAL MANTENCIÓN (${state.modo === "particular" ? "particular" : "interno"}, neto s/IVA)`, "", "", "", totalM, ""]);
-    A.push(["Precio pauta (referencia)", "", "", "", itv.gratis ? 0 : (itv.totalConIva || 0), ""]);
+    A.push([`TOTAL MANTENCIÓN (${state.modo === "particular" ? "particular" : "interno"}, neto s/IVA)`, "", "", "", "", totalM, ""]);
+    A.push(["Precio pauta (referencia)", "", "", "", "", itv.gratis ? 0 : (itv.totalConIva || 0), ""]);
     if (adicSel.length) {
       A.push([]); A.push(["SERVICIOS ADICIONALES"]);
       let tot = totalM;
-      adicSel.forEach((a) => { A.push([a.nombre, "", "", "", a.precio, ""]); tot += a.precio; });
-      A.push(["TOTAL CON ADICIONALES", "", "", "", tot, ""]);
+      adicSel.forEach((a) => { A.push([a.nombre, "", "", "", "", a.precio, ""]); tot += a.precio; });
+      A.push(["TOTAL CON ADICIONALES", "", "", "", "", tot, ""]);
     }
     if (itv.operaciones && itv.operaciones.length) {
       A.push([]); A.push(["OPERACIONES INCLUIDAS"]);
@@ -636,7 +650,7 @@
     A.push([]);
     (p.notas || []).forEach((n) => A.push([n]));
     const ws1 = XLSX.utils.aoa_to_sheet(A);
-    ws1["!cols"] = [{ wch: 42 }, { wch: 2 }, { wch: 18 }, { wch: 9 }, { wch: 15 }, { wch: 12 }, { wch: 42 }, { wch: 44 }];
+    ws1["!cols"] = [{ wch: 42 }, { wch: 2 }, { wch: 20 }, { wch: 20 }, { wch: 9 }, { wch: 15 }, { wch: 12 }, { wch: 42 }, { wch: 44 }];
     XLSX.utils.book_append_sheet(wb, ws1, "Cotización");
 
     // ---- Hoja 2: Plan completo ----

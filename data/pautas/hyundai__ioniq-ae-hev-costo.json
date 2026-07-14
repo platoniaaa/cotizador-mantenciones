@@ -1,1 +1,1592 @@
-{"marca":"hyundai","marcaNombre":"Hyundai","modelo":"Ioniq","version":"Ioniq Híbrido 1.6 (AE HEV)","motor":null,"segmento":null,"categoria":"Baja","vigencia":"Activo","tarifaMO":60095,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":1.5,"manoObra":90142,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327}],"totalConIva":187000,"totalNeto":null,"conDescuento":187000,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":187406},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":2.5,"manoObra":150238,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327}],"totalConIva":260000,"totalNeto":null,"conDescuento":247000,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.","accion":"I"}],"totalCalculado":259520},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":2.5,"manoObra":150238,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"FILTRO POLEN","codigo":"97133G2000","cantidad":1.0,"precioUnitario":45276,"subtotal":45276},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENO DOT 3-4","codigo":"100051C","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":299000,"totalNeto":null,"conDescuento":269100,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"LIQUIDO DE FRENO (DOT3 O DOT4)","accion":"R"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"R"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":298862},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":3.0,"manoObra":180285,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"FILTRO AIRE","codigo":"28113G2100","cantidad":1.0,"precioUnitario":33971,"subtotal":33971},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327},{"tipo":"lubricante","nombre":"LIQUIDO DE EMBRAGUE DOT 3-4","codigo":"100051C","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":330000,"totalNeto":null,"conDescuento":280500,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"R"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"R"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.","accion":"I"}],"totalCalculado":329623},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":1.5,"manoObra":90142,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327}],"totalConIva":187000,"totalNeto":null,"conDescuento":149600,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":187406},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":3.4,"manoObra":204323,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"FILTRO COMBUSTIBLE","codigo":"31112C3500","cantidad":1.0,"precioUnitario":74787,"subtotal":74787},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENO DOT 3-4","codigo":"100051C","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":394000,"totalNeto":null,"conDescuento":315200,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE (Al interior del estanque)","accion":"R"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"ACEITE TRANSMISIÓN AUTOMATICA TIPO DCT  (ver Nota: 3)","accion":"I"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"LIQUIDO DE FRENO (DOT3 O DOT4)","accion":"R"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.","accion":"I"}],"totalCalculado":394477},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":1.5,"manoObra":90142,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"FILTRO POLEN","codigo":"97133G2000","cantidad":1.0,"precioUnitario":45276,"subtotal":45276},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327}],"totalConIva":233000,"totalNeto":null,"conDescuento":186400,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"R"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":232682},{"n":8,"km":80000,"etiqueta":"80.000 km","meses":96,"horas":3.0,"manoObra":180285,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"FILTRO AIRE","codigo":"28113G2100","cantidad":1.0,"precioUnitario":33971,"subtotal":33971},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327},{"tipo":"lubricante","nombre":"LIQUIDO DE EMBRAGUE DOT 3-4","codigo":"100051C","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":330000,"totalNeto":null,"conDescuento":264000,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"R"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"R"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.","accion":"I"}],"totalCalculado":329623},{"n":9,"km":90000,"etiqueta":"90.000 km","meses":108,"horas":2.5,"manoObra":150238,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENO DOT 3-4","codigo":"100051C","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":254000,"totalNeto":null,"conDescuento":203200,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"LIQUIDO DE FRENO (DOT3 O DOT4)","accion":"R"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":253586},{"n":10,"km":100000,"etiqueta":"100.000 km","meses":120,"horas":3.0,"manoObra":180285,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"2630035505","cantidad":1.0,"precioUnitario":8487,"subtotal":8487},{"tipo":"repuesto","nombre":"CORREA DEL GENERADOR (HSG)","codigo":"2521203HA0","cantidad":1.0,"precioUnitario":83252,"subtotal":83252},{"tipo":"repuesto","nombre":"GOLILLA CARTER MOTOR","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":3.8,"precioUnitario":19823,"subtotal":75327}],"totalConIva":373000,"totalNeto":null,"conDescuento":298400,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)","accion":"R"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (Ver nota Nº1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.","accion":"I"}],"totalCalculado":372820}]}],"adicionales":[],"packs":[],"notas":["El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios","El valor de 1 hora de mano de obra es:"],"fuente":"Pauta Mantención Hyundai 2026.xlsx / hoja 'Ioniq (AE) HEV costo'"}
+{
+ "marca": "hyundai",
+ "marcaNombre": "Hyundai",
+ "modelo": "Ioniq",
+ "version": "Ioniq Híbrido 1.6 (AE HEV)",
+ "motor": null,
+ "segmento": null,
+ "categoria": "Baja",
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 1.5,
+     "manoObra": 75750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      }
+     ],
+     "totalConIva": 187000,
+     "totalNeto": null,
+     "conDescuento": 187000,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 187406
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 2.5,
+     "manoObra": 126250,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      }
+     ],
+     "totalConIva": 260000,
+     "totalNeto": null,
+     "conDescuento": 247000,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 259520
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 2.5,
+     "manoObra": 126250,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO POLEN",
+       "codigo": "97133G2000",
+       "cantidad": 1.0,
+       "precioUnitario": 45276,
+       "subtotal": 45276
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENO DOT 3-4",
+       "codigo": "100051C",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 299000,
+     "totalNeto": null,
+     "conDescuento": 269100,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO (DOT3 O DOT4)",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 298862
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 3.0,
+     "manoObra": 151500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE",
+       "codigo": "28113G2100",
+       "cantidad": 1.0,
+       "precioUnitario": 33971,
+       "subtotal": 33971
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE EMBRAGUE DOT 3-4",
+       "codigo": "100051C",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 330000,
+     "totalNeto": null,
+     "conDescuento": 280500,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 329623
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 1.5,
+     "manoObra": 75750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      }
+     ],
+     "totalConIva": 187000,
+     "totalNeto": null,
+     "conDescuento": 149600,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 187406
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 3.4,
+     "manoObra": 171700,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO COMBUSTIBLE",
+       "codigo": "31112C3500",
+       "cantidad": 1.0,
+       "precioUnitario": 74787,
+       "subtotal": 74787
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENO DOT 3-4",
+       "codigo": "100051C",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 394000,
+     "totalNeto": null,
+     "conDescuento": 315200,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE (Al interior del estanque)",
+       "accion": "R"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE TRANSMISIÓN AUTOMATICA TIPO DCT  (ver Nota: 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO (DOT3 O DOT4)",
+       "accion": "R"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 394477
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 1.5,
+     "manoObra": 75750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO POLEN",
+       "codigo": "97133G2000",
+       "cantidad": 1.0,
+       "precioUnitario": 45276,
+       "subtotal": 45276
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      }
+     ],
+     "totalConIva": 233000,
+     "totalNeto": null,
+     "conDescuento": 186400,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 232682
+    },
+    {
+     "n": 8,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 96,
+     "horas": 3.0,
+     "manoObra": 151500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE",
+       "codigo": "28113G2100",
+       "cantidad": 1.0,
+       "precioUnitario": 33971,
+       "subtotal": 33971
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE EMBRAGUE DOT 3-4",
+       "codigo": "100051C",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 330000,
+     "totalNeto": null,
+     "conDescuento": 264000,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 329623
+    },
+    {
+     "n": 9,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 108,
+     "horas": 2.5,
+     "manoObra": 126250,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENO DOT 3-4",
+       "codigo": "100051C",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 254000,
+     "totalNeto": null,
+     "conDescuento": 203200,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO (DOT3 O DOT4)",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 253586
+    },
+    {
+     "n": 10,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 120,
+     "horas": 3.0,
+     "manoObra": 151500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "2630035505",
+       "cantidad": 1.0,
+       "precioUnitario": 8487,
+       "subtotal": 8487
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "CORREA DEL GENERADOR (HSG)",
+       "codigo": "2521203HA0",
+       "cantidad": 1.0,
+       "precioUnitario": 83252,
+       "subtotal": 83252
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER MOTOR",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 3.8,
+       "precioUnitario": 19823,
+       "subtotal": 75327
+      }
+     ],
+     "totalConIva": 373000,
+     "totalNeto": null,
+     "conDescuento": 298400,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO (HSG)",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR Y REFRIGERANTE DEL INVERSOR (Ver nota 2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Sólo versión con batería convencional, usar Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (Ver nota Nº1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y ESTADO COMPRESOR.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 372820
+    }
+   ]
+  }
+ ],
+ "adicionales": [],
+ "packs": [],
+ "notas": [
+  "El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios",
+  "El valor de 1 hora de mano de obra es:"
+ ],
+ "fuente": "Pauta Mantención Hyundai 2026.xlsx / hoja 'Ioniq (AE) HEV costo'"
+}

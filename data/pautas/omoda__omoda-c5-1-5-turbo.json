@@ -1,1 +1,2631 @@
-{"marca":"omoda","marcaNombre":"OMODA","modelo":"C5","version":"C5 1.5 Turbo","motor":null,"segmento":"SUV","categoria":null,"vigencia":"Activo","tarifaMO":45000,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":1.63,"manoObra":73350,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":181791,"totalNeto":152766,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Inspección de filtro de aire","accion":"I"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"}],"totalCalculado":181791},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":2.03,"manoObra":91350,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":269796,"totalNeto":226720,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio de filtro de aire","accion":"R"},{"nombre":"Cambio de filtro A/C","accion":"R"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"},{"nombre":"Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)","accion":"I"},{"nombre":"Alineación (Sugerida a Inspección (I), (Costo cliente)","accion":"I"}],"totalCalculado":269796},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":1.65,"manoObra":74250,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Bujías","codigo":"F4J16-3707010","cantidad":null,"precioUnitario":null,"subtotal":52224},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":245009,"totalNeto":205890,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio bujías de encendido","accion":"R"},{"nombre":"Inspección de filtro de aire","accion":"I"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"}],"totalCalculado":245009},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":2.53,"manoObra":113850,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630},{"tipo":"lubricante","nombre":"Aceite CVT","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":79844},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126}],"totalConIva":398875,"totalNeto":335189,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio de filtro de aire","accion":"R"},{"nombre":"Cambio de filtro A/C","accion":"R"},{"nombre":"Cambio filtro aceite CVT","accion":"R"},{"nombre":"Cambio aceite CVT","accion":"R"},{"nombre":"Cambio liquido de frenos","accion":"R"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"},{"nombre":"Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)","accion":"I"},{"nombre":"Alineación (Sugerida a Inspección (I), (Costo cliente)","accion":"I"}],"totalCalculado":398875},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":2.08,"manoObra":93600,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Correa Accesorios","codigo":"E4T15-1025051AB","cantidad":null,"precioUnitario":null,"subtotal":31665},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630},{"tipo":"lubricante","nombre":"Refrigerante","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":53423}],"totalConIva":307143,"totalNeto":258104,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio  correa de accesorios","accion":"R"},{"nombre":"Cambio liquido refrigerante","accion":"R"},{"nombre":"Inspección de filtro de aire","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"}],"totalCalculado":307143},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":2.05,"manoObra":92250,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"repuesto","nombre":"Bujías","codigo":"F4J16-3707010","cantidad":null,"precioUnitario":null,"subtotal":52224},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":333014,"totalNeto":279844,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio de filtro de aire","accion":"R"},{"nombre":"Cambio de filtro A/C","accion":"R"},{"nombre":"Cambio bujías de encendido","accion":"R"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"},{"nombre":"Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)","accion":"I"},{"nombre":"Alineación (Sugerida a Inspección (I), (Costo cliente)","accion":"I"}],"totalCalculado":333014},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":1.63,"manoObra":73350,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":181791,"totalNeto":152766,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Inspección de filtro de aire","accion":"I"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"}],"totalCalculado":181791},{"n":8,"km":80000,"etiqueta":"80.000 km","meses":96,"horas":2.13,"manoObra":95850,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126}],"totalConIva":282441,"totalNeto":237345,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio de filtro de aire","accion":"R"},{"nombre":"Cambio de filtro A/C","accion":"R"},{"nombre":"Cambio liquido de frenos","accion":"R"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"},{"nombre":"Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)","accion":"I"},{"nombre":"Alineación (Sugerida a Inspección (I), (Costo cliente)","accion":"I"}],"totalCalculado":282441},{"n":9,"km":90000,"etiqueta":"90.000 km","meses":108,"horas":1.65,"manoObra":74250,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Bujías","codigo":"F4J16-3707010","cantidad":null,"precioUnitario":null,"subtotal":52224},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":245009,"totalNeto":205890,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio bujías de encendido","accion":"R"},{"nombre":"Inspección de filtro de aire","accion":"I"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"}],"totalCalculado":245009},{"n":10,"km":100000,"etiqueta":"100.000 km","meses":120,"horas":2.48,"manoObra":111600,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"repuesto","nombre":"Correa Accesorios","codigo":"E4T15-1025051AB","cantidad":null,"precioUnitario":null,"subtotal":31665},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630},{"tipo":"lubricante","nombre":"Refrigerante","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":53423}],"totalConIva":395149,"totalNeto":332058,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio de filtro de aire","accion":"R"},{"nombre":"Cambio de filtro A/C","accion":"R"},{"nombre":"Cambio  correa de accesorios","accion":"R"},{"nombre":"Cambio liquido refrigerante","accion":"R"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"},{"nombre":"Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)","accion":"I"},{"nombre":"Alineación (Sugerida a Inspección (I), (Costo cliente)","accion":"I"}],"totalCalculado":395149},{"n":11,"km":110000,"etiqueta":"110.000 km","meses":132,"horas":1.63,"manoObra":73350,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":181791,"totalNeto":152766,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Inspección de filtro de aire","accion":"I"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"}],"totalCalculado":181791},{"n":12,"km":120000,"etiqueta":"120.000 km","meses":144,"horas":2.15,"manoObra":96750,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"repuesto","nombre":"Bujías","codigo":"F4J16-3707010","cantidad":null,"precioUnitario":null,"subtotal":52224},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126}],"totalConIva":345658,"totalNeto":290469,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio de filtro de aire","accion":"R"},{"nombre":"Cambio de filtro A/C","accion":"R"},{"nombre":"Cambio bujías de encendido","accion":"R"},{"nombre":"Cambio liquido de frenos","accion":"R"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"},{"nombre":"Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)","accion":"I"},{"nombre":"Alineación (Sugerida a Inspección (I), (Costo cliente)","accion":"I"}],"totalCalculado":345658},{"n":13,"km":130000,"etiqueta":"130.000 km","meses":156,"horas":1.63,"manoObra":73350,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":181791,"totalNeto":152766,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Inspección de filtro de aire","accion":"I"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"}],"totalCalculado":181791},{"n":14,"km":140000,"etiqueta":"140.000 km","meses":168,"horas":2.03,"manoObra":91350,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":269796,"totalNeto":226720,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio de filtro de aire","accion":"R"},{"nombre":"Cambio de filtro A/C","accion":"R"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"},{"nombre":"Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)","accion":"I"},{"nombre":"Alineación (Sugerida a Inspección (I), (Costo cliente)","accion":"I"}],"totalCalculado":269796},{"n":15,"km":150000,"etiqueta":"150.000 km","meses":180,"horas":2.1,"manoObra":94500,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Bujías","codigo":"F4J16-3707010","cantidad":null,"precioUnitario":null,"subtotal":52224},{"tipo":"repuesto","nombre":"Correa Accesorios","codigo":"E4T15-1025051AB","cantidad":null,"precioUnitario":null,"subtotal":31665},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630},{"tipo":"lubricante","nombre":"Refrigerante","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":53423}],"totalConIva":370361,"totalNeto":311228,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio bujías de encendido","accion":"R"},{"nombre":"Cambio  correa de accesorios","accion":"R"},{"nombre":"Cambio liquido refrigerante","accion":"R"},{"nombre":"Inspección de filtro de aire","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"}],"totalCalculado":370361},{"n":16,"km":160000,"etiqueta":"160.000 km","meses":192,"horas":2.13,"manoObra":95850,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126}],"totalConIva":282441,"totalNeto":237345,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Cambio de filtro de aire","accion":"R"},{"nombre":"Cambio de filtro A/C","accion":"R"},{"nombre":"Cambio liquido de frenos","accion":"R"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"},{"nombre":"Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)","accion":"I"},{"nombre":"Alineación (Sugerida a Inspección (I), (Costo cliente)","accion":"I"}],"totalCalculado":282441},{"n":17,"km":170000,"etiqueta":"170.000 km","meses":204,"horas":1.63,"manoObra":73350,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":181791,"totalNeto":152766,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Cambio filtro de aceite","accion":"R"},{"nombre":"Cambio de aceite","accion":"R"},{"nombre":"Inspección de filtro de aire","accion":"I"},{"nombre":"Verificar tension de correa de acceosrio, ajustar si es necesario","accion":"I"},{"nombre":"Sistema de refrigeración, verifique el nivel de anticongelante","accion":"I"},{"nombre":"Verificar fuelles de homocinética","accion":"I"},{"nombre":"Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)","accion":"I"},{"nombre":"Verificar estado de cañerías y mangueras de combustible","accion":"I"},{"nombre":"Verificar sistema de frenos, fugas de líquido o daños presentes","accion":"I"},{"nombre":"Verifique daños en la línea de escape","accion":"I"},{"nombre":"Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)","accion":"I"},{"nombre":"Verificar dirección electrica Componentes","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Diagnosticar vía scanner X431, impresión de informe.","accion":"I"},{"nombre":"Funcionamiento de luces, bocina y comandos interiores.","accion":"I"},{"nombre":"Revisar estado de neumáticos, presión y profundidad","accion":"I"},{"nombre":"Lubricar cerradura de Capot y Puertas","accion":"I"},{"nombre":"Lubricar sunroof","accion":"I"},{"nombre":"Prueba de Ruta: Comprobar que los mecanismos operen con normalidad","accion":"I"},{"nombre":"Lavado de Vehículo","accion":"I"}],"totalCalculado":181791},{"n":18,"km":180000,"etiqueta":"180.000 km","meses":216,"horas":2.05,"manoObra":92250,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"repuesto","nombre":"Bujías","codigo":"F4J16-3707010","cantidad":null,"precioUnitario":null,"subtotal":52224},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":333014,"totalNeto":279844,"conDescuento":null,"gratis":false,"operaciones":null,"totalCalculado":333014},{"n":19,"km":190000,"etiqueta":"190.000 km","meses":228,"horas":1.63,"manoObra":73350,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630}],"totalConIva":181791,"totalNeto":152766,"conDescuento":null,"gratis":false,"operaciones":null,"totalCalculado":181791},{"n":20,"km":200000,"etiqueta":"200.000 km","meses":240,"horas":2.58,"manoObra":116100,"items":[{"tipo":"repuesto","nombre":"Filtro Aceite","codigo":"480-1012010","cantidad":null,"precioUnitario":null,"subtotal":16786},{"tipo":"repuesto","nombre":"Filtro Aire","codigo":"T15-1109111","cantidad":null,"precioUnitario":null,"subtotal":26578},{"tipo":"repuesto","nombre":"Filtro A/C","codigo":"T15-8107011","cantidad":null,"precioUnitario":null,"subtotal":29376},{"tipo":"repuesto","nombre":"Correa Accesorios","codigo":"E4T15-1025051AB","cantidad":null,"precioUnitario":null,"subtotal":31665},{"tipo":"material","nombre":"Insumos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":5000},{"tipo":"lubricante","nombre":"Aceite Motor","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":57630},{"tipo":"lubricante","nombre":"Liquido de Frenos","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":6126},{"tipo":"lubricante","nombre":"Refrigerante","codigo":null,"cantidad":null,"precioUnitario":null,"subtotal":53423}],"totalConIva":407793,"totalNeto":342683,"conDescuento":null,"gratis":false,"operaciones":null,"totalCalculado":407793}]}],"adicionales":[{"nombre":"Alineación y Rotación Sugerida cada 20.000 Km.","precio":29990,"porKm":{}}],"packs":[{"nombre":"Pack 1 (1ª y 2ª mantención)","precio":446593},{"nombre":"Pack 2 (1ª a 3ª mantención)","precio":678997},{"nombre":"Pack 3 (1ª a 4ª mantención)","precio":1072877}],"notas":["Valores con IVA incluido, referenciales y sugeridos.","Las mantenciones no incluyen piezas de desgaste (pastillas de freno, neumáticos, plumillas).","Primera mantención: 3.000 Km y/o 18 Meses."],"fuente":"Pauta Mantencion OMODA JAECOO Julio 2025 (1).xlsb / hoja 'OMODA C5 1.5 Turbo'"}
+{
+ "marca": "omoda",
+ "marcaNombre": "OMODA",
+ "modelo": "C5",
+ "version": "C5 1.5 Turbo",
+ "motor": null,
+ "segmento": "SUV",
+ "categoria": null,
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 1.63,
+     "manoObra": 82315,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 181791,
+     "totalNeto": 152766,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Inspección de filtro de aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 181791
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 2.03,
+     "manoObra": 102515,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 269796,
+     "totalNeto": 226720,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro de aire",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro A/C",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Alineación (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 269796
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 1.65,
+     "manoObra": 83325,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "F4J16-3707010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 52224
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 245009,
+     "totalNeto": 205890,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio bujías de encendido",
+       "accion": "R"
+      },
+      {
+       "nombre": "Inspección de filtro de aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 245009
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 2.53,
+     "manoObra": 127765,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite CVT",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 79844
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      }
+     ],
+     "totalConIva": 398875,
+     "totalNeto": 335189,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro de aire",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro A/C",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio filtro aceite CVT",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio aceite CVT",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Alineación (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 398875
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 2.08,
+     "manoObra": 105040,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Correa Accesorios",
+       "codigo": "E4T15-1025051AB",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 31665
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Refrigerante",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 53423
+      }
+     ],
+     "totalConIva": 307143,
+     "totalNeto": 258104,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio  correa de accesorios",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido refrigerante",
+       "accion": "R"
+      },
+      {
+       "nombre": "Inspección de filtro de aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 307143
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 2.05,
+     "manoObra": 103525,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "F4J16-3707010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 52224
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 333014,
+     "totalNeto": 279844,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro de aire",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro A/C",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio bujías de encendido",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Alineación (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 333014
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 1.63,
+     "manoObra": 82315,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 181791,
+     "totalNeto": 152766,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Inspección de filtro de aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 181791
+    },
+    {
+     "n": 8,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 96,
+     "horas": 2.13,
+     "manoObra": 107565,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      }
+     ],
+     "totalConIva": 282441,
+     "totalNeto": 237345,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro de aire",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro A/C",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Alineación (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 282441
+    },
+    {
+     "n": 9,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 108,
+     "horas": 1.65,
+     "manoObra": 83325,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "F4J16-3707010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 52224
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 245009,
+     "totalNeto": 205890,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio bujías de encendido",
+       "accion": "R"
+      },
+      {
+       "nombre": "Inspección de filtro de aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 245009
+    },
+    {
+     "n": 10,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 120,
+     "horas": 2.48,
+     "manoObra": 125240,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Correa Accesorios",
+       "codigo": "E4T15-1025051AB",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 31665
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Refrigerante",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 53423
+      }
+     ],
+     "totalConIva": 395149,
+     "totalNeto": 332058,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro de aire",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro A/C",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio  correa de accesorios",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido refrigerante",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Alineación (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 395149
+    },
+    {
+     "n": 11,
+     "km": 110000,
+     "etiqueta": "110.000 km",
+     "meses": 132,
+     "horas": 1.63,
+     "manoObra": 82315,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 181791,
+     "totalNeto": 152766,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Inspección de filtro de aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 181791
+    },
+    {
+     "n": 12,
+     "km": 120000,
+     "etiqueta": "120.000 km",
+     "meses": 144,
+     "horas": 2.15,
+     "manoObra": 108575,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "F4J16-3707010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 52224
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      }
+     ],
+     "totalConIva": 345658,
+     "totalNeto": 290469,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro de aire",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro A/C",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio bujías de encendido",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Alineación (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 345658
+    },
+    {
+     "n": 13,
+     "km": 130000,
+     "etiqueta": "130.000 km",
+     "meses": 156,
+     "horas": 1.63,
+     "manoObra": 82315,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 181791,
+     "totalNeto": 152766,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Inspección de filtro de aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 181791
+    },
+    {
+     "n": 14,
+     "km": 140000,
+     "etiqueta": "140.000 km",
+     "meses": 168,
+     "horas": 2.03,
+     "manoObra": 102515,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 269796,
+     "totalNeto": 226720,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro de aire",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro A/C",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Alineación (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 269796
+    },
+    {
+     "n": 15,
+     "km": 150000,
+     "etiqueta": "150.000 km",
+     "meses": 180,
+     "horas": 2.1,
+     "manoObra": 106050,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "F4J16-3707010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 52224
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Correa Accesorios",
+       "codigo": "E4T15-1025051AB",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 31665
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Refrigerante",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 53423
+      }
+     ],
+     "totalConIva": 370361,
+     "totalNeto": 311228,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio bujías de encendido",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio  correa de accesorios",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido refrigerante",
+       "accion": "R"
+      },
+      {
+       "nombre": "Inspección de filtro de aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 370361
+    },
+    {
+     "n": 16,
+     "km": 160000,
+     "etiqueta": "160.000 km",
+     "meses": 192,
+     "horas": 2.13,
+     "manoObra": 107565,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      }
+     ],
+     "totalConIva": 282441,
+     "totalNeto": 237345,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro de aire",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de filtro A/C",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio liquido de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      },
+      {
+       "nombre": "Realizar rotación y balanceo (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Alineación (Sugerida a Inspección (I), (Costo cliente)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 282441
+    },
+    {
+     "n": 17,
+     "km": 170000,
+     "etiqueta": "170.000 km",
+     "meses": 204,
+     "horas": 1.63,
+     "manoObra": 82315,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 181791,
+     "totalNeto": 152766,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Cambio filtro de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Cambio de aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Inspección de filtro de aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar tension de correa de acceosrio, ajustar si es necesario",
+       "accion": "I"
+      },
+      {
+       "nombre": "Sistema de refrigeración, verifique el nivel de anticongelante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar fuelles de homocinética",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar  tren delantero chequear (bandeja, rotulas, terminales de dirección)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar estado de cañerías y mangueras de combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar sistema de frenos, fugas de líquido o daños presentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verifique daños en la línea de escape",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aseo e inspección de sistema de frenos (Regular freno de mano si es necesario)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Verificar dirección electrica Componentes",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diagnosticar vía scanner X431, impresión de informe.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Funcionamiento de luces, bocina y comandos interiores.",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revisar estado de neumáticos, presión y profundidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar cerradura de Capot y Puertas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lubricar sunroof",
+       "accion": "I"
+      },
+      {
+       "nombre": "Prueba de Ruta: Comprobar que los mecanismos operen con normalidad",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lavado de Vehículo",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 181791
+    },
+    {
+     "n": 18,
+     "km": 180000,
+     "etiqueta": "180.000 km",
+     "meses": 216,
+     "horas": 2.05,
+     "manoObra": 103525,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "F4J16-3707010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 52224
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 333014,
+     "totalNeto": 279844,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 333014
+    },
+    {
+     "n": 19,
+     "km": 190000,
+     "etiqueta": "190.000 km",
+     "meses": 228,
+     "horas": 1.63,
+     "manoObra": 82315,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      }
+     ],
+     "totalConIva": 181791,
+     "totalNeto": 152766,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 181791
+    },
+    {
+     "n": 20,
+     "km": 200000,
+     "etiqueta": "200.000 km",
+     "meses": 240,
+     "horas": 2.58,
+     "manoObra": 130290,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aceite",
+       "codigo": "480-1012010",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 16786
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro Aire",
+       "codigo": "T15-1109111",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 26578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro A/C",
+       "codigo": "T15-8107011",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 29376
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Correa Accesorios",
+       "codigo": "E4T15-1025051AB",
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 31665
+      },
+      {
+       "tipo": "material",
+       "nombre": "Insumos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 5000
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Motor",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 57630
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Frenos",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 6126
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Refrigerante",
+       "codigo": null,
+       "cantidad": null,
+       "precioUnitario": null,
+       "subtotal": 53423
+      }
+     ],
+     "totalConIva": 407793,
+     "totalNeto": 342683,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 407793
+    }
+   ]
+  }
+ ],
+ "adicionales": [
+  {
+   "nombre": "Alineación y Rotación Sugerida cada 20.000 Km.",
+   "precio": 29990,
+   "porKm": {}
+  }
+ ],
+ "packs": [
+  {
+   "nombre": "Pack 1 (1ª y 2ª mantención)",
+   "precio": 446593
+  },
+  {
+   "nombre": "Pack 2 (1ª a 3ª mantención)",
+   "precio": 678997
+  },
+  {
+   "nombre": "Pack 3 (1ª a 4ª mantención)",
+   "precio": 1072877
+  }
+ ],
+ "notas": [
+  "Valores con IVA incluido, referenciales y sugeridos.",
+  "Las mantenciones no incluyen piezas de desgaste (pastillas de freno, neumáticos, plumillas).",
+  "Primera mantención: 3.000 Km y/o 18 Meses."
+ ],
+ "fuente": "Pauta Mantencion OMODA JAECOO Julio 2025 (1).xlsb / hoja 'OMODA C5 1.5 Turbo'"
+}

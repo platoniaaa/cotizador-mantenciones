@@ -1,1 +1,2276 @@
-{"marca":"baic","marcaNombre":"BAIC","modelo":"X7","version":"BAIC X7","motor":null,"segmento":"SUV Alto","categoria":"Alta","vigencia":"Activo","tarifaMO":44500,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":null,"etiqueta":"30 días","meses":null,"horas":null,"manoObra":0,"items":[],"totalConIva":0,"totalNeto":null,"conDescuento":null,"gratis":true,"operaciones":null,"totalCalculado":0},{"n":2,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":1.6,"manoObra":70000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":158000,"totalNeto":133000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"}],"totalCalculado":157587},{"n":3,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":2.3,"manoObra":104000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"A00067644","cantidad":1.0,"precioUnitario":20258,"subtotal":20258},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":212000,"totalNeto":178000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"R"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"},{"nombre":"CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA","accion":"I"}],"totalCalculado":211845},{"n":4,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":1.6,"manoObra":70000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"A00096717","cantidad":1.0,"precioUnitario":33178,"subtotal":33178},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":191000,"totalNeto":161000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"FILTRO DE POLEN","accion":"R"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"}],"totalCalculado":190765},{"n":5,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":3.6,"manoObra":158000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"A00067644","cantidad":1.0,"precioUnitario":20258,"subtotal":20258},{"tipo":"repuesto","nombre":"Bujías","codigo":"T00002618","cantidad":4.0,"precioUnitario":55734,"subtotal":222935},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704},{"tipo":"lubricante","nombre":"Anticongelante","codigo":"105880","cantidad":5.7,"precioUnitario":5850,"subtotal":33345}],"totalConIva":522000,"totalNeto":439000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"R"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"BUJIAS","accion":"R"},{"nombre":"LIQUIDO DE FRENO","accion":"R"},{"nombre":"REFRIGERANTE","accion":"R"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"},{"nombre":"CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA","accion":"I"}],"totalCalculado":522125},{"n":6,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":1.7,"manoObra":76000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":164000,"totalNeto":138000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"}],"totalCalculado":163587},{"n":7,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":2.3,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"A00067644","cantidad":1.0,"precioUnitario":20258,"subtotal":20258},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"A00096717","cantidad":1.0,"precioUnitario":33178,"subtotal":33178},{"tipo":"repuesto","nombre":"Filtro de aceite caja de cambios DCT","codigo":"T00003185","cantidad":1.0,"precioUnitario":35939,"subtotal":35939},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704},{"tipo":"lubricante","nombre":"Aceite de Transmisión DCT","codigo":"55004597301","cantidad":6.0,"precioUnitario":25704,"subtotal":154224}],"totalConIva":433000,"totalNeto":364000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"ACEITE DE CAJA DE CAMBIOS (7DCT)","accion":"R"},{"nombre":"FILTRO DE ACEITE DE CAJA DE CAMBIOS (7DCT)","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"R"},{"nombre":"FILTRO DE POLEN","accion":"R"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"},{"nombre":"CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA","accion":"I"}],"totalCalculado":433186},{"n":8,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":1.6,"manoObra":70000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":158000,"totalNeto":133000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"}],"totalCalculado":157587},{"n":9,"km":80000,"etiqueta":"80.000 km","meses":96,"horas":3.6,"manoObra":160000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"A00067644","cantidad":1.0,"precioUnitario":20258,"subtotal":20258},{"tipo":"repuesto","nombre":"Bujías","codigo":"T00002618","cantidad":4.0,"precioUnitario":55734,"subtotal":222935},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704},{"tipo":"lubricante","nombre":"Anticongelante","codigo":"105880","cantidad":5.7,"precioUnitario":5850,"subtotal":33345}],"totalConIva":524000,"totalNeto":440000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"R"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"BUJIAS","accion":"R"},{"nombre":"LIQUIDO DE FRENO","accion":"R"},{"nombre":"REFRIGERANTE","accion":"R"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"},{"nombre":"CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA","accion":"I"}],"totalCalculado":524125},{"n":10,"km":90000,"etiqueta":"90.000 km","meses":108,"horas":1.9,"manoObra":86000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"A00096717","cantidad":1.0,"precioUnitario":33178,"subtotal":33178},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":207000,"totalNeto":174000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"FILTRO DE POLEN","accion":"R"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"}],"totalCalculado":206765},{"n":11,"km":100000,"etiqueta":"100.000 km","meses":120,"horas":2.3,"manoObra":102000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"A00067644","cantidad":1.0,"precioUnitario":20258,"subtotal":20258},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":210000,"totalNeto":176000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"R"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"CORREA DE DISTRIBUCION Y TENSOR","accion":"I"},{"nombre":"CORREA BOMBA DE AGUA","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"},{"nombre":"CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA","accion":"I"}],"totalCalculado":209845},{"n":12,"km":110000,"etiqueta":"110.000 km","meses":132,"horas":1.7,"manoObra":76000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":164000,"totalNeto":138000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"}],"totalCalculado":163587},{"n":13,"km":120000,"etiqueta":"120.000 km","meses":144,"horas":3.6,"manoObra":158000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"A00067644","cantidad":1.0,"precioUnitario":20258,"subtotal":20258},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"A00096717","cantidad":1.0,"precioUnitario":33178,"subtotal":33178},{"tipo":"repuesto","nombre":"Filtro de aceite caja de cambios DCT","codigo":"T00003185","cantidad":1.0,"precioUnitario":35939,"subtotal":35939},{"tipo":"repuesto","nombre":"Bujías","codigo":"T00002618","cantidad":4.0,"precioUnitario":55734,"subtotal":222935},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704},{"tipo":"lubricante","nombre":"Aceite de Transmisión DCT","codigo":"55004597301","cantidad":6.0,"precioUnitario":25704,"subtotal":154224},{"tipo":"lubricante","nombre":"Anticongelante","codigo":"105880","cantidad":5.7,"precioUnitario":5850,"subtotal":33345}],"totalConIva":745000,"totalNeto":626000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"ACEITE DE CAJA DE CAMBIOS (7DCT)","accion":"R"},{"nombre":"FILTRO DE ACEITE DE CAJA DE CAMBIOS (7DCT)","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"R"},{"nombre":"FILTRO DE POLEN","accion":"R"},{"nombre":"BUJIAS","accion":"R"},{"nombre":"LIQUIDO DE FRENO","accion":"R"},{"nombre":"REFRIGERANTE","accion":"R"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"},{"nombre":"CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA","accion":"I"}],"totalCalculado":745465},{"n":14,"km":130000,"etiqueta":"130.000 km","meses":156,"horas":1.6,"manoObra":70000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":158000,"totalNeto":133000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"CORREA DE DISTRIBUCION Y TENSOR","accion":"I"},{"nombre":"CORREA BOMBA DE AGUA","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"},{"nombre":"CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA","accion":"I"}],"totalCalculado":157587},{"n":15,"km":140000,"etiqueta":"140.000 km","meses":168,"horas":2.3,"manoObra":104000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"A00067644","cantidad":1.0,"precioUnitario":20258,"subtotal":20258},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":212000,"totalNeto":178000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"R"},{"nombre":"FILTRO DE POLEN","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"}],"totalCalculado":211845},{"n":16,"km":150000,"etiqueta":"150.000 km","meses":180,"horas":1.6,"manoObra":70000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"T00002700","cantidad":1.0,"precioUnitario":17628,"subtotal":17628},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"A00096717","cantidad":1.0,"precioUnitario":33178,"subtotal":33178},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor","codigo":"104406","cantidad":3.5,"precioUnitario":15058,"subtotal":52704}],"totalConIva":191000,"totalNeto":161000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"ACEITE DE MOTOR","accion":"R"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"R"},{"nombre":"GOLILLA TAPON DE CARTER","accion":"R"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"FILTRO DE POLEN","accion":"R"},{"nombre":"LIQUIDO DE FRENO","accion":"I"},{"nombre":"REFRIGERANTE","accion":"I"},{"nombre":"CORREA DE ACCESORIOS, TENSOR","accion":"I"},{"nombre":"RALENTI DEL MOTOR","accion":"I"},{"nombre":"CHEQUEO SISTEMA DE FRENOS","accion":"R"},{"nombre":"NEUMATICOS (INCLUIR REPUESTO)","accion":"I"},{"nombre":"SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)","accion":"I"},{"nombre":"DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES","accion":"I"},{"nombre":"BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)","accion":"I"},{"nombre":"EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)","accion":"I"},{"nombre":"ESCANER Y DIAGNOSTICO ELECTRONICO BAIC","accion":"R"},{"nombre":"LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA","accion":"I"},{"nombre":"BATERIA","accion":"I"},{"nombre":"PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)","accion":"I"},{"nombre":"RESETEO INDICARDOR DE MANTENIMIENTO","accion":"I"},{"nombre":"AMORTIGUADORES, ESPIRALES Y BUJES","accion":"I"},{"nombre":"FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.","accion":"I"},{"nombre":"CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA","accion":"I"}],"totalCalculado":190765}]}],"adicionales":[{"nombre":"Alineación y balanceo","precio":32000,"porKm":{"20000":32000,"40000":32000,"60000":32000,"80000":32000,"100000":32000,"120000":32000,"140000":32000}}],"packs":[],"notas":["El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios de los listados de repuestos de Fortaleza S.A.","El valor de 1 hora de mano de obra es:","En el costo de las mantenciones, no están considerados los siguientes ítems.","Se recomienda su realización según kilometraje indicado:"],"fuente":"Pauta de mantencion Baic Enero 2026.xlsx / hoja 'X7'"}
+{
+ "marca": "baic",
+ "marcaNombre": "BAIC",
+ "modelo": "X7",
+ "version": "BAIC X7",
+ "motor": null,
+ "segmento": "SUV Alto",
+ "categoria": "Alta",
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": null,
+     "etiqueta": "30 días",
+     "meses": null,
+     "horas": null,
+     "manoObra": 0,
+     "items": [],
+     "totalConIva": 0,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": true,
+     "operaciones": null,
+     "totalCalculado": 0
+    },
+    {
+     "n": 2,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 1.6,
+     "manoObra": 80800,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 158000,
+     "totalNeto": 133000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 157587
+    },
+    {
+     "n": 3,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 2.3,
+     "manoObra": 116150,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "A00067644",
+       "cantidad": 1.0,
+       "precioUnitario": 20258,
+       "subtotal": 20258
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 212000,
+     "totalNeto": 178000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 211845
+    },
+    {
+     "n": 4,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 1.6,
+     "manoObra": 80800,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "A00096717",
+       "cantidad": 1.0,
+       "precioUnitario": 33178,
+       "subtotal": 33178
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 191000,
+     "totalNeto": 161000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 190765
+    },
+    {
+     "n": 5,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 3.6,
+     "manoObra": 181800,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "A00067644",
+       "cantidad": 1.0,
+       "precioUnitario": 20258,
+       "subtotal": 20258
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "T00002618",
+       "cantidad": 4.0,
+       "precioUnitario": 55734,
+       "subtotal": 222935
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Anticongelante",
+       "codigo": "105880",
+       "cantidad": 5.7,
+       "precioUnitario": 5850,
+       "subtotal": 33345
+      }
+     ],
+     "totalConIva": 522000,
+     "totalNeto": 439000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "BUJIAS",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 522125
+    },
+    {
+     "n": 6,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 164000,
+     "totalNeto": 138000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163587
+    },
+    {
+     "n": 7,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 2.3,
+     "manoObra": 116150,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "A00067644",
+       "cantidad": 1.0,
+       "precioUnitario": 20258,
+       "subtotal": 20258
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "A00096717",
+       "cantidad": 1.0,
+       "precioUnitario": 33178,
+       "subtotal": 33178
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de aceite caja de cambios DCT",
+       "codigo": "T00003185",
+       "cantidad": 1.0,
+       "precioUnitario": 35939,
+       "subtotal": 35939
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Transmisión DCT",
+       "codigo": "55004597301",
+       "cantidad": 6.0,
+       "precioUnitario": 25704,
+       "subtotal": 154224
+      }
+     ],
+     "totalConIva": 433000,
+     "totalNeto": 364000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE CAJA DE CAMBIOS (7DCT)",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE DE CAJA DE CAMBIOS (7DCT)",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 433186
+    },
+    {
+     "n": 8,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 1.6,
+     "manoObra": 80800,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 158000,
+     "totalNeto": 133000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 157587
+    },
+    {
+     "n": 9,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 96,
+     "horas": 3.6,
+     "manoObra": 181800,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "A00067644",
+       "cantidad": 1.0,
+       "precioUnitario": 20258,
+       "subtotal": 20258
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "T00002618",
+       "cantidad": 4.0,
+       "precioUnitario": 55734,
+       "subtotal": 222935
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Anticongelante",
+       "codigo": "105880",
+       "cantidad": 5.7,
+       "precioUnitario": 5850,
+       "subtotal": 33345
+      }
+     ],
+     "totalConIva": 524000,
+     "totalNeto": 440000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "BUJIAS",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 524125
+    },
+    {
+     "n": 10,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 108,
+     "horas": 1.9,
+     "manoObra": 95950,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "A00096717",
+       "cantidad": 1.0,
+       "precioUnitario": 33178,
+       "subtotal": 33178
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 207000,
+     "totalNeto": 174000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 206765
+    },
+    {
+     "n": 11,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 120,
+     "horas": 2.3,
+     "manoObra": 116150,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "A00067644",
+       "cantidad": 1.0,
+       "precioUnitario": 20258,
+       "subtotal": 20258
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 210000,
+     "totalNeto": 176000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE DISTRIBUCION Y TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA BOMBA DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 209845
+    },
+    {
+     "n": 12,
+     "km": 110000,
+     "etiqueta": "110.000 km",
+     "meses": 132,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 164000,
+     "totalNeto": 138000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 163587
+    },
+    {
+     "n": 13,
+     "km": 120000,
+     "etiqueta": "120.000 km",
+     "meses": 144,
+     "horas": 3.6,
+     "manoObra": 181800,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "A00067644",
+       "cantidad": 1.0,
+       "precioUnitario": 20258,
+       "subtotal": 20258
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "A00096717",
+       "cantidad": 1.0,
+       "precioUnitario": 33178,
+       "subtotal": 33178
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de aceite caja de cambios DCT",
+       "codigo": "T00003185",
+       "cantidad": 1.0,
+       "precioUnitario": 35939,
+       "subtotal": 35939
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "T00002618",
+       "cantidad": 4.0,
+       "precioUnitario": 55734,
+       "subtotal": 222935
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Transmisión DCT",
+       "codigo": "55004597301",
+       "cantidad": 6.0,
+       "precioUnitario": 25704,
+       "subtotal": 154224
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Anticongelante",
+       "codigo": "105880",
+       "cantidad": 5.7,
+       "precioUnitario": 5850,
+       "subtotal": 33345
+      }
+     ],
+     "totalConIva": 745000,
+     "totalNeto": 626000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE CAJA DE CAMBIOS (7DCT)",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE DE CAJA DE CAMBIOS (7DCT)",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "R"
+      },
+      {
+       "nombre": "BUJIAS",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 745465
+    },
+    {
+     "n": 14,
+     "km": 130000,
+     "etiqueta": "130.000 km",
+     "meses": 156,
+     "horas": 1.6,
+     "manoObra": 80800,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 158000,
+     "totalNeto": 133000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE DISTRIBUCION Y TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA BOMBA DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 157587
+    },
+    {
+     "n": 15,
+     "km": 140000,
+     "etiqueta": "140.000 km",
+     "meses": 168,
+     "horas": 2.3,
+     "manoObra": 116150,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "A00067644",
+       "cantidad": 1.0,
+       "precioUnitario": 20258,
+       "subtotal": 20258
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 212000,
+     "totalNeto": 178000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 211845
+    },
+    {
+     "n": 16,
+     "km": 150000,
+     "etiqueta": "150.000 km",
+     "meses": 180,
+     "horas": 1.6,
+     "manoObra": 80800,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "T00002700",
+       "cantidad": 1.0,
+       "precioUnitario": 17628,
+       "subtotal": 17628
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "A00096717",
+       "cantidad": 1.0,
+       "precioUnitario": 33178,
+       "subtotal": 33178
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor",
+       "codigo": "104406",
+       "cantidad": 3.5,
+       "precioUnitario": 15058,
+       "subtotal": 52704
+      }
+     ],
+     "totalConIva": 191000,
+     "totalNeto": 161000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "ACEITE DE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "GOLILLA TAPON DE CARTER",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE ACCESORIOS, TENSOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "RALENTI DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO SISTEMA DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "NEUMATICOS (INCLUIR REPUESTO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "SISTEMA DE DIRECCION (TERMINALES, AXIALES, CREMALLERA, FUELLES Y EJE)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DISIPADOR DE CALOR, FRENO, ESCAPE Y LÍNEAS DE COMBUSTIBLE Y SUS CONEXIONES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BISAGRAS Y LIMITADORES (PUERTAS, MALETERO)",
+       "accion": "I"
+      },
+      {
+       "nombre": "EQUIPAMIENTO ELECTRONICO (ALZA VIDRIOS, ESPEJOS, SUNROOF, A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ESCANER Y DIAGNOSTICO ELECTRONICO BAIC",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAPARABRISAS Y DISPOSITIVOS DE LIMPIEZA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PANEL DE INSTRUMENTOS E ILUMINACION (INTERIOR Y EXTERIOR)",
+       "accion": "I"
+      },
+      {
+       "nombre": "RESETEO INDICARDOR DE MANTENIMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "AMORTIGUADORES, ESPIRALES Y BUJES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DE CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENCENDIDO, EFICIENCIA DE FRENADO Y PASO DE MARCHAS.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CERRADO DE PUERTAS, PORTALON Y FUNCIONAMIENTO DE MANILLA OCULTA",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 190765
+    }
+   ]
+  }
+ ],
+ "adicionales": [
+  {
+   "nombre": "Alineación y balanceo",
+   "precio": 32000,
+   "porKm": {
+    "20000": 32000,
+    "40000": 32000,
+    "60000": 32000,
+    "80000": 32000,
+    "100000": 32000,
+    "120000": 32000,
+    "140000": 32000
+   }
+  }
+ ],
+ "packs": [],
+ "notas": [
+  "El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios de los listados de repuestos de Fortaleza S.A.",
+  "El valor de 1 hora de mano de obra es:",
+  "En el costo de las mantenciones, no están considerados los siguientes ítems.",
+  "Se recomienda su realización según kilometraje indicado:"
+ ],
+ "fuente": "Pauta de mantencion Baic Enero 2026.xlsx / hoja 'X7'"
+}

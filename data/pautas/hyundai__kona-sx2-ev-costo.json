@@ -1,1 +1,517 @@
-{"marca":"hyundai","marcaNombre":"Hyundai","modelo":"Kona","version":"Kona Eléctrico (SX2 EV)","motor":null,"segmento":null,"categoria":null,"vigencia":"Activo","tarifaMO":60095,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":15000,"etiqueta":"15.000 km","meses":12,"horas":1.0,"manoObra":60095,"items":[{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019}],"totalConIva":72000,"totalNeto":null,"conDescuento":72000,"gratis":false,"operaciones":null,"totalCalculado":72114},{"n":2,"km":30000,"etiqueta":"30.000 km","meses":24,"horas":2.2,"manoObra":132209,"items":[{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENO DOT 4","codigo":"100051","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":150000,"totalNeto":null,"conDescuento":142500,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE DEL MOTOR (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO HSG","accion":"I"},{"nombre":"REVISAR SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"R"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"R"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":150312},{"n":3,"km":45000,"etiqueta":"45.000 km","meses":36,"horas":1.0,"manoObra":60095,"items":[{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019}],"totalConIva":72000,"totalNeto":null,"conDescuento":64800,"gratis":false,"operaciones":null,"totalCalculado":72114},{"n":4,"km":60000,"etiqueta":"60.000 km","meses":48,"horas":2.2,"manoObra":132209,"items":[{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENO DOT 4","codigo":"100051","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":150000,"totalNeto":null,"conDescuento":127500,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE DEL MOTOR (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO HSG","accion":"I"},{"nombre":"REVISAR SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"R"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"R"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DEL A/C Y ESTADO COMPRESOR.","accion":"I"}],"totalCalculado":150312},{"n":5,"km":75000,"etiqueta":"75.000 km","meses":60,"horas":1.0,"manoObra":60095,"items":[{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019}],"totalConIva":72000,"totalNeto":null,"conDescuento":57600,"gratis":false,"operaciones":null,"totalCalculado":72114},{"n":6,"km":90000,"etiqueta":"90.000 km","meses":72,"horas":2.2,"manoObra":132209,"items":[{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENO DOT 4","codigo":"100051","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":150000,"totalNeto":null,"conDescuento":120000,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE DEL MOTOR (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO HSG","accion":"I"},{"nombre":"REVISAR SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"R"},{"nombre":"LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS / MDPS)","accion":"I"},{"nombre":"REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS","accion":"I"},{"nombre":"LIQUIDO DE FRENO","accion":"R"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":150312},{"n":7,"km":105000,"etiqueta":"105.000 km","meses":84,"horas":1.0,"manoObra":60095,"items":[{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019}],"totalConIva":72000,"totalNeto":null,"conDescuento":57600,"gratis":false,"operaciones":null,"totalCalculado":72114}]}],"adicionales":[],"packs":[],"notas":["El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios","El valor de 1 hora de mano de obra es:"],"fuente":"Pauta Mantención Hyundai 2026.xlsx / hoja 'Kona (SX2 EV) costo'"}
+{
+ "marca": "hyundai",
+ "marcaNombre": "Hyundai",
+ "modelo": "Kona",
+ "version": "Kona Eléctrico (SX2 EV)",
+ "motor": null,
+ "segmento": null,
+ "categoria": null,
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 15000,
+     "etiqueta": "15.000 km",
+     "meses": 12,
+     "horas": 1.0,
+     "manoObra": 50500,
+     "items": [
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      }
+     ],
+     "totalConIva": 72000,
+     "totalNeto": null,
+     "conDescuento": 72000,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 72114
+    },
+    {
+     "n": 2,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 24,
+     "horas": 2.2,
+     "manoObra": 111100,
+     "items": [
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENO DOT 4",
+       "codigo": "100051",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 150000,
+     "totalNeto": null,
+     "conDescuento": 142500,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE DEL MOTOR (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO HSG",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 150312
+    },
+    {
+     "n": 3,
+     "km": 45000,
+     "etiqueta": "45.000 km",
+     "meses": 36,
+     "horas": 1.0,
+     "manoObra": 50500,
+     "items": [
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      }
+     ],
+     "totalConIva": 72000,
+     "totalNeto": null,
+     "conDescuento": 64800,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 72114
+    },
+    {
+     "n": 4,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 48,
+     "horas": 2.2,
+     "manoObra": 111100,
+     "items": [
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENO DOT 4",
+       "codigo": "100051",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 150000,
+     "totalNeto": null,
+     "conDescuento": 127500,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE DEL MOTOR (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO HSG",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DEL A/C Y ESTADO COMPRESOR.",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 150312
+    },
+    {
+     "n": 5,
+     "km": 75000,
+     "etiqueta": "75.000 km",
+     "meses": 60,
+     "horas": 1.0,
+     "manoObra": 50500,
+     "items": [
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      }
+     ],
+     "totalConIva": 72000,
+     "totalNeto": null,
+     "conDescuento": 57600,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 72114
+    },
+    {
+     "n": 6,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 72,
+     "horas": 2.2,
+     "manoObra": 111100,
+     "items": [
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENO DOT 4",
+       "codigo": "100051",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 150000,
+     "totalNeto": null,
+     "conDescuento": 120000,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE DEL MOTOR (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DEL GENERADOR Y ARRANCADOR HIBRIDO HSG",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "LINEAS Y MANGUERAS DEL ACTUADOR DEL EMBRAGUE DEL MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS / MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVEL Y ESTADO DEL FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIQUIDO DE FRENO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 150312
+    },
+    {
+     "n": 7,
+     "km": 105000,
+     "etiqueta": "105.000 km",
+     "meses": 84,
+     "horas": 1.0,
+     "manoObra": 50500,
+     "items": [
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      }
+     ],
+     "totalConIva": 72000,
+     "totalNeto": null,
+     "conDescuento": 57600,
+     "gratis": false,
+     "operaciones": null,
+     "totalCalculado": 72114
+    }
+   ]
+  }
+ ],
+ "adicionales": [],
+ "packs": [],
+ "notas": [
+  "El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios",
+  "El valor de 1 hora de mano de obra es:"
+ ],
+ "fuente": "Pauta Mantención Hyundai 2026.xlsx / hoja 'Kona (SX2 EV) costo'"
+}

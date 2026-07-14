@@ -1,1 +1,1157 @@
-{"marca":"jac","marcaNombre":"JAC","modelo":"JS4","version":"JS4 1.5T 6MT","motor":null,"segmento":null,"categoria":"Media","vigencia":"Activo","tarifaMO":40000,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":6,"horas":2.0,"manoObra":80000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233}],"totalConIva":171000,"totalNeto":143697,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"I"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":170817},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":12,"horas":2.1,"manoObra":84000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"1109130V5070","cantidad":1.0,"precioUnitario":25460,"subtotal":25460},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233}],"totalConIva":200000,"totalNeto":168067,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"C"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":200277},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":18,"horas":2.0,"manoObra":80000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"8126100U8510-25","cantidad":1.0,"precioUnitario":13555,"subtotal":13555},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233}],"totalConIva":184000,"totalNeto":154622,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"I"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":184373},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":24,"horas":3.0,"manoObra":120000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"1109130V5070","cantidad":1.0,"precioUnitario":25460,"subtotal":25460},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"1105100U8050","cantidad":1.0,"precioUnitario":9405,"subtotal":9405},{"tipo":"repuesto","nombre":"Bujías","codigo":"1026080GH500","cantidad":4.0,"precioUnitario":19944,"subtotal":79778},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233},{"tipo":"lubricante","nombre":"Líquido de Frenos y Embrague DOT-4","codigo":"100051","cantidad":2.0,"precioUnitario":6099,"subtotal":12198}],"totalConIva":338000,"totalNeto":284034,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"I"},{"nombre":"Liquido de Frenos","accion":"C"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"C"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"C"},{"nombre":"Bujias","accion":"C"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":337657},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":30,"horas":2.0,"manoObra":80000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233},{"tipo":"lubricante","nombre":"Anticongelante Mobil Super ELC 50%","codigo":"105892","cantidad":5.6,"precioUnitario":7765,"subtotal":43483}],"totalConIva":214000,"totalNeto":179832,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"C"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"I"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":214300},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":36,"horas":3.3,"manoObra":132000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"1109130V5070","cantidad":1.0,"precioUnitario":25460,"subtotal":25460},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"8126100U8510-25","cantidad":1.0,"precioUnitario":13555,"subtotal":13555},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233}],"totalConIva":262000,"totalNeto":220168,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"I"},{"nombre":"Aceite caja Transmision DCT/ filtro DCT (JS6/JS8)","accion":"C"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"C"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":261833},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":42,"horas":2.0,"manoObra":80000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233}],"totalConIva":171000,"totalNeto":143697,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"I"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":170817},{"n":8,"km":80000,"etiqueta":"80.000 km","meses":48,"horas":3.0,"manoObra":120000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"1109130V5070","cantidad":1.0,"precioUnitario":25460,"subtotal":25460},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"1105100U8050","cantidad":1.0,"precioUnitario":9405,"subtotal":9405},{"tipo":"repuesto","nombre":"Bujías","codigo":"1026080GH500","cantidad":4.0,"precioUnitario":19944,"subtotal":79778},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233},{"tipo":"lubricante","nombre":"Líquido de Frenos y Embrague DOT-4","codigo":"100051","cantidad":2.0,"precioUnitario":6099,"subtotal":12198}],"totalConIva":338000,"totalNeto":284034,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"I"},{"nombre":"Liquido de Frenos","accion":"C"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"C"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"C"},{"nombre":"Bujias","accion":"C"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":337657},{"n":9,"km":90000,"etiqueta":"90.000 km","meses":54,"horas":2.0,"manoObra":80000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"8126100U8510-25","cantidad":1.0,"precioUnitario":13555,"subtotal":13555},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233}],"totalConIva":184000,"totalNeto":154622,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"I"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":184373},{"n":10,"km":100000,"etiqueta":"100.000 km","meses":60,"horas":2.0,"manoObra":80000,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1017100GH500","cantidad":1.0,"precioUnitario":13329,"subtotal":13329},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"1109130V5070","cantidad":1.0,"precioUnitario":25460,"subtotal":25460},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )","codigo":"104406","cantidad":4.0,"precioUnitario":15058,"subtotal":60233},{"tipo":"lubricante","nombre":"Aceite de transmision Mobilube 1 Shc 75w-90 GL-4","codigo":"100219","cantidad":4.5,"precioUnitario":31458,"subtotal":141559},{"tipo":"lubricante","nombre":"Anticongelante Mobil Super ELC 50%","codigo":"105892","cantidad":5.6,"precioUnitario":7765,"subtotal":43483}],"totalConIva":381000,"totalNeto":320168,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT (JS2/JS3/JS4/JS8)","accion":"C"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"C"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire ( evaluar periodo)","accion":"C"},{"nombre":"Filtro de Polen (A/C)","accion":"I"},{"nombre":"Filtro de Combustible (js6 /Js8 no aplica)","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"Correa de accesorios","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos /  freno de mano","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":381319}]}],"adicionales":[{"nombre":"Alineación y balanceo","precio":32000,"porKm":{"20000":32000,"40000":32000,"60000":32000,"80000":32000,"100000":32000}}],"packs":[],"notas":["Valor referencial sugerido de la mantención; confirmar precio final con el sistema.","En el costo de las mantenciones no se incluyen reparaciones ni piezas de desgaste (pastillas de freno, neumáticos, plumillas, etc.).","Se recomienda su realización según kilometraje o tiempo, lo que ocurra primero."],"fuente":"Pauta de mantencion JAC Enero 2026.xlsx / hoja 'JS4 1.5T 6MT'"}
+{
+ "marca": "jac",
+ "marcaNombre": "JAC",
+ "modelo": "JS4",
+ "version": "JS4 1.5T 6MT",
+ "motor": null,
+ "segmento": null,
+ "categoria": "Media",
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 6,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      }
+     ],
+     "totalConIva": 171000,
+     "totalNeto": 143697,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 170817
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 12,
+     "horas": 2.1,
+     "manoObra": 106050,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "1109130V5070",
+       "cantidad": 1.0,
+       "precioUnitario": 25460,
+       "subtotal": 25460
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      }
+     ],
+     "totalConIva": 200000,
+     "totalNeto": 168067,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 200277
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 18,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "8126100U8510-25",
+       "cantidad": 1.0,
+       "precioUnitario": 13555,
+       "subtotal": 13555
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      }
+     ],
+     "totalConIva": 184000,
+     "totalNeto": 154622,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 184373
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 24,
+     "horas": 3.0,
+     "manoObra": 151500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "1109130V5070",
+       "cantidad": 1.0,
+       "precioUnitario": 25460,
+       "subtotal": 25460
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "1105100U8050",
+       "cantidad": 1.0,
+       "precioUnitario": 9405,
+       "subtotal": 9405
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "1026080GH500",
+       "cantidad": 4.0,
+       "precioUnitario": 19944,
+       "subtotal": 79778
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Líquido de Frenos y Embrague DOT-4",
+       "codigo": "100051",
+       "cantidad": 2.0,
+       "precioUnitario": 6099,
+       "subtotal": 12198
+      }
+     ],
+     "totalConIva": 338000,
+     "totalNeto": 284034,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "C"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Bujias",
+       "accion": "C"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 337657
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 30,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Anticongelante Mobil Super ELC 50%",
+       "codigo": "105892",
+       "cantidad": 5.6,
+       "precioUnitario": 7765,
+       "subtotal": 43483
+      }
+     ],
+     "totalConIva": 214000,
+     "totalNeto": 179832,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "C"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 214300
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 36,
+     "horas": 3.3,
+     "manoObra": 166650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "1109130V5070",
+       "cantidad": 1.0,
+       "precioUnitario": 25460,
+       "subtotal": 25460
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "8126100U8510-25",
+       "cantidad": 1.0,
+       "precioUnitario": 13555,
+       "subtotal": 13555
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      }
+     ],
+     "totalConIva": 262000,
+     "totalNeto": 220168,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite caja Transmision DCT/ filtro DCT (JS6/JS8)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 261833
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 42,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      }
+     ],
+     "totalConIva": 171000,
+     "totalNeto": 143697,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 170817
+    },
+    {
+     "n": 8,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 48,
+     "horas": 3.0,
+     "manoObra": 151500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "1109130V5070",
+       "cantidad": 1.0,
+       "precioUnitario": 25460,
+       "subtotal": 25460
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "1105100U8050",
+       "cantidad": 1.0,
+       "precioUnitario": 9405,
+       "subtotal": 9405
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías",
+       "codigo": "1026080GH500",
+       "cantidad": 4.0,
+       "precioUnitario": 19944,
+       "subtotal": 79778
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Líquido de Frenos y Embrague DOT-4",
+       "codigo": "100051",
+       "cantidad": 2.0,
+       "precioUnitario": 6099,
+       "subtotal": 12198
+      }
+     ],
+     "totalConIva": 338000,
+     "totalNeto": 284034,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "C"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Bujias",
+       "accion": "C"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 337657
+    },
+    {
+     "n": 9,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 54,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "8126100U8510-25",
+       "cantidad": 1.0,
+       "precioUnitario": 13555,
+       "subtotal": 13555
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      }
+     ],
+     "totalConIva": 184000,
+     "totalNeto": 154622,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 184373
+    },
+    {
+     "n": 10,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 60,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1017100GH500",
+       "cantidad": 1.0,
+       "precioUnitario": 13329,
+       "subtotal": 13329
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "1109130V5070",
+       "cantidad": 1.0,
+       "precioUnitario": 25460,
+       "subtotal": 25460
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Super 3000 Xe 5w-30( 5W30 SM )",
+       "codigo": "104406",
+       "cantidad": 4.0,
+       "precioUnitario": 15058,
+       "subtotal": 60233
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de transmision Mobilube 1 Shc 75w-90 GL-4",
+       "codigo": "100219",
+       "cantidad": 4.5,
+       "precioUnitario": 31458,
+       "subtotal": 141559
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Anticongelante Mobil Super ELC 50%",
+       "codigo": "105892",
+       "cantidad": 5.6,
+       "precioUnitario": 7765,
+       "subtotal": 43483
+      }
+     ],
+     "totalConIva": 381000,
+     "totalNeto": 320168,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT (JS2/JS3/JS4/JS8)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "C"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire ( evaluar periodo)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen (A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible (js6 /Js8 no aplica)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "Correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos /  freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 381319
+    }
+   ]
+  }
+ ],
+ "adicionales": [
+  {
+   "nombre": "Alineación y balanceo",
+   "precio": 32000,
+   "porKm": {
+    "20000": 32000,
+    "40000": 32000,
+    "60000": 32000,
+    "80000": 32000,
+    "100000": 32000
+   }
+  }
+ ],
+ "packs": [],
+ "notas": [
+  "Valor referencial sugerido de la mantención; confirmar precio final con el sistema.",
+  "En el costo de las mantenciones no se incluyen reparaciones ni piezas de desgaste (pastillas de freno, neumáticos, plumillas, etc.).",
+  "Se recomienda su realización según kilometraje o tiempo, lo que ocurra primero."
+ ],
+ "fuente": "Pauta de mantencion JAC Enero 2026.xlsx / hoja 'JS4 1.5T 6MT'"
+}

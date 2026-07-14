@@ -1,1 +1,1429 @@
-{"marca":"jac","marcaNombre":"JAC","modelo":"SUNRAY","version":"SUNRAY 2.7","motor":null,"segmento":null,"categoria":null,"vigencia":"Activo","tarifaMO":44550,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":6,"horas":2.0,"manoObra":89100,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691}],"totalConIva":188000,"totalNeto":157983,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"I"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"I"},{"nombre":"PRE -Filtro de Combustible","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"Aceite de direccion","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"I"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":188266},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":12,"horas":3.0,"manoObra":133650,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"S11090010-A7","cantidad":1.0,"precioUnitario":19942,"subtotal":19942},{"tipo":"repuesto","nombre":"Filtro de combustible","codigo":"1105011R0070","cantidad":1.0,"precioUnitario":53673,"subtotal":53674},{"tipo":"repuesto","nombre":"PRE-Filtro de Combustible","codigo":"1105021R0070","cantidad":1.0,"precioUnitario":66569,"subtotal":66569},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691}],"totalConIva":373000,"totalNeto":313445,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"C"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"C"},{"nombre":"PRE -Filtro de Combustible","accion":"C"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"Aceite de direccion","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"I"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":373000},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":18,"horas":2.3,"manoObra":102465,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"8126100R0090-F051","cantidad":1.0,"precioUnitario":12578,"subtotal":12578},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691},{"tipo":"lubricante","nombre":"Aceite Diferencial  Mobilube Hd Plus 80w-90 (Gl-5)","codigo":"100214","cantidad":2.0,"precioUnitario":7186,"subtotal":14373}],"totalConIva":229000,"totalNeto":192437,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"I"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"I"},{"nombre":"PRE -Filtro de Combustible","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"Aceite de direccion","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"C"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"C"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"C"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":228582},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":24,"horas":3.5,"manoObra":155925,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"S11090010-A7","cantidad":1.0,"precioUnitario":19942,"subtotal":19942},{"tipo":"repuesto","nombre":"Filtro de combustible","codigo":"1105011R0070","cantidad":1.0,"precioUnitario":53673,"subtotal":53673},{"tipo":"repuesto","nombre":"PRE-Filtro de Combustible","codigo":"1105021R0070","cantidad":1.0,"precioUnitario":66569,"subtotal":66569},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691},{"tipo":"lubricante","nombre":"Líquido de Frenos y Embrague DOT-4","codigo":"100051","cantidad":2.0,"precioUnitario":6099,"subtotal":12198}],"totalConIva":407000,"totalNeto":342017,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"I"},{"nombre":"Liquido de Frenos","accion":"C"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"C"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"C"},{"nombre":"PRE -Filtro de Combustible","accion":"C"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"Aceite de direccion","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"I"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":407471},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":30,"horas":2.3,"manoObra":102465,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691},{"tipo":"lubricante","nombre":"Liquido de Dirección  Mobil ATF D2","codigo":"100280","cantidad":1.0,"precioUnitario":8180,"subtotal":8180},{"tipo":"lubricante","nombre":"Anticongelante Mobil Super ELC 50%","codigo":"105892","cantidad":11.5,"precioUnitario":7765,"subtotal":89295}],"totalConIva":299000,"totalNeto":251261,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"C"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"I"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"I"},{"nombre":"PRE -Filtro de Combustible","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"Aceite de direccion","accion":"C"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"I"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":299105},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":36,"horas":4.3,"manoObra":191565,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"S11090010-A7","cantidad":1.0,"precioUnitario":19942,"subtotal":19942},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"8126100R0090-F051","cantidad":1.0,"precioUnitario":12578,"subtotal":12578},{"tipo":"repuesto","nombre":"Filtro de combustible","codigo":"1105011R0070","cantidad":1.0,"precioUnitario":53673,"subtotal":53674},{"tipo":"repuesto","nombre":"PRE-Filtro de Combustible","codigo":"1105021R0070","cantidad":1.0,"precioUnitario":66569,"subtotal":66569},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691},{"tipo":"lubricante","nombre":"Aceite de transmision Mobilube 1 Shc 75w-90 GL-4","codigo":"100219","cantidad":2.4,"precioUnitario":31458,"subtotal":75498},{"tipo":"lubricante","nombre":"Aceite Diferencial  Mobilube Hd Plus 80w-90 (Gl-5)","codigo":"100214","cantidad":2.0,"precioUnitario":7186,"subtotal":14373},{"tipo":"lubricante","nombre":"Líquido de Frenos y Embrague DOT-4","codigo":"100051","cantidad":2.0,"precioUnitario":6099,"subtotal":12198}],"totalConIva":546000,"totalNeto":458824,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"C"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"C"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"C"},{"nombre":"PRE -Filtro de Combustible","accion":"C"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"correo de distribucion (T6 GASOLINA )","accion":"C"},{"nombre":"Aceite de direccion","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"C"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"C"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"C"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":545562},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":42,"horas":2.0,"manoObra":89100,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691}],"totalConIva":188000,"totalNeto":157983,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"I"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"I"},{"nombre":"PRE -Filtro de Combustible","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"Aceite de direccion","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"I"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":188266},{"n":8,"km":80000,"etiqueta":"80.000 km","meses":48,"horas":3.5,"manoObra":155925,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"S11090010-A7","cantidad":1.0,"precioUnitario":19942,"subtotal":19942},{"tipo":"repuesto","nombre":"Filtro de combustible","codigo":"1105011R0070","cantidad":1.0,"precioUnitario":53673,"subtotal":53673},{"tipo":"repuesto","nombre":"PRE-Filtro de Combustible","codigo":"1105021R0070","cantidad":1.0,"precioUnitario":66569,"subtotal":66569},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691}],"totalConIva":395000,"totalNeto":331933,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"I"},{"nombre":"Liquido de Frenos","accion":"C"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"C"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"C"},{"nombre":"PRE -Filtro de Combustible","accion":"C"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"Aceite de direccion","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"I"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":395274},{"n":9,"km":90000,"etiqueta":"90.000 km","meses":54,"horas":2.0,"manoObra":89100,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"repuesto","nombre":"Filtro de Polén","codigo":"8126100R0090-F051","cantidad":1.0,"precioUnitario":12578,"subtotal":12578},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691}],"totalConIva":201000,"totalNeto":168908,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"I"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"I"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"I"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"I"},{"nombre":"PRE -Filtro de Combustible","accion":"I"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"Aceite de direccion","accion":"I"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"C"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"C"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"C"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":200844},{"n":10,"km":100000,"etiqueta":"100.000 km","meses":60,"horas":3.0,"manoObra":133650,"items":[{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"1010320FE010","cantidad":1.0,"precioUnitario":16220,"subtotal":16220},{"tipo":"repuesto","nombre":"Filtro de Aire","codigo":"S11090010-A7","cantidad":1.0,"precioUnitario":19942,"subtotal":19942},{"tipo":"repuesto","nombre":"Filtro de combustible","codigo":"1105011R0070","cantidad":1.0,"precioUnitario":53673,"subtotal":53674},{"tipo":"repuesto","nombre":"PRE-Filtro de Combustible","codigo":"1105021R0070","cantidad":1.0,"precioUnitario":66569,"subtotal":66569},{"tipo":"material","nombre":"Materiales","codigo":"Mat-001","cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)","codigo":"106324","cantidad":7.2,"precioUnitario":9124,"subtotal":65691},{"tipo":"lubricante","nombre":"Liquido de Dirección  Mobil ATF D2","codigo":"100280","cantidad":1.0,"precioUnitario":8180,"subtotal":8180},{"tipo":"lubricante","nombre":"Anticongelante Mobil Super ELC 50%","codigo":"105892","cantidad":11.5,"precioUnitario":7765,"subtotal":89295}],"totalConIva":470000,"totalNeto":394958,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite de Motor/ fIltro","accion":"C"},{"nombre":"Aceite de Transmision MT","accion":"C"},{"nombre":"Liquido de Frenos","accion":"I"},{"nombre":"Refrigerante","accion":"C"},{"nombre":"Liquido Limpia Parabrisas","accion":"I"},{"nombre":"Filtro de Aire","accion":"C"},{"nombre":"Filtro de Polen","accion":"I"},{"nombre":"Filtro de Combustible","accion":"C"},{"nombre":"PRE -Filtro de Combustible","accion":"C"},{"nombre":"Golilla tapon de carter","accion":"C"},{"nombre":"correa de accesorios","accion":"I"},{"nombre":"Aceite de direccion","accion":"C"},{"nombre":"Revision sistema de direccion","accion":"I"},{"nombre":"Reapriete tren tras/delan","accion":"I"},{"nombre":"Servicios de frenos/ freno de mano","accion":"I"},{"nombre":"Diferencial trasero","accion":"I"},{"nombre":"Diferencial delantero (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Caja de transferencia  (4wd / T6,T8,T9)","accion":"I"},{"nombre":"Lectura momoria de averías","accion":"I"}],"totalCalculado":470475}]}],"adicionales":[{"nombre":"Alineación y balanceo","precio":35640,"porKm":{"20000":35640,"40000":35640,"60000":35640,"80000":35640,"100000":35640}}],"packs":[],"notas":["Valor referencial sugerido de la mantención; confirmar precio final con el sistema.","En el costo de las mantenciones no se incluyen reparaciones ni piezas de desgaste (pastillas de freno, neumáticos, plumillas, etc.).","Se recomienda su realización según kilometraje o tiempo, lo que ocurra primero."],"fuente":"Pauta de mantencion JAC Enero 2026.xlsx / hoja 'SUNRAY 2.7'"}
+{
+ "marca": "jac",
+ "marcaNombre": "JAC",
+ "modelo": "SUNRAY",
+ "version": "SUNRAY 2.7",
+ "motor": null,
+ "segmento": null,
+ "categoria": null,
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 6,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      }
+     ],
+     "totalConIva": 188000,
+     "totalNeto": 157983,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 188266
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 12,
+     "horas": 3.0,
+     "manoObra": 151500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "S11090010-A7",
+       "cantidad": 1.0,
+       "precioUnitario": 19942,
+       "subtotal": 19942
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de combustible",
+       "codigo": "1105011R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 53673,
+       "subtotal": 53674
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "PRE-Filtro de Combustible",
+       "codigo": "1105021R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 66569,
+       "subtotal": 66569
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      }
+     ],
+     "totalConIva": 373000,
+     "totalNeto": 313445,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 373000
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 18,
+     "horas": 2.3,
+     "manoObra": 116150,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "8126100R0090-F051",
+       "cantidad": 1.0,
+       "precioUnitario": 12578,
+       "subtotal": 12578
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Diferencial  Mobilube Hd Plus 80w-90 (Gl-5)",
+       "codigo": "100214",
+       "cantidad": 2.0,
+       "precioUnitario": 7186,
+       "subtotal": 14373
+      }
+     ],
+     "totalConIva": 229000,
+     "totalNeto": 192437,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "C"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 228582
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 24,
+     "horas": 3.5,
+     "manoObra": 176750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "S11090010-A7",
+       "cantidad": 1.0,
+       "precioUnitario": 19942,
+       "subtotal": 19942
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de combustible",
+       "codigo": "1105011R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 53673,
+       "subtotal": 53673
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "PRE-Filtro de Combustible",
+       "codigo": "1105021R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 66569,
+       "subtotal": 66569
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Líquido de Frenos y Embrague DOT-4",
+       "codigo": "100051",
+       "cantidad": 2.0,
+       "precioUnitario": 6099,
+       "subtotal": 12198
+      }
+     ],
+     "totalConIva": 407000,
+     "totalNeto": 342017,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "C"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 407471
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 30,
+     "horas": 2.3,
+     "manoObra": 116150,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Dirección  Mobil ATF D2",
+       "codigo": "100280",
+       "cantidad": 1.0,
+       "precioUnitario": 8180,
+       "subtotal": 8180
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Anticongelante Mobil Super ELC 50%",
+       "codigo": "105892",
+       "cantidad": 11.5,
+       "precioUnitario": 7765,
+       "subtotal": 89295
+      }
+     ],
+     "totalConIva": 299000,
+     "totalNeto": 251261,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "C"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "C"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 299105
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 36,
+     "horas": 4.3,
+     "manoObra": 217150,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "S11090010-A7",
+       "cantidad": 1.0,
+       "precioUnitario": 19942,
+       "subtotal": 19942
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "8126100R0090-F051",
+       "cantidad": 1.0,
+       "precioUnitario": 12578,
+       "subtotal": 12578
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de combustible",
+       "codigo": "1105011R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 53673,
+       "subtotal": 53674
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "PRE-Filtro de Combustible",
+       "codigo": "1105021R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 66569,
+       "subtotal": 66569
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de transmision Mobilube 1 Shc 75w-90 GL-4",
+       "codigo": "100219",
+       "cantidad": 2.4,
+       "precioUnitario": 31458,
+       "subtotal": 75498
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite Diferencial  Mobilube Hd Plus 80w-90 (Gl-5)",
+       "codigo": "100214",
+       "cantidad": 2.0,
+       "precioUnitario": 7186,
+       "subtotal": 14373
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Líquido de Frenos y Embrague DOT-4",
+       "codigo": "100051",
+       "cantidad": 2.0,
+       "precioUnitario": 6099,
+       "subtotal": 12198
+      }
+     ],
+     "totalConIva": 546000,
+     "totalNeto": 458824,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "C"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "correo de distribucion (T6 GASOLINA )",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "C"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 545562
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 42,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      }
+     ],
+     "totalConIva": 188000,
+     "totalNeto": 157983,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 188266
+    },
+    {
+     "n": 8,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 48,
+     "horas": 3.5,
+     "manoObra": 176750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "S11090010-A7",
+       "cantidad": 1.0,
+       "precioUnitario": 19942,
+       "subtotal": 19942
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de combustible",
+       "codigo": "1105011R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 53673,
+       "subtotal": 53673
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "PRE-Filtro de Combustible",
+       "codigo": "1105021R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 66569,
+       "subtotal": 66569
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      }
+     ],
+     "totalConIva": 395000,
+     "totalNeto": 331933,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "C"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 395274
+    },
+    {
+     "n": 9,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 54,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Polén",
+       "codigo": "8126100R0090-F051",
+       "cantidad": 1.0,
+       "precioUnitario": 12578,
+       "subtotal": 12578
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      }
+     ],
+     "totalConIva": 201000,
+     "totalNeto": 168908,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "I"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "I"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "C"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "C"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 200844
+    },
+    {
+     "n": 10,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 60,
+     "horas": 3.0,
+     "manoObra": 151500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "1010320FE010",
+       "cantidad": 1.0,
+       "precioUnitario": 16220,
+       "subtotal": 16220
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire",
+       "codigo": "S11090010-A7",
+       "cantidad": 1.0,
+       "precioUnitario": 19942,
+       "subtotal": 19942
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de combustible",
+       "codigo": "1105011R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 53673,
+       "subtotal": 53674
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "PRE-Filtro de Combustible",
+       "codigo": "1105021R0070",
+       "cantidad": 1.0,
+       "precioUnitario": 66569,
+       "subtotal": 66569
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": "Mat-001",
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Aceite de Motor Mobil Delvac 1300 Super 15W 40 (15W/40  CJ-4)",
+       "codigo": "106324",
+       "cantidad": 7.2,
+       "precioUnitario": 9124,
+       "subtotal": 65691
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Liquido de Dirección  Mobil ATF D2",
+       "codigo": "100280",
+       "cantidad": 1.0,
+       "precioUnitario": 8180,
+       "subtotal": 8180
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "Anticongelante Mobil Super ELC 50%",
+       "codigo": "105892",
+       "cantidad": 11.5,
+       "precioUnitario": 7765,
+       "subtotal": 89295
+      }
+     ],
+     "totalConIva": 470000,
+     "totalNeto": 394958,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite de Motor/ fIltro",
+       "accion": "C"
+      },
+      {
+       "nombre": "Aceite de Transmision MT",
+       "accion": "C"
+      },
+      {
+       "nombre": "Liquido de Frenos",
+       "accion": "I"
+      },
+      {
+       "nombre": "Refrigerante",
+       "accion": "C"
+      },
+      {
+       "nombre": "Liquido Limpia Parabrisas",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Aire",
+       "accion": "C"
+      },
+      {
+       "nombre": "Filtro de Polen",
+       "accion": "I"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "PRE -Filtro de Combustible",
+       "accion": "C"
+      },
+      {
+       "nombre": "Golilla tapon de carter",
+       "accion": "C"
+      },
+      {
+       "nombre": "correa de accesorios",
+       "accion": "I"
+      },
+      {
+       "nombre": "Aceite de direccion",
+       "accion": "C"
+      },
+      {
+       "nombre": "Revision sistema de direccion",
+       "accion": "I"
+      },
+      {
+       "nombre": "Reapriete tren tras/delan",
+       "accion": "I"
+      },
+      {
+       "nombre": "Servicios de frenos/ freno de mano",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial trasero",
+       "accion": "I"
+      },
+      {
+       "nombre": "Diferencial delantero (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Caja de transferencia  (4wd / T6,T8,T9)",
+       "accion": "I"
+      },
+      {
+       "nombre": "Lectura momoria de averías",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 470475
+    }
+   ]
+  }
+ ],
+ "adicionales": [
+  {
+   "nombre": "Alineación y balanceo",
+   "precio": 35640,
+   "porKm": {
+    "20000": 35640,
+    "40000": 35640,
+    "60000": 35640,
+    "80000": 35640,
+    "100000": 35640
+   }
+  }
+ ],
+ "packs": [],
+ "notas": [
+  "Valor referencial sugerido de la mantención; confirmar precio final con el sistema.",
+  "En el costo de las mantenciones no se incluyen reparaciones ni piezas de desgaste (pastillas de freno, neumáticos, plumillas, etc.).",
+  "Se recomienda su realización según kilometraje o tiempo, lo que ocurra primero."
+ ],
+ "fuente": "Pauta de mantencion JAC Enero 2026.xlsx / hoja 'SUNRAY 2.7'"
+}

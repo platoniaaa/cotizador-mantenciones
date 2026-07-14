@@ -1,1 +1,1696 @@
-{"marca":"hyundai","marcaNombre":"Hyundai","modelo":"Grand Santa Fe","version":"Grand Santa Fe (NC) CRDI EURO V","motor":null,"segmento":null,"categoria":"Media","vigencia":"Activo","tarifaMO":60095,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":1.0,"manoObra":60095,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708}],"totalConIva":246000,"totalNeto":null,"conDescuento":246000,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"}],"totalCalculado":246152},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":3.3,"manoObra":198314,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708}],"totalConIva":396000,"totalNeto":null,"conDescuento":376200,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"DIFERENCIAL  MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":396389},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":1.0,"manoObra":60095,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708}],"totalConIva":246000,"totalNeto":null,"conDescuento":221400,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"}],"totalCalculado":246152},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":4.4,"manoObra":264418,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"FILTRO AIRE","codigo":"281132W300","cantidad":1.0,"precioUnitario":28332,"subtotal":28332},{"tipo":"repuesto","nombre":"FILTRO COMBUSTIBLE","codigo":"319222W000","cantidad":1.0,"precioUnitario":71951,"subtotal":71951},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708}],"totalConIva":563000,"totalNeto":null,"conDescuento":478550,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"R"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"R"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"DIFERENCIAL  MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":562776},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":1.2,"manoObra":72114,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708}],"totalConIva":258000,"totalNeto":null,"conDescuento":206400,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"}],"totalCalculado":258171},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":3.3,"manoObra":198314,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708}],"totalConIva":396000,"totalNeto":null,"conDescuento":316800,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"DIFERENCIAL  MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":396389},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":1.0,"manoObra":60095,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708}],"totalConIva":246000,"totalNeto":null,"conDescuento":196800,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"}],"totalCalculado":246152},{"n":8,"km":80000,"etiqueta":"80.000 km","meses":96,"horas":4.4,"manoObra":264418,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"FILTRO AIRE","codigo":"281132W300","cantidad":1.0,"precioUnitario":28332,"subtotal":28332},{"tipo":"repuesto","nombre":"FILTRO COMBUSTIBLE","codigo":"319222W000","cantidad":1.0,"precioUnitario":71951,"subtotal":71951},{"tipo":"repuesto","nombre":"CORREA ALT/DH/AA","codigo":"252122F310","cantidad":1.0,"precioUnitario":133397,"subtotal":133397},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708}],"totalConIva":696000,"totalNeto":null,"conDescuento":556800,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"R"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"R"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"R"},{"nombre":"CADENA DE DISTRIBUCION","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"DIFERENCIAL  MOBILUBE 1 SHC 75W90","accion":"I"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":696173},{"n":9,"km":90000,"etiqueta":"90.000 km","meses":108,"horas":1.0,"manoObra":60095,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708},{"tipo":"lubricante","nombre":"ANTICONGELANTE","codigo":"105880","cantidad":8.0,"precioUnitario":8359,"subtotal":66868}],"totalConIva":313000,"totalNeto":null,"conDescuento":250400,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"R"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"}],"totalCalculado":313020},{"n":10,"km":100000,"etiqueta":"100.000 km","meses":120,"horas":3.9,"manoObra":234370,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263202F100","cantidad":1.0,"precioUnitario":27900,"subtotal":27900},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.3,"precioUnitario":19823,"subtotal":144708},{"tipo":"lubricante","nombre":"ACEITE TRANSMISIÓN MANUAL","codigo":"100219C","cantidad":2.0,"precioUnitario":28148,"subtotal":56297},{"tipo":"lubricante","nombre":"ACEITE DIFERENCIAL TRASERO","codigo":"100219C","cantidad":2.0,"precioUnitario":28148,"subtotal":56297},{"tipo":"lubricante","nombre":"ACEITE  CAJA TRANSFERENCIA","codigo":"100219C","cantidad":2.0,"precioUnitario":28148,"subtotal":56297}],"totalConIva":601000,"totalNeto":null,"conDescuento":480800,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90","accion":"R"},{"nombre":"ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90","accion":"R"},{"nombre":"DIFERENCIAL  MOBILUBE 1 SHC 75W90","accion":"R"},{"nombre":"INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":601336}]}],"adicionales":[],"packs":[],"notas":["El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios","El valor de 1 hora de mano de obra es:"],"fuente":"Pauta Mantención Hyundai 2026.xlsx / hoja 'Grand S. Fe (NC) 2.2 CRDI costo'"}
+{
+ "marca": "hyundai",
+ "marcaNombre": "Hyundai",
+ "modelo": "Grand Santa Fe",
+ "version": "Grand Santa Fe (NC) CRDI EURO V",
+ "motor": null,
+ "segmento": null,
+ "categoria": "Media",
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 1.0,
+     "manoObra": 50500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      }
+     ],
+     "totalConIva": 246000,
+     "totalNeto": null,
+     "conDescuento": 246000,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 246152
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 3.3,
+     "manoObra": 166650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      }
+     ],
+     "totalConIva": 396000,
+     "totalNeto": null,
+     "conDescuento": 376200,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL  MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 396389
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 1.0,
+     "manoObra": 50500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      }
+     ],
+     "totalConIva": 246000,
+     "totalNeto": null,
+     "conDescuento": 221400,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 246152
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 4.4,
+     "manoObra": 222200,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE",
+       "codigo": "281132W300",
+       "cantidad": 1.0,
+       "precioUnitario": 28332,
+       "subtotal": 28332
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO COMBUSTIBLE",
+       "codigo": "319222W000",
+       "cantidad": 1.0,
+       "precioUnitario": 71951,
+       "subtotal": 71951
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      }
+     ],
+     "totalConIva": 563000,
+     "totalNeto": null,
+     "conDescuento": 478550,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "R"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL  MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 562776
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 1.2,
+     "manoObra": 60600,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      }
+     ],
+     "totalConIva": 258000,
+     "totalNeto": null,
+     "conDescuento": 206400,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 258171
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 3.3,
+     "manoObra": 166650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      }
+     ],
+     "totalConIva": 396000,
+     "totalNeto": null,
+     "conDescuento": 316800,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL  MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 396389
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 1.0,
+     "manoObra": 50500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      }
+     ],
+     "totalConIva": 246000,
+     "totalNeto": null,
+     "conDescuento": 196800,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 246152
+    },
+    {
+     "n": 8,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 96,
+     "horas": 4.4,
+     "manoObra": 222200,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE",
+       "codigo": "281132W300",
+       "cantidad": 1.0,
+       "precioUnitario": 28332,
+       "subtotal": 28332
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO COMBUSTIBLE",
+       "codigo": "319222W000",
+       "cantidad": 1.0,
+       "precioUnitario": 71951,
+       "subtotal": 71951
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "CORREA ALT/DH/AA",
+       "codigo": "252122F310",
+       "cantidad": 1.0,
+       "precioUnitario": 133397,
+       "subtotal": 133397
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      }
+     ],
+     "totalConIva": 696000,
+     "totalNeto": null,
+     "conDescuento": 556800,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "R"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CADENA DE DISTRIBUCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL  MOBILUBE 1 SHC 75W90",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 696173
+    },
+    {
+     "n": 9,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 108,
+     "horas": 1.0,
+     "manoObra": 50500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ANTICONGELANTE",
+       "codigo": "105880",
+       "cantidad": 8.0,
+       "precioUnitario": 8359,
+       "subtotal": 66868
+      }
+     ],
+     "totalConIva": 313000,
+     "totalNeto": null,
+     "conDescuento": 250400,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 313020
+    },
+    {
+     "n": 10,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 120,
+     "horas": 3.9,
+     "manoObra": 196950,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263202F100",
+       "cantidad": 1.0,
+       "precioUnitario": 27900,
+       "subtotal": 27900
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.3,
+       "precioUnitario": 19823,
+       "subtotal": 144708
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE TRANSMISIÓN MANUAL",
+       "codigo": "100219C",
+       "cantidad": 2.0,
+       "precioUnitario": 28148,
+       "subtotal": 56297
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIFERENCIAL TRASERO",
+       "codigo": "100219C",
+       "cantidad": 2.0,
+       "precioUnitario": 28148,
+       "subtotal": 56297
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE  CAJA TRANSFERENCIA",
+       "codigo": "100219C",
+       "cantidad": 2.0,
+       "precioUnitario": 28148,
+       "subtotal": 56297
+      }
+     ],
+     "totalConIva": 601000,
+     "totalNeto": null,
+     "conDescuento": 480800,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR Y CAÑERIAS (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento) MOBILUBE 1 SHC 75W90",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSFERENCIA MOBILUBE 1 SHC 75W90",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIFERENCIAL  MOBILUBE 1 SHC 75W90",
+       "accion": "R"
+      },
+      {
+       "nombre": "INSPECCION DEL FUNCIONAMIENTO DE LA TRACCION AWD Y 4WD (ver nota N° 3)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES) En los modelos que corresponda",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS  (Ver nota N°4)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 601336
+    }
+   ]
+  }
+ ],
+ "adicionales": [],
+ "packs": [],
+ "notas": [
+  "El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios",
+  "El valor de 1 hora de mano de obra es:"
+ ],
+ "fuente": "Pauta Mantención Hyundai 2026.xlsx / hoja 'Grand S. Fe (NC) 2.2 CRDI costo'"
+}

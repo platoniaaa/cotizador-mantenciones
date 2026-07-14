@@ -1245,6 +1245,16 @@ def construir():
     total_versiones = 0
 
     def guardar_pauta(pid, data):
+        # Tarifa de mano de obra fija (neto): Ford 53.500/h, resto 50.500/h.
+        tarifa = 53500 if data.get("marca") == "ford" else 50500
+        data["tarifaMO"] = tarifa
+        ivs = list(data.get("intervalos") or [])
+        for p in (data.get("planes") or []):
+            ivs += p.get("intervalos") or []
+        for iv in ivs:
+            h = iv.get("horas")
+            if h:
+                iv["manoObra"] = rnd(h * tarifa)
         with open(os.path.join(OUT, "pautas", pid + ".json"), "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
 

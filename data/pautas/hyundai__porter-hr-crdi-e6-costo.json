@@ -1,1 +1,1992 @@
-{"marca":"hyundai","marcaNombre":"Hyundai","modelo":"Porter","version":"Porter (HR) 2.5 CRDI EURO VI","motor":null,"segmento":null,"categoria":"Media","vigencia":"Activo","tarifaMO":60095,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":1.7,"manoObra":102162,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655}],"totalConIva":286000,"totalNeto":null,"conDescuento":286000,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"I"},{"nombre":"DIFERENCIAL","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":285600},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":3.0,"manoObra":180285,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"FILTRO COMBUSTIBLE","codigo":"31922D3900","cantidad":1.0,"precioUnitario":74717,"subtotal":74717},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655}],"totalConIva":450000,"totalNeto":null,"conDescuento":427500,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"R"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"I"},{"nombre":"DIFERENCIAL","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":450459},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":4.0,"manoObra":240380,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"RETENES MASAS DEL","codigo":"5183044000","cantidad":2.0,"precioUnitario":9012,"subtotal":18024},{"tipo":"repuesto","nombre":"RETEN MASA TRAS INT","codigo":"528104F450","cantidad":2.0,"precioUnitario":11908,"subtotal":23817},{"tipo":"repuesto","nombre":"RETEN MASA TRAS EXT","codigo":"528204B100","cantidad":2.0,"precioUnitario":10658,"subtotal":21315},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655}],"totalConIva":487000,"totalNeto":null,"conDescuento":438300,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"I"},{"nombre":"DIFERENCIAL","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"PUNTOS DE ENGRASE (En los modelos que corresponda)","accion":"I"},{"nombre":"ENGRASE DE MAZAS","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":486974},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":3.3,"manoObra":198314,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"FILTRO AIRE","codigo":"281134F000","cantidad":1.0,"precioUnitario":39990,"subtotal":39990},{"tipo":"repuesto","nombre":"FILTRO COMBUSTIBLE","codigo":"31922D3900","cantidad":1.0,"precioUnitario":74717,"subtotal":74717},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655},{"tipo":"lubricante","nombre":"ACEITE DIFERENCIAL TRASERO","codigo":"100214C","cantidad":1.7,"precioUnitario":6585,"subtotal":11195}],"totalConIva":520000,"totalNeto":null,"conDescuento":442000,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"R"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"R"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"I"},{"nombre":"DIFERENCIAL","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":519673},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":2.0,"manoObra":120190,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655}],"totalConIva":304000,"totalNeto":null,"conDescuento":243200,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"I"},{"nombre":"DIFERENCIAL","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":303628},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":5.0,"manoObra":300475,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"FILTRO COMBUSTIBLE","codigo":"31922D3900","cantidad":1.0,"precioUnitario":74717,"subtotal":74717},{"tipo":"repuesto","nombre":"RETENES MASAS DEL","codigo":"5183044000","cantidad":2.0,"precioUnitario":9012,"subtotal":18024},{"tipo":"repuesto","nombre":"RETEN MASA TRAS INT","codigo":"528104F450","cantidad":2.0,"precioUnitario":11908,"subtotal":23817},{"tipo":"repuesto","nombre":"RETEN MASA TRAS EXT","codigo":"528204B100","cantidad":2.0,"precioUnitario":10658,"subtotal":21315},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655}],"totalConIva":634000,"totalNeto":null,"conDescuento":507200,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"R"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"I"},{"nombre":"DIFERENCIAL","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"PUNTOS DE ENGRASE (En los modelos que corresponda)","accion":"I"},{"nombre":"ENGRASE DE MAZAS","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":633804},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":1.5,"manoObra":90142,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655}],"totalConIva":274000,"totalNeto":null,"conDescuento":219200,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"I"},{"nombre":"DIFERENCIAL","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":273581},{"n":8,"km":80000,"etiqueta":"80.000 km","meses":96,"horas":3.3,"manoObra":198314,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"FILTRO AIRE","codigo":"281134F000","cantidad":1.0,"precioUnitario":39990,"subtotal":39990},{"tipo":"repuesto","nombre":"FILTRO COMBUSTIBLE","codigo":"31922D3900","cantidad":1.0,"precioUnitario":74717,"subtotal":74717},{"tipo":"repuesto","nombre":"CORREA ALT/DH/AA","codigo":"252124A810","cantidad":1.0,"precioUnitario":75902,"subtotal":75902},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655},{"tipo":"lubricante","nombre":"ACEITE DIFERENCIAL TRASERO","codigo":"100214C","cantidad":1.7,"precioUnitario":6585,"subtotal":11195}],"totalConIva":596000,"totalNeto":null,"conDescuento":476800,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"R"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"R"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"R"},{"nombre":"CADENA DE DISTRIBUCION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"I"},{"nombre":"DIFERENCIAL","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":595574},{"n":9,"km":90000,"etiqueta":"90.000 km","meses":108,"horas":4.0,"manoObra":240380,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"RETENES MASAS DEL","codigo":"5183044000","cantidad":2.0,"precioUnitario":9012,"subtotal":18024},{"tipo":"repuesto","nombre":"RETEN MASA TRAS INT","codigo":"528104F450","cantidad":2.0,"precioUnitario":11908,"subtotal":23817},{"tipo":"repuesto","nombre":"RETEN MASA TRAS EXT","codigo":"528204B100","cantidad":2.0,"precioUnitario":10658,"subtotal":21315},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655}],"totalConIva":487000,"totalNeto":null,"conDescuento":389600,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"I"},{"nombre":"DIFERENCIAL","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"PUNTOS DE ENGRASE (En los modelos que corresponda)","accion":"I"},{"nombre":"ENGRASE DE MAZAS","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":486974},{"n":10,"km":100000,"etiqueta":"100.000 km","meses":120,"horas":3.3,"manoObra":198314,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263304A001","cantidad":1.0,"precioUnitario":19334,"subtotal":19334},{"tipo":"repuesto","nombre":"FILTRO COMBUSTIBLE","codigo":"31922D3900","cantidad":1.0,"precioUnitario":74717,"subtotal":74717},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":7.6,"precioUnitario":19823,"subtotal":150655},{"tipo":"lubricante","nombre":"ACEITE TRANSMISIÓN MANUAL","codigo":"100219C","cantidad":2.0,"precioUnitario":28148,"subtotal":56297},{"tipo":"lubricante","nombre":"ANTICONGELANTE","codigo":"105880","cantidad":8.0,"precioUnitario":8359,"subtotal":66868}],"totalConIva":592000,"totalNeto":null,"conDescuento":473600,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"R"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.","accion":"I"},{"nombre":"BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)","accion":"I"},{"nombre":"ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"R"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR NIVEL DE UREA","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)","accion":"R"},{"nombre":"DIFERENCIAL","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION","accion":"I"},{"nombre":"SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD","accion":"I"},{"nombre":"REVISAR PLUMILLAS Y LAVAPARABRISAS","accion":"I"},{"nombre":"REVISAR  REFRIGERANTE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":591652}]}],"adicionales":[],"packs":[],"notas":["El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios","El valor de 1 hora de mano de obra es:"],"fuente":"Pauta Mantención Hyundai 2026.xlsx / hoja 'Porter (HR) CRDI E6 costo'"}
+{
+ "marca": "hyundai",
+ "marcaNombre": "Hyundai",
+ "modelo": "Porter",
+ "version": "Porter (HR) 2.5 CRDI EURO VI",
+ "motor": null,
+ "segmento": null,
+ "categoria": "Media",
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 1.7,
+     "manoObra": 85850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      }
+     ],
+     "totalConIva": 286000,
+     "totalNeto": null,
+     "conDescuento": 286000,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 285600
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 3.0,
+     "manoObra": 151500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO COMBUSTIBLE",
+       "codigo": "31922D3900",
+       "cantidad": 1.0,
+       "precioUnitario": 74717,
+       "subtotal": 74717
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      }
+     ],
+     "totalConIva": 450000,
+     "totalNeto": null,
+     "conDescuento": 427500,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "R"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 450459
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 4.0,
+     "manoObra": 202000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETENES MASAS DEL",
+       "codigo": "5183044000",
+       "cantidad": 2.0,
+       "precioUnitario": 9012,
+       "subtotal": 18024
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETEN MASA TRAS INT",
+       "codigo": "528104F450",
+       "cantidad": 2.0,
+       "precioUnitario": 11908,
+       "subtotal": 23817
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETEN MASA TRAS EXT",
+       "codigo": "528204B100",
+       "cantidad": 2.0,
+       "precioUnitario": 10658,
+       "subtotal": 21315
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      }
+     ],
+     "totalConIva": 487000,
+     "totalNeto": null,
+     "conDescuento": 438300,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PUNTOS DE ENGRASE (En los modelos que corresponda)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE MAZAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 486974
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 3.3,
+     "manoObra": 166650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE",
+       "codigo": "281134F000",
+       "cantidad": 1.0,
+       "precioUnitario": 39990,
+       "subtotal": 39990
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO COMBUSTIBLE",
+       "codigo": "31922D3900",
+       "cantidad": 1.0,
+       "precioUnitario": 74717,
+       "subtotal": 74717
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIFERENCIAL TRASERO",
+       "codigo": "100214C",
+       "cantidad": 1.7,
+       "precioUnitario": 6585,
+       "subtotal": 11195
+      }
+     ],
+     "totalConIva": 520000,
+     "totalNeto": null,
+     "conDescuento": 442000,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "R"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 519673
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 2.0,
+     "manoObra": 101000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      }
+     ],
+     "totalConIva": 304000,
+     "totalNeto": null,
+     "conDescuento": 243200,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 303628
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 5.0,
+     "manoObra": 252500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO COMBUSTIBLE",
+       "codigo": "31922D3900",
+       "cantidad": 1.0,
+       "precioUnitario": 74717,
+       "subtotal": 74717
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETENES MASAS DEL",
+       "codigo": "5183044000",
+       "cantidad": 2.0,
+       "precioUnitario": 9012,
+       "subtotal": 18024
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETEN MASA TRAS INT",
+       "codigo": "528104F450",
+       "cantidad": 2.0,
+       "precioUnitario": 11908,
+       "subtotal": 23817
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETEN MASA TRAS EXT",
+       "codigo": "528204B100",
+       "cantidad": 2.0,
+       "precioUnitario": 10658,
+       "subtotal": 21315
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      }
+     ],
+     "totalConIva": 634000,
+     "totalNeto": null,
+     "conDescuento": 507200,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "R"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PUNTOS DE ENGRASE (En los modelos que corresponda)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE MAZAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 633804
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 1.5,
+     "manoObra": 75750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      }
+     ],
+     "totalConIva": 274000,
+     "totalNeto": null,
+     "conDescuento": 219200,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 273581
+    },
+    {
+     "n": 8,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 96,
+     "horas": 3.3,
+     "manoObra": 166650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE",
+       "codigo": "281134F000",
+       "cantidad": 1.0,
+       "precioUnitario": 39990,
+       "subtotal": 39990
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO COMBUSTIBLE",
+       "codigo": "31922D3900",
+       "cantidad": 1.0,
+       "precioUnitario": 74717,
+       "subtotal": 74717
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "CORREA ALT/DH/AA",
+       "codigo": "252124A810",
+       "cantidad": 1.0,
+       "precioUnitario": 75902,
+       "subtotal": 75902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIFERENCIAL TRASERO",
+       "codigo": "100214C",
+       "cantidad": 1.7,
+       "precioUnitario": 6585,
+       "subtotal": 11195
+      }
+     ],
+     "totalConIva": 596000,
+     "totalNeto": null,
+     "conDescuento": 476800,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "R"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CADENA DE DISTRIBUCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 595574
+    },
+    {
+     "n": 9,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 108,
+     "horas": 4.0,
+     "manoObra": 202000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETENES MASAS DEL",
+       "codigo": "5183044000",
+       "cantidad": 2.0,
+       "precioUnitario": 9012,
+       "subtotal": 18024
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETEN MASA TRAS INT",
+       "codigo": "528104F450",
+       "cantidad": 2.0,
+       "precioUnitario": 11908,
+       "subtotal": 23817
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETEN MASA TRAS EXT",
+       "codigo": "528204B100",
+       "cantidad": 2.0,
+       "precioUnitario": 10658,
+       "subtotal": 21315
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      }
+     ],
+     "totalConIva": 487000,
+     "totalNeto": null,
+     "conDescuento": 389600,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION. USAR PRESURIZADOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "PUNTOS DE ENGRASE (En los modelos que corresponda)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE MAZAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 486974
+    },
+    {
+     "n": 10,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 120,
+     "horas": 3.3,
+     "manoObra": 166650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263304A001",
+       "cantidad": 1.0,
+       "precioUnitario": 19334,
+       "subtotal": 19334
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO COMBUSTIBLE",
+       "codigo": "31922D3900",
+       "cantidad": 1.0,
+       "precioUnitario": 74717,
+       "subtotal": 74717
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 7.6,
+       "precioUnitario": 19823,
+       "subtotal": 150655
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE TRANSMISIÓN MANUAL",
+       "codigo": "100219C",
+       "cantidad": 2.0,
+       "precioUnitario": 28148,
+       "subtotal": 56297
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ANTICONGELANTE",
+       "codigo": "105880",
+       "cantidad": 8.0,
+       "precioUnitario": 8359,
+       "subtotal": 66868
+      }
+     ],
+     "totalConIva": 592000,
+     "totalNeto": null,
+     "conDescuento": 473600,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "R"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: EGR,VGT, CUERPO DE MARIPOSA, VACIO ALTERNADOR, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "BOMBA VACIO DE ALTERNADOR (En los modelos que correspondan)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ELEMENTO DE FILTRO DE AIRE  (Ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, B/B agua. Dirección hidráulica y A/C)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "R"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR NIVEL DE UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE TRANSMISIÓN MANUAL FILL FOR LIFE (Libre de mantenimiento)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIFERENCIAL",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRAULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSION, AMORTIGUACION Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS (Ver nota N°2)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA Y MOTOR DE ARRANQUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS, BISAGRAS Y ANTENA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En los modelos que corresponda, ver nota N°1)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES Y KIT DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR PLUMILLAS Y LAVAPARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR  REFRIGERANTE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 591652
+    }
+   ]
+  }
+ ],
+ "adicionales": [],
+ "packs": [],
+ "notas": [
+  "El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios",
+  "El valor de 1 hora de mano de obra es:"
+ ],
+ "fuente": "Pauta Mantención Hyundai 2026.xlsx / hoja 'Porter (HR) CRDI E6 costo'"
+}

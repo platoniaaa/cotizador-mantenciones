@@ -1,1 +1,2764 @@
-{"marca":"jim","marcaNombre":"JIM","modelo":"Remax","version":"JIM Remax 4x2 MT","motor":null,"segmento":null,"categoria":null,"vigencia":"Activo","tarifaMO":40000,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":5000,"etiqueta":"5.000 km","meses":3,"horas":null,"manoObra":0,"items":[],"totalConIva":0,"totalNeto":null,"conDescuento":null,"gratis":true,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"I"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":0},{"n":2,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":2.9,"manoObra":116000,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832},{"tipo":"lubricante","nombre":"ACEITE DE TRASMISION","codigo":"100219","cantidad":2.7,"precioUnitario":31459,"subtotal":84938},{"tipo":"lubricante","nombre":"ACEITE DIFERENCIAL TRASERO","codigo":"100241","cantidad":2.2,"precioUnitario":9057,"subtotal":19926}],"totalConIva":355000,"totalNeto":298000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"C"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"C"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":354713},{"n":3,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":3.3,"manoObra":132000,"items":[{"tipo":"repuesto","nombre":"FILTRO DE COMBUSTIBLE","codigo":"CA100241460","cantidad":1.0,"precioUnitario":78756,"subtotal":78756},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832}],"totalConIva":345000,"totalNeto":290000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"C"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"VERIFICACION DOSIFICACION  SISTEMA UREA","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":344606},{"n":4,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":3.4,"manoObra":136000,"items":[{"tipo":"repuesto","nombre":"FILTRO DE AIRE","codigo":"CA100009070","cantidad":1.0,"precioUnitario":39784,"subtotal":39784},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"repuesto","nombre":"FILTRO AIRE CABINA (POLEN)","codigo":"CE100000770","cantidad":1.0,"precioUnitario":28245,"subtotal":28245},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832}],"totalConIva":338000,"totalNeto":284000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"C"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C","accion":"C"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":337879},{"n":5,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":4.2,"manoObra":168000,"items":[{"tipo":"repuesto","nombre":"FILTRO DE COMBUSTIBLE","codigo":"CA100241460","cantidad":1.0,"precioUnitario":78756,"subtotal":78756},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"repuesto","nombre":"RETEN DE MAZA","codigo":"C8980365940","cantidad":2.0,"precioUnitario":12146,"subtotal":24292},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832},{"tipo":"lubricante","nombre":"ACEITE DE TRASMISION","codigo":"100219","cantidad":2.7,"precioUnitario":31459,"subtotal":84938},{"tipo":"lubricante","nombre":"ACEITE DIRECCION","codigo":"105222","cantidad":1.0,"precioUnitario":11250,"subtotal":11250},{"tipo":"lubricante","nombre":"GRASA RODAMIENTOS","codigo":"100332","cantidad":0.5,"precioUnitario":9157,"subtotal":4578},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENOS","codigo":"100050","cantidad":0.7,"precioUnitario":14455,"subtotal":10118},{"tipo":"lubricante","nombre":"REFRIGERANTE","codigo":"105880","cantidad":11.0,"precioUnitario":5850,"subtotal":64350}],"totalConIva":580000,"totalNeto":487000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"C"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"C"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"R"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"C"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"C"},{"nombre":"REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"C"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"ENGRASE DE  RODAMIENTOS MASAS  DELANTERAS Y TRASERAS","accion":"R"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"VERIFICACION DOSIFICACION  SISTEMA UREA","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":580134},{"n":6,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":2.4,"manoObra":96000,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832},{"tipo":"lubricante","nombre":"ACEITE DIFERENCIAL TRASERO","codigo":"100241","cantidad":2.2,"precioUnitario":9057,"subtotal":19926}],"totalConIva":250000,"totalNeto":210000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"C"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":249775},{"n":7,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":4.0,"manoObra":160000,"items":[{"tipo":"repuesto","nombre":"FILTRO DE COMBUSTIBLE","codigo":"CA100241460","cantidad":1.0,"precioUnitario":78756,"subtotal":78756},{"tipo":"repuesto","nombre":"FILTRO DE AIRE","codigo":"CA100009070","cantidad":1.0,"precioUnitario":39784,"subtotal":39784},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"repuesto","nombre":"FILTRO AIRE CABINA (POLEN)","codigo":"CE100000770","cantidad":1.0,"precioUnitario":28245,"subtotal":28245},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832}],"totalConIva":441000,"totalNeto":371000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"C"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"C"},{"nombre":"CORREA DE A/C - ALTERNADOR Y DIRECCIÓN","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C","accion":"C"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"VERIFICACION DOSIFICACION  SISTEMA UREA","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":440635},{"n":8,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":3.0,"manoObra":120000,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832}],"totalConIva":254000,"totalNeto":213000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":253850},{"n":9,"km":80000,"etiqueta":"80.000 km","meses":96,"horas":4.1,"manoObra":164000,"items":[{"tipo":"repuesto","nombre":"FILTRO DE COMBUSTIBLE","codigo":"CA100241460","cantidad":1.0,"precioUnitario":78756,"subtotal":78756},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"repuesto","nombre":"RETEN DE MAZA","codigo":"C8980365940","cantidad":2.0,"precioUnitario":12146,"subtotal":24292},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832},{"tipo":"lubricante","nombre":"ACEITE DE TRASMISION","codigo":"100219","cantidad":2.7,"precioUnitario":31459,"subtotal":84938},{"tipo":"lubricante","nombre":"ACEITE DIRECCION","codigo":"105222","cantidad":1.0,"precioUnitario":11250,"subtotal":11250},{"tipo":"lubricante","nombre":"GRASA RODAMIENTOS","codigo":"100332","cantidad":0.5,"precioUnitario":9157,"subtotal":4578},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENOS","codigo":"100050","cantidad":0.7,"precioUnitario":14455,"subtotal":10118},{"tipo":"lubricante","nombre":"REFRIGERANTE","codigo":"105880","cantidad":11.0,"precioUnitario":5850,"subtotal":64350}],"totalConIva":576000,"totalNeto":484000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"C"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"CORREA DE A/C - ALTERNADOR Y DIRECCIÓN","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"C"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"R"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"C"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"C"},{"nombre":"REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"C"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"ENGRASE DE  RODAMIENTOS MASAS  DELANTERAS Y TRASERAS","accion":"R"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"VERIFICACION DOSIFICACION  SISTEMA UREA","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":576134},{"n":10,"km":90000,"etiqueta":"90.000 km","meses":108,"horas":3.5,"manoObra":140000,"items":[{"tipo":"repuesto","nombre":"FILTRO DE AIRE","codigo":"CA100009070","cantidad":1.0,"precioUnitario":39784,"subtotal":39784},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"repuesto","nombre":"FILTRO AIRE CABINA (POLEN)","codigo":"CE100000770","cantidad":1.0,"precioUnitario":28245,"subtotal":28245},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832},{"tipo":"lubricante","nombre":"ACEITE DIFERENCIAL TRASERO","codigo":"100241","cantidad":2.2,"precioUnitario":9057,"subtotal":19926}],"totalConIva":362000,"totalNeto":304000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"C"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"C"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C","accion":"C"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":361804},{"n":11,"km":100000,"etiqueta":"100.000 km","meses":120,"horas":5.8,"manoObra":232000,"items":[{"tipo":"repuesto","nombre":"FILTRO DE COMBUSTIBLE","codigo":"CA100241460","cantidad":1.0,"precioUnitario":78756,"subtotal":78756},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"repuesto","nombre":"CORREA DE DISTRIBUCIÓN","codigo":"1021013QNA","cantidad":1.0,"precioUnitario":259396,"subtotal":259396},{"tipo":"repuesto","nombre":"RODAMIENTO TENSOR DISTRIBUCION","codigo":"1021020QNA","cantidad":1.0,"precioUnitario":165856,"subtotal":165856},{"tipo":"repuesto","nombre":"RODAMIENTO GUIA DISTRIBUCION","codigo":"PENDIENTE","cantidad":2.0,"precioUnitario":30000,"subtotal":60000},{"tipo":"repuesto","nombre":"CORREA DE SERVICIO","codigo":"CA100026960","cantidad":1.0,"precioUnitario":82443,"subtotal":82443},{"tipo":"repuesto","nombre":"BOMBA DE AGUA","codigo":"PENDIENTE","cantidad":1.0,"precioUnitario":26200,"subtotal":26200},{"tipo":"repuesto","nombre":"FILTRO BOMBA DE UREA","codigo":"PENDIENTE","cantidad":1.0,"precioUnitario":97000,"subtotal":97000},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832}],"totalConIva":1136000,"totalNeto":955000,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"C"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"CORREA DE A/C - ALTERNADOR Y DIRECCIÓN","accion":"C"},{"nombre":"CORREA DE DISTRIBUCION (incluye rod guia, tensor y boma de agua)","accion":"C"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"R"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"R"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO","accion":"I"},{"nombre":"VERIFICACION DOSIFICACION  SISTEMA UREA","accion":"I"},{"nombre":"FILTRO BOMBA UREA","accion":"C"},{"nombre":"FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)","accion":"I"}],"totalCalculado":1135501},{"n":12,"km":110000,"etiqueta":"110.000 km","meses":12,"horas":null,"manoObra":0,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832}],"totalConIva":133850,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"I"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"}],"totalCalculado":133850},{"n":13,"km":120000,"etiqueta":"120.000 km","meses":12,"horas":null,"manoObra":0,"items":[{"tipo":"repuesto","nombre":"FILTRO DE COMBUSTIBLE","codigo":"CA100241460","cantidad":1.0,"precioUnitario":78756,"subtotal":78756},{"tipo":"repuesto","nombre":"FILTRO DE AIRE","codigo":"CA100009070","cantidad":1.0,"precioUnitario":39784,"subtotal":39784},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832},{"tipo":"lubricante","nombre":"ACEITE DIRECCION","codigo":"105222","cantidad":1.0,"precioUnitario":11250,"subtotal":11250},{"tipo":"lubricante","nombre":"GRASA RODAMIENTOS","codigo":"100332","cantidad":0.5,"precioUnitario":9157,"subtotal":4578}],"totalConIva":268219,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"C"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"C"},{"nombre":"REFRIGERANTE MOTOR","accion":"C"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"I"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"C"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"C"},{"nombre":"REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C","accion":"C"}],"totalCalculado":268219},{"n":14,"km":130000,"etiqueta":"130.000 km","meses":12,"horas":null,"manoObra":0,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832},{"tipo":"lubricante","nombre":"ACEITE DE TRASMISION","codigo":"100219","cantidad":2.7,"precioUnitario":31459,"subtotal":84938}],"totalConIva":218788,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"I"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"C"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"C"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"}],"totalCalculado":218788},{"n":15,"km":140000,"etiqueta":"140.000 km","meses":12,"horas":null,"manoObra":0,"items":[{"tipo":"repuesto","nombre":"FILTRO DE AIRE","codigo":"CA100009070","cantidad":1.0,"precioUnitario":39784,"subtotal":39784},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832}],"totalConIva":173634,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"C"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"I"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"I"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"}],"totalCalculado":173634},{"n":16,"km":150000,"etiqueta":"150.000 km","meses":12,"horas":null,"manoObra":0,"items":[{"tipo":"repuesto","nombre":"FILTRO DE COMBUSTIBLE","codigo":"CA100241460","cantidad":1.0,"precioUnitario":78756,"subtotal":78756},{"tipo":"repuesto","nombre":"FILTRO ACEITE MOTOR","codigo":"CA100237110","cantidad":1.0,"precioUnitario":30763,"subtotal":30763},{"tipo":"material","nombre":"MATERIALES","codigo":null,"cantidad":1.0,"precioUnitario":17255,"subtotal":17255},{"tipo":"lubricante","nombre":"ACEITE DE MOTOR","codigo":"104406","cantidad":5.7,"precioUnitario":15058,"subtotal":85832},{"tipo":"lubricante","nombre":"ACEITE DIRECCION","codigo":"105222","cantidad":1.0,"precioUnitario":11250,"subtotal":11250}],"totalConIva":223856,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"CHEQUEAR CON EQUIPO DE DIAGNOSTICO","accion":"R"},{"nombre":"ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)","accion":"C"},{"nombre":"FILTRO DE ACEITE MOTOR","accion":"C"},{"nombre":"REVISIÓN DE NIVELES","accion":"I"},{"nombre":"DRENAR SEPARADOR DE AGUA","accion":"I"},{"nombre":"INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE","accion":"I"},{"nombre":"FILTRO DE AIRE","accion":"C"},{"nombre":"REFRIGERANTE MOTOR","accion":"I"},{"nombre":"REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)","accion":"I"},{"nombre":"DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)","accion":"I"},{"nombre":"FLUIDO DE DIRECCION Mobil ATF D/M","accion":"I"},{"nombre":"SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (","accion":"I"},{"nombre":"FLUIDO DE FRENOS Mobil Brake Fluid DOT-4","accion":"I"},{"nombre":"ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE MANO","accion":"I"},{"nombre":"FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4","accion":"C"},{"nombre":"ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC","accion":"I"},{"nombre":"ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)","accion":"I"},{"nombre":"CHEQUEO DEL SISTEMA A/C","accion":"I"},{"nombre":"ENGRASE DE CARDAN","accion":"R"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C","accion":"C"}],"totalCalculado":223856}]}],"adicionales":[{"nombre":"Alineación y balanceo","precio":32000,"porKm":{"20000":32000,"40000":32000,"60000":32000,"80000":32000,"100000":32000,"120000":32000,"140000":32000}}],"packs":[],"notas":["El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios de los listados de repuestos de Fortaleza S.A.","El valor de 1 hora de mano de obra es:","En el costo de las mantenciones, no está considerado alineacion y balanceo, se recomienda su realización según kilometraje indicado:"],"fuente":"Pauta de mantencion JIM Enero 2026.xlsx / hoja 'JIM Remax 4x2'"}
+{
+ "marca": "jim",
+ "marcaNombre": "JIM",
+ "modelo": "Remax",
+ "version": "JIM Remax 4x2 MT",
+ "motor": null,
+ "segmento": null,
+ "categoria": null,
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 5000,
+     "etiqueta": "5.000 km",
+     "meses": 3,
+     "horas": null,
+     "manoObra": 0,
+     "items": [],
+     "totalConIva": 0,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": true,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 0
+    },
+    {
+     "n": 2,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 2.9,
+     "manoObra": 146450,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE TRASMISION",
+       "codigo": "100219",
+       "cantidad": 2.7,
+       "precioUnitario": 31459,
+       "subtotal": 84938
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIFERENCIAL TRASERO",
+       "codigo": "100241",
+       "cantidad": 2.2,
+       "precioUnitario": 9057,
+       "subtotal": 19926
+      }
+     ],
+     "totalConIva": 355000,
+     "totalNeto": 298000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "C"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 354713
+    },
+    {
+     "n": 3,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 3.3,
+     "manoObra": 166650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "codigo": "CA100241460",
+       "cantidad": 1.0,
+       "precioUnitario": 78756,
+       "subtotal": 78756
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      }
+     ],
+     "totalConIva": 345000,
+     "totalNeto": 290000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "C"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFICACION DOSIFICACION  SISTEMA UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 344606
+    },
+    {
+     "n": 4,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 3.4,
+     "manoObra": 171700,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE AIRE",
+       "codigo": "CA100009070",
+       "cantidad": 1.0,
+       "precioUnitario": 39784,
+       "subtotal": 39784
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE CABINA (POLEN)",
+       "codigo": "CE100000770",
+       "cantidad": 1.0,
+       "precioUnitario": 28245,
+       "subtotal": 28245
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      }
+     ],
+     "totalConIva": 338000,
+     "totalNeto": 284000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "C"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C",
+       "accion": "C"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 337879
+    },
+    {
+     "n": 5,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 4.2,
+     "manoObra": 212100,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "codigo": "CA100241460",
+       "cantidad": 1.0,
+       "precioUnitario": 78756,
+       "subtotal": 78756
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETEN DE MAZA",
+       "codigo": "C8980365940",
+       "cantidad": 2.0,
+       "precioUnitario": 12146,
+       "subtotal": 24292
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE TRASMISION",
+       "codigo": "100219",
+       "cantidad": 2.7,
+       "precioUnitario": 31459,
+       "subtotal": 84938
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIRECCION",
+       "codigo": "105222",
+       "cantidad": 1.0,
+       "precioUnitario": 11250,
+       "subtotal": 11250
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "GRASA RODAMIENTOS",
+       "codigo": "100332",
+       "cantidad": 0.5,
+       "precioUnitario": 9157,
+       "subtotal": 4578
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENOS",
+       "codigo": "100050",
+       "cantidad": 0.7,
+       "precioUnitario": 14455,
+       "subtotal": 10118
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "REFRIGERANTE",
+       "codigo": "105880",
+       "cantidad": 11.0,
+       "precioUnitario": 5850,
+       "subtotal": 64350
+      }
+     ],
+     "totalConIva": 580000,
+     "totalNeto": 487000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "C"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "R"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "C"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "C"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE  RODAMIENTOS MASAS  DELANTERAS Y TRASERAS",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFICACION DOSIFICACION  SISTEMA UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 580134
+    },
+    {
+     "n": 6,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 2.4,
+     "manoObra": 121200,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIFERENCIAL TRASERO",
+       "codigo": "100241",
+       "cantidad": 2.2,
+       "precioUnitario": 9057,
+       "subtotal": 19926
+      }
+     ],
+     "totalConIva": 250000,
+     "totalNeto": 210000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 249775
+    },
+    {
+     "n": 7,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 4.0,
+     "manoObra": 202000,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "codigo": "CA100241460",
+       "cantidad": 1.0,
+       "precioUnitario": 78756,
+       "subtotal": 78756
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE AIRE",
+       "codigo": "CA100009070",
+       "cantidad": 1.0,
+       "precioUnitario": 39784,
+       "subtotal": 39784
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE CABINA (POLEN)",
+       "codigo": "CE100000770",
+       "cantidad": 1.0,
+       "precioUnitario": 28245,
+       "subtotal": 28245
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      }
+     ],
+     "totalConIva": 441000,
+     "totalNeto": 371000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "C"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "C"
+      },
+      {
+       "nombre": "CORREA DE A/C - ALTERNADOR Y DIRECCIÓN",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C",
+       "accion": "C"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFICACION DOSIFICACION  SISTEMA UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 440635
+    },
+    {
+     "n": 8,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 3.0,
+     "manoObra": 151500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      }
+     ],
+     "totalConIva": 254000,
+     "totalNeto": 213000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 253850
+    },
+    {
+     "n": 9,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 96,
+     "horas": 4.1,
+     "manoObra": 207050,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "codigo": "CA100241460",
+       "cantidad": 1.0,
+       "precioUnitario": 78756,
+       "subtotal": 78756
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RETEN DE MAZA",
+       "codigo": "C8980365940",
+       "cantidad": 2.0,
+       "precioUnitario": 12146,
+       "subtotal": 24292
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE TRASMISION",
+       "codigo": "100219",
+       "cantidad": 2.7,
+       "precioUnitario": 31459,
+       "subtotal": 84938
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIRECCION",
+       "codigo": "105222",
+       "cantidad": 1.0,
+       "precioUnitario": 11250,
+       "subtotal": 11250
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "GRASA RODAMIENTOS",
+       "codigo": "100332",
+       "cantidad": 0.5,
+       "precioUnitario": 9157,
+       "subtotal": 4578
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENOS",
+       "codigo": "100050",
+       "cantidad": 0.7,
+       "precioUnitario": 14455,
+       "subtotal": 10118
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "REFRIGERANTE",
+       "codigo": "105880",
+       "cantidad": 11.0,
+       "precioUnitario": 5850,
+       "subtotal": 64350
+      }
+     ],
+     "totalConIva": 576000,
+     "totalNeto": 484000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "C"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE A/C - ALTERNADOR Y DIRECCIÓN",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "R"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "C"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "C"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE  RODAMIENTOS MASAS  DELANTERAS Y TRASERAS",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFICACION DOSIFICACION  SISTEMA UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 576134
+    },
+    {
+     "n": 10,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 108,
+     "horas": 3.5,
+     "manoObra": 176750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE AIRE",
+       "codigo": "CA100009070",
+       "cantidad": 1.0,
+       "precioUnitario": 39784,
+       "subtotal": 39784
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE CABINA (POLEN)",
+       "codigo": "CE100000770",
+       "cantidad": 1.0,
+       "precioUnitario": 28245,
+       "subtotal": 28245
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIFERENCIAL TRASERO",
+       "codigo": "100241",
+       "cantidad": 2.2,
+       "precioUnitario": 9057,
+       "subtotal": 19926
+      }
+     ],
+     "totalConIva": 362000,
+     "totalNeto": 304000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "C"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C",
+       "accion": "C"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 361804
+    },
+    {
+     "n": 11,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 120,
+     "horas": 5.8,
+     "manoObra": 292900,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "codigo": "CA100241460",
+       "cantidad": 1.0,
+       "precioUnitario": 78756,
+       "subtotal": 78756
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "CORREA DE DISTRIBUCIÓN",
+       "codigo": "1021013QNA",
+       "cantidad": 1.0,
+       "precioUnitario": 259396,
+       "subtotal": 259396
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RODAMIENTO TENSOR DISTRIBUCION",
+       "codigo": "1021020QNA",
+       "cantidad": 1.0,
+       "precioUnitario": 165856,
+       "subtotal": 165856
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "RODAMIENTO GUIA DISTRIBUCION",
+       "codigo": "PENDIENTE",
+       "cantidad": 2.0,
+       "precioUnitario": 30000,
+       "subtotal": 60000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "CORREA DE SERVICIO",
+       "codigo": "CA100026960",
+       "cantidad": 1.0,
+       "precioUnitario": 82443,
+       "subtotal": 82443
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "BOMBA DE AGUA",
+       "codigo": "PENDIENTE",
+       "cantidad": 1.0,
+       "precioUnitario": 26200,
+       "subtotal": 26200
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO BOMBA DE UREA",
+       "codigo": "PENDIENTE",
+       "cantidad": 1.0,
+       "precioUnitario": 97000,
+       "subtotal": 97000
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      }
+     ],
+     "totalConIva": 1136000,
+     "totalNeto": 955000,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "C"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREA DE A/C - ALTERNADOR Y DIRECCIÓN",
+       "accion": "C"
+      },
+      {
+       "nombre": "CORREA DE DISTRIBUCION (incluye rod guia, tensor y boma de agua)",
+       "accion": "C"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "R"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFIQUE EL NIVEL DE UREA (OFERTE LLENENAR DE SER NECESARIO",
+       "accion": "I"
+      },
+      {
+       "nombre": "VERIFICACION DOSIFICACION  SISTEMA UREA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO BOMBA UREA",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DPF (REVISAR CANTIDAD DE GRAMOS) (REEMPLAZO DPF CADA 300.000KM)",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 1135501
+    },
+    {
+     "n": 12,
+     "km": 110000,
+     "etiqueta": "110.000 km",
+     "meses": 12,
+     "horas": null,
+     "manoObra": 0,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      }
+     ],
+     "totalConIva": 133850,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 133850
+    },
+    {
+     "n": 13,
+     "km": 120000,
+     "etiqueta": "120.000 km",
+     "meses": 12,
+     "horas": null,
+     "manoObra": 0,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "codigo": "CA100241460",
+       "cantidad": 1.0,
+       "precioUnitario": 78756,
+       "subtotal": 78756
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE AIRE",
+       "codigo": "CA100009070",
+       "cantidad": 1.0,
+       "precioUnitario": 39784,
+       "subtotal": 39784
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIRECCION",
+       "codigo": "105222",
+       "cantidad": 1.0,
+       "precioUnitario": 11250,
+       "subtotal": 11250
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "GRASA RODAMIENTOS",
+       "codigo": "100332",
+       "cantidad": 0.5,
+       "precioUnitario": 9157,
+       "subtotal": 4578
+      }
+     ],
+     "totalConIva": 268219,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "C"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "C"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "C"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C",
+       "accion": "C"
+      }
+     ],
+     "totalCalculado": 268219
+    },
+    {
+     "n": 14,
+     "km": 130000,
+     "etiqueta": "130.000 km",
+     "meses": 12,
+     "horas": null,
+     "manoObra": 0,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE TRASMISION",
+       "codigo": "100219",
+       "cantidad": 2.7,
+       "precioUnitario": 31459,
+       "subtotal": 84938
+      }
+     ],
+     "totalConIva": 218788,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "C"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 218788
+    },
+    {
+     "n": 15,
+     "km": 140000,
+     "etiqueta": "140.000 km",
+     "meses": 12,
+     "horas": null,
+     "manoObra": 0,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE AIRE",
+       "codigo": "CA100009070",
+       "cantidad": 1.0,
+       "precioUnitario": 39784,
+       "subtotal": 39784
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      }
+     ],
+     "totalConIva": 173634,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "C"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE JUEGO LIBRE DEL PEDAL DE EMBRAGUE",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 173634
+    },
+    {
+     "n": 16,
+     "km": 150000,
+     "etiqueta": "150.000 km",
+     "meses": 12,
+     "horas": null,
+     "manoObra": 0,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "codigo": "CA100241460",
+       "cantidad": 1.0,
+       "precioUnitario": 78756,
+       "subtotal": 78756
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE MOTOR",
+       "codigo": "CA100237110",
+       "cantidad": 1.0,
+       "precioUnitario": 30763,
+       "subtotal": 30763
+      },
+      {
+       "tipo": "material",
+       "nombre": "MATERIALES",
+       "codigo": null,
+       "cantidad": 1.0,
+       "precioUnitario": 17255,
+       "subtotal": 17255
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.7,
+       "precioUnitario": 15058,
+       "subtotal": 85832
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE DIRECCION",
+       "codigo": "105222",
+       "cantidad": 1.0,
+       "precioUnitario": 11250,
+       "subtotal": 11250
+      }
+     ],
+     "totalConIva": 223856,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "CHEQUEAR CON EQUIPO DE DIAGNOSTICO",
+       "accion": "R"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR  Mobil Super 3000 XE 5W-30 (ver nota 7)",
+       "accion": "C"
+      },
+      {
+       "nombre": "FILTRO DE ACEITE MOTOR",
+       "accion": "C"
+      },
+      {
+       "nombre": "REVISIÓN DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "DRENAR SEPARADOR DE AGUA",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCIÓN DE FUGAS, FIJACIÓN Y GRIETAS DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE",
+       "accion": "C"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR",
+       "accion": "I"
+      },
+      {
+       "nombre": "REALIZAR ROTACIÓN DE NEUMÁTICOS (aprendizaje TPMS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "DIRECCION HIDRÁULICA (BOMBA, MANGUERAS Y ARTICULACIONES)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE DIRECCION Mobil ATF D/M",
+       "accion": "I"
+      },
+      {
+       "nombre": "SUSPENSIÓN, AMORTIGUACIÓN Y REAPRIETE DEL TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESIÓN Y ESTADO DE NEUMÁTICOS (",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS Mobil Brake Fluid DOT-4",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACIÓN E INSPECCIÓN DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE MANO",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE EMBRAGUE Mobil Brake Fluid DOT-4",
+       "accion": "C"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSMISIÓN Mobil 75W-90 SHC",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL  TRASERO Mobilube HD LS 80W-90",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE CARGA (Alternador y Motor de arranque)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERÍA (Nivel del Líquido y carga)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DEL SISTEMA A/C",
+       "accion": "I"
+      },
+      {
+       "nombre": "ENGRASE DE CARDAN",
+       "accion": "R"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS Y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C",
+       "accion": "C"
+      }
+     ],
+     "totalCalculado": 223856
+    }
+   ]
+  }
+ ],
+ "adicionales": [
+  {
+   "nombre": "Alineación y balanceo",
+   "precio": 32000,
+   "porKm": {
+    "20000": 32000,
+    "40000": 32000,
+    "60000": 32000,
+    "80000": 32000,
+    "100000": 32000,
+    "120000": 32000,
+    "140000": 32000
+   }
+  }
+ ],
+ "packs": [],
+ "notas": [
+  "El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios de los listados de repuestos de Fortaleza S.A.",
+  "El valor de 1 hora de mano de obra es:",
+  "En el costo de las mantenciones, no está considerado alineacion y balanceo, se recomienda su realización según kilometraje indicado:"
+ ],
+ "fuente": "Pauta de mantencion JIM Enero 2026.xlsx / hoja 'JIM Remax 4x2'"
+}

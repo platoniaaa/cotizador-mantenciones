@@ -1,1 +1,1544 @@
-{"marca":"ford","marcaNombre":"Ford","modelo":"Transit","version":"Chasis · 2.2L TDCI","motor":"2.2L TDCI","segmento":null,"categoria":null,"vigencia":null,"tarifaMO":53000,"anios":["2022","2021"],"planes":[{"anio":"2022","intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":1.9,"manoObra":100700,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":477990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":1.9,"manoObra":100700,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":477990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":2.3,"manoObra":121900,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Fluido de Frenos","codigo":"PM20","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":526990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Fluido de Frenos","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":2.3,"manoObra":121900,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":502990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":1.9,"manoObra":100700,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":477990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":2.3,"manoObra":121900,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Correa de Accesorios","codigo":"1750991","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Fluido de Frenos","codigo":"PM20","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":584990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Correa de Accesorios","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Fluido de Frenos","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":2.1,"manoObra":111300,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Liquido refrigerante","codigo":"VC5","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":530990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"},{"nombre":"Liquido refrigerante","accion":"R"}],"totalCalculado":null}]},{"anio":"2021","intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":1.9,"manoObra":100700,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":477990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":1.9,"manoObra":100700,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":477990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":2.3,"manoObra":121900,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Fluido de Frenos","codigo":"PM20","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":526990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Fluido de Frenos","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":2.3,"manoObra":121900,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":502990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":1.9,"manoObra":100700,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":477990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":2.3,"manoObra":121900,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Correa de Accesorios","codigo":"1750991","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Fluido de Frenos","codigo":"PM20","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":584990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Correa de Accesorios","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Fluido de Frenos","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":2.1,"manoObra":111300,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"RXO5W30MS1","cantidad":11.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"2128722","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"1900519","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Filtro de Combustible","codigo":"2499389","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":null,"subtotal":null},{"tipo":"repuesto","nombre":"Liquido refrigerante","codigo":"VC5","cantidad":1.0,"precioUnitario":null,"subtotal":null}],"totalConIva":530990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Filtro de Combustible","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"},{"nombre":"Liquido refrigerante","accion":"R"}],"totalCalculado":null}]}],"adicionales":[],"packs":[],"notas":["Precios sugeridos de mantención con IVA incluido, publicados por Ford Chile para la red de concesionarios.","Realiza las mantenciones cada 12 meses o el kilometraje indicado, lo que ocurra primero."],"fuente":"Pauta Servicio Ford - 17-06-2026.xlsm / hoja 'Resumen'"}
+{
+ "marca": "ford",
+ "marcaNombre": "Ford",
+ "modelo": "Transit",
+ "version": "Chasis · 2.2L TDCI",
+ "motor": "2.2L TDCI",
+ "segmento": null,
+ "categoria": null,
+ "vigencia": null,
+ "tarifaMO": 53500,
+ "anios": [
+  "2022",
+  "2021"
+ ],
+ "planes": [
+  {
+   "anio": "2022",
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 1.9,
+     "manoObra": 101650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 477990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 1.9,
+     "manoObra": 101650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 477990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 2.3,
+     "manoObra": 123050,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Fluido de Frenos",
+       "codigo": "PM20",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 526990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Fluido de Frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 2.3,
+     "manoObra": 123050,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 502990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 1.9,
+     "manoObra": 101650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 477990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 2.3,
+     "manoObra": 123050,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Correa de Accesorios",
+       "codigo": "1750991",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Fluido de Frenos",
+       "codigo": "PM20",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 584990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Correa de Accesorios",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Fluido de Frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 2.1,
+     "manoObra": 112350,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Liquido refrigerante",
+       "codigo": "VC5",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 530990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      },
+      {
+       "nombre": "Liquido refrigerante",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    }
+   ]
+  },
+  {
+   "anio": "2021",
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 1.9,
+     "manoObra": 101650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 477990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 1.9,
+     "manoObra": 101650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 477990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 2.3,
+     "manoObra": 123050,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Fluido de Frenos",
+       "codigo": "PM20",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 526990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Fluido de Frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 2.3,
+     "manoObra": 123050,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 502990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 1.9,
+     "manoObra": 101650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 477990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 2.3,
+     "manoObra": 123050,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Correa de Accesorios",
+       "codigo": "1750991",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Fluido de Frenos",
+       "codigo": "PM20",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 584990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Correa de Accesorios",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Fluido de Frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 2.1,
+     "manoObra": 112350,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "RXO5W30MS1",
+       "cantidad": 11.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "2128722",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "1900519",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Combustible",
+       "codigo": "2499389",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Liquido refrigerante",
+       "codigo": "VC5",
+       "cantidad": 1.0,
+       "precioUnitario": null,
+       "subtotal": null
+      }
+     ],
+     "totalConIva": 530990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Combustible",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      },
+      {
+       "nombre": "Liquido refrigerante",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    }
+   ]
+  }
+ ],
+ "adicionales": [],
+ "packs": [],
+ "notas": [
+  "Precios sugeridos de mantención con IVA incluido, publicados por Ford Chile para la red de concesionarios.",
+  "Realiza las mantenciones cada 12 meses o el kilometraje indicado, lo que ocurra primero."
+ ],
+ "fuente": "Pauta Servicio Ford - 17-06-2026.xlsm / hoja 'Resumen'"
+}

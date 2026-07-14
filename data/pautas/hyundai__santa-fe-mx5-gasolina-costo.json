@@ -1,1 +1,1596 @@
-{"marca":"hyundai","marcaNombre":"Hyundai","modelo":"Santa Fe","version":"Santa Fe 2.5 GDI y T-GDI (MX5)","motor":null,"segmento":null,"categoria":"Media","vigencia":"Activo","tarifaMO":60095,"anios":null,"planes":[{"anio":null,"intervalos":[{"n":1,"km":10000,"etiqueta":"10.000 km","meses":12,"horas":1.5,"manoObra":90142,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974}],"totalConIva":233000,"totalNeto":null,"conDescuento":233000,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":233373},{"n":2,"km":20000,"etiqueta":"20.000 km","meses":24,"horas":2.5,"manoObra":150238,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974}],"totalConIva":305000,"totalNeto":null,"conDescuento":289750,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"CARDAN 4WD","accion":"I"},{"nombre":"FUNCIONAMIENTO DEL SISTEMA 4WD","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":305487},{"n":3,"km":30000,"etiqueta":"30.000 km","meses":36,"horas":1.5,"manoObra":90142,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974}],"totalConIva":233000,"totalNeto":null,"conDescuento":209700,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":233373},{"n":4,"km":40000,"etiqueta":"40.000 km","meses":48,"horas":2.5,"manoObra":150238,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"FILTRO AIRE MOTOR","codigo":"28113L1000","cantidad":1.0,"precioUnitario":40690,"subtotal":40690},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974}],"totalConIva":346000,"totalNeto":null,"conDescuento":294100,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"R"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"CARDAN 4WD","accion":"I"},{"nombre":"FUNCIONAMIENTO DEL SISTEMA 4WD","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":346176},{"n":5,"km":50000,"etiqueta":"50.000 km","meses":60,"horas":2.2,"manoObra":132209,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENOS","codigo":"100051C","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":282000,"totalNeto":null,"conDescuento":225600,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"R"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":281524},{"n":6,"km":60000,"etiqueta":"60.000 km","meses":72,"horas":3.7,"manoObra":222352,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"FILTRO COMBUSTIBLE","codigo":"31112L1000","cantidad":1.0,"precioUnitario":51544,"subtotal":51544},{"tipo":"repuesto","nombre":"FILTRO AIRE ESTANQUE","codigo":"31454L1300","cantidad":1.0,"precioUnitario":47148,"subtotal":47148},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974}],"totalConIva":476000,"totalNeto":null,"conDescuento":380800,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE COMBUSTIBLE","accion":"R"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"FILTRO DE AIRE DEL ESTANQUE","accion":"R"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"ACEITE TRANSMISIÓN AUTOMÁTICA DE EMBRAGUE DOBLE (DCT)","accion":"I"},{"nombre":"ACEITE CAJA DE TRANSFERENCIA 4WD  (Debe cambiarse siempre que se haya sumergido en agua)","accion":"I"},{"nombre":"ACEITE DIFERENCIAL TRASERO 4WD  (Debe cambiarse siempre que se haya sumergido en agua)","accion":"I"},{"nombre":"CARDAN 4WD","accion":"I"},{"nombre":"FUNCIONAMIENTO DEL SISTEMA 4WD","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":476292},{"n":7,"km":70000,"etiqueta":"70.000 km","meses":84,"horas":1.5,"manoObra":90142,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974}],"totalConIva":233000,"totalNeto":null,"conDescuento":186400,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":233373},{"n":8,"km":80000,"etiqueta":"80.000 km","meses":96,"horas":2.5,"manoObra":150238,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"FILTRO AIRE MOTOR","codigo":"28113L1000","cantidad":1.0,"precioUnitario":40690,"subtotal":40690},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974}],"totalConIva":346000,"totalNeto":null,"conDescuento":276800,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"R"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"CARDAN 4WD","accion":"I"},{"nombre":"FUNCIONAMIENTO DEL SISTEMA 4WD","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":346176},{"n":9,"km":90000,"etiqueta":"90.000 km","meses":108,"horas":2.7,"manoObra":162256,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"CORREA ALT/AC (GDI)","codigo":"252122S000","cantidad":1.0,"precioUnitario":84496,"subtotal":84496},{"tipo":"repuesto","nombre":"CORREA ALT/AC (T-GDI)","codigo":"252122T000","cantidad":1.0,"precioUnitario":38210,"subtotal":38210},{"tipo":"repuesto","nombre":"CORREA BOMBA DE AGUA (GDI)","codigo":"252122S050","cantidad":1.0,"precioUnitario":20666,"subtotal":20666},{"tipo":"repuesto","nombre":"CORREA BOMBA DE AGUA (T-GDI)","codigo":"252122S150","cantidad":1.0,"precioUnitario":25528,"subtotal":25528},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":12019},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974}],"totalConIva":369000,"totalNeto":null,"conDescuento":295200,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"R"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"I"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"}],"totalCalculado":474386},{"n":10,"km":100000,"etiqueta":"100.000 km","meses":120,"horas":2.7,"manoObra":162256,"items":[{"tipo":"repuesto","nombre":"FILTRO ACEITE","codigo":"263502S001","cantidad":1.0,"precioUnitario":14807,"subtotal":14807},{"tipo":"repuesto","nombre":"GOLILLA CARTER","codigo":"2151323001","cantidad":1.0,"precioUnitario":1430,"subtotal":1430},{"tipo":"material","nombre":"Materiales","codigo":null,"cantidad":1,"precioUnitario":null,"subtotal":24038},{"tipo":"lubricante","nombre":"ACEITE MOTOR","codigo":"104406","cantidad":5.8,"precioUnitario":19823,"subtotal":114974},{"tipo":"lubricante","nombre":"LIQUIDO DE FRENOS","codigo":"100051C","cantidad":1.0,"precioUnitario":6084,"subtotal":6084}],"totalConIva":324000,"totalNeto":null,"conDescuento":259200,"gratis":false,"operaciones":[{"nombre":"REVISIÓN CON EQUIPO DIAGNOSTICO GDS","accion":"I"},{"nombre":"ACEITE DE MOTOR Y FILTRO","accion":"R"},{"nombre":"REVISION DE NIVELES","accion":"I"},{"nombre":"FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)","accion":"I"},{"nombre":"REVISAR FUGAS SISTEMA DE REFRIGERACION","accion":"I"},{"nombre":"REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)","accion":"I"},{"nombre":"INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES","accion":"I"},{"nombre":"MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.","accion":"I"},{"nombre":"CONTROL DE RALENTI Y GASES","accion":"I"},{"nombre":"REVISAR SISTEMA DE ESCAPE","accion":"I"},{"nombre":"REVISION DE FUGAS","accion":"I"},{"nombre":"CARDAN 4WD","accion":"I"},{"nombre":"FUNCIONAMIENTO DEL SISTEMA 4WD","accion":"I"},{"nombre":"REVISAR DIRECCION ASISTIDA (EPS o MDPS)","accion":"I"},{"nombre":"REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO","accion":"I"},{"nombre":"CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS","accion":"I"},{"nombre":"FLUIDO DE FRENOS","accion":"R"},{"nombre":"REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)","accion":"I"},{"nombre":"ASEO, REGULACION E INSPECCION DE FRENOS","accion":"I"},{"nombre":"FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO","accion":"I"},{"nombre":"REVISAR LUCES","accion":"I"},{"nombre":"REVISAR ESTADO DE BATERIA (Midtronic)","accion":"I"},{"nombre":"LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS","accion":"I"},{"nombre":"FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)","accion":"I"},{"nombre":"REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD","accion":"I"},{"nombre":"INPECCION DE PLUMILLAS Y LAVA PARABRISAS","accion":"I"},{"nombre":"REVISAR REFRIGERANTE DE A/C Y COMPRESOR","accion":"I"}],"totalCalculado":323590}]}],"adicionales":[],"packs":[],"notas":["El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios","El valor de 1 hora de mano de obra es:"],"fuente":"Pauta Mantención Hyundai 2026.xlsx / hoja 'Santa Fe MX5 gasolina costo'"}
+{
+ "marca": "hyundai",
+ "marcaNombre": "Hyundai",
+ "modelo": "Santa Fe",
+ "version": "Santa Fe 2.5 GDI y T-GDI (MX5)",
+ "motor": null,
+ "segmento": null,
+ "categoria": "Media",
+ "vigencia": "Activo",
+ "tarifaMO": 50500,
+ "anios": null,
+ "planes": [
+  {
+   "anio": null,
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 10000,
+     "etiqueta": "10.000 km",
+     "meses": 12,
+     "horas": 1.5,
+     "manoObra": 75750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      }
+     ],
+     "totalConIva": 233000,
+     "totalNeto": null,
+     "conDescuento": 233000,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 233373
+    },
+    {
+     "n": 2,
+     "km": 20000,
+     "etiqueta": "20.000 km",
+     "meses": 24,
+     "horas": 2.5,
+     "manoObra": 126250,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      }
+     ],
+     "totalConIva": 305000,
+     "totalNeto": null,
+     "conDescuento": 289750,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "CARDAN 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DEL SISTEMA 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 305487
+    },
+    {
+     "n": 3,
+     "km": 30000,
+     "etiqueta": "30.000 km",
+     "meses": 36,
+     "horas": 1.5,
+     "manoObra": 75750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      }
+     ],
+     "totalConIva": 233000,
+     "totalNeto": null,
+     "conDescuento": 209700,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 233373
+    },
+    {
+     "n": 4,
+     "km": 40000,
+     "etiqueta": "40.000 km",
+     "meses": 48,
+     "horas": 2.5,
+     "manoObra": 126250,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE MOTOR",
+       "codigo": "28113L1000",
+       "cantidad": 1.0,
+       "precioUnitario": 40690,
+       "subtotal": 40690
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      }
+     ],
+     "totalConIva": 346000,
+     "totalNeto": null,
+     "conDescuento": 294100,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "CARDAN 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DEL SISTEMA 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 346176
+    },
+    {
+     "n": 5,
+     "km": 50000,
+     "etiqueta": "50.000 km",
+     "meses": 60,
+     "horas": 2.2,
+     "manoObra": 111100,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENOS",
+       "codigo": "100051C",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 282000,
+     "totalNeto": null,
+     "conDescuento": 225600,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 281524
+    },
+    {
+     "n": 6,
+     "km": 60000,
+     "etiqueta": "60.000 km",
+     "meses": 72,
+     "horas": 3.7,
+     "manoObra": 186850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO COMBUSTIBLE",
+       "codigo": "31112L1000",
+       "cantidad": 1.0,
+       "precioUnitario": 51544,
+       "subtotal": 51544
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE ESTANQUE",
+       "codigo": "31454L1300",
+       "cantidad": 1.0,
+       "precioUnitario": 47148,
+       "subtotal": 47148
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      }
+     ],
+     "totalConIva": 476000,
+     "totalNeto": null,
+     "conDescuento": 380800,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE COMBUSTIBLE",
+       "accion": "R"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE DEL ESTANQUE",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE TRANSMISIÓN AUTOMÁTICA DE EMBRAGUE DOBLE (DCT)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE CAJA DE TRANSFERENCIA 4WD  (Debe cambiarse siempre que se haya sumergido en agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DIFERENCIAL TRASERO 4WD  (Debe cambiarse siempre que se haya sumergido en agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CARDAN 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DEL SISTEMA 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 476292
+    },
+    {
+     "n": 7,
+     "km": 70000,
+     "etiqueta": "70.000 km",
+     "meses": 84,
+     "horas": 1.5,
+     "manoObra": 75750,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      }
+     ],
+     "totalConIva": 233000,
+     "totalNeto": null,
+     "conDescuento": 186400,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 233373
+    },
+    {
+     "n": 8,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 96,
+     "horas": 2.5,
+     "manoObra": 126250,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO AIRE MOTOR",
+       "codigo": "28113L1000",
+       "cantidad": 1.0,
+       "precioUnitario": 40690,
+       "subtotal": 40690
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      }
+     ],
+     "totalConIva": 346000,
+     "totalNeto": null,
+     "conDescuento": 276800,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "R"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "CARDAN 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DEL SISTEMA 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 346176
+    },
+    {
+     "n": 9,
+     "km": 90000,
+     "etiqueta": "90.000 km",
+     "meses": 108,
+     "horas": 2.7,
+     "manoObra": 136350,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "CORREA ALT/AC (GDI)",
+       "codigo": "252122S000",
+       "cantidad": 1.0,
+       "precioUnitario": 84496,
+       "subtotal": 84496
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "CORREA ALT/AC (T-GDI)",
+       "codigo": "252122T000",
+       "cantidad": 1.0,
+       "precioUnitario": 38210,
+       "subtotal": 38210
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "CORREA BOMBA DE AGUA (GDI)",
+       "codigo": "252122S050",
+       "cantidad": 1.0,
+       "precioUnitario": 20666,
+       "subtotal": 20666
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "CORREA BOMBA DE AGUA (T-GDI)",
+       "codigo": "252122S150",
+       "cantidad": 1.0,
+       "precioUnitario": 25528,
+       "subtotal": 25528
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 12019
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      }
+     ],
+     "totalConIva": 369000,
+     "totalNeto": null,
+     "conDescuento": 295200,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 474386
+    },
+    {
+     "n": 10,
+     "km": 100000,
+     "etiqueta": "100.000 km",
+     "meses": 120,
+     "horas": 2.7,
+     "manoObra": 136350,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "FILTRO ACEITE",
+       "codigo": "263502S001",
+       "cantidad": 1.0,
+       "precioUnitario": 14807,
+       "subtotal": 14807
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "GOLILLA CARTER",
+       "codigo": "2151323001",
+       "cantidad": 1.0,
+       "precioUnitario": 1430,
+       "subtotal": 1430
+      },
+      {
+       "tipo": "material",
+       "nombre": "Materiales",
+       "codigo": null,
+       "cantidad": 1,
+       "precioUnitario": null,
+       "subtotal": 24038
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "ACEITE MOTOR",
+       "codigo": "104406",
+       "cantidad": 5.8,
+       "precioUnitario": 19823,
+       "subtotal": 114974
+      },
+      {
+       "tipo": "lubricante",
+       "nombre": "LIQUIDO DE FRENOS",
+       "codigo": "100051C",
+       "cantidad": 1.0,
+       "precioUnitario": 6084,
+       "subtotal": 6084
+      }
+     ],
+     "totalConIva": 324000,
+     "totalNeto": null,
+     "conDescuento": 259200,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "REVISIÓN CON EQUIPO DIAGNOSTICO GDS",
+       "accion": "I"
+      },
+      {
+       "nombre": "ACEITE DE MOTOR Y FILTRO",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION DE NIVELES",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE AIRE ADMISIÓN (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "CORREAS DE ACCESORIOS (Alternador, A/C y bomba de agua)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR FUGAS SISTEMA DE REFRIGERACION",
+       "accion": "I"
+      },
+      {
+       "nombre": "REFRIGERANTE MOTOR (Cambiar a los 195.000 km o 10 años, luego cada 30.000 km o 2 años)",
+       "accion": "I"
+      },
+      {
+       "nombre": "INSPECCION DE FUGAS EN CAÑERIAS Y NIPLES",
+       "accion": "I"
+      },
+      {
+       "nombre": "MANGUERAS DE VACIO PARA: PCV, CONTROL DE PURGA Y CUERPO DE ACELERACIÓN, ETC.",
+       "accion": "I"
+      },
+      {
+       "nombre": "CONTROL DE RALENTI Y GASES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SISTEMA DE ESCAPE",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISION DE FUGAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "CARDAN 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO DEL SISTEMA 4WD",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR DIRECCION ASISTIDA (EPS o MDPS)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR SUSPENSION, AMORTIGUACION, TREN DELANTERO Y TRASERO",
+       "accion": "I"
+      },
+      {
+       "nombre": "CHEQUEO DE PRESION Y ESTADO DE NEUMATICOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FLUIDO DE FRENOS",
+       "accion": "R"
+      },
+      {
+       "nombre": "REVISION ESTADO DE LAS PASTILLAS DE FRENOS (Visualmente)",
+       "accion": "I"
+      },
+      {
+       "nombre": "ASEO, REGULACION E INSPECCION DE FRENOS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FUNCIONAMIENTO FRENO DE ESTACIONAMIENTO",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR LUCES",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO DE BATERIA (Midtronic)",
+       "accion": "I"
+      },
+      {
+       "nombre": "LIMPIAR Y LUBRICAR CHAPAS DE PUERTAS y BISAGRAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "FILTRO DE POLEN A/C  (En terrenos polvorientos se debe cambiar con mayor frecuencia)",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR ESTADO Y FUNCIONAMIENTO DE LOS CINTURONES DE SEGURIDAD",
+       "accion": "I"
+      },
+      {
+       "nombre": "INPECCION DE PLUMILLAS Y LAVA PARABRISAS",
+       "accion": "I"
+      },
+      {
+       "nombre": "REVISAR REFRIGERANTE DE A/C Y COMPRESOR",
+       "accion": "I"
+      }
+     ],
+     "totalCalculado": 323590
+    }
+   ]
+  }
+ ],
+ "adicionales": [],
+ "packs": [],
+ "notas": [
+  "El valor de las mantenciones es un referencial aproximado, y están sujetos a modificaciones de acuerdo a las variaciones de los precios",
+  "El valor de 1 hora de mano de obra es:"
+ ],
+ "fuente": "Pauta Mantención Hyundai 2026.xlsx / hoja 'Santa Fe MX5 gasolina costo'"
+}

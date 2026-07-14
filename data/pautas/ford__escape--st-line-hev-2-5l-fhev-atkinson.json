@@ -1,1 +1,942 @@
-{"marca":"ford","marcaNombre":"Ford","modelo":"Escape","version":"ST-Line HEV · 2.5L FHEV Atkinson","motor":"2.5L FHEV Atkinson","segmento":null,"categoria":null,"vigencia":null,"tarifaMO":53000,"anios":["2023"],"planes":[{"anio":"2023","intervalos":[{"n":1,"km":16000,"etiqueta":"16.000 km","meses":12,"horas":3.0,"manoObra":159000,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740}],"totalConIva":370990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":2,"km":32000,"etiqueta":"32.000 km","meses":24,"horas":3.2,"manoObra":169600,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"LX6Z19N619CA","cantidad":1.0,"precioUnitario":40757,"subtotal":40757},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740}],"totalConIva":431990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":3,"km":48000,"etiqueta":"48.000 km","meses":36,"horas":3.1,"manoObra":164300,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Fluido de Frenos","codigo":"PM20","cantidad":2.0,"precioUnitario":20062,"subtotal":40124},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740}],"totalConIva":424990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Fluido de Frenos","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":4,"km":64000,"etiqueta":"64.000 km","meses":48,"horas":3.6,"manoObra":190800,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"LX6Z19N619CA","cantidad":1.0,"precioUnitario":40757,"subtotal":40757},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740}],"totalConIva":456990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":5,"km":80000,"etiqueta":"80.000 km","meses":60,"horas":3.9,"manoObra":206700,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Bujías de Encendido","codigo":"AYFS32YRX","cantidad":4.0,"precioUnitario":21673,"subtotal":86692},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740}],"totalConIva":530990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Bujías de Encendido","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":6,"km":96000,"etiqueta":"96.000 km","meses":72,"horas":3.5,"manoObra":185500,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"LX6Z19N619CA","cantidad":1.0,"precioUnitario":40757,"subtotal":40757},{"tipo":"repuesto","nombre":"Fluido de Frenos","codigo":"PM20","cantidad":2.0,"precioUnitario":20062,"subtotal":40124},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740}],"totalConIva":498990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Fluido de Frenos","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":7,"km":112000,"etiqueta":"112.000 km","meses":84,"horas":3.0,"manoObra":159000,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740}],"totalConIva":370990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":8,"km":128000,"etiqueta":"128.000 km","meses":96,"horas":3.5,"manoObra":185500,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"LX6Z19N619CA","cantidad":1.0,"precioUnitario":40757,"subtotal":40757},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740}],"totalConIva":450990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":9,"km":144000,"etiqueta":"144.000 km","meses":108,"horas":3.3,"manoObra":174900,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Fluido de Frenos","codigo":"PM20","cantidad":2.0,"precioUnitario":20062,"subtotal":40124},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740}],"totalConIva":436990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Fluido de Frenos","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"}],"totalCalculado":null},{"n":10,"km":160000,"etiqueta":"160.000 km","meses":120,"horas":4.9,"manoObra":259700,"items":[{"tipo":"repuesto","nombre":"Aceite Motor","codigo":"XO0W20QFS","cantidad":6.0,"precioUnitario":12561,"subtotal":75366},{"tipo":"repuesto","nombre":"Bujías de Encendido","codigo":"AYFS32YRX","cantidad":4.0,"precioUnitario":21673,"subtotal":86692},{"tipo":"repuesto","nombre":"Filtro de Aceite","codigo":"BE8Z6731AB","cantidad":1.0,"precioUnitario":15167,"subtotal":15167},{"tipo":"repuesto","nombre":"Filtro de Aire Motor","codigo":"LX6Z9601A","cantidad":1.0,"precioUnitario":34902,"subtotal":34902},{"tipo":"repuesto","nombre":"Filtro de Cabina o Antipolen","codigo":"LX6Z19N619CA","cantidad":1.0,"precioUnitario":40757,"subtotal":40757},{"tipo":"repuesto","nombre":"Fluidos de la Transmisión","codigo":"XT12QULV","cantidad":5.0,"precioUnitario":10100,"subtotal":50500},{"tipo":"repuesto","nombre":"Limpiador de frenos","codigo":"Compra en plaza","cantidad":1.0,"precioUnitario":25000,"subtotal":25000},{"tipo":"repuesto","nombre":"Líquido limpiabrisas","codigo":"MZC56AX","cantidad":1.0,"precioUnitario":1740,"subtotal":1740},{"tipo":"repuesto","nombre":"Liquido refrigerante","codigo":"VC13G","cantidad":4.0,"precioUnitario":46239,"subtotal":184956}],"totalConIva":921990,"totalNeto":null,"conDescuento":null,"gratis":false,"operaciones":[{"nombre":"Aceite Motor","accion":"R"},{"nombre":"Bujías de Encendido","accion":"R"},{"nombre":"Filtro de Aceite","accion":"R"},{"nombre":"Filtro de Aire Motor","accion":"R"},{"nombre":"Filtro de Cabina o Antipolen","accion":"R"},{"nombre":"Fluidos de la Transmisión","accion":"R"},{"nombre":"Limpiador de frenos","accion":"R"},{"nombre":"Líquido limpiabrisas","accion":"R"},{"nombre":"Liquido refrigerante","accion":"R"}],"totalCalculado":null}]}],"adicionales":[],"packs":[],"notas":["Precios sugeridos de mantención con IVA incluido, publicados por Ford Chile para la red de concesionarios.","Realiza las mantenciones cada 12 meses o el kilometraje indicado, lo que ocurra primero."],"fuente":"Pauta Servicio Ford - 17-06-2026.xlsm / hoja 'Resumen'"}
+{
+ "marca": "ford",
+ "marcaNombre": "Ford",
+ "modelo": "Escape",
+ "version": "ST-Line HEV · 2.5L FHEV Atkinson",
+ "motor": "2.5L FHEV Atkinson",
+ "segmento": null,
+ "categoria": null,
+ "vigencia": null,
+ "tarifaMO": 53500,
+ "anios": [
+  "2023"
+ ],
+ "planes": [
+  {
+   "anio": "2023",
+   "intervalos": [
+    {
+     "n": 1,
+     "km": 16000,
+     "etiqueta": "16.000 km",
+     "meses": 12,
+     "horas": 3.0,
+     "manoObra": 160500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      }
+     ],
+     "totalConIva": 370990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 2,
+     "km": 32000,
+     "etiqueta": "32.000 km",
+     "meses": 24,
+     "horas": 3.2,
+     "manoObra": 171200,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "LX6Z19N619CA",
+       "cantidad": 1.0,
+       "precioUnitario": 40757,
+       "subtotal": 40757
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      }
+     ],
+     "totalConIva": 431990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 3,
+     "km": 48000,
+     "etiqueta": "48.000 km",
+     "meses": 36,
+     "horas": 3.1,
+     "manoObra": 165850,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Fluido de Frenos",
+       "codigo": "PM20",
+       "cantidad": 2.0,
+       "precioUnitario": 20062,
+       "subtotal": 40124
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      }
+     ],
+     "totalConIva": 424990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Fluido de Frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 4,
+     "km": 64000,
+     "etiqueta": "64.000 km",
+     "meses": 48,
+     "horas": 3.6,
+     "manoObra": 192600,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "LX6Z19N619CA",
+       "cantidad": 1.0,
+       "precioUnitario": 40757,
+       "subtotal": 40757
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      }
+     ],
+     "totalConIva": 456990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 5,
+     "km": 80000,
+     "etiqueta": "80.000 km",
+     "meses": 60,
+     "horas": 3.9,
+     "manoObra": 208650,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías de Encendido",
+       "codigo": "AYFS32YRX",
+       "cantidad": 4.0,
+       "precioUnitario": 21673,
+       "subtotal": 86692
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      }
+     ],
+     "totalConIva": 530990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Bujías de Encendido",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 6,
+     "km": 96000,
+     "etiqueta": "96.000 km",
+     "meses": 72,
+     "horas": 3.5,
+     "manoObra": 187250,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "LX6Z19N619CA",
+       "cantidad": 1.0,
+       "precioUnitario": 40757,
+       "subtotal": 40757
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Fluido de Frenos",
+       "codigo": "PM20",
+       "cantidad": 2.0,
+       "precioUnitario": 20062,
+       "subtotal": 40124
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      }
+     ],
+     "totalConIva": 498990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Fluido de Frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 7,
+     "km": 112000,
+     "etiqueta": "112.000 km",
+     "meses": 84,
+     "horas": 3.0,
+     "manoObra": 160500,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      }
+     ],
+     "totalConIva": 370990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 8,
+     "km": 128000,
+     "etiqueta": "128.000 km",
+     "meses": 96,
+     "horas": 3.5,
+     "manoObra": 187250,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "LX6Z19N619CA",
+       "cantidad": 1.0,
+       "precioUnitario": 40757,
+       "subtotal": 40757
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      }
+     ],
+     "totalConIva": 450990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 9,
+     "km": 144000,
+     "etiqueta": "144.000 km",
+     "meses": 108,
+     "horas": 3.3,
+     "manoObra": 176550,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Fluido de Frenos",
+       "codigo": "PM20",
+       "cantidad": 2.0,
+       "precioUnitario": 20062,
+       "subtotal": 40124
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      }
+     ],
+     "totalConIva": 436990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Fluido de Frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    },
+    {
+     "n": 10,
+     "km": 160000,
+     "etiqueta": "160.000 km",
+     "meses": 120,
+     "horas": 4.9,
+     "manoObra": 262150,
+     "items": [
+      {
+       "tipo": "repuesto",
+       "nombre": "Aceite Motor",
+       "codigo": "XO0W20QFS",
+       "cantidad": 6.0,
+       "precioUnitario": 12561,
+       "subtotal": 75366
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Bujías de Encendido",
+       "codigo": "AYFS32YRX",
+       "cantidad": 4.0,
+       "precioUnitario": 21673,
+       "subtotal": 86692
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aceite",
+       "codigo": "BE8Z6731AB",
+       "cantidad": 1.0,
+       "precioUnitario": 15167,
+       "subtotal": 15167
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Aire Motor",
+       "codigo": "LX6Z9601A",
+       "cantidad": 1.0,
+       "precioUnitario": 34902,
+       "subtotal": 34902
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Filtro de Cabina o Antipolen",
+       "codigo": "LX6Z19N619CA",
+       "cantidad": 1.0,
+       "precioUnitario": 40757,
+       "subtotal": 40757
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Fluidos de la Transmisión",
+       "codigo": "XT12QULV",
+       "cantidad": 5.0,
+       "precioUnitario": 10100,
+       "subtotal": 50500
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Limpiador de frenos",
+       "codigo": "Compra en plaza",
+       "cantidad": 1.0,
+       "precioUnitario": 25000,
+       "subtotal": 25000
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Líquido limpiabrisas",
+       "codigo": "MZC56AX",
+       "cantidad": 1.0,
+       "precioUnitario": 1740,
+       "subtotal": 1740
+      },
+      {
+       "tipo": "repuesto",
+       "nombre": "Liquido refrigerante",
+       "codigo": "VC13G",
+       "cantidad": 4.0,
+       "precioUnitario": 46239,
+       "subtotal": 184956
+      }
+     ],
+     "totalConIva": 921990,
+     "totalNeto": null,
+     "conDescuento": null,
+     "gratis": false,
+     "operaciones": [
+      {
+       "nombre": "Aceite Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Bujías de Encendido",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aceite",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Aire Motor",
+       "accion": "R"
+      },
+      {
+       "nombre": "Filtro de Cabina o Antipolen",
+       "accion": "R"
+      },
+      {
+       "nombre": "Fluidos de la Transmisión",
+       "accion": "R"
+      },
+      {
+       "nombre": "Limpiador de frenos",
+       "accion": "R"
+      },
+      {
+       "nombre": "Líquido limpiabrisas",
+       "accion": "R"
+      },
+      {
+       "nombre": "Liquido refrigerante",
+       "accion": "R"
+      }
+     ],
+     "totalCalculado": null
+    }
+   ]
+  }
+ ],
+ "adicionales": [],
+ "packs": [],
+ "notas": [
+  "Precios sugeridos de mantención con IVA incluido, publicados por Ford Chile para la red de concesionarios.",
+  "Realiza las mantenciones cada 12 meses o el kilometraje indicado, lo que ocurra primero."
+ ],
+ "fuente": "Pauta Servicio Ford - 17-06-2026.xlsm / hoja 'Resumen'"
+}

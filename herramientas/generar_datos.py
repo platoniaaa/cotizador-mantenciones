@@ -86,7 +86,13 @@ ARCHIVOS = {
     "mahindra": ("Pauta de mantencion Mahindra Enero 2026.xlsx", "Mahindra"),
     "shineray": ("Pauta de mantencion Shineray Enero 2026.xlsx", "Shineray"),
     "swm":      ("Pauta de mantencion Swm Enero 2026.xlsx", "SWM"),
+    "gac":      ("Pautas de mantencion GAC 2026.xlsx", "GAC"),
 }
+
+# marcas cuyas pautas usan C=Cambiar / R=Revisar / I=Inspeccionar (en vez de R/I)
+# -> se remapean al esquema común: C->R (reemplazar), R->I, I->I
+ACCION_CIR = {"C": "R", "R": "I", "I": "I", "A": "I", "AJ": "I"}
+REMAP_ACCIONES = {"gac": ACCION_CIR}
 OMODA_FILE = "Pauta Mantencion OMODA JAECOO Julio 2025 (1).xlsb"
 FORD_FILE = "Pauta Servicio Ford - 17-06-2026.xlsm"
 HYUNDAI_FILE = "Pauta Mantención Hyundai 2026.xlsx"
@@ -109,6 +115,7 @@ MODELOS_MULTIPALABRA = {
     "mahindra": ["PIK UP", "XUV 300", "XUV300", "XUV500", "KUV 100", "KUV100", "SCORPIO", "3XO"],
     "baic": ["X55 PLUS", "BJ40P", "X55", "X35", "X25", "X7", "PLUS", "UP"],
     "shineray": ["T30-T32-X30", "T30-T32", "T50-T52", "X30L", "X30"],
+    "gac": ["GS3 POWER", "GS4 POWER", "GS8", "GS3", "GS4", "EMZOOM", "EMKOO"],
 }
 
 SEGMENTOS = ["suv alto", "suv medio", "suv bajo", "camioneta", "comercial", "hatchback", "sedan", "city car"]
@@ -516,10 +523,23 @@ def procesar_estandar(marca_id, archivo, marca_nombre):
             if v:
                 versiones.append(v)
             else:
-                log("WARN", f"{marca_nombre}: hoja '{nombre}' sin estructura reconocible, omitida")
+                # puede ser una hoja de actividades SIN el prefijo 'PAUTA' (p.ej. GAC 'Emzoom AT GL')
+                p = parsear_hoja_pauta(ws)
+                if p:
+                    pautas[nombre] = p
+                else:
+                    log("WARN", f"{marca_nombre}: hoja '{nombre}' sin estructura reconocible, omitida")
         except Exception as e:
             log("ERROR", f"{marca_nombre}: hoja '{nombre}' falló: {e}")
     wb.close()
+
+    # remapeo de marcas de actividad (C/I/R) si la marca lo requiere
+    remap = REMAP_ACCIONES.get(marca_id)
+    if remap:
+        for p in pautas.values():
+            for acts in p["actividades"].values():
+                for a in acts:
+                    a["accion"] = remap.get(a["accion"], a["accion"])
 
     # emparejar pautas de actividades con versiones
     for v in versiones:

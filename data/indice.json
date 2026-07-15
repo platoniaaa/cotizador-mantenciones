@@ -837,6 +837,156 @@
    ]
   },
   {
+   "id": "gac",
+   "nombre": "GAC",
+   "modelos": [
+    {
+     "nombre": "Emkoo",
+     "versiones": [
+      {
+       "id": "gac__emkoo-1-5t-at-ge",
+       "nombre": "Emkoo 1.5T AT GE",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "gac__emkoo-1-5t-at-gl",
+       "nombre": "Emkoo 1.5T AT GL",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "Emzoom",
+     "versiones": [
+      {
+       "id": "gac__emzoom-1-5t-at-gs",
+       "nombre": "Emzoom 1.5T AT GS +",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "gac__emzoom-1-5t-at-gb",
+       "nombre": "Emzoom 1.5T AT GB +",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "gac__emzoom-1-5t-at-gl",
+       "nombre": "Emzoom 1.5T AT GL",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "gac__emzoom-1-5t-at-gl-r-style",
+       "nombre": "Emzoom 1.5T AT GL R-Style",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "GS3 Power",
+     "versiones": [
+      {
+       "id": "gac__gs3-power-1-5t-mt-gs",
+       "nombre": "GS3 Power 1.5T MT GS",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "gac__gs3-power-1-5t-mt-gb",
+       "nombre": "GS3 Power 1.5T MT GB",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "gac__gs3-power-1-5t-at-gs",
+       "nombre": "GS3 Power 1.5T AT GS",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "gac__gs3-power-1-5t-at-gb",
+       "nombre": "GS3 Power 1.5T AT GB",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "GS4 Power",
+     "versiones": [
+      {
+       "id": "gac__gs4-power-1-5t-mt-gb",
+       "nombre": "GS4 Power 1.5T MT GB",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "gac__gs4-power-1-5t-at-gb",
+       "nombre": "GS4 Power 1.5T AT GB",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "gac__gs4-power-1-5t-at-ge",
+       "nombre": "GS4 Power 1.5T AT GE",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      },
+      {
+       "id": "gac__gs4-power-1-5t-at-gl",
+       "nombre": "GS4 Power 1.5T AT GL",
+       "vigencia": "Activo",
+       "segmento": "SUV Medio",
+       "anios": null
+      }
+     ]
+    },
+    {
+     "nombre": "GS8",
+     "versiones": [
+      {
+       "id": "gac__gs8-2-0t-at-gl-2wd",
+       "nombre": "GS8 2.0T AT GL 2WD",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "gac__gs8-2-0t-at-gx-4wd",
+       "nombre": "GS8 2.0T AT GX 4WD",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      },
+      {
+       "id": "gac__gs8-2-0t-at-gx-4wd-kit",
+       "nombre": "GS8 2.0T AT GX 4WD KIT",
+       "vigencia": "Activo",
+       "segmento": null,
+       "anios": null
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "omoda",
    "nombre": "Omoda",
    "modelos": [

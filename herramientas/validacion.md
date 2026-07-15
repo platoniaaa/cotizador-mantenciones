@@ -1,7 +1,7 @@
 # Validación de datos generados
 
-- Versiones generadas: **256**
-- Chequeos de cuadratura (total hoja vs suma de componentes): **2018/2041** dentro de tolerancia (3% o $3.000)
+- Versiones generadas: **273**
+- Chequeos de cuadratura (total hoja vs suma de componentes): **2205/2228** dentro de tolerancia (3% o $3.000)
 
 ## Log de parseo
 
@@ -11,6 +11,7 @@
 - **INFO** Mahindra: 20 versiones, 22 hojas de actividades, 20 emparejadas
 - **INFO** Shineray: 6 versiones, 4 hojas de actividades, 6 emparejadas
 - **INFO** SWM: 5 versiones, 4 hojas de actividades, 5 emparejadas
+- **INFO** GAC: 17 versiones, 12 hojas de actividades, 17 emparejadas
 - **INFO** Omoda/Jaecoo: 11 versiones
 - **INFO** Hyundai: 77 versiones, 66 planes, 77 emparejadas
 - **INFO** Ford: 141 filas de precios, 167 bloques de operaciones, 136 emparejados

@@ -48,6 +48,11 @@ def to_num(v):
     t = str(v).strip()
     if not t or t.startswith("#"):
         return None
+    # Las celdas realmente numéricas llegan como int/float (arriba). Si es TEXTO y
+    # contiene letras, es un CÓDIGO de repuesto, no un número: no convertir.
+    # Evita que un SKU como '897080100E0101' se lea como notación científica.
+    if re.search(r"[A-Za-z]", t):
+        return None
     t = t.replace("$", "").replace(".", "").replace(",", ".").replace(" ", "")
     try:
         return float(t)

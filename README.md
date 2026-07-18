@@ -12,13 +12,34 @@ Plataforma web para cotizar mantenciones preventivas por **marca → modelo → 
 
 > Debe abrirse a través del servidor local (no con doble clic al `index.html`), porque el navegador bloquea la carga de los archivos JSON con el protocolo `file://`.
 
+## Sistema de Taller y Agendamiento (`taller.html`)
+
+Módulo integrado al cotizador (enlace **"Taller y agenda"** en el topbar) con 8 pestañas:
+Agendamiento → Status Taller → Recepción → Preparación de citas → Planificador → JPCB → Bodega (pre-picking) → Reportes.
+
+- **Integración con el cotizador**: el botón **"Agendar"** del paso 2 lleva la cotización activa
+  (marca/modelo/versión/año/revisión/valor) al taller; al elegir una hora libre el formulario
+  se abre pre-llenado. El vehículo del agendamiento se elige con los mismos selectores
+  encadenados del catálogo (`data/indice.json`).
+- **Bodega / pre-picking**: el kit de repuestos de cada orden de mantención se calcula desde la
+  **pauta real** (`data/pautas/<id>.json`) y muestra la **disponibilidad de stock** por código
+  (`data/stock.json`, giros Curifor y Frontera).
+- **Persistencia**: agendamientos y órdenes se guardan en `localStorage` (por navegador/estación;
+  no se comparten entre PCs ni se suben al repo). Botones para cargar datos de demostración y
+  para borrar todo.
+- **Pendiente (fase posterior)**: backend compartido, integración ERP, notificaciones al cliente,
+  fotos y firma digital en la recepción.
+
 ## Estructura
 
 ```
 plataforma/
-  index.html            Interfaz (2 pasos: selección → resultados)
-  css/estilos.css       Estilos (paleta azul corporativa, responsive)
-  js/app.js             Lógica: selector encadenado, carrusel, totales, adicionales
+  index.html            Cotizador (2 pasos: selección → resultados)
+  taller.html           Sistema de Taller y Agendamiento (8 pestañas)
+  css/estilos.css       Estilos compartidos (paleta azul corporativa, responsive)
+  css/taller.css        Estilos del módulo Taller
+  js/app.js             Lógica del cotizador: selector encadenado, carrusel, totales, adicionales
+  js/taller.js          Lógica del taller: agenda, recepción, JPCB, planificador, bodega
   js/vendor/xlsx.full.min.js  Librería SheetJS (generación de Excel, offline)
   data/
     indice.json         Catálogo marca → modelo → versión

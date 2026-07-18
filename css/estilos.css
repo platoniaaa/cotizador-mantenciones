@@ -300,6 +300,9 @@ a { color: var(--blue); }
 .btn--excel:hover { background: #0b5c30; transform: translateY(-1px); }
 .btn--print { background: #fff; color: var(--navy); border-color: var(--tint-borde); font-size: 14px; padding: 11px 16px; }
 .btn--print:hover { background: var(--tint); border-color: var(--navy); }
+.btn--agendar { background: var(--navy); color: #fff; font-size: 14px; padding: 11px 18px; box-shadow: 0 8px 18px rgba(0, 27, 108, .22); }
+.btn--agendar:hover { background: var(--navy-hover); transform: translateY(-1px); }
+.topbar__nav { display: flex; gap: 18px; align-items: center; }
 .rv__acciones { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 
 /* toggle Particular / Interno */

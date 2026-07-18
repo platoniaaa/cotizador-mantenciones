@@ -1,17 +1,17 @@
 # Auditoría de códigos: pautas vs stock
 
-- Códigos de repuesto **reales** en las pautas: **538** (pares marca+código; un mismo código en 2 marcas cuenta 2 veces)
-- **Coinciden con el stock: 438 (81%)**
-- **No coinciden (s/d): 100**
-- Placeholders de la pauta (no son códigos): 6
+- Códigos de repuesto **reales** en las pautas: **568** (pares marca+código; un mismo código en 2 marcas cuenta 2 veces)
+- **Coinciden con el stock: 451 (79%)**
+- **No coinciden (s/d): 117**
+- Placeholders de la pauta (no son códigos): 7
 
 ## Cómo coinciden
 
 | Vía | Qué significa | Códigos |
 |---|---|---|
-| directo | Código idéntico en stock | 398 |
-| difuso | Misma pieza con SKU interno distinto (código en la descripción o presentación) | 22 |
-| producto | Cruce por nombre (mapeo curado de lubricantes) | 17 |
+| directo | Código idéntico en stock | 408 |
+| difuso | Misma pieza con SKU interno distinto (código en la descripción o presentación) | 24 |
+| producto | Cruce por nombre (mapeo curado de lubricantes) | 18 |
 | equivalente | Reemplazo / supersesión | 1 |
 
 ## Cobertura por marca
@@ -20,6 +20,7 @@
 |---|---:|---:|---:|---:|
 | BAIC | 43 | 10 | 81% | 0 |
 | Ford | 113 | 14 | 89% | 1 |
+| GAC | 13 | 17 | 43% | 1 |
 | Hyundai | 132 | 25 | 84% | 0 |
 | JAC | 52 | 21 | 71% | 1 |
 | JAECOO | 9 | 9 | 50% | 0 |
@@ -59,6 +60,23 @@ Estos repuestos se muestran como **s/d** (sin dato) y se valorizan con el precio
 | Ford | `XO0W20Q1SP` | Aceite Motor | 10 |
 | Ford | `XY75W140QL` | Fluido diferencial delantero | 6 |
 | Ford | `XY80W90QL` | Fluido diferencial delantero | 48 |
+| GAC | `100219` | ACEITE CAJA  Mobil UBE 1 SHC 75W-90 GL -4 | 6 |
+| GAC | `10070071570001` | Correa de accesorios | 5 |
+| GAC | `10130351560000` | Bujías | 5 |
+| GAC | `10130352050000` | Bujías | 6 |
+| GAC | `104290` | Aceite de Motor 0W20 API SN/ILSAC GF-5 | 55 |
+| GAC | `105221` | Liquido de direccción Movil ATF 550 | 6 |
+| GAC | `105892` | Anticongelante DF-6/-35 ℃ | 52 |
+| GAC | `1324409TBW0000` | Filtro de transmisioón | 10 |
+| GAC | `2140008AAF0000` | Filtro de combustible | 10 |
+| GAC | `2140008ADE0001` | Filtro Canister | 5 |
+| GAC | `2140008ASV0001` | Filtro de Canister | 11 |
+| GAC | `8880027CMV0000` | Filtro de Polén | 15 |
+| GAC | `8880027CRV0000` | Filtro de Polén | 30 |
+| GAC | `8880027DSV0200` | Filtro de Polén | 20 |
+| GAC | `89708009999999994776554729959603649610033219948789980574119978832752409949211452230191704943771611334333956096` | Aditivo sistema combustible | 10 |
+| GAC | `995S0007` | Lubricante de transmisioón WDCT Shell Spirax | 5 |
+| GAC | `RAV-1212102-004` | ACEITE MobilMobil Multi-Vehicle ATF | 7 |
 | Hyundai | `07100J2B20` | REFRIGERANTE EV | 3 |
 | Hyundai | `100051C` | FLUIDO DE FRENOS | 57 |
 | Hyundai | `100214C` | ACEITE DIFERENCIAL TRASERO | 5 |
@@ -153,6 +171,9 @@ La plataforma muestra el código de la **pauta** (correcto) y debajo indica el S
 | Ford | `FT202` | `HL3Z7A098A` | Filtro de la Transmisión | equivalente | 25 |
 | Ford | `JS19B072AA` | `JS19B072AASDR` | Filtro de Combustible | difuso | 1 |
 | Ford | `XY75W85QL` | `XY75W85LITRO` | Fluido de la Unidad de transferenc | difuso | 232 |
+| GAC | `100050` | `MOBIL100051` | Líquido de Frenos y Embrague DOT-4 | producto | 84 |
+| GAC | `100051` | `MOBIL100051` | Líquido de Frenos  DOT-4 | difuso | 84 |
+| GAC | `104406` | `MOBIL5W30100ML` | Aceite de Motor Mobil Super 3000 X | difuso | 6431 |
 | Hyundai | `100051` | `MOBIL100051` | FLUIDO ACTUADOR EMBRAGUE | difuso | 84 |
 | Hyundai | `104406` | `MOBIL5W30100ML` | ACEITE MOTOR | difuso | 6431 |
 | Hyundai | `105880` | `100018` | ANTICONGELANTE | difuso | 543 |
@@ -188,6 +209,7 @@ La plataforma muestra el código de la **pauta** (correcto) y debajo indica el S
 | Marca | Texto | Repuesto |
 |---|---|---|
 | Ford | `Compra en plaza` | Limpiador de frenos |
+| GAC | `Mat-001` | Materiales |
 | JAC | `Mat-001` | MAT |
 | JIM | `MATERIALES` | MATERIALES |
 | JIM | `PENDIENTE` | BOMBA DE AGUA |

@@ -39,7 +39,7 @@
     detTitulo: $("#detTitulo"), detSub: $("#detSub"), detPrecio: $("#detPrecio"),
     detMoneda: $("#detMoneda"), detRef: $("#detRef"), modoBtns: document.querySelectorAll(".modo-btn"),
     detOperaciones: $("#detOperaciones"), detDesglose: $("#detDesglose"),
-    stockResumen: $("#stockResumen"), btnExcel: $("#btnExcel"),
+    stockResumen: $("#stockResumen"), btnExcel: $("#btnExcel"), btnAgendar: $("#btnAgendar"),
     btnImprimir: $("#btnImprimir"), printDatos: $("#printDatos"),
     adicionalesBox: $("#adicionalesBox"), detAdicionales: $("#detAdicionales"),
     totalConAdicionales: $("#totalConAdicionales"),
@@ -114,6 +114,7 @@
     el.navNext.addEventListener("click", () => moverActivo(1));
     el.btnExcel.addEventListener("click", exportarExcel);
     el.btnImprimir.addEventListener("click", imprimir);
+    el.btnAgendar.addEventListener("click", agendarEnTaller);
     el.modoBtns.forEach((btn) => btn.addEventListener("click", () => {
       state.modo = btn.dataset.modo;
       el.modoBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
@@ -676,6 +677,29 @@
     const nombre = `Cotizacion_${p.marcaNombre}_${p.modelo}_${itv.km ? itv.km / 1000 + "k" : "rev" + itv.n}`
       .replace(/[^A-Za-z0-9_]+/g, "_") + ".xlsx";
     XLSX.writeFile(wb, nombre);
+  }
+
+  // ============================================================
+  //  Agendar en el Sistema de Taller (taller.html)
+  //  Deja la cotización activa en localStorage y navega al taller,
+  //  donde el agendamiento se abre pre-llenado al elegir hora.
+  // ============================================================
+  function agendarEnTaller() {
+    const p = state.pauta, itv = state.plan[state.activo];
+    if (!p || !itv || !state.version) return;
+    const pre = {
+      pautaId: state.version.id,
+      marcaNombre: p.marcaNombre,
+      modelo: p.modelo,
+      version: p.version,
+      anio: state.anio || null,
+      km: itv.km || null,
+      revN: itv.n,
+      valor: itv.gratis ? 0 : (state.totalCalc || null),
+      ts: Date.now(),
+    };
+    try { localStorage.setItem("curiforTallerPrefill", JSON.stringify(pre)); } catch (e) { /* sin storage */ }
+    location.href = "taller.html";
   }
 
   // ---- utilidades ----

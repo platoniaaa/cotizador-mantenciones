@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller y Agendamiento · Curifor</title>
+  <meta name="description" content="Agendamiento de servicio, tablero JPCB, planificador de taller y pre-picking de bodega.">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/taller.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗓</text></svg>">
+</head>
+<body class="taller">
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <img class="brand__logo" src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
+        <span class="brand__sep"></span>
+        <span class="brand__sub">Taller y Agendamiento</span>
+        <span class="brand__badge">Uso interno</span>
+      </div>
+      <nav class="topbar__nav">
+        <a href="index.html" class="nav-link">← Cotizador</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="taller-head">
+    <div class="taller-head__inner">
+      <h1 class="taller-head__title">Sistema de Taller</h1>
+      <p class="taller-head__sub">Agendamiento → Recepción → Planificación → JPCB → Bodega. Modelo Ford (tableros de control visual) + Toyota JPCB.</p>
+      <div class="tabs">
+        <div class="tab active" data-v="agenda">1 · Agendamiento</div>
+        <div class="tab" data-v="status">2 · Status Taller</div>
+        <div class="tab" data-v="recep">3 · Recepción</div>
+        <div class="tab" data-v="prep">4 · Preparación de citas</div>
+        <div class="tab" data-v="plan">5 · Planificador</div>
+        <div class="tab" data-v="jpcb">6 · JPCB</div>
+        <div class="tab bodegatab" data-v="bodega">7 · Bodega (Pre-picking)</div>
+        <div class="tab" data-v="reportes">8 · Reportes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 1 · AGENDAMIENTO ============ -->
+  <div class="view active" id="v-agenda">
+    <h2 class="vtitle">Centro de Agendamiento</h2>
+    <p class="ag-sub">Agenda una hora; el dato fluye a Status Taller → Recepción → JPCB → Bodega.</p>
+
+    <div id="prefillBanner" class="prefill-banner" hidden></div>
+
+    <div class="ag-grid">
+      <div class="ag-panel panel">
+        <h4>Sucursal y servicio</h4>
+        <select id="fComercio">
+          <option>CURIFOR TALCA</option><option>CURIFOR TALCA CAMIONES</option>
+          <option>CURIFOR CURICÓ</option><option>CURIFOR RANCAGUA</option><option>CURIFOR CHILLÁN</option>
+        </select>
+        <div class="ag-calnav">
+          <button id="calPrev" type="button" aria-label="Mes anterior">‹</button>
+          <b id="calTitulo"></b>
+          <button id="calNext" type="button" aria-label="Mes siguiente">›</button>
+        </div>
+        <table class="ag-cal" id="calGrid"></table>
+        <p style="font-size:11px;color:var(--ink-3);margin:0">● día con agendamientos</p>
+      </div>
+      <div>
+        <p class="ag-fecha-sel">Horas disponibles para el <b id="fechaSelTxt"></b>:</p>
+        <div class="ag-jor">
+          <div><h5>Primera jornada</h5><div class="ag-slots" id="agSlotsAM"></div></div>
+          <div><h5>Segunda jornada</h5><div class="ag-slots" id="agSlotsPM"></div></div>
+        </div>
+        <table class="ag-table">
+          <thead><tr><th>OC</th><th>Hora</th><th>Cliente</th><th>Vehículo</th><th>Patente</th><th>Servicio</th><th>Estado</th><th></th></tr></thead>
+          <tbody id="tblAgenda"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="demo-tools">
+      <span>Los datos se guardan en este navegador (localStorage).</span>
+      <button id="btnDemo" class="agbtn agbtn-ghost agbtn-sm" type="button">Cargar datos de demostración</button>
+      <button id="btnBorrarTodo" class="agbtn agbtn-ghost agbtn-sm" type="button">Borrar todos los datos</button>
+    </div>
+  </div>
+
+  <!-- ============ 2 · STATUS ============ -->
+  <div class="view" id="v-status">
+    <h2 class="vtitle">Status Taller</h2>
+    <p class="ag-sub">Ciclo de vida del vehículo. “Ingresar” abre la Recepción; En Taller y Por Entregar se leen del tablero JPCB.</p>
+    <div class="ag-stabs">
+      <button data-t="por_ingresar" class="active" onclick="agStatusTab('por_ingresar')">Por Ingresar</button>
+      <button data-t="en_taller" onclick="agStatusTab('en_taller')">En Taller</button>
+      <button data-t="por_entregar" onclick="agStatusTab('por_entregar')">Por Entregar</button>
+    </div>
+    <table class="ag-table">
+      <thead><tr><th>OC</th><th>Fecha</th><th>Hora</th><th>Cliente</th><th>Vehículo</th><th>Patente</th><th>Servicio</th><th>Acción</th></tr></thead>
+      <tbody id="tblStatus"></tbody>
+    </table>
+  </div>
+
+  <!-- ============ 3 · RECEPCIÓN ============ -->
+  <div class="view" id="v-recep">
+    <h2 class="vtitle">Recepción</h2>
+    <div id="recVacia" class="flow-note">Selecciona un vehículo en <b>Status Taller → Por Ingresar</b> y pulsa “Ingresar” para abrir su recepción.</div>
+    <div id="recForm" class="hidden" hidden>
+      <div class="rcp-band" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <div><b id="recTitulo" style="color:var(--navy);font-size:18px"></b><div style="color:var(--ink-3);font-size:12px">N° de agendamiento: <span id="recOC"></span></div></div>
+        <div style="color:var(--ink-2);font-size:13px">Cita: <b id="recFecha"></b></div>
+      </div>
+      <section class="blk"><h3>Datos del cliente</h3><div class="grid2">
+        <div class="field-r"><span class="lab">Cliente</span><span class="val" id="rcCliente"></span></div>
+        <div class="field-r"><span class="lab">RUT</span><span class="val" id="rcRut"></span></div>
+        <div class="field-r"><span class="lab">Teléfono</span><span class="val" id="rcFono"></span></div>
+        <div class="field-r"><span class="lab">E-mail</span><span class="val" id="rcEmail"></span></div>
+      </div></section>
+      <section class="blk"><h3>Datos del vehículo</h3><div class="grid2">
+        <div class="field-r"><span class="lab">Patente</span><span class="val" id="rcPatente"></span></div>
+        <div class="field-r"><span class="lab">Marca / Modelo</span><span class="val" id="rcModelo"></span></div>
+        <div class="field-r"><span class="lab">Año</span><span class="val" id="rcAnio"></span></div>
+        <div class="field-r"><span class="lab">Kilometraje</span><span class="val" id="rcKm"></span></div>
+        <div class="field-r"><span class="lab">Servicio</span><span class="val" id="rcServ"></span></div>
+        <div class="field-r"><span class="lab">Valor referencial</span><span class="val" id="rcValor"></span></div>
+      </div></section>
+      <section class="blk"><h3>Accesorios</h3><div class="acc-grid" id="accGrid"></div></section>
+      <section class="blk"><h3>Inspección fotográfica <span class="prox">(próximamente: captura desde el móvil)</span></h3><div class="photo-wrap" id="photoWrap"></div></section>
+      <section class="blk"><h3>Combustible</h3><div style="display:flex;gap:18px;flex-wrap:wrap">
+        <label><input type="radio" name="comb"> 1</label><label><input type="radio" name="comb"> 3/4</label>
+        <label><input type="radio" name="comb"> 1/2</label><label><input type="radio" name="comb"> 1/4</label>
+        <label><input type="radio" name="comb"> 0</label>
+      </div></section>
+      <section class="blk"><h3>Firmas <span class="prox">(próximamente: firma digital)</span></h3><div class="firmas"><div><div class="firma-box"></div><small>Firma cliente</small></div><div><div class="firma-box"></div><small>Firma asesor</small></div></div></section>
+      <div class="flow-note">Al <b>Ingresar a Taller</b> se crea la orden de trabajo (RO) y se publica en el JPCB → Citas de hoy, en Preparación de citas y en Bodega (pre-picking). El registro queda guardado en este navegador; la integración con el ERP está pendiente.</div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;padding:10px 0 30px">
+        <button class="agbtn agbtn-grey" onclick="agCancelarRecepcion()">Cancelar</button>
+        <button class="agbtn agbtn-green" onclick="agIngresarTaller()">Ingresar a Taller</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 4 · PREPARACIÓN ============ -->
+  <div class="view" id="v-prep">
+    <h2 class="vtitle">Tablero de preparación de citas</h2>
+    <p class="sub">Control de repuestos antes de la cita. Arrastra las tarjetas entre columnas; las órdenes con kit de mantención aparecen también en Bodega.</p>
+    <div class="kanban" id="prepBoard"></div>
+  </div>
+
+  <!-- ============ 5 · PLANIFICADOR ============ -->
+  <div class="view" id="v-plan">
+    <h2 class="vtitle">Planificador / Agenda del taller</h2>
+    <p class="sub">Técnico × hora. La ficha se ubica en la hora de inicio; el largo = duración; el color = tipo de trabajo. Arrastra desde “Por asignar” a la grilla.</p>
+    <div class="legend" id="legendPlan"></div>
+    <div class="agenda-wrap">
+      <div class="backlog"><h3>Por asignar</h3><div class="drop" id="backlogDrop"></div></div>
+      <div class="planner"><table class="grid" id="grid"></table></div>
+    </div>
+  </div>
+
+  <!-- ============ 6 · JPCB ============ -->
+  <div class="view" id="v-jpcb">
+    <h2 class="vtitle">JPCB — Control de progreso del trabajo</h2>
+    <p class="sub">Flujo normal de izquierda a derecha (Citas de hoy → En espera por pago). Arrastra la orden de columna en columna a medida que avanza.</p>
+    <div class="kanban" id="jpcbBoard"></div>
+    <div class="stopzone">
+      <div class="zhead">Detención del trabajo (Job Stoppage) — irregularidades visibles (jidoka)</div>
+      <div class="stopcols" id="stopBoard"></div>
+    </div>
+  </div>
+
+  <!-- ============ 7 · BODEGA ============ -->
+  <div class="view" id="v-bodega">
+    <h2 class="vtitle" style="color:var(--bodega)">Bodega — Pre-picking de repuestos</h2>
+    <p class="sub">Lista de recolección por orden, calculada desde la <b>pauta de mantención real</b> (marca/modelo/versión + km) con la <b>disponibilidad de stock</b> del Cotizador. Solo datos del vehículo, sin datos del propietario.</p>
+    <div class="legend">
+      <div class="it"><span class="badge pend">PENDIENTE</span> por recolectar</div>
+      <div class="it"><span class="badge listo">PREPARADO</span> repuestos listos</div>
+      <div class="it" id="stockFechaTxt" style="color:var(--ink-3)"></div>
+    </div>
+    <div class="bodega-wrap" id="bodegaBoard"></div>
+  </div>
+
+  <!-- ============ 8 · REPORTES ============ -->
+  <div class="view" id="v-reportes">
+    <h2 class="vtitle">Reportes</h2>
+    <p class="ag-sub">Indicadores calculados sobre los datos registrados en esta estación.</p>
+    <div class="rep-grid" id="repGrid"></div>
+  </div>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <span>Curifor S.A. · Taller y Agendamiento</span>
+      <span id="footFecha" class="foot__fecha"></span>
+    </div>
+  </footer>
+
+  <!-- Modal detalle de orden -->
+  <div class="overlay" id="ov">
+    <div class="modal">
+      <h3 id="m-title">Orden de trabajo</h3>
+      <div class="c" id="m-body"></div>
+      <div class="actions"><button class="agbtn agbtn-navy" onclick="closeM()">Cerrar</button></div>
+    </div>
+  </div>
+
+  <!-- Modal agendar -->
+  <div class="overlay" id="agOv">
+    <div class="ag-modal">
+      <h3>Agendar hora <span id="agHora" style="color:var(--ink-3);font-weight:400;font-size:14px"></span></h3>
+      <div class="ag-form">
+        <label>Tipo de servicio
+          <select id="agServicio">
+            <option>MANTENCIÓN POR KILOMETRAJE</option><option>DIAGNÓSTICO TÉCNICO</option>
+            <option>DESABOLLADURA Y PINTURA</option><option>RECALL</option><option>REPARACIÓN MECÁNICA</option>
+          </select>
+        </label>
+        <label>Patente<input id="agPatente" placeholder="ABCD12" maxlength="8"></label>
+        <label>Marca<select id="agMarca"><option value="">Elige la marca</option></select></label>
+        <label>Modelo<select id="agModeloSel" disabled><option value="">Elige el modelo</option></select></label>
+        <label>Versión<select id="agVersionSel" disabled><option value="">Elige la versión</option></select></label>
+        <label>Año<select id="agAnioSel"><option value="">—</option></select></label>
+        <label id="agMantWrap">Mantención (km)<select id="agMantSel" disabled><option value="">—</option></select></label>
+        <label>VIN (opcional)<input id="agVin" placeholder="8AF..."></label>
+        <div class="ag-valorref" id="agValorRef" hidden></div>
+        <label>Nombre cliente<input id="agCliente" placeholder="Nombre y apellido"></label>
+        <label>RUT<input id="agRut" placeholder="11.111.111-1"></label>
+        <label>Teléfono móvil<input id="agFono" placeholder="9 0000 0000"></label>
+        <label>E-mail<input id="agEmail" placeholder="correo@cliente.cl"></label>
+        <label>Asesor<select id="agAsesor"><option value="">— Seleccione —</option></select></label>
+      </div>
+      <div class="ag-foot">
+        <button class="agbtn agbtn-grey" onclick="agCerrarModal()">Cancelar</button>
+        <button class="agbtn agbtn-blue" onclick="agGuardar()">Guardar agendamiento</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/taller.js"></script>
+</body>
+</html>

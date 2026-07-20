@@ -444,7 +444,7 @@ a { color: var(--blue); }
 .detalle__precio-valor { display: block; font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1.1; }
 .detalle__precio-valor.gratis { color: var(--verde); }
 .detalle__precio-moneda { display: block; font-size: 11.5px; color: var(--ink-3); }
-.detalle__precio-iva { display: block; font-size: 14px; font-weight: 700; color: var(--navy); margin-top: 3px; }
+.detalle__precio-neto { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink-3); margin-top: 3px; }
 
 .detalle__cols {
   display: grid;

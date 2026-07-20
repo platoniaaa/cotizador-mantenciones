@@ -41,7 +41,7 @@
     rvAnioBox: $("#rvAnioBox"), selAnio2: $("#selAnio2"),
     track: $("#carruselTrack"), navPrev: $("#navPrev"), navNext: $("#navNext"),
     detTitulo: $("#detTitulo"), detSub: $("#detSub"), detPrecio: $("#detPrecio"),
-    detMoneda: $("#detMoneda"), detConIva: $("#detConIva"), detRef: $("#detRef"),
+    detMoneda: $("#detMoneda"), detNeto: $("#detNeto"), detRef: $("#detRef"),
     modoBtns: document.querySelectorAll(".modo-btn"),
     detOperaciones: $("#detOperaciones"), detDesglose: $("#detDesglose"),
     stockResumen: $("#stockResumen"), btnExcel: $("#btnExcel"), btnAgendar: $("#btnAgendar"),
@@ -367,13 +367,13 @@
     if (itv.gratis || totalCalc === 0) {
       el.detPrecio.textContent = "Sin costo";
       el.detPrecio.classList.add("gratis");
-      el.detConIva.textContent = "";
+      el.detNeto.textContent = "";
     } else {
-      el.detPrecio.textContent = money(totalCalc);
+      el.detPrecio.textContent = money(conIva(totalCalc));   // con IVA en grande
       el.detPrecio.classList.remove("gratis");
-      el.detConIva.textContent = `${money(conIva(totalCalc))} con IVA`;
+      el.detNeto.textContent = `${money(totalCalc)} neto s/IVA`;   // neto en chico
     }
-    el.detMoneda.textContent = `${state.modo === "particular" ? "Cliente particular" : "Interno"} · neto s/IVA · CLP`;
+    el.detMoneda.textContent = `${state.modo === "particular" ? "Cliente particular" : "Interno"} · IVA incluido · CLP`;
     // referencia: precio oficial de la pauta
     if (itv.totalConIva && !itv.gratis) {
       el.detRef.hidden = false;

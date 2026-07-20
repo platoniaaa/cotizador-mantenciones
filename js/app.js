@@ -8,6 +8,10 @@
   const $ = (sel) => document.querySelector(sel);
   const CLP = new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 });
   const money = (n) => (n == null ? "—" : CLP.format(Math.round(n)));
+  // Los precios se calculan NETOS (así vienen del stock). El IVA se agrega solo
+  // para mostrarlo; nunca se acumula en los cálculos.
+  const IVA = 0.19;
+  const conIva = (n) => (n == null ? null : Math.round(n * (1 + IVA)));
 
   // ---- estado ----
   const state = {
@@ -37,7 +41,8 @@
     rvAnioBox: $("#rvAnioBox"), selAnio2: $("#selAnio2"),
     track: $("#carruselTrack"), navPrev: $("#navPrev"), navNext: $("#navNext"),
     detTitulo: $("#detTitulo"), detSub: $("#detSub"), detPrecio: $("#detPrecio"),
-    detMoneda: $("#detMoneda"), detRef: $("#detRef"), modoBtns: document.querySelectorAll(".modo-btn"),
+    detMoneda: $("#detMoneda"), detConIva: $("#detConIva"), detRef: $("#detRef"),
+    modoBtns: document.querySelectorAll(".modo-btn"),
     detOperaciones: $("#detOperaciones"), detDesglose: $("#detDesglose"),
     stockResumen: $("#stockResumen"), btnExcel: $("#btnExcel"), btnAgendar: $("#btnAgendar"),
     btnImprimir: $("#btnImprimir"), printDatos: $("#printDatos"),
@@ -133,7 +138,13 @@
     if (state.anio) filas.push(["Año", state.anio]);
     filas.push(["Tipo", state.modo === "particular" ? "Cliente particular" : "Interno"]);
     filas.push(["Mantención", `Revisión ${itv.n} — ${itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega")}${itv.meses ? " · " + itv.meses + " meses" : ""}`]);
-    filas.push(["Valor", itv.gratis ? "Sin costo" : money(state.totalCalc) + " (neto s/IVA)"]);
+    if (itv.gratis) {
+      filas.push(["Valor", "Sin costo"]);
+    } else {
+      filas.push(["Valor neto (sin IVA)", money(state.totalCalc)]);
+      filas.push(["IVA 19%", money(conIva(state.totalCalc) - state.totalCalc)]);
+      filas.push(["TOTAL con IVA", money(conIva(state.totalCalc))]);
+    }
     if (state.stock) filas.push(["Inventario al", state.stock.actualizado]);
     filas.push(["Fecha impresión", new Date().toLocaleDateString("es-CL")]);
     el.printDatos.innerHTML = filas.map((f) => `<tr><td>${f[0]}</td><td>${f[1]}</td></tr>`).join("");
@@ -356,9 +367,11 @@
     if (itv.gratis || totalCalc === 0) {
       el.detPrecio.textContent = "Sin costo";
       el.detPrecio.classList.add("gratis");
+      el.detConIva.textContent = "";
     } else {
       el.detPrecio.textContent = money(totalCalc);
       el.detPrecio.classList.remove("gratis");
+      el.detConIva.textContent = `${money(conIva(totalCalc))} con IVA`;
     }
     el.detMoneda.textContent = `${state.modo === "particular" ? "Cliente particular" : "Interno"} · neto s/IVA · CLP`;
     // referencia: precio oficial de la pauta
@@ -479,7 +492,12 @@
       filas.push(`<tr><td class="dg-nombre" colspan="3" style="color:var(--ink-3);font-style:italic">El valor corresponde al precio total sugerido de la mantención.</td></tr>`);
       total = itv.gratis ? 0 : (itv.totalConIva || 0);
     }
-    filas.push(`<tr class="dg-total"><td>Total mantención (${state.modo === "particular" ? "particular" : "interno"})</td><td></td><td>${itv.gratis ? "Sin costo" : money(total)}</td></tr>`);
+    const modoTxt = state.modo === "particular" ? "particular" : "interno";
+    filas.push(`<tr class="dg-total"><td>Total neto (${modoTxt}) · sin IVA</td><td></td><td>${itv.gratis ? "Sin costo" : money(total)}</td></tr>`);
+    if (!itv.gratis) {
+      filas.push(`<tr class="dg-iva"><td>IVA 19%</td><td></td><td>${money(conIva(total) - total)}</td></tr>`);
+      filas.push(`<tr class="dg-total dg-total--iva"><td>Total con IVA</td><td></td><td>${money(conIva(total))}</td></tr>`);
+    }
     el.detDesglose.innerHTML = filas.join("");
     // enlazar selectores de reemplazo
     el.detDesglose.querySelectorAll(".sel-reemplazo").forEach((sel) => {
@@ -538,7 +556,9 @@
     let extra = 0;
     el.detAdicionales.querySelectorAll("input:checked").forEach((c) => (extra += +c.dataset.precio));
     const base = itv.gratis ? 0 : (state.totalCalc || 0);
-    el.totalConAdicionales.textContent = money(base + extra);
+    const t = base + extra;
+    el.totalConAdicionales.innerHTML =
+      `${money(t)} <span class="add-iva">(${money(conIva(t))} con IVA)</span>`;
   }
 
   // ---- packs (Omoda/Jaecoo) ----
@@ -636,13 +656,16 @@
     if (itv.manoObra) { A.push(["Mano de obra"]); A.push([`Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}`, "", "", "", "", itv.manoObra, ""]); }
     A.push([]);
     const totalM = itv.gratis ? 0 : (state.totalCalc || 0);
-    A.push([`TOTAL MANTENCIÓN (${state.modo === "particular" ? "particular" : "interno"}, neto s/IVA)`, "", "", "", "", totalM, ""]);
+    A.push([`TOTAL NETO (${state.modo === "particular" ? "particular" : "interno"}, sin IVA)`, "", "", "", "", totalM, ""]);
+    A.push(["IVA 19%", "", "", "", "", conIva(totalM) - totalM, ""]);
+    A.push(["TOTAL CON IVA", "", "", "", "", conIva(totalM), ""]);
     A.push(["Precio pauta (referencia)", "", "", "", "", itv.gratis ? 0 : (itv.totalConIva || 0), ""]);
     if (adicSel.length) {
       A.push([]); A.push(["SERVICIOS ADICIONALES"]);
       let tot = totalM;
       adicSel.forEach((a) => { A.push([a.nombre, "", "", "", "", a.precio, ""]); tot += a.precio; });
-      A.push(["TOTAL CON ADICIONALES", "", "", "", "", tot, ""]);
+      A.push(["TOTAL CON ADICIONALES (neto)", "", "", "", "", tot, ""]);
+      A.push(["TOTAL CON ADICIONALES (con IVA)", "", "", "", "", conIva(tot), ""]);
     }
     if (itv.operaciones && itv.operaciones.length) {
       A.push([]); A.push(["OPERACIONES INCLUIDAS"]);
@@ -656,13 +679,18 @@
 
     // ---- Hoja 2: Plan completo ----
     const modoTxt = state.modo === "particular" ? "particular" : "interno";
-    const B = [["Rev.", "Kilometraje", "Meses", `Valor ${modoTxt} neto (CLP)`, "Precio pauta (ref.)"]];
-    state.plan.forEach((x) => B.push([
-      x.n, x.km ? etiquetaKm(x.km) : (x.etiqueta || "Entrega"), x.meses || "",
-      x.gratis ? "Sin costo" : totalIntervalo(x), x.gratis ? "" : (x.totalConIva || ""),
-    ]));
+    const B = [["Rev.", "Kilometraje", "Meses", `Valor ${modoTxt} neto (CLP)`,
+                "Valor con IVA (CLP)", "Precio pauta (ref.)"]];
+    state.plan.forEach((x) => {
+      const neto = x.gratis ? null : totalIntervalo(x);
+      B.push([
+        x.n, x.km ? etiquetaKm(x.km) : (x.etiqueta || "Entrega"), x.meses || "",
+        x.gratis ? "Sin costo" : neto, x.gratis ? "" : conIva(neto),
+        x.gratis ? "" : (x.totalConIva || ""),
+      ]);
+    });
     const ws2 = XLSX.utils.aoa_to_sheet(B);
-    ws2["!cols"] = [{ wch: 6 }, { wch: 16 }, { wch: 8 }, { wch: 22 }, { wch: 20 }];
+    ws2["!cols"] = [{ wch: 6 }, { wch: 16 }, { wch: 8 }, { wch: 22 }, { wch: 20 }, { wch: 20 }];
     XLSX.utils.book_append_sheet(wb, ws2, "Plan completo");
 
     // ---- Hoja 3: Packs (si aplica) ----

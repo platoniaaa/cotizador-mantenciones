@@ -444,6 +444,7 @@ a { color: var(--blue); }
 .detalle__precio-valor { display: block; font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1.1; }
 .detalle__precio-valor.gratis { color: var(--verde); }
 .detalle__precio-moneda { display: block; font-size: 11.5px; color: var(--ink-3); }
+.detalle__precio-iva { display: block; font-size: 14px; font-weight: 700; color: var(--navy); margin-top: 3px; }
 
 .detalle__cols {
   display: grid;
@@ -487,6 +488,9 @@ a { color: var(--blue); }
 .desglose .dg-cat { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--ink-3); font-weight: 700; padding-top: 12px; }
 .desglose .dg-stock { text-align: center; white-space: nowrap; width: 1%; padding: 7px 10px; }
 .desglose .dg-total td { border-top: 2px solid var(--ink); border-bottom: none; padding-top: 10px; font-weight: 800; font-size: 15px; }
+/* IVA: línea intermedia tenue y total final destacado */
+.desglose .dg-iva td { border: none; padding-top: 2px; padding-bottom: 2px; font-size: 12.5px; color: var(--ink-2); }
+.desglose .dg-total--iva td { border-top: 1px solid var(--linea); padding-top: 6px; color: var(--navy); }
 
 /* badges de disponibilidad */
 .stk { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 2px 9px; white-space: nowrap; cursor: help; }
@@ -534,6 +538,7 @@ a { color: var(--blue); }
   font-size: 14px;
 }
 .adicionales__total strong { font-size: 19px; color: var(--navy); }
+.adicionales__total .add-iva { font-size: 13px; font-weight: 600; color: var(--ink-2); }
 
 /* ---------------- Packs ---------------- */
 .packs {

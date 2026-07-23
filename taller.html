@@ -31,13 +31,12 @@
       <p class="taller-head__sub">Agendamiento → Recepción → Planificación → JPCB → Bodega. Modelo Ford (tableros de control visual) + Toyota JPCB.</p>
       <div class="tabs">
         <div class="tab active" data-v="agenda">1 · Agendamiento</div>
-        <div class="tab" data-v="status">2 · Status Taller</div>
-        <div class="tab" data-v="recep">3 · Recepción</div>
-        <div class="tab" data-v="prep">4 · Preparación de citas</div>
-        <div class="tab" data-v="plan">5 · Planificador</div>
-        <div class="tab" data-v="jpcb">6 · JPCB</div>
-        <div class="tab bodegatab" data-v="bodega">7 · Bodega (Pre-picking)</div>
-        <div class="tab" data-v="reportes">8 · Reportes</div>
+        <div class="tab" data-v="recep">2 · Recepción</div>
+        <div class="tab" data-v="prep">3 · Preparación de citas</div>
+        <div class="tab" data-v="plan">4 · Planificador</div>
+        <div class="tab" data-v="jpcb">5 · JPCB</div>
+        <div class="tab bodegatab" data-v="bodega">6 · Bodega (Pre-picking)</div>
+        <div class="tab" data-v="reportes">7 · Reportes</div>
       </div>
     </div>
   </div>
@@ -45,7 +44,7 @@
   <!-- ============ 1 · AGENDAMIENTO ============ -->
   <div class="view active" id="v-agenda">
     <h2 class="vtitle">Centro de Agendamiento</h2>
-    <p class="ag-sub">Agenda una hora; el dato fluye a Status Taller → Recepción → JPCB → Bodega.</p>
+    <p class="ag-sub">Agenda una hora; el dato fluye a Recepción → Planificación → JPCB → Bodega.</p>
 
     <div id="prefillBanner" class="prefill-banner" hidden></div>
 
@@ -84,25 +83,10 @@
     </div>
   </div>
 
-  <!-- ============ 2 · STATUS ============ -->
-  <div class="view" id="v-status">
-    <h2 class="vtitle">Status Taller</h2>
-    <p class="ag-sub">Ciclo de vida del vehículo. “Ingresar” abre la Recepción; En Taller y Por Entregar se leen del tablero JPCB.</p>
-    <div class="ag-stabs">
-      <button data-t="por_ingresar" class="active" onclick="agStatusTab('por_ingresar')">Por Ingresar</button>
-      <button data-t="en_taller" onclick="agStatusTab('en_taller')">En Taller</button>
-      <button data-t="por_entregar" onclick="agStatusTab('por_entregar')">Por Entregar</button>
-    </div>
-    <table class="ag-table">
-      <thead><tr><th>OC</th><th>Fecha</th><th>Hora</th><th>Cliente</th><th>Vehículo</th><th>Patente</th><th>Servicio</th><th>Acción</th></tr></thead>
-      <tbody id="tblStatus"></tbody>
-    </table>
-  </div>
-
-  <!-- ============ 3 · RECEPCIÓN ============ -->
+  <!-- ============ 2 · RECEPCIÓN ============ -->
   <div class="view" id="v-recep">
     <h2 class="vtitle">Recepción</h2>
-    <div id="recVacia" class="flow-note">Selecciona un vehículo en <b>Status Taller → Por Ingresar</b> y pulsa “Ingresar” para abrir su recepción.</div>
+    <div id="recVacia" class="flow-note">Selecciona un agendamiento en <b>Agendamiento</b> y pulsa “Ingresar” para abrir su recepción.</div>
     <div id="recForm" class="hidden" hidden>
       <div class="rcp-band" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
         <div><b id="recTitulo" style="color:var(--navy);font-size:18px"></b><div style="color:var(--ink-3);font-size:12px">N° de agendamiento: <span id="recOC"></span></div></div>
@@ -138,14 +122,14 @@
     </div>
   </div>
 
-  <!-- ============ 4 · PREPARACIÓN ============ -->
+  <!-- ============ 3 · PREPARACIÓN ============ -->
   <div class="view" id="v-prep">
     <h2 class="vtitle">Tablero de preparación de citas</h2>
     <p class="sub">Control de repuestos antes de la cita. Arrastra las tarjetas entre columnas; las órdenes con kit de mantención aparecen también en Bodega.</p>
     <div class="kanban" id="prepBoard"></div>
   </div>
 
-  <!-- ============ 5 · PLANIFICADOR ============ -->
+  <!-- ============ 4 · PLANIFICADOR ============ -->
   <div class="view" id="v-plan">
     <h2 class="vtitle">Planificador / Agenda del taller</h2>
     <p class="sub">Técnico × hora. La ficha se ubica en la hora de inicio; el largo = duración; el color = tipo de trabajo. Arrastra desde “Por asignar” a la grilla.</p>
@@ -156,7 +140,7 @@
     </div>
   </div>
 
-  <!-- ============ 6 · JPCB ============ -->
+  <!-- ============ 5 · JPCB ============ -->
   <div class="view" id="v-jpcb">
     <h2 class="vtitle">JPCB — Control de progreso del trabajo</h2>
     <p class="sub">Flujo normal de izquierda a derecha (Citas de hoy → En espera por pago). Arrastra la orden de columna en columna a medida que avanza.</p>
@@ -167,7 +151,7 @@
     </div>
   </div>
 
-  <!-- ============ 7 · BODEGA ============ -->
+  <!-- ============ 6 · BODEGA ============ -->
   <div class="view" id="v-bodega">
     <h2 class="vtitle" style="color:var(--bodega)">Bodega — Pre-picking de repuestos</h2>
     <p class="sub">Lista de recolección por orden, calculada desde la <b>pauta de mantención real</b> (marca/modelo/versión + km) con la <b>disponibilidad de stock</b> del Cotizador. Solo datos del vehículo, sin datos del propietario.</p>
@@ -179,7 +163,7 @@
     <div class="bodega-wrap" id="bodegaBoard"></div>
   </div>
 
-  <!-- ============ 8 · REPORTES ============ -->
+  <!-- ============ 7 · REPORTES ============ -->
   <div class="view" id="v-reportes">
     <h2 class="vtitle">Reportes</h2>
     <p class="ag-sub">Indicadores calculados sobre los datos registrados en esta estación.</p>
@@ -198,7 +182,7 @@
     <div class="modal">
       <h3 id="m-title">Orden de trabajo</h3>
       <div class="c" id="m-body"></div>
-      <div class="actions"><button class="agbtn agbtn-navy" onclick="closeM()">Cerrar</button></div>
+      <div class="actions" id="m-actions"><button class="agbtn agbtn-navy" onclick="closeM()">Cerrar</button></div>
     </div>
   </div>
 

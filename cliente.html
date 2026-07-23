@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotiza tu mantención · Curifor</title>
+  <meta name="description" content="Calcula en 30 segundos cuánto cuesta la mantención de tu auto. Precio final con IVA, sin sorpresas, con repuestos originales y la pauta oficial de tu marca.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/cliente.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="cliente.html">
+      <img src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
+    </a>
+    <a id="navWsp" class="nav__cta" href="#" target="_blank" rel="noopener">
+      <span class="ico-wsp" aria-hidden="true"></span> Hablar con un asesor
+    </a>
+  </div>
+</header>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="hero">
+  <div class="hero__inner">
+    <span class="hero__pill">Servicio oficial · 11 marcas</span>
+    <h1 class="hero__title">¿Cuánto cuesta la mantención<br>de tu auto?</h1>
+    <p class="hero__lead">Elige tu vehículo y el kilometraje. Te mostramos el valor final con IVA, qué incluye y todo lo que revisamos. Sin letra chica.</p>
+    <a href="#cotizador" class="btn btn--acento btn--lg">Cotizar mi mantención</a>
+
+    <ul class="hero__trust">
+      <li><span class="trust__ico">🔧</span> Pauta oficial de tu marca</li>
+      <li><span class="trust__ico">📦</span> Repuestos originales</li>
+      <li><span class="trust__ico">✅</span> Precio final, con IVA incluido</li>
+    </ul>
+  </div>
+</section>
+
+<main class="wrap" id="cotizador">
+
+  <!-- barra de progreso -->
+  <ol class="pasos" id="pasos">
+    <li class="paso is-active" data-p="1"><span class="paso__n">1</span> Tu auto</li>
+    <li class="paso" data-p="2"><span class="paso__n">2</span> Kilometraje</li>
+    <li class="paso" data-p="3"><span class="paso__n">3</span> Tu cotización</li>
+  </ol>
+
+  <!-- ====================== PASO 1: EL AUTO ====================== -->
+  <section class="card" id="p1">
+    <h2 class="card__titulo">¿Cuál es tu auto?</h2>
+    <p class="card__lead">Empecemos por la marca.</p>
+
+    <!-- 1.a marca -->
+    <div class="sub" id="subMarca">
+      <div id="gridMarcas" class="grid-marcas"></div>
+    </div>
+
+    <!-- 1.b modelo -->
+    <div class="sub" id="subModelo" hidden>
+      <div class="sub__head">
+        <h3 class="sub__titulo">Modelo <span id="ecoMarca" class="eco"></span></h3>
+        <button type="button" class="link-volver" data-volver="marca">Cambiar marca</button>
+      </div>
+      <input id="buscaModelo" class="buscador" type="search" placeholder="Buscar modelo…" autocomplete="off">
+      <div id="gridModelos" class="grid-chips"></div>
+    </div>
+
+    <!-- 1.c versión -->
+    <div class="sub" id="subVersion" hidden>
+      <div class="sub__head">
+        <h3 class="sub__titulo">Versión <span id="ecoModelo" class="eco"></span></h3>
+        <button type="button" class="link-volver" data-volver="modelo">Cambiar modelo</button>
+      </div>
+      <p class="sub__ayuda">Si no estás seguro, elige la que más se parezca: el valor cambia poco entre versiones. Lo confirmamos al agendar.</p>
+      <div id="listaVersiones" class="lista-versiones"></div>
+    </div>
+
+    <!-- 1.d año (solo marcas que lo requieren) -->
+    <div class="sub" id="subAnio" hidden>
+      <div class="sub__head">
+        <h3 class="sub__titulo">Año del vehículo</h3>
+        <button type="button" class="link-volver" data-volver="version">Cambiar versión</button>
+      </div>
+      <div id="gridAnios" class="grid-chips"></div>
+    </div>
+  </section>
+
+  <!-- ====================== PASO 2: KILOMETRAJE ====================== -->
+  <section class="card" id="p2" hidden>
+    <div class="card__head">
+      <div>
+        <h2 class="card__titulo">¿Qué mantención te toca?</h2>
+        <p class="card__lead">Elige el kilometraje que marca tu auto (o el más cercano).</p>
+      </div>
+      <button type="button" class="btn btn--ghost" id="btnCambiarAuto">← Cambiar auto</button>
+    </div>
+    <div id="chipAuto" class="auto-chip"></div>
+    <div id="gridKm" class="grid-km"></div>
+  </section>
+
+  <!-- ====================== PASO 3: RESULTADO ====================== -->
+  <section id="p3" hidden>
+    <div class="cotiz">
+
+      <!-- columna izquierda: precio y CTA -->
+      <aside class="cotiz__precio">
+        <div class="precio-card">
+          <p class="precio-card__auto" id="pcAuto"></p>
+          <p class="precio-card__rev" id="pcRev"></p>
+          <p class="precio-card__label">Valor de tu mantención</p>
+          <p class="precio-card__valor" id="pcValor">—</p>
+          <p class="precio-card__iva">IVA incluido · pesos chilenos</p>
+
+          <div id="pcExtrasResumen" class="precio-card__extras" hidden></div>
+
+          <div class="precio-card__total" id="pcTotalBox" hidden>
+            <span>Total con adicionales</span>
+            <strong id="pcTotal"></strong>
+          </div>
+
+          <a id="btnWsp" class="btn btn--acento btn--block" href="#" target="_blank" rel="noopener">
+            <span class="ico-wsp" aria-hidden="true"></span> Agendar por WhatsApp
+          </a>
+          <button id="btnPdf" class="btn btn--ghost btn--block" type="button">Descargar cotización</button>
+          <p class="precio-card__nota">Valor referencial. Se confirma al recibir tu auto en el taller.</p>
+        </div>
+
+        <ul class="garantias">
+          <li><span>🛡️</span> Repuestos originales con garantía</li>
+          <li><span>📋</span> Informe del estado de tu auto</li>
+          <li><span>👨‍🔧</span> Técnicos certificados por la marca</li>
+        </ul>
+      </aside>
+
+      <!-- columna derecha: detalle -->
+      <div class="cotiz__detalle">
+        <div class="card">
+          <div class="card__head">
+            <h2 class="card__titulo">Esto es lo que hacemos</h2>
+            <button type="button" class="btn btn--ghost btn--sm" id="btnCambiarKm">← Cambiar kilometraje</button>
+          </div>
+
+          <div class="ops" id="opsCambios">
+            <h3 class="ops__titulo"><span class="ops__badge ops__badge--r">Cambiamos</span></h3>
+            <ul class="ops__lista" id="listaCambios"></ul>
+          </div>
+
+          <div class="ops" id="opsRevisiones">
+            <h3 class="ops__titulo"><span class="ops__badge ops__badge--i">Revisamos</span></h3>
+            <ul class="ops__lista ops__lista--2col" id="listaRevisiones"></ul>
+            <button type="button" class="ops__vermas" id="btnVerRevs" hidden>Ver todas las revisiones</button>
+          </div>
+
+          <p class="ops__vacio" id="opsVacio" hidden>
+            Mantención completa según la pauta oficial de la marca para este kilometraje.
+            Te detallamos punto por punto lo que se hace al momento de agendar.
+          </p>
+        </div>
+
+        <div class="card" id="cardExtras">
+          <h2 class="card__titulo">¿Le sumamos algo más?</h2>
+          <p class="card__lead">Servicios que puedes agregar a la misma visita.</p>
+          <div id="gridExtras" class="grid-extras"></div>
+        </div>
+
+        <div class="card card--plan">
+          <h2 class="card__titulo">Tu plan completo de mantenciones</h2>
+          <p class="card__lead">Así se ve el cuidado de tu auto en el tiempo, según la pauta de fábrica.</p>
+          <div class="tabla-plan__scroll">
+            <table class="tabla-plan">
+              <thead><tr><th>Mantención</th><th>Cada</th><th class="ta-r">Valor</th></tr></thead>
+              <tbody id="tbodyPlan"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <details class="faq">
+          <summary>Preguntas frecuentes</summary>
+          <div class="faq__body">
+            <p><strong>¿El precio es final?</strong> Es el valor referencial de la pauta oficial de tu marca, con IVA incluido. Si al revisar tu auto detectamos algo fuera de la mantención, te avisamos y lo aprobamos contigo antes de hacerlo.</p>
+            <p><strong>¿Cuánto se demora?</strong> La mayoría de las mantenciones se entregan el mismo día. Te confirmamos el tiempo al agendar.</p>
+            <p><strong>¿Los repuestos son originales?</strong> Sí. Trabajamos con repuestos originales de cada marca y la pauta que define el fabricante.</p>
+            <p><strong>¿Pierdo la garantía si no voy a la marca?</strong> No. Curifor es servicio oficial, así que tu garantía se mantiene y queda registrada la mantención.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div id="errorBox" class="errorbox" hidden>
+    <p>No pudimos cargar el catálogo. Recarga la página o escríbenos y te cotizamos al tiro.</p>
+  </div>
+</main>
+
+<footer class="pie">
+  <div class="pie__inner">
+    <img src="img/curifor-logo.png" alt="Curifor" width="704" height="158" class="pie__logo">
+    <p class="pie__legal">Valores referenciales en pesos chilenos, con IVA incluido, sujetos a cambio sin previo aviso. La cotización no constituye una oferta comercial vinculante; el valor final se confirma en el taller.</p>
+    <p class="pie__fecha" id="pieFecha"></p>
+  </div>
+</footer>
+
+<script src="js/cliente.js"></script>
+</body>
+</html>

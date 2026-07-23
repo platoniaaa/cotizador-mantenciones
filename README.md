@@ -12,10 +12,77 @@ Plataforma web para cotizar mantenciones preventivas por **marca → modelo → 
 
 > Debe abrirse a través del servidor local (no con doble clic al `index.html`), porque el navegador bloquea la carga de los archivos JSON con el protocolo `file://`.
 
+## Búsqueda por patente
+
+En el paso 1 se puede escribir la patente y el cotizador consulta el registro del
+vehículo ([boostr.cl](https://boostr.cl/patente)) para dejar puestos **marca, modelo y año**.
+
+El registro entrega el modelo todo junto (`"RANGER XLT 3.2 4X4"`), así que el
+cotizador lo parte contra el catálogo: gana el nombre de modelo más largo que
+calce, de modo que *Grand Santa Fe* no se confunda con *Santa Fe* ni *X55 PLUS*
+con *X55*. La **versión no la informa el plan gratuito**: si el modelo tiene una
+sola, queda elegida; si tiene varias, el selector se resalta en ámbar para que el
+asesor la elija de la lista ya filtrada.
+
+Requiere una API key (gratuita, con registro). Cómo se entrega según dónde corra:
+
+| Entorno | Quién llama a la API | Dónde va la key |
+|---|---|---|
+| App de Curifor (Streamlit) | el servidor, en Python | `st.secrets["BOOSTR_API_KEY"]` |
+| Local / GitHub Pages | el navegador | `window._COTIZ_BOOSTR_KEY` |
+
+**La key nunca se commitea.** En la app va en los secrets del deploy; el bloque a
+insertar en `app.py` está en `herramientas/integracion_patente_streamlit.py`.
+Sin key configurada el campo avisa y el catálogo sigue funcionando normal.
+
+## Publicar en la app de Curifor (`curifor-ots`)
+
+El cotizador también vive **dentro de la app Streamlit de Curifor**
+(`Cjerez-curi/curifor-ots`), embebido en un iframe. Ahí no corre esta carpeta:
+va compilado en `cotizador_data.json` (HTML+CSS+JS+XLSX+logo+índice+stock+pautas,
+todo gzip+base64). Para regenerarlo y publicarlo:
+
+```bash
+python herramientas/publicar_bundle.py              # simulación: construye y compara
+python herramientas/publicar_bundle.py --escribir   # lo deja en el clon del repo
+python herramientas/publicar_bundle.py --publicar   # pull --rebase + commit + push
+```
+
+Espera el clon en `C:\dev\curifor-ots` (configurable con `--repo` o la variable
+`CURIFOR_OTS_REPO`). Requiere permiso de escritura en ese repo.
+
+Dos cosas que conviene saber de ese repo: la app **commitea sola** sus JSON de
+datos cada pocos minutos (por eso el script hace `pull --rebase` antes de subir),
+y el cotizador **tarda ~10 min en reflejar el cambio** (`_cargar_cotizador_gz`
+cachea 600 s), o hasta reiniciar la app en Streamlit Cloud.
+
+## Cotizador para clientes (`cliente.html`)
+
+Cara pública del cotizador, pensada para que la use el cliente final (o el asesor
+frente a él). Usa **los mismos datos** (`data/indice.json` y `data/pautas/`), pero
+solo muestra el **precio oficial de la pauta con IVA**: nunca costos, códigos de
+repuesto, stock ni el modo interno.
+
+Flujo en 3 pasos, mobile-first: **tu auto** (marca → modelo → versión → año) →
+**kilometraje** (grilla con el valor de cada mantención) → **cotización** (precio
+grande, qué se cambia y qué se revisa, servicios adicionales, plan completo y FAQ).
+Cierra con **"Agendar por WhatsApp"**, que abre el chat con el mensaje ya escrito
+(auto, mantención, adicionales y valor), y con **"Descargar cotización"** (imprimir a PDF).
+
+> **Antes de publicarla hay que poner el número de WhatsApp real** en `CONTACTO.wsp`,
+> al inicio de `js/cliente.js` (formato `56912345678`). Viene con un placeholder.
+
+Los textos de las pautas vienen del Excel del fabricante con anotaciones internas
+(`(Ver nota 2)`, `(Costo cliente)`, `(Sugerida a Inspección (I)`): `cliente.js` las
+limpia antes de mostrarlas, porque "costo cliente" dentro de lo que sí está incluido
+se lee como un cobro extra. Cuando una pauta no trae operaciones detalladas, lo que
+se cambia se deduce de los repuestos y lubricantes de esa mantención (solo el nombre).
+
 ## Sistema de Taller y Agendamiento (`taller.html`)
 
-Módulo integrado al cotizador (enlace **"Taller y agenda"** en el topbar) con 8 pestañas:
-Agendamiento → Status Taller → Recepción → Preparación de citas → Planificador → JPCB → Bodega (pre-picking) → Reportes.
+Módulo integrado al cotizador (enlace **"Taller y agenda"** en el topbar) con 7 pestañas:
+Agendamiento → Recepción → Preparación de citas → Planificador → JPCB → Bodega (pre-picking) → Reportes.
+El agendamiento pasa directo a Recepción con el botón **"Ingresar"** de la tabla; la entrega del vehículo se registra desde el detalle de la orden en el JPCB (etapa "En espera por pago").
 
 - **Integración con el cotizador**: el botón **"Agendar"** del paso 2 lleva la cotización activa
   (marca/modelo/versión/año/revisión/valor) al taller; al elegir una hora libre el formulario
@@ -34,11 +101,14 @@ Agendamiento → Status Taller → Recepción → Preparación de citas → Plan
 
 ```
 plataforma/
-  index.html            Cotizador (2 pasos: selección → resultados)
+  index.html            Cotizador interno (2 pasos: selección → resultados)
+  cliente.html          Cotizador para clientes (3 pasos, sin costos ni stock)
   taller.html           Sistema de Taller y Agendamiento (8 pestañas)
   css/estilos.css       Estilos compartidos (paleta azul corporativa, responsive)
+  css/cliente.css       Estilos del cotizador para clientes
   css/taller.css        Estilos del módulo Taller
   js/app.js             Lógica del cotizador: selector encadenado, carrusel, totales, adicionales
+  js/cliente.js         Lógica del cotizador para clientes (incluye el número de WhatsApp)
   js/taller.js          Lógica del taller: agenda, recepción, JPCB, planificador, bodega
   js/vendor/xlsx.full.min.js  Librería SheetJS (generación de Excel, offline)
   data/

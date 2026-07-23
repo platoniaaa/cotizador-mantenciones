@@ -21,6 +21,7 @@
       </div>
       <nav class="topbar__nav">
         <a href="taller.html" class="nav-link">Taller y agenda</a>
+        <a href="cliente.html" class="nav-link" target="_blank">Vista cliente</a>
         <a href="#" id="btnReiniciar" class="nav-link">Nueva consulta</a>
       </nav>
     </div>
@@ -42,6 +43,25 @@
         <li class="stepbar__item is-active" data-step="1"><span>1</span> Tu vehículo</li>
         <li class="stepbar__item" data-step="2"><span>2</span> Plan de mantención</li>
       </ol>
+
+      <div class="patente">
+        <label class="field">
+          <span class="field__title">Patente
+            <span class="tip" tabindex="0" aria-label="Ayuda">?
+              <span class="tip__bubble">Consulta el registro del vehículo y completa marca, modelo y año. La versión se elige abajo: el registro no la informa.</span>
+            </span>
+          </span>
+          <div class="patente__control">
+            <input id="inpPatente" class="input input--patente" type="text" maxlength="8"
+                   placeholder="BBCC12" autocomplete="off" spellcheck="false"
+                   aria-describedby="patenteEstado">
+            <button id="btnPatente" class="btn btn--ghost" type="button">Buscar</button>
+          </div>
+        </label>
+        <p id="patenteEstado" class="patente__estado" role="status" hidden></p>
+      </div>
+
+      <div class="separador"><span>o elige el vehículo del catálogo</span></div>
 
       <div class="selector__grid">
         <label class="field">
@@ -170,8 +190,9 @@
         <!-- adicionales -->
         <div id="adicionalesBox" class="adicionales" hidden>
           <h4 class="detalle__subtitulo">Servicios adicionales sugeridos</h4>
+          <div id="extrasVenta" class="extras"></div>
           <ul id="detAdicionales" class="adicionales__list"></ul>
-          <div class="adicionales__total">
+          <div id="adicionalesTotalBox" class="adicionales__total">
             <span>Total con adicionales seleccionados</span>
             <strong id="totalConAdicionales"></strong>
           </div>

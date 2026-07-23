@@ -155,7 +155,6 @@ function agFind(oc) { return DB.agendamientos.find(function (a) { return String(
 function ordersActivas() { return DB.orders.filter(function (o) { return o.etapa !== "entregado"; }); }
 
 /* ---------------- navegación de pestañas ---------------- */
-var agCurTab = "por_ingresar";
 function agGoTab(v) {
   document.querySelectorAll(".tab").forEach(function (x) { x.classList.remove("active"); });
   document.querySelectorAll(".view").forEach(function (x) { x.classList.remove("active"); });
@@ -163,7 +162,6 @@ function agGoTab(v) {
   if (tabEl) tabEl.classList.add("active");
   document.getElementById("v-" + v).classList.add("active");
   if (v === "agenda") { renderCal(); renderSlots(); renderAgendaTable(); }
-  if (v === "status") agStatusTab(agCurTab);
   if (v === "reportes") renderReportes();
   window.scrollTo(0, 0);
 }
@@ -245,7 +243,10 @@ function renderAgendaTable() {
     var est = a.estado === "agendado" ? '<span class="ag-pill por">Agendado</span>'
       : a.estado === "en_taller" ? '<span class="ag-pill en">En taller</span>'
       : '<span class="ag-pill ent">Entregado</span>';
-    var acc = a.estado === "agendado" ? '<button class="agbtn agbtn-red agbtn-sm" onclick="agAnular(' + a.oc + ')">Anular</button>' : "";
+    var acc = a.estado === "agendado"
+      ? '<button class="agbtn agbtn-blue agbtn-sm" onclick="agAbrirRecepcion(' + a.oc + ')">Ingresar</button>' +
+        ' <button class="agbtn agbtn-red agbtn-sm" onclick="agAnular(' + a.oc + ')">Anular</button>'
+      : "";
     return "<tr><td>" + a.oc + "</td><td>" + a.hora + "</td><td>" + (a.cli || "—") + "</td><td>" +
       (a.marcaNombre || "") + " " + (a.modeloNombre || "") + "</td><td>" + a.pat + "</td><td>" + a.serv + "</td><td>" + est + "</td><td>" + acc + "</td></tr>";
   }).join("");
@@ -407,7 +408,7 @@ function agGuardar() {
   if (PREFILL) { localStorage.removeItem(PREKEY); PREFILL = null; renderPrefillBanner(); }
   agCerrarModal();
   renderCal(); renderSlots(); renderAgendaTable();
-  alert("Agendamiento " + a.oc + " creado para el " + fmtFechaCorta(a.fecha) + " a las " + a.hora + ".\nAparece en Status Taller → Por Ingresar.");
+  alert("Agendamiento " + a.oc + " creado para el " + fmtFechaCorta(a.fecha) + " a las " + a.hora + ".\nUsa el botón “Ingresar” en la tabla de Agendamiento para abrir su recepción.");
 }
 
 /* ---------------- prellenado desde el cotizador ---------------- */
@@ -471,33 +472,8 @@ function aplicarPrefill() {
 }
 
 /* ============================================================
-   2 · STATUS TALLER
+   Entrega del vehículo (desde el detalle de la orden en JPCB)
    ============================================================ */
-function agStatusTab(t) {
-  agCurTab = t;
-  document.querySelectorAll(".ag-stabs button").forEach(function (b) { b.classList.toggle("active", b.dataset.t === t); });
-  var rows = [];
-  if (t === "por_ingresar") {
-    rows = DB.agendamientos.filter(function (a) { return a.estado === "agendado"; })
-      .sort(function (a, b) { return (a.fecha + a.hora) < (b.fecha + b.hora) ? -1 : 1; })
-      .map(function (a) {
-        return { oc: a.oc, fecha: fmtFechaCorta(a.fecha), hora: a.hora, cli: a.cli, veh: (a.marcaNombre || "") + " " + (a.modeloNombre || ""), pat: a.pat, serv: a.serv, acc: '<button class="agbtn agbtn-blue agbtn-sm" onclick="agAbrirRecepcion(' + a.oc + ')">Ingresar</button>' };
-      });
-  } else if (t === "en_taller") {
-    rows = ordersActivas().filter(function (o) { return o.etapa && o.etapa !== "esp_pago"; })
-      .map(function (o) {
-        return { oc: "RO " + o.ro, fecha: fmtFechaCorta(o.fecha || hoyISO()), hora: o.rec, cli: o.cliente, veh: o.marca + " " + o.modelo, pat: o.pat, serv: servicioDesc(o), acc: '<button class="agbtn agbtn-grey agbtn-sm" onclick="agGoTab(\'jpcb\')">Ver en JPCB</button>' };
-      });
-  } else {
-    rows = ordersActivas().filter(function (o) { return o.etapa === "esp_pago"; })
-      .map(function (o) {
-        return { oc: "RO " + o.ro, fecha: fmtFechaCorta(o.fecha || hoyISO()), hora: o.rec, cli: o.cliente, veh: o.marca + " " + o.modelo, pat: o.pat, serv: servicioDesc(o), acc: '<button class="agbtn agbtn-green agbtn-sm" onclick="agEntregar(\'' + o.ro + '\')">Entregar</button>' };
-      });
-  }
-  document.getElementById("tblStatus").innerHTML = rows.map(function (r) {
-    return "<tr><td>" + r.oc + "</td><td>" + r.fecha + "</td><td>" + r.hora + "</td><td>" + r.cli + "</td><td>" + r.veh + "</td><td>" + r.pat + "</td><td>" + r.serv + "</td><td>" + r.acc + "</td></tr>";
-  }).join("") || '<tr><td colspan="8" style="color:var(--ink-3);padding:16px">Sin vehículos en esta etapa.</td></tr>';
-}
 function agEntregar(ro) {
   var o = byRo(ro);
   if (!o) return;
@@ -506,12 +482,13 @@ function agEntregar(ro) {
   var a = o.oc ? agFind(o.oc) : null;
   if (a) a.estado = "entregado";
   save();
+  closeM();
   renderAll();
-  agStatusTab(agCurTab);
+  renderAgendaTable();
 }
 
 /* ============================================================
-   3 · RECEPCIÓN
+   2 · RECEPCIÓN
    ============================================================ */
 var agRecSel = null;
 function agAbrirRecepcion(oc) {
@@ -543,7 +520,7 @@ function agCancelarRecepcion() {
   agRecSel = null;
   document.getElementById("recForm").hidden = true;
   document.getElementById("recVacia").hidden = false;
-  agGoTab("status");
+  agGoTab("agenda");
 }
 function agIngresarTaller() {
   if (!agRecSel) return;
@@ -772,6 +749,11 @@ function detalle(ro) {
     '<div><span class="lbl">Pre-picking:</span> ' + (o.picking === "listo" ? "Preparado" : "Pendiente") + "</div>" +
     rep +
     '<p class="prox" style="margin-top:10px">Próximamente: notificación al cliente por WhatsApp/e-mail y orden digital.</p>';
+  document.getElementById("m-actions").innerHTML =
+    (o.etapa === "esp_pago"
+      ? '<button class="agbtn agbtn-green" onclick="agEntregar(\'' + o.ro + '\')">Entregar vehículo</button> '
+      : "") +
+    '<button class="agbtn agbtn-navy" onclick="closeM()">Cerrar</button>';
   document.getElementById("ov").classList.add("open");
 }
 function closeM() { document.getElementById("ov").classList.remove("open"); }
@@ -887,7 +869,6 @@ function borrarTodo() {
   DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60 };
   save();
   renderCal(); renderSlots(); renderAgendaTable(); renderAll();
-  agStatusTab(agCurTab);
 }
 
 /* ============================================================
@@ -930,7 +911,6 @@ function init() {
   renderCal(); renderSlots(); renderAgendaTable();
   renderPrefillBanner();
   renderAll();
-  agStatusTab("por_ingresar");
 
   // catálogo + stock del cotizador
   var pIdx = fetch("data/indice.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });

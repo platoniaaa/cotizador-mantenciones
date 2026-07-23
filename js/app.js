@@ -13,6 +13,13 @@
   const IVA = 0.19;
   const conIva = (n) => (n == null ? null : Math.round(n * (1 + IVA)));
 
+  // Servicios opcionales de venta cruzada: se ofrecen en toda mantención, de
+  // cualquier marca. Precio de lista NETO (el IVA se muestra aparte).
+  const EXTRAS = [
+    { id: "airlife",   nombre: "Airlife",   detalle: "Higienización del sistema de climatización", precio: 16000 },
+    { id: "nitrosafe", nombre: "NitroSafe", detalle: "Inflado de neumáticos con nitrógeno",        precio: 18000 },
+  ];
+
   // ---- estado ----
   const state = {
     indice: null,
@@ -25,6 +32,7 @@
     plan: null,      // intervalos del año/plan activo
     activo: 0,       // índice de revisión activa
     adicionales: new Set(),
+    extras: new Set(),    // ids de EXTRAS agregados (se mantienen al cambiar de revisión)
     modo: "particular",   // "particular" (precio lista) | "interno" (costo/0.8)
     seleccion: {},        // idx de item -> idx de SKU elegido (0 = principal)
     totalCalc: 0,         // total calculado desde stock (modo activo)
@@ -33,6 +41,7 @@
   // ---- referencias DOM ----
   const el = {
     paso1: $("#paso1"), paso2: $("#paso2"),
+    inpPatente: $("#inpPatente"), btnPatente: $("#btnPatente"), patenteEstado: $("#patenteEstado"),
     selMarca: $("#selMarca"), selModelo: $("#selModelo"),
     selVersion: $("#selVersion"), selAnio: $("#selAnio"), fieldAnio: $("#fieldAnio"),
     btnCotizar: $("#btnCotizar"), btnVolver: $("#btnVolver"), btnReiniciar: $("#btnReiniciar"),
@@ -47,7 +56,8 @@
     stockResumen: $("#stockResumen"), btnExcel: $("#btnExcel"), btnAgendar: $("#btnAgendar"),
     btnImprimir: $("#btnImprimir"), printDatos: $("#printDatos"),
     adicionalesBox: $("#adicionalesBox"), detAdicionales: $("#detAdicionales"),
-    totalConAdicionales: $("#totalConAdicionales"),
+    extrasVenta: $("#extrasVenta"),
+    totalConAdicionales: $("#totalConAdicionales"), adicionalesTotalBox: $("#adicionalesTotalBox"),
     packsBox: $("#packsBox"), packsList: $("#packsList"),
     detNotas: $("#detNotas"), detFuente: $("#detFuente"),
     errorBox: $("#errorBox"), footFecha: $("#footFecha"), stepbar: document.querySelectorAll(".stepbar__item"),
@@ -73,6 +83,19 @@
     } catch (e) { state.stock = null; }
     llenarMarcas();
     enlazarEventos();
+
+    // Modo embebido: cuando el host consulta el registro por su cuenta (para no
+    // exponer la API key en el navegador), entrega el vehículo ya resuelto y
+    // pone su propio campo de patente; acá solo se traduce al catálogo.
+    if (window._COTIZ_PATENTE_EXTERNA) {
+      const campo = el.inpPatente.closest("label");   // el mensaje de estado sí se mantiene
+      if (campo) campo.hidden = true;
+      const sep = document.querySelector(".separador");
+      if (sep) sep.hidden = true;
+    }
+    if (window._COTIZ_VEHICULO) {
+      await aplicarDatosRegistro(window._COTIZ_VEHICULO);
+    }
   }
 
   // ---- stock ----
@@ -107,6 +130,10 @@
   }
 
   function enlazarEventos() {
+    el.btnPatente.addEventListener("click", buscarPorPatente);
+    el.inpPatente.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { e.preventDefault(); buscarPorPatente(); }
+    });
     el.selMarca.addEventListener("change", onMarca);
     el.selModelo.addEventListener("change", onModelo);
     el.selVersion.addEventListener("change", onVersion);
@@ -138,12 +165,19 @@
     if (state.anio) filas.push(["Año", state.anio]);
     filas.push(["Tipo", state.modo === "particular" ? "Cliente particular" : "Interno"]);
     filas.push(["Mantención", `Revisión ${itv.n} — ${itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega")}${itv.meses ? " · " + itv.meses + " meses" : ""}`]);
+    const base = itv.gratis ? 0 : (state.totalCalc || 0);
     if (itv.gratis) {
       filas.push(["Valor", "Sin costo"]);
     } else {
-      filas.push(["Valor neto (sin IVA)", money(state.totalCalc)]);
-      filas.push(["IVA 19%", money(conIva(state.totalCalc) - state.totalCalc)]);
-      filas.push(["TOTAL con IVA", money(conIva(state.totalCalc))]);
+      filas.push(["Valor neto (sin IVA)", money(base)]);
+      filas.push(["IVA 19%", money(conIva(base) - base)]);
+      filas.push(["TOTAL con IVA", money(conIva(base))]);
+    }
+    const extras = extrasElegidos();
+    if (extras.length) {
+      let netoTot = base;
+      extras.forEach((x) => { netoTot += x.precio; filas.push([x.nombre, `${money(x.precio)} neto (${money(conIva(x.precio))} con IVA)`]); });
+      filas.push(["TOTAL con adicionales (con IVA)", money(conIva(netoTot))]);
     }
     if (state.stock) filas.push(["Inventario al", state.stock.actualizado]);
     filas.push(["Fecha impresión", new Date().toLocaleDateString("es-CL")]);
@@ -243,6 +277,221 @@
   }
 
   // ============================================================
+  //  Búsqueda por patente
+  // ============================================================
+  //  Consulta el registro del vehículo (api.boostr.cl) y traduce la respuesta
+  //  al catálogo. El registro entrega la marca y un texto que mezcla modelo,
+  //  versión, motor y tracción ("RANGER XLT 3.2 4X4"), más el año; NO entrega
+  //  la versión por separado (eso es plan pago), así que la versión la termina
+  //  de elegir el asesor salvo que el modelo tenga una sola.
+  //
+  //  El transporte cambia según dónde corra el cotizador:
+  //   · embebido en la app de Curifor → el host define __cotizConsultarPatente
+  //     y la llamada la hace el servidor, con la API key en sus secrets (así la
+  //     key nunca llega al navegador ni depende de la CSP del iframe);
+  //   · standalone → llamada directa a la API con la key que exponga el host
+  //     en _COTIZ_BOOSTR_KEY.
+  const PATENTE_RE = /^([A-Z]{4}\d{2}|[A-Z]{2}\d{4}|[A-Z]{3}\d{2}|[A-Z]{2}\d{3})$/;
+  const normPat = (s) => (s || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const cachePatente = new Map();
+
+  const normTxt = (s) => (s == null ? "" : String(s))
+    .toUpperCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/[^A-Z0-9]+/g, " ")
+    .trim();
+  const compactar = (s) => normTxt(s).replace(/ /g, "");
+
+  // tokens de un texto; los decimales aportan además su forma pegada (1.5 → "15")
+  function tokensDe(s) {
+    const t = new Set(normTxt(s).split(" ").filter(Boolean));
+    ((s == null ? "" : String(s)).match(/\d+[.,]\d+/g) || [])
+      .forEach((d) => t.add(d.replace(/[.,]/g, "")));
+    return t;
+  }
+
+  function buscarMarcaEnIndice(make) {
+    const m = normTxt(make);
+    if (!m) return null;
+    const marcas = state.indice.marcas;
+    return marcas.find((x) => normTxt(x.nombre) === m || normTxt(x.id) === m)
+        || marcas.find((x) => m.startsWith(normTxt(x.nombre) + " ") || m.endsWith(" " + normTxt(x.nombre)))
+        || null;
+  }
+
+  // gana el nombre de modelo más largo que calce: "Grand Santa Fe" antes que
+  // "Santa Fe", "X55 PLUS" antes que "X55", "Transit V363" antes que "Transit"
+  function buscarModeloEnMarca(marca, model) {
+    const t = normTxt(model);
+    if (!t) return null;
+    const cands = marca.modelos
+      .map((mo) => ({ mo, n: normTxt(mo.nombre) }))
+      .filter((c) => c.n)
+      .sort((a, b) => b.n.length - a.n.length);
+    for (const c of cands) {
+      if (t === c.n || t.startsWith(c.n + " ") || t.includes(" " + c.n + " ") || t.endsWith(" " + c.n)) return c.mo;
+    }
+    // calce pegado: "PIKUP" ↔ "Pik Up", "GS3POWER" ↔ "GS3 Power"
+    const tc = compactar(model);
+    for (const c of cands) {
+      const nc = compactar(c.mo.nombre);
+      if (nc.length >= 3 && tc.startsWith(nc)) return c.mo;
+    }
+    return null;
+  }
+
+  // filtra por año y puntúa las versiones con lo que sobró del texto del registro
+  function buscarVersionEnModelo(modelo, model, anio) {
+    let vs = modelo.versiones || [];
+    if (!vs.length) return { version: null, candidatas: [] };
+    if (anio) {
+      const porAnio = vs.filter((v) => !v.anios || v.anios.indexOf(String(anio)) >= 0);
+      if (porAnio.length) vs = porAnio;
+    }
+    if (vs.length === 1) return { version: vs[0], candidatas: vs };
+
+    const resto = normTxt(model).replace(normTxt(modelo.nombre), " ");
+    const tr = tokensDe(resto);
+    if (!tr.size) return { version: null, candidatas: vs };
+
+    const puntuadas = vs.map((v) => {
+      const tv = tokensDe(v.nombre);
+      let p = 0;
+      tr.forEach((x) => { if (tv.has(x)) p += x.length >= 2 ? 2 : 1; });
+      return { v, p };
+    }).sort((a, b) => b.p - a.p);
+
+    // solo si hay un ganador claro; ante empate decide el asesor
+    const gana = puntuadas[0].p > 0 && (puntuadas.length === 1 || puntuadas[0].p > puntuadas[1].p);
+    return { version: gana ? puntuadas[0].v : null, candidatas: vs };
+  }
+
+  function resolverVehiculo(datos) {
+    const marca = buscarMarcaEnIndice(datos.make);
+    if (!marca) return { marca: null, modelo: null, version: null, candidatas: [] };
+    const modelo = buscarModeloEnMarca(marca, datos.model);
+    if (!modelo) return { marca, modelo: null, version: null, candidatas: [] };
+    const r = buscarVersionEnModelo(modelo, datos.model, datos.year);
+    return { marca, modelo, version: r.version, candidatas: r.candidatas };
+  }
+
+  async function consultarPatente(placa) {
+    if (typeof window.__cotizConsultarPatente === "function") {
+      return await window.__cotizConsultarPatente(placa);
+    }
+    const key = window._COTIZ_BOOSTR_KEY || "";
+    if (!key) {
+      const e = new Error("sin-key");
+      e.codigo = "SIN_KEY";
+      throw e;
+    }
+    const r = await fetch(`https://api.boostr.cl/vehicle/${encodeURIComponent(placa)}.json`,
+                          { headers: { "X-API-KEY": key, "Accept": "application/json" } });
+    const j = await r.json().catch(() => null);
+    if (!j) { const e = new Error("respuesta ilegible"); e.codigo = "RESPUESTA"; throw e; }
+    if (j.status !== "success" || !j.data) {
+      const e = new Error(j.message || "consulta rechazada");
+      e.codigo = j.code || "ERROR";
+      throw e;
+    }
+    return j.data;
+  }
+
+  function estadoPatente(tipo, html) {
+    el.patenteEstado.className = "patente__estado patente__estado--" + tipo;
+    el.patenteEstado.innerHTML = html;
+    el.patenteEstado.hidden = false;
+  }
+
+  function marcarPendiente(sel, pendiente) {
+    const campo = sel && sel.closest(".field");
+    if (campo) campo.classList.toggle("field--pendiente", !!pendiente);
+  }
+
+  async function aplicarVehiculo(r, datos) {
+    // replica el orden de onMarca/onModelo para que los índices calcen
+    el.selMarca.value = r.marca.id;
+    onMarca();
+    const modelos = [...r.marca.modelos].sort((a, b) => a.nombre.localeCompare(b.nombre, "es", { numeric: true }));
+    el.selModelo.value = String(modelos.indexOf(r.modelo));
+    onModelo();
+
+    if (r.version) {
+      el.selVersion.value = String(r.modelo.versiones.indexOf(r.version));
+      await onVersion();
+    }
+    if (datos.year && !el.fieldAnio.hidden) {
+      const opcion = [...el.selAnio.options].find((o) => o.value === String(datos.year));
+      if (opcion) { el.selAnio.value = String(datos.year); onAnioSelector(); }
+    }
+    marcarPendiente(el.selVersion, !state.version);
+    marcarPendiente(el.selAnio, state.version && !el.fieldAnio.hidden && !state.anio);
+  }
+
+  // traduce la respuesta del registro al catálogo y deja el selector puesto
+  async function aplicarDatosRegistro(datos) {
+    const desc = [datos.make, datos.model, datos.year].filter(Boolean).join(" ");
+    const r = resolverVehiculo(datos);
+
+    if (!r.marca) {
+      estadoPatente("warn", `El registro dice <b>${desc}</b>. Curifor no atiende esa marca, así que no hay pauta de mantención.`);
+      return;
+    }
+    if (!r.modelo) {
+      estadoPatente("warn", `El registro dice <b>${desc}</b>. La marca sí la atendemos, pero ese modelo no está en el catálogo de pautas: elígelo abajo si corresponde a otro nombre.`);
+      el.selMarca.value = r.marca.id;
+      onMarca();
+      return;
+    }
+
+    await aplicarVehiculo(r, datos);
+
+    const partes = [`<b>${desc}</b>`];
+    if (state.version) partes.push("Vehículo completo, ya puedes ver el plan.");
+    else partes.push(`Falta la versión: elige entre las <b>${r.candidatas.length}</b> de este modelo (el registro no la informa).`);
+    if (state.version && !el.fieldAnio.hidden && !state.anio) partes.push("Falta el año.");
+    estadoPatente(state.version && (el.fieldAnio.hidden || state.anio) ? "ok" : "info", partes.join(" "));
+  }
+
+  async function buscarPorPatente() {
+    const placa = normPat(el.inpPatente.value);
+    el.inpPatente.value = placa;
+    marcarPendiente(el.selVersion, false);
+    marcarPendiente(el.selAnio, false);
+
+    if (!placa) { el.patenteEstado.hidden = true; return; }
+    if (!PATENTE_RE.test(placa)) {
+      estadoPatente("error", "Esa patente no tiene un formato válido. Usa <b>BBCC12</b> o <b>AB1234</b>.");
+      return;
+    }
+
+    el.btnPatente.disabled = true;
+    el.inpPatente.disabled = true;
+    estadoPatente("info", "Consultando el registro…");
+    try {
+      let datos = cachePatente.get(placa);
+      if (!datos) {
+        datos = await consultarPatente(placa);
+        cachePatente.set(placa, datos);
+      }
+      await aplicarDatosRegistro(datos);
+    } catch (e) {
+      if (e && e.codigo === "SIN_KEY") {
+        estadoPatente("error", "La consulta por patente no está configurada en esta instalación (falta la API key). Elige el vehículo del catálogo.");
+      } else if (e && (e.codigo === "MISSING_API_KEY" || e.codigo === "INVALID_API_KEY")) {
+        estadoPatente("error", "La API key del registro no es válida o está vencida. Avisa a Sistemas.");
+      } else if (e && (e.codigo === "NOT_FOUND" || e.codigo === "PLATE_NOT_FOUND")) {
+        estadoPatente("warn", `No encontramos el vehículo con patente <b>${placa}</b>.`);
+      } else {
+        estadoPatente("error", "No pudimos consultar el registro en este momento. Elige el vehículo del catálogo.");
+      }
+    } finally {
+      el.btnPatente.disabled = false;
+      el.inpPatente.disabled = false;
+    }
+  }
+
+  // ============================================================
   //  Paso 2 — resultados
   // ============================================================
   function cotizar() {
@@ -285,6 +534,7 @@
     state.plan = (plan && plan.intervalos) ? plan.intervalos : [];
     state.activo = 0;
     state.adicionales.clear();
+    state.extras.clear();   // los extras se ofrecen de nuevo con cada vehículo
     state.seleccion = {};
     pintarCarrusel();
     pintarDetalle();
@@ -543,18 +793,49 @@
       return { nombre: a.nombre, precio, aplica };
     }).filter((a) => a.aplica && a.precio);
 
-    if (!adics.length) { el.adicionalesBox.hidden = true; return; }
+    // los extras de venta cruzada van siempre, así que el bloque nunca se oculta
     el.adicionalesBox.hidden = false;
+    el.detAdicionales.hidden = !adics.length;
     el.detAdicionales.innerHTML = adics.map((a, i) =>
       `<li><label><input type="checkbox" data-precio="${a.precio}" data-i="${i}"><span>${a.nombre}</span></label><span class="add-precio">${money(a.precio)}</span></li>`
     ).join("");
     el.detAdicionales.querySelectorAll("input").forEach((chk) => chk.addEventListener("change", () => recalcularTotal(itv)));
+    pintarExtras(itv);
     recalcularTotal(itv);
   }
+
+  // ---- extras de venta cruzada (Airlife / NitroSafe) ----
+  function pintarExtras(itv) {
+    el.extrasVenta.innerHTML = EXTRAS.map((x) => {
+      const on = state.extras.has(x.id);
+      return `<button type="button" class="extra${on ? " is-on" : ""}" data-extra="${x.id}" aria-pressed="${on}">
+          <span class="extra__info">
+            <span class="extra__nombre">${x.nombre}</span>
+            <span class="extra__detalle">${x.detalle}</span>
+          </span>
+          <span class="extra__precio">${money(x.precio)} <small>+ IVA</small></span>
+          <span class="extra__cta">${on ? "Agregado ✓" : "+ Agregar"}</span>
+        </button>`;
+    }).join("");
+    el.extrasVenta.querySelectorAll(".extra").forEach((btn) => btn.addEventListener("click", () => {
+      const id = btn.dataset.extra;
+      if (state.extras.has(id)) state.extras.delete(id); else state.extras.add(id);
+      pintarExtras(itv);
+      recalcularTotal(itv);
+    }));
+  }
+
+  // Extras agregados -> [{nombre, precio}] (neto)
+  function extrasElegidos() {
+    return EXTRAS.filter((x) => state.extras.has(x.id)).map((x) => ({ nombre: x.nombre, precio: x.precio }));
+  }
+  const sumaExtras = () => extrasElegidos().reduce((t, x) => t + x.precio, 0);
 
   function recalcularTotal(itv) {
     let extra = 0;
     el.detAdicionales.querySelectorAll("input:checked").forEach((c) => (extra += +c.dataset.precio));
+    extra += sumaExtras();
+    el.adicionalesTotalBox.hidden = extra === 0;   // solo aparece si se agregó algo
     const base = itv.gratis ? 0 : (state.totalCalc || 0);
     const t = base + extra;
     el.totalConAdicionales.innerHTML =
@@ -591,6 +872,10 @@
     reset(el.selVersion, "Elige la versión");
     el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");
     el.selMarca.value = "";
+    el.inpPatente.value = "";
+    el.patenteEstado.hidden = true;
+    marcarPendiente(el.selVersion, false);
+    marcarPendiente(el.selAnio, false);
     el.vehiculoMeta.hidden = true;
     el.btnCotizar.disabled = true;
     volver();
@@ -606,12 +891,13 @@
     if (!p || !itv) return;
     const wb = XLSX.utils.book_new();
 
-    // adicionales seleccionados
+    // adicionales seleccionados (de la pauta + extras de venta cruzada)
     const adicSel = [];
     el.detAdicionales.querySelectorAll("input:checked").forEach((c) => {
       const li = c.closest("li");
       adicSel.push({ nombre: li.querySelector("span").textContent, precio: +c.dataset.precio });
     });
+    adicSel.push(...extrasElegidos());
 
     // ---- Hoja 1: Cotización (revisión activa) ----
     const A = [];
@@ -723,7 +1009,8 @@
       anio: state.anio || null,
       km: itv.km || null,
       revN: itv.n,
-      valor: itv.gratis ? 0 : (state.totalCalc || null),
+      valor: itv.gratis ? sumaExtras() : ((state.totalCalc || 0) + sumaExtras()) || null,
+      extras: extrasElegidos().map((x) => x.nombre),
       ts: Date.now(),
     };
     try { localStorage.setItem("curiforTallerPrefill", JSON.stringify(pre)); } catch (e) { /* sin storage */ }

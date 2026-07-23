@@ -632,27 +632,6 @@ a { color: var(--blue); }
 .adicionales__total strong { font-size: 19px; color: var(--navy); }
 .adicionales__total .add-iva { font-size: 13px; font-weight: 600; color: var(--ink-2); }
 
-/* ---------------- Packs ---------------- */
-.packs {
-  background: var(--blanco);
-  border: 1px solid var(--linea);
-  border-radius: var(--radio);
-  box-shadow: var(--sombra);
-  padding: 24px 28px;
-  margin-bottom: 18px;
-}
-.packs__titulo { margin: 0 0 4px; font-size: 18px; font-weight: 800; color: var(--navy); }
-.packs__lead { margin: 0 0 16px; font-size: 14px; color: var(--ink-2); }
-.packs__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 14px; }
-.pack {
-  border: 1.5px solid var(--tint-borde);
-  border-radius: var(--radio-sm);
-  padding: 16px 18px;
-  background: var(--tint-2);
-}
-.pack__nombre { font-size: 13.5px; font-weight: 700; color: var(--ink-2); }
-.pack__precio { font-size: 22px; font-weight: 800; color: var(--navy); margin-top: 6px; }
-
 /* ---------------- Notas ---------------- */
 .notas {
   background: var(--blanco);
@@ -693,7 +672,7 @@ a { color: var(--blue); }
   .detalle__head { flex-direction: column; }
   .detalle__precio { text-align: left; }
   .rev-card { width: 132px; }
-  .card, .detalle, .resumen-vehiculo, .packs { padding-left: 18px; padding-right: 18px; }
+  .card, .detalle, .resumen-vehiculo { padding-left: 18px; padding-right: 18px; }
 }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
@@ -723,7 +702,7 @@ a { color: var(--blue); }
   .wrap { margin: 0; padding: 0; max-width: none; }
   .print-header { display: block; margin-bottom: 12px; }
   /* los bloques FLUYEN entre páginas (sin break-inside: avoid, que dejaba la 1a hoja en blanco) */
-  .detalle, .packs, .notas, .adicionales {
+  .detalle, .notas, .adicionales {
     box-shadow: none; border: none; margin: 0 0 10px; padding: 0;
   }
   .adicionales__titulo { font-size: 13px; color: #000; margin-bottom: 6px; }
@@ -735,6 +714,6 @@ a { color: var(--blue); }
   .stk { border: 1px solid #999; }
   .ops-badge { border: 1px solid #999; }
   /* evita cortar a la mitad una fila de repuesto o una operación */
-  .desglose tr, .ops-list li, .packs .pack { break-inside: avoid; }
+  .desglose tr, .ops-list li { break-inside: avoid; }
   a[href]:after { content: ""; }
 }

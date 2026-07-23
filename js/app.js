@@ -58,7 +58,6 @@
     adicionalesBox: $("#adicionalesBox"), detAdicionales: $("#detAdicionales"),
     extrasVenta: $("#extrasVenta"),
     totalConAdicionales: $("#totalConAdicionales"), adicionalesTotalBox: $("#adicionalesTotalBox"),
-    packsBox: $("#packsBox"), packsList: $("#packsList"),
     detNotas: $("#detNotas"), detFuente: $("#detFuente"),
     errorBox: $("#errorBox"), footFecha: $("#footFecha"), stepbar: document.querySelectorAll(".stepbar__item"),
   };
@@ -509,7 +508,6 @@
       el.rvAnioBox.hidden = true;
     }
     cargarPlan();
-    pintarPacks();
     pintarNotas();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -842,16 +840,6 @@
       `${money(t)} <span class="add-iva">(${money(conIva(t))} con IVA)</span>`;
   }
 
-  // ---- packs (Omoda/Jaecoo) ----
-  function pintarPacks() {
-    const packs = state.pauta.packs || [];
-    if (!packs.length) { el.packsBox.hidden = true; return; }
-    el.packsBox.hidden = false;
-    el.packsList.innerHTML = packs.map((p) =>
-      `<li class="pack"><div class="pack__nombre">${p.nombre}</div><div class="pack__precio">${money(p.precio)}</div></li>`
-    ).join("");
-  }
-
   function pintarNotas() {
     const notas = state.pauta.notas || [];
     el.detNotas.innerHTML = notas.map((n) => `<li>${n}</li>`).join("");
@@ -978,15 +966,6 @@
     const ws2 = XLSX.utils.aoa_to_sheet(B);
     ws2["!cols"] = [{ wch: 6 }, { wch: 16 }, { wch: 8 }, { wch: 22 }, { wch: 20 }, { wch: 20 }];
     XLSX.utils.book_append_sheet(wb, ws2, "Plan completo");
-
-    // ---- Hoja 3: Packs (si aplica) ----
-    if (p.packs && p.packs.length) {
-      const C = [["Pack", "Precio (IVA incl.)"]];
-      p.packs.forEach((k) => C.push([k.nombre, k.precio]));
-      const ws3 = XLSX.utils.aoa_to_sheet(C);
-      ws3["!cols"] = [{ wch: 34 }, { wch: 18 }];
-      XLSX.utils.book_append_sheet(wb, ws3, "Packs");
-    }
 
     const nombre = `Cotizacion_${p.marcaNombre}_${p.modelo}_${itv.km ? itv.km / 1000 + "k" : "rev" + itv.n}`
       .replace(/[^A-Za-z0-9_]+/g, "_") + ".xlsx";

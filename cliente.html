@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- evita que el navegador sirva una versión vieja cacheada tras cada cambio -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Cotiza tu mantención · Curifor</title>
   <meta name="description" content="Calcula en 30 segundos cuánto cuesta la mantención de tu auto. Precio final con IVA, sin sorpresas, con repuestos originales y la pauta oficial de tu marca.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,14 +32,14 @@
 <section class="hero" id="hero">
   <div class="hero__inner">
     <span class="hero__pill">Servicio oficial · 11 marcas</span>
-    <h1 class="hero__title">¿Cuánto cuesta la mantención<br>de tu auto?</h1>
-    <p class="hero__lead">Elige tu vehículo y el kilometraje. Te mostramos el valor final con IVA, qué incluye y todo lo que revisamos. Sin letra chica.</p>
-    <a href="#cotizador" class="btn btn--acento btn--lg">Cotizar mi mantención</a>
+    <h1 class="hero__title">La mantención de tu auto,<br>clara y al día</h1>
+    <p class="hero__lead">Elige tu vehículo y el kilometraje: te mostramos qué incluye la mantención y todo lo que revisamos. Pídenos tu cotización sin compromiso.</p>
+    <a href="#cotizador" class="btn btn--acento btn--lg">Ver mi mantención</a>
 
     <ul class="hero__trust">
       <li><span class="trust__ico">🔧</span> Pauta oficial de tu marca</li>
       <li><span class="trust__ico">📦</span> Repuestos originales</li>
-      <li><span class="trust__ico">✅</span> Precio final, con IVA incluido</li>
+      <li><span class="trust__ico">✅</span> Cotización sin compromiso</li>
     </ul>
   </div>
 </section>
@@ -46,7 +50,7 @@
   <ol class="pasos" id="pasos">
     <li class="paso is-active" data-p="1"><span class="paso__n">1</span> Tu auto</li>
     <li class="paso" data-p="2"><span class="paso__n">2</span> Kilometraje</li>
-    <li class="paso" data-p="3"><span class="paso__n">3</span> Tu cotización</li>
+    <li class="paso" data-p="3"><span class="paso__n">3</span> Tu mantención</li>
   </ol>
 
   <!-- ====================== PASO 1: EL AUTO ====================== -->
@@ -69,23 +73,24 @@
       <div id="gridModelos" class="grid-chips"></div>
     </div>
 
-    <!-- 1.c versión -->
+    <!-- 1.c año (solo marcas que lo usan, ej. Ford; filtra las versiones) -->
+    <div class="sub" id="subAnio" hidden>
+      <div class="sub__head">
+        <h3 class="sub__titulo">Año <span id="ecoModeloAnio" class="eco"></span></h3>
+        <button type="button" class="link-volver" data-volver="modelo">Cambiar modelo</button>
+      </div>
+      <p class="sub__ayuda">Elige el año de tu vehículo: te mostramos las versiones que corresponden.</p>
+      <div id="gridAnios" class="grid-chips"></div>
+    </div>
+
+    <!-- 1.d versión -->
     <div class="sub" id="subVersion" hidden>
       <div class="sub__head">
         <h3 class="sub__titulo">Versión <span id="ecoModelo" class="eco"></span></h3>
-        <button type="button" class="link-volver" data-volver="modelo">Cambiar modelo</button>
+        <button type="button" class="link-volver" id="volverVersion" data-volver="modelo">Cambiar modelo</button>
       </div>
-      <p class="sub__ayuda">Si no estás seguro, elige la que más se parezca: el valor cambia poco entre versiones. Lo confirmamos al agendar.</p>
+      <p class="sub__ayuda">Si no estás seguro, elige la que más se parezca: las operaciones son casi las mismas entre versiones. Lo confirmamos al agendar.</p>
       <div id="listaVersiones" class="lista-versiones"></div>
-    </div>
-
-    <!-- 1.d año (solo marcas que lo requieren) -->
-    <div class="sub" id="subAnio" hidden>
-      <div class="sub__head">
-        <h3 class="sub__titulo">Año del vehículo</h3>
-        <button type="button" class="link-volver" data-volver="version">Cambiar versión</button>
-      </div>
-      <div id="gridAnios" class="grid-chips"></div>
     </div>
   </section>
 
@@ -106,27 +111,19 @@
   <section id="p3" hidden>
     <div class="cotiz">
 
-      <!-- columna izquierda: precio y CTA -->
+      <!-- columna izquierda: CTA de cotización -->
       <aside class="cotiz__precio">
         <div class="precio-card">
           <p class="precio-card__auto" id="pcAuto"></p>
           <p class="precio-card__rev" id="pcRev"></p>
-          <p class="precio-card__label">Valor de tu mantención</p>
-          <p class="precio-card__valor" id="pcValor">—</p>
-          <p class="precio-card__iva">IVA incluido · pesos chilenos</p>
-
-          <div id="pcExtrasResumen" class="precio-card__extras" hidden></div>
-
-          <div class="precio-card__total" id="pcTotalBox" hidden>
-            <span>Total con adicionales</span>
-            <strong id="pcTotal"></strong>
-          </div>
+          <p class="precio-card__cta-titulo">Cotiza esta mantención con nosotros</p>
+          <p class="precio-card__cta-sub">Te enviamos el valor a la medida de tu auto y kilometraje, sin compromiso.</p>
 
           <a id="btnWsp" class="btn btn--acento btn--block" href="#" target="_blank" rel="noopener">
-            <span class="ico-wsp" aria-hidden="true"></span> Agendar por WhatsApp
+            <span class="ico-wsp" aria-hidden="true"></span> Pedir cotización por WhatsApp
           </a>
-          <button id="btnPdf" class="btn btn--ghost btn--block" type="button">Descargar cotización</button>
-          <p class="precio-card__nota">Valor referencial. Se confirma al recibir tu auto en el taller.</p>
+          <button id="btnPdf" class="btn btn--ghost btn--block" type="button">Descargar detalle</button>
+          <p class="precio-card__nota">Te respondemos el mismo día hábil.</p>
         </div>
 
         <ul class="garantias">
@@ -172,7 +169,7 @@
           <p class="card__lead">Así se ve el cuidado de tu auto en el tiempo, según la pauta de fábrica.</p>
           <div class="tabla-plan__scroll">
             <table class="tabla-plan">
-              <thead><tr><th>Mantención</th><th>Cada</th><th class="ta-r">Valor</th></tr></thead>
+              <thead><tr><th>Mantención</th><th>Cada</th></tr></thead>
               <tbody id="tbodyPlan"></tbody>
             </table>
           </div>
@@ -181,7 +178,7 @@
         <details class="faq">
           <summary>Preguntas frecuentes</summary>
           <div class="faq__body">
-            <p><strong>¿El precio es final?</strong> Es el valor referencial de la pauta oficial de tu marca, con IVA incluido. Si al revisar tu auto detectamos algo fuera de la mantención, te avisamos y lo aprobamos contigo antes de hacerlo.</p>
+            <p><strong>¿Cómo sé el precio?</strong> Elige tu auto y el kilometraje, presiona "Pedir cotización por WhatsApp" y te enviamos el valor de esa mantención, con IVA incluido. Si al revisar tu auto detectamos algo fuera de la mantención, te avisamos y lo aprobamos contigo antes de hacerlo.</p>
             <p><strong>¿Cuánto se demora?</strong> La mayoría de las mantenciones se entregan el mismo día. Te confirmamos el tiempo al agendar.</p>
             <p><strong>¿Los repuestos son originales?</strong> Sí. Trabajamos con repuestos originales de cada marca y la pauta que define el fabricante.</p>
             <p><strong>¿Pierdo la garantía si no voy a la marca?</strong> No. Curifor es servicio oficial, así que tu garantía se mantiene y queda registrada la mantención.</p>
@@ -199,11 +196,11 @@
 <footer class="pie">
   <div class="pie__inner">
     <img src="img/curifor-logo.png" alt="Curifor" width="704" height="158" class="pie__logo">
-    <p class="pie__legal">Valores referenciales en pesos chilenos, con IVA incluido, sujetos a cambio sin previo aviso. La cotización no constituye una oferta comercial vinculante; el valor final se confirma en el taller.</p>
+    <p class="pie__legal">La información de esta página es referencial y puede cambiar sin previo aviso. El valor de la mantención se entrega al cotizar, según el modelo y kilometraje de tu auto, y se confirma en el taller. No constituye una oferta comercial vinculante.</p>
     <p class="pie__fecha" id="pieFecha"></p>
   </div>
 </footer>
 
-<script src="js/cliente.js?v=120ec85"></script>
+<script src="js/cliente.js?v=anio2"></script>
 </body>
 </html>

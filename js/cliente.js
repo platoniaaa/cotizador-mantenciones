@@ -1,8 +1,9 @@
 /* ============================================================
    Cotizador para clientes · Curifor
    Cara pública: usa el mismo catálogo (data/indice.json y las
-   pautas), pero solo muestra el precio oficial CON IVA y lo que
-   incluye la mantención. Nunca costos, códigos ni stock.
+   pautas) y muestra QUÉ incluye cada mantención, no el precio.
+   El valor lo entrega el asesor por WhatsApp. Nunca se muestran
+   precios, costos, códigos ni stock.
    ============================================================ */
 (() => {
   "use strict";
@@ -10,19 +11,16 @@
   // ---- configuración del taller (ajustar antes de publicar) ----
   const CONTACTO = {
     wsp: "56900000000",          // TODO: número real de WhatsApp, formato 56 9 XXXX XXXX sin signos
-    saludo: "Hola, cotizé mi mantención en la web y quiero agendar.",
+    saludo: "Hola, quiero cotizar la mantención de mi auto.",
   };
 
-  // servicios opcionales, iguales a los del cotizador interno (precios NETOS)
+  // servicios opcionales, iguales a los del cotizador interno. El `precio` NO se
+  // muestra: solo sirve para saber si un adicional de pauta aplica a este km.
   const EXTRAS = [
     { id: "airlife",   nombre: "Airlife",   detalle: "Higienización del sistema de climatización", precio: 16000 },
     { id: "nitrosafe", nombre: "NitroSafe", detalle: "Inflado de neumáticos con nitrógeno",        precio: 18000 },
   ];
 
-  const IVA = 0.19;
-  const conIva = (n) => (n == null ? null : Math.round(n * (1 + IVA)));
-  const CLP = new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 });
-  const money = (n) => (n == null ? "—" : CLP.format(Math.round(n)));
   const $ = (s) => document.querySelector(s);
 
   const state = {
@@ -37,11 +35,10 @@
     pasos: $("#pasos"), p1: $("#p1"), p2: $("#p2"), p3: $("#p3"), errorBox: $("#errorBox"),
     subMarca: $("#subMarca"), subModelo: $("#subModelo"), subVersion: $("#subVersion"), subAnio: $("#subAnio"),
     gridMarcas: $("#gridMarcas"), gridModelos: $("#gridModelos"), buscaModelo: $("#buscaModelo"),
-    listaVersiones: $("#listaVersiones"), gridAnios: $("#gridAnios"),
-    ecoMarca: $("#ecoMarca"), ecoModelo: $("#ecoModelo"),
+    listaVersiones: $("#listaVersiones"), gridAnios: $("#gridAnios"), volverVersion: $("#volverVersion"),
+    ecoMarca: $("#ecoMarca"), ecoModelo: $("#ecoModelo"), ecoModeloAnio: $("#ecoModeloAnio"),
     chipAuto: $("#chipAuto"), gridKm: $("#gridKm"),
-    pcAuto: $("#pcAuto"), pcRev: $("#pcRev"), pcValor: $("#pcValor"),
-    pcExtrasResumen: $("#pcExtrasResumen"), pcTotalBox: $("#pcTotalBox"), pcTotal: $("#pcTotal"),
+    pcAuto: $("#pcAuto"), pcRev: $("#pcRev"),
     listaCambios: $("#listaCambios"), listaRevisiones: $("#listaRevisiones"),
     opsCambios: $("#opsCambios"), opsRevisiones: $("#opsRevisiones"), opsVacio: $("#opsVacio"),
     btnVerRevs: $("#btnVerRevs"),
@@ -63,7 +60,7 @@
       el.errorBox.hidden = false;
       return;
     }
-    el.pieFecha.textContent = "Precios actualizados al " + (state.indice.actualizado || "");
+    el.pieFecha.textContent = "Información actualizada al " + (state.indice.actualizado || "");
     pintarMarcas();
     el.navWsp.href = linkWsp(CONTACTO.saludo);
 
@@ -131,11 +128,43 @@
     state.version = state.pauta = state.anio = null;
     el.gridModelos.querySelectorAll(".chip-op").forEach((b) =>
       b.classList.toggle("is-on", b.dataset.modelo === nombre));
-    el.ecoModelo.textContent = state.modelo ? "· " + state.modelo.nombre : "";
-    el.subAnio.hidden = true;
+    const nom = state.modelo ? "· " + state.modelo.nombre : "";
+    el.ecoModelo.textContent = nom;
+    el.ecoModeloAnio.textContent = nom;
 
-    const vs = state.modelo.versiones || [];
-    el.listaVersiones.innerHTML = vs.map((v, i) => {
+    // Solo Ford maneja año, y el año FILTRA las versiones (una versión puede
+    // existir solo en ciertos años). Por eso, cuando el modelo tiene años, se
+    // pregunta el año ANTES que la versión.
+    const anios = aniosDeModelo(state.modelo);
+    if (anios.length) {
+      el.gridAnios.innerHTML = anios.map((a) =>
+        `<button type="button" class="chip-op" data-anio="${a}">${a}</button>`).join("");
+      el.gridAnios.querySelectorAll(".chip-op").forEach((b) =>
+        b.addEventListener("click", () => elegirAnio(b.dataset.anio)));
+      el.subVersion.hidden = true;
+      el.subAnio.hidden = false;
+      scrollA(el.subAnio);
+      return;
+    }
+    // marcas sin año: directo a versión (todas las versiones del modelo)
+    el.subAnio.hidden = true;
+    pintarVersiones(state.modelo.versiones || [], "modelo");
+  }
+
+  function elegirAnio(anio) {
+    state.anio = anio;
+    state.version = state.pauta = null;
+    el.gridAnios.querySelectorAll(".chip-op").forEach((b) =>
+      b.classList.toggle("is-on", b.dataset.anio === anio));
+    pintarVersiones(versionesDeAnio(state.modelo, anio), "anio");
+  }
+
+  // pinta la lista de versiones (ya filtrada por año si aplica) y ajusta a dónde
+  // vuelve el botón "cambiar" según de dónde venimos (del año o del modelo)
+  function pintarVersiones(lista, volverDest) {
+    el.volverVersion.dataset.volver = volverDest;
+    el.volverVersion.textContent = volverDest === "anio" ? "Cambiar año" : "Cambiar modelo";
+    el.listaVersiones.innerHTML = lista.map((v, i) => {
       const meta = [v.segmento, v.vigencia && v.vigencia !== "Activo" ? v.vigencia : null]
         .filter(Boolean).join(" · ");
       return `<button type="button" class="version" data-v="${i}">
@@ -147,31 +176,31 @@
         </button>`;
     }).join("");
     el.listaVersiones.querySelectorAll(".version").forEach((b) =>
-      b.addEventListener("click", () => elegirVersion(vs[+b.dataset.v])));
+      b.addEventListener("click", () => elegirVersion(lista[+b.dataset.v])));
     el.subVersion.hidden = false;
 
-    if (vs.length === 1) { elegirVersion(vs[0]); return; }   // una sola versión: se salta el paso
+    if (lista.length === 1) { elegirVersion(lista[0]); return; }   // una sola: se salta
     scrollA(el.subVersion);
   }
 
   async function elegirVersion(v) {
     state.version = v;
-    state.anio = null;
     await cargarPauta(v.id);
     if (!state.pauta) return;
-
-    const anios = state.pauta.anios || [];
-    if (anios.length > 1) {
-      el.gridAnios.innerHTML = anios.map((a) =>
-        `<button type="button" class="chip-op" data-anio="${a}">${a}</button>`).join("");
-      el.gridAnios.querySelectorAll(".chip-op").forEach((b) =>
-        b.addEventListener("click", () => { state.anio = b.dataset.anio; abrirKilometrajes(); }));
-      el.subAnio.hidden = false;
-      scrollA(el.subAnio);
-      return;
-    }
-    if (anios.length === 1) state.anio = anios[0];
+    // state.anio ya viene del paso de año (o queda null si el modelo no usa año);
+    // abrirKilometrajes elige el plan del año y hace fallback al primero si no calza
     abrirKilometrajes();
+  }
+
+  // años de un modelo = unión de los años de todas sus versiones (desc)
+  function aniosDeModelo(modelo) {
+    const set = new Set();
+    (modelo && modelo.versiones || []).forEach((v) => (v.anios || []).forEach((a) => set.add(String(a))));
+    return [...set].sort((a, b) => b.localeCompare(a, "es", { numeric: true }));
+  }
+  // versiones de un modelo que aplican a un año (las sin años se dejan pasar)
+  function versionesDeAnio(modelo, anio) {
+    return (modelo.versiones || []).filter((v) => !v.anios || !v.anios.length || v.anios.indexOf(String(anio)) >= 0);
   }
 
   async function cargarPauta(id) {
@@ -187,9 +216,9 @@
   }
 
   function volverA(donde) {
-    if (donde === "marca") { el.subModelo.hidden = true; el.subVersion.hidden = true; el.subAnio.hidden = true; scrollA(el.p1); }
-    if (donde === "modelo") { el.subVersion.hidden = true; el.subAnio.hidden = true; scrollA(el.subModelo); }
-    if (donde === "version") { el.subAnio.hidden = true; scrollA(el.subVersion); }
+    if (donde === "marca") { el.subModelo.hidden = true; el.subAnio.hidden = true; el.subVersion.hidden = true; scrollA(el.p1); }
+    if (donde === "modelo") { el.subAnio.hidden = true; el.subVersion.hidden = true; scrollA(el.subModelo); }
+    if (donde === "anio") { el.subVersion.hidden = true; scrollA(el.subAnio); }
   }
 
   // ============================================================
@@ -207,12 +236,11 @@
     el.gridKm.innerHTML = state.plan.map((itv, i) => {
       const titulo = itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega");
       const gratis = itv.gratis || !itv.totalConIva;
-      const valor = itv.gratis ? "Sin costo"
-        : (itv.totalConIva ? money(itv.totalConIva) : "Consultar");
       return `<button type="button" class="km${gratis ? " km--gratis" : ""}" data-i="${i}">
           <span class="km__km">${titulo}</span>
           <span class="km__meses">Mantención ${itv.n}${itv.meses ? " · " + itv.meses + " meses" : ""}</span>
-          <span class="km__valor">${valor}${itv.gratis || !itv.totalConIva ? "" : "<small>IVA incluido</small>"}</span>
+          ${itv.gratis ? '<span class="km__valor">Sin costo</span>' : ""}
+          <span class="km__ver">Ver detalle →</span>
         </button>`;
     }).join("");
     el.gridKm.querySelectorAll(".km").forEach((b) =>
@@ -238,7 +266,6 @@
 
     el.pcAuto.textContent = `${p.marcaNombre} ${p.modelo}${state.anio ? " · " + state.anio : ""}`;
     el.pcRev.textContent = `Mantención de ${km}`;
-    el.pcValor.textContent = itv.gratis ? "Sin costo" : (itv.totalConIva ? money(itv.totalConIva) : "A confirmar");
 
     // operaciones: R = lo que se cambia, I = lo que se revisa.
     // No todas las pautas traen operaciones detalladas; cuando faltan, lo que se
@@ -262,7 +289,7 @@
 
     pintarExtras();
     pintarPlan();
-    recalcular();
+    actualizarSeleccion();
   }
 
   // hay pautas con 30+ revisiones: en pantalla se muestran 10 y el resto queda
@@ -298,7 +325,6 @@
           <span class="extra-c__nombre">${x.nombre}</span>
           <span class="extra-c__detalle">${x.detalle}</span>
           <span class="extra-c__pie">
-            <span class="extra-c__precio">${money(conIva(x.precio))}</span>
             <span class="extra-c__cta">${on ? "Agregado ✓" : "+ Agregar"}</span>
           </span>
         </button>`;
@@ -307,35 +333,24 @@
       const id = b.dataset.x;
       if (state.extras.has(id)) state.extras.delete(id); else state.extras.add(id);
       pintarExtras();
-      recalcular();
+      actualizarSeleccion();
     }));
   }
 
-  function recalcular() {
-    const itv = state.itv;
-    const base = itv.gratis ? 0 : (itv.totalConIva || 0);
+  // sin precios que sumar: solo refresca el mensaje de WhatsApp con los
+  // adicionales elegidos y marca la tarjeta para la impresión
+  function actualizarSeleccion() {
     const sel = elegidos();
-    const extraIva = sel.reduce((t, x) => t + conIva(x.precio), 0);
-
-    el.pcExtrasResumen.hidden = !sel.length;
-    el.pcExtrasResumen.innerHTML = sel.map((x) =>
-      `<div><span>+ ${x.nombre}</span><span>${money(conIva(x.precio))}</span></div>`).join("");
-    el.pcTotalBox.hidden = !sel.length;
-    el.pcTotal.textContent = money(base + extraIva);
-    // marca para la impresión: sin adicionales elegidos, esa tarjeta no se imprime
     el.cardExtras.toggleAttribute("data-sel", sel.length > 0);
-
-    el.btnWsp.href = linkWsp(mensajeWsp(base + extraIva, sel));
+    el.btnWsp.href = linkWsp(mensajeWsp(sel));
   }
 
   function pintarPlan() {
     el.tbodyPlan.innerHTML = state.plan.map((itv) => {
       const km = itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega");
       const cada = itv.meses ? `${itv.meses} meses` : "—";
-      const valor = itv.gratis ? '<span class="gratis">Sin costo</span>'
-        : (itv.totalConIva ? money(itv.totalConIva) : "Consultar");
       const sel = itv === state.itv ? ' class="is-sel"' : "";
-      return `<tr${sel}><td>${km}</td><td>${cada}</td><td class="ta-r">${valor}</td></tr>`;
+      return `<tr${sel}><td>${km}</td><td>${cada}</td></tr>`;
     }).join("");
   }
 
@@ -346,18 +361,17 @@
     return `https://wa.me/${CONTACTO.wsp}?text=${encodeURIComponent(texto)}`;
   }
 
-  function mensajeWsp(total, sel) {
+  function mensajeWsp(sel) {
     const p = state.pauta, itv = state.itv;
     if (!p || !itv) return CONTACTO.saludo;
     const km = itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega");
     const l = [
-      "Hola, quiero agendar la mantención que cotizé en la web:",
+      "Hola, quiero cotizar esta mantención:",
       `• Auto: ${p.marcaNombre} ${p.modelo} ${p.version}${state.anio ? " (" + state.anio + ")" : ""}`,
       `• Mantención: ${km}`,
     ];
-    if (sel.length) l.push(`• Adicionales: ${sel.map((x) => x.nombre).join(", ")}`);
-    l.push(`• Valor cotizado: ${itv.gratis && !sel.length ? "sin costo" : money(total)} (IVA incluido)`);
-    l.push("¿Qué días tienen hora disponible?");
+    if (sel.length) l.push(`• Me interesan además: ${sel.map((x) => x.nombre).join(", ")}`);
+    l.push("¿Me pueden enviar el valor y las horas disponibles?");
     return l.join("\n");
   }
 

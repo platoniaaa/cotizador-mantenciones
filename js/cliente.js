@@ -10,7 +10,7 @@
 
   // ---- configuración del taller (ajustar antes de publicar) ----
   const CONTACTO = {
-    wsp: "56900000000",          // TODO: número real de WhatsApp, formato 56 9 XXXX XXXX sin signos
+    wsp: "56956887752",          // +56 9 5688 7752, formato wa.me sin signos
     saludo: "Hola, quiero cotizar la mantención de mi auto.",
   };
 

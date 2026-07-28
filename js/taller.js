@@ -55,12 +55,13 @@ function fmtFechaCorta(iso) {
 }
 
 /* ---------------- estado persistente ---------------- */
-var DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60 };
+var DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
 function cargarDB() {
   try {
     var raw = localStorage.getItem(TKEY);
     if (raw) { var d = JSON.parse(raw); if (d && d.agendamientos && d.orders) DB = d; }
   } catch (e) { /* estado corrupto: se parte de cero */ }
+  if (!DB.webImp) DB.webImp = {};   // ids de reservas web ya pasadas a la agenda
 }
 function save() { try { localStorage.setItem(TKEY, JSON.stringify(DB)); } catch (e) { /* sin espacio */ } }
 
@@ -404,6 +405,7 @@ function agGuardar() {
     estado: "agendado"
   };
   DB.agendamientos.push(a);
+  if (PREFILL && PREFILL.web && PREFILL.web.id) DB.webImp[PREFILL.web.id] = 1;
   save();
   if (PREFILL) { localStorage.removeItem(PREKEY); PREFILL = null; renderPrefillBanner(); }
   agCerrarModal();
@@ -426,11 +428,20 @@ function renderPrefillBanner() {
   var b = document.getElementById("prefillBanner");
   if (!PREFILL) { b.hidden = true; return; }
   b.hidden = false;
-  b.innerHTML = "📋 Cotización lista para agendar: <b>" + PREFILL.marcaNombre + " " + PREFILL.modelo +
-    " · " + PREFILL.version + "</b> — Rev. " + PREFILL.revN + (PREFILL.km ? " · " + etiquetaKm(PREFILL.km) : "") +
+  var auto = "<b>" + PREFILL.marcaNombre + " " + PREFILL.modelo + " · " + PREFILL.version + "</b> — Rev. " +
+    PREFILL.revN + (PREFILL.km ? " · " + etiquetaKm(PREFILL.km) : "");
+  var descartar = '<button class="agbtn agbtn-ghost agbtn-sm" onclick="descartarPrefill()">Descartar</button>';
+  var w = PREFILL.web;
+  if (w) {
+    b.innerHTML = "🌐 Reserva web de <b>" + esc(w.cli) + "</b> (" + esc(w.fono) + "): " + auto +
+      ". Pidió el <b>" + fmtFechaCorta(w.fecha) + "</b>" +
+      (w.hora && w.hora !== "indiferente" ? " a las <b>" + w.hora + "</b>" : " (hora por definir)") +
+      ". Elige una <b>hora libre</b> en el calendario para confirmarla." + descartar;
+    return;
+  }
+  b.innerHTML = "📋 Cotización lista para agendar: " + auto +
     (PREFILL.valor != null ? " · " + money(PREFILL.valor) : "") +
-    ". Elige una <b>hora libre</b> en el calendario para completar el agendamiento." +
-    '<button class="agbtn agbtn-ghost agbtn-sm" onclick="descartarPrefill()">Descartar</button>';
+    ". Elige una <b>hora libre</b> en el calendario para completar el agendamiento." + descartar;
 }
 function descartarPrefill() {
   localStorage.removeItem(PREKEY);
@@ -439,6 +450,14 @@ function descartarPrefill() {
 }
 function aplicarPrefill() {
   if (!PREFILL || !INDICE) return;
+  // datos de contacto de la reserva web (si vino de ahí)
+  var w = PREFILL.web;
+  if (w) {
+    if (w.cli) document.getElementById("agCliente").value = w.cli;
+    if (w.fono) document.getElementById("agFono").value = w.fono;
+    if (w.email) document.getElementById("agEmail").value = w.email;
+    if (w.pat) document.getElementById("agPatente").value = w.pat;
+  }
   // ubicar marca/modelo/versión por pautaId
   var found = null;
   INDICE.marcas.forEach(function (m) {
@@ -469,6 +488,180 @@ function aplicarPrefill() {
       onMantModal();
     }
   });
+}
+
+/* ============================================================
+   Reservas web (Supabase) — el cliente pide hora en cliente.html
+   y acá se pasan a la agenda. Leerlas requiere el login del
+   personal (Supabase Auth); la sesión queda en este navegador.
+   Config en js/agenda-config.js; SQL en
+   herramientas/setup_supabase_reservas.sql.
+   ============================================================ */
+var AGW = window.CURIFOR_AGENDA || {};
+var WEBKEY = "curiforTallerWebSes_v1";
+var WEBRES = [];   // últimas reservas traídas del servidor
+
+function webCfgOk() { return !!(AGW.url && AGW.anonKey); }
+function webTabla() { return AGW.tabla || "reservas_web"; }
+function esc(s) {
+  return s == null ? "" : String(s).replace(/[&<>"]/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+  });
+}
+
+function webSesGuardada() {
+  try { return JSON.parse(localStorage.getItem(WEBKEY) || "null"); } catch (e) { return null; }
+}
+function webGuardarSes(s) {
+  try {
+    if (s) localStorage.setItem(WEBKEY, JSON.stringify(s));
+    else localStorage.removeItem(WEBKEY);
+  } catch (e) { /* sin espacio */ }
+}
+
+function webAuth(body, grant) {
+  return fetch(AGW.url + "/auth/v1/token?grant_type=" + grant, {
+    method: "POST",
+    headers: { apikey: AGW.anonKey, "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  }).then(function (r) {
+    return r.json().then(function (j) { return r.ok ? j : Promise.reject(j); });
+  }).then(function (j) {
+    var s = {
+      access: j.access_token,
+      refresh: j.refresh_token,
+      exp: j.expires_at || (Date.now() / 1000 + (j.expires_in || 3600)),
+      email: (j.user && j.user.email) || ""
+    };
+    webGuardarSes(s);
+    return s;
+  });
+}
+
+// sesión vigente (refresca si está por vencer) o null si hay que loguearse
+function webSesion() {
+  var s = webSesGuardada();
+  if (!s || !s.refresh) return Promise.resolve(null);
+  if (s.exp - 60 > Date.now() / 1000) return Promise.resolve(s);
+  return webAuth({ refresh_token: s.refresh }, "refresh_token")
+    .catch(function () { webGuardarSes(null); return null; });
+}
+
+function webFetchReservas(s) {
+  var desde = new Date(Date.now() - 60 * 864e5).toISOString();
+  var u = AGW.url + "/rest/v1/" + webTabla() +
+    "?select=*&creado_en=gte." + encodeURIComponent(desde) +
+    "&order=fecha.asc%2Chora.asc";
+  return fetch(u, { headers: { apikey: AGW.anonKey, Authorization: "Bearer " + s.access } })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
+}
+
+function webAbrir() {
+  webSesion().then(function (s) {
+    if (!s) { webAbrirLogin(); return; }
+    webCargarLista();
+  });
+}
+function webAbrirLogin() {
+  document.getElementById("webLoginErr").hidden = true;
+  document.getElementById("webLoginOv").classList.add("open");
+}
+function webCerrarLogin() { document.getElementById("webLoginOv").classList.remove("open"); }
+function webCerrarLista() { document.getElementById("webResOv").classList.remove("open"); }
+function webDesconectar() { webGuardarSes(null); webCerrarLista(); }
+
+function webLogin() {
+  var em = document.getElementById("webEmail").value.trim();
+  var pw = document.getElementById("webPass").value;
+  var err = document.getElementById("webLoginErr");
+  if (!em || !pw) { err.textContent = "Ingresa e-mail y clave."; err.hidden = false; return; }
+  var btn = document.getElementById("webLoginBtn");
+  btn.disabled = true;
+  webAuth({ email: em, password: pw }, "password")
+    .then(function () {
+      document.getElementById("webPass").value = "";
+      webCerrarLogin(); webCargarLista();
+    })
+    .catch(function (e) {
+      err.textContent = "No se pudo conectar: " +
+        ((e && (e.error_description || e.msg)) || "revisa el e-mail y la clave.");
+      err.hidden = false;
+    })
+    .then(function () { btn.disabled = false; });
+}
+
+function webCargarLista() {
+  var cont = document.getElementById("webResLista");
+  cont.innerHTML = '<p style="color:var(--ink-3);padding:8px 0">Cargando reservas…</p>';
+  document.getElementById("webResOv").classList.add("open");
+  webSesion().then(function (s) {
+    if (!s) { webCerrarLista(); webAbrirLogin(); return; }
+    document.getElementById("webResInfo").textContent = "· " + (s.email || "");
+    return webFetchReservas(s).then(function (rows) {
+      WEBRES = rows || [];
+      webPintarLista();
+      webBadge();
+    });
+  }).catch(function () {
+    cont.innerHTML = '<p style="color:#c62828;padding:8px 0">No se pudieron traer las reservas. Reintenta.</p>';
+  });
+}
+
+function webPintarLista() {
+  var cont = document.getElementById("webResLista");
+  if (!WEBRES.length) {
+    cont.innerHTML = '<p style="color:var(--ink-3);padding:8px 0">No hay reservas web en los últimos 60 días.</p>';
+    return;
+  }
+  var hoyStr = hoyISO();
+  cont.innerHTML = WEBRES.map(function (r, i) {
+    var imp = !!DB.webImp[r.id];
+    var vieja = r.fecha < hoyStr;
+    var est = imp ? '<span class="ag-pill en">En agenda</span>'
+      : vieja ? '<span class="ag-pill ent">Vencida</span>'
+      : '<span class="ag-pill por">Nueva</span>';
+    var auto = [r.marca, r.modelo, r.version].filter(Boolean).join(" ") + (r.anio ? " (" + r.anio + ")" : "");
+    var mant = r.km ? "Mantención " + etiquetaKm(r.km) : (r.rev_n ? "Rev. " + r.rev_n : "Mantención");
+    var hora = r.hora === "indiferente" ? "hora por definir" : (r.hora || "") + " h";
+    return '<div class="webres-item">' +
+      '<div class="webres-cab"><b>' + fmtFechaCorta(r.fecha) + "</b> · " + hora + " " + est + "</div>" +
+      '<div class="webres-det">' + esc(r.nombre) + " · " + esc(r.fono) +
+        (r.email ? " · " + esc(r.email) : "") + (r.patente ? " · pat. " + esc(r.patente) : "") + "</div>" +
+      '<div class="webres-det">' + esc(auto) + " — " + mant +
+        (r.extras ? " + " + esc(r.extras) : "") + "</div>" +
+      (r.comentario ? '<div class="webres-com">“' + esc(r.comentario) + "”</div>" : "") +
+      (imp ? "" : '<button class="agbtn agbtn-blue agbtn-sm" onclick="webPasar(' + i + ')">Pasar a la agenda</button>') +
+      "</div>";
+  }).join("");
+}
+
+// arma un PREFILL con la reserva y salta el calendario al día pedido:
+// el flujo sigue igual que siempre (clic en hora libre → modal prellenado)
+function webPasar(i) {
+  var r = WEBRES[i];
+  if (!r || !r.pauta_id) return;
+  PREFILL = {
+    pautaId: r.pauta_id, marcaNombre: r.marca, modelo: r.modelo, version: r.version,
+    anio: r.anio || null, revN: r.rev_n != null ? r.rev_n : null, km: r.km || null,
+    valor: null, ts: Date.now(),
+    web: { id: r.id, cli: r.nombre, fono: r.fono, email: r.email, pat: r.patente,
+           fecha: r.fecha, hora: r.hora, comentario: r.comentario }
+  };
+  try { localStorage.setItem(PREKEY, JSON.stringify(PREFILL)); } catch (e) { /* sin espacio */ }
+  var p = r.fecha.split("-");
+  calY = +p[0]; calM = +p[1] - 1; selFecha = r.fecha;
+  webCerrarLista();
+  agGoTab("agenda");
+  renderPrefillBanner();
+}
+
+function webBadge() {
+  var b = document.getElementById("webResBadge");
+  if (!b) return;
+  var hoyStr = hoyISO();
+  var n = WEBRES.filter(function (r) { return !DB.webImp[r.id] && r.fecha >= hoyStr; }).length;
+  b.hidden = !n;
+  b.textContent = n;
 }
 
 /* ============================================================
@@ -866,7 +1059,7 @@ function cargarDemo() {
 }
 function borrarTodo() {
   if (!confirm("Esto borra TODOS los agendamientos y órdenes guardados en este navegador. ¿Continuar?")) return;
-  DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60 };
+  DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
   save();
   renderCal(); renderSlots(); renderAgendaTable(); renderAll();
 }
@@ -903,10 +1096,21 @@ function init() {
   document.getElementById("btnDemo").addEventListener("click", cargarDemo);
   document.getElementById("btnBorrarTodo").addEventListener("click", borrarTodo);
   // cerrar modales con clic afuera
-  ["ov", "agOv"].forEach(function (id) {
+  ["ov", "agOv", "webLoginOv", "webResOv"].forEach(function (id) {
     var el = document.getElementById(id);
     el.addEventListener("click", function (e) { if (e.target === el) el.classList.remove("open"); });
   });
+  // reservas web: botón visible solo con la agenda configurada; si ya hay
+  // sesión del personal, trae el contador de reservas nuevas en silencio
+  if (webCfgOk()) {
+    var btnW = document.getElementById("btnWebRes");
+    btnW.hidden = false;
+    btnW.addEventListener("click", webAbrir);
+    webSesion().then(function (s) {
+      if (!s) return;
+      return webFetchReservas(s).then(function (rows) { WEBRES = rows || []; webBadge(); });
+    }).catch(function () { /* sin red o sin permiso: el botón sigue operativo */ });
+  }
 
   renderCal(); renderSlots(); renderAgendaTable();
   renderPrefillBanner();

@@ -14,6 +14,13 @@
     saludo: "Hola, quiero cotizar la mantención de mi auto.",
   };
 
+  // agenda web (Supabase): credenciales en js/agenda-config.js. Sin ellas el
+  // botón "Agendar hora en el taller" no se muestra y todo sigue igual.
+  const AGENDA = window.CURIFOR_AGENDA || {};
+  // mismos bloques de hora que maneja taller.html
+  const HORAS_AM = ["08:40", "09:00", "09:20", "09:40", "10:00", "10:20", "10:40", "11:00", "11:20", "11:40", "12:00", "12:20", "12:40"];
+  const HORAS_PM = ["14:00", "14:20", "14:40", "15:00", "15:20", "15:40", "16:00", "16:20", "16:40", "17:00"];
+
   // servicios opcionales, iguales a los del cotizador interno. El `precio` NO se
   // muestra: solo sirve para saber si un adicional de pauta aplica a este km.
   const EXTRAS = [
@@ -46,6 +53,12 @@
     btnWsp: $("#btnWsp"), navWsp: $("#navWsp"), btnPdf: $("#btnPdf"),
     btnCambiarAuto: $("#btnCambiarAuto"), btnCambiarKm: $("#btnCambiarKm"),
     pieFecha: $("#pieFecha"),
+    btnAgendar: $("#btnAgendar"), agwOv: $("#agwOv"), agwCerrar: $("#agwCerrar"),
+    agwAuto: $("#agwAuto"), agwForm: $("#agwForm"), agwNombre: $("#agwNombre"),
+    agwFono: $("#agwFono"), agwEmail: $("#agwEmail"), agwPatente: $("#agwPatente"),
+    agwFecha: $("#agwFecha"), agwHora: $("#agwHora"), agwComent: $("#agwComent"),
+    agwWeb: $("#agwWeb"), agwErr: $("#agwErr"), agwEnviar: $("#agwEnviar"),
+    agwOk: $("#agwOk"), agwOkDetalle: $("#agwOkDetalle"), agwOkWsp: $("#agwOkWsp"),
   };
 
   // ============================================================
@@ -74,6 +87,14 @@
       el.listaRevisiones.classList.remove("is-corta");
       el.btnVerRevs.hidden = true;
     });
+
+    if (AGENDA.url && AGENDA.anonKey) {
+      el.btnAgendar.hidden = false;
+      el.btnAgendar.addEventListener("click", abrirAgenda);
+      el.agwCerrar.addEventListener("click", cerrarAgenda);
+      el.agwOv.addEventListener("click", (e) => { if (e.target === el.agwOv) cerrarAgenda(); });
+      el.agwForm.addEventListener("submit", enviarReserva);
+    }
   }
 
   // ============================================================
@@ -352,6 +373,124 @@
       const sel = itv === state.itv ? ' class="is-sel"' : "";
       return `<tr${sel}><td>${km}</td><td>${cada}</td></tr>`;
     }).join("");
+  }
+
+  // ============================================================
+  //  Agendamiento web (Supabase)
+  //  La reserva es una SOLICITUD de hora: queda guardada y el
+  //  taller la confirma (la disponibilidad real vive allá).
+  // ============================================================
+  function abrirAgenda() {
+    const p = state.pauta, itv = state.itv;
+    if (!p || !itv) return;
+    const km = itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega");
+    el.agwAuto.textContent = `${p.marcaNombre} ${p.modelo} ${p.version}` +
+      (state.anio ? ` (${state.anio})` : "") + ` · Mantención de ${km}`;
+
+    // día: desde mañana hasta 45 días (domingo se valida al enviar)
+    const man = new Date(); man.setDate(man.getDate() + 1);
+    const max = new Date(); max.setDate(max.getDate() + 45);
+    el.agwFecha.min = isoLocal(man);
+    el.agwFecha.max = isoLocal(max);
+    if (!el.agwFecha.value) el.agwFecha.value = "";
+
+    if (!el.agwHora.options.length) {
+      el.agwHora.innerHTML = '<option value="indiferente">La que tengan disponible</option>' +
+        `<optgroup label="Mañana">${HORAS_AM.map((h) => `<option>${h}</option>`).join("")}</optgroup>` +
+        `<optgroup label="Tarde">${HORAS_PM.map((h) => `<option>${h}</option>`).join("")}</optgroup>`;
+    }
+    el.agwErr.hidden = true;
+    el.agwForm.hidden = false;
+    el.agwOk.hidden = true;
+    el.agwEnviar.disabled = false;
+    el.agwEnviar.textContent = "Solicitar la hora";
+    el.agwOv.hidden = false;
+  }
+
+  function cerrarAgenda() { el.agwOv.hidden = true; }
+
+  function errorAgenda(msg) {
+    el.agwErr.textContent = msg;
+    el.agwErr.hidden = false;
+  }
+
+  // acepta "9 1234 5678", "912345678" o "+56 9 1234 5678" → "+56 9 XXXX XXXX"
+  function normalizarFono(v) {
+    let d = String(v || "").replace(/\D/g, "");
+    if (d.startsWith("56")) d = d.slice(2);
+    if (d.length !== 9 || d[0] !== "9") return null;
+    return `+56 9 ${d.slice(1, 5)} ${d.slice(5)}`;
+  }
+
+  async function enviarReserva(ev) {
+    ev.preventDefault();
+    if (el.agwWeb.value) return;   // honeypot: lo llenan solo los bots
+
+    const nombre = el.agwNombre.value.trim();
+    if (nombre.length < 3) return errorAgenda("Escribe tu nombre y apellido.");
+    const fono = normalizarFono(el.agwFono.value);
+    if (!fono) return errorAgenda("Revisa el celular: debe ser un móvil chileno de 9 dígitos (9 XXXX XXXX).");
+    const email = el.agwEmail.value.trim();
+    if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return errorAgenda("Revisa el e-mail.");
+    const fecha = el.agwFecha.value;
+    if (!fecha) return errorAgenda("Elige el día en que quieres traer tu auto.");
+    if (fecha < el.agwFecha.min || fecha > el.agwFecha.max)
+      return errorAgenda("Elige un día entre mañana y los próximos 45 días.");
+    if (new Date(fecha + "T00:00:00").getDay() === 0)
+      return errorAgenda("Los domingos el taller no atiende. Elige otro día.");
+
+    const p = state.pauta, itv = state.itv;
+    const reserva = {
+      nombre, fono,
+      email: email || null,
+      patente: el.agwPatente.value.trim().toUpperCase() || null,
+      fecha,
+      hora: el.agwHora.value || "indiferente",
+      comentario: el.agwComent.value.trim() || null,
+      marca: p.marcaNombre, modelo: p.modelo, version: p.version,
+      anio: state.anio || null,
+      pauta_id: state.version ? state.version.id : null,
+      rev_n: itv.n != null ? String(itv.n) : null,
+      km: itv.km || null,
+      extras: elegidos().map((x) => x.nombre).join(", ") || null,
+    };
+
+    el.agwEnviar.disabled = true;
+    el.agwEnviar.textContent = "Enviando…";
+    let ok = false;
+    try {
+      const r = await fetch(`${AGENDA.url}/rest/v1/${AGENDA.tabla || "reservas_web"}`, {
+        method: "POST",
+        headers: {
+          apikey: AGENDA.anonKey,
+          Authorization: "Bearer " + AGENDA.anonKey,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify(reserva),
+      });
+      ok = r.ok;
+    } catch (e) { ok = false; }
+
+    if (!ok) {
+      el.agwEnviar.disabled = false;
+      el.agwEnviar.textContent = "Solicitar la hora";
+      return errorAgenda("No pudimos enviar tu solicitud. Inténtalo de nuevo o escríbenos por WhatsApp.");
+    }
+
+    const dia = new Date(fecha + "T00:00:00").toLocaleDateString("es-CL",
+      { weekday: "long", day: "numeric", month: "long" });
+    el.agwOkDetalle.textContent = `Pediste hora para el ${dia}` +
+      (reserva.hora !== "indiferente" ? ` a las ${reserva.hora}` : "") +
+      `. Te contactaremos al ${fono} para confirmarla.`;
+    el.agwOkWsp.href = linkWsp(`Hola, acabo de agendar hora por la web para mi ${p.marcaNombre} ${p.modelo} (${dia}). Quería consultar algo:`);
+    el.agwForm.hidden = true;
+    el.agwOk.hidden = false;
+  }
+
+  function isoLocal(d) {
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") +
+      "-" + String(d.getDate()).padStart(2, "0");
   }
 
   // ============================================================

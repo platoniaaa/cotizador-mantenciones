@@ -257,3 +257,19 @@ table.grid td.slot.over { background: var(--tint); }
 .ag-valorref { grid-column: 1 / -1; background: var(--verde-bg); border: 1px solid #bfe3cd; border-radius: 6px; padding: 8px 12px; color: var(--verde); font-size: 13px; font-weight: 600; }
 
 .prox { color: var(--ink-3); font-size: 11.5px; font-style: italic; }
+
+/* ---------------- reservas web ---------------- */
+.webres-badge {
+  display: inline-block; min-width: 18px; padding: 1px 5px;
+  border-radius: 999px; background: #e53935; color: #fff;
+  font-size: 11px; font-weight: 800; text-align: center; margin-left: 4px;
+}
+.webres-lista { max-height: 60vh; overflow: auto; margin-top: 8px; }
+.webres-item {
+  border: 1px solid var(--linea, #e3e7f0); border-radius: 10px;
+  padding: 10px 12px; margin-bottom: 8px;
+}
+.webres-cab { font-size: 13.5px; margin-bottom: 3px; }
+.webres-det { font-size: 12.5px; color: var(--ink-2, #444); }
+.webres-com { font-size: 12.5px; color: var(--ink-3, #777); font-style: italic; margin-top: 3px; }
+.webres-item .agbtn { margin-top: 8px; }

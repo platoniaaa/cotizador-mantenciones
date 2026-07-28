@@ -62,6 +62,9 @@
         </div>
         <table class="ag-cal" id="calGrid"></table>
         <p style="font-size:11px;color:var(--ink-3);margin:0">● día con agendamientos</p>
+        <button id="btnWebRes" class="agbtn agbtn-blue" type="button" style="margin-top:10px;width:100%" hidden>
+          Reservas web <span id="webResBadge" class="webres-badge" hidden></span>
+        </button>
       </div>
       <div>
         <p class="ag-fecha-sel">Horas disponibles para el <b id="fechaSelTxt"></b>:</p>
@@ -218,6 +221,38 @@
     </div>
   </div>
 
+  <!-- Modal reservas web: login del personal (Supabase Auth) -->
+  <div class="overlay" id="webLoginOv">
+    <div class="ag-modal" style="max-width:380px">
+      <h3>Conectar reservas web</h3>
+      <p style="font-size:12.5px;color:var(--ink-3);margin:4px 0 10px">
+        Ingresa el usuario del personal. La sesión queda recordada en este navegador.
+      </p>
+      <div class="ag-form" style="grid-template-columns:1fr">
+        <label>E-mail<input id="webEmail" type="email" autocomplete="username"></label>
+        <label>Clave<input id="webPass" type="password" autocomplete="current-password"></label>
+      </div>
+      <p id="webLoginErr" style="color:#c62828;font-size:12.5px;margin:8px 0 0" hidden></p>
+      <div class="ag-foot">
+        <button class="agbtn agbtn-grey" onclick="webCerrarLogin()">Cancelar</button>
+        <button class="agbtn agbtn-blue" id="webLoginBtn" onclick="webLogin()">Conectar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal reservas web: lista para pasar a la agenda -->
+  <div class="overlay" id="webResOv">
+    <div class="ag-modal" style="max-width:720px">
+      <h3>Reservas web <span id="webResInfo" style="color:var(--ink-3);font-weight:400;font-size:13px"></span></h3>
+      <div id="webResLista" class="webres-lista"></div>
+      <div class="ag-foot">
+        <button class="agbtn agbtn-ghost agbtn-sm" onclick="webDesconectar()">Desconectar</button>
+        <button class="agbtn agbtn-grey" onclick="webCerrarLista()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/agenda-config.js?v=1"></script>
   <script src="js/taller.js?v=120ec85"></script>
 </body>
 </html>

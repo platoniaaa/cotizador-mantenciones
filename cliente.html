@@ -122,6 +122,7 @@
           <a id="btnWsp" class="btn btn--acento btn--block" href="#" target="_blank" rel="noopener">
             <span class="ico-wsp" aria-hidden="true"></span> Pedir cotización por WhatsApp
           </a>
+          <button id="btnAgendar" class="btn btn--navy btn--block" type="button" hidden>Agendar hora en el taller</button>
           <button id="btnPdf" class="btn btn--ghost btn--block" type="button">Descargar detalle</button>
           <p class="precio-card__nota">Te respondemos el mismo día hábil.</p>
         </div>
@@ -201,6 +202,38 @@
   </div>
 </footer>
 
+<!-- Modal de agendamiento web (aparece solo si js/agenda-config.js trae credenciales) -->
+<div class="agw-overlay" id="agwOv" hidden>
+  <div class="agw-modal" role="dialog" aria-modal="true" aria-labelledby="agwTitulo">
+    <button class="agw-cerrar" id="agwCerrar" type="button" aria-label="Cerrar">×</button>
+    <h3 id="agwTitulo">Agendar hora en el taller</h3>
+    <p class="agw-auto" id="agwAuto"></p>
+
+    <form id="agwForm" novalidate>
+      <div class="agw-grid">
+        <label>Nombre y apellido *<input id="agwNombre" maxlength="80" autocomplete="name"></label>
+        <label>Celular *<input id="agwFono" inputmode="tel" placeholder="9 1234 5678" maxlength="16" autocomplete="tel"></label>
+        <label>E-mail (opcional)<input id="agwEmail" type="email" maxlength="80" autocomplete="email"></label>
+        <label>Patente (opcional)<input id="agwPatente" maxlength="8" placeholder="ABCD12"></label>
+        <label>Día *<input id="agwFecha" type="date"></label>
+        <label>Hora de llegada<select id="agwHora"></select></label>
+      </div>
+      <label class="agw-coment">Comentario (opcional)<textarea id="agwComent" maxlength="500" rows="2" placeholder="Ej: necesito el auto para el mismo día"></textarea></label>
+      <input id="agwWeb" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="agw-err" id="agwErr" hidden></p>
+      <button class="btn btn--acento btn--block" id="agwEnviar" type="submit">Solicitar la hora</button>
+      <p class="agw-nota">Es una solicitud: te confirmamos la hora y el valor por WhatsApp o teléfono.</p>
+    </form>
+
+    <div id="agwOk" hidden>
+      <p class="agw-ok__t">✓ ¡Solicitud enviada!</p>
+      <p class="agw-ok__d" id="agwOkDetalle"></p>
+      <a id="agwOkWsp" class="btn btn--ghost btn--block" href="#" target="_blank" rel="noopener">Hablar con un asesor por WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script src="js/agenda-config.js?v=1"></script>
 <script src="js/cliente.js?v=8c64b87"></script>
 </body>
 </html>

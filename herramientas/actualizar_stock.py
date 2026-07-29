@@ -85,52 +85,138 @@ def norm_producto(p):
     return norm(_RUBRO.sub("", str(p).strip())) if p is not None else ""
 
 
+_XL = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
+_XLR = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
+
+
+def _col_a_indice(ref):
+    """'AB12' -> 27 (índice 0-based de la columna)."""
+    n = 0
+    for ch in ref:
+        if ch.isalpha():
+            n = n * 26 + (ord(ch.upper()) - 64)
+        else:
+            break
+    return n - 1
+
+
+def filas_xlsx(ruta, nombre_hoja):
+    """Lee una hoja de un .xlsx en streaming y va entregando listas de valores.
+
+    openpyxl (incluso en read_only) guarda un registro por fila leída y con
+    cientos de miles de filas se queda sin memoria; acá se parsea el XML de la
+    hoja directamente, descartando cada fila apenas se usa."""
+    import zipfile
+    from xml.etree import ElementTree as ET
+
+    with zipfile.ZipFile(ruta) as z:
+        # 1 · textos compartidos (las celdas de texto apuntan a esta tabla)
+        compartidos = []
+        if "xl/sharedStrings.xml" in z.namelist():
+            with z.open("xl/sharedStrings.xml") as f:
+                for _, el in ET.iterparse(f, events=("end",)):
+                    if el.tag == _XL + "si":
+                        compartidos.append("".join(t.text or "" for t in el.iter(_XL + "t")))
+                        el.clear()
+
+        # 2 · ubicar el XML de la hoja pedida
+        wbx = ET.fromstring(z.read("xl/workbook.xml"))
+        rid = None
+        for sh in wbx.iter(_XL + "sheet"):
+            if sh.get("name") == nombre_hoja:
+                rid = sh.get(_XLR + "id")
+                break
+        if not rid:
+            raise KeyError(f"la hoja '{nombre_hoja}' no está en {os.path.basename(ruta)}")
+        destino = None
+        for rel in ET.fromstring(z.read("xl/_rels/workbook.xml.rels")):
+            if rel.get("Id") == rid:
+                destino = rel.get("Target")
+                break
+        if not destino:
+            raise KeyError(f"no se pudo resolver la hoja '{nombre_hoja}'")
+        ruta_hoja = destino[1:] if destino.startswith("/") else "xl/" + destino.lstrip("./")
+
+        # 3 · recorrer las filas
+        with z.open(ruta_hoja) as f:
+            for _, fila in ET.iterparse(f, events=("end",)):
+                if fila.tag != _XL + "row":
+                    continue
+                valores = []
+                for c in fila:
+                    if c.tag != _XL + "c":
+                        continue
+                    i = _col_a_indice(c.get("r") or "")
+                    if i < 0:
+                        continue
+                    while len(valores) <= i:
+                        valores.append(None)
+                    t = c.get("t")
+                    if t == "inlineStr":
+                        v = "".join(x.text or "" for x in c.iter(_XL + "t")) or None
+                    else:
+                        nodo = c.find(_XL + "v")
+                        v = nodo.text if nodo is not None else None
+                        if v is not None:
+                            if t == "s":
+                                v = compartidos[int(v)] if int(v) < len(compartidos) else None
+                            elif t not in ("str", "e"):
+                                try:
+                                    v = float(v)
+                                    if v == int(v):
+                                        v = int(v)
+                                except ValueError:
+                                    pass
+                    valores[i] = v
+                yield valores
+                fila.clear()
+
+
 def leer_lista_precios(usados):
     """Lee la lista de precios oficial y devuelve {codNorm: {precio, costo, glosa, stock}}
     solo para los códigos que usan las pautas. Si el archivo no está, devuelve {}
     y el generador sigue con los precios del stock (comportamiento anterior)."""
-    import openpyxl
     if not os.path.exists(LISTA_PRECIOS):
         print(f"  AVISO: no se encontró la lista de precios en {LISTA_PRECIOS}")
-        print("         Los precios saldrán del stock de SharePoint (menos actualizados).")
+        print(f"         ({LISTA_PRECIOS})")
+        print("         Los precios saldrán del stock, que está menos actualizado.")
         return {}
-    wb = openpyxl.load_workbook(LISTA_PRECIOS, read_only=True, data_only=True)
-    if HOJA_PRECIOS not in wb.sheetnames:
-        wb.close()
-        print(f"  AVISO: la hoja '{HOJA_PRECIOS}' no está en la lista de precios.")
+    try:
+        filas = filas_xlsx(LISTA_PRECIOS, HOJA_PRECIOS)
+        encab = next(filas)
+    except Exception as e:
+        print(f"  AVISO: no se pudo leer la lista de precios ({e}).")
         return {}
-    ws = wb[HOJA_PRECIOS]
-    filas = ws.iter_rows(min_row=1, values_only=True)
-    encab = next(filas)
+
     col = {str(v).strip(): i for i, v in enumerate(encab) if v is not None}
     faltan = [c for c in ("Producto", "Precio") if c not in col]
     if faltan:
-        wb.close()
         print(f"  AVISO: a la lista de precios le faltan columnas: {faltan}")
         return {}
     iP, iPr = col["Producto"], col["Precio"]
     iC, iG, iS = col.get("Costo"), col.get("Glosa"), col.get("Stock")
 
+    def val(row, i):
+        return row[i] if i is not None and i < len(row) else None
+
     def num(row, i):
-        if i is None or i >= len(row):
-            return None
-        v = row[i]
+        v = val(row, i)
         return int(round(v)) if isinstance(v, (int, float)) and v else None
 
     out, n = {}, 0
     for row in filas:
         n += 1
-        k = norm_producto(row[iP])
+        k = norm_producto(val(row, iP))
         if not k or k not in usados or k in out:
             continue
+        g = val(row, iG)
         out[k] = {
             "precio": num(row, iPr),
             "costo": num(row, iC),
-            "glosa": str(row[iG]).strip() if iG is not None and row[iG] else None,
+            "glosa": str(g).strip() if g else None,
             "stock": num(row, iS) or 0,
-            "producto": str(row[iP]).strip(),
+            "producto": str(val(row, iP)).strip(),
         }
-    wb.close()
     print(f"Lista de precios: {n} productos leídos; {len(out)} calzan con las pautas")
     return out
 
@@ -349,6 +435,87 @@ def cargar_mapeo_manual():
     return {norm(k): v for k, v in data.items()}
 
 
+def contexto_de_pautas():
+    """Para el reporte: {codNorm: {nombres, marcas, pautas, usos}}. Sirve para
+    decirle a Repuestos QUÉ es cada SKU que no calza con la lista de precios."""
+    ctx = {}
+    for f in glob.glob(os.path.join(DATA, "pautas", "*.json")):
+        d = json.load(open(f, encoding="utf-8"))
+        etiqueta = f"{d['marcaNombre']} {d['modelo']} · {d['version']}"
+        for pl in d["planes"]:
+            for itv in pl["intervalos"]:
+                for it in (itv.get("items") or []):
+                    if not it.get("codigo"):
+                        continue
+                    e = ctx.setdefault(norm(it["codigo"]),
+                                       {"nombres": set(), "marcas": set(), "pautas": set(), "usos": 0})
+                    if it.get("nombre"):
+                        e["nombres"].add(str(it["nombre"]).strip())
+                    e["marcas"].add(d["marcaNombre"])
+                    e["pautas"].add(etiqueta)
+                    e["usos"] += 1
+    return ctx
+
+
+def reporte_sin_precio(usados, precios, items, ctx):
+    """Excel + consola con los SKU de las pautas que NO están en la lista de
+    precios. Es la lista de gestión para Repuestos: o se crea el producto, o
+    hay que corregir el código en la pauta del fabricante."""
+    import openpyxl
+    faltan = [nc for nc in usados if nc not in precios]
+    if not faltan:
+        print("Todos los SKU de las pautas están en la lista de precios.")
+        return []
+
+    filas = []
+    for nc in faltan:
+        c = ctx.get(nc, {})
+        it = items.get(nc)          # puede tener precio del stock aunque no esté en la lista
+        hay_stock = bool(it) and ((it.get("c") or 0) > 0 or (it.get("f") or 0) > 0)
+        filas.append({
+            "codigo": usados[nc],
+            "desc": " / ".join(sorted(c.get("nombres", []))) [:110],
+            "marcas": ", ".join(sorted(c.get("marcas", []))),
+            "usos": c.get("usos", 0),
+            "npautas": len(c.get("pautas", [])),
+            "precio_hoy": (it or {}).get("pv"),
+            "de_donde": ("stock de bodega" if it and it.get("pv") else "precio de la pauta (viejo)"),
+            "stock": "sí" if hay_stock else "no",
+            "pauta": sorted(c.get("pautas", ["—"]))[0],
+        })
+    filas.sort(key=lambda f: -f["usos"])
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "SKU sin precio"
+    ws.append(["SKU de la pauta que NO está en la lista de precios — "
+               "crear el producto o corregir el código en la pauta"])
+    ws.append([])
+    cols = [("Código en la pauta", "codigo"), ("Qué es (según la pauta)", "desc"),
+            ("Marca(s)", "marcas"), ("Veces usado", "usos"), ("N° de pautas", "npautas"),
+            ("Precio que muestra hoy", "precio_hoy"), ("De dónde sale ese precio", "de_donde"),
+            ("¿Tiene stock?", "stock"), ("Ejemplo de pauta", "pauta")]
+    ws.append([c[0] for c in cols])
+    for f in filas:
+        ws.append([f[c[1]] for c in cols])
+    for col in ws.columns:
+        ws.column_dimensions[col[0].column_letter].width = min(
+            44, max(12, max(len(str(c.value or "")) for c in col[:200]) + 2))
+    ws.freeze_panes = "A4"
+    destino = os.path.join(AQUI, "sku_sin_precio.xlsx")
+    wb.save(destino)
+
+    con_stock = sum(1 for f in filas if f["stock"] == "sí")
+    print(f"\n⚠ {len(filas)} SKU de las pautas NO están en la lista de precios "
+          f"({con_stock} igual tienen stock, {len(filas)-con_stock} no).")
+    print(f"  Detalle para Repuestos: {destino}")
+    for f in filas[:8]:
+        print(f"    {f['codigo']:22} {f['marcas'][:18]:20} usos={f['usos']:4}  {f['desc'][:34]}")
+    if len(filas) > 8:
+        print(f"    … y {len(filas)-8} más en el Excel")
+    return filas
+
+
 def codigos_de_pautas():
     """Set de códigos normalizados usados en las pautas + su forma original."""
     usados = {}
@@ -490,9 +657,11 @@ def main(descargar=False):
         ap = aplic_map.get(nc) or (aplic_map.get(norm(alt)) if alt else None)
         if ap:
             item["aplica"] = ap
-        # opciones de reemplazo (solo equivalencias/supersesión en stock, precisas)
+        # opciones de reemplazo (solo equivalencias/supersesión en stock, precisas).
+        # sorted() porque equiv_map guarda sets: sin esto el orden cambia entre
+        # corridas y el JSON sale distinto aunque los datos sean los mismos.
         opciones, vistos = [], {norm(cod_primario)}
-        for eq in equiv_map.get(nc, ()):
+        for eq in sorted(equiv_map.get(nc, ())):
             neq = norm(eq)
             if neq in cur and neq not in vistos:
                 vistos.add(neq)
@@ -560,6 +729,9 @@ def main(descargar=False):
     print(f"    con opciones de reemplazo (equivalencias en stock): {n_con_opciones}")
     print(f"    precio desde la LISTA DE PRECIOS: {n_precio_lista} de {len(items)} "
           f"({n_solo_lista} entraron solo por la lista, sin stock en bodega)")
+
+    if precios:
+        reporte_sin_precio(usados, precios, items, contexto_de_pautas())
 
 
 if __name__ == "__main__":

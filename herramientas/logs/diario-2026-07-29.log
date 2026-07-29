@@ -1,0 +1,29 @@
+======================================================================
+Actualización diaria del Cotizador · 29-07-2026 12:59:14
+======================================================================
+
+--- 1/3 · Stock del día + precios de la lista ---
+Stock Curifor:  21524 códigos  (STOCK_BODEGAS_CURIFOR.xlsx, diario)
+Stock Frontera: 720 códigos  (stock_frontera.xlsx)
+Catálogo completo: 4166 códigos con equivalencia, 1540 con aplicabilidad
+Códigos de repuestos en pautas (reales): 519
+Traceback (most recent call last):
+  File "C:\Users\icalderon\OneDrive - Curifor S.A\Documentos\Desarrollos\Plataformas\CURIFOR\Cotizador mantenciones\plataforma\herramientas\actualizar_stock.py", line 650, in <module>
+    main(descargar="--descargar" in sys.argv)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\icalderon\OneDrive - Curifor S.A\Documentos\Desarrollos\Plataformas\CURIFOR\Cotizador mantenciones\plataforma\herramientas\actualizar_stock.py", line 467, in main
+    precios = leer_lista_precios(set(usados))
+  File "C:\Users\icalderon\OneDrive - Curifor S.A\Documentos\Desarrollos\Plataformas\CURIFOR\Cotizador mantenciones\plataforma\herramientas\actualizar_stock.py", line 121, in leer_lista_precios
+    for row in filas:
+               ^^^^^
+  File "C:\Users\icalderon\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\openpyxl\worksheet\_read_only.py", line 85, in _cells_by_row
+    for idx, row in parser.parse():
+                    ~~~~~~~~~~~~^^
+  File "C:\Users\icalderon\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\openpyxl\worksheet\_reader.py", line 167, in parse
+    row = self.parse_row(element)
+  File "C:\Users\icalderon\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\openpyxl\worksheet\_reader.py", line 301, in parse_row
+    self.row_dimensions[str(self.row_counter)] = attrs
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+MemoryError
+
+FALLÓ la actualización de datos. Se aborta para no publicar algo a medias.

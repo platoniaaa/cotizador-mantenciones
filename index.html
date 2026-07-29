@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es-CL" data-auth="require">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cotizador de Mantenciones · Curifor</title>
-  <meta name="description" content="Precios sugeridos de mantención preventiva por marca, modelo, versión y kilometraje.">
+  <title>Cotizador de Mantenciones Â· Curifor</title>
+  <meta name="description" content="Precios sugeridos de mantenciÃ³n preventiva por marca, modelo, versiÃ³n y kilometraje.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <!-- guard de acceso interno (se salta solo cuando va embebido en un iframe) -->
   <script src="js/agenda-config.js?v=4a99c36"></script>
   <script src="js/auth.js?v=4a99c36"></script>
   <link rel="stylesheet" href="css/estilos.css?v=4a99c36">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸ”§</text></svg>">
 </head>
 <body>
 
@@ -32,26 +32,26 @@
 
   <section class="hero">
     <div class="hero__inner">
-      <p class="hero__eyebrow">Servicio y Postventa · Mantenciones preventivas</p>
+      <p class="hero__eyebrow">Servicio y Postventa Â· Mantenciones preventivas</p>
       <h1 class="hero__title">Consulta de mantenciones y repuestos</h1>
-      <p class="hero__lead">Selecciona el vehículo para ver las operaciones, los repuestos con su disponibilidad en bodega y el valor referencial de cada mantención programada.</p>
+      <p class="hero__lead">Selecciona el vehÃ­culo para ver las operaciones, los repuestos con su disponibilidad en bodega y el valor referencial de cada mantenciÃ³n programada.</p>
     </div>
   </section>
 
   <main class="wrap">
 
     <!-- ====================== PASO 1: SELECTOR ====================== -->
-    <section id="paso1" class="card selector" aria-label="Selección de vehículo">
+    <section id="paso1" class="card selector" aria-label="SelecciÃ³n de vehÃ­culo">
       <ol class="stepbar">
-        <li class="stepbar__item is-active" data-step="1"><span>1</span> Tu vehículo</li>
-        <li class="stepbar__item" data-step="2"><span>2</span> Plan de mantención</li>
+        <li class="stepbar__item is-active" data-step="1"><span>1</span> Tu vehÃ­culo</li>
+        <li class="stepbar__item" data-step="2"><span>2</span> Plan de mantenciÃ³n</li>
       </ol>
 
       <div class="patente">
         <label class="field">
           <span class="field__title">Patente
             <span class="tip" tabindex="0" aria-label="Ayuda">?
-              <span class="tip__bubble">Consulta el registro del vehículo y completa marca, modelo y año. La versión se elige abajo: el registro no la informa.</span>
+              <span class="tip__bubble">Consulta el registro del vehÃ­culo y completa marca, modelo y aÃ±o. La versiÃ³n se elige abajo: el registro no la informa.</span>
             </span>
           </span>
           <div class="patente__control">
@@ -64,7 +64,7 @@
         <p id="patenteEstado" class="patente__estado" role="status" hidden></p>
       </div>
 
-      <div class="separador"><span>o elige el vehículo del catálogo</span></div>
+      <div class="separador"><span>o elige el vehÃ­culo del catÃ¡logo</span></div>
 
       <div class="selector__grid">
         <label class="field">
@@ -82,20 +82,20 @@
         </label>
 
         <label class="field">
-          <span class="field__title">Versión</span>
+          <span class="field__title">VersiÃ³n</span>
           <div class="field__control">
-            <select id="selVersion" class="select" disabled><option value="">Elige la versión</option></select>
+            <select id="selVersion" class="select" disabled><option value="">Elige la versiÃ³n</option></select>
           </div>
         </label>
 
         <label class="field" id="fieldAnio" hidden>
-          <span class="field__title">Año
+          <span class="field__title">AÃ±o
             <span class="tip" tabindex="0" aria-label="Ayuda">?
-              <span class="tip__bubble">Año modelo del vehículo. Solo aplica a Ford; en las demás marcas la vigencia va por versión.</span>
+              <span class="tip__bubble">AÃ±o modelo del vehÃ­culo. Solo aplica a Ford; en las demÃ¡s marcas la vigencia va por versiÃ³n.</span>
             </span>
           </span>
           <div class="field__control">
-            <select id="selAnio" class="select" disabled><option value="">Elige el año</option></select>
+            <select id="selAnio" class="select" disabled><option value="">Elige el aÃ±o</option></select>
           </div>
         </label>
       </div>
@@ -103,25 +103,25 @@
       <div id="vehiculoMeta" class="vehiculo-meta" hidden></div>
 
       <div class="selector__actions">
-        <button id="btnCotizar" class="btn btn--primary" disabled>Ver plan de mantención</button>
+        <button id="btnCotizar" class="btn btn--primary" disabled>Ver plan de mantenciÃ³n</button>
       </div>
       <p class="selector__hint">Valores referenciales sugeridos, con IVA incluido y en pesos chilenos (CLP). Herramienta de apoyo para Servicio; confirmar precios y stock con el sistema.</p>
     </section>
 
     <!-- ====================== PASO 2: RESULTADOS ====================== -->
-    <section id="paso2" class="resultados" hidden aria-label="Plan de mantención">
+    <section id="paso2" class="resultados" hidden aria-label="Plan de mantenciÃ³n">
 
-      <!-- encabezado solo para impresión (orden de trabajo) -->
+      <!-- encabezado solo para impresiÃ³n (orden de trabajo) -->
       <div id="printHeader" class="print-header" aria-hidden="true">
         <div class="print-header__top">
           <img class="print-header__logo" src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
-          <span class="print-header__meta">Servicio y Postventa · Orden de mantención referencial</span>
+          <span class="print-header__meta">Servicio y Postventa Â· Orden de mantenciÃ³n referencial</span>
         </div>
         <table class="print-header__datos"><tbody id="printDatos"></tbody></table>
       </div>
 
       <div class="resumen-vehiculo">
-        <button id="btnVolver" class="btn-volver" type="button">← Cambiar vehículo</button>
+        <button id="btnVolver" class="btn-volver" type="button">â† Cambiar vehÃ­culo</button>
         <div class="resumen-vehiculo__datos">
           <span id="rvMarca" class="rv__marca"></span>
           <h2 id="rvTitulo" class="rv__titulo"></h2>
@@ -129,7 +129,7 @@
         </div>
         <div id="rvAnioBox" class="rv__aniobox" hidden>
           <label class="field field--inline">
-            <span class="field__title">Año</span>
+            <span class="field__title">AÃ±o</span>
             <select id="selAnio2" class="select select--sm"></select>
           </label>
         </div>
@@ -139,38 +139,38 @@
             <button type="button" class="modo-btn" data-modo="interno">Interno</button>
           </div>
           <button id="btnImprimir" class="btn btn--print" type="button">
-            <span aria-hidden="true">🖨</span> Imprimir orden
+            <span aria-hidden="true">ðŸ–¨</span> Imprimir orden
           </button>
           <button id="btnExcel" class="btn btn--excel" type="button">
-            <span aria-hidden="true">⬇</span> Excel
+            <span aria-hidden="true">â¬‡</span> Excel
           </button>
           <button id="btnAgendar" class="btn btn--agendar" type="button">
-            <span aria-hidden="true">🗓</span> Agendar
+            <span aria-hidden="true">ðŸ—“</span> Agendar
           </button>
         </div>
       </div>
 
       <!-- carrusel de revisiones -->
       <div class="carrusel">
-        <button class="carrusel__nav carrusel__nav--prev" id="navPrev" aria-label="Anterior">‹</button>
+        <button class="carrusel__nav carrusel__nav--prev" id="navPrev" aria-label="Anterior">â€¹</button>
         <div class="carrusel__viewport">
           <ul id="carruselTrack" class="carrusel__track"></ul>
         </div>
-        <button class="carrusel__nav carrusel__nav--next" id="navNext" aria-label="Siguiente">›</button>
+        <button class="carrusel__nav carrusel__nav--next" id="navNext" aria-label="Siguiente">â€º</button>
       </div>
 
-      <!-- detalle de la revisión activa -->
+      <!-- detalle de la revisiÃ³n activa -->
       <div class="detalle">
         <div class="detalle__head">
           <div>
-            <p class="detalle__eyebrow">Información de la mantención</p>
+            <p class="detalle__eyebrow">InformaciÃ³n de la mantenciÃ³n</p>
             <h3 id="detTitulo" class="detalle__titulo"></h3>
             <p id="detSub" class="detalle__sub"></p>
           </div>
           <div class="detalle__precio">
-            <span class="detalle__precio-label">Valor mantención</span>
+            <span class="detalle__precio-label">Valor mantenciÃ³n</span>
             <span id="detPrecio" class="detalle__precio-valor"></span>
-            <span id="detMoneda" class="detalle__precio-moneda">IVA incluido · CLP</span>
+            <span id="detMoneda" class="detalle__precio-moneda">IVA incluido Â· CLP</span>
             <span id="detNeto" class="detalle__precio-neto"></span>
             <span id="detRef" class="detalle__precio-ref" hidden></span>
           </div>
@@ -213,14 +213,14 @@
 
     <!-- estado de error -->
     <div id="errorBox" class="errorbox" hidden>
-      <p>No pudimos cargar la información. Verifica que estés abriendo la plataforma a través del servidor local e inténtalo nuevamente.</p>
+      <p>No pudimos cargar la informaciÃ³n. Verifica que estÃ©s abriendo la plataforma a travÃ©s del servidor local e intÃ©ntalo nuevamente.</p>
     </div>
 
   </main>
 
   <footer class="foot">
     <div class="foot__inner">
-      <span>Curifor S.A. · Cotizador de Mantenciones</span>
+      <span>Curifor S.A. Â· Cotizador de Mantenciones</span>
       <span id="footFecha" class="foot__fecha"></span>
     </div>
   </footer>
@@ -229,3 +229,4 @@
   <script src="js/app.js?v=4a99c36"></script>
 </body>
 </html>
+

@@ -529,7 +529,8 @@ def codigos_de_pautas():
                         nc = norm(cod)
                         # placeholders que no son códigos reales
                         if nc and not any(x in str(cod).upper() for x in
-                                          ("COMPRA EN PLAZA", "PENDIENTE", "INGRESAR", "MAT-", "N/A")):
+                                          ("COMPRA EN PLAZA", "PENDIENTE", "INGRESAR", "MAT-",
+                                           "N/A", "MATERIALES", "INSUMOS", "VARIOS")):
                             usados[nc] = str(cod).strip()
     return usados
 

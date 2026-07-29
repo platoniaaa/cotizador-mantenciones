@@ -42,8 +42,10 @@ create policy reservas_web_insert_publico on public.reservas_web
   for insert to anon
   with check (fecha >= current_date and fecha <= current_date + 60);
 
--- el personal autenticado lee
+-- el personal autenticado lee, PERO solo si su correo es @curifor.com.
+-- Esto es la barrera real de acceso: aunque alguien externo se registre
+-- (Auth), su token no podrá leer las reservas si el dominio no calza.
 drop policy if exists reservas_web_select_staff on public.reservas_web;
 create policy reservas_web_select_staff on public.reservas_web
   for select to authenticated
-  using (true);
+  using ( lower(auth.jwt() ->> 'email') like '%@curifor.com' );

@@ -13,3 +13,9 @@ Thumbs.db
 # Snapshots de stock descargados de SharePoint (pesados, se refrescan con --descargar).
 # El stock.json generado (chico) SÍ se versiona.
 herramientas/stock_fuente/*.xlsx
+
+# Reporte de SKU sin precio y logs de la tarea diaria: se regeneran en cada
+# corrida (el .xlsx cambia de binario aunque el contenido sea igual), así que
+# versionarlos solo produciría un commit vacío cada día.
+herramientas/sku_sin_precio.xlsx
+herramientas/logs/

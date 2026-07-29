@@ -29,14 +29,20 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 PLAT = os.path.normpath(os.path.join(AQUI, ".."))
 LOGS = os.path.join(AQUI, "logs")
 PY = sys.executable
+# bajo pythonw.exe hay que llamar a los subprocesos con python.exe igual
+if os.path.basename(PY).lower().startswith("pythonw"):
+    _alt = os.path.join(os.path.dirname(PY), "python.exe")
+    if os.path.exists(_alt):
+        PY = _alt
 OTS = os.environ.get("CURIFOR_OTS_REPO", r"C:\dev\curifor-ots")   # clon de la app Streamlit
 
 
 class Tee(io.TextIOBase):
-    """Escribe a consola y al log a la vez."""
+    """Escribe a consola y al log a la vez. Bajo pythonw.exe (tarea programada)
+    no hay consola y sys.__stdout__ es None: por eso se filtran los destinos."""
 
     def __init__(self, *destinos):
-        self.destinos = destinos
+        self.destinos = [d for d in destinos if d is not None]
 
     def write(self, s):
         for d in self.destinos:
@@ -52,9 +58,11 @@ def correr(cmd, cwd=PLAT, titulo=None):
     """Ejecuta y devuelve (ok, salida). Nunca lanza excepción."""
     if titulo:
         print(f"\n--- {titulo} ---")
+    entorno = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUTF8="1")
     try:
         r = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True,
-                           encoding="utf-8", errors="replace", timeout=3600)
+                           encoding="utf-8", errors="replace", timeout=3600,
+                           env=entorno)
     except Exception as e:
         print(f"ERROR ejecutando {cmd[:2]}: {e}")
         return False, str(e)
@@ -94,8 +102,10 @@ def main():
         log.close()
         return 1
 
-    SEGUIR = ["data/stock.json", "herramientas/stock_reporte.md",
-              "herramientas/sku_sin_precio.xlsx"]
+    # sku_sin_precio.xlsx NO se versiona: openpyxl reescribe el binario en cada
+    # corrida aunque el contenido sea el mismo, y eso generaría un commit diario
+    # vacío. Es un reporte para Repuestos, no un asset de la web.
+    SEGUIR = ["data/stock.json", "herramientas/stock_reporte.md"]
 
     if solo_datos:
         print("\n--solo-datos: no se publica.")

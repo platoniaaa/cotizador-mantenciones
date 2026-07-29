@@ -1,15 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-Genera data/stock.json cruzando las 2 tablas de stock de Curifor con los códigos
-de repuestos que usan las pautas de mantención.
+Genera data/stock.json cruzando el stock de Curifor con los códigos de repuestos
+que usan las pautas de mantención, y les pone el precio de la lista oficial.
 
-Fuentes (viven en SharePoint, se van actualizando):
-  - Stock bodegas.xlsx           -> giro CURIFOR (autos livianos: repuestos de las pautas)
-  - Stock bodegas Frontera.xlsx  -> giro FRONTERA (camiones)
+PRECIO (fuente de verdad):
+  Bases de datos\\Lista de precios\\Lista de precios curifor\\LISTA DE PRECIOS.xlsx
+  hoja "Lista sin duplicados", columna "Precio" (netos). Ruta: CURIFOR_LISTA_PRECIOS.
+
+STOCK y BODEGAS (la lista de precios no trae ubicación):
+  Bases de datos\\stock\\  -> se refresca solo todos los días. Ruta: CURIFOR_STOCK_DIARIO
+    - STOCK_BODEGAS_CURIFOR.xlsx  -> giro CURIFOR (autos livianos)
+    - stock_frontera.xlsx         -> giro FRONTERA (camiones)
+  Respaldo si esa carpeta no está: el snapshot de SharePoint en herramientas/stock_fuente/
+  (Stock bodegas.xlsx / Stock bodegas Frontera.xlsx).
 
 Uso:
-  python herramientas/actualizar_stock.py             # usa el snapshot en herramientas/stock_fuente/
-  python herramientas/actualizar_stock.py --descargar # baja primero las tablas frescas de SharePoint
+  python herramientas/actualizar_stock.py             # stock diario + lista de precios
+  python herramientas/actualizar_stock.py --descargar # refresca antes el snapshot de SharePoint
 
 La descarga reutiliza el módulo subir_sharepoint.py del proyecto Data BI
 (perfil Playwright ya logueado + REST). Si la sesión expiró, correr allá:
@@ -32,6 +39,28 @@ AUTOM = r"C:\Users\icalderon\OneDrive - Curifor S.A\Documentos\Desarrollos\Autom
 
 ARCHIVO_CURIFOR = "Stock bodegas.xlsx"
 ARCHIVO_FRONTERA = "Stock bodegas Frontera.xlsx"
+
+# Stock diario: estas dos tablas se refrescan solas todos los días y son la
+# fuente por defecto. El snapshot de SharePoint en stock_fuente/ queda como
+# respaldo por si la carpeta no está disponible (OneDrive sin sincronizar).
+STOCK_DIARIO = os.environ.get(
+    "CURIFOR_STOCK_DIARIO",
+    r"C:\Users\icalderon\OneDrive - Curifor S.A\Documentos\Desarrollos\Bases de datos\stock")
+DIARIO_CURIFOR = "STOCK_BODEGAS_CURIFOR.xlsx"
+DIARIO_FRONTERA = "stock_frontera.xlsx"
+
+
+def fuentes_de_stock():
+    """Devuelve (ruta_curifor, ruta_frontera, etiqueta) eligiendo el stock diario
+    si está, o el snapshot de SharePoint como respaldo."""
+    d_cur = os.path.join(STOCK_DIARIO, DIARIO_CURIFOR)
+    d_fro = os.path.join(STOCK_DIARIO, DIARIO_FRONTERA)
+    if os.path.exists(d_cur):
+        return d_cur, (d_fro if os.path.exists(d_fro) else
+                       os.path.join(FUENTE, ARCHIVO_FRONTERA)), "diario"
+    print(f"  AVISO: no se encontró el stock diario en {STOCK_DIARIO}")
+    print("         Se usa el último snapshot de SharePoint (stock_fuente/).")
+    return os.path.join(FUENTE, ARCHIVO_CURIFOR), os.path.join(FUENTE, ARCHIVO_FRONTERA), "snapshot"
 
 # Lista de precios oficial de la empresa: es la FUENTE DE VERDAD del precio de
 # venta y del costo. El stock de SharePoint sigue mandando en disponibilidad y
@@ -344,10 +373,11 @@ def main(descargar=False):
         print("Descargando tablas de stock desde SharePoint...")
         descargar_de_sharepoint()
 
-    cur, cur_crudo = leer_stock(os.path.join(FUENTE, ARCHIVO_CURIFOR), con_rubro=True)
-    fro, fro_crudo = leer_stock(os.path.join(FUENTE, ARCHIVO_FRONTERA), con_rubro=False)
-    print(f"Stock Curifor:  {len(cur)} códigos")
-    print(f"Stock Frontera: {len(fro)} códigos")
+    ruta_cur, ruta_fro, origen = fuentes_de_stock()
+    cur, cur_crudo = leer_stock(ruta_cur, con_rubro=True)
+    fro, fro_crudo = leer_stock(ruta_fro, con_rubro=False)
+    print(f"Stock Curifor:  {len(cur)} códigos  ({os.path.basename(ruta_cur)}, {origen})")
+    print(f"Stock Frontera: {len(fro)} códigos  ({os.path.basename(ruta_fro)})")
     equiv_map, aplic_map = leer_catalogo_completo()
     mapeo = cargar_mapeo_manual()
 
@@ -472,11 +502,11 @@ def main(descargar=False):
             n_con_opciones += 1
         items[nc] = item
 
-    # fecha del snapshot (mtime del archivo Curifor)
+    # fecha del stock (mtime del archivo Curifor que se usó)
     try:
         import datetime
-        ts = os.path.getmtime(os.path.join(FUENTE, ARCHIVO_CURIFOR))
-        fecha = datetime.datetime.fromtimestamp(ts).strftime("%d-%m-%Y %H:%M")
+        fecha = datetime.datetime.fromtimestamp(
+            os.path.getmtime(ruta_cur)).strftime("%d-%m-%Y %H:%M")
     except Exception:
         fecha = "desconocida"
 
@@ -490,7 +520,9 @@ def main(descargar=False):
     salida = {
         "actualizado": fecha,
         "preciosActualizado": fecha_precios,
-        "fuentes": {"curifor": ARCHIVO_CURIFOR, "frontera": ARCHIVO_FRONTERA,
+        "fuentes": {"curifor": os.path.basename(ruta_cur),
+                    "frontera": os.path.basename(ruta_fro),
+                    "origen": origen,
                     "precios": os.path.basename(LISTA_PRECIOS) if precios else None},
         "items": items,
     }

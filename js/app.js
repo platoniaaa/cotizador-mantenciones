@@ -656,11 +656,19 @@
     if (state.modo === "interno") return sku.co != null ? Math.round(sku.co / 0.8) : null;
     return sku.pv != null ? sku.pv : null;   // particular = precio lista (neto)
   }
-  // subtotal de un item: desde stock (unit×cantidad) si se puede; si no, valor de la pauta
+  // Precio unitario oficial de un item. El precio vive en la lista de precios de
+  // la empresa, así que vale aunque el repuesto no tenga stock: sin existencias
+  // se cotiza igual, solo que se pide. Orden: SKU elegido -> registro del código
+  // de la pauta -> null (ahí manda el valor de la pauta).
+  function unitarioDe(it, idx) {
+    const u = precioUnit(skuActivo(it, idx));
+    if (u != null) return u;
+    return it.codigo ? precioUnit(stockDe(it.codigo)) : null;
+  }
+  // subtotal de un item: unitario oficial × cantidad; si no hay, valor de la pauta
   function subtotalItem(it, idx) {
-    const sku = skuActivo(it, idx);
-    const unit = precioUnit(sku);
-    if (sku && unit != null && it.cantidad) return Math.round(unit * it.cantidad);
+    const unit = unitarioDe(it, idx);
+    if (unit != null && it.cantidad) return Math.round(unit * it.cantidad);
     return it.subtotal || 0;   // respaldo: precio de la pauta (materiales, sin cantidad, o s/d)
   }
   // total de un intervalo con SKU principal (para el carrusel), según modo
@@ -669,9 +677,9 @@
     if (!(itv.items && itv.items.length)) return itv.totalConIva || 0;
     let t = 0;
     itv.items.forEach((it) => {
-      const sku = (skusDe(it) || [])[0] || null;
-      const unit = precioUnit(sku);
-      t += (sku && unit != null && it.cantidad) ? Math.round(unit * it.cantidad) : (it.subtotal || 0);
+      const unit = precioUnit((skusDe(it) || [])[0] || null) ??
+                   (it.codigo ? precioUnit(stockDe(it.codigo)) : null);
+      t += (unit != null && it.cantidad) ? Math.round(unit * it.cantidad) : (it.subtotal || 0);
     });
     return t + (itv.manoObra || 0);
   }

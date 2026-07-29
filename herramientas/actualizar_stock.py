@@ -33,9 +33,77 @@ AUTOM = r"C:\Users\icalderon\OneDrive - Curifor S.A\Documentos\Desarrollos\Autom
 ARCHIVO_CURIFOR = "Stock bodegas.xlsx"
 ARCHIVO_FRONTERA = "Stock bodegas Frontera.xlsx"
 
+# Lista de precios oficial de la empresa: es la FUENTE DE VERDAD del precio de
+# venta y del costo. El stock de SharePoint sigue mandando en disponibilidad y
+# ubicación por bodega (esta lista no las trae).
+LISTA_PRECIOS = os.environ.get(
+    "CURIFOR_LISTA_PRECIOS",
+    r"C:\Users\icalderon\OneDrive - Curifor S.A\Documentos\Desarrollos"
+    r"\Bases de datos\Lista de precios\Lista de precios curifor\LISTA DE PRECIOS.xlsx")
+HOJA_PRECIOS = "Lista sin duplicados"
+
 
 def norm(c):
     return re.sub(r"[^A-Z0-9]", "", str(c).upper()) if c is not None else ""
+
+
+# El Producto de la lista viene con el rubro delante ("95 2630035505"); las
+# pautas usan el código pelado.
+_RUBRO = re.compile(r"^\d{1,3}\s+")
+
+
+def norm_producto(p):
+    return norm(_RUBRO.sub("", str(p).strip())) if p is not None else ""
+
+
+def leer_lista_precios(usados):
+    """Lee la lista de precios oficial y devuelve {codNorm: {precio, costo, glosa, stock}}
+    solo para los códigos que usan las pautas. Si el archivo no está, devuelve {}
+    y el generador sigue con los precios del stock (comportamiento anterior)."""
+    import openpyxl
+    if not os.path.exists(LISTA_PRECIOS):
+        print(f"  AVISO: no se encontró la lista de precios en {LISTA_PRECIOS}")
+        print("         Los precios saldrán del stock de SharePoint (menos actualizados).")
+        return {}
+    wb = openpyxl.load_workbook(LISTA_PRECIOS, read_only=True, data_only=True)
+    if HOJA_PRECIOS not in wb.sheetnames:
+        wb.close()
+        print(f"  AVISO: la hoja '{HOJA_PRECIOS}' no está en la lista de precios.")
+        return {}
+    ws = wb[HOJA_PRECIOS]
+    filas = ws.iter_rows(min_row=1, values_only=True)
+    encab = next(filas)
+    col = {str(v).strip(): i for i, v in enumerate(encab) if v is not None}
+    faltan = [c for c in ("Producto", "Precio") if c not in col]
+    if faltan:
+        wb.close()
+        print(f"  AVISO: a la lista de precios le faltan columnas: {faltan}")
+        return {}
+    iP, iPr = col["Producto"], col["Precio"]
+    iC, iG, iS = col.get("Costo"), col.get("Glosa"), col.get("Stock")
+
+    def num(row, i):
+        if i is None or i >= len(row):
+            return None
+        v = row[i]
+        return int(round(v)) if isinstance(v, (int, float)) and v else None
+
+    out, n = {}, 0
+    for row in filas:
+        n += 1
+        k = norm_producto(row[iP])
+        if not k or k not in usados or k in out:
+            continue
+        out[k] = {
+            "precio": num(row, iPr),
+            "costo": num(row, iC),
+            "glosa": str(row[iG]).strip() if iG is not None and row[iG] else None,
+            "stock": num(row, iS) or 0,
+            "producto": str(row[iP]).strip(),
+        }
+    wb.close()
+    print(f"Lista de precios: {n} productos leídos; {len(out)} calzan con las pautas")
+    return out
 
 
 def descargar_de_sharepoint():
@@ -285,6 +353,7 @@ def main(descargar=False):
 
     usados = codigos_de_pautas()
     print(f"Códigos de repuestos en pautas (reales): {len(usados)}")
+    precios = leer_lista_precios(set(usados))
 
     def resolver_curifor(nc):
         """Resuelve el stock Curifor de un código con precedencia:
@@ -315,14 +384,25 @@ def main(descargar=False):
         pb = (entry or {}).get("porBodega", {})
         return [{"n": b, "q": int(q)} for b, q in sorted(pb.items(), key=lambda kv: -kv[1]) if q > 0][:5]
 
+    def precio_de(nc, entry, alt=None):
+        """Precio y costo netos. Manda la lista de precios oficial (por el código
+        de la pauta o por su equivalente); el stock es solo el respaldo."""
+        p = precios.get(nc) or (precios.get(norm(alt)) if alt else None)
+        if p and p.get("precio"):
+            return p["precio"], (p.get("costo") or (entry or {}).get("costo")), "lista"
+        e = entry or {}
+        return e.get("precio"), e.get("costo"), ("stock" if e.get("precio") else None)
+
     def opcion(cod, entry):
         """Formatea un SKU pickeable con su precio (pv/co netos) y bodegas."""
+        pv, co, src = precio_de(norm(cod), entry)
         return {
             "cod": cod,
             "desc": entry.get("desc"),
             "c": int(entry["stock"]),
-            "pv": entry.get("precio"),   # Precio Venta neto
-            "co": entry.get("costo"),    # Costo neto
+            "pv": pv,   # Precio Venta neto
+            "co": co,   # Costo neto
+            "src": src,
             "bodegas": bodegas_de(entry),
             "aplica": aplic_map.get(norm(cod)),
         }
@@ -331,12 +411,25 @@ def main(descargar=False):
     n_cur = n_fro = n_aprox = 0
     via_cnt = {}
     n_con_opciones = 0
+    n_precio_lista = n_solo_lista = 0
     for nc, original in usados.items():
         ec, alt, via = resolver_curifor(nc)
         ef, _ = (fro.get(nc), None)
         if not ef:
             ef, _ = buscar_secundario(nc, fro_crudo)
         if not ec and not ef:
+            # sin stock en ninguna bodega, pero la lista de precios sí lo tiene:
+            # igual entra, para que el cotizador muestre el precio oficial
+            p = precios.get(nc)
+            if p and p.get("precio"):
+                n_solo_lista += 1
+                n_precio_lista += 1
+                items[nc] = {
+                    "c": None, "f": None, "desc": p.get("glosa"),
+                    "pv": p["precio"], "co": p.get("costo"),
+                    "src": "lista", "bodegas": [], "aprox": False,
+                    "sinStock": True,
+                }
             continue
         aprox = bool(via and via != "directo")
         sc = int(ec["stock"]) if ec else None
@@ -349,10 +442,14 @@ def main(descargar=False):
         if aprox:
             n_aprox += 1
         desc = (ec or ef or {}).get("desc")
+        pv, co, src = precio_de(nc, ec or ef, alt)
+        if src == "lista":
+            n_precio_lista += 1
         item = {
             "c": sc, "f": sf, "desc": desc,
-            "pv": (ec or ef or {}).get("precio"),   # Precio Venta neto (particular)
-            "co": (ec or ef or {}).get("costo"),    # Costo neto (interno = co/0.8)
+            "pv": pv,          # Precio Venta neto (particular)
+            "co": co,          # Costo neto (interno = co/0.8)
+            "src": src,        # de dónde salió el precio: lista | stock
             "bodegas": bodegas_de(ec) or bodegas_de(ef),
             "aprox": aprox,
         }
@@ -383,9 +480,18 @@ def main(descargar=False):
     except Exception:
         fecha = "desconocida"
 
+    try:
+        import datetime
+        fecha_precios = datetime.datetime.fromtimestamp(
+            os.path.getmtime(LISTA_PRECIOS)).strftime("%d-%m-%Y %H:%M") if precios else None
+    except Exception:
+        fecha_precios = None
+
     salida = {
         "actualizado": fecha,
-        "fuentes": {"curifor": ARCHIVO_CURIFOR, "frontera": ARCHIVO_FRONTERA},
+        "preciosActualizado": fecha_precios,
+        "fuentes": {"curifor": ARCHIVO_CURIFOR, "frontera": ARCHIVO_FRONTERA,
+                    "precios": os.path.basename(LISTA_PRECIOS) if precios else None},
         "items": items,
     }
     os.makedirs(DATA, exist_ok=True)
@@ -403,6 +509,10 @@ def main(descargar=False):
         f"- Con stock disponible (>0): **{con_stock}**",
         f"- Sin catalogar en stock: **{len(usados) - len(items)}**",
         "",
+        f"- **Precio desde la lista oficial**: {n_precio_lista} de {len(items)} "
+        f"(lista del {fecha_precios or 's/d'})",
+        f"- Entraron solo por la lista (sin stock en bodega): **{n_solo_lista}**",
+        "",
         "La plataforma marca cada repuesto con su disponibilidad y bodega. Cuando el SKU de la "
         "pauta difiere del de bodega (lubricantes, presentaciones, supersesión), se muestra el "
         "código alternativo bajo el que está el stock. El mapeo manual de lubricantes vive en "
@@ -416,6 +526,8 @@ def main(descargar=False):
     print(f"    cruce -> directo {via_cnt.get('directo',0)}, nombre {via_cnt.get('producto',0)}, "
           f"difuso {via_cnt.get('difuso',0)}, equivalente {via_cnt.get('equivalente',0)}")
     print(f"    con opciones de reemplazo (equivalencias en stock): {n_con_opciones}")
+    print(f"    precio desde la LISTA DE PRECIOS: {n_precio_lista} de {len(items)} "
+          f"({n_solo_lista} entraron solo por la lista, sin stock en bodega)")
 
 
 if __name__ == "__main__":

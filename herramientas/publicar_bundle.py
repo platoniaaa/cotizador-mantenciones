@@ -108,7 +108,9 @@ PARCHES_JS = [
 ]
 
 # Elementos del HTML que no tienen sentido dentro de la app de Cristian: el
-# taller ya lo proveen sus propios módulos.
+# taller ya lo proveen sus propios módulos, y el encabezado propio del cotizador
+# (logo + título + hero) duplica el header que la app ya pone sobre el iframe,
+# así que se quita para que la vista embebida no muestre la marca dos veces.
 PARCHES_HTML = [
     (
         "link a taller.html",
@@ -123,6 +125,26 @@ PARCHES_HTML = [
     (
         "botón Agendar",
         re.compile(r'<button id="btnAgendar".*?</button>', re.S),
+        "",
+    ),
+    (
+        "hero redundante (el header de la app ya cumple esa función)",
+        re.compile(r'\s*<section class="hero">.*?</section>', re.S),
+        "",
+    ),
+    (
+        "logo del topbar (duplica el logo del header de la app)",
+        re.compile(r'\s*<img class="brand__logo"[^>]*>'),
+        "",
+    ),
+    (
+        "separador del brand",
+        '<span class="brand__sep"></span>',
+        "",
+    ),
+    (
+        "subtítulo del brand (duplica el título del header de la app)",
+        '<span class="brand__sub">Cotizador de mantenciones</span>',
         "",
     ),
 ]

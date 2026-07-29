@@ -7,7 +7,7 @@
 - Con stock disponible (>0): **391**
 - Sin catalogar en stock: **52**
 
-- **Precio desde la lista oficial**: 455 de 466 (lista del 28-07-2026 17:10)
+- **Precio desde la lista oficial**: 459 de 466 (lista del 29-07-2026 14:12)
 - Entraron solo por la lista (sin stock en bodega): **75**
 
 La plataforma marca cada repuesto con su disponibilidad y bodega. Cuando el SKU de la pauta difiere del de bodega (lubricantes, presentaciones, supersesión), se muestra el código alternativo bajo el que está el stock. El mapeo manual de lubricantes vive en `herramientas/equivalencias.json` (editable por Servicio).

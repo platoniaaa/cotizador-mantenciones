@@ -172,20 +172,95 @@ def filas_xlsx(ruta, nombre_hoja):
                 fila.clear()
 
 
-def leer_lista_precios(usados):
+# ---- cruce por variante: el mismo código con un sufijo/prefijo de presentación ----
+# En la lista de Curifor el mismo producto aparece con variantes:
+#     104406    -> 104406-AG      (sufijo tras guion)
+#     104406    -> 104406ML       (sufijo corto de letras: presentación)
+#     100050    -> MOBIL100050    (prefijo de marca)
+#     XY75W85QL -> XY75W85QL-PLZ
+# Lo que NO vale es que sobren dígitos, porque entonces es otro código que
+# casualmente contiene la misma secuencia (103606 vs 10360626 "ELEVAVIDRIOS").
+_SEP = re.compile(r"[-/.]")
+
+# familias para descartar candidatos que no tienen nada que ver (BIL104406 =
+# "SOPORTE" no es el aceite 104406)
+_FAMILIAS = [
+    ("lubricante", r"aceite|lubric|anticongel|refriger|l[ií]quido|liquido|fluido|grasa|coolant|aditivo",
+     r"aceite|lubric|anticongel|refriger|liquido|l[ií]quido|fluido|grasa|coolant|aditivo|mobil|shell|"
+     r"castrol|petronas|total|valvoline|dot\s*-?\s*\d|\d+w-?\d+|sae|atf|granel|litro|lt\b|ml\b|balde|tambor"),
+    ("filtro", r"filtro", r"filtro|elemento|cartucho"),
+    ("bujia", r"buj[ií]a", r"buj[ií]a|spark"),
+    ("correa", r"correa", r"correa|belt"),
+]
+
+
+def _familia(texto):
+    t = (texto or "").lower()
+    for nombre, pat_pauta, pat_glosa in _FAMILIAS:
+        if re.search(pat_pauta, t):
+            return nombre, pat_glosa
+    return None, None
+
+
+def coherente(desc_pauta, glosa):
+    """¿La glosa de Curifor describe el mismo tipo de pieza que la pauta?
+    Si no se reconoce la familia, se deja pasar (no hay con qué juzgar)."""
+    fam, pat_glosa = _familia(desc_pauta)
+    if not fam:
+        return True
+    return bool(re.search(pat_glosa, (glosa or "").lower()))
+
+
+def variante_de(cod_pauta, prod_norm, prod_crudo):
+    """Motivo por el que 'prod_norm' es una variante de 'cod_pauta', o None."""
+    if prod_norm == cod_pauta or cod_pauta not in prod_norm:
+        return None
+    crudo = _RUBRO.sub("", str(prod_crudo).strip().upper())
+    if prod_norm.startswith(cod_pauta):
+        resto = prod_norm[len(cod_pauta):]
+        if _SEP.search(crudo[len(cod_pauta):len(cod_pauta) + 2] if len(crudo) > len(cod_pauta) else ""):
+            return "sufijo tras guion"
+        if re.search(re.escape(cod_pauta) + r"\s*[-/.]", crudo):
+            return "sufijo tras guion"
+        if resto.isalpha() and len(resto) <= 3:
+            return "sufijo de letras"
+        return None
+    if prod_norm.endswith(cod_pauta):
+        pre = prod_norm[:-len(cod_pauta)]
+        if pre.isalpha() and 2 <= len(pre) <= 8:
+            return "prefijo de marca"
+    return None
+
+
+def leer_lista_precios(usados, descripciones=None):
     """Lee la lista de precios oficial y devuelve {codNorm: {precio, costo, glosa, stock}}
     solo para los códigos que usan las pautas. Si el archivo no está, devuelve {}
     y el generador sigue con los precios del stock (comportamiento anterior)."""
     if not os.path.exists(LISTA_PRECIOS):
         print(f"  AVISO: no se encontró la lista de precios en {LISTA_PRECIOS}")
-        print(f"         ({LISTA_PRECIOS})")
         print("         Los precios saldrán del stock, que está menos actualizado.")
         return {}
+
+    # Si alguien tiene el Excel abierto, Windows lo bloquea y la lectura falla
+    # (la tarea diaria correría con el usuario trabajando): se lee una copia.
+    import shutil
+    import tempfile
+    fuente = LISTA_PRECIOS
+    copia = None
     try:
-        filas = filas_xlsx(LISTA_PRECIOS, HOJA_PRECIOS)
+        copia = os.path.join(tempfile.gettempdir(), "_curifor_lista_precios.xlsx")
+        shutil.copy2(LISTA_PRECIOS, copia)
+        fuente = copia
+    except Exception as e:
+        print(f"  (no se pudo copiar la lista, se leerá directo: {e})")
+
+    try:
+        filas = filas_xlsx(fuente, HOJA_PRECIOS)
         encab = next(filas)
     except Exception as e:
         print(f"  AVISO: no se pudo leer la lista de precios ({e}).")
+        if "denied" in str(e).lower() or "permission" in str(e).lower():
+            print("         Parece estar abierta en Excel. Ciérrala y vuelve a correr.")
         return {}
 
     col = {str(v).strip(): i for i, v in enumerate(encab) if v is not None}
@@ -203,21 +278,60 @@ def leer_lista_precios(usados):
         v = val(row, i)
         return int(round(v)) if isinstance(v, (int, float)) and v else None
 
-    out, n = {}, 0
-    for row in filas:
-        n += 1
-        k = norm_producto(val(row, iP))
-        if not k or k not in usados or k in out:
-            continue
+    descripciones = descripciones or {}
+    # los códigos largos también se buscan como variante (104406-AG, MOBIL100050)
+    buscables = {k for k in usados if len(k) >= 6}
+
+    def registro(row):
         g = val(row, iG)
-        out[k] = {
+        return {
             "precio": num(row, iPr),
             "costo": num(row, iC),
             "glosa": str(g).strip() if g else None,
             "stock": num(row, iS) or 0,
             "producto": str(val(row, iP)).strip(),
         }
-    print(f"Lista de precios: {n} productos leídos; {len(out)} calzan con las pautas")
+
+    out, variantes, n = {}, {}, 0
+    for row in filas:
+        n += 1
+        crudo = val(row, iP)
+        k = norm_producto(crudo)
+        if not k:
+            continue
+        if k in usados:
+            if k not in out:
+                out[k] = registro(row)
+            continue
+        # ¿es una variante de algún código de pauta que aún no calzó?
+        for base in buscables:
+            if base in k:
+                motivo = variante_de(base, k, crudo)
+                if motivo:
+                    r = registro(row)
+                    if r["precio"] and coherente(descripciones.get(base, ""), r["glosa"]):
+                        r["motivo"] = motivo
+                        variantes.setdefault(base, []).append(r)
+                break
+
+    # para los que no calzaron exacto, tomar la mejor variante:
+    # primero la que tenga stock, después la de mayor precio (presentación mayor)
+    n_var = 0
+    for base, cands in variantes.items():
+        if base in out:
+            continue
+        mejor = sorted(cands, key=lambda x: (-(x["stock"] or 0), -(x["precio"] or 0)))[0]
+        mejor["variante"] = True
+        out[base] = mejor
+        n_var += 1
+
+    print(f"Lista de precios: {n} productos leídos; {len(out)} calzan con las pautas"
+          + (f" ({n_var} por variante del código)" if n_var else ""))
+    if n_var:
+        for base, r in sorted(out.items(), key=lambda kv: -(kv[1].get("stock") or 0)):
+            if r.get("variante"):
+                print(f"    {base:22} -> {r['producto']:24} {str(r['glosa'])[:38]:40} "
+                      f"${r['precio']:,} [{r['motivo']}]")
     return out
 
 
@@ -551,7 +665,11 @@ def main(descargar=False):
 
     usados = codigos_de_pautas()
     print(f"Códigos de repuestos en pautas (reales): {len(usados)}")
-    precios = leer_lista_precios(set(usados))
+    ctx_pautas = contexto_de_pautas()
+    # qué dice la pauta de cada código, para descartar variantes que no calzan
+    # (BIL104406 "SOPORTE" no es el aceite 104406)
+    desc_pautas = {k: " / ".join(sorted(v["nombres"])) for k, v in ctx_pautas.items()}
+    precios = leer_lista_precios(set(usados), desc_pautas)
 
     def resolver_curifor(nc):
         """Resuelve el stock Curifor de un código con precedencia:
@@ -732,7 +850,7 @@ def main(descargar=False):
           f"({n_solo_lista} entraron solo por la lista, sin stock en bodega)")
 
     if precios:
-        reporte_sin_precio(usados, precios, items, contexto_de_pautas())
+        reporte_sin_precio(usados, precios, items, ctx_pautas)
 
 
 if __name__ == "__main__":

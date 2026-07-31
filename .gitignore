@@ -19,3 +19,6 @@ herramientas/stock_fuente/*.xlsx
 # versionarlos solo produciría un commit vacío cada día.
 herramientas/sku_sin_precio.xlsx
 herramientas/logs/
+
+# Datos personales de clientes (RUT/teléfono/mail) — NUNCA al repo público, van a Supabase
+data/clientes.json

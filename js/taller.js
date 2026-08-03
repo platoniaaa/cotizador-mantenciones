@@ -578,7 +578,8 @@ function webFetchReservas(s) {
 function webActualizarEstado(id, nuevoEstado, extra) {
   return webSesion().then(function (s) {
     if (!s) return Promise.reject(new Error("sin sesión"));
-    var body = Object.assign({ estado: nuevoEstado }, extra || {});
+    var body = Object.assign({}, extra || {});
+    if (nuevoEstado) body.estado = nuevoEstado;   // estado opcional (p.ej. solo fotos)
     return fetch(AGW.url + "/rest/v1/" + webTabla() + "?id=eq." + encodeURIComponent(id), {
       method: "PATCH",
       headers: {
@@ -760,27 +761,148 @@ var agRecSel = null;
 function agAbrirRecepcion(oc) {
   agRecSel = agFind(oc);
   if (!agRecSel) return;
+  agPintarRecepcion();
+}
+
+// Pinta el formulario de recepción a partir de agRecSel (venga de la agenda
+// local o de una búsqueda por patente en Supabase).
+function agPintarRecepcion() {
+  if (!agRecSel) return;
+  var mm = [agRecSel.marcaNombre, agRecSel.modeloNombre].filter(Boolean).join(" ");
   document.getElementById("recVacia").hidden = true;
   var f = document.getElementById("recForm");
   f.hidden = false; f.classList.remove("hidden");
-  document.getElementById("recTitulo").textContent = agRecSel.pat + " — " + agRecSel.marcaNombre + " " + agRecSel.modeloNombre;
+  document.getElementById("recTitulo").textContent = agRecSel.pat + (mm ? " — " + mm : "");
   document.getElementById("recOC").textContent = agRecSel.oc;
-  document.getElementById("recFecha").textContent = fmtFechaCorta(agRecSel.fecha) + " " + agRecSel.hora;
+  document.getElementById("recFecha").textContent = (agRecSel.fecha ? fmtFechaCorta(agRecSel.fecha) : "hoy") + " " + (agRecSel.hora || "");
   document.getElementById("rcCliente").textContent = agRecSel.cli || "—";
   document.getElementById("rcRut").textContent = agRecSel.rut || "—";
   document.getElementById("rcFono").textContent = agRecSel.fono || "—";
   document.getElementById("rcEmail").textContent = agRecSel.email || "—";
   document.getElementById("rcPatente").textContent = agRecSel.pat;
-  document.getElementById("rcModelo").textContent = agRecSel.marcaNombre + " " + agRecSel.modeloNombre + (agRecSel.versionNombre ? " · " + agRecSel.versionNombre : "");
+  document.getElementById("rcModelo").textContent = (mm || "—") + (agRecSel.versionNombre ? " · " + agRecSel.versionNombre : "");
   document.getElementById("rcAnio").textContent = agRecSel.anio || "—";
   document.getElementById("rcKm").textContent = agRecSel.km ? etiquetaKm(agRecSel.km) : "—";
-  document.getElementById("rcServ").textContent = agRecSel.serv + (agRecSel.km ? " · " + etiquetaKm(agRecSel.km) : "");
+  document.getElementById("rcServ").textContent = (agRecSel.serv || "Recepción") + (agRecSel.km ? " · " + etiquetaKm(agRecSel.km) : "");
   document.getElementById("rcValor").textContent = agRecSel.valorRef != null ? money(agRecSel.valorRef) + " neto s/IVA" : "—";
   var ag = document.getElementById("accGrid");
   ag.innerHTML = AGACC.map(function (a) { return '<label class="acc"><input type="checkbox"> ' + a + "</label>"; }).join("");
-  var pw = document.getElementById("photoWrap");
-  pw.innerHTML = AGFOTOS.map(function (fo) { return '<button class="photo-btn" type="button">' + fo + " 📷</button>"; }).join("");
+  agRenderFotos();
   agGoTab("recep");
+}
+
+// Recepción AUTÓNOMA por patente: busca en Supabase la reserva agendada + los
+// datos del vehículo/cliente y abre la recepción, sin depender de la agenda local.
+function agRecepcionPorPatente(pat) {
+  pat = (pat || "").trim().toUpperCase();
+  var msg = document.getElementById("recBuscarMsg");
+  if (!pat) { if (msg) msg.textContent = "Escribe una patente."; return; }
+  if (msg) msg.textContent = "Buscando…";
+  webSesion().then(function (s) {
+    if (!s) { webAbrirLogin(); throw new Error("sin sesión"); }
+    var hdr = { apikey: AGW.anonKey, Authorization: "Bearer " + s.access };
+    var base = AGW.url + "/rest/v1/";
+    var pe = encodeURIComponent(pat);
+    return Promise.all([
+      fetch(base + "reservas_web?patente=eq." + pe + "&estado=in.(nueva,agendada,recibida)&order=fecha.desc&limit=1", { headers: hdr }).then(function (r) { return r.ok ? r.json() : []; }),
+      fetch(base + "vehiculos?patente=eq." + pe + "&select=*&limit=1", { headers: hdr }).then(function (r) { return r.ok ? r.json() : []; })
+    ]).then(function (res) {
+      var r = (res[0] && res[0][0]) || null;
+      var veh = (res[1] && res[1][0]) || null;
+      if (!r && !veh) { if (msg) msg.textContent = "Sin registro de esa patente en el sistema."; return; }
+      var rut = (r && r.rut) || (veh && veh.rut) || null;
+      var pCli = rut
+        ? fetch(base + "clientes?rut=eq." + encodeURIComponent(rut) + "&select=*&limit=1", { headers: hdr }).then(function (x) { return x.ok ? x.json() : []; }).then(function (a) { return a[0] || null; })
+        : Promise.resolve(null);
+      return pCli.then(function (cli) {
+        r = r || {};
+        agRecSel = {
+          pat: pat, oc: r.id || "—", webId: r.id || null,
+          marcaNombre: r.marca || "", modeloNombre: r.modelo || (veh && veh.modelo) || "",
+          versionNombre: r.version || null, pautaId: r.pauta_id || null,
+          anio: r.anio || (veh && veh.anio) || null,
+          km: r.km || (veh && veh.km) || null, revN: r.rev_n || null,
+          valorRef: (r.valor != null ? r.valor : null),
+          serv: r.km ? "Mantención" : "Recepción",
+          cli: (cli && cli.nombre) || r.nombre || "Cliente",
+          rut: rut, fono: (cli && (cli.cel || cli.fono)) || r.fono || null,
+          email: (cli && cli.mail) || r.email || null,
+          vin: r.vin || (veh && veh.vin) || null, asesor: r.asesor || null,
+          fecha: r.fecha || null, hora: r.hora || "", sucursal: r.sucursal || null,
+          fotos: {}
+        };
+        if (msg) msg.textContent = "";
+        var inp = document.getElementById("recBuscarPat"); if (inp) inp.value = "";
+        agPintarRecepcion();
+      });
+    });
+  }).catch(function () { if (msg) msg.textContent = "No se pudo buscar (¿sesión de asesor iniciada?)."; });
+}
+
+// carpeta estable de las fotos de esta recepción dentro del bucket 'recepciones'
+function agFotoCarpeta() {
+  if (!agRecSel) return null;
+  return agRecSel.webId || ((agRecSel.pat || "sinpat") + "_" + agRecSel.oc);
+}
+
+// Dibuja los slots de foto: cada vista abre la cámara (tablet/celular) o el
+// selector de archivo (PC). Muestra la foto ya subida si existe.
+function agRenderFotos() {
+  var pw = document.getElementById("photoWrap");
+  if (!pw) return;
+  var fotos = (agRecSel && agRecSel.fotos) || {};
+  pw.innerHTML = AGFOTOS.map(function (fo, i) {
+    var sub = fotos[fo];
+    return '<label class="photo-slot' + (sub ? " has-photo" : "") + '" id="slot_' + i + '"' +
+        (sub ? ' style="background-image:url(' + esc(sub.preview || "") + ')"' : "") + '>' +
+      '<input type="file" accept="image/*" capture="environment" ' +
+        'onchange="agSubirFoto(this,' + i + ')">' +
+      '<span class="photo-cam">📷</span>' +
+      '<span class="photo-lbl">' + esc(fo) + '</span>' +
+      '<span class="photo-st" id="fst_' + i + '">' + (sub ? "✓" : "") + '</span>' +
+    '</label>';
+  }).join("");
+}
+
+// Sube una foto a Supabase Storage (bucket recepciones) y la asocia a la reserva.
+function agSubirFoto(input, i) {
+  var file = input.files && input.files[0];
+  if (!file || !agRecSel) return;
+  var vista = AGFOTOS[i];
+  var slot = document.getElementById("slot_" + i);
+  var st = document.getElementById("fst_" + i);
+  var url = URL.createObjectURL(file);           // preview inmediato
+  if (slot) { slot.style.backgroundImage = "url(" + url + ")"; slot.classList.add("has-photo"); }
+  if (st) st.textContent = "Subiendo…";
+  var carpeta = agFotoCarpeta();
+  var slug = vista.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  var ext = ((file.type || "image/jpeg").split("/")[1] || "jpg").replace("jpeg", "jpg");
+  var path = carpeta + "/" + slug + "_" + Date.now() + "." + ext;
+  webSesion().then(function (s) {
+    if (!s) throw new Error("sin sesión");
+    return fetch(AGW.url + "/storage/v1/object/recepciones/" + encodeURI(path), {
+      method: "POST",
+      headers: {
+        apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+        "Content-Type": file.type || "image/jpeg", "x-upsert": "true"
+      },
+      body: file
+    });
+  }).then(function (r) {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    if (st) st.textContent = "✓";
+    agRecSel.fotos = agRecSel.fotos || {};
+    agRecSel.fotos[vista] = { path: path, preview: url };
+    save();
+    // refleja las fotos en Supabase si la reserva existe allá
+    if (agRecSel.webId && typeof webActualizarEstado === "function") {
+      var paths = Object.keys(agRecSel.fotos).map(function (k) { return agRecSel.fotos[k].path; });
+      webActualizarEstado(agRecSel.webId, null, { fotos: paths }).catch(function () {});
+    }
+  }).catch(function () {
+    if (st) st.textContent = "✕ reintentar";
+    if (slot) slot.classList.add("photo-err");
+  });
 }
 function agCancelarRecepcion() {
   agRecSel = null;

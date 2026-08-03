@@ -92,7 +92,16 @@
   <!-- ============ 2 · RECEPCIÓN ============ -->
   <div class="view" id="v-recep">
     <h2 class="vtitle">Recepción</h2>
-    <div id="recVacia" class="flow-note">Selecciona un agendamiento en <b>Agendamiento</b> y pulsa “Ingresar” para abrir su recepción.</div>
+    <div id="recBuscar" class="rec-buscar">
+      <label class="rec-buscar-lbl">Recibir por patente</label>
+      <div class="rec-buscar-row">
+        <input id="recBuscarPat" type="text" inputmode="latin" autocomplete="off" maxlength="10"
+               placeholder="Ej: BBBB11" onkeydown="if(event.key==='Enter'){event.preventDefault();agRecepcionPorPatente(this.value);}">
+        <button class="agbtn agbtn-blue" type="button" onclick="agRecepcionPorPatente(document.getElementById('recBuscarPat').value)">Buscar</button>
+      </div>
+      <span id="recBuscarMsg" class="rec-buscar-msg"></span>
+    </div>
+    <div id="recVacia" class="flow-note">O selecciona un agendamiento en <b>Agendamiento</b> y pulsa “Ingresar” para abrir su recepción.</div>
     <div id="recForm" class="hidden" hidden>
       <div class="rcp-band" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
         <div><b id="recTitulo" style="color:var(--navy);font-size:18px"></b><div style="color:var(--ink-3);font-size:12px">N° de agendamiento: <span id="recOC"></span></div></div>
@@ -113,7 +122,7 @@
         <div class="field-r"><span class="lab">Valor referencial</span><span class="val" id="rcValor"></span></div>
       </div></section>
       <section class="blk"><h3>Accesorios</h3><div class="acc-grid" id="accGrid"></div></section>
-      <section class="blk"><h3>Inspección fotográfica <span class="prox">(próximamente: captura desde el móvil)</span></h3><div class="photo-wrap" id="photoWrap"></div></section>
+      <section class="blk"><h3>Inspección fotográfica <span class="prox">(toca cada recuadro para tomar la foto)</span></h3><div class="photo-wrap" id="photoWrap"></div></section>
       <section class="blk"><h3>Combustible</h3><div style="display:flex;gap:18px;flex-wrap:wrap">
         <label><input type="radio" name="comb"> 1</label><label><input type="radio" name="comb"> 3/4</label>
         <label><input type="radio" name="comb"> 1/2</label><label><input type="radio" name="comb"> 1/4</label>

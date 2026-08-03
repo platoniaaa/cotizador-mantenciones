@@ -201,6 +201,23 @@ table.grid td.slot.over { background: var(--tint); }
 .photo-wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 740px; }
 .photo-btn { background: #fff; color: var(--ink-2); border: 1px dashed var(--ink-3); border-radius: 6px; padding: 9px; font-size: 12px; cursor: pointer; }
 .photo-btn:hover { border-color: var(--navy); color: var(--navy); }
+/* Slots de captura de foto (recepción) — abren la cámara en tablet/celular */
+.photo-slot { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: #fff center/cover no-repeat; color: var(--ink-2); border: 1px dashed var(--ink-3); border-radius: 6px; padding: 12px 9px; font-size: 12px; cursor: pointer; min-height: 84px; text-align: center; overflow: hidden; transition: border-color .15s; }
+.photo-slot input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.photo-slot:hover { border-color: var(--navy); }
+.photo-slot .photo-cam { font-size: 20px; line-height: 1; }
+.photo-slot.has-photo { border-style: solid; border-color: var(--navy); color: #fff; }
+.photo-slot.has-photo .photo-lbl, .photo-slot.has-photo .photo-cam { background: rgba(0,0,0,.35); border-radius: 4px; padding: 1px 5px; }
+.photo-slot .photo-st { position: absolute; top: 4px; right: 5px; font-weight: 700; color: #2e7d32; background: #fff; border-radius: 10px; padding: 0 6px; font-size: 11px; }
+.photo-slot.photo-err { border-color: #c62828; }
+.photo-slot.photo-err .photo-st { color: #c62828; }
+@media (max-width: 560px) { .photo-wrap { grid-template-columns: repeat(2, 1fr); } }
+/* Buscador de recepción por patente */
+.rec-buscar { background: #fff; border: 1px solid var(--ink-3); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; max-width: 520px; }
+.rec-buscar-lbl { display: block; font-weight: 700; color: var(--navy); font-size: 13px; margin-bottom: 6px; }
+.rec-buscar-row { display: flex; gap: 8px; }
+.rec-buscar-row input { flex: 1; padding: 9px 11px; border: 1px solid var(--ink-3); border-radius: 7px; font-size: 15px; text-transform: uppercase; }
+.rec-buscar-msg { display: block; margin-top: 6px; font-size: 12px; color: var(--ink-2); min-height: 14px; }
 .firmas { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: center; }
 .firma-box { border: 1px solid var(--linea); height: 80px; border-radius: 4px; background: #fff; }
 

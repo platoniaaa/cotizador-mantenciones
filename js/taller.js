@@ -402,10 +402,27 @@ function agGuardar() {
     fono: document.getElementById("agFono").value.trim() || null,
     email: document.getElementById("agEmail").value.trim() || null,
     asesor: document.getElementById("agAsesor").value || null,
+    // id de la reserva web (Supabase) si este agendamiento vino de una solicitud
+    // del cliente: permite cerrar el ciclo (estado) en el servidor al recibir.
+    webId: (PREFILL && PREFILL.web && PREFILL.web.id) || null,
     estado: "agendado"
   };
   DB.agendamientos.push(a);
   if (PREFILL && PREFILL.web && PREFILL.web.id) DB.webImp[PREFILL.web.id] = 1;
+  // Agendamiento interno (no vino de solicitud web): persistirlo también en
+  // Supabase para que la agenda sea multi-estación. Fail-safe: sin sesión, sin
+  // fono válido, o si falla la red, queda solo local (como antes).
+  if (!a.webId && a.fono && String(a.fono).length >= 8 && typeof webCrearReserva === "function") {
+    webCrearReserva({
+      nombre: a.cli || "Cliente", fono: a.fono, email: a.email,
+      patente: a.pat, fecha: a.fecha, hora: a.hora,
+      marca: a.marcaNombre, modelo: a.modeloNombre, version: a.versionNombre,
+      anio: a.anio, pauta_id: a.pautaId, rev_n: a.revN != null ? String(a.revN) : null,
+      km: a.km, valor: a.valorRef, rut: a.rut, asesor: a.asesor,
+      sucursal: a.sucursal, vin: a.vin, origen: "taller", estado: "agendada"
+    }).then(function (id) { if (id) { a.webId = id; save(); } })
+      .catch(function () { /* queda solo local */ });
+  }
   save();
   if (PREFILL) { localStorage.removeItem(PREKEY); PREFILL = null; renderPrefillBanner(); }
   agCerrarModal();
@@ -556,6 +573,50 @@ function webFetchReservas(s) {
     .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
 }
 
+// Actualiza el estado de una reserva EN SUPABASE (server-side, multi-estación):
+// nueva -> agendada -> recibida -> en_taller -> cerrada. Requiere sesión @curifor.com.
+function webActualizarEstado(id, nuevoEstado, extra) {
+  return webSesion().then(function (s) {
+    if (!s) return Promise.reject(new Error("sin sesión"));
+    var body = Object.assign({ estado: nuevoEstado }, extra || {});
+    return fetch(AGW.url + "/rest/v1/" + webTabla() + "?id=eq." + encodeURIComponent(id), {
+      method: "PATCH",
+      headers: {
+        apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+        "Content-Type": "application/json", Prefer: "return=minimal"
+      },
+      body: JSON.stringify(body)
+    }).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return true; });
+  });
+}
+
+// texto del pill según el estado del flujo en el servidor
+function webEtiquetaEstado(e) {
+  return { nueva: "Nueva", agendada: "En agenda", recibida: "Recibida",
+           en_taller: "En taller", cerrada: "Cerrada",
+           rechazada: "Rechazada", cancelada: "Cancelada" }[e] || e || "Nueva";
+}
+
+// Crea una reserva EN SUPABASE desde el taller (agendamiento interno) y devuelve
+// su id (o null). Así la agenda hecha por el asesor también vive en el backend y
+// es visible entre estaciones. Requiere sesión @curifor.com (policy insert_staff).
+function webCrearReserva(datos) {
+  return webSesion().then(function (s) {
+    if (!s) return null;
+    return fetch(AGW.url + "/rest/v1/" + webTabla(), {
+      method: "POST",
+      headers: {
+        apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+        "Content-Type": "application/json", Prefer: "return=representation"
+      },
+      body: JSON.stringify(datos)
+    }).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (rows) { return (rows && rows[0] && rows[0].id) || null; });
+  });
+}
+
 function webAbrir() {
   webSesion().then(function (s) {
     if (!s) { webAbrirLogin(); return; }
@@ -615,11 +676,13 @@ function webPintarLista() {
   }
   var hoyStr = hoyISO();
   cont.innerHTML = WEBRES.map(function (r, i) {
-    var imp = !!DB.webImp[r.id];
+    // "gestionada" = ya la tomó alguien (estado del servidor != nueva) o marca local
+    var gestionada = (r.estado && r.estado !== "nueva") || !!DB.webImp[r.id];
     var vieja = r.fecha < hoyStr;
-    var est = imp ? '<span class="ag-pill en">En agenda</span>'
+    var est = gestionada ? '<span class="ag-pill en">' + esc(webEtiquetaEstado(r.estado || "agendada")) + '</span>'
       : vieja ? '<span class="ag-pill ent">Vencida</span>'
       : '<span class="ag-pill por">Nueva</span>';
+    var imp = gestionada;
     var auto = [r.marca, r.modelo, r.version].filter(Boolean).join(" ") + (r.anio ? " (" + r.anio + ")" : "");
     var mant = r.km ? "Mantención " + etiquetaKm(r.km) : (r.rev_n ? "Rev. " + r.rev_n : "Mantención");
     var hora = r.hora === "indiferente" ? "hora por definir" : (r.hora || "") + " h";
@@ -648,6 +711,13 @@ function webPasar(i) {
            fecha: r.fecha, hora: r.hora, comentario: r.comentario }
   };
   try { localStorage.setItem(PREKEY, JSON.stringify(PREFILL)); } catch (e) { /* sin espacio */ }
+  // Marca la reserva como 'agendada' EN SUPABASE (server-side): así cualquier
+  // otra estación la ve tomada y no la duplica. Si falla la red, el flujo local
+  // sigue igual (no bloquea al asesor).
+  var _ses = webSesGuardada();
+  webActualizarEstado(r.id, "agendada", { asesor: (_ses && _ses.email) || null })
+    .then(function () { r.estado = "agendada"; DB.webImp[r.id] = 1; save(); })
+    .catch(function () { /* offline: queda solo la marca local */ DB.webImp[r.id] = 1; save(); });
   var p = r.fecha.split("-");
   calY = +p[0]; calM = +p[1] - 1; selFecha = r.fecha;
   webCerrarLista();
@@ -659,7 +729,10 @@ function webBadge() {
   var b = document.getElementById("webResBadge");
   if (!b) return;
   var hoyStr = hoyISO();
-  var n = WEBRES.filter(function (r) { return !DB.webImp[r.id] && r.fecha >= hoyStr; }).length;
+  var n = WEBRES.filter(function (r) {
+    var gestionada = (r.estado && r.estado !== "nueva") || !!DB.webImp[r.id];
+    return !gestionada && r.fecha >= hoyStr;
+  }).length;
   b.hidden = !n;
   b.textContent = n;
 }
@@ -738,6 +811,12 @@ function agIngresarTaller() {
   };
   DB.orders.push(o);
   a.estado = "en_taller";
+  // Cierra el ciclo en Supabase si vino de una reserva web: la marca en_taller
+  // con su RO para que toda estación vea que ya entró al taller (fail-safe).
+  if (a.webId && typeof webActualizarEstado === "function") {
+    webActualizarEstado(a.webId, "en_taller", { ro: o.ro, sucursal: a.sucursal || null })
+      .catch(function () { /* offline: no bloquea la recepción local */ });
+  }
   save();
   agRecSel = null;
   document.getElementById("recForm").hidden = true;

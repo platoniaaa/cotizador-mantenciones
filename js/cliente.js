@@ -453,6 +453,7 @@
       rev_n: itv.n != null ? String(itv.n) : null,
       km: itv.km || null,
       extras: elegidos().map((x) => x.nombre).join(", ") || null,
+      origen: "cliente_web",   // flujo: el cliente pidió la hora desde la web pública
     };
 
     el.agwEnviar.disabled = true;

@@ -1,6 +1,6 @@
 # Reporte de stock
 
-- Snapshot: **03-08-2026 09:32**
+- Snapshot: **04-08-2026 09:03**
 - Códigos de repuestos en pautas (reales): **518**
 - Con registro en stock: **471** (Curifor 395, Frontera 0)
 - Cruce: directo **379**, por nombre/producto **5**, difuso **10**, equivalente/supersesión **1**

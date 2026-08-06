@@ -226,6 +226,10 @@
   </footer>
 
   <script src="js/vendor/xlsx.full.min.js"></script>
+  <!-- Reemplaza la consulta por patente (API externa descartada) por la tabla
+       `vehiculos` de Curifor. Se engancha en window.__cotizConsultarPatente,
+       que app.js ya consulta: por eso va DESPUÉS y no hay que tocar app.js. -->
   <script src="js/app.js?v=0ef9261"></script>
+  <script src="js/patente-cotizador.js?v=0ef9261"></script>
 </body>
 </html>

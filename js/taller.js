@@ -54,6 +54,43 @@ function fmtFechaCorta(iso) {
   return d.toLocaleDateString("es-CL", { day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
+/* ---------------- sellos de tiempo y responsable ----------------
+   No había ni una marca de tiempo real en todo el flujo. Lo que se mostraba
+   como "hora de recepción" era la hora de la CITA, no la hora en que llegó el
+   auto, y no quedaba registro de quién recibió, quién firmó ni cuándo cambió
+   de etapa. Para un taller eso es lo primero que se pregunta cuando el cliente
+   reclama. Todo hito pasa por acá.                                            */
+function ahoraISO() { return new Date().toISOString(); }
+
+// Quién está operando esta estación. Sale de la sesión del personal; sin
+// sesión queda null y el hito igual conserva su hora.
+function quienSoy() {
+  var s = webSesGuardada();
+  return (s && s.email) || null;
+}
+function fmtHora(iso) {
+  if (!iso) return "";
+  var d = new Date(iso);
+  return isNaN(d.getTime()) ? "" : d.toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit", hour12: false });
+}
+function fmtFechaHora(iso) {
+  if (!iso) return "—";
+  var d = new Date(iso);
+  return isNaN(d.getTime()) ? "—" : d.toLocaleString("es-CL", {
+    day: "2-digit", month: "2-digit", year: "numeric",
+    hour: "2-digit", minute: "2-digit", hour12: false
+  });
+}
+
+// Anota un hito en la traza de la orden. Se acota a los últimos 40: la orden
+// viaja dentro de la bandeja compartida y un historial sin techo la haría
+// crecer sola, que es justo el problema que se está corrigiendo.
+function anotar(o, que, detalle) {
+  if (!o) return;
+  o.hist = (o.hist || []).concat([{ q: que, d: detalle || null, en: ahoraISO(), por: quienSoy() }]);
+  if (o.hist.length > 40) o.hist = o.hist.slice(-40);
+}
+
 /* ---------------- estado persistente ----------------
    El estado vive en localStorage (rápido y sirve sin red) y, si la estación
    tiene sesión del personal, se sincroniza con la bandeja compartida de su
@@ -65,6 +102,10 @@ function tkeyDe(suc) { return TKEY + "::" + (suc || ""); }
 
 function cargarDB() {
   var suc = sucursalEstacion();
+  if (!suc) {   // todavía no eligió sucursal: se parte en blanco, sin leer nada
+    DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
+    return;
+  }
   var raw = null;
   try {
     raw = localStorage.getItem(tkeyDe(suc));
@@ -89,10 +130,40 @@ function cargarDB() {
   asegurarUids(DB);
 }
 
+var _sinEspacio = false;
+
 function guardarLocal() {
+  var suc = sucursalEstacion();
+  if (!suc) return;   // sin sucursal elegida no hay bandeja donde guardar
   asegurarUids(DB);   // nada se persiste ni se sube sin identidad propia
-  try { localStorage.setItem(tkeyDe(sucursalEstacion()), JSON.stringify(DB)); }
-  catch (e) { /* sin espacio */ }
+  try {
+    localStorage.setItem(tkeyDe(suc), JSON.stringify(DB));
+    if (_sinEspacio) { _sinEspacio = false; avisoAlmacenamiento(); }
+  } catch (e) {
+    // Antes esto se tragaba en silencio: al llegar al tope de localStorage
+    // (~5 MB) la estación seguía trabajando y NADA se guardaba, sin que nadie
+    // se enterara. Ahora se avisa y se intenta liberar archivando lo cerrado.
+    if (!_sinEspacio) {
+      _sinEspacio = true;
+      avisoAlmacenamiento();
+      try { podarBandeja(); } catch (e2) { /* sin red: queda el aviso */ }
+    }
+  }
+}
+
+// Barra de aviso: el trabajo NO se está guardando en este navegador. Se crea
+// al vuelo para no dejar markup muerto en las tres vistas.
+function avisoAlmacenamiento() {
+  var el = document.getElementById("avisoDisco");
+  if (!_sinEspacio) { if (el) el.remove(); return; }
+  if (el) return;
+  el = document.createElement("div");
+  el.id = "avisoDisco";
+  el.className = "aviso-disco";
+  el.innerHTML = "⚠ <b>No se está guardando en este equipo</b>: se llenó el " +
+    "almacenamiento del navegador. Lo que ya está sincronizado sigue en la " +
+    "bandeja de la sucursal, pero avisa a soporte antes de seguir cargando datos.";
+  document.body.appendChild(el);
 }
 function save() { guardarLocal(); agendarSync(); }
 
@@ -142,12 +213,19 @@ function asegurarUids(db, prefijo) {
   (db.orders || []).forEach(function (o) { if (o && !o.uid) o.uid = p + "-o" + o.ro; });
 }
 
+// La sucursal FIJADA por esta estación, o null si todavía no eligió ninguna.
+function sucursalGuardada() {
+  try { return localStorage.getItem(SUCKEY) || null; } catch (e) { return null; }
+}
+
+// Devuelve "" mientras la estación no haya elegido su sucursal. A propósito no
+// se asume ninguna: con la bandeja compartida, escribir en la sucursal
+// equivocada mezcla las citas de dos talleres.
 function sucursalEstacion() {
-  var g = null;
-  try { g = localStorage.getItem(SUCKEY); } catch (e) { }
+  var g = sucursalGuardada();
   if (g) return g;
   var sel = document.getElementById("fComercio");
-  return (sel && sel.value) || "CURIFOR TALCA";
+  return (sel && sel.value) || "";
 }
 
 // Deja el selector de la agenda mostrando la sucursal recordada y, sobre todo,
@@ -161,6 +239,8 @@ function restaurarSucursal() {
     var existe = Array.prototype.some.call(sel.options, function (o) { return o.value === g; });
     if (existe) sel.value = g; else g = sel.value;
   }
+  // si todavía no eligió, no se guarda nada: el selector queda en el aviso
+  if (!g) return;
   try { localStorage.setItem(SUCKEY, g); } catch (e) { /* sin espacio */ }
 }
 
@@ -323,12 +403,18 @@ function refrescarRemoto() {
 function _programarSondeo() {
   if (SYNC.poll) clearTimeout(SYNC.poll);
   SYNC.poll = setTimeout(function () {
-    refrescarRemoto().then(_programarSondeo);
+    // La poda va colgada del sondeo y no del guardado: archivar no puede
+    // meterle latencia a un asesor apretando "Guardar". Ella misma se limita a
+    // una pasada cada 10 minutos.
+    refrescarRemoto()
+      .then(function () { return refrescarReservas(); })
+      .then(function () { return podarBandeja(); })
+      .then(_programarSondeo, _programarSondeo);
   }, SYNC.fallos >= 3 ? 300000 : 15000);
 }
 
 function iniciarSincronizacion() {
-  if (!webCfgOk()) return;
+  if (!webCfgOk() || !sucursalEstacion()) return;
   SYNC.sucursal = sucursalEstacion();
   SYNC.base = null; SYNC.version = 0;
   webSesion().then(function (s) {
@@ -352,12 +438,123 @@ function iniciarSincronizacion() {
 // El selector de sucursal de la agenda manda: cambia la bandeja que se ve.
 function alCambiarSucursal() {
   var sel = document.getElementById("fComercio");
-  if (!sel || sel.value === sucursalEstacion()) return;
+  // se compara contra la sucursal FIJADA, no contra sucursalEstacion(): mientras
+  // no haya ninguna fijada, esa función devuelve el propio valor del selector y
+  // la comparación siempre daría igual, sin llegar a guardar la elección.
+  if (!sel || !sel.value || sel.value === sucursalGuardada()) return;
   guardarLocal();                               // cierro la bandeja anterior
   try { localStorage.setItem(SUCKEY, sel.value); } catch (e) { }
   cargarDB();                                   // abro la de la sucursal nueva
   repintarTodo();
   iniciarSincronizacion();
+}
+
+/* ============================================================
+   PODA Y ARCHIVO DE LA BANDEJA  (tabla taller_archivo)
+   ------------------------------------------------------------
+   La bandeja de la sucursal es UN documento JSON que viaja entero en cada
+   guardado y que hasta ahora solo crecía. Con un año de operación —miles de
+   citas y órdenes— cada sync mandaría un archivo enorme y, antes de eso,
+   localStorage (~5 MB) dejaría de guardar.
+
+   Acá se saca de la bandeja lo que ya está cerrado y se deja en
+   taller_archivo, UNA FILA POR ENTIDAD (que es como debería haber vivido
+   siempre). La bandeja queda acotada a lo que está vivo y la historia se
+   conserva completa, además consultable sin abrir el bloque entero.
+
+   Regla de oro: nunca se poda antes de tener la confirmación del servidor. Si
+   el archivo falla, no se borra absolutamente nada.
+   ============================================================ */
+var ARCH_TABLA = "taller_archivo";
+var ARCH_DIAS = 45;                  // ventana viva de la bandeja
+var ARCH_MIN_MS = 10 * 60 * 1000;    // como mucho una pasada cada 10 min
+var _archUltima = 0;
+
+function _fechaCorte() {
+  var d = new Date();
+  d.setDate(d.getDate() - ARCH_DIAS);
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+// Qué se puede archivar: citas viejas que ya no tienen una orden viva, y
+// órdenes viejas ya entregadas. Todo lo que siga en el taller se queda, por
+// antiguo que sea: un auto detenido esperando repuestos hace tres meses no
+// puede desaparecer del JPCB.
+function _loArchivable() {
+  var corte = _fechaCorte();
+  var ocsVivas = {};
+  DB.orders.forEach(function (o) { if (o.etapa !== "entregado") ocsVivas[String(o.oc)] = 1; });
+  return {
+    ags: DB.agendamientos.filter(function (a) {
+      return a.fecha && a.fecha < corte && !ocsVivas[String(a.oc)];
+    }),
+    ords: DB.orders.filter(function (o) {
+      return o.fecha && o.fecha < corte && o.etapa === "entregado";
+    })
+  };
+}
+
+function _filaArchivo(x, tipo) {
+  return {
+    uid: x.uid,
+    sucursal: SYNC.sucursal || sucursalEstacion(),
+    tipo: tipo,
+    ref: String(tipo === "orden" ? x.ro : x.oc),
+    fecha: x.fecha || null,
+    patente: x.pat || null,
+    data: x
+  };
+}
+
+function podarBandeja() {
+  if (!webCfgOk() || SYNC.enVuelo) return Promise.resolve(0);
+  if (Date.now() - _archUltima < ARCH_MIN_MS) return Promise.resolve(0);
+  if (!(SYNC.sucursal || sucursalEstacion())) return Promise.resolve(0);
+  asegurarUids(DB);
+  var lote = _loArchivable();
+  if (!lote.ags.length && !lote.ords.length) { _archUltima = Date.now(); return Promise.resolve(0); }
+  var filas = lote.ags.map(function (a) { return _filaArchivo(a, "agendamiento"); })
+    .concat(lote.ords.map(function (o) { return _filaArchivo(o, "orden"); }));
+
+  return webSesion().then(function (s) {
+    if (!s) return 0;                       // sin login no se archiva ni se poda
+    return fetch(AGW.url + "/rest/v1/" + ARCH_TABLA, {
+      method: "POST",
+      headers: {
+        apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+        "Content-Type": "application/json",
+        // merge-duplicates: reintentar es inofensivo, la fila se reescribe
+        Prefer: "resolution=merge-duplicates,return=minimal"
+      },
+      body: JSON.stringify(filas)
+    }).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      // recién con el archivo confirmado se saca de la bandeja
+      var fuera = {};
+      filas.forEach(function (f) { fuera[f.uid] = 1; });
+      DB.agendamientos = DB.agendamientos.filter(function (a) { return !fuera[a.uid]; });
+      DB.orders = DB.orders.filter(function (o) { return !fuera[o.uid]; });
+      podarWebImp();
+      _archUltima = Date.now();
+      save();                               // la poda viaja como un borrado normal
+      repintarTodo();
+      return filas.length;
+    });
+  }).catch(function () { return 0; });      // sin red: se reintenta más rato
+}
+
+// webImp es un diccionario de ids de reserva que también crecía sin techo.
+// Solo se poda cuando la lista del servidor está cargada: sin ella no se puede
+// distinguir "ya la gestioné" de "todavía no la veo", y borrar la marca haría
+// reaparecer solicitudes ya atendidas.
+function podarWebImp() {
+  if (!WEBRES || !WEBRES.length) return;
+  var vivos = {};
+  DB.agendamientos.forEach(function (a) { if (a.webId) vivos[a.webId] = 1; });
+  WEBRES.forEach(function (r) { if (r && r.id) vivos[r.id] = 1; });
+  var nuevo = {};
+  Object.keys(DB.webImp || {}).forEach(function (k) { if (vivos[k]) nuevo[k] = 1; });
+  DB.webImp = nuevo;
 }
 
 /* ---------------- catálogo del cotizador ---------------- */
@@ -533,6 +730,80 @@ function fechasConSolicitud() {
   webPendientes(null).forEach(function (p) { s[p.r.fecha] = 1; });
   return s;
 }
+/* ---------------- vista de mes ----------------
+   Muestra el mes completo con las citas dentro de cada día. El calendario chico
+   del panel solo dice "hay algo"; acá se ve QUÉ hay y cuánta carga tiene cada
+   día, que es lo que necesita el call center para repartir horas. */
+var vistaAgenda = "dia";
+
+function agCambiarVista(v) {
+  vistaAgenda = v;
+  document.getElementById("vistaDia").hidden = (v !== "dia");
+  document.getElementById("vistaMes").hidden = (v !== "mes");
+  document.querySelectorAll(".ag-vista-btn").forEach(function (b) {
+    b.classList.toggle("is-on", b.dataset.vista === v);
+  });
+  if (v === "mes") renderMes();
+}
+
+function renderMes() {
+  var cont = document.getElementById("mesGrid");
+  if (!cont) return;
+  document.getElementById("mesTitulo").textContent =
+    new Date(calY, calM, 1).toLocaleDateString("es-CL", { month: "long", year: "numeric" });
+
+  // citas y solicitudes agrupadas por fecha, una sola pasada por cada lista
+  var porFecha = {};
+  DB.agendamientos.forEach(function (a) {
+    if (a.estado === "anulado") return;
+    (porFecha[a.fecha] = porFecha[a.fecha] || []).push({
+      hora: a.hora || "", txt: (a.hora ? a.hora + " " : "") + (a.pat || a.cli || ""),
+      cls: a.estado === "en_taller" ? "taller" : a.estado === "entregado" ? "taller" : "ag"
+    });
+  });
+  webPendientes(null).forEach(function (p) {
+    var r = p.r, h = (r.hora && r.hora !== "indiferente") ? r.hora : "";
+    (porFecha[r.fecha] = porFecha[r.fecha] || []).push({
+      hora: h, txt: (h ? h + " " : "") + (r.patente || r.nombre || "cliente"), cls: "web"
+    });
+  });
+  Object.keys(porFecha).forEach(function (f) {
+    porFecha[f].sort(function (x, y) { return x.hora < y.hora ? -1 : 1; });
+  });
+
+  var html = ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"]
+    .map(function (d) { return '<div class="mes-dow">' + d + "</div>"; }).join("");
+  var primero = new Date(calY, calM, 1);
+  var dow = (primero.getDay() + 6) % 7;              // lunes = 0
+  var dias = new Date(calY, calM + 1, 0).getDate();
+  var hoyStr = hoyISO();
+
+  for (var i = 0; i < dow; i++) html += '<div class="mes-dia fuera"></div>';
+  for (var d = 1; d <= dias; d++) {
+    var iso = calY + "-" + String(calM + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+    var cls = ["mes-dia"];
+    if (iso === hoyStr) cls.push("hoy");
+    if (iso === selFecha) cls.push("sel");
+    var items = porFecha[iso] || [];
+    // se muestran 3 y el resto se resume, para que la celda no crezca sin control
+    var visibles = items.slice(0, 3).map(function (it) {
+      return '<span class="mes-cita mes-cita--' + it.cls + '" title="' + esc(it.txt) + '">' + esc(it.txt) + "</span>";
+    }).join("");
+    var resto = items.length > 3 ? '<span class="mes-mas">+' + (items.length - 3) + " más</span>" : "";
+    html += '<div class="' + cls.join(" ") + '" data-f="' + iso + '">' +
+      '<span class="mes-num">' + d + "</span>" + visibles + resto + "</div>";
+  }
+  cont.innerHTML = html;
+
+  cont.querySelectorAll(".mes-dia[data-f]").forEach(function (el) {
+    el.addEventListener("click", function () {
+      selFecha = el.dataset.f;
+      agCambiarVista("dia");                        // al pinchar un día se abre ese día
+      renderCal(); renderSlots(); renderAgendaTable();
+    });
+  });
+}
+
 function renderSlots() {
   document.getElementById("fechaSelTxt").textContent = fmtFechaLarga(selFecha);
   var ocup = horasOcupadas();
@@ -582,6 +853,9 @@ function renderAgendaTable() {
       "</tr>";
   }).join("");
 
+  // el panel de recibidos va siempre con la tabla: misma fecha, mismo refresco
+  renderRecepDia();
+
   if (!lista.length && !filasWeb) {
     t.innerHTML = '<tr><td colspan="8" style="color:var(--ink-3);padding:16px">Sin agendamientos para esta fecha.</td></tr>';
     return;
@@ -589,29 +863,102 @@ function renderAgendaTable() {
   t.innerHTML = filasWeb + lista.map(function (a) {
     var est = a.estado === "agendado" ? '<span class="ag-pill por">Agendado</span>'
       : a.estado === "en_taller" ? '<span class="ag-pill en">En taller</span>'
+      : a.estado === "anulado"
+        ? '<span class="ag-pill anu" title="' + esc("Anulada el " + fmtFechaHora(a.anuladoEn) +
+            (a.anuladoPor ? " por " + a.anuladoPor : "")) + '">Anulado</span>'
       : '<span class="ag-pill ent">Entregado</span>';
     var acc = a.estado === "agendado"
       ? '<button class="agbtn agbtn-blue agbtn-sm" onclick="agAbrirRecepcion(' + a.oc + ')">Ingresar</button>' +
         ' <button class="agbtn agbtn-red agbtn-sm" onclick="agAnular(' + a.oc + ')">Anular</button>'
       : "";
-    return "<tr><td>" + a.oc + "</td><td>" + a.hora + "</td><td>" + (a.cli || "—") + "</td><td>" +
-      (a.marcaNombre || "") + " " + (a.modeloNombre || "") + "</td><td>" + a.pat + "</td><td>" + a.serv + "</td><td>" + est + "</td><td>" + acc + "</td></tr>";
+    // los campos que pueden faltar se muestran como "—" en vez de imprimir
+    // "undefined", y se escapan porque son datos escritos por personas
+    var auto = [a.marcaNombre, a.modeloNombre].filter(Boolean).join(" ");
+    return '<tr class="' + (a.estado === "anulado" ? "fila-anulada" : "") + '"><td>' +
+      esc(String(a.oc == null ? "—" : a.oc)) + "</td><td>" + esc(a.hora || "—") +
+      "</td><td>" + esc(a.cli || "—") + "</td><td>" + esc(auto || "—") +
+      "</td><td>" + esc(a.pat || "—") + "</td><td>" + esc(a.serv || "—") +
+      "</td><td>" + est + "</td><td>" + acc + "</td></tr>";
   }).join("");
 }
+/* ---- panel de recibidos del día ----
+   La recepción se hace en su propio módulo, así que la agenda no puede saber
+   "qué pasó con el auto" mirando solo sus citas. Este panel muestra los que ya
+   entraron: en qué etapa van, y si quedaron con fotos y firmas. */
+function renderRecepDia() {
+  var cont = document.getElementById("recepDia");
+  if (!cont) return;
+  var lista = document.getElementById("recepDiaLista");
+  var ordenes = DB.orders.filter(function (o) { return o.fecha === selFecha; })
+    .sort(function (a, b) { return (a.recibidoEn || a.rec || "") < (b.recibidoEn || b.rec || "") ? -1 : 1; });
+
+  if (!ordenes.length) { cont.hidden = true; return; }
+  cont.hidden = false;
+  document.getElementById("recepDiaFecha").textContent = "· " + fmtFechaCorta(selFecha);
+
+  lista.innerHTML = ordenes.map(function (o) {
+    var etapa = ETAPAS.find(function (e) { return e.id === o.etapa; });
+    var a = o.oc != null ? agFind(o.oc) : null;
+    var nFotos = a && a.fotos ? Object.keys(a.fotos).length : 0;
+    var nFirmas = a && a.firmas ? Object.keys(a.firmas).length : 0;
+    var detenido = o.stop ? (STOPS.find(function (s) { return s.id === o.stop; }) || {}).t : null;
+    // Hora REAL de llegada. Si la orden es anterior a que existiera el sello se
+    // muestra la de la cita, pero marcada como tal para no confundirlas.
+    var llegada = o.recibidoEn
+      ? { txt: fmtHora(o.recibidoEn), tit: "Llegada real: " + fmtFechaHora(o.recibidoEn) +
+            (o.recibidoPor ? " · recibió " + o.recibidoPor : ""), real: true }
+      : { txt: o.rec || "", tit: "Hora de la cita (sin registro de llegada real)", real: false };
+    // Estado del acta: los tres datos que respaldan al taller si hay reclamo.
+    var nAcc = o.acc ? Object.keys(o.acc).length : 0;
+    var actaOk = (o.kmReal != null) && !!o.comb;
+    return '<div class="recep-item' + (detenido ? " recep-item--stop" : "") + '">' +
+      '<div class="recep-item__cab"><b>' + esc(o.pat || "—") + "</b>" +
+        '<span class="recep-item__ro">RO ' + esc(o.ro) + "</span>" +
+        (llegada.txt
+          ? '<span class="recep-item__hora' + (llegada.real ? "" : " es-cita") + '" title="' +
+            esc(llegada.tit) + '">' + (llegada.real ? "" : "~") + esc(llegada.txt) + "</span>"
+          : "") + "</div>" +
+      '<div class="recep-item__det">' + esc(o.cliente || "—") +
+        (o.marca || o.modelo ? " · " + esc([o.marca, o.modelo].filter(Boolean).join(" ")) : "") + "</div>" +
+      '<div class="recep-item__pie">' +
+        '<span class="recep-pill">' + esc(detenido || (etapa && etapa.t) || o.etapa || "—") + "</span>" +
+        '<span class="recep-ico" title="fotos de la inspección">📷 ' + nFotos + "</span>" +
+        '<span class="recep-ico' + (nFirmas >= 2 ? " ok" : "") + '" title="firmas del acta">✍ ' + nFirmas + "/2</span>" +
+        '<span class="recep-ico' + (actaOk ? " ok" : " falta") + '" title="' +
+          esc("Acta: " + (o.kmReal != null ? o.kmReal.toLocaleString("es-CL") + " km" : "sin km real") +
+              " · combustible " + (o.comb || "sin registrar") + " · " + nAcc + " accesorios") +
+          '">📋 ' + (actaOk ? "✓" : "!") + "</span>" +
+      "</div></div>";
+  }).join("");
+}
+
 function agAnular(oc) {
   var a = agFind(oc);
   if (!a) return;
   if (!confirm("¿Anular el agendamiento " + oc + " (" + a.pat + ")?")) return;
-  DB.agendamientos = DB.agendamientos.filter(function (x) { return x !== a; });
+  // Se MARCA, no se borra. Borrar la fila dejaba la reserva del servidor viva
+  // como "agendada" para siempre y, al reconciliar, la cita volvía a aparecer.
+  // Además, quién anuló y cuándo es exactamente lo que se pregunta después.
+  a.estado = "anulado";
+  a.anuladoEn = ahoraISO();
+  a.anuladoPor = quienSoy();
   save();
+  if (a.webId && typeof webActualizarEstado === "function") {
+    webActualizarEstado(a.webId, "cancelada", {
+      cancelado_en: a.anuladoEn, cancelado_por: a.anuladoPor
+    }).catch(function () { /* offline: la marca local basta hasta el próximo sync */ });
+  }
   renderCal(); renderSlots(); renderAgendaTable();
 }
 
 /* ---------------- modal agendar (selects encadenados) ---------------- */
-// anioConocido: pista de año que deja el autocompletado por patente
-// (autocompletar.js) cuando el vehículo ya tiene un año registrado. Se aplica
-// una sola vez, apenas la versión elegida tenga ese año entre sus opciones.
-var MSEL = { marca: null, modelo: null, versionId: null, pauta: null, anioConocido: null };
+// anioVehiculo: año REAL del vehículo, que deja el autocompletado por patente
+// (autocompletar.js). Ojo con la distinción: el selector "Año" del modal no es
+// el año del auto, es la variante de PAUTA (hay modelos cuya mantención cambia
+// entre un año y otro). Por eso el año del vehículo se usa de dos formas: si
+// coincide con una variante de la pauta se preselecciona, y si la pauta no
+// distingue años igual se muestra y viaja al agendamiento.
+var MSEL = { marca: null, modelo: null, versionId: null, pauta: null, anioVehiculo: null };
 
 function llenarMarcasModal() {
   var sel = document.getElementById("agMarca");
@@ -627,7 +974,7 @@ function llenarAsesores() {
 function onMarcaModal() {
   var id = document.getElementById("agMarca").value;
   MSEL.marca = INDICE ? INDICE.marcas.find(function (m) { return m.id === id; }) : null;
-  MSEL.modelo = null; MSEL.versionId = null; MSEL.pauta = null; MSEL.anioConocido = null;
+  MSEL.modelo = null; MSEL.versionId = null; MSEL.pauta = null; MSEL.anioVehiculo = null;
   var selMod = document.getElementById("agModeloSel");
   var selVer = document.getElementById("agVersionSel");
   selVer.innerHTML = '<option value="">Elige la versión</option>'; selVer.disabled = true;
@@ -658,16 +1005,18 @@ function onVersionModal() {
   cargarPauta(MSEL.versionId).then(function (p) {
     MSEL.pauta = p;
     var selA = document.getElementById("agAnioSel");
+    var conocido = MSEL.anioVehiculo != null ? String(MSEL.anioVehiculo) : null;
     if (p && p.anios && p.anios.length) {
       selA.innerHTML = '<option value="">Elige el año</option>' + p.anios.map(function (a) { return "<option>" + a + "</option>"; }).join("");
       selA.disabled = false;
-      // año que trajo el autocompletado por patente: se aplica una sola vez,
-      // solo si esta versión realmente tiene ese año entre sus opciones.
-      if (MSEL.anioConocido != null) {
-        var candidato = String(MSEL.anioConocido);
-        if (p.anios.some(function (a) { return String(a) === candidato; })) selA.value = candidato;
-        MSEL.anioConocido = null;
-      }
+      // si el año del vehículo es una de las variantes de esta pauta, se deja elegido
+      if (conocido && p.anios.some(function (a) { return String(a) === conocido; })) selA.value = conocido;
+    } else if (conocido) {
+      // La pauta no cambia según el año, pero sí sabemos el año del auto: se
+      // muestra igual (deshabilitado, porque elegir otro no cambiaría nada) y
+      // así viaja al agendamiento y de ahí a la recepción.
+      selA.innerHTML = "<option>" + esc(conocido) + "</option>";
+      selA.disabled = true;
     } else {
       selA.innerHTML = '<option value="">—</option>';
       selA.disabled = true;
@@ -710,6 +1059,14 @@ function onMantModal() {
 }
 
 function agAbrirModal(h) {
+  // sin sucursal no se sabe en qué agenda guardar: se avisa antes de que el
+  // asesor llene todo el formulario
+  if (!sucursalEstacion()) {
+    alert("Primero elige tu sucursal en el panel de la izquierda.\nAsí la cita queda en la agenda que corresponde.");
+    var s = document.getElementById("fComercio");
+    if (s) { s.focus(); s.scrollIntoView({ block: "center" }); }
+    return;
+  }
   var ov = document.getElementById("agOv");
   ov.dataset.hora = h;
   document.getElementById("agHora").textContent = "· " + h + " · " + fmtFechaCorta(selFecha);
@@ -763,7 +1120,10 @@ function agGuardar() {
   if (esMant && (!MSEL.versionId || document.getElementById("agMantSel").value === "")) {
     alert("Para una mantención por kilometraje selecciona la versión y la mantención (km)."); return;
   }
-  var revN = null, km = null, valorRef = null, anio = document.getElementById("agAnioSel").value || null;
+  // el año del vehículo respalda al selector: si la pauta no distingue años,
+  // el selector va deshabilitado y sin él la recepción quedaría sin ese dato.
+  var revN = null, km = null, valorRef = null;
+  var anio = document.getElementById("agAnioSel").value || MSEL.anioVehiculo || null;
   if (esMant && MSEL.pauta) {
     revN = document.getElementById("agMantSel").value;
     var plan = planDe(MSEL.pauta, anio);
@@ -793,7 +1153,8 @@ function agGuardar() {
     // id de la reserva web (Supabase) si este agendamiento vino de una solicitud
     // del cliente: permite cerrar el ciclo (estado) en el servidor al recibir.
     webId: (PREFILL && PREFILL.web && PREFILL.web.id) || null,
-    estado: "agendado"
+    estado: "agendado",
+    creadoEn: ahoraISO(), creadoPor: quienSoy()
   };
   reservarCorrelativo("oc", DB.ocSeq).then(function (numero) {
     datos.oc = numero != null ? numero : DB.ocSeq;
@@ -805,19 +1166,29 @@ function agGuardar() {
 function _agGuardarCon(a) {
   DB.agendamientos.push(a);
   if (PREFILL && PREFILL.web && PREFILL.web.id) DB.webImp[PREFILL.web.id] = 1;
-  // Agendamiento interno (no vino de solicitud web): persistirlo también en
-  // Supabase para que la agenda sea multi-estación. Fail-safe: sin sesión, sin
-  // fono válido, o si falla la red, queda solo local (como antes).
-  if (!a.webId && a.fono && String(a.fono).length >= 8 && typeof webCrearReserva === "function") {
+  // Agendamiento interno (no vino de solicitud web): TODA cita nace también en
+  // reservas_web, que es la única verdad del agendamiento. Antes esto se
+  // saltaba si el cliente no dejaba teléfono y esas citas quedaban invisibles
+  // para el resto de las sucursales; la columna ya no exige fono (la exigencia
+  // se movió a la policy del público, ver setup_supabase_acta_archivo.sql).
+  // Fail-safe: sin sesión o sin red, queda solo local y se reconcilia después.
+  if (!a.webId && typeof webCrearReserva === "function") {
+    var fono = a.fono && String(a.fono).replace(/\s/g, "").length >= 8 ? a.fono : null;
     webCrearReserva({
-      nombre: a.cli || "Cliente", fono: a.fono, email: a.email,
-      patente: a.pat, fecha: a.fecha, hora: a.hora,
+      nombre: a.cli || "Cliente", fono: fono, email: a.email,
+      patente: a.pat, fecha: a.fecha, hora: a.hora, oc: a.oc,
       marca: a.marcaNombre, modelo: a.modeloNombre, version: a.versionNombre,
       anio: a.anio, pauta_id: a.pautaId, rev_n: a.revN != null ? String(a.revN) : null,
-      km: a.km, valor: a.valorRef, rut: a.rut, asesor: a.asesor,
+      km: a.km, valor: a.valorRef, rut: a.rut, asesor: a.asesor || quienSoy(),
       sucursal: a.sucursal, vin: a.vin, origen: "taller", estado: "agendada"
     }).then(function (id) { if (id) { a.webId = id; save(); } })
       .catch(function () { /* queda solo local */ });
+  } else if (a.webId && typeof webActualizarEstado === "function") {
+    // Vino de una solicitud del cliente: se le pega el número de OC para que la
+    // fila del servidor y la cita de la agenda queden amarradas.
+    webActualizarEstado(a.webId, "agendada", {
+      oc: a.oc, sucursal: a.sucursal || null, asesor: a.asesor || quienSoy()
+    }).catch(function () { /* se reintenta al reconciliar */ });
   }
   save();
   if (PREFILL) { localStorage.removeItem(PREKEY); PREFILL = null; renderPrefillBanner(); }
@@ -974,6 +1345,134 @@ function webFetchReservas(s) {
     .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
 }
 
+/* ---- UNA SOLA VERDAD PARA LA CITA ----
+   Un agendamiento vivía a la vez en la bandeja y en reservas_web como dos
+   registros distintos: la agenda leía uno y la recepción por patente leía el
+   otro. Se copiaban entre sí, pero nada garantizaba que coincidieran. La regla
+   ahora es explícita y va en UNA sola dirección por campo:
+
+     · reservas_web manda en los datos de LA CITA (cliente, vehículo, fecha,
+       hora, estado del ciclo, acta). Es la fila que ve cualquier estación.
+     · la bandeja manda en el estado OPERATIVO del taller (etapa JPCB, técnico
+       asignado, pre-picking). Eso no existe en el servidor.
+
+   Así no hay forma de que las dos copias se peleen: ninguna pisa el terreno de
+   la otra.                                                                    */
+function reconciliarConReservas() {
+  if (!WEBRES || !WEBRES.length) return false;
+  var suc = sucursalEstacion();
+  var cambios = 0;
+
+  // Índice de lo que ya tengo: por id de reserva y, como respaldo, por
+  // patente+fecha+hora (una cita creada acá antes de que existiera su fila).
+  var porWeb = {}, porHueco = {}, porPatFecha = {};
+  DB.agendamientos.forEach(function (a) {
+    if (a.webId) porWeb[a.webId] = a;
+    porHueco[[a.pat, a.fecha, a.hora].join("|")] = a;
+    porPatFecha[[a.pat, a.fecha].join("|")] = a;
+  });
+
+  WEBRES.forEach(function (r) {
+    if (!r || !r.fecha) return;
+    // Solo lo de mi sucursal. Las solicitudes del cliente llegan sin sucursal
+    // asignada y esas las ve todo el mundo hasta que alguien las toma.
+    if (r.sucursal && suc && r.sucursal !== suc) return;
+
+    var a = porWeb[r.id] || porHueco[[r.patente, r.fecha, r.hora].join("|")];
+    if (a) {
+      if (!a.webId) { a.webId = r.id; cambios++; }
+      // El servidor manda en el ciclo: si allá se canceló, acá se anula.
+      if ((r.estado === "cancelada" || r.estado === "rechazada") && a.estado !== "anulado") {
+        a.estado = "anulado";
+        a.anuladoEn = r.cancelado_en || ahoraISO();
+        a.anuladoPor = r.cancelado_por || null;
+        cambios++;
+      }
+      // Y completa lo que a mí me falte, sin pisar lo que ya tengo escrito.
+      [["cli", "nombre"], ["fono", "fono"], ["email", "email"], ["rut", "rut"],
+       ["vin", "vin"], ["anio", "anio"], ["asesor", "asesor"]].forEach(function (p) {
+        var mio = a[p[0]];
+        if ((mio == null || mio === "" || mio === "Cliente") && r[p[1]] != null && r[p[1]] !== "") {
+          a[p[0]] = r[p[1]]; cambios++;
+        }
+      });
+      // El acta que haya cargado otra estación (accesorios, combustible, km).
+      if (r.km_real != null && a.kmReal == null) { a.kmReal = r.km_real; cambios++; }
+      if (r.comb && !a.comb) { a.comb = r.comb; cambios++; }
+      if (r.acc && !a.acc) { a.acc = r.acc; cambios++; }
+      if (r.obs && !a.obs) { a.obs = r.obs; cambios++; }
+      if (r.recibido_en && !a.recibidoEn) {
+        a.recibidoEn = r.recibido_en; a.recibidoPor = r.recibido_por || null; cambios++;
+      }
+      return;
+    }
+
+    // No la tengo. Si el servidor dice que está agendada o más adelante, es una
+    // cita real de esta sucursal hecha en otra estación (o que se perdió al
+    // limpiar este navegador): se adopta, en vez de quedar invisible.
+    if (["agendada", "recibida", "en_taller"].indexOf(r.estado) < 0) return;
+    if (!r.sucursal || !suc || r.sucursal !== suc) return;
+    // Guarda contra duplicados: una cita recién creada acá todavía puede no
+    // tener su webId de vuelta (webCrearReserva es asíncrono), y su hora local
+    // puede no calzar con la del servidor. Patente + fecha alcanza para no
+    // adoptar dos veces el mismo auto el mismo día.
+    var yaEsta = porPatFecha[[r.patente, r.fecha].join("|")];
+    if (yaEsta) { if (!yaEsta.webId) { yaEsta.webId = r.id; cambios++; } return; }
+    var adoptada = _agDesdeReserva(r);
+    porPatFecha[[adoptada.pat, adoptada.fecha].join("|")] = adoptada;
+    DB.agendamientos.push(adoptada);
+    DB.webImp[r.id] = 1;
+    cambios++;
+  });
+
+  if (cambios) { save(); repintarTodo(); }
+  return cambios > 0;
+}
+
+// Traduce una fila de reservas_web al shape que usa la agenda. El uid se deriva
+// del id de la reserva para que dos estaciones que adopten la misma cita
+// terminen con la MISMA entidad al fusionar, no con dos copias.
+function _agDesdeReserva(r) {
+  return {
+    uid: "srv-" + r.id, webId: r.id,
+    oc: r.oc != null ? r.oc : DB.ocSeq++,
+    fecha: r.fecha, hora: r.hora === "indiferente" ? "" : (r.hora || ""),
+    sucursal: r.sucursal || null,
+    serv: r.km ? "MANTENCIÓN POR KILOMETRAJE" : "RECEPCIÓN",
+    pat: r.patente || "—",
+    marcaNombre: r.marca || null, modeloNombre: r.modelo || null,
+    versionNombre: r.version || null, pautaId: r.pauta_id || null,
+    anio: r.anio || null, km: r.km || null, revN: r.rev_n != null ? r.rev_n : null,
+    valorRef: r.valor != null ? r.valor : null,
+    vin: r.vin || null, cli: r.nombre || "Cliente", rut: r.rut || null,
+    fono: r.fono || null, email: r.email || null, asesor: r.asesor || null,
+    kmReal: r.km_real != null ? r.km_real : null, comb: r.comb || null,
+    acc: r.acc || null, obs: r.obs || null,
+    recibidoEn: r.recibido_en || null, recibidoPor: r.recibido_por || null,
+    creadoEn: r.creado_en || null, creadoPor: r.asesor || null,
+    estado: r.estado === "en_taller" ? "en_taller" : "agendado"
+  };
+}
+
+// Refresca la lista del servidor y reconcilia. Va en el mismo ciclo que la
+// bandeja: sin esto, las citas hechas en otra estación solo aparecían al abrir
+// el modal de reservas a mano.
+var _resUltima = 0;
+function refrescarReservas() {
+  if (!webCfgOk() || Date.now() - _resUltima < 60000) return Promise.resolve(false);
+  return webSesion().then(function (s) {
+    if (!s) return false;
+    return webFetchReservas(s).then(function (rows) {
+      _resUltima = Date.now();
+      WEBRES = rows || [];
+      webBadge();
+      reconciliarConReservas();
+      renderCal(); renderSlots(); renderAgendaTable();
+      return true;
+    });
+  }).catch(function () { return false; });
+}
+
 // Actualiza el estado de una reserva EN SUPABASE (server-side, multi-estación):
 // nueva -> agendada -> recibida -> en_taller -> cerrada. Requiere sesión @curifor.com.
 function webActualizarEstado(id, nuevoEstado, extra) {
@@ -1064,6 +1563,8 @@ function webCargarLista() {
     document.getElementById("webResInfo").textContent = "· " + (s.email || "");
     return webFetchReservas(s).then(function (rows) {
       WEBRES = rows || [];
+      _resUltima = Date.now();
+      reconciliarConReservas();
       webPintarLista();
       webBadge();
     });
@@ -1155,9 +1656,17 @@ function agEntregar(ro) {
   if (!o) return;
   if (!confirm("¿Registrar la entrega del vehículo " + o.pat + " (RO " + o.ro + ")?")) return;
   o.etapa = "entregado";
+  o.entregadoEn = ahoraISO();
+  o.entregadoPor = quienSoy();
+  anotar(o, "Vehículo entregado", o.pat);
   var a = o.oc ? agFind(o.oc) : null;
-  if (a) a.estado = "entregado";
+  if (a) { a.estado = "entregado"; a.entregadoEn = o.entregadoEn; a.entregadoPor = o.entregadoPor; }
   save();
+  if (a && a.webId && typeof webActualizarEstado === "function") {
+    webActualizarEstado(a.webId, "cerrada", {
+      entregado_en: o.entregadoEn, entregado_por: o.entregadoPor
+    }).catch(function () { /* offline: se refleja en el próximo sync */ });
+  }
   closeM();
   renderAll();
   renderAgendaTable();
@@ -1168,6 +1677,14 @@ function agEntregar(ro) {
    ============================================================ */
 var agRecSel = null;
 function agAbrirRecepcion(oc) {
+  // Desde el módulo Agenda, recibir el vehículo es trabajo del módulo
+  // Recepción: se salta allá con la cita cargada, en vez de abrirla acá (la
+  // pestaña de Recepción no existe en ese módulo). El &oc lo lee el script de
+  // taller.html al terminar de cargar.
+  if (window.__moduloVista === "agenda") {
+    location.href = "taller.html?vista=recepcion&oc=" + encodeURIComponent(oc);
+    return;
+  }
   agRecSel = agFind(oc);
   if (!agRecSel) return;
   agPintarRecepcion();
@@ -1194,12 +1711,137 @@ function agPintarRecepcion() {
   document.getElementById("rcKm").textContent = agRecSel.km ? etiquetaKm(agRecSel.km) : "—";
   document.getElementById("rcServ").textContent = (agRecSel.serv || "Recepción") + (agRecSel.km ? " · " + etiquetaKm(agRecSel.km) : "");
   document.getElementById("rcValor").textContent = agRecSel.valorRef != null ? money(agRecSel.valorRef) + " neto s/IVA" : "—";
-  var ag = document.getElementById("accGrid");
-  ag.innerHTML = AGACC.map(function (a) { return '<label class="acc"><input type="checkbox"> ' + a + "</label>"; }).join("");
+  agPintarActa();
   agRenderFotos();
   agGoTab("recep");
   // después de agGoTab: el canvas necesita estar visible para medirse
   agRenderFirmas();
+}
+
+/* ============================================================
+   ACTA DE RECEPCIÓN — accesorios, combustible, km real, observaciones
+   ------------------------------------------------------------
+   Nada de esto se guardaba. Los accesorios se regeneraban en blanco cada vez
+   que se abría una recepción, los radios de combustible no tenían ni `value`,
+   el kilometraje era un <span> de solo lectura con el ESTIMADO de la cita —
+   justo el dato que define qué mantención corresponde— y no había dónde anotar
+   un daño previo.
+
+   El acta existe para respaldar al taller: si el cliente reclama que entregó
+   el auto con el estanque lleno y con la gata, esto es lo único que responde.
+   Todo lo que el asesor marca se persiste al instante en la bandeja y se
+   refleja en la fila de reservas_web, que es la que ven las demás estaciones.
+   ============================================================ */
+function agPintarActa() {
+  if (!agRecSel) return;
+  var marcados = agRecSel.acc || {};
+  document.getElementById("accGrid").innerHTML = AGACC.map(function (a) {
+    return '<label class="acc"><input type="checkbox" value="' + esc(a) + '"' +
+      (marcados[a] ? " checked" : "") + ' onchange="agAcc()"><span>' + esc(a) + "</span></label>";
+  }).join("");
+  agAccResumen();
+
+  document.querySelectorAll("#combRow input[name=comb]").forEach(function (r) {
+    r.checked = (agRecSel.comb != null && r.value === String(agRecSel.comb));
+  });
+
+  var km = document.getElementById("rcKmReal");
+  km.value = agRecSel.kmReal != null ? Number(agRecSel.kmReal).toLocaleString("es-CL") : "";
+  km.classList.toggle("falta", agRecSel.kmReal == null);
+
+  document.getElementById("rcObs").value = agRecSel.obs || "";
+  agSelloRecepcion();
+}
+
+// Marca de llegada. Se pone la PRIMERA vez que se abre el acta, porque en este
+// flujo abrir la recepción es el momento en que el auto está en el taller
+// frente al asesor. Si ya venía sellada (otra estación la abrió antes) se
+// respeta: la llegada ocurre una sola vez.
+function agSelloRecepcion() {
+  var el = document.getElementById("recSello");
+  if (!el || !agRecSel) return;
+  if (!agRecSel.recibidoEn) {
+    agRecSel.recibidoEn = ahoraISO();
+    agRecSel.recibidoPor = quienSoy();
+    save();
+    _reflejarActa();
+  }
+  el.hidden = false;
+  el.innerHTML = "🕐 Llegada registrada: <b>" + esc(fmtFechaHora(agRecSel.recibidoEn)) + "</b>" +
+    (agRecSel.recibidoPor ? " · Recibe <b>" + esc(agRecSel.recibidoPor) + "</b>" : "") +
+    (agRecSel.hora ? ' <span style="color:var(--ink-3)">(cita a las ' + esc(agRecSel.hora) + ")</span>" : "");
+}
+
+function agAccResumen() {
+  var el = document.getElementById("accResumen");
+  if (!el) return;
+  var n = Object.keys((agRecSel && agRecSel.acc) || {}).length;
+  el.textContent = n + " de " + AGACC.length + " marcados";
+}
+
+function agAcc() {
+  if (!agRecSel) return;
+  var out = {};
+  document.querySelectorAll("#accGrid input[type=checkbox]").forEach(function (c) {
+    if (c.checked) out[c.value] = true;
+  });
+  agRecSel.acc = out;
+  agAccResumen();
+  save();
+  _reflejarActa();
+}
+
+function agAccNinguno() {
+  document.querySelectorAll("#accGrid input[type=checkbox]").forEach(function (c) { c.checked = false; });
+  agAcc();
+}
+
+function agComb() {
+  if (!agRecSel) return;
+  var m = document.querySelector("#combRow input[name=comb]:checked");
+  agRecSel.comb = m ? m.value : null;
+  save();
+  _reflejarActa();
+}
+
+function agKmReal() {
+  if (!agRecSel) return;
+  var inp = document.getElementById("rcKmReal");
+  if (!inp) return;
+  var n = parseInt(String(inp.value).replace(/[^0-9]/g, ""), 10);
+  agRecSel.kmReal = isNaN(n) ? null : n;
+  inp.value = agRecSel.kmReal != null ? agRecSel.kmReal.toLocaleString("es-CL") : "";
+  inp.classList.toggle("falta", agRecSel.kmReal == null);
+  save();
+  _reflejarActa();
+}
+
+var _obsTimer = null;
+function agObs() {
+  if (!agRecSel) return;
+  agRecSel.obs = document.getElementById("rcObs").value || null;
+  clearTimeout(_obsTimer);   // no se guarda en cada tecla
+  _obsTimer = setTimeout(function () { save(); _reflejarActa(); }, 800);
+}
+
+// Refleja el acta en la fila de reservas_web. Con freno: escribir en cada
+// cambio mandaría una petición por casilla marcada.
+var _actaTimer = null;
+function _reflejarActa() {
+  if (!agRecSel || !agRecSel.webId || typeof webActualizarEstado !== "function") return;
+  var id = agRecSel.webId;
+  var cuerpo = {
+    acc: agRecSel.acc || {},
+    comb: agRecSel.comb || null,
+    km_real: agRecSel.kmReal != null ? agRecSel.kmReal : null,
+    obs: agRecSel.obs || null,
+    recibido_en: agRecSel.recibidoEn || null,
+    recibido_por: agRecSel.recibidoPor || null
+  };
+  clearTimeout(_actaTimer);
+  _actaTimer = setTimeout(function () {
+    webActualizarEstado(id, null, cuerpo).catch(function () { /* queda local */ });
+  }, 900);
 }
 
 // Recepción AUTÓNOMA por patente: busca en Supabase la reserva agendada + los
@@ -1227,27 +1869,77 @@ function agRecepcionPorPatente(pat) {
         : Promise.resolve(null);
       return pCli.then(function (cli) {
         r = r || {};
-        agRecSel = {
-          pat: pat, oc: r.id || "—", webId: r.id || null,
-          marcaNombre: r.marca || "", modeloNombre: r.modelo || (veh && veh.modelo) || "",
+        // Si esta cita YA está en la bandeja, se trabaja sobre ella. Antes se
+        // armaba siempre un objeto suelto: todo lo que el asesor cargara ahí
+        // (acta, fotos, firmas) no se persistía en ninguna parte, porque save()
+        // guarda DB y ese objeto no estaba dentro de DB.
+        var local = r.id ? DB.agendamientos.find(function (a) { return a.webId === r.id; }) : null;
+        if (!local) {
+          local = DB.agendamientos.find(function (a) {
+            return a.pat === pat && a.estado !== "anulado" && a.estado !== "entregado";
+          });
+        }
+        if (local) {
+          if (r.id && !local.webId) { local.webId = r.id; save(); }
+          agRecSel = local;
+          _recepListo(msg);
+          return;
+        }
+
+        var nueva = {
+          pat: pat, webId: r.id || null,
+          marcaNombre: r.marca || (veh && veh.marca) || null,
+          modeloNombre: r.modelo || (veh && veh.modelo) || null,
           versionNombre: r.version || null, pautaId: r.pauta_id || null,
           anio: r.anio || (veh && veh.anio) || null,
           km: r.km || (veh && veh.km) || null, revN: r.rev_n || null,
           valorRef: (r.valor != null ? r.valor : null),
-          serv: r.km ? "Mantención" : "Recepción",
+          serv: r.km ? "MANTENCIÓN POR KILOMETRAJE" : "RECEPCIÓN",
           cli: (cli && cli.nombre) || r.nombre || "Cliente",
           rut: rut, fono: (cli && (cli.cel || cli.fono)) || r.fono || null,
           email: (cli && cli.mail) || r.email || null,
-          vin: r.vin || (veh && veh.vin) || null, asesor: r.asesor || null,
-          fecha: r.fecha || null, hora: r.hora || "", sucursal: r.sucursal || null,
-          fotos: {}
+          vin: r.vin || (veh && veh.vin) || null, asesor: r.asesor || quienSoy(),
+          fecha: r.fecha || hoyISO(), hora: r.hora && r.hora !== "indiferente" ? r.hora : "",
+          sucursal: r.sucursal || sucursalEstacion() || null,
+          estado: "agendado", fotos: {},
+          creadoEn: ahoraISO(), creadoPor: quienSoy()
         };
-        if (msg) msg.textContent = "";
-        var inp = document.getElementById("recBuscarPat"); if (inp) inp.value = "";
-        agPintarRecepcion();
+        // Número propio: sin OC la recepción no se puede referenciar en el resto
+        // del taller (JPCB, bodega, reportes).
+        return reservarCorrelativo("oc", DB.ocSeq).then(function (numero) {
+          nueva.oc = numero != null ? numero : DB.ocSeq;
+          DB.ocSeq = numero != null ? Math.max(DB.ocSeq, numero + 1) : DB.ocSeq + 1;
+          DB.agendamientos.push(nueva);
+          if (r.id) DB.webImp[r.id] = 1;
+          agRecSel = nueva;
+          save();
+          // Sin reserva previa (llegó sin cita): se le crea su fila, para que
+          // esta recepción también tenga una sola verdad en el servidor.
+          if (!nueva.webId && typeof webCrearReserva === "function") {
+            webCrearReserva({
+              nombre: nueva.cli, fono: nueva.fono, email: nueva.email,
+              patente: nueva.pat, fecha: nueva.fecha,
+              hora: nueva.hora || fmtHora(nueva.creadoEn) || "indiferente",
+              oc: nueva.oc, marca: nueva.marcaNombre, modelo: nueva.modeloNombre,
+              version: nueva.versionNombre, anio: nueva.anio, pauta_id: nueva.pautaId,
+              rev_n: nueva.revN != null ? String(nueva.revN) : null, km: nueva.km,
+              rut: nueva.rut, vin: nueva.vin, asesor: nueva.asesor,
+              sucursal: nueva.sucursal, origen: "taller", estado: "recibida"
+            }).then(function (id) { if (id) { nueva.webId = id; save(); _reflejarActa(); } })
+              .catch(function () { /* queda local */ });
+          }
+          _recepListo(msg);
+        });
       });
     });
   }).catch(function () { if (msg) msg.textContent = "No se pudo buscar (¿sesión de asesor iniciada?)."; });
+}
+
+function _recepListo(msg) {
+  if (msg) msg.textContent = "";
+  var inp = document.getElementById("recBuscarPat");
+  if (inp) inp.value = "";
+  agPintarRecepcion();
 }
 
 // carpeta estable de las fotos de esta recepción dentro del bucket 'recepciones'
@@ -1303,7 +1995,7 @@ function agSubirFoto(input, i) {
     if (!r.ok) throw new Error("HTTP " + r.status);
     if (st) st.textContent = "✓";
     agRecSel.fotos = agRecSel.fotos || {};
-    agRecSel.fotos[vista] = { path: path, preview: url };
+    agRecSel.fotos[vista] = { path: path, preview: url, en: ahoraISO(), por: quienSoy() };
     save();
     // refleja las fotos en Supabase si la reserva existe allá
     if (agRecSel.webId && typeof webActualizarEstado === "function") {
@@ -1373,7 +2065,7 @@ function _prepararFirma(quien) {
 
   var ya = agRecSel && agRecSel.firmas && agRecSel.firmas[quien];
   cv.classList.toggle("firmada", !!ya);
-  _firmaEstado(quien, ya ? "✓ firmada" : "", false);
+  _firmaEstado(quien, ya ? "✓ firmada" + (ya.en ? " " + fmtHora(ya.en) : "") : "", false);
 
   if (cv._enganchada) return;                   // los listeners van una sola vez
   cv._enganchada = 1;
@@ -1439,9 +2131,9 @@ function _subirFirma(quien) {
       });
     }).then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status);
-      _firmaEstado(quien, "✓ firmada", false);
       agRecSel.firmas = agRecSel.firmas || {};
-      agRecSel.firmas[quien] = { path: path };
+      agRecSel.firmas[quien] = { path: path, en: ahoraISO(), por: quienSoy() };
+      _firmaEstado(quien, "✓ firmada " + fmtHora(agRecSel.firmas[quien].en), false);
       save();
       _reflejarFirmas();
     }).catch(function () {
@@ -1483,14 +2175,18 @@ function agCancelarRecepcion() {
 }
 function agIngresarTaller() {
   if (!agRecSel) return;
-  // El acta de recepción sin firmas no sirve como respaldo de la entrega. Se
-  // avisa, pero no se bloquea: el taller no puede quedar detenido por esto.
-  var faltan = Object.keys(FIRMAS).filter(function (q) {
-    return !(agRecSel.firmas && agRecSel.firmas[q]);
+  // Un acta incompleta no sirve como respaldo frente a un reclamo. Se avisa
+  // enumerando QUÉ falta, pero no se bloquea: el taller no puede quedar
+  // detenido porque el asesor no alcanzó a llenar un campo.
+  var faltan = [];
+  if (agRecSel.kmReal == null) faltan.push("el kilometraje real");
+  if (!agRecSel.comb) faltan.push("el nivel de combustible");
+  Object.keys(FIRMAS).forEach(function (q) {
+    if (!(agRecSel.firmas && agRecSel.firmas[q])) faltan.push("la firma del " + q);
   });
   if (faltan.length && !confirm(
-        "Falta la firma " + (faltan.length === 2 ? "del cliente y del asesor" : "del " + faltan[0]) +
-        ".\nEl acta queda sin ese respaldo. ¿Ingresar igual?")) return;
+        "El acta queda sin " + _enumerar(faltan) + ".\n\n" +
+        "Eso es lo que respalda al taller si el cliente reclama después.\n¿Ingresar igual?")) return;
   var a = agRecSel;
   var itv = null;
   if (a.pautaId && pautaCargada(a.pautaId)) {
@@ -1506,6 +2202,13 @@ function agIngresarTaller() {
   });
 }
 
+// Une los elementos con comas y un "ni" final: "el km real, el combustible ni
+// la firma del cliente".
+function _enumerar(xs) {
+  if (xs.length <= 1) return xs[0] || "";
+  return xs.slice(0, -1).join(", ") + " ni " + xs[xs.length - 1];
+}
+
 function _agIngresarTallerCon(a, tipo, dur, ro) {
   var o = {
     ro: ro,
@@ -1516,15 +2219,27 @@ function _agIngresarTallerCon(a, tipo, dur, ro) {
     vin: a.vin || "—", color: "—", cliente: a.cli, asesor: a.asesor,
     tipo: tipo, dur: dur, rec: a.hora, del: "—",
     tec: null, ini: null, etapa: "citas_hoy", stop: null,
-    prep: "rec", picking: "pendiente"
+    prep: "rec", picking: "pendiente",
+    // el acta viaja con la orden: bodega y JPCB necesitan el km REAL, no el
+    // estimado de la cita, y el resto es el respaldo ante un reclamo
+    kmReal: a.kmReal != null ? a.kmReal : null,
+    comb: a.comb || null, acc: a.acc || null, obs: a.obs || null,
+    recibidoEn: a.recibidoEn || ahoraISO(), recibidoPor: a.recibidoPor || quienSoy()
   };
+  anotar(o, "Recepción registrada", a.pat);
+  anotar(o, "Etapa", "Citas de hoy");
   DB.orders.push(o);
   a.estado = "en_taller";
-  // Cierra el ciclo en Supabase si vino de una reserva web: la marca en_taller
-  // con su RO para que toda estación vea que ya entró al taller (fail-safe).
+  // Cierra el ciclo en Supabase: marca en_taller con su RO y deja el acta
+  // completa en la fila, para que toda estación la vea (fail-safe).
   if (a.webId && typeof webActualizarEstado === "function") {
-    webActualizarEstado(a.webId, "en_taller", { ro: o.ro, sucursal: a.sucursal || null })
-      .catch(function () { /* offline: no bloquea la recepción local */ });
+    webActualizarEstado(a.webId, "en_taller", {
+      ro: o.ro, oc: typeof a.oc === "number" ? a.oc : null,
+      sucursal: a.sucursal || null,
+      acc: a.acc || {}, comb: a.comb || null,
+      km_real: a.kmReal != null ? a.kmReal : null, obs: a.obs || null,
+      recibido_en: o.recibidoEn, recibido_por: o.recibidoPor
+    }).catch(function () { /* offline: no bloquea la recepción local */ });
   }
   save();
   agRecSel = null;
@@ -1570,9 +2285,27 @@ function wireDnD() {
       });
     });
   }
-  bind(".drop[data-etapa]", function (o, z) { o.etapa = z.dataset.etapa; o.stop = null; });
-  bind(".drop[data-stop]", function (o, z) { o.stop = z.dataset.stop; });
-  bind(".drop[data-prep]", function (o, z) { o.prep = z.dataset.prep; });
+  // Cada movimiento de tarjeta queda anotado: sin esto no había forma de saber
+  // cuánto estuvo una orden detenida ni quién la movió.
+  function nombreDe(lista, id) {
+    var x = lista.find(function (e) { return e.id === id; });
+    return x ? x.t : id;
+  }
+  bind(".drop[data-etapa]", function (o, z) {
+    if (o.etapa === z.dataset.etapa) return;
+    o.etapa = z.dataset.etapa; o.stop = null;
+    anotar(o, "Etapa", nombreDe(ETAPAS, o.etapa));
+  });
+  bind(".drop[data-stop]", function (o, z) {
+    if (o.stop === z.dataset.stop) return;
+    o.stop = z.dataset.stop;
+    anotar(o, "Detención", nombreDe(STOPS, o.stop));
+  });
+  bind(".drop[data-prep]", function (o, z) {
+    if (o.prep === z.dataset.prep) return;
+    o.prep = z.dataset.prep;
+    anotar(o, "Preparación", nombreDe(PREP, o.prep));
+  });
 }
 function renderJPCB() {
   var act = ordersActivas();
@@ -1630,7 +2363,10 @@ function renderPlan() {
   bl.addEventListener("drop", function (e) {
     e.preventDefault();
     var o = byRo(e.dataTransfer.getData("ro"));
-    if (o) { o.tec = null; o.ini = null; save(); renderAll(); }
+    if (o) {
+      if (o.tec !== null) anotar(o, "Técnico", "sin asignar");
+      o.tec = null; o.ini = null; save(); renderAll();
+    }
   });
   g.querySelectorAll("td.slot").forEach(function (td) {
     td.addEventListener("dragover", function (e) { e.preventDefault(); td.classList.add("over"); });
@@ -1638,7 +2374,12 @@ function renderPlan() {
     td.addEventListener("drop", function (e) {
       e.preventDefault(); td.classList.remove("over");
       var o = byRo(e.dataTransfer.getData("ro"));
-      if (o) { o.tec = +td.dataset.tec; o.ini = hhmm(+td.dataset.min); if (!o.etapa) o.etapa = "citas_hoy"; save(); renderAll(); }
+      if (o) {
+        o.tec = +td.dataset.tec; o.ini = hhmm(+td.dataset.min);
+        if (!o.etapa) o.etapa = "citas_hoy";
+        anotar(o, "Técnico", (TECNICOS[o.tec] || "?") + " · " + o.ini);
+        save(); renderAll();
+      }
     });
   });
   bl.querySelectorAll(".card-ot").forEach(wireCard);
@@ -1698,6 +2439,7 @@ function setPick(ro, estado) {
   if (!o) return;
   o.picking = estado;
   if (estado === "listo") o.prep = "rec";
+  anotar(o, "Pre-picking", estado === "listo" ? "preparado" : "reabierto");
   save();
   renderAll();
 }
@@ -1717,6 +2459,40 @@ function detalle(ro) {
   var etTxt = "—";
   if (o.etapa === "entregado") etTxt = "Entregado";
   else if (o.etapa) { var et = ETAPAS.find(function (e) { return e.id === o.etapa; }); if (et) etTxt = et.t; }
+
+  // Acta de recepción: lo que se registró cuando llegó el auto. Es el respaldo
+  // del taller frente a un reclamo, así que se muestra completo — incluidos los
+  // accesorios que el cliente NO traía, que es lo que se discute después.
+  var acta = "";
+  if (o.recibidoEn || o.kmReal != null || o.comb || o.acc || o.obs) {
+    var nAcc = o.acc ? Object.keys(o.acc).length : 0;
+    var faltantes = o.acc ? AGACC.filter(function (x) { return !o.acc[x]; }) : [];
+    acta = '<div class="lbl" style="margin-top:10px">Acta de recepción:</div>' +
+      '<div><span class="lbl">Llegada:</span> ' + esc(fmtFechaHora(o.recibidoEn)) +
+        (o.recibidoPor ? " · recibió " + esc(o.recibidoPor) : "") + "</div>" +
+      '<div><span class="lbl">Km real:</span> ' +
+        (o.kmReal != null ? o.kmReal.toLocaleString("es-CL") + " km" : '<i style="color:#b42318">sin registrar</i>') +
+        ' &nbsp; <span class="lbl">Combustible:</span> ' +
+        (o.comb ? esc(o.comb) : '<i style="color:#b42318">sin registrar</i>') + "</div>" +
+      '<div><span class="lbl">Accesorios:</span> ' +
+        (o.acc ? nAcc + " de " + AGACC.length : '<i style="color:#b42318">sin registrar</i>') +
+        (faltantes.length ? ' <span style="color:#b42318">— no trae: ' + esc(faltantes.join(", ")) + "</span>" : "") + "</div>" +
+      (o.obs ? '<div><span class="lbl">Observaciones:</span> ' + esc(o.obs) + "</div>" : "") +
+      (o.entregadoEn ? '<div><span class="lbl">Entrega:</span> ' + esc(fmtFechaHora(o.entregadoEn)) +
+        (o.entregadoPor ? " · entregó " + esc(o.entregadoPor) : "") + "</div>" : "");
+  }
+
+  // Trazabilidad: quién movió la orden y cuándo. Lo más nuevo arriba.
+  var traza = "";
+  if (o.hist && o.hist.length) {
+    traza = '<div class="lbl" style="margin-top:10px">Trazabilidad:</div><ul class="traza">' +
+      o.hist.slice().reverse().map(function (h) {
+        return "<li><b>" + esc(fmtFechaHora(h.en)) + "</b> — " + esc(h.q) +
+          (h.d ? ": " + esc(h.d) : "") +
+          (h.por ? ' <span class="traza-quien">· ' + esc(h.por) + "</span>" : "") + "</li>";
+      }).join("") + "</ul>";
+  }
+
   document.getElementById("m-title").textContent = "Orden de trabajo RO " + o.ro;
   document.getElementById("m-body").innerHTML =
     '<div><span class="lbl">Cliente:</span> ' + o.cliente + "</div>" +
@@ -1725,10 +2501,12 @@ function detalle(ro) {
     '<div><span class="lbl">Servicio:</span> ' + servicioDesc(o) + " (" + TIPOS[o.tipo].label + ", " + o.dur + " min)</div>" +
     (val != null ? '<div><span class="lbl">Valor referencial:</span> ' + money(val) + " neto s/IVA</div>" : "") +
     '<div><span class="lbl">Asesor:</span> ' + (o.asesor || "—") + ' &nbsp; <span class="lbl">Técnico:</span> ' + (o.tec !== null ? TECNICOS[o.tec] : "(sin asignar)") + "</div>" +
-    '<div><span class="lbl">Recepción:</span> ' + o.rec + ' &nbsp; <span class="lbl">Inicio:</span> ' + (o.ini || "—") + "</div>" +
+    '<div><span class="lbl">Cita:</span> ' + (o.rec || "—") + ' &nbsp; <span class="lbl">Inicio en taller:</span> ' + (o.ini || "—") + "</div>" +
     '<div><span class="lbl">Etapa JPCB:</span> ' + etTxt + ' &nbsp; <span class="lbl">Detención:</span> ' + (o.stop ? STOPS.find(function (s) { return s.id === o.stop; }).t : "Ninguna") + "</div>" +
     '<div><span class="lbl">Pre-picking:</span> ' + (o.picking === "listo" ? "Preparado" : "Pendiente") + "</div>" +
+    acta +
     rep +
+    traza +
     '<p class="prox" style="margin-top:10px">Próximamente: notificación al cliente por WhatsApp/e-mail y orden digital.</p>';
   document.getElementById("m-actions").innerHTML =
     (o.etapa === "esp_pago"
@@ -1827,17 +2605,33 @@ function cargarDemo() {
         vin: null, cli: s.cli + " (demo)", rut: "11.111.111-1", fono: "9 0000 0000", email: "demo@curifor.cl",
         asesor: ASESORES[i % ASESORES.length], estado: s.modo === "agenda" ? "agendado" : "en_taller"
       };
+      base.creadoEn = ahoraISO(); base.creadoPor = quienSoy();
+      if (s.modo === "orden") {
+        // llegada simulada unos minutos después de la hora de la cita
+        var lleg = new Date(base.fecha + "T" + s.hora + ":00");
+        lleg.setMinutes(lleg.getMinutes() + 4 + i * 3);
+        base.recibidoEn = lleg.toISOString(); base.recibidoPor = quienSoy();
+        base.kmReal = base.km ? base.km + 300 + i * 120 : null;
+        base.comb = ["1", "3/4", "1/2", "1/4"][i % 4];
+        base.acc = {}; AGACC.slice(0, 14).forEach(function (x) { base.acc[x] = true; });
+      }
       DB.agendamientos.push(base);
       if (s.modo === "orden") {
-        DB.orders.push({
+        var od = {
           ro: String(DB.roSeq++).padStart(4, "0"), oc: base.oc, fecha: base.fecha,
           pat: s.pat, marca: s.marca, modelo: s.modelo, version: versionN,
           anio: s.anio, km: base.km, revN: base.revN, pautaId: s.pautaId, valorRef: base.valorRef,
           vin: "—", color: "—", cliente: base.cli, asesor: base.asesor,
           tipo: "mant", dur: (itv && horasAMin(itv.horas)) || 60, rec: s.hora, del: "—",
           tec: s.tec != null ? s.tec : null, ini: s.ini || null,
-          etapa: s.etapa, stop: s.stop || null, prep: s.prep || "rec", picking: "pendiente"
-        });
+          etapa: s.etapa, stop: s.stop || null, prep: s.prep || "rec", picking: "pendiente",
+          kmReal: base.kmReal, comb: base.comb, acc: base.acc, obs: null,
+          recibidoEn: base.recibidoEn, recibidoPor: base.recibidoPor
+        };
+        anotar(od, "Recepción registrada", s.pat);
+        anotar(od, "Etapa", (ETAPAS.find(function (e) { return e.id === s.etapa; }) || {}).t || s.etapa);
+        if (s.stop) anotar(od, "Detención", (STOPS.find(function (x) { return x.id === s.stop; }) || {}).t);
+        DB.orders.push(od);
       }
     });
     save();
@@ -1865,6 +2659,7 @@ function renderAll() { renderPrep(); renderPlan(); renderJPCB(); renderBodega();
 // (fusión con lo que hizo otra estación, o cambio de sucursal).
 function repintarTodo() {
   renderCal(); renderSlots(); renderAgendaTable(); renderAll();
+  if (vistaAgenda === "mes") renderMes();
 }
 
 function init() {
@@ -1883,6 +2678,16 @@ function init() {
   });
   document.getElementById("calNext").addEventListener("click", function () {
     calM++; if (calM > 11) { calM = 0; calY++; } renderCal();
+  });
+  // vista día / mes
+  document.querySelectorAll(".ag-vista-btn").forEach(function (b) {
+    b.addEventListener("click", function () { agCambiarVista(b.dataset.vista); });
+  });
+  document.getElementById("mesPrev").addEventListener("click", function () {
+    calM--; if (calM < 0) { calM = 11; calY--; } renderMes(); renderCal();
+  });
+  document.getElementById("mesNext").addEventListener("click", function () {
+    calM++; if (calM > 11) { calM = 0; calY++; } renderMes(); renderCal();
   });
   // modal agendar
   document.getElementById("agMarca").addEventListener("change", onMarcaModal);
@@ -1909,8 +2714,11 @@ function init() {
       if (!s) return;
       return webFetchReservas(s).then(function (rows) {
         WEBRES = rows || [];
+        _resUltima = Date.now();
         webBadge();
-        // ya llegaron: que aparezcan en el calendario, las horas y la tabla
+        // reservas_web manda en los datos de la cita: se reconcilia antes de
+        // pintar, así la agenda ya muestra lo que hicieron las otras estaciones
+        reconciliarConReservas();
         renderCal(); renderSlots(); renderAgendaTable();
       });
     }).catch(function () { /* sin red o sin permiso: el botón sigue operativo */ });

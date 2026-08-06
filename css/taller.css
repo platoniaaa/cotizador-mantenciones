@@ -141,6 +141,11 @@ table.ag-table tr:nth-child(even) td { background: var(--tint-2); }
 .ag-pill.en  { background: var(--verde-bg); color: var(--verde); }
 .ag-pill.ent { background: var(--tint); color: var(--navy); }
 .ag-pill.web { background: #fff6e8; color: #8a5a12; border: 1px solid #e8c48d; }
+/* Las citas anuladas ya no se borran: quedan a la vista, apagadas, con quién
+   las anuló y cuándo en el tooltip. */
+.ag-pill.anu { background: #f4f4f5; color: #6b6b70; }
+.fila-anulada > td { opacity: .55; }
+.fila-anulada > td:nth-child(5) { text-decoration: line-through; }
 /* Fila de una solicitud del cliente todavía sin confirmar */
 .fila-web > td { background: #fffaf2; }
 .fila-web > td:first-child {
@@ -217,9 +222,36 @@ table.grid td.slot.over { background: var(--tint); }
 @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
 .field-r .lab { font-weight: 600; display: block; font-size: 12.5px; }
 .field-r .val { color: var(--ink-2); }
+/* Campos del acta que SÍ se escriben (km real). Se distinguen de los de solo
+   lectura para que el asesor vea de una qué le toca llenar. */
+.field-r--edit .lab { color: var(--navy); }
+.req { color: #c0392b; }
+.val-input {
+  width: 100%; max-width: 220px; margin-top: 2px; padding: 6px 9px;
+  border: 1px solid var(--ink-3); border-radius: 7px; font-size: 14px; font-weight: 700;
+  color: var(--navy); background: #fff;
+}
+.val-input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--tint); }
+.val-input.falta { border-color: #c0392b; background: #fff8f7; }
 .acc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px 22px; }
 @media (max-width: 720px) { .acc-grid { grid-template-columns: repeat(2, 1fr); } }
-.acc { display: flex; gap: 8px; align-items: center; font-size: 12.5px; }
+.acc { display: flex; gap: 8px; align-items: center; font-size: 12.5px; cursor: pointer; }
+.acc input:checked + span { font-weight: 700; color: var(--navy); }
+.acc-pie { display: flex; align-items: center; gap: 12px; margin-top: 11px; font-size: 12px; color: var(--ink-3); }
+.comb-row { display: flex; gap: 18px; flex-wrap: wrap; }
+.comb-row label { display: flex; gap: 6px; align-items: center; cursor: pointer; font-size: 13.5px; }
+.rc-obs {
+  width: 100%; padding: 9px 11px; border: 1px solid var(--ink-3); border-radius: 8px;
+  font: inherit; font-size: 13.5px; color: var(--ink-1); resize: vertical;
+}
+.rc-obs:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--tint); }
+/* Sello real de la recepción (hora de llegada y responsable) */
+.rec-sello {
+  display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center;
+  background: #f2f8f4; border: 1px solid #cfe6d8; border-radius: 8px;
+  padding: 8px 13px; margin-bottom: 6px; font-size: 12.5px; color: #1b5e3f;
+}
+.rec-sello b { color: #14472f; }
 .photo-wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 740px; }
 .photo-btn { background: #fff; color: var(--ink-2); border: 1px dashed var(--ink-3); border-radius: 6px; padding: 9px; font-size: 12px; cursor: pointer; }
 .photo-btn:hover { border-color: var(--navy); color: var(--navy); }
@@ -240,6 +272,118 @@ table.grid td.slot.over { background: var(--tint); }
 .rec-buscar-row { display: flex; gap: 8px; }
 .rec-buscar-row input { flex: 1; padding: 9px 11px; border: 1px solid var(--ink-3); border-radius: 7px; font-size: 15px; text-transform: uppercase; }
 .rec-buscar-msg { display: block; margin-top: 6px; font-size: 12px; color: var(--ink-2); min-height: 14px; }
+/* ---------- Panel de recibidos del día (dentro de la Agenda) ----------
+   La recepción vive en su propio módulo, así que la agenda necesita una forma
+   de ver qué pasó con los autos que ya llegaron. */
+.recep-dia { margin-top: 18px; }
+.recep-dia__tit {
+  margin: 0 0 9px; font-size: 13px; color: var(--navy); font-weight: 800;
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.recep-dia__tit span { color: var(--ink-3); font-weight: 600; text-transform: none; letter-spacing: 0; }
+.recep-dia__lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 9px; }
+.recep-item {
+  background: #fff; border: 1px solid var(--linea); border-left: 3px solid var(--verde);
+  border-radius: 8px; padding: 8px 10px; box-shadow: var(--sombra-sm);
+}
+.recep-item--stop { border-left-color: #c62828; }
+.recep-item__cab { display: flex; align-items: baseline; gap: 7px; }
+.recep-item__cab b { color: var(--navy); font-size: 14px; }
+.recep-item__ro { font-size: 10.5px; color: var(--ink-3); font-weight: 700; }
+.recep-item__hora { margin-left: auto; font-size: 11.5px; color: var(--ink-2); font-weight: 700; }
+.recep-item__det { font-size: 11.5px; color: var(--ink-2); margin: 2px 0 6px; }
+.recep-item__pie { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.recep-pill {
+  font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 11px;
+  background: var(--tint); color: var(--navy);
+}
+.recep-item--stop .recep-pill { background: #fdecec; color: #b42318; }
+.recep-ico { font-size: 11px; color: var(--ink-3); }
+.recep-ico.ok { color: var(--verde); font-weight: 700; }
+.recep-ico.falta { color: #b42318; font-weight: 700; }
+/* "~09:20" = es la hora de la CITA, no la llegada real (órdenes anteriores al
+   sello de recepción). Se distingue para no confundir un dato con el otro. */
+.recep-item__hora.es-cita { color: var(--ink-3); font-weight: 600; font-style: italic; }
+
+/* ---------- Trazabilidad de la orden (modal de detalle) ---------- */
+.traza { margin: 4px 0 0; padding-left: 16px; max-height: 190px; overflow-y: auto; }
+.traza li { font-size: 12px; color: var(--ink-2); margin-bottom: 2px; }
+.traza li b { color: var(--navy); font-weight: 700; }
+.traza-quien { color: var(--ink-3); }
+
+/* ---------- Aviso de almacenamiento lleno ----------
+   Antes el tope de localStorage se tragaba en silencio y la estación seguía
+   trabajando sin guardar nada. Esto tiene que verse sí o sí. */
+.aviso-disco {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+  background: #7a1c12; color: #fff; padding: 11px 18px;
+  font-size: 13px; line-height: 1.45; box-shadow: 0 -3px 14px rgba(0, 0, 0, .25);
+}
+.aviso-disco b { color: #ffd9d2; }
+
+/* ---------- Vista de mes de la agenda ----------
+   El calendario chico del panel solo marca "hay algo" con un punto. Esta vista
+   muestra las citas dentro de cada día, para ver la carga del mes completo sin
+   ir día por día. */
+.ag-vistas { display: flex; gap: 6px; margin: 0 0 14px; }
+.ag-vista-btn {
+  border: 1px solid var(--linea); background: #fff; color: var(--ink-2);
+  font: inherit; font-weight: 700; font-size: 13px; padding: 7px 18px;
+  border-radius: 999px; cursor: pointer; transition: all .15s;
+}
+.ag-vista-btn:hover { border-color: var(--navy); color: var(--navy); }
+.ag-vista-btn.is-on { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+.mes-cab { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.mes-cab button {
+  border: 1px solid var(--linea); background: #fff; color: var(--navy);
+  width: 30px; height: 30px; border-radius: 7px; cursor: pointer; font-size: 17px; line-height: 1;
+}
+.mes-cab button:hover { border-color: var(--navy); background: var(--tint); }
+.mes-cab b { font-size: 16px; color: var(--navy); text-transform: capitalize; min-width: 165px; }
+.mes-leyenda { margin-left: auto; font-size: 11.5px; color: var(--ink-3); display: flex; align-items: center; gap: 6px; }
+.mes-chip { width: 9px; height: 9px; border-radius: 3px; display: inline-block; }
+.mes-chip--ag { background: var(--ambar); }
+.mes-chip--taller { background: var(--verde); }
+.mes-chip--web { background: #d98324; }
+
+.mes-grid {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px;
+  background: var(--linea); border: 1px solid var(--linea); border-radius: 10px; overflow: hidden;
+}
+.mes-dow {
+  background: var(--tint-2); color: var(--ink-2); font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .5px; text-align: center; padding: 7px 0;
+}
+.mes-dia {
+  background: #fff; min-height: 104px; padding: 5px 6px 7px; cursor: pointer;
+  display: flex; flex-direction: column; gap: 3px; transition: background .12s;
+}
+.mes-dia:hover { background: var(--tint-2); }
+.mes-dia.fuera { background: var(--bg); cursor: default; }
+.mes-dia.fuera:hover { background: var(--bg); }
+.mes-dia.hoy .mes-num { background: var(--navy); color: #fff; }
+.mes-dia.sel { box-shadow: inset 0 0 0 2px var(--navy); }
+.mes-num {
+  align-self: flex-start; font-size: 12px; font-weight: 700; color: var(--ink-2);
+  min-width: 20px; height: 20px; border-radius: 999px; display: grid; place-items: center;
+}
+.mes-cita {
+  font-size: 10.5px; line-height: 1.25; padding: 2px 5px; border-radius: 4px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  border-left: 3px solid transparent;
+}
+.mes-cita--ag { background: var(--ambar-bg); color: #7a5200; border-left-color: var(--ambar); }
+.mes-cita--taller { background: var(--verde-bg); color: var(--verde); border-left-color: var(--verde); }
+.mes-cita--web { background: #fff6e8; color: #8a5a12; border-left-color: #d98324; font-weight: 700; }
+.mes-mas { font-size: 10px; color: var(--ink-3); padding-left: 5px; }
+
+@media (max-width: 720px) {
+  .mes-dia { min-height: 72px; }
+  .mes-cita { font-size: 9.5px; }
+  .mes-leyenda { width: 100%; margin-left: 0; }
+}
+
 /* ---------- Firmas digitales (canvas propio, sin librerías) ---------- */
 .firmas { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: center; }
 .firma-col { display: flex; flex-direction: column; gap: 5px; }

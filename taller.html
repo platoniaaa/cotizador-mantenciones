@@ -51,12 +51,47 @@
 
     <div id="prefillBanner" class="prefill-banner" hidden></div>
 
-    <div class="ag-grid">
+    <div class="ag-vistas">
+      <button type="button" class="ag-vista-btn is-on" data-vista="dia">Día</button>
+      <button type="button" class="ag-vista-btn" data-vista="mes">Mes</button>
+    </div>
+
+    <!-- Vista de mes: todas las citas del mes de un vistazo -->
+    <div id="vistaMes" hidden>
+      <div class="mes-cab">
+        <button id="mesPrev" type="button" aria-label="Mes anterior">‹</button>
+        <b id="mesTitulo"></b>
+        <button id="mesNext" type="button" aria-label="Mes siguiente">›</button>
+        <span class="mes-leyenda">
+          <span class="mes-chip mes-chip--ag"></span> agendado
+          <span class="mes-chip mes-chip--taller"></span> en taller
+          <span class="mes-chip mes-chip--web"></span> solicitud del cliente
+        </span>
+      </div>
+      <div class="mes-grid" id="mesGrid"></div>
+    </div>
+
+    <div class="ag-grid" id="vistaDia">
       <div class="ag-panel panel">
         <h4>Sucursal y servicio</h4>
+        <!-- El value es SOLO el nombre de la sucursal, no el texto con dirección:
+             con ese nombre se identifican la bandeja compartida, el correlativo
+             de OC/RO y las citas ya guardadas. Cambiarlo migraría datos sin
+             querer. La dirección va en la etiqueta, para reconocerla a la vista. -->
         <select id="fComercio">
-          <option>CURIFOR TALCA</option><option>CURIFOR TALCA CAMIONES</option>
-          <option>CURIFOR CURICÓ</option><option>CURIFOR RANCAGUA</option><option>CURIFOR CHILLÁN</option>
+          <option value="">— Elige tu sucursal —</option>
+          <option value="CURIFOR CHILLÁN">CURIFOR CHILLÁN — Calle Brasil N° 954</option>
+          <option value="CURIFOR CHILLÁN VIEJO">CURIFOR CHILLÁN VIEJO — Carretera Panamericana Sur</option>
+          <option value="CURIFOR CURICÓ">CURIFOR CURICÓ — Ruta 5 km 186,5</option>
+          <option value="CURIFOR LINDEROS">CURIFOR LINDEROS — Ruta 5 Sur N° 3502</option>
+          <option value="CURIFOR LO BLANCO">CURIFOR LO BLANCO — Avenida Lo Blanco 2111, La Pintana</option>
+          <option value="CURIFOR MACUL (AUTO-PARK)">CURIFOR MACUL (AUTO-PARK) — Av. Departamental 4400, Macul</option>
+          <option value="CURIFOR PLACILLA">CURIFOR PLACILLA — Ruta 68 km 98,4</option>
+          <option value="CURIFOR RANCAGUA">CURIFOR RANCAGUA — Diego de Almagro 0455, Rancagua</option>
+          <option value="CURIFOR TALCA">CURIFOR TALCA — Calle 1 Norte N° 2153</option>
+          <option value="CURIFOR TALCA BMW">CURIFOR TALCA BMW</option>
+          <option value="CURIFOR TALCA CAMIONES">CURIFOR TALCA CAMIONES — Calle 1 Norte N° 2153</option>
+          <option value="CURIFOR TALLER MOVIL">CURIFOR TALLER MÓVIL</option>
         </select>
         <div class="ag-calnav">
           <button id="calPrev" type="button" aria-label="Mes anterior">‹</button>
@@ -79,6 +114,13 @@
           <thead><tr><th>OC</th><th>Hora</th><th>Cliente</th><th>Vehículo</th><th>Patente</th><th>Servicio</th><th>Estado</th><th></th></tr></thead>
           <tbody id="tblAgenda"></tbody>
         </table>
+
+        <!-- Vehículos ya recibidos: la recepción se hace en su propio módulo,
+             pero acá se ve en qué va cada auto que ya llegó. -->
+        <div class="recep-dia" id="recepDia" hidden>
+          <h4 class="recep-dia__tit">Recibidos <span id="recepDiaFecha"></span></h4>
+          <div class="recep-dia__lista" id="recepDiaLista"></div>
+        </div>
       </div>
     </div>
 
@@ -110,6 +152,9 @@
         <div><b id="recTitulo" style="color:var(--navy);font-size:18px"></b><div style="color:var(--ink-3);font-size:12px">N° de agendamiento: <span id="recOC"></span></div></div>
         <div style="color:var(--ink-2);font-size:13px">Cita: <b id="recFecha"></b></div>
       </div>
+      <!-- Sello real de la recepción: quién la abrió y a qué hora llegó de
+           verdad el vehículo. La hora de la cita no sirve como respaldo. -->
+      <div class="rec-sello" id="recSello" hidden></div>
       <section class="blk"><h3>Datos del cliente</h3><div class="grid2">
         <div class="field-r"><span class="lab">Cliente</span><span class="val" id="rcCliente"></span></div>
         <div class="field-r"><span class="lab">RUT</span><span class="val" id="rcRut"></span></div>
@@ -120,17 +165,40 @@
         <div class="field-r"><span class="lab">Patente</span><span class="val" id="rcPatente"></span></div>
         <div class="field-r"><span class="lab">Marca / Modelo</span><span class="val" id="rcModelo"></span></div>
         <div class="field-r"><span class="lab">Año</span><span class="val" id="rcAnio"></span></div>
-        <div class="field-r"><span class="lab">Kilometraje</span><span class="val" id="rcKm"></span></div>
+        <div class="field-r"><span class="lab">Km estimado de la cita</span><span class="val" id="rcKm"></span></div>
+        <!-- Kilometraje REAL del tablero. Antes esto era un <span> de solo
+             lectura con el estimado de la cita, así que el dato que define qué
+             mantención corresponde no se capturaba nunca. -->
+        <div class="field-r field-r--edit">
+          <span class="lab">Kilometraje real <b class="req" title="dato obligatorio del acta">*</b></span>
+          <input class="val-input" id="rcKmReal" type="text" inputmode="numeric" autocomplete="off"
+                 placeholder="Léelo del tablero" onchange="agKmReal()" onblur="agKmReal()">
+        </div>
         <div class="field-r"><span class="lab">Servicio</span><span class="val" id="rcServ"></span></div>
         <div class="field-r"><span class="lab">Valor referencial</span><span class="val" id="rcValor"></span></div>
       </div></section>
-      <section class="blk"><h3>Accesorios</h3><div class="acc-grid" id="accGrid"></div></section>
+      <section class="blk"><h3>Accesorios <span class="prox">(marca lo que viene en el vehículo; queda registrado en el acta)</span></h3>
+        <div class="acc-grid" id="accGrid"></div>
+        <div class="acc-pie"><span id="accResumen"></span>
+          <button type="button" class="firma-limpiar" onclick="agAccNinguno()">Desmarcar todo</button>
+        </div>
+      </section>
       <section class="blk"><h3>Inspección fotográfica <span class="prox">(toca cada recuadro para tomar la foto)</span></h3><div class="photo-wrap" id="photoWrap"></div></section>
-      <section class="blk"><h3>Combustible</h3><div style="display:flex;gap:18px;flex-wrap:wrap">
-        <label><input type="radio" name="comb"> 1</label><label><input type="radio" name="comb"> 3/4</label>
-        <label><input type="radio" name="comb"> 1/2</label><label><input type="radio" name="comb"> 1/4</label>
-        <label><input type="radio" name="comb"> 0</label>
-      </div></section>
+      <!-- Los radios no tenían value ni manejador: el nivel de combustible se
+           marcaba en pantalla y no se guardaba en ninguna parte. -->
+      <section class="blk"><h3>Combustible <b class="req" title="dato obligatorio del acta">*</b></h3>
+        <div class="comb-row" id="combRow">
+          <label><input type="radio" name="comb" value="1" onchange="agComb()"> 1</label>
+          <label><input type="radio" name="comb" value="3/4" onchange="agComb()"> 3/4</label>
+          <label><input type="radio" name="comb" value="1/2" onchange="agComb()"> 1/2</label>
+          <label><input type="radio" name="comb" value="1/4" onchange="agComb()"> 1/4</label>
+          <label><input type="radio" name="comb" value="0" onchange="agComb()"> 0</label>
+        </div>
+      </section>
+      <section class="blk"><h3>Observaciones <span class="prox">(daños previos, faltantes, lo que declara el cliente)</span></h3>
+        <textarea id="rcObs" class="rc-obs" rows="3" oninput="agObs()"
+                  placeholder="Ej: rayón en puerta trasera derecha, falta tapa de rueda delantera izquierda…"></textarea>
+      </section>
       <section class="blk"><h3>Firmas <span class="prox">(firma con el dedo o el mouse; se guarda sola)</span></h3>
         <div class="firmas">
           <div class="firma-col">
@@ -288,19 +356,39 @@
 
   <script src="js/taller.js?v=8e3ac24"></script>
   <script src="js/autocompletar.js?v=8e3ac24"></script>
-  <!-- Modo módulo embebido: ?vista=agenda|recepcion abre solo esa pestaña
-       (para usarse como módulo separado dentro de la app de Curifor). -->
+  <!-- Modo módulo: ?vista=agenda|recepcion.
+       · agenda    → todo el taller MENOS Recepción (agendamiento y los tableros).
+       · recepcion → solo Recepción, sin pestañas. Acepta &oc=N para abrir de
+         inmediato la recepción de esa cita (es a donde salta el botón
+         "Ingresar" de la agenda). -->
   <script>
   (function () {
-    var v = new URLSearchParams(location.search).get("vista");
+    var params = new URLSearchParams(location.search);
+    var v = params.get("vista");
+    window.__moduloVista = v || null;   // lo consulta taller.js
     if (!v) return;
-    var dest = v === "recepcion" ? "recep" : v;   // "agenda" | "recep"
+    var esRecep = (v === "recepcion");
     function aplicar() {
-      try { if (typeof agGoTab === "function") agGoTab(dest); } catch (e) {}
-      var tabs = document.querySelector(".tabs");           if (tabs) tabs.style.display = "none";
-      var sub  = document.querySelector(".taller-head__sub"); if (sub) sub.style.display = "none";
-      var ttl  = document.querySelector(".taller-head__title");
-      if (ttl) ttl.textContent = dest === "recep" ? "Recepción de Vehículos" : "Agenda de Taller";
+      try { if (typeof agGoTab === "function") agGoTab(esRecep ? "recep" : "agenda"); } catch (e) {}
+      var sub = document.querySelector(".taller-head__sub"); if (sub) sub.style.display = "none";
+      var ttl = document.querySelector(".taller-head__title");
+      if (ttl) ttl.textContent = esRecep ? "Recepción de Vehículos" : "Agenda de Taller";
+
+      var tabs = document.querySelector(".tabs");
+      if (esRecep) {
+        if (tabs) tabs.style.display = "none";          // recepción va sola
+      } else {
+        // en Agenda se conservan las pestañas, salvo la de Recepción, que es su
+        // propio módulo
+        var tRecep = document.querySelector('.tab[data-v="recep"]');
+        if (tRecep) tRecep.style.display = "none";
+      }
+
+      // ?oc=N → abrir esa recepción al entrar
+      var oc = params.get("oc");
+      if (esRecep && oc && typeof agAbrirRecepcion === "function") {
+        try { agAbrirRecepcion(isNaN(+oc) ? oc : +oc); } catch (e) {}
+      }
     }
     if (document.readyState === "complete") aplicar();
     else window.addEventListener("load", aplicar);

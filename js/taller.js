@@ -673,7 +673,7 @@ function agCerrarModal() { document.getElementById("agOv").classList.remove("ope
    caso lo cubre la fusión, que detecta el choque y renumera. */
 function reservarCorrelativo(tipo, minimoLocal) {
   if (!webCfgOk()) return Promise.resolve(null);
-  return webSesion().then(function (s) {
+  var pedido = webSesion().then(function (s) {
     if (!s) return null;
     return fetch(AGW.url + "/rest/v1/rpc/siguiente_correlativo", {
       method: "POST",
@@ -687,6 +687,11 @@ function reservarCorrelativo(tipo, minimoLocal) {
     }).then(function (r) { return r.ok ? r.json() : null; });
   }).then(function (n) { return typeof n === "number" ? n : null; })
     .catch(function () { return null; });
+
+  // Con la red colgada, fetch se queda esperando sin límite y el asesor apretaría
+  // Guardar sin que pasara nada. A los 6 s se sigue con el contador local.
+  var corte = new Promise(function (ok) { setTimeout(function () { ok(null); }, 6000); });
+  return Promise.race([pedido, corte]);
 }
 
 function agGuardar() {

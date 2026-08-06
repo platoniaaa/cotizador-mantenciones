@@ -65,9 +65,15 @@ PARCHES_JS = [
 #     que ahí tampoco existe). Se ocultan por CSS y no borrando los nodos: el JS
 #     del taller escribe en #footFecha y no queremos null-references.
 #     Va solo en el bundle; el sitio estático (taller.html) no se toca.
+#     También se van las herramientas de demostración (.demo-tools: "Cargar
+#     datos de demostración" y "Borrar todos los datos", con su aviso de que
+#     los datos viven en el navegador). Son ayudas de prueba y no tienen por
+#     qué estar a mano en la plataforma que usa el equipo. Siguen disponibles
+#     en el sitio estático.
 CSS_EMBEBIDO = """
 /* --- modo embebido (bundle en la app de OTs) --- */
 .topbar, .foot, .taller-head, .tabs { display: none !important; }
+.demo-tools { display: none !important; }
 """
 
 

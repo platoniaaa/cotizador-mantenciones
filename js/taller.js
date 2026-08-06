@@ -666,9 +666,14 @@ var hoy = new Date();
 var calY = hoy.getFullYear(), calM = hoy.getMonth();
 var selFecha = hoyISO();
 
+// Días con citas, de TODAS las sucursales: el calendario de la central no puede
+// marcar solo los de la bandeja abierta.
 function fechasConAgenda() {
   var s = {};
-  DB.agendamientos.forEach(function (a) { s[a.fecha] = 1; });
+  DB.agendamientos.forEach(function (a) { if (a.estado !== "anulado") s[a.fecha] = 1; });
+  (WEBRES || []).forEach(function (r) {
+    if (r && r.fecha && ["agendada", "recibida", "en_taller", "cerrada"].indexOf(r.estado) >= 0) s[r.fecha] = 1;
+  });
   return s;
 }
 function renderCal() {
@@ -717,6 +722,17 @@ function horasOcupadas() {
    escondidas tras un botón: si nadie abre ese modal, la solicitud queda
    invisible y el cliente sin respuesta. Devuelve los índices en WEBRES para
    poder confirmarlas con webPasar(). */
+// ¿Esta reserva es de la sucursal que opera esta estación? NO se usa para
+// esconder nada: la agenda la ocupa la central y tiene que ver todas las
+// sucursales. Sirve solo para marcar de cuál es cada cita y para saber si esta
+// estación puede recibir el vehículo (recibir se hace en la sucursal, no en la
+// central).
+function webEsDeMiSucursal(r) {
+  if (!r || !r.sucursal) return true;
+  var suc = sucursalEstacion();
+  return !suc || r.sucursal === suc;
+}
+
 function webPendientes(fecha) {
   var out = [];
   (WEBRES || []).forEach(function (r, i) {
@@ -724,6 +740,32 @@ function webPendientes(fecha) {
     if (!gestionada && (!fecha || r.fecha === fecha)) out.push({ i: i, r: r });
   });
   return out;
+}
+
+/* ---- todas las citas del día, de TODAS las sucursales ----
+   La bandeja local (DB) solo tiene la sucursal que esta estación abrió, pero
+   la agenda la usa la central: tiene que ver el país entero. reservas_web ya
+   es la única verdad de la cita, así que la vista une lo propio (que además
+   trae el estado operativo del taller) con lo que hay en el servidor.
+
+   Las de otras sucursales van marcadas y en solo lectura: recibir un vehículo
+   se hace en la sucursal donde está el auto. */
+function citasVisibles(fecha) {
+  var suc = sucursalEstacion();
+  var out = [], vistas = {};
+  DB.agendamientos.forEach(function (a) {
+    if (fecha && a.fecha !== fecha) return;
+    if (a.webId) vistas[a.webId] = 1;
+    vistas[[a.pat, a.fecha].join("|")] = 1;
+    out.push({ a: a, suc: a.sucursal || suc || null, propia: true });
+  });
+  (WEBRES || []).forEach(function (r) {
+    if (!r || !r.fecha || (fecha && r.fecha !== fecha)) return;
+    if (["agendada", "recibida", "en_taller", "cerrada"].indexOf(r.estado) < 0) return;  // las 'nueva' son solicitudes, van aparte
+    if (vistas[r.id] || vistas[[r.patente, r.fecha].join("|")]) return;
+    out.push({ a: _agDesdeReserva(r), suc: r.sucursal || null, propia: false });
+  });
+  return out.sort(function (x, y) { return (x.a.hora || "") < (y.a.hora || "") ? -1 : 1; });
 }
 function fechasConSolicitud() {
   var s = {};
@@ -752,12 +794,17 @@ function renderMes() {
   document.getElementById("mesTitulo").textContent =
     new Date(calY, calM, 1).toLocaleDateString("es-CL", { month: "long", year: "numeric" });
 
-  // citas y solicitudes agrupadas por fecha, una sola pasada por cada lista
+  // citas y solicitudes agrupadas por fecha, una sola pasada por cada lista.
+  // Van todas las sucursales: la vista de mes es la carga del país, no la de
+  // una bandeja.
   var porFecha = {};
-  DB.agendamientos.forEach(function (a) {
+  citasVisibles(null).forEach(function (c) {
+    var a = c.a;
     if (a.estado === "anulado") return;
     (porFecha[a.fecha] = porFecha[a.fecha] || []).push({
-      hora: a.hora || "", txt: (a.hora ? a.hora + " " : "") + (a.pat || a.cli || ""),
+      hora: a.hora || "",
+      txt: (a.hora ? a.hora + " " : "") + (a.pat || a.cli || ""),
+      suc: c.suc ? sucCorta(c.suc) : "",
       cls: a.estado === "en_taller" ? "taller" : a.estado === "entregado" ? "taller" : "ag"
     });
   });
@@ -787,7 +834,8 @@ function renderMes() {
     var items = porFecha[iso] || [];
     // se muestran 3 y el resto se resume, para que la celda no crezca sin control
     var visibles = items.slice(0, 3).map(function (it) {
-      return '<span class="mes-cita mes-cita--' + it.cls + '" title="' + esc(it.txt) + '">' + esc(it.txt) + "</span>";
+      var tit = it.txt + (it.suc ? " · " + it.suc : "");
+      return '<span class="mes-cita mes-cita--' + it.cls + '" title="' + esc(tit) + '">' + esc(tit) + "</span>";
     }).join("");
     var resto = items.length > 3 ? '<span class="mes-mas">+' + (items.length - 3) + " más</span>" : "";
     html += '<div class="' + cls.join(" ") + '" data-f="' + iso + '">' +
@@ -806,6 +854,8 @@ function renderMes() {
 
 function renderSlots() {
   document.getElementById("fechaSelTxt").textContent = fmtFechaLarga(selFecha);
+  var st = document.getElementById("sucSelTxt");
+  if (st) st.textContent = sucursalEstacion() ? sucCorta(sucursalEstacion()) : "tu sucursal";
   var ocup = horasOcupadas();
   // hora pedida por un cliente y todavía sin confirmar
   var pedidas = {};
@@ -832,8 +882,9 @@ function renderSlots() {
 }
 function renderAgendaTable() {
   var t = document.getElementById("tblAgenda");
-  var lista = DB.agendamientos.filter(function (a) { return a.fecha === selFecha; })
-    .sort(function (a, b) { return a.hora < b.hora ? -1 : 1; });
+  // La central ve TODAS las sucursales, no solo la bandeja abierta en esta
+  // estación. Ver citasVisibles().
+  var lista = citasVisibles(selFecha);
 
   // Las solicitudes que hizo el cliente por la web van arriba, marcadas y con
   // su botón para confirmarlas. Es lo que el call center tiene que atender.
@@ -848,6 +899,7 @@ function renderAgendaTable() {
       '<td>web</td><td>' + esc(hora) + "</td><td>" + esc(r.nombre || "—") + "</td><td>" + esc(auto) +
       "</td><td>" + esc(r.patente || "—") + "</td><td>" +
       (r.rev_n ? "Mantención " + esc(String(r.rev_n)) : "Por definir") + "</td>" +
+      "<td>" + (r.sucursal ? esc(sucCorta(r.sucursal)) : '<i style="color:var(--ink-3)">por asignar</i>') + "</td>" +
       '<td><span class="ag-pill web">Solicitud del cliente</span></td>' +
       '<td><button class="agbtn agbtn-blue agbtn-sm" onclick="webPasar(' + p.i + ')">Confirmar</button></td>' +
       "</tr>";
@@ -857,29 +909,50 @@ function renderAgendaTable() {
   renderRecepDia();
 
   if (!lista.length && !filasWeb) {
-    t.innerHTML = '<tr><td colspan="8" style="color:var(--ink-3);padding:16px">Sin agendamientos para esta fecha.</td></tr>';
+    t.innerHTML = '<tr><td colspan="9" style="color:var(--ink-3);padding:16px">' +
+      "Sin agendamientos para esta fecha en ninguna sucursal.</td></tr>";
     return;
   }
-  t.innerHTML = filasWeb + lista.map(function (a) {
+  var miSuc = sucursalEstacion();
+  t.innerHTML = filasWeb + lista.map(function (c) {
+    var a = c.a;
     var est = a.estado === "agendado" ? '<span class="ag-pill por">Agendado</span>'
       : a.estado === "en_taller" ? '<span class="ag-pill en">En taller</span>'
       : a.estado === "anulado"
         ? '<span class="ag-pill anu" title="' + esc("Anulada el " + fmtFechaHora(a.anuladoEn) +
             (a.anuladoPor ? " por " + a.anuladoPor : "")) + '">Anulado</span>'
       : '<span class="ag-pill ent">Entregado</span>';
-    var acc = a.estado === "agendado"
-      ? '<button class="agbtn agbtn-blue agbtn-sm" onclick="agAbrirRecepcion(' + a.oc + ')">Ingresar</button>' +
-        ' <button class="agbtn agbtn-red agbtn-sm" onclick="agAnular(' + a.oc + ')">Anular</button>'
-      : "";
+    // Recibir el vehículo se hace EN la sucursal, que es donde está el auto y
+    // donde vive su bandeja. Desde la central se ve y se puede anular (eso viaja
+    // por el servidor y llega a la sucursal), pero no se recibe.
+    var acc = "";
+    if (a.estado === "agendado") {
+      if (c.propia && (!c.suc || !miSuc || c.suc === miSuc)) {
+        acc = '<button class="agbtn agbtn-blue agbtn-sm" onclick="agAbrirRecepcion(' + a.oc + ')">Ingresar</button> ';
+      }
+      acc += '<button class="agbtn agbtn-red agbtn-sm" onclick="agAnular(\'' +
+             esc(String(a.webId || a.oc)) + '\')">Anular</button>';
+    }
     // los campos que pueden faltar se muestran como "—" en vez de imprimir
     // "undefined", y se escapan porque son datos escritos por personas
     var auto = [a.marcaNombre, a.modeloNombre].filter(Boolean).join(" ");
-    return '<tr class="' + (a.estado === "anulado" ? "fila-anulada" : "") + '"><td>' +
+    var ajena = c.suc && miSuc && c.suc !== miSuc;
+    return '<tr class="' + (a.estado === "anulado" ? "fila-anulada " : "") +
+      (ajena ? "fila-otra-suc" : "") + '"><td>' +
       esc(String(a.oc == null ? "—" : a.oc)) + "</td><td>" + esc(a.hora || "—") +
       "</td><td>" + esc(a.cli || "—") + "</td><td>" + esc(auto || "—") +
       "</td><td>" + esc(a.pat || "—") + "</td><td>" + esc(a.serv || "—") +
-      "</td><td>" + est + "</td><td>" + acc + "</td></tr>";
+      '</td><td><span class="celda-suc" title="' + esc(c.suc || "sin sucursal asignada") + '">' +
+      esc(c.suc ? sucCorta(c.suc) : "—") + "</span></td><td>" + est + "</td><td>" + acc + "</td></tr>";
   }).join("");
+}
+
+// "CURIFOR CHILLÁN VIEJO" -> "Chillán Viejo". El prefijo se repite en las 12
+// sucursales y en una columna estrecha solo gasta ancho.
+function sucCorta(s) {
+  if (!s) return "—";
+  var t = String(s).replace(/^CURIFOR\s+/i, "");
+  return t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
 }
 /* ---- panel de recibidos del día ----
    La recepción se hace en su propio módulo, así que la agenda no puede saber
@@ -932,10 +1005,12 @@ function renderRecepDia() {
   }).join("");
 }
 
-function agAnular(oc) {
-  var a = agFind(oc);
-  if (!a) return;
-  if (!confirm("¿Anular el agendamiento " + oc + " (" + a.pat + ")?")) return;
+// `ref` es el número de OC si la cita está en esta bandeja, o el id de la
+// reserva si es de otra sucursal (la central puede anular cualquiera).
+function agAnular(ref) {
+  var a = agFind(ref) || DB.agendamientos.find(function (x) { return x.webId === ref; });
+  if (!a) return _agAnularAjena(ref);
+  if (!confirm("¿Anular el agendamiento " + a.oc + " (" + a.pat + ")?")) return;
   // Se MARCA, no se borra. Borrar la fila dejaba la reserva del servidor viva
   // como "agendada" para siempre y, al reconciliar, la cita volvía a aparecer.
   // Además, quién anuló y cuándo es exactamente lo que se pregunta después.
@@ -949,6 +1024,23 @@ function agAnular(oc) {
     }).catch(function () { /* offline: la marca local basta hasta el próximo sync */ });
   }
   renderCal(); renderSlots(); renderAgendaTable();
+}
+
+// Anulación de una cita que NO está en esta bandeja (otra sucursal). Se cancela
+// en el servidor, que es la única verdad de la cita; la sucursal dueña la anula
+// sola en su próxima reconciliación.
+function _agAnularAjena(id) {
+  var r = (WEBRES || []).find(function (x) { return x.id === id; });
+  if (!r) return;
+  if (!confirm("Esta cita es de " + (r.sucursal || "otra sucursal") + " (" + (r.patente || "") + ").\n\n" +
+               "Se cancelará para esa sucursal también. ¿Continuar?")) return;
+  var quien = quienSoy(), cuando = ahoraISO();
+  webActualizarEstado(id, "cancelada", { cancelado_en: cuando, cancelado_por: quien })
+    .then(function () {
+      r.estado = "cancelada";
+      renderCal(); renderSlots(); renderAgendaTable();
+    })
+    .catch(function () { alert("No se pudo anular: revisa la conexión y reintenta."); });
 }
 
 /* ---------------- modal agendar (selects encadenados) ---------------- */
@@ -1437,7 +1529,7 @@ function reconciliarConReservas() {
     // adoptar dos veces el mismo auto el mismo día.
     var yaEsta = porPatFecha[[r.patente, r.fecha].join("|")];
     if (yaEsta) { if (!yaEsta.webId) { yaEsta.webId = r.id; cambios++; } return; }
-    var adoptada = _agDesdeReserva(r);
+    var adoptada = _agDesdeReserva(r, r.oc != null ? r.oc : DB.ocSeq++);
     porPatFecha[[adoptada.pat, adoptada.fecha].join("|")] = adoptada;
     DB.agendamientos.push(adoptada);
     DB.webImp[r.id] = 1;
@@ -1451,10 +1543,13 @@ function reconciliarConReservas() {
 // Traduce una fila de reservas_web al shape que usa la agenda. El uid se deriva
 // del id de la reserva para que dos estaciones que adopten la misma cita
 // terminen con la MISMA entidad al fusionar, no con dos copias.
-function _agDesdeReserva(r) {
+// `oc` se recibe de fuera a propósito: esta función también arma las filas de
+// SOLO LECTURA de la agenda de la central, y ahí no puede consumir correlativos
+// (se gastaría un número en cada repintado).
+function _agDesdeReserva(r, oc) {
   return {
     uid: "srv-" + r.id, webId: r.id,
-    oc: r.oc != null ? r.oc : DB.ocSeq++,
+    oc: r.oc != null ? r.oc : (oc != null ? oc : null),
     fecha: r.fecha, hora: r.hora === "indiferente" ? "" : (r.hora || ""),
     sucursal: r.sucursal || null,
     serv: r.km ? "MANTENCIÓN POR KILOMETRAJE" : "RECEPCIÓN",
@@ -1610,8 +1705,17 @@ function webPintarLista() {
     var auto = [r.marca, r.modelo, r.version].filter(Boolean).join(" ") + (r.anio ? " (" + r.anio + ")" : "");
     var mant = r.km ? "Mantención " + etiquetaKm(r.km) : (r.rev_n ? "Rev. " + r.rev_n : "Mantención");
     var hora = r.hora === "indiferente" ? "hora por definir" : (r.hora || "") + " h";
-    return '<div class="webres-item">' +
-      '<div class="webres-cab"><b>' + fmtFechaCorta(r.fecha) + "</b> · " + hora + " " + est + "</div>" +
+    // La sucursal a la vista. Sin esto, una reserva de OTRA sucursal aparecía
+    // acá igual que las propias y daba a entender que la agenda la había
+    // perdido, cuando en realidad estaba en la bandeja de la otra sucursal.
+    var mia = webEsDeMiSucursal(r);
+    var suc = r.sucursal
+      ? '<span class="webres-suc' + (mia ? "" : " ajena") + '" title="' +
+        (mia ? "Sucursal de esta reserva" : "Esta reserva es de otra sucursal: no aparece en tu agenda") +
+        '">' + esc(r.sucursal) + "</span>"
+      : '<span class="webres-suc libre" title="El cliente no eligió sucursal: la toma quien la confirme">sin sucursal</span>';
+    return '<div class="webres-item' + (mia ? "" : " webres-item--ajena") + '">' +
+      '<div class="webres-cab"><b>' + fmtFechaCorta(r.fecha) + "</b> · " + hora + " " + est + suc + "</div>" +
       '<div class="webres-det">' + esc(r.nombre) + " · " + esc(r.fono) +
         (r.email ? " · " + esc(r.email) : "") + (r.patente ? " · pat. " + esc(r.patente) : "") + "</div>" +
       '<div class="webres-det">' + esc(auto) + " — " + mant +
@@ -1626,7 +1730,23 @@ function webPintarLista() {
 // el flujo sigue igual que siempre (clic en hora libre → modal prellenado)
 function webPasar(i) {
   var r = WEBRES[i];
-  if (!r || !r.pauta_id) return;
+  if (!r) return;
+  // Antes esto se iba en silencio y el asesor apretaba "Confirmar" sin que
+  // pasara nada visible.
+  if (!r.pauta_id) {
+    alert("Esta solicitud no trae la pauta del vehículo (marca/modelo/versión),\n" +
+          "así que no se puede prellenar el agendamiento.\n\n" +
+          "Agéndala a mano con los datos del cliente: " + (r.nombre || "") +
+          (r.fono ? " · " + r.fono : "") + ".");
+    return;
+  }
+  // Confirmarla la mete en la bandeja de LA SUCURSAL QUE ESTA ESTACIÓN TIENE
+  // ABIERTA, no en la que dice la reserva. Si no calzan hay que avisar: si no,
+  // la cita "desaparece" de la sucursal donde el cliente la pidió.
+  var suc = sucursalEstacion();
+  if (r.sucursal && suc && r.sucursal !== suc &&
+      !confirm("Esta reserva es de " + r.sucursal + " y tú estás en " + suc + ".\n\n" +
+               "Si la confirmas acá, la cita queda en la agenda de " + suc + ".\n¿Continuar?")) return;
   PREFILL = {
     pautaId: r.pauta_id, marcaNombre: r.marca, modelo: r.modelo, version: r.version,
     anio: r.anio || null, revN: r.rev_n != null ? r.rev_n : null, km: r.km || null,

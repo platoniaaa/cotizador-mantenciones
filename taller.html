@@ -105,13 +105,16 @@
         </button>
       </div>
       <div>
-        <p class="ag-fecha-sel">Horas disponibles para el <b id="fechaSelTxt"></b>:</p>
+        <!-- Los cupos son POR SUCURSAL (dos sucursales pueden tener la misma
+             hora libre), pero la tabla de abajo muestra el país entero. Se dice
+             cuál es cuál para que no se confundan. -->
+        <p class="ag-fecha-sel">Horas disponibles en <b id="sucSelTxt">tu sucursal</b> para el <b id="fechaSelTxt"></b>:</p>
         <div class="ag-jor">
           <div><h5>Primera jornada</h5><div class="ag-slots" id="agSlotsAM"></div></div>
           <div><h5>Segunda jornada</h5><div class="ag-slots" id="agSlotsPM"></div></div>
         </div>
         <table class="ag-table">
-          <thead><tr><th>OC</th><th>Hora</th><th>Cliente</th><th>Vehículo</th><th>Patente</th><th>Servicio</th><th>Estado</th><th></th></tr></thead>
+          <thead><tr><th>OC</th><th>Hora</th><th>Cliente</th><th>Vehículo</th><th>Patente</th><th>Servicio</th><th>Sucursal</th><th>Estado</th><th></th></tr></thead>
           <tbody id="tblAgenda"></tbody>
         </table>
 

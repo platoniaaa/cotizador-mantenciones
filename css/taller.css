@@ -144,6 +144,12 @@ table.ag-table tr:nth-child(even) td { background: var(--tint-2); }
 /* Las citas anuladas ya no se borran: quedan a la vista, apagadas, con quién
    las anuló y cuándo en el tooltip. */
 .ag-pill.anu { background: #f4f4f5; color: #6b6b70; }
+/* Columna Sucursal: la agenda la usa la central y ve las 12 sucursales, así que
+   cada fila tiene que decir de cuál es. Las de otra sucursal se atenúan un poco
+   —siguen visibles, solo que no se reciben desde acá. */
+.celda-suc { font-size: 11.5px; font-weight: 700; color: var(--navy); white-space: nowrap; }
+.fila-otra-suc > td { background: #fcfcfd; }
+.fila-otra-suc .celda-suc { color: var(--ink-2); font-weight: 600; }
 .fila-anulada > td { opacity: .55; }
 .fila-anulada > td:nth-child(5) { text-decoration: line-through; }
 /* Fila de una solicitud del cliente todavía sin confirmar */
@@ -471,6 +477,17 @@ table.grid td.slot.over { background: var(--tint); }
   padding: 10px 12px; margin-bottom: 8px;
 }
 .webres-cab { font-size: 13.5px; margin-bottom: 3px; }
+/* La sucursal de cada reserva. La lista trae las de todas las sucursales, pero
+   la agenda muestra UNA bandeja: sin esta marca parecía que la agenda perdía
+   citas que en realidad estaban en otra sucursal. */
+.webres-suc {
+  display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 10px;
+  font-size: 10.5px; font-weight: 700; background: var(--tint); color: var(--navy);
+  vertical-align: middle;
+}
+.webres-suc.ajena { background: #fdecec; color: #b42318; }
+.webres-suc.libre { background: #fff6e8; color: #8a5a12; }
+.webres-item--ajena { opacity: .72; border-style: dashed; }
 .webres-det { font-size: 12.5px; color: var(--ink-2, #444); }
 .webres-com { font-size: 12.5px; color: var(--ink-3, #777); font-style: italic; margin-top: 3px; }
 .webres-item .agbtn { margin-top: 8px; }

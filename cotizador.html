@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-auth="require">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador de Mantenciones · Curifor</title>
+  <meta name="description" content="Precios sugeridos de mantención preventiva por marca, modelo, versión y kilometraje.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- guard de acceso interno (se salta solo cuando va embebido en un iframe) -->
+  <script src="js/agenda-config.js?v=0ef9261"></script>
+  <script src="js/auth.js?v=0ef9261"></script>
+  <link rel="stylesheet" href="css/estilos.css?v=0ef9261">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <img class="brand__logo" src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
+        <span class="brand__sep"></span>
+        <span class="brand__sub">Cotizador de mantenciones</span>
+        <span class="brand__badge">Uso interno</span>
+      </div>
+      <nav class="topbar__nav">
+        <a href="taller.html" class="nav-link">Taller y agenda</a>
+        <a href="cliente.html" class="nav-link" target="_blank">Vista cliente</a>
+        <a href="#" id="btnReiniciar" class="nav-link">Nueva consulta</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Servicio y Postventa · Mantenciones preventivas</p>
+      <h1 class="hero__title">Consulta de mantenciones y repuestos</h1>
+      <p class="hero__lead">Selecciona el vehículo para ver las operaciones, los repuestos con su disponibilidad en bodega y el valor referencial de cada mantención programada.</p>
+    </div>
+  </section>
+
+  <main class="wrap">
+
+    <!-- ====================== PASO 1: SELECTOR ====================== -->
+    <section id="paso1" class="card selector" aria-label="Selección de vehículo">
+      <ol class="stepbar">
+        <li class="stepbar__item is-active" data-step="1"><span>1</span> Tu vehículo</li>
+        <li class="stepbar__item" data-step="2"><span>2</span> Plan de mantención</li>
+      </ol>
+
+      <div class="patente">
+        <label class="field">
+          <span class="field__title">Patente
+            <span class="tip" tabindex="0" aria-label="Ayuda">?
+              <span class="tip__bubble">Consulta el registro del vehículo y completa marca, modelo y año. La versión se elige abajo: el registro no la informa.</span>
+            </span>
+          </span>
+          <div class="patente__control">
+            <input id="inpPatente" class="input input--patente" type="text" maxlength="8"
+                   placeholder="BBCC12" autocomplete="off" spellcheck="false"
+                   aria-describedby="patenteEstado">
+            <button id="btnPatente" class="btn btn--ghost" type="button">Buscar</button>
+          </div>
+        </label>
+        <p id="patenteEstado" class="patente__estado" role="status" hidden></p>
+      </div>
+
+      <div class="separador"><span>o elige el vehículo del catálogo</span></div>
+
+      <div class="selector__grid">
+        <label class="field">
+          <span class="field__title">Marca</span>
+          <div class="field__control">
+            <select id="selMarca" class="select"><option value="">Elige la marca</option></select>
+          </div>
+        </label>
+
+        <label class="field">
+          <span class="field__title">Modelo</span>
+          <div class="field__control">
+            <select id="selModelo" class="select" disabled><option value="">Elige el modelo</option></select>
+          </div>
+        </label>
+
+        <label class="field">
+          <span class="field__title">Versión</span>
+          <div class="field__control">
+            <select id="selVersion" class="select" disabled><option value="">Elige la versión</option></select>
+          </div>
+        </label>
+
+        <label class="field" id="fieldAnio" hidden>
+          <span class="field__title">Año
+            <span class="tip" tabindex="0" aria-label="Ayuda">?
+              <span class="tip__bubble">Año modelo del vehículo. Solo aplica a Ford; en las demás marcas la vigencia va por versión.</span>
+            </span>
+          </span>
+          <div class="field__control">
+            <select id="selAnio" class="select" disabled><option value="">Elige el año</option></select>
+          </div>
+        </label>
+      </div>
+
+      <div id="vehiculoMeta" class="vehiculo-meta" hidden></div>
+
+      <div class="selector__actions">
+        <button id="btnCotizar" class="btn btn--primary" disabled>Ver plan de mantención</button>
+      </div>
+      <p class="selector__hint">Valores referenciales sugeridos, con IVA incluido y en pesos chilenos (CLP). Herramienta de apoyo para Servicio; confirmar precios y stock con el sistema.</p>
+    </section>
+
+    <!-- ====================== PASO 2: RESULTADOS ====================== -->
+    <section id="paso2" class="resultados" hidden aria-label="Plan de mantención">
+
+      <!-- encabezado solo para impresión (orden de trabajo) -->
+      <div id="printHeader" class="print-header" aria-hidden="true">
+        <div class="print-header__top">
+          <img class="print-header__logo" src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
+          <span class="print-header__meta">Servicio y Postventa · Orden de mantención referencial</span>
+        </div>
+        <table class="print-header__datos"><tbody id="printDatos"></tbody></table>
+      </div>
+
+      <div class="resumen-vehiculo">
+        <button id="btnVolver" class="btn-volver" type="button">← Cambiar vehículo</button>
+        <div class="resumen-vehiculo__datos">
+          <span id="rvMarca" class="rv__marca"></span>
+          <h2 id="rvTitulo" class="rv__titulo"></h2>
+          <p id="rvSub" class="rv__sub"></p>
+        </div>
+        <div id="rvAnioBox" class="rv__aniobox" hidden>
+          <label class="field field--inline">
+            <span class="field__title">Año</span>
+            <select id="selAnio2" class="select select--sm"></select>
+          </label>
+        </div>
+        <div class="rv__acciones">
+          <div class="modo-toggle" role="group" aria-label="Tipo de cliente">
+            <button type="button" class="modo-btn is-active" data-modo="particular">Cliente particular</button>
+            <button type="button" class="modo-btn" data-modo="interno">Interno</button>
+          </div>
+          <button id="btnImprimir" class="btn btn--print" type="button">
+            <span aria-hidden="true">🖨</span> Imprimir orden
+          </button>
+          <button id="btnExcel" class="btn btn--excel" type="button">
+            <span aria-hidden="true">⬇</span> Excel
+          </button>
+          <button id="btnAgendar" class="btn btn--agendar" type="button">
+            <span aria-hidden="true">🗓</span> Agendar
+          </button>
+        </div>
+      </div>
+
+      <!-- carrusel de revisiones -->
+      <div class="carrusel">
+        <button class="carrusel__nav carrusel__nav--prev" id="navPrev" aria-label="Anterior">‹</button>
+        <div class="carrusel__viewport">
+          <ul id="carruselTrack" class="carrusel__track"></ul>
+        </div>
+        <button class="carrusel__nav carrusel__nav--next" id="navNext" aria-label="Siguiente">›</button>
+      </div>
+
+      <!-- detalle de la revisión activa -->
+      <div class="detalle">
+        <div class="detalle__head">
+          <div>
+            <p class="detalle__eyebrow">Información de la mantención</p>
+            <h3 id="detTitulo" class="detalle__titulo"></h3>
+            <p id="detSub" class="detalle__sub"></p>
+          </div>
+          <div class="detalle__precio">
+            <span class="detalle__precio-label">Valor mantención</span>
+            <span id="detPrecio" class="detalle__precio-valor"></span>
+            <span id="detMoneda" class="detalle__precio-moneda">IVA incluido · CLP</span>
+            <span id="detNeto" class="detalle__precio-neto"></span>
+            <span id="detRef" class="detalle__precio-ref" hidden></span>
+          </div>
+        </div>
+
+        <div class="detalle__cols">
+          <div class="detalle__col">
+            <h4 class="detalle__subtitulo">Operaciones incluidas</h4>
+            <ul id="detOperaciones" class="ops-list"></ul>
+          </div>
+          <div class="detalle__col">
+            <h4 class="detalle__subtitulo">Repuestos, lubricantes y mano de obra</h4>
+            <div id="stockResumen" class="stock-resumen" hidden></div>
+            <table class="desglose">
+              <tbody id="detDesglose"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- servicios adicionales: tarjeta propia, sobre Consideraciones -->
+      <div id="adicionalesBox" class="adicionales" hidden>
+        <h3 class="adicionales__titulo">Servicios adicionales sugeridos</h3>
+        <div id="extrasVenta" class="extras"></div>
+        <ul id="detAdicionales" class="adicionales__list"></ul>
+        <div id="adicionalesTotalBox" class="adicionales__total">
+          <span>Total con adicionales seleccionados</span>
+          <strong id="totalConAdicionales"></strong>
+        </div>
+      </div>
+
+      <!-- notas -->
+      <div class="notas">
+        <h4 class="notas__titulo">Consideraciones</h4>
+        <ul id="detNotas" class="notas__list"></ul>
+        <p id="detFuente" class="notas__fuente"></p>
+      </div>
+    </section>
+
+    <!-- estado de error -->
+    <div id="errorBox" class="errorbox" hidden>
+      <p>No pudimos cargar la información. Verifica que estés abriendo la plataforma a través del servidor local e inténtalo nuevamente.</p>
+    </div>
+
+  </main>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <span>Curifor S.A. · Cotizador de Mantenciones</span>
+      <span id="footFecha" class="foot__fecha"></span>
+    </div>
+  </footer>
+
+  <script src="js/vendor/xlsx.full.min.js"></script>
+  <script src="js/app.js?v=0ef9261"></script>
+</body>
+</html>

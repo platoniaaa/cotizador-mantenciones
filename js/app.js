@@ -197,6 +197,7 @@
     state.modelo = state.version = null;
     // cambiar la marca a mano descarta lo que dijo el registro de la patente
     state.anioRegistro = null;
+    state.anioFueraDeCatalogo = false;
     reset(el.selVersion, "Elige la versión");
     el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");
     el.vehiculoMeta.hidden = true;
@@ -211,38 +212,81 @@
   function onModelo() {
     const modelos = [...state.marca.modelos].sort((a, b) => a.nombre.localeCompare(b.nombre, "es", { numeric: true }));
     state.modelo = modelos[el.selModelo.value] || null;
-    state.version = null;
+    state.version = state.pauta = null;
+    state.anio = null;
     el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");
     el.vehiculoMeta.hidden = true;
     if (!state.modelo) { reset(el.selVersion, "Elige la versión"); actualizarBoton(); return; }
-    const vs = state.modelo.versiones;
-    el.selVersion.innerHTML = '<option value="">Elige la versión</option>' +
-      vs.map((v, i) => `<option value="${i}">${v.nombre}</option>`).join("");
-    el.selVersion.disabled = false;
+
+    // Los años del MODELO son la unión de los de sus versiones. Van primero
+    // porque son los que deciden qué versiones corresponden: al revés, se
+    // elegía una versión para descubrir después que su pauta cubría otros años.
+    const anios = aniosDelModelo(state.modelo);
+    if (anios.length) {
+      el.fieldAnio.hidden = false;
+      el.selAnio.innerHTML = '<option value="">Elige el año</option>' +
+        anios.map((a) => `<option value="${a}">${a}</option>`).join("");
+      el.selAnio.disabled = false;
+      // la versión espera al año
+      reset(el.selVersion, "Elige primero el año");
+      marcarPendiente(el.selAnio, true);
+      aplicarAnioDelRegistro();     // si la patente ya dijo el año, queda puesto
+    } else {
+      // modelos cuya vigencia va por versión y no por año: como siempre
+      llenarVersiones(null);
+    }
     actualizarBoton();
+  }
+
+  // Años que cubre un modelo, del más nuevo al más viejo.
+  function aniosDelModelo(modelo) {
+    const s = new Set();
+    (modelo.versiones || []).forEach((v) => (v.anios || []).forEach((a) => s.add(String(a))));
+    return [...s].sort().reverse();
+  }
+
+  // Llena el selector de versiones. Con `anio`, deja solo las que lo cubren.
+  // El value sigue siendo el índice ORIGINAL dentro de modelo.versiones: es lo
+  // que lee onVersion(), y renumerarlo apuntaría a otra versión.
+  function llenarVersiones(anio) {
+    const vs = state.modelo.versiones || [];
+    const opciones = vs
+      .map((v, i) => ({ v, i }))
+      .filter(({ v }) => !anio || !v.anios || !v.anios.length || v.anios.indexOf(String(anio)) >= 0);
+    if (!opciones.length) {
+      reset(el.selVersion, "Sin versiones para ese año");
+      return;
+    }
+    el.selVersion.innerHTML = '<option value="">Elige la versión</option>' +
+      opciones.map(({ v, i }) => `<option value="${i}">${v.nombre}</option>`).join("");
+    el.selVersion.disabled = false;
+    // con una sola opción no hay nada que elegir
+    if (opciones.length === 1) {
+      el.selVersion.value = String(opciones[0].i);
+      onVersion();
+    }
   }
 
   async function onVersion() {
     state.version = state.modelo.versiones[el.selVersion.value] || null;
-    el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");
     el.vehiculoMeta.hidden = true;
     if (!state.version) { state.pauta = null; actualizarBoton(); return; }
-    // cargar detalle para saber si hay años y metadata
+    // el año ya se eligió antes; acá solo se carga el detalle y la metadata
     await cargarPauta(state.version.id);
     mostrarMeta();
-    if (state.pauta && state.pauta.anios && state.pauta.anios.length) {
-      el.fieldAnio.hidden = false;
-      el.selAnio.innerHTML = '<option value="">Elige el año</option>' +
-        state.pauta.anios.map((a) => `<option value="${a}">${a}</option>`).join("");
-      el.selAnio.disabled = false;
-      state.anio = null;
-      // Si la patente ya nos dijo el año del vehículo, se elige solo. Antes esto
-      // solo se intentaba en el momento de la búsqueda, cuando el campo todavía
-      // estaba oculto porque faltaba la versión: al elegirla después, el año
-      // conocido se perdía y el asesor lo veía vacío.
-      aplicarAnioDelRegistro();
-    } else {
-      state.anio = null;
+    marcarPendiente(el.selVersion, false);
+    actualizarBoton();
+  }
+  // El año manda: al cambiarlo se rehace la lista de versiones, porque las que
+  // servían para el año anterior pueden no existir en el nuevo.
+  function onAnioSelector() {
+    state.anio = el.selAnio.value || null;
+    marcarPendiente(el.selAnio, !state.anio);
+    if (state.modelo) {
+      state.version = state.pauta = null;
+      el.vehiculoMeta.hidden = true;
+      if (state.anio) llenarVersiones(state.anio);
+      else reset(el.selVersion, "Elige primero el año");
     }
     actualizarBoton();
   }
@@ -252,25 +296,22 @@
   // plan porque las pautas de Ranger van de 2021 en adelante, y sin explicación
   // parece que el sistema perdió el dato.
   function aplicarAnioDelRegistro() {
+    state.anioFueraDeCatalogo = false;
     const a = state.anioRegistro;
-    if (!a || el.fieldAnio.hidden) return;
-    const anios = (state.pauta && state.pauta.anios) || [];
+    if (!a || el.fieldAnio.hidden || !state.modelo) return;
+    const anios = aniosDelModelo(state.modelo);
     if (anios.some((x) => String(x) === String(a))) {
       el.selAnio.value = String(a);
-      onAnioSelector();
-      marcarPendiente(el.selAnio, false);
+      onAnioSelector();        // esto filtra las versiones a las de ese año
       return;
     }
+    state.anioFueraDeCatalogo = true;
     marcarPendiente(el.selAnio, true);
     estadoPatente("warn",
-      `El registro dice que el vehículo es <b>${a}</b>, pero la pauta de esta versión solo cubre ` +
-      `<b>${anios.join(", ")}</b>. Elige el año del plan que corresponda, o revisa si es otra versión.`);
+      `El registro dice que el vehículo es <b>${a}</b>, pero el catálogo solo tiene pautas de ` +
+      `este modelo para <b>${anios.join(", ")}</b>. Elige el año que corresponda.`);
   }
 
-  function onAnioSelector() {
-    state.anio = el.selAnio.value || null;
-    actualizarBoton();
-  }
 
   async function cargarPauta(id) {
     try {
@@ -445,16 +486,18 @@
     el.selModelo.value = String(modelos.indexOf(r.modelo));
     onModelo();
 
+    // onModelo() ya armó los años y, si el registro trae uno que el catálogo
+    // cubre, lo dejó elegido — y con eso filtró las versiones. Por eso acá solo
+    // queda poner la versión, y solo si sobrevivió a ese filtro.
     if (r.version) {
-      el.selVersion.value = String(r.modelo.versiones.indexOf(r.version));
-      await onVersion();
-    }
-    if (datos.year && !el.fieldAnio.hidden) {
-      const opcion = [...el.selAnio.options].find((o) => o.value === String(datos.year));
-      if (opcion) { el.selAnio.value = String(datos.year); onAnioSelector(); }
+      const idx = String(r.modelo.versiones.indexOf(r.version));
+      if ([...el.selVersion.options].some((o) => o.value === idx)) {
+        el.selVersion.value = idx;
+        await onVersion();
+      }
     }
     marcarPendiente(el.selVersion, !state.version);
-    marcarPendiente(el.selAnio, state.version && !el.fieldAnio.hidden && !state.anio);
+    marcarPendiente(el.selAnio, !el.fieldAnio.hidden && !state.anio);
   }
 
   // traduce la respuesta del registro al catálogo y deja el selector puesto
@@ -475,11 +518,22 @@
 
     await aplicarVehiculo(r, datos);
 
+    // Si el año del vehículo no está en el catálogo, aplicarAnioDelRegistro() ya
+    // lo explicó con el detalle de los años que sí hay. Pisar ese aviso con un
+    // "elige entre las 21 versiones" sería mentir: para ese año no hay ninguna.
+    if (state.anioFueraDeCatalogo) return;
+
     const partes = [`<b>${desc}</b>`];
-    if (state.version) partes.push("Vehículo completo, ya puedes ver el plan.");
-    else partes.push(`Falta la versión: elige entre las <b>${r.candidatas.length}</b> de este modelo (el registro no la informa).`);
-    if (state.version && !el.fieldAnio.hidden && !state.anio) partes.push("Falta el año.");
-    estadoPatente(state.version && (el.fieldAnio.hidden || state.anio) ? "ok" : "info", partes.join(" "));
+    // cuántas versiones quedan DESPUÉS de filtrar por año (no el total del modelo)
+    const disponibles = [...el.selVersion.options].filter((o) => o.value !== "").length;
+    if (state.version) {
+      partes.push("Vehículo completo, ya puedes ver el plan.");
+    } else if (!el.fieldAnio.hidden && !state.anio) {
+      partes.push("Elige el <b>año</b> para ver las versiones que corresponden.");
+    } else {
+      partes.push(`Falta la versión: elige entre las <b>${disponibles || r.candidatas.length}</b> de este año (el registro no la informa).`);
+    }
+    estadoPatente(state.version ? "ok" : "info", partes.join(" "));
   }
 
   async function buscarPorPatente() {
@@ -895,6 +949,7 @@
   function reiniciar() {
     state.marca = state.modelo = state.version = state.pauta = state.anio = null;
     state.anioRegistro = null;
+    state.anioFueraDeCatalogo = false;
     reset(el.selModelo, "Elige el modelo");
     reset(el.selVersion, "Elige la versión");
     el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");

@@ -68,11 +68,17 @@ function cargarDB() {
   var raw = null;
   try {
     raw = localStorage.getItem(tkeyDe(suc));
-    // Migración: lo que había antes de separar por sucursal pasa a la bandeja
-    // que esta estación tenga seleccionada, sin perder nada.
+    // Migración de un solo uso: lo que había antes de separar por sucursal pasa
+    // a la bandeja que esta estación tenga seleccionada, sin perder nada. La
+    // clave antigua se retira DESPUÉS de copiarla; si no, al cambiar de sucursal
+    // el mismo contenido viejo se clonaría en cada bandeja que se visite.
     if (raw == null) {
       var viejo = localStorage.getItem(TKEY);
-      if (viejo != null) { raw = viejo; localStorage.setItem(tkeyDe(suc), viejo); }
+      if (viejo != null) {
+        raw = viejo;
+        localStorage.setItem(tkeyDe(suc), viejo);
+        localStorage.removeItem(TKEY);
+      }
     }
   } catch (e) { /* almacenamiento no disponible */ }
   DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
@@ -144,13 +150,18 @@ function sucursalEstacion() {
   return (sel && sel.value) || "CURIFOR TALCA";
 }
 
-// deja el selector de la agenda mostrando la sucursal recordada por la estación
+// Deja el selector de la agenda mostrando la sucursal recordada y, sobre todo,
+// FIJA esa sucursal en localStorage. Sin fijarla, sucursalEstacion() se limita a
+// devolver lo que diga el selector y el manejador de cambio nunca detectaría un
+// cambio (compararía el valor nuevo contra sí mismo).
 function restaurarSucursal() {
-  var sel = document.getElementById("fComercio");
-  if (!sel) return;
   var g = sucursalEstacion();
-  var existe = Array.prototype.some.call(sel.options, function (o) { return o.value === g; });
-  if (existe) sel.value = g;
+  var sel = document.getElementById("fComercio");
+  if (sel) {
+    var existe = Array.prototype.some.call(sel.options, function (o) { return o.value === g; });
+    if (existe) sel.value = g; else g = sel.value;
+  }
+  try { localStorage.setItem(SUCKEY, g); } catch (e) { /* sin espacio */ }
 }
 
 /* ---- fusión a tres bandas ---- */
@@ -1534,10 +1545,14 @@ function cargarDemo() {
   });
 }
 function borrarTodo() {
-  if (!confirm("Esto borra TODOS los agendamientos y órdenes guardados en este navegador. ¿Continuar?")) return;
+  // Con la bandeja compartida esto ya no es "borrar lo mío": el vaciado viaja a
+  // Supabase y lo ven todas las estaciones de la sucursal. El aviso lo dice.
+  var suc = sucursalEstacion();
+  if (!confirm("Esto borra TODOS los agendamientos y órdenes de " + suc +
+               ", en esta y en las demás estaciones de la sucursal. ¿Continuar?")) return;
   DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
   save();
-  renderCal(); renderSlots(); renderAgendaTable(); renderAll();
+  repintarTodo();
 }
 
 /* ============================================================
@@ -1598,6 +1613,12 @@ function init() {
   // cambiar de sucursal cambia la bandeja compartida que se está viendo
   var selSuc = document.getElementById("fComercio");
   if (selSuc) selSuc.addEventListener("change", alCambiarSucursal);
+
+  // Las herramientas de prueba no van a la vista del equipo: con la bandeja
+  // compartida, "Borrar todos los datos" vacía la sucursal completa. Quedan a
+  // mano entrando con ?demo=1 (los botones siguen enganchados igual).
+  var demoTools = document.querySelector(".demo-tools");
+  if (demoTools && !/[?&]demo=1(&|$)/.test(location.search)) demoTools.style.display = "none";
 
   renderCal(); renderSlots(); renderAgendaTable();
   renderPrefillBanner();

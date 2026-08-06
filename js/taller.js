@@ -121,7 +121,7 @@ function save() { guardarLocal(); agendarSync(); }
 var SUCKEY = "curiforTallerSucursal";     // sucursal de esta estación
 var ESTKEY = "curiforTallerEstacionId";   // id local, para construir uids únicos
 var TALLER_TABLA = "taller_estado";
-var SYNC = { base: null, version: 0, sucursal: null, timer: null, enVuelo: false, pendiente: false, poll: null };
+var SYNC = { base: null, version: 0, sucursal: null, timer: null, enVuelo: false, pendiente: false, poll: null, fallos: 0 };
 
 function estacionId() {
   var v = null;
@@ -272,6 +272,7 @@ function sincronizar() {
     if (!s) return false;                       // sin login: queda todo local
     asegurarUids(DB);
     return tallerGuardarRemoto(s, DB, SYNC.version).then(function (fila) {
+      SYNC.fallos = 0;
       if (fila) {                               // grabado limpio
         SYNC.version = fila.version;
         SYNC.base = JSON.parse(JSON.stringify(DB));
@@ -288,7 +289,7 @@ function sincronizar() {
         return false;
       });
     });
-  }).catch(function () { return false; })
+  }).catch(function () { SYNC.fallos++; return false; })
     .then(function (r) {
       SYNC.enVuelo = false;
       if (SYNC.pendiente) { SYNC.pendiente = false; agendarSync(); }
@@ -303,6 +304,7 @@ function refrescarRemoto() {
   return webSesion().then(function (s) {
     if (!s) return false;
     return tallerFilaRemota(s).then(function (row) {
+      SYNC.fallos = 0;
       if (!row || row.version === SYNC.version) return false;
       DB = fusionar(SYNC.base, DB, row.data || {});
       SYNC.version = row.version;
@@ -312,7 +314,17 @@ function refrescarRemoto() {
       agendarSync();                            // por si mi fusión aportó algo
       return true;
     });
-  }).catch(function () { return false; });
+  }).catch(function () { SYNC.fallos++; return false; });
+}
+
+// Sondeo con freno: si el backend no responde (tabla que aún no existe, RLS,
+// caída), pasar de 15 s a 5 min evita miles de peticiones fallidas por estación
+// al día. Vuelve al ritmo normal en cuanto una respuesta llega bien.
+function _programarSondeo() {
+  if (SYNC.poll) clearTimeout(SYNC.poll);
+  SYNC.poll = setTimeout(function () {
+    refrescarRemoto().then(_programarSondeo);
+  }, SYNC.fallos >= 3 ? 300000 : 15000);
 }
 
 function iniciarSincronizacion() {
@@ -334,8 +346,7 @@ function iniciarSincronizacion() {
     });
   }).catch(function () { /* sin red: se reintenta en el próximo guardado */ });
 
-  if (SYNC.poll) clearInterval(SYNC.poll);
-  SYNC.poll = setInterval(refrescarRemoto, 15000);
+  _programarSondeo();
 }
 
 // El selector de sucursal de la agenda manda: cambia la bandeja que se ve.

@@ -23,13 +23,40 @@ normPat = lambda s: re.sub(r"[^A-Z0-9]", "", (s or "").upper())
 normRut = lambda s: re.sub(r"[^0-9K]", "", (s or "").upper())
 cap = lambda s: " ".join(w.capitalize() for w in (s or "").split())
 
+def _reparar_encabezados(fieldnames):
+    """
+    El export viene con un desajuste de codificación: el CUERPO del archivo es
+    cp1252 (así vienen "Curicó", "CAMPAÑAS", etc.), pero la fila de ENCABEZADOS
+    llegó en UTF-8. Al abrir todo el archivo como cp1252 (necesario para el
+    cuerpo), un encabezado como "Año" —2 bytes UTF-8 para la ñ— se parte en dos
+    caracteres sueltos ("AÃ±o", 4 caracteres) y r.get("Año") nunca calza: el
+    campo queda vacío en el 100% de las filas sin que nada avise el error.
+
+    Se repara re-codificando cada encabezado con el codec equivocado (cp1252,
+    el que se usó para decodificarlo) y decodificándolo de nuevo con el
+    correcto (utf-8): si el resultado difiere, es que estaba mal decodificado.
+    Un encabezado normal sin tildes queda idéntico (round-trip nulo), así que
+    esto no afecta a los otros 31 encabezados aunque no se sepa cuál viene mal.
+    """
+    reparados = []
+    for nombre in fieldnames:
+        try:
+            candidato = nombre.encode("cp1252").decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            candidato = nombre
+        reparados.append(candidato)
+    return reparados
+
+
 def leer_filas(path):
-    # el archivo es cp1252, delimitador ';', y la 1ª línea viene vacía
+    # el cuerpo del archivo es cp1252, delimitador ';', y la 1ª línea viene vacía
     with open(path, "r", encoding="cp1252", errors="replace", newline="") as f:
         primera = f.readline()
         if primera.strip():          # por si algún export no trae la línea vacía
             f.seek(0)
-        yield from csv.DictReader(f, delimiter=";")
+        reader = csv.DictReader(f, delimiter=";")
+        reader.fieldnames = _reparar_encabezados(reader.fieldnames)
+        yield from reader
 
 def fecha_key(r):
     return (r.get("FechaAgendamiento") or "") + (r.get("Fecha Ingresa") or "")
@@ -46,7 +73,7 @@ for r in leer_filas(CSV):
     fono = (r.get("Fono") or "").strip()
     mail = (r.get("Mail") or "").strip()
     modelo = (r.get("Modelo") or "").strip()
-    anio = (r.get("Año") or r.get("A\xf1o") or "").strip()
+    anio = (r.get("Año") or "").strip()
     km = (r.get("Km") or "").strip()
     vin = (r.get("Vin") or "").strip()
     tipo = (r.get("Tipo cliente") or "").strip()

@@ -103,6 +103,11 @@ h2.vtitle { margin: 2px 0 4px; color: var(--navy); font-size: 20px; }
 .ag-cal td.on { background: var(--navy); color: #fff; font-weight: 700; }
 .ag-cal td .dot { position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: var(--verde); }
 .ag-cal td.on .dot { background: #fff; }
+/* Segundo punto: ese día tiene una solicitud de cliente sin confirmar */
+.ag-cal td .dot-web { background: #d98324; left: calc(50% + 6px); }
+.ag-cal td .dot ~ .dot-web { left: calc(50% + 6px); }
+.ag-cal td .dot-web:only-of-type { left: 50%; }
+.ag-cal td.on .dot-web { background: #ffcf8a; }
 
 .ag-fecha-sel { font-size: 13px; color: var(--ink-2); margin: 0 0 10px; }
 .ag-fecha-sel b { color: var(--navy); text-transform: capitalize; }
@@ -114,6 +119,16 @@ h2.vtitle { margin: 2px 0 4px; color: var(--navy); font-size: 20px; }
 .ag-slot { padding: 8px; text-align: center; border: 1px solid var(--linea); border-radius: 6px; cursor: pointer; background: #fff; font-weight: 600; color: var(--ink); }
 .ag-slot.busy { background: var(--bg); color: #b9c0cc; cursor: not-allowed; border-style: dashed; font-weight: 400; }
 .ag-slot.free:hover { background: var(--tint); border-color: var(--navy); color: var(--navy); }
+/* Hora que pidió un cliente por la web y aún nadie confirma */
+.ag-slot.web {
+  background: #fff6e8; border-color: #e0a961; border-style: dashed;
+  color: #8a5a12; position: relative;
+}
+.ag-slot.web::after {
+  content: "cliente"; display: block; font-size: 9.5px; font-weight: 700;
+  letter-spacing: .4px; text-transform: uppercase; opacity: .85;
+}
+.ag-slot.web:hover { background: #ffeccd; border-style: solid; }
 
 table.ag-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 16px; background: var(--blanco); border-radius: var(--radio-sm); overflow: hidden; box-shadow: var(--sombra-sm); }
 table.ag-table th { background: var(--navy); color: #fff; padding: 9px 10px; text-align: left; font-weight: 600; font-size: 12px; }
@@ -125,6 +140,13 @@ table.ag-table tr:nth-child(even) td { background: var(--tint-2); }
 .ag-pill.por { background: var(--ambar-bg); color: var(--ambar); }
 .ag-pill.en  { background: var(--verde-bg); color: var(--verde); }
 .ag-pill.ent { background: var(--tint); color: var(--navy); }
+.ag-pill.web { background: #fff6e8; color: #8a5a12; border: 1px solid #e8c48d; }
+/* Fila de una solicitud del cliente todavía sin confirmar */
+.fila-web > td { background: #fffaf2; }
+.fila-web > td:first-child {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .5px; color: #b8641a;
+}
 
 .ag-stabs { display: flex; gap: 8px; margin: 14px 0; flex-wrap: wrap; }
 .ag-stabs button { border: 1px solid var(--linea); background: #fff; padding: 9px 18px; border-radius: 7px; cursor: pointer; font-family: var(--font); font-weight: 600; color: var(--ink-2); }

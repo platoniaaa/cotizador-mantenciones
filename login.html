@@ -20,7 +20,10 @@
     .card{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--radio);
       box-shadow:0 12px 30px rgba(0,27,108,.08);width:100%;max-width:420px;padding:30px 30px 34px}
     .brand{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:6px}
-    .brand img{height:30px}
+    /* width:auto es imprescindible: el <img> trae width="704" en el marcado y,
+       sin esto, el navegador respeta ese ancho con 30px de alto y aplasta el
+       logo. Mismo criterio que .brand__logo en estilos.css. */
+    .brand img{height:30px;width:auto;display:block}
     .brand span{font-size:12.5px;font-weight:700;letter-spacing:.4px;color:var(--ink-2);text-transform:uppercase}
     h1{font-size:20px;font-weight:800;color:var(--navy);text-align:center;margin:14px 0 4px}
     .sub{font-size:13.5px;color:var(--ink-2);text-align:center;margin:0 0 20px}

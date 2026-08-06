@@ -106,14 +106,19 @@
         if (!v) { estado("Sin registro previo de esa patente — complétalo a mano.", false); return; }
         if (vacio("agVin")) set("agVin", v.vin);
         matchVehiculo(v.modelo);
+        // El año no se puede aplicar todavía (recién se sabrá la lista de años
+        // válidos cuando el asesor elija la versión): queda como pista para que
+        // onVersionModal la use una sola vez, en taller.js.
+        if (v.anio && window.MSEL) window.MSEL.anioConocido = v.anio;
+        var conAnio = v.anio ? " (" + v.anio + ")" : "";
         if (v.rut) {
           return api("clientes?rut=eq." + encodeURIComponent(v.rut) + "&select=nombre,cel,fono,mail,rut&limit=1")
             .then(function (cs) {
               rellenarCliente(cs[0] || { rut: v.rut });
-              estado("Datos cargados de " + (v.modelo || "vehículo") + (cs[0] ? " · " + cs[0].nombre : ""), true);
+              estado("Datos cargados de " + (v.modelo || "vehículo") + conAnio + (cs[0] ? " · " + cs[0].nombre : ""), true);
             });
         }
-        estado("Vehículo cargado (" + (v.modelo || "") + "). Sin cliente asociado.", true);
+        estado("Vehículo cargado (" + (v.modelo || "") + conAnio + "). Sin cliente asociado.", true);
       });
   }
 

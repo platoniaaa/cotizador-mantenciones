@@ -481,6 +481,7 @@ function renderCal() {
   var dias = new Date(calY, calM + 1, 0).getDate();
   var dow = (primero.getDay() + 6) % 7; // lunes = 0
   var marcadas = fechasConAgenda();
+  var conSolicitud = fechasConSolicitud();
   var hoyStr = hoyISO();
   var html = "<tr><th>Lu</th><th>Ma</th><th>Mi</th><th>Ju</th><th>Vi</th><th>Sa</th><th>Do</th></tr><tr>";
   var celda = 0;
@@ -490,7 +491,10 @@ function renderCal() {
     var cls = [];
     if (iso === selFecha) cls.push("on");
     if (iso === hoyStr) cls.push("hoy");
-    html += '<td class="' + cls.join(" ") + '" data-f="' + iso + '">' + d + (marcadas[iso] ? '<span class="dot"></span>' : "") + "</td>";
+    html += '<td class="' + cls.join(" ") + '" data-f="' + iso + '">' + d +
+      (marcadas[iso] ? '<span class="dot"></span>' : "") +
+      (conSolicitud[iso] ? '<span class="dot dot-web" title="Hay una solicitud de cliente sin confirmar"></span>' : "") +
+      "</td>";
     celda++;
     if (celda % 7 === 0 && d < dias) html += "</tr><tr>";
   }
@@ -510,17 +514,45 @@ function horasOcupadas() {
   DB.agendamientos.forEach(function (a) { if (a.fecha === selFecha && a.estado !== "anulado") s[a.hora] = 1; });
   return s;
 }
+
+/* ---- solicitudes del cliente (autoagendas) ----
+   Las horas que pidió un cliente por la web se muestran EN la agenda, no
+   escondidas tras un botón: si nadie abre ese modal, la solicitud queda
+   invisible y el cliente sin respuesta. Devuelve los índices en WEBRES para
+   poder confirmarlas con webPasar(). */
+function webPendientes(fecha) {
+  var out = [];
+  (WEBRES || []).forEach(function (r, i) {
+    var gestionada = (r.estado && r.estado !== "nueva") || !!DB.webImp[r.id];
+    if (!gestionada && (!fecha || r.fecha === fecha)) out.push({ i: i, r: r });
+  });
+  return out;
+}
+function fechasConSolicitud() {
+  var s = {};
+  webPendientes(null).forEach(function (p) { s[p.r.fecha] = 1; });
+  return s;
+}
 function renderSlots() {
   document.getElementById("fechaSelTxt").textContent = fmtFechaLarga(selFecha);
   var ocup = horasOcupadas();
+  // hora pedida por un cliente y todavía sin confirmar
+  var pedidas = {};
+  webPendientes(selFecha).forEach(function (p) { if (p.r.hora) pedidas[p.r.hora] = p.i; });
   function fill(cont, arr) {
     cont.innerHTML = "";
     arr.forEach(function (h) {
       var busy = !!ocup[h];
+      var pedida = !busy && pedidas[h] !== undefined;
       var d = document.createElement("div");
-      d.className = "ag-slot " + (busy ? "busy" : "free");
+      d.className = "ag-slot " + (busy ? "busy" : pedida ? "web" : "free");
       d.textContent = h;
-      if (!busy) d.onclick = function () { agAbrirModal(h); };
+      if (pedida) {
+        d.title = "Solicitud de un cliente por la web — clic para confirmarla";
+        d.onclick = function () { webPasar(pedidas[h]); };
+      } else if (!busy) {
+        d.onclick = function () { agAbrirModal(h); };
+      }
       cont.appendChild(d);
     });
   }
@@ -531,11 +563,30 @@ function renderAgendaTable() {
   var t = document.getElementById("tblAgenda");
   var lista = DB.agendamientos.filter(function (a) { return a.fecha === selFecha; })
     .sort(function (a, b) { return a.hora < b.hora ? -1 : 1; });
-  if (!lista.length) {
+
+  // Las solicitudes que hizo el cliente por la web van arriba, marcadas y con
+  // su botón para confirmarlas. Es lo que el call center tiene que atender.
+  var solicitudes = webPendientes(selFecha).sort(function (x, y) {
+    return (x.r.hora || "") < (y.r.hora || "") ? -1 : 1;
+  });
+  var filasWeb = solicitudes.map(function (p) {
+    var r = p.r;
+    var auto = [r.marca, r.modelo].filter(Boolean).join(" ") || "—";
+    var hora = r.hora === "indiferente" || !r.hora ? "por definir" : r.hora;
+    return '<tr class="fila-web">' +
+      '<td>web</td><td>' + esc(hora) + "</td><td>" + esc(r.nombre || "—") + "</td><td>" + esc(auto) +
+      "</td><td>" + esc(r.patente || "—") + "</td><td>" +
+      (r.rev_n ? "Mantención " + esc(String(r.rev_n)) : "Por definir") + "</td>" +
+      '<td><span class="ag-pill web">Solicitud del cliente</span></td>' +
+      '<td><button class="agbtn agbtn-blue agbtn-sm" onclick="webPasar(' + p.i + ')">Confirmar</button></td>' +
+      "</tr>";
+  }).join("");
+
+  if (!lista.length && !filasWeb) {
     t.innerHTML = '<tr><td colspan="8" style="color:var(--ink-3);padding:16px">Sin agendamientos para esta fecha.</td></tr>';
     return;
   }
-  t.innerHTML = lista.map(function (a) {
+  t.innerHTML = filasWeb + lista.map(function (a) {
     var est = a.estado === "agendado" ? '<span class="ag-pill por">Agendado</span>'
       : a.estado === "en_taller" ? '<span class="ag-pill en">En taller</span>'
       : '<span class="ag-pill ent">Entregado</span>';
@@ -557,7 +608,10 @@ function agAnular(oc) {
 }
 
 /* ---------------- modal agendar (selects encadenados) ---------------- */
-var MSEL = { marca: null, modelo: null, versionId: null, pauta: null };
+// anioConocido: pista de año que deja el autocompletado por patente
+// (autocompletar.js) cuando el vehículo ya tiene un año registrado. Se aplica
+// una sola vez, apenas la versión elegida tenga ese año entre sus opciones.
+var MSEL = { marca: null, modelo: null, versionId: null, pauta: null, anioConocido: null };
 
 function llenarMarcasModal() {
   var sel = document.getElementById("agMarca");
@@ -573,7 +627,7 @@ function llenarAsesores() {
 function onMarcaModal() {
   var id = document.getElementById("agMarca").value;
   MSEL.marca = INDICE ? INDICE.marcas.find(function (m) { return m.id === id; }) : null;
-  MSEL.modelo = null; MSEL.versionId = null; MSEL.pauta = null;
+  MSEL.modelo = null; MSEL.versionId = null; MSEL.pauta = null; MSEL.anioConocido = null;
   var selMod = document.getElementById("agModeloSel");
   var selVer = document.getElementById("agVersionSel");
   selVer.innerHTML = '<option value="">Elige la versión</option>'; selVer.disabled = true;
@@ -607,6 +661,13 @@ function onVersionModal() {
     if (p && p.anios && p.anios.length) {
       selA.innerHTML = '<option value="">Elige el año</option>' + p.anios.map(function (a) { return "<option>" + a + "</option>"; }).join("");
       selA.disabled = false;
+      // año que trajo el autocompletado por patente: se aplica una sola vez,
+      // solo si esta versión realmente tiene ese año entre sus opciones.
+      if (MSEL.anioConocido != null) {
+        var candidato = String(MSEL.anioConocido);
+        if (p.anios.some(function (a) { return String(a) === candidato; })) selA.value = candidato;
+        MSEL.anioConocido = null;
+      }
     } else {
       selA.innerHTML = '<option value="">—</option>';
       selA.disabled = true;
@@ -780,8 +841,13 @@ function renderPrefillBanner() {
   var b = document.getElementById("prefillBanner");
   if (!PREFILL) { b.hidden = true; return; }
   b.hidden = false;
-  var auto = "<b>" + PREFILL.marcaNombre + " " + PREFILL.modelo + " · " + PREFILL.version + "</b> — Rev. " +
-    PREFILL.revN + (PREFILL.km ? " · " + etiquetaKm(PREFILL.km) : "");
+  // Los campos opcionales se omiten en vez de imprimirse: una reserva sin
+  // versión o sin revisión mostraba "undefined" en pantalla.
+  var partes = [PREFILL.marcaNombre, PREFILL.modelo].filter(Boolean).join(" ");
+  if (PREFILL.version) partes += " · " + PREFILL.version;
+  var auto = "<b>" + esc(partes || "Vehículo por confirmar") + "</b>" +
+    (PREFILL.revN != null && PREFILL.revN !== "" ? " — Rev. " + esc(String(PREFILL.revN)) : "") +
+    (PREFILL.km ? " · " + etiquetaKm(PREFILL.km) : "");
   var descartar = '<button class="agbtn agbtn-ghost agbtn-sm" onclick="descartarPrefill()">Descartar</button>';
   var w = PREFILL.web;
   if (w) {
@@ -1052,15 +1118,21 @@ function webPasar(i) {
   // Marca la reserva como 'agendada' EN SUPABASE (server-side): así cualquier
   // otra estación la ve tomada y no la duplica. Si falla la red, el flujo local
   // sigue igual (no bloquea al asesor).
+  // Se marca como tomada de inmediato para que salga al tiro de la lista de
+  // pendientes; si se esperara la respuesta del servidor, la solicitud seguiría
+  // apareciendo como sin atender aunque el asesor ya la agarró.
+  DB.webImp[r.id] = 1;
+  save();
   var _ses = webSesGuardada();
   webActualizarEstado(r.id, "agendada", { asesor: (_ses && _ses.email) || null })
-    .then(function () { r.estado = "agendada"; DB.webImp[r.id] = 1; save(); })
-    .catch(function () { /* offline: queda solo la marca local */ DB.webImp[r.id] = 1; save(); });
+    .then(function () { r.estado = "agendada"; })
+    .catch(function () { /* offline: queda la marca local */ });
   var p = r.fecha.split("-");
   calY = +p[0]; calM = +p[1] - 1; selFecha = r.fecha;
   webCerrarLista();
   agGoTab("agenda");
   renderPrefillBanner();
+  renderCal(); renderSlots(); renderAgendaTable();
 }
 
 function webBadge() {
@@ -1835,7 +1907,12 @@ function init() {
     btnW.addEventListener("click", webAbrir);
     webSesion().then(function (s) {
       if (!s) return;
-      return webFetchReservas(s).then(function (rows) { WEBRES = rows || []; webBadge(); });
+      return webFetchReservas(s).then(function (rows) {
+        WEBRES = rows || [];
+        webBadge();
+        // ya llegaron: que aparezcan en el calendario, las horas y la tabla
+        renderCal(); renderSlots(); renderAgendaTable();
+      });
     }).catch(function () { /* sin red o sin permiso: el botón sigue operativo */ });
   }
 

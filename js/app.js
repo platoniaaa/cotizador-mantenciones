@@ -343,7 +343,13 @@
     if (p.categoria) chips.push(`<span class="chip">Uso ${p.categoria.toLowerCase()}</span>`);
     if (p.vigencia && p.vigencia !== "Activo") chips.push(`<span class="chip chip--warn">${p.vigencia}</span>`);
     else if (p.vigencia === "Activo") chips.push(`<span class="chip">Modelo vigente</span>`);
-    if (p.tarifaMO) chips.push(`<span class="chip">Mano de obra ${money(p.tarifaMO)}/hora</span>`);
+    // Con IVA, igual que el precio grande de la revisión. Este chip no lleva
+    // ninguna etiqueta que diga "neto", así que mostrarlo sin IVA se lee como
+    // el valor final y no lo es. El neto queda a mano en el tooltip.
+    if (p.tarifaMO) {
+      chips.push(`<span class="chip" title="${money(p.tarifaMO)} neto, sin IVA">` +
+                 `Mano de obra ${money(conIva(p.tarifaMO))}/hora con IVA</span>`);
+    }
     el.vehiculoMeta.innerHTML = chips.join("");
     el.vehiculoMeta.hidden = chips.length === 0;
   }

@@ -2377,7 +2377,9 @@ function agCancelarRecepcion() {
   agRecSel = null;
   document.getElementById("recForm").hidden = true;
   document.getElementById("recVacia").hidden = false;
-  agGoTab("agenda");
+  // mismo motivo que arriba: en el módulo Recepción no hay pestañas a las que
+  // volver, así que se queda en su propia pantalla
+  if (window.__moduloVista !== "recepcion") agGoTab("agenda");
 }
 function agIngresarTaller() {
   if (!agRecSel) return;
@@ -2455,7 +2457,10 @@ function _agIngresarTallerCon(a, tipo, dur, ro) {
     (getRepuestos(o).length ? "\n• Kit de repuestos publicado en Bodega (pre-picking)" : "") +
     "\n(Integración con el ERP: pendiente)");
   renderAll();
-  agGoTab("jpcb");
+  // En el módulo Recepción las pestañas están ocultas: saltar al JPCB dejaba al
+  // asesor mirando un tablero sin forma de volver. Ahí se queda listo para
+  // recibir el auto siguiente, que es lo que va a hacer.
+  if (window.__moduloVista !== "recepcion") agGoTab("jpcb");
 }
 
 /* ============================================================

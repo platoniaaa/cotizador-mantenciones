@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es-CL" data-auth="require">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plataforma de Postventa · Curifor</title>
+  <link rel="icon" href="img/curifor-logo.png">
+  <script src="js/agenda-config.js?v=45cac4e"></script>
+  <script src="js/auth.js?v=45cac4e"></script>
+  <link rel="stylesheet" href="css/estilos.css?v=45cac4e">
+  <link rel="stylesheet" href="css/inicio.css?v=45cac4e">
+</head>
+<body class="inicio">
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <img class="brand__logo" src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
+        <span class="brand__sep"></span>
+        <span class="brand__sub">Postventa</span>
+        <span class="brand__badge">Uso interno</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="inicio__main">
+    <h1 class="inicio__titulo">Plataforma de Postventa</h1>
+    <p class="inicio__lead">Elige el módulo con el que vas a trabajar.</p>
+
+    <div class="apps">
+      <a class="app app--cotizador" href="index.html">
+        <span class="app__icono" aria-hidden="true">🧮</span>
+        <span class="app__nombre">Cotizador</span>
+        <span class="app__desc">Precios de mantención por marca, modelo y kilometraje</span>
+      </a>
+
+      <a class="app app--agenda" href="taller.html?vista=agenda">
+        <span class="app__icono" aria-hidden="true">🗓️</span>
+        <span class="app__nombre">Agenda</span>
+        <span class="app__desc">Agendar horas y revisar las solicitudes de los clientes</span>
+      </a>
+
+      <a class="app app--recepcion" href="taller.html?vista=recepcion">
+        <span class="app__icono" aria-hidden="true">📋</span>
+        <span class="app__nombre">Recepción</span>
+        <span class="app__desc">Recibir el vehículo: accesorios, fotos y firmas</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <span>Curifor S.A. · Plataforma de Postventa</span>
+      <span id="footFecha" class="foot__fecha"></span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("footFecha").textContent =
+      new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
+  </script>
+</body>
+</html>

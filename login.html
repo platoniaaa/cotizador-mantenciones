@@ -90,9 +90,9 @@
   (function () {
     var A = window.CURIFOR_AUTH;
     var params = new URLSearchParams(location.search);
-    var next = params.get("next") || "index.html";
+    var next = params.get("next") || "inicio.html";
     // evita bucles: nunca volver al propio login
-    if (/login\.html/i.test(next)) next = "index.html";
+    if (/login\.html/i.test(next)) next = "inicio.html";
 
     // si ya hay sesión válida, entra directo
     if (A && A.cfgOk()) {

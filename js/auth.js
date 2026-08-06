@@ -20,7 +20,14 @@
 
   var CFG = window.CURIFOR_AGENDA || {};
   var SESKEY = "curiforTallerWebSes_v1";   // misma clave que usa taller.js
-  var DOMINIO = "@curifor.com";
+  // Dominios del personal. El segundo es el dominio por defecto del tenant de
+  // Microsoft de Curifor: hay gente cuya cuenta quedó ahí y sin esto no podía
+  // ni registrarse. Ambos son de Curifor; nadie externo obtiene una dirección.
+  // La barrera REAL es la misma lista en la base (es_personal_curifor(), ver
+  // herramientas/setup_supabase_dominios.sql). Esto es solo para avisar antes
+  // de mandar el formulario; si se cambia acá, hay que cambiarlo allá.
+  var DOMINIOS = ["@curifor.com", "@curifor.onmicrosoft.com"];
+  var DOMINIO = DOMINIOS[0];   // el que se muestra en los mensajes
   var embebido = window.top !== window.self;   // dentro de un iframe
 
   function cfgOk() { return !!(CFG.url && CFG.anonKey); }
@@ -89,7 +96,8 @@
   }
 
   function dominioOk(email) {
-    return String(email || "").trim().toLowerCase().slice(-DOMINIO.length) === DOMINIO;
+    var e = String(email || "").trim().toLowerCase();
+    return DOMINIOS.some(function (d) { return e.slice(-d.length) === d; });
   }
 
   function onReady(fn) {
@@ -132,7 +140,7 @@
 
   window.CURIFOR_AUTH = {
     login: login, registrar: registrar, sesion: sesion, logout: logout,
-    dominioOk: dominioOk, dominio: DOMINIO, cfgOk: cfgOk, guard: guard,
+    dominioOk: dominioOk, dominio: DOMINIO, dominios: DOMINIOS, cfgOk: cfgOk, guard: guard,
     pintarUsuario: pintarUsuario
   };
 

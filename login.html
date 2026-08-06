@@ -80,7 +80,7 @@
       <input id="crNombre" type="text" autocomplete="name" placeholder="Tu nombre">
       <label>Correo Curifor</label>
       <input id="crEmail" type="email" autocomplete="email" placeholder="nombre@curifor.com">
-      <p class="hint">Debe ser tu correo <b>@curifor.com</b>. Te llegará un enlace para confirmar la cuenta.</p>
+      <p class="hint">Debe ser tu correo <b>@curifor.com</b>. La cuenta queda lista al instante, sin correo de confirmación.</p>
       <label>Contraseña</label>
       <input id="crPass" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
       <button class="btn" id="btnCrear" type="submit">Crear cuenta</button>
@@ -89,8 +89,8 @@
     <p class="pie">¿Problemas para entrar? Escribe a <a href="mailto:icalderon@curifor.com">icalderon@curifor.com</a></p>
   </main>
 
-  <script src="js/agenda-config.js?v=e27d53e"></script>
-  <script src="js/auth.js?v=e27d53e"></script>
+  <script src="js/agenda-config.js?v=0a34ed8"></script>
+  <script src="js/auth.js?v=0a34ed8"></script>
   <script>
   (function () {
     var A = window.CURIFOR_AUTH;
@@ -138,7 +138,11 @@
         location.replace(next);
       }).catch(function (err) {
         var m = (err && (err.error_description || err.msg || err.message)) || "";
-        if (/confirm/i.test(m)) showMsg("Tu cuenta aún no está confirmada. Revisa el correo que te enviamos.", "err");
+        // La confirmación por correo está apagada, pero el mensaje se conserva
+        // por si alguien la reactiva: sin esto, una cuenta sin confirmar se
+        // reportaría como "clave incorrecta" y se buscaría el problema donde no
+        // está.
+        if (/confirm/i.test(m)) showMsg("Tu cuenta está sin confirmar. Avisa a Sistemas.", "err");
         else showMsg("Correo o contraseña incorrectos.", "err");
         btn.disabled = false; btn.textContent = "Entrar";
       });
@@ -155,12 +159,18 @@
       if (pass.length < 8) return showMsg("La contraseña debe tener al menos 8 caracteres.", "err");
       var btn = document.getElementById("btnCrear");
       btn.disabled = true; btn.textContent = "Creando…";
+      // La confirmación por correo está apagada en Supabase: la cuenta queda
+      // usable de inmediato, así que se entra directo en vez de mandar a la
+      // persona a revisar un correo que no va a llegar.
       A.registrar(nombre, email, pass).then(function () {
-        formC.reset();
-        showMsg("¡Cuenta creada! Te enviamos un correo a " + email +
-                " para confirmarla. Ábrelo y luego entra con tu clave.", "ok");
-        btn.disabled = false; btn.textContent = "Crear cuenta";
-        verTab(true);
+        return A.login(email, pass)
+          .then(function () { location.replace(next); })
+          .catch(function () {
+            formC.reset();
+            showMsg("¡Cuenta creada! Ya puedes entrar con tu correo y tu clave.", "ok");
+            btn.disabled = false; btn.textContent = "Crear cuenta";
+            verTab(true);
+          });
       }).catch(function (err) {
         var m = (err && (err.error_description || err.msg || err.message || err.error)) || "";
         if (/registered|already/i.test(m)) showMsg("Ese correo ya tiene una cuenta. Usa 'Entrar'.", "err");

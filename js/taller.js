@@ -1630,7 +1630,16 @@ function _agDesdeReserva(r, oc) {
     acc: r.acc || null, obs: r.obs || null,
     recibidoEn: r.recibido_en || null, recibidoPor: r.recibido_por || null,
     creadoEn: r.creado_en || null, creadoPor: r.asesor || null,
-    estado: r.estado === "en_taller" ? "en_taller" : "agendado"
+    // El ciclo del servidor traducido al de la agenda. Sin esta tabla, todo lo
+    // que no fuera 'en_taller' caía en "agendado": una cita ya ENTREGADA de otra
+    // sucursal se veía como pendiente y con botón de anular.
+    //
+    // 'recibida' queda a propósito como "agendado": significa que se abrió el
+    // acta, pero la orden de trabajo todavía no existe. Si se marcara "en
+    // taller", la sucursal dueña perdería el botón "Ingresar" y no podría
+    // terminar de recibir el vehículo.
+    estado: ({ en_taller: "en_taller", cerrada: "entregado",
+               cancelada: "anulado", rechazada: "anulado" })[r.estado] || "agendado"
   };
 }
 

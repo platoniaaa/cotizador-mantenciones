@@ -20,8 +20,18 @@ var TIPOS = {
   ext:  { cls: "ext",  color: "#ddeafc", label: "Extensión de tiempo" }
 };
 var START = 8 * 60 + 40, END = 18 * 60, STEP = 10, COLW = 42;
-var TECNICOS = ["Cristian García", "Esteban Martínez", "Eugenio Pacheco", "Felipe Córdova", "Héctor Andrade", "José Acevedo", "Lavador Linderos"];
-var ASESORES = ["Matías Figueroa", "Eduardo Ortiz"];
+/* ---------------- personal de la sucursal ----------------
+   Técnicos y asesores salen de la tabla `personal` de Supabase (nómina de
+   RRHH), NO de una lista escrita acá: el repositorio es público y son datos
+   personales de terceros. Además así las altas y bajas no necesitan un deploy.
+
+   Se cargan al entrar y se filtran por la sucursal que opera la estación: la
+   grilla del planificador con los 49 técnicos del país sería ilegible.
+   Sin sesión o sin red quedan vacíos y la vista lo dice, en vez de inventar
+   nombres.                                                                   */
+var PERSONAL = [];        // [{rut, nombre, corto, rol, sucursal}]
+var TECNICOS = [];        // los de la sucursal actual, en orden alfabético
+var ASESORES = [];
 var ETAPAS = [
   { id: "citas_hoy", t: "Citas de hoy" }, { id: "esp_serv", t: "En espera por servicio" },
   { id: "proximo", t: "Próximo trabajo" }, { id: "bajo_serv", t: "Bajo servicio" },
@@ -445,6 +455,7 @@ function alCambiarSucursal() {
   guardarLocal();                               // cierro la bandeja anterior
   try { localStorage.setItem(SUCKEY, sel.value); } catch (e) { }
   cargarDB();                                   // abro la de la sucursal nueva
+  refrescarPersonalSucursal();                  // sus técnicos y sus asesores
   repintarTodo();
   iniciarSincronizacion();
 }
@@ -1060,8 +1071,63 @@ function llenarMarcasModal() {
     marcas.map(function (m) { return '<option value="' + m.id + '">' + m.nombre + "</option>"; }).join("");
 }
 function llenarAsesores() {
-  document.getElementById("agAsesor").innerHTML = '<option value="">— Seleccione —</option>' +
-    ASESORES.map(function (a) { return "<option>" + a + "</option>"; }).join("");
+  var sel = document.getElementById("agAsesor");
+  if (!sel) return;
+  // Se muestra y se guarda el nombre corto: la nómina viene como
+  // "APELLIDO APELLIDO NOMBRE NOMBRE", que no es como se le llama a nadie y
+  // termina impreso en el acta y en las tarjetas del JPCB.
+  sel.innerHTML = '<option value="">— Seleccione —</option>' +
+    ASESORES.map(function (a) {
+      return '<option value="' + esc(a.corto) + '" title="' + esc(a.nombre) + '">' + esc(a.corto) + "</option>";
+    }).join("");
+  // Si la sesión es de un asesor de esta sucursal, queda preseleccionado: es
+  // quien está operando la estación.
+  var yo = quienSoy();
+  if (yo) {
+    var mio = ASESORES.find(function (a) { return (a.email || "").toLowerCase() === yo.toLowerCase(); });
+    if (mio) sel.value = mio.corto;
+  }
+}
+
+/* ---- carga de la nómina ---- */
+function cargarPersonal() {
+  if (!webCfgOk()) return Promise.resolve(false);
+  return webSesion().then(function (s) {
+    if (!s) return false;
+    return fetch(AGW.url + "/rest/v1/personal?activo=eq.true&select=rut,nombre,nombre_corto,rol,sucursal,email",
+                 { headers: { apikey: AGW.anonKey, Authorization: "Bearer " + s.access } })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (rows) {
+        PERSONAL = (rows || []).map(function (p) {
+          return { rut: p.rut, nombre: p.nombre, corto: p.nombre_corto || p.nombre,
+                   rol: p.rol, sucursal: p.sucursal, email: p.email };
+        });
+        refrescarPersonalSucursal();
+        return true;
+      });
+  }).catch(function () { return false; });
+}
+
+// Reparte la nómina en las listas de la sucursal que esta estación tiene abierta.
+function refrescarPersonalSucursal() {
+  var suc = sucursalEstacion();
+  var deAca = PERSONAL.filter(function (p) { return !suc || p.sucursal === suc; });
+  var porNombre = function (a, b) { return a.corto.localeCompare(b.corto, "es"); };
+  TECNICOS = deAca.filter(function (p) { return p.rol === "tecnico"; }).sort(porNombre);
+  ASESORES = deAca.filter(function (p) { return p.rol === "asesor"; }).sort(porNombre);
+  llenarAsesores();
+}
+
+// Nombre de un técnico a partir de lo que guarda la orden. Acepta el RUT (lo
+// que se guarda hoy) y también un índice numérico, que es como se guardaba
+// cuando la lista era fija: sin esto, las órdenes viejas mostrarían al técnico
+// equivocado al cambiar de sucursal.
+function nombreTecnico(ref) {
+  if (ref == null || ref === "") return null;
+  var p = PERSONAL.find(function (x) { return x.rut === ref; });
+  if (p) return p.corto;
+  if (typeof ref === "number" && TECNICOS[ref]) return TECNICOS[ref].corto;
+  return String(ref);
 }
 function onMarcaModal() {
   var id = document.getElementById("agMarca").value;
@@ -1659,6 +1725,7 @@ function webLogin() {
       webCerrarLogin(); webCargarLista();
       // recién ahora hay sesión: engancha la bandeja compartida de la sucursal
       iniciarSincronizacion();
+      cargarPersonal().then(function (ok) { if (ok) renderPlan(); });
     })
     .catch(function (e) {
       err.textContent = "No se pudo conectar: " +
@@ -2471,20 +2538,35 @@ function renderPlan() {
     Object.keys(TIPOS).map(function (k) { var t = TIPOS[k]; return '<div class="it"><span class="sw" style="background:' + t.color + '"></span>' + t.label + "</div>"; }).join("");
   var act = ordersActivas();
   var bl = document.getElementById("backlogDrop");
-  var pend = act.filter(function (o) { return o.tec === null && o.etapa !== null; });
+  var pend = act.filter(function (o) { return !o.tec && o.etapa !== null; });
   bl.innerHTML = pend.map(function (o) { return cardHTML(o); }).join("") ||
     '<p style="color:var(--ink-3);font-size:12px;margin:4px">Sin órdenes por asignar.</p>';
   var g = document.getElementById("grid");
+  if (!TECNICOS.length) {
+    // Mejor decirlo que mostrar una grilla vacía sin explicación.
+    g.innerHTML = '<tbody><tr><td style="padding:16px;color:var(--ink-3)">' +
+      (sucursalEstacion()
+        ? "No hay técnicos cargados para <b>" + esc(sucCorta(sucursalEstacion())) + "</b>."
+        : "Elige tu sucursal en Agendamiento para ver a sus técnicos.") +
+      "</td></tr></tbody>";
+    return;
+  }
   var gh = '<thead><tr><th class="corner"></th>';
   for (var m = START; m < END; m += STEP) gh += '<th class="time">' + hhmm(m) + "</th>";
   gh += "</tr></thead><tbody>";
-  TECNICOS.forEach(function (t, ti) {
-    gh += '<tr><th class="tech">' + t + "</th>";
-    for (var mm = START; mm < END; mm += STEP) gh += '<td class="slot" data-tec="' + ti + '" data-min="' + mm + '"></td>';
+  // data-tec lleva el RUT, no la posición en la lista: la lista cambia con la
+  // sucursal y con cada alta o baja, así que un índice apuntaría a otra persona.
+  TECNICOS.forEach(function (t) {
+    gh += '<tr><th class="tech" title="' + esc(t.nombre) + '">' + esc(t.corto) + "</th>";
+    for (var mm = START; mm < END; mm += STEP) {
+      gh += '<td class="slot" data-tec="' + esc(t.rut) + '" data-min="' + mm + '"></td>';
+    }
     gh += "</tr>";
   });
   g.innerHTML = gh + "</tbody>";
-  act.filter(function (o) { return o.tec !== null && o.ini; }).forEach(function (o) {
+  act.filter(function (o) { return o.tec && o.ini; }).forEach(function (o) {
+    // si el técnico no es de esta sucursal, su fila no existe y la tarjeta
+    // simplemente no se dibuja acá (querySelector devuelve null)
     var cell = g.querySelector('td[data-tec="' + o.tec + '"][data-min="' + parseHM(o.ini) + '"]');
     if (!cell) return;
     var span = Math.max(o.dur / STEP, 1), d = document.createElement("div");
@@ -2503,7 +2585,7 @@ function renderPlan() {
     e.preventDefault();
     var o = byRo(e.dataTransfer.getData("ro"));
     if (o) {
-      if (o.tec !== null) anotar(o, "Técnico", "sin asignar");
+      if (o.tec) anotar(o, "Técnico", "sin asignar");
       o.tec = null; o.ini = null; save(); renderAll();
     }
   });
@@ -2514,9 +2596,9 @@ function renderPlan() {
       e.preventDefault(); td.classList.remove("over");
       var o = byRo(e.dataTransfer.getData("ro"));
       if (o) {
-        o.tec = +td.dataset.tec; o.ini = hhmm(+td.dataset.min);
+        o.tec = td.dataset.tec; o.ini = hhmm(+td.dataset.min);
         if (!o.etapa) o.etapa = "citas_hoy";
-        anotar(o, "Técnico", (TECNICOS[o.tec] || "?") + " · " + o.ini);
+        anotar(o, "Técnico", (nombreTecnico(o.tec) || "?") + " · " + o.ini);
         save(); renderAll();
       }
     });
@@ -2639,7 +2721,7 @@ function detalle(ro) {
     '<div><span class="lbl">VIN:</span> ' + (o.vin || "—") + ' &nbsp; <span class="lbl">Km:</span> ' + (o.km ? o.km.toLocaleString("es-CL") : "—") + "</div>" +
     '<div><span class="lbl">Servicio:</span> ' + servicioDesc(o) + " (" + TIPOS[o.tipo].label + ", " + o.dur + " min)</div>" +
     (val != null ? '<div><span class="lbl">Valor referencial:</span> ' + money(val) + " neto s/IVA</div>" : "") +
-    '<div><span class="lbl">Asesor:</span> ' + (o.asesor || "—") + ' &nbsp; <span class="lbl">Técnico:</span> ' + (o.tec !== null ? TECNICOS[o.tec] : "(sin asignar)") + "</div>" +
+    '<div><span class="lbl">Asesor:</span> ' + esc(o.asesor || "—") + ' &nbsp; <span class="lbl">Técnico:</span> ' + esc(nombreTecnico(o.tec) || "(sin asignar)") + "</div>" +
     '<div><span class="lbl">Cita:</span> ' + (o.rec || "—") + ' &nbsp; <span class="lbl">Inicio en taller:</span> ' + (o.ini || "—") + "</div>" +
     '<div><span class="lbl">Etapa JPCB:</span> ' + etTxt + ' &nbsp; <span class="lbl">Detención:</span> ' + (o.stop ? STOPS.find(function (s) { return s.id === o.stop; }).t : "Ninguna") + "</div>" +
     '<div><span class="lbl">Pre-picking:</span> ' + (o.picking === "listo" ? "Preparado" : "Pendiente") + "</div>" +
@@ -2742,7 +2824,8 @@ function cargarDemo() {
         pautaId: s.pautaId, anio: s.anio, km: itv ? itv.km : null, revN: itv ? itv.n : null,
         valorRef: itv ? valorItv(itv) : null,
         vin: null, cli: s.cli + " (demo)", rut: "11.111.111-1", fono: "9 0000 0000", email: "demo@curifor.cl",
-        asesor: ASESORES[i % ASESORES.length], estado: s.modo === "agenda" ? "agendado" : "en_taller"
+        asesor: ASESORES.length ? ASESORES[i % ASESORES.length].corto : "Asesor de prueba",
+        estado: s.modo === "agenda" ? "agendado" : "en_taller"
       };
       base.creadoEn = ahoraISO(); base.creadoPor = quienSoy();
       if (s.modo === "orden") {
@@ -2762,7 +2845,10 @@ function cargarDemo() {
           anio: s.anio, km: base.km, revN: base.revN, pautaId: s.pautaId, valorRef: base.valorRef,
           vin: "—", color: "—", cliente: base.cli, asesor: base.asesor,
           tipo: "mant", dur: (itv && horasAMin(itv.horas)) || 60, rec: s.hora, del: "—",
-          tec: s.tec != null ? s.tec : null, ini: s.ini || null,
+          // el técnico de demostración sale de los reales de la sucursal
+          tec: (s.tec != null && TECNICOS[s.tec % Math.max(TECNICOS.length, 1)])
+                 ? TECNICOS[s.tec % TECNICOS.length].rut : null,
+          ini: s.ini || null,
           etapa: s.etapa, stop: s.stop || null, prep: s.prep || "rec", picking: "pendiente",
           kmReal: base.kmReal, comb: base.comb, acc: base.acc, obs: null,
           recibidoEn: base.recibidoEn, recibidoPor: base.recibidoPor
@@ -2886,6 +2972,9 @@ function init() {
   // catálogo + stock del cotizador
   var pIdx = fetch("data/indice.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
   var pStk = fetch("data/stock.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  // nómina de la sucursal (técnicos del planificador y asesores del modal)
+  cargarPersonal().then(function (ok) { if (ok) renderPlan(); });
+
   Promise.all([pIdx, pStk]).then(function (res) {
     INDICE = res[0]; STOCK = res[1];
     llenarMarcasModal();

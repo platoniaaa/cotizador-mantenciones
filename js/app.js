@@ -199,7 +199,7 @@
     state.anioRegistro = null;
     state.anioFueraDeCatalogo = false;
     reset(el.selVersion, "Elige la versión");
-    el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");
+    reset(el.selAnio, "Elige el modelo primero");
     el.vehiculoMeta.hidden = true;
     if (!state.marca) { reset(el.selModelo, "Elige el modelo"); actualizarBoton(); return; }
     const modelos = [...state.marca.modelos].sort((a, b) => a.nombre.localeCompare(b.nombre, "es", { numeric: true }));
@@ -214,7 +214,7 @@
     state.modelo = modelos[el.selModelo.value] || null;
     state.version = state.pauta = null;
     state.anio = null;
-    el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");
+    reset(el.selAnio, "Elige el modelo primero");
     el.vehiculoMeta.hidden = true;
     if (!state.modelo) { reset(el.selVersion, "Elige la versión"); actualizarBoton(); return; }
 
@@ -223,7 +223,6 @@
     // elegía una versión para descubrir después que su pauta cubría otros años.
     const anios = aniosDelModelo(state.modelo);
     if (anios.length) {
-      el.fieldAnio.hidden = false;
       el.selAnio.innerHTML = '<option value="">Elige el año</option>' +
         anios.map((a) => `<option value="${a}">${a}</option>`).join("");
       el.selAnio.disabled = false;
@@ -232,10 +231,22 @@
       marcarPendiente(el.selAnio, true);
       aplicarAnioDelRegistro();     // si la patente ya dijo el año, queda puesto
     } else {
-      // modelos cuya vigencia va por versión y no por año: como siempre
+      // Modelos cuya vigencia va por versión y no por año. El campo se queda a
+      // la vista pero deshabilitado, DICIENDO por qué: si desapareciera, la
+      // pantalla saltaría y parecería que el año se pide a veces sí y a veces
+      // no, sin motivo visible.
+      reset(el.selAnio, "No aplica a este modelo");
       llenarVersiones(null);
     }
     actualizarBoton();
+  }
+
+  // ¿El catálogo de este modelo distingue años? Antes esto se preguntaba
+  // mirando si el campo Año estaba oculto; ahora el campo siempre se muestra
+  // (para que se vea que va antes de la versión), así que hay que preguntarlo
+  // a los datos.
+  function modeloUsaAnios() {
+    return !!(state.modelo && aniosDelModelo(state.modelo).length);
   }
 
   // Años que cubre un modelo, del más nuevo al más viejo.
@@ -298,7 +309,7 @@
   function aplicarAnioDelRegistro() {
     state.anioFueraDeCatalogo = false;
     const a = state.anioRegistro;
-    if (!a || el.fieldAnio.hidden || !state.modelo) return;
+    if (!a || !modeloUsaAnios()) return;
     const anios = aniosDelModelo(state.modelo);
     if (anios.some((x) => String(x) === String(a))) {
       el.selAnio.value = String(a);
@@ -497,7 +508,7 @@
       }
     }
     marcarPendiente(el.selVersion, !state.version);
-    marcarPendiente(el.selAnio, !el.fieldAnio.hidden && !state.anio);
+    marcarPendiente(el.selAnio, modeloUsaAnios() && !state.anio);
   }
 
   // traduce la respuesta del registro al catálogo y deja el selector puesto
@@ -528,7 +539,7 @@
     const disponibles = [...el.selVersion.options].filter((o) => o.value !== "").length;
     if (state.version) {
       partes.push("Vehículo completo, ya puedes ver el plan.");
-    } else if (!el.fieldAnio.hidden && !state.anio) {
+    } else if (modeloUsaAnios() && !state.anio) {
       partes.push("Elige el <b>año</b> para ver las versiones que corresponden.");
     } else {
       partes.push(`Falta la versión: elige entre las <b>${disponibles || r.candidatas.length}</b> de este año (el registro no la informa).`);
@@ -952,7 +963,7 @@
     state.anioFueraDeCatalogo = false;
     reset(el.selModelo, "Elige el modelo");
     reset(el.selVersion, "Elige la versión");
-    el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");
+    reset(el.selAnio, "Elige el modelo primero");
     el.selMarca.value = "";
     el.inpPatente.value = "";
     el.patenteEstado.hidden = true;

@@ -108,7 +108,13 @@
         matchVehiculo(v.modelo);
         // Se guarda DESPUÉS de matchVehiculo, porque ese llama a onMarcaModal()
         // y ahí se limpia. taller.js lo usa al elegir la versión.
-        if (v.anio && window.MSEL) window.MSEL.anioVehiculo = v.anio;
+        if (v.anio && window.MSEL) {
+          window.MSEL.anioVehiculo = v.anio;
+          // …y se pinta de inmediato. Guardarlo solo en memoria no basta: el
+          // campo "Año" se llenaba recién al elegir la versión y hasta entonces
+          // se veía vacío, aunque el dato ya estuviera cargado.
+          if (typeof window.pintarAnioVehiculo === "function") window.pintarAnioVehiculo();
+        }
         var conAnio = v.anio ? " (" + v.anio + ")" : "";
         if (v.rut) {
           return api("clientes?rut=eq." + encodeURIComponent(v.rut) + "&select=nombre,cel,fono,mail,rut&limit=1")

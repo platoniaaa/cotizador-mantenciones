@@ -1024,9 +1024,28 @@ function onVersionModal() {
     llenarMantModal();
   });
 }
-function resetAnioMant() {
+// Muestra el año del vehículo apenas se conoce, sin esperar a que se elija la
+// versión. El autocompletado por patente ya lo dejaba en MSEL.anioVehiculo,
+// pero el campo solo se pintaba dentro de onVersionModal: el dato estaba
+// cargado y el asesor veía el casillero vacío igual. Eso es lo que se reportaba
+// como "no se rellena el año".
+// Va deshabilitado a propósito: sin pauta cargada no hay variantes que elegir,
+// y el valor igual viaja al agendamiento (agGuardar lee este select).
+function pintarAnioVehiculo() {
   var selA = document.getElementById("agAnioSel");
-  selA.innerHTML = '<option value="">—</option>'; selA.disabled = true;
+  if (!selA) return;
+  if (MSEL.pauta) return;          // con pauta manda onVersionModal, que sí tiene variantes
+  var a = MSEL.anioVehiculo;
+  if (a != null && String(a) !== "") {
+    selA.innerHTML = "<option>" + esc(String(a)) + "</option>";
+  } else {
+    selA.innerHTML = '<option value="">—</option>';
+  }
+  selA.disabled = true;
+}
+
+function resetAnioMant() {
+  pintarAnioVehiculo();
   var selM = document.getElementById("agMantSel");
   selM.innerHTML = '<option value="">—</option>'; selM.disabled = true;
   document.getElementById("agValorRef").hidden = true;

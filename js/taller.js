@@ -54,16 +54,289 @@ function fmtFechaCorta(iso) {
   return d.toLocaleDateString("es-CL", { day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
-/* ---------------- estado persistente ---------------- */
+/* ---------------- estado persistente ----------------
+   El estado vive en localStorage (rápido y sirve sin red) y, si la estación
+   tiene sesión del personal, se sincroniza con la bandeja compartida de su
+   sucursal en Supabase. Ver el bloque "estado compartido" más abajo.
+   La copia local se guarda por sucursal: cada bandeja es independiente.      */
 var DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
+
+function tkeyDe(suc) { return TKEY + "::" + (suc || ""); }
+
 function cargarDB() {
+  var suc = sucursalEstacion();
+  var raw = null;
   try {
-    var raw = localStorage.getItem(TKEY);
+    raw = localStorage.getItem(tkeyDe(suc));
+    // Migración: lo que había antes de separar por sucursal pasa a la bandeja
+    // que esta estación tenga seleccionada, sin perder nada.
+    if (raw == null) {
+      var viejo = localStorage.getItem(TKEY);
+      if (viejo != null) { raw = viejo; localStorage.setItem(tkeyDe(suc), viejo); }
+    }
+  } catch (e) { /* almacenamiento no disponible */ }
+  DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
+  try {
     if (raw) { var d = JSON.parse(raw); if (d && d.agendamientos && d.orders) DB = d; }
   } catch (e) { /* estado corrupto: se parte de cero */ }
   if (!DB.webImp) DB.webImp = {};   // ids de reservas web ya pasadas a la agenda
+  asegurarUids(DB);
 }
-function save() { try { localStorage.setItem(TKEY, JSON.stringify(DB)); } catch (e) { /* sin espacio */ } }
+
+function guardarLocal() {
+  asegurarUids(DB);   // nada se persiste ni se sube sin identidad propia
+  try { localStorage.setItem(tkeyDe(sucursalEstacion()), JSON.stringify(DB)); }
+  catch (e) { /* sin espacio */ }
+}
+function save() { guardarLocal(); agendarSync(); }
+
+/* ============================================================
+   ESTADO COMPARTIDO ENTRE ESTACIONES  (tabla taller_estado)
+   ------------------------------------------------------------
+   Una bandeja por sucursal. El documento completo viaja a Supabase y vuelve,
+   de modo que dos estaciones de la misma sucursal ven la misma agenda, el
+   mismo JPCB y la misma bodega.
+
+   Choques: el guardado usa bloqueo optimista (`where version = N`). Si otra
+   estación grabó primero, la respuesta viene vacía → se relee y se fusiona a
+   TRES BANDAS: `base` (lo último que vi del servidor), lo mío y lo del
+   servidor. Solo pisa lo que YO cambié desde la base; lo que no toqué queda
+   como lo dejó la otra estación. Sin base (primera vez) la fusión une todo,
+   que es justo lo que hace falta para subir lo que ya había en el navegador.
+
+   Sin sesión del personal o sin red, todo esto se salta y el taller funciona
+   igual que antes, contra localStorage.
+
+   OJO (pendiente de la fase 2): ocSeq/roSeq siguen siendo contadores por
+   estación, así que dos estaciones pueden generar el mismo número de OC/RO.
+   Al fusionar se detecta y se renumera lo mío para no perder trabajo, pero la
+   solución de fondo es mover los correlativos a secuencias de Postgres.
+   ============================================================ */
+var SUCKEY = "curiforTallerSucursal";     // sucursal de esta estación
+var ESTKEY = "curiforTallerEstacionId";   // id local, para construir uids únicos
+var TALLER_TABLA = "taller_estado";
+var SYNC = { base: null, version: 0, sucursal: null, timer: null, enVuelo: false, pendiente: false, poll: null };
+
+function estacionId() {
+  var v = null;
+  try { v = localStorage.getItem(ESTKEY); } catch (e) { }
+  if (!v) {
+    v = "est" + Math.random().toString(36).slice(2, 8);
+    try { localStorage.setItem(ESTKEY, v); } catch (e) { }
+  }
+  return v;
+}
+
+// Identidad estable por entidad, independiente del correlativo (que puede
+// repetirse entre estaciones). Se asigna antes de guardar o de subir nada.
+function asegurarUids(db, prefijo) {
+  if (!db) return;
+  var p = prefijo || estacionId();
+  (db.agendamientos || []).forEach(function (a) { if (a && !a.uid) a.uid = p + "-a" + a.oc; });
+  (db.orders || []).forEach(function (o) { if (o && !o.uid) o.uid = p + "-o" + o.ro; });
+}
+
+function sucursalEstacion() {
+  var g = null;
+  try { g = localStorage.getItem(SUCKEY); } catch (e) { }
+  if (g) return g;
+  var sel = document.getElementById("fComercio");
+  return (sel && sel.value) || "CURIFOR TALCA";
+}
+
+// deja el selector de la agenda mostrando la sucursal recordada por la estación
+function restaurarSucursal() {
+  var sel = document.getElementById("fComercio");
+  if (!sel) return;
+  var g = sucursalEstacion();
+  var existe = Array.prototype.some.call(sel.options, function (o) { return o.value === g; });
+  if (existe) sel.value = g;
+}
+
+/* ---- fusión a tres bandas ---- */
+function _porClave(arr, clave) {
+  var m = {};
+  (arr || []).forEach(function (x) { if (x && x[clave] != null) m[String(x[clave])] = x; });
+  return m;
+}
+function _fusionarLista(base, mio, suyo, clave) {
+  var B = _porClave(base, clave), M = _porClave(mio, clave), S = _porClave(suyo, clave);
+  var out = {}, k;
+  for (k in S) out[k] = S[k];                       // punto de partida: el servidor
+  for (k in B) if (!(k in M)) delete out[k];        // lo borré yo desde la base
+  for (k in M) {                                     // lo creé o lo edité yo
+    if (!(k in B) || JSON.stringify(B[k]) !== JSON.stringify(M[k])) out[k] = M[k];
+  }
+  return Object.keys(out).map(function (k2) { return out[k2]; });
+}
+
+// Si un número de OC/RO mío ya lo usa OTRA entidad en el servidor, renumero lo
+// mío: sin esto, la fusión por identidad dejaría dos vehículos distintos con el
+// mismo número a la vista. Devuelve cuántos se movieron.
+function reconciliarCorrelativos(mio, suyo) {
+  var ocServidor = {}, roServidor = {};
+  (suyo.agendamientos || []).forEach(function (a) { if (a && a.oc != null) ocServidor[String(a.oc)] = a.uid; });
+  (suyo.orders || []).forEach(function (o) { if (o && o.ro != null) roServidor[String(o.ro)] = o.uid; });
+
+  var sigOc = Math.max(mio.ocSeq || 0, suyo.ocSeq || 0);
+  var sigRo = Math.max(mio.roSeq || 0, suyo.roSeq || 0);
+  var movidos = 0;
+
+  (mio.agendamientos || []).forEach(function (a) {
+    var duenio = ocServidor[String(a.oc)];
+    if (duenio && duenio !== a.uid) {
+      var anterior = a.oc;
+      a.oc = sigOc++;
+      (mio.orders || []).forEach(function (o) { if (o && o.oc === anterior) o.oc = a.oc; });
+      movidos++;
+    }
+  });
+  (mio.orders || []).forEach(function (o) {
+    var duenio = roServidor[String(o.ro)];
+    if (duenio && duenio !== o.uid) { o.ro = String(sigRo++).padStart(4, "0"); movidos++; }
+  });
+
+  mio.ocSeq = sigOc; mio.roSeq = sigRo;
+  return movidos;
+}
+
+function fusionar(base, mio, suyo) {
+  base = base || {}; suyo = suyo || {};
+  asegurarUids(mio); asegurarUids(suyo, "srv");
+  reconciliarCorrelativos(mio, suyo);
+  return {
+    agendamientos: _fusionarLista(base.agendamientos, mio.agendamientos, suyo.agendamientos, "uid"),
+    orders:        _fusionarLista(base.orders,        mio.orders,        suyo.orders,        "uid"),
+    ocSeq:  Math.max(mio.ocSeq || 0, suyo.ocSeq || 0),
+    roSeq:  Math.max(mio.roSeq || 0, suyo.roSeq || 0),
+    webImp: Object.assign({}, suyo.webImp || {}, mio.webImp || {})
+  };
+}
+
+/* ---- ida y vuelta con Supabase ---- */
+function tallerFilaRemota(s) {
+  var u = AGW.url + "/rest/v1/" + TALLER_TABLA +
+    "?sucursal=eq." + encodeURIComponent(SYNC.sucursal) + "&select=data,version";
+  return fetch(u, { headers: { apikey: AGW.anonKey, Authorization: "Bearer " + s.access } })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (rows) { return (rows && rows[0]) || null; });
+}
+
+// Devuelve la fila grabada, o null si otra estación se adelantó (choque).
+function tallerGuardarRemoto(s, data, version) {
+  var base = AGW.url + "/rest/v1/" + TALLER_TABLA;
+  var h = {
+    apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+    "Content-Type": "application/json", Prefer: "return=representation"
+  };
+  if (!version) {   // la bandeja todavía no existe
+    return fetch(base, {
+      method: "POST", headers: h,
+      body: JSON.stringify({ sucursal: SYNC.sucursal, data: data, version: 1 })
+    }).then(function (r) {
+      if (r.status === 409) return null;                  // la creó otra estación
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (rows) { return (rows && rows[0]) || null; });
+  }
+  return fetch(base + "?sucursal=eq." + encodeURIComponent(SYNC.sucursal) + "&version=eq." + version, {
+    method: "PATCH", headers: h,
+    body: JSON.stringify({ data: data, version: version + 1 })
+  }).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (rows) { return (rows && rows[0]) || null; });
+}
+
+function agendarSync() {
+  if (!webCfgOk()) return;
+  if (SYNC.timer) clearTimeout(SYNC.timer);
+  SYNC.timer = setTimeout(function () { SYNC.timer = null; sincronizar(); }, 1200);
+}
+
+function sincronizar() {
+  if (!webCfgOk()) return Promise.resolve(false);
+  if (SYNC.enVuelo) { SYNC.pendiente = true; return Promise.resolve(false); }
+  SYNC.enVuelo = true;
+  if (!SYNC.sucursal) SYNC.sucursal = sucursalEstacion();
+  return webSesion().then(function (s) {
+    if (!s) return false;                       // sin login: queda todo local
+    asegurarUids(DB);
+    return tallerGuardarRemoto(s, DB, SYNC.version).then(function (fila) {
+      if (fila) {                               // grabado limpio
+        SYNC.version = fila.version;
+        SYNC.base = JSON.parse(JSON.stringify(DB));
+        return true;
+      }
+      return tallerFilaRemota(s).then(function (row) {   // choque: releer y fusionar
+        if (!row) return false;
+        DB = fusionar(SYNC.base, DB, row.data || {});
+        SYNC.version = row.version;
+        SYNC.base = JSON.parse(JSON.stringify(row.data || {}));
+        guardarLocal();
+        repintarTodo();
+        SYNC.pendiente = true;                  // lo mío se sube en la vuelta siguiente
+        return false;
+      });
+    });
+  }).catch(function () { return false; })
+    .then(function (r) {
+      SYNC.enVuelo = false;
+      if (SYNC.pendiente) { SYNC.pendiente = false; agendarSync(); }
+      return r;
+    });
+}
+
+// Trae lo que hayan hecho las otras estaciones (se llama cada poco).
+function refrescarRemoto() {
+  if (!webCfgOk() || SYNC.enVuelo) return Promise.resolve(false);
+  if (!SYNC.sucursal) SYNC.sucursal = sucursalEstacion();
+  return webSesion().then(function (s) {
+    if (!s) return false;
+    return tallerFilaRemota(s).then(function (row) {
+      if (!row || row.version === SYNC.version) return false;
+      DB = fusionar(SYNC.base, DB, row.data || {});
+      SYNC.version = row.version;
+      SYNC.base = JSON.parse(JSON.stringify(row.data || {}));
+      guardarLocal();
+      repintarTodo();
+      agendarSync();                            // por si mi fusión aportó algo
+      return true;
+    });
+  }).catch(function () { return false; });
+}
+
+function iniciarSincronizacion() {
+  if (!webCfgOk()) return;
+  SYNC.sucursal = sucursalEstacion();
+  SYNC.base = null; SYNC.version = 0;
+  webSesion().then(function (s) {
+    if (!s) return;                             // sin sesión: modo local, sin ruido
+    return tallerFilaRemota(s).then(function (row) {
+      if (row) {
+        // base vacía a propósito: la primera fusión UNE lo local con lo compartido
+        DB = fusionar(null, DB, row.data || {});
+        SYNC.version = row.version;
+        SYNC.base = JSON.parse(JSON.stringify(row.data || {}));
+        guardarLocal();
+        repintarTodo();
+      }
+      agendarSync();                            // sube lo que esta estación tenía
+    });
+  }).catch(function () { /* sin red: se reintenta en el próximo guardado */ });
+
+  if (SYNC.poll) clearInterval(SYNC.poll);
+  SYNC.poll = setInterval(refrescarRemoto, 15000);
+}
+
+// El selector de sucursal de la agenda manda: cambia la bandeja que se ve.
+function alCambiarSucursal() {
+  var sel = document.getElementById("fComercio");
+  if (!sel || sel.value === sucursalEstacion()) return;
+  guardarLocal();                               // cierro la bandeja anterior
+  try { localStorage.setItem(SUCKEY, sel.value); } catch (e) { }
+  cargarDB();                                   // abro la de la sucursal nueva
+  repintarTodo();
+  iniciarSincronizacion();
+}
 
 /* ---------------- catálogo del cotizador ---------------- */
 var INDICE = null, STOCK = null, PAUTAS = {};
@@ -643,6 +916,8 @@ function webLogin() {
     .then(function () {
       document.getElementById("webPass").value = "";
       webCerrarLogin(); webCargarLista();
+      // recién ahora hay sesión: engancha la bandeja compartida de la sucursal
+      iniciarSincronizacion();
     })
     .catch(function (e) {
       err.textContent = "No se pudo conectar: " +
@@ -1270,7 +1545,14 @@ function borrarTodo() {
    ============================================================ */
 function renderAll() { renderPrep(); renderPlan(); renderJPCB(); renderBodega(); }
 
+// Redibuja TODO: se usa cuando el estado cambió por fuera de la pantalla
+// (fusión con lo que hizo otra estación, o cambio de sucursal).
+function repintarTodo() {
+  renderCal(); renderSlots(); renderAgendaTable(); renderAll();
+}
+
 function init() {
+  restaurarSucursal();   // el selector manda qué bandeja se abre
   cargarDB();
   cargarPrefill();
   document.getElementById("footFecha").textContent = new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
@@ -1313,9 +1595,16 @@ function init() {
     }).catch(function () { /* sin red o sin permiso: el botón sigue operativo */ });
   }
 
+  // cambiar de sucursal cambia la bandeja compartida que se está viendo
+  var selSuc = document.getElementById("fComercio");
+  if (selSuc) selSuc.addEventListener("change", alCambiarSucursal);
+
   renderCal(); renderSlots(); renderAgendaTable();
   renderPrefillBanner();
   renderAll();
+
+  // estado compartido con las demás estaciones de la sucursal (si hay sesión)
+  iniciarSincronizacion();
 
   // catálogo + stock del cotizador
   var pIdx = fetch("data/indice.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });

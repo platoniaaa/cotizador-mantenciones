@@ -663,6 +663,32 @@ function agAbrirModal(h) {
 }
 function agCerrarModal() { document.getElementById("agOv").classList.remove("open"); }
 
+/* ---------------- correlativos de OC y RO ----------------
+   El número lo entrega la base (una sucursal, un contador, sin repetir), no el
+   navegador. `minimoLocal` empuja el contador la primera vez, para que ninguna
+   sucursal empiece por debajo de lo que su estación ya había usado.
+
+   Si no hay sesión o no hay red devuelve null y el llamador sigue con su
+   contador local: es preferible un número provisorio a no poder agendar. Ese
+   caso lo cubre la fusión, que detecta el choque y renumera. */
+function reservarCorrelativo(tipo, minimoLocal) {
+  if (!webCfgOk()) return Promise.resolve(null);
+  return webSesion().then(function (s) {
+    if (!s) return null;
+    return fetch(AGW.url + "/rest/v1/rpc/siguiente_correlativo", {
+      method: "POST",
+      headers: {
+        apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        p_sucursal: sucursalEstacion(), p_tipo: tipo, p_minimo: minimoLocal || 0
+      })
+    }).then(function (r) { return r.ok ? r.json() : null; });
+  }).then(function (n) { return typeof n === "number" ? n : null; })
+    .catch(function () { return null; });
+}
+
 function agGuardar() {
   var esMant = document.getElementById("agServicio").value.indexOf("MANTEN") >= 0;
   var pat = document.getElementById("agPatente").value.trim().toUpperCase();
@@ -678,9 +704,10 @@ function agGuardar() {
     var itv = (plan && plan.intervalos || []).find(function (x) { return String(x.n) === String(revN); });
     if (itv) { km = itv.km || null; valorRef = valorItv(itv); }
   }
+  // Se leen los campos ANTES de pedir el número: entre la petición y la
+  // respuesta el formulario sigue en pantalla y podría cambiar.
   var verSel = document.getElementById("agVersionSel");
-  var a = {
-    oc: DB.ocSeq++,
+  var datos = {
     fecha: selFecha,
     hora: document.getElementById("agOv").dataset.hora,
     sucursal: document.getElementById("fComercio").value,
@@ -702,6 +729,14 @@ function agGuardar() {
     webId: (PREFILL && PREFILL.web && PREFILL.web.id) || null,
     estado: "agendado"
   };
+  reservarCorrelativo("oc", DB.ocSeq).then(function (numero) {
+    datos.oc = numero != null ? numero : DB.ocSeq;
+    DB.ocSeq = numero != null ? Math.max(DB.ocSeq, numero + 1) : DB.ocSeq + 1;
+    _agGuardarCon(datos);
+  });
+}
+
+function _agGuardarCon(a) {
   DB.agendamientos.push(a);
   if (PREFILL && PREFILL.web && PREFILL.web.id) DB.webImp[PREFILL.web.id] = 1;
   // Agendamiento interno (no vino de solicitud web): persistirlo también en
@@ -1387,8 +1422,16 @@ function agIngresarTaller() {
   }
   var tipo = mapTipo(a.serv);
   var dur = (itv && horasAMin(itv.horas)) || (tipo === "mant" ? 60 : tipo === "rep" ? 90 : 60);
+  reservarCorrelativo("ro", DB.roSeq).then(function (numero) {
+    var ro = numero != null ? numero : DB.roSeq;
+    DB.roSeq = numero != null ? Math.max(DB.roSeq, numero + 1) : DB.roSeq + 1;
+    _agIngresarTallerCon(a, tipo, dur, String(ro).padStart(4, "0"));
+  });
+}
+
+function _agIngresarTallerCon(a, tipo, dur, ro) {
   var o = {
-    ro: String(DB.roSeq++).padStart(4, "0"),
+    ro: ro,
     oc: a.oc,
     fecha: a.fecha,
     pat: a.pat, marca: a.marcaNombre, modelo: a.modeloNombre, version: a.versionNombre,

@@ -57,6 +57,20 @@ PARCHES_JS = [
 ]
 
 
+# --- Cromo que sobra en modo embebido: la app de OTs ya pinta su propio header
+#     Curifor encima del componente y la navegación entre módulos la hace su
+#     menú, así que la topbar, el sub-header y las pestañas del taller quedan
+#     duplicados (además, el logo de la topbar es una ruta relativa que dentro
+#     del componente no resuelve, y su link "← Cotizador" apunta a index.html,
+#     que ahí tampoco existe). Se ocultan por CSS y no borrando los nodos: el JS
+#     del taller escribe en #footFecha y no queremos null-references.
+#     Va solo en el bundle; el sitio estático (taller.html) no se toca.
+CSS_EMBEBIDO = """
+/* --- modo embebido (bundle en la app de OTs) --- */
+.topbar, .foot, .taller-head, .tabs { display: none !important; }
+"""
+
+
 def _aplicar(parches, texto, que):
     for nombre, patron, reemplazo in parches:
         n = texto.count(patron)
@@ -88,8 +102,9 @@ def construir():
     body = m.group(1)
     body = re.sub(r"\s*<script[^>]*>.*?</script>", "", body, flags=re.S)
 
-    # CSS: estilos base + taller
-    css = _leer(BASE / "css" / "estilos.css") + "\n" + _leer(BASE / "css" / "taller.css")
+    # CSS: estilos base + taller + los ajustes propios del modo embebido
+    css = (_leer(BASE / "css" / "estilos.css") + "\n"
+           + _leer(BASE / "css" / "taller.css") + "\n" + CSS_EMBEBIDO)
 
     # JS en orden: config Supabase -> guard(login) -> taller(parcheado) -> autocompletar
     js_config = _leer(BASE / "js" / "agenda-config.js")
@@ -130,6 +145,8 @@ def verificar(bundle):
         sys.exit("ERROR: el JS del taller no quedó adaptado al modo embebido (__tallerInit).")
     if "fetch(\"data/" in pkg["js"]:
         sys.exit("ERROR: quedó un fetch a data/ sin parchear en el JS del taller.")
+    if "modo embebido" not in pkg["css"]:
+        sys.exit("ERROR: al CSS le falta el bloque del modo embebido (cromo duplicado).")
     return pkg
 
 

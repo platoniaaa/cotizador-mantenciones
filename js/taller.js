@@ -1431,6 +1431,16 @@ function aplicarPrefill() {
       mo.versiones.forEach(function (v) { if (v.id === PREFILL.pautaId) found = { m: m, mo: mo, v: v }; });
     });
   });
+  // La patente ya viene escrita desde el cotizador: se pone y se dispara el
+  // autocompletado en modo "solo cliente", para traer nombre, RUT, teléfono,
+  // e-mail y VIN sin tocar la versión, que el cotizador ya eligió con precisión.
+  if (PREFILL.patente) {
+    var inpPat = document.getElementById("agPatente");
+    if (inpPat && !inpPat.value) inpPat.value = PREFILL.patente;
+    if (typeof window.__autoPorPatente === "function") {
+      window.__autoPorPatente(PREFILL.patente, true);
+    }
+  }
   if (!found) return;
   document.getElementById("agServicio").value = "MANTENCIÓN POR KILOMETRAJE";
   document.getElementById("agMarca").value = found.m.id;

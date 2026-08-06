@@ -96,7 +96,11 @@
     }
   }
 
-  function porPatente(patRaw) {
+  // soloCliente: rellena persona y VIN pero NO toca marca/modelo/versión. Se usa
+  // cuando la cita viene del cotizador: ahí ya se eligió la VERSIÓN exacta, y
+  // matchVehiculo() solo sabe deducir el modelo — al llamar a onMarcaModal()
+  // borraría esa versión y con ella la mantención elegida.
+  function porPatente(patRaw, soloCliente) {
     var pat = normPat(patRaw);
     if (pat.length < 5) return;
     estado("Buscando " + pat + "…", true);
@@ -105,10 +109,12 @@
         var v = rows[0];
         if (!v) { estado("Sin registro previo de esa patente — complétalo a mano.", false); return; }
         if (vacio("agVin")) set("agVin", v.vin);
-        matchVehiculo(v.modelo);
+        if (!soloCliente) matchVehiculo(v.modelo);
         // Se guarda DESPUÉS de matchVehiculo, porque ese llama a onMarcaModal()
         // y ahí se limpia. taller.js lo usa al elegir la versión.
         if (v.anio && window.MSEL) {
+          // con soloCliente la pauta ya está cargada y su selector de año lo
+          // maneja taller.js; acá el dato se guarda igual porque viaja a la cita
           window.MSEL.anioVehiculo = v.anio;
           // …y se pinta de inmediato. Guardarlo solo en memoria no basta: el
           // campo "Año" se llenaba recién al elegir la versión y hasta entonces
@@ -150,6 +156,11 @@
       r.addEventListener("blur", function () { porRut(r.value); });
     }
   }
+
+  // taller.js la llama al aplicar un prellenado del cotizador, que ya trae la
+  // patente escrita: así el asesor no tiene que volver a tipearla para que
+  // aparezcan el cliente, el RUT, el teléfono y el VIN.
+  window.__autoPorPatente = porPatente;
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", enganchar);
   else enganchar();

@@ -195,6 +195,8 @@
   function onMarca() {
     state.marca = state.indice.marcas.find((m) => m.id === el.selMarca.value) || null;
     state.modelo = state.version = null;
+    // cambiar la marca a mano descarta lo que dijo el registro de la patente
+    state.anioRegistro = null;
     reset(el.selVersion, "Elige la versión");
     el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");
     el.vehiculoMeta.hidden = true;
@@ -234,10 +236,35 @@
         state.pauta.anios.map((a) => `<option value="${a}">${a}</option>`).join("");
       el.selAnio.disabled = false;
       state.anio = null;
+      // Si la patente ya nos dijo el año del vehículo, se elige solo. Antes esto
+      // solo se intentaba en el momento de la búsqueda, cuando el campo todavía
+      // estaba oculto porque faltaba la versión: al elegirla después, el año
+      // conocido se perdía y el asesor lo veía vacío.
+      aplicarAnioDelRegistro();
     } else {
       state.anio = null;
     }
     actualizarBoton();
+  }
+
+  // Deja puesto el año que trae el registro del vehículo, si la pauta lo cubre.
+  // Si no lo cubre lo dice, en vez de quedarse callado: un Ranger 2018 no tiene
+  // plan porque las pautas de Ranger van de 2021 en adelante, y sin explicación
+  // parece que el sistema perdió el dato.
+  function aplicarAnioDelRegistro() {
+    const a = state.anioRegistro;
+    if (!a || el.fieldAnio.hidden) return;
+    const anios = (state.pauta && state.pauta.anios) || [];
+    if (anios.some((x) => String(x) === String(a))) {
+      el.selAnio.value = String(a);
+      onAnioSelector();
+      marcarPendiente(el.selAnio, false);
+      return;
+    }
+    marcarPendiente(el.selAnio, true);
+    estadoPatente("warn",
+      `El registro dice que el vehículo es <b>${a}</b>, pero la pauta de esta versión solo cubre ` +
+      `<b>${anios.join(", ")}</b>. Elige el año del plan que corresponda, o revisa si es otra versión.`);
   }
 
   function onAnioSelector() {
@@ -411,6 +438,9 @@
     // replica el orden de onMarca/onModelo para que los índices calcen
     el.selMarca.value = r.marca.id;
     onMarca();
+    // DESPUÉS de onMarca, que la limpia: es el año que viene de la base y tiene
+    // que sobrevivir hasta que se elija la versión (ahí recién existe el campo)
+    state.anioRegistro = datos.year || null;
     const modelos = [...r.marca.modelos].sort((a, b) => a.nombre.localeCompare(b.nombre, "es", { numeric: true }));
     el.selModelo.value = String(modelos.indexOf(r.modelo));
     onModelo();
@@ -864,6 +894,7 @@
 
   function reiniciar() {
     state.marca = state.modelo = state.version = state.pauta = state.anio = null;
+    state.anioRegistro = null;
     reset(el.selModelo, "Elige el modelo");
     reset(el.selVersion, "Elige la versión");
     el.fieldAnio.hidden = true; reset(el.selAnio, "Elige el año");
@@ -993,7 +1024,13 @@
       marcaNombre: p.marcaNombre,
       modelo: p.modelo,
       version: p.version,
-      anio: state.anio || null,
+      // el año del plan; si la pauta no distingue años, el del vehículo, que
+      // igual le sirve a la recepción
+      anio: state.anio || state.anioRegistro || null,
+      // La patente que el asesor ya escribió acá. Sin esto, en la agenda tenía
+      // que volver a escribirla y a esperar el autocompletado, que es
+      // exactamente el doble trabajo que este botón viene a evitar.
+      patente: normPat(el.inpPatente.value) || null,
       km: itv.km || null,
       revN: itv.n,
       valor: itv.gratis ? sumaExtras() : ((state.totalCalc || 0) + sumaExtras()) || null,

@@ -218,8 +218,26 @@ table.grid td.slot.over { background: var(--tint); }
 .rec-buscar-row { display: flex; gap: 8px; }
 .rec-buscar-row input { flex: 1; padding: 9px 11px; border: 1px solid var(--ink-3); border-radius: 7px; font-size: 15px; text-transform: uppercase; }
 .rec-buscar-msg { display: block; margin-top: 6px; font-size: 12px; color: var(--ink-2); min-height: 14px; }
+/* ---------- Firmas digitales (canvas propio, sin librerías) ---------- */
 .firmas { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: center; }
-.firma-box { border: 1px solid var(--linea); height: 80px; border-radius: 4px; background: #fff; }
+.firma-col { display: flex; flex-direction: column; gap: 5px; }
+/* touch-action:none es lo que permite firmar con el dedo sin que la página
+   se desplace debajo del trazo. */
+.firma-box {
+  border: 1px solid var(--linea); height: 110px; border-radius: 4px; background: #fff;
+  width: 100%; display: block; touch-action: none; cursor: crosshair;
+}
+.firma-box.firmada { border-color: var(--navy); }
+.firma-pie { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.firma-pie small { color: var(--ink-2); }
+.firma-st { font-size: 11.5px; font-weight: 700; color: #2e7d32; }
+.firma-st.err { color: #c62828; }
+.firma-limpiar {
+  background: none; border: 0; padding: 0; font: inherit; font-size: 11.5px;
+  color: var(--ink-3); text-decoration: underline; cursor: pointer;
+}
+.firma-limpiar:hover { color: var(--navy); }
+@media (max-width: 560px) { .firmas { grid-template-columns: 1fr; gap: 18px; } }
 
 /* ---------- Bodega ---------- */
 .bodega-wrap { display: flex; gap: 14px; flex-wrap: wrap; }

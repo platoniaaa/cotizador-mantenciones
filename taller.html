@@ -131,8 +131,27 @@
         <label><input type="radio" name="comb"> 1/2</label><label><input type="radio" name="comb"> 1/4</label>
         <label><input type="radio" name="comb"> 0</label>
       </div></section>
-      <section class="blk"><h3>Firmas <span class="prox">(próximamente: firma digital)</span></h3><div class="firmas"><div><div class="firma-box"></div><small>Firma cliente</small></div><div><div class="firma-box"></div><small>Firma asesor</small></div></div></section>
-      <div class="flow-note">Al <b>Ingresar a Taller</b> se crea la orden de trabajo (RO) y se publica en el JPCB → Citas de hoy, en Preparación de citas y en Bodega (pre-picking). El registro queda guardado en este navegador; la integración con el ERP está pendiente.</div>
+      <section class="blk"><h3>Firmas <span class="prox">(firma con el dedo o el mouse; se guarda sola)</span></h3>
+        <div class="firmas">
+          <div class="firma-col">
+            <canvas class="firma-box" id="firmaCliente"></canvas>
+            <div class="firma-pie">
+              <small>Firma cliente</small>
+              <span class="firma-st" id="fst-cliente"></span>
+              <button type="button" class="firma-limpiar" onclick="agLimpiarFirma('cliente')">Limpiar</button>
+            </div>
+          </div>
+          <div class="firma-col">
+            <canvas class="firma-box" id="firmaAsesor"></canvas>
+            <div class="firma-pie">
+              <small>Firma asesor</small>
+              <span class="firma-st" id="fst-asesor"></span>
+              <button type="button" class="firma-limpiar" onclick="agLimpiarFirma('asesor')">Limpiar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="flow-note">Al <b>Ingresar a Taller</b> se crea la orden de trabajo (RO) y se publica en el JPCB → Citas de hoy, en Preparación de citas y en Bodega (pre-picking). El registro queda guardado en la bandeja de la sucursal y lo ven las demás estaciones; la integración con el ERP está pendiente.</div>
       <div style="display:flex;gap:12px;justify-content:flex-end;padding:10px 0 30px">
         <button class="agbtn agbtn-grey" onclick="agCancelarRecepcion()">Cancelar</button>
         <button class="agbtn agbtn-green" onclick="agIngresarTaller()">Ingresar a Taller</button>

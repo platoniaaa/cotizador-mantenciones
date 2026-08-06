@@ -1086,6 +1086,8 @@ function agPintarRecepcion() {
   ag.innerHTML = AGACC.map(function (a) { return '<label class="acc"><input type="checkbox"> ' + a + "</label>"; }).join("");
   agRenderFotos();
   agGoTab("recep");
+  // después de agGoTab: el canvas necesita estar visible para medirse
+  agRenderFirmas();
 }
 
 // Recepción AUTÓNOMA por patente: busca en Supabase la reserva agendada + los
@@ -1201,6 +1203,166 @@ function agSubirFoto(input, i) {
     if (slot) slot.classList.add("photo-err");
   });
 }
+/* ============================================================
+   FIRMAS DIGITALES (acta de recepción)
+   ------------------------------------------------------------
+   Canvas propio en vez de una librería: el sitio no carga nada de terceros y
+   son ~60 líneas. Se firma con dedo, lápiz o mouse (pointer events cubren los
+   tres) y se guarda sola al levantar el trazo, igual que las fotos: PNG al
+   bucket privado `recepciones` de Storage, y la ruta se refleja en la reserva.
+
+   No se guarda la imagen dentro de la bandeja de la sucursal a propósito: la
+   bandeja es un solo documento JSON que viaja entero en cada sincronización, y
+   meterle un PNG por firma la haría crecer sin control. Queda la ruta; al
+   reabrir una recepción ya firmada se muestra el estado, no el trazo.
+   ============================================================ */
+var FIRMAS = { cliente: "firmaCliente", asesor: "firmaAsesor" };
+var _firmas = {};
+var _firmasResize = null;
+
+function agRenderFirmas() {
+  Object.keys(FIRMAS).forEach(_prepararFirma);
+}
+
+// Al cambiar el ancho (girar la tablet, abrir el teclado) el canvas queda con
+// una caja distinta a su resolución interna y el trazo se dibujaría corrido.
+function agFirmasAlRedimensionar() {
+  clearTimeout(_firmasResize);
+  _firmasResize = setTimeout(function () {
+    var f = document.getElementById("recForm");
+    if (agRecSel && f && !f.hidden) agRenderFirmas();
+  }, 250);
+}
+
+function _prepararFirma(quien) {
+  var cv = document.getElementById(FIRMAS[quien]);
+  if (!cv) return;
+  var caja = cv.getBoundingClientRect();
+  if (!caja.width) return;                      // aún oculto: se prepara al mostrarse
+  var previo = _firmas[quien];
+  // Cambiar el tamaño del canvas lo deja en blanco. Si había un trazo a medio
+  // hacer (girar la tablet durante la firma) se rescata y se vuelve a pintar
+  // escalado, en vez de perderlo.
+  var rescate = (previo && previo.trazos && cv.width) ? cv.toDataURL("image/png") : null;
+  // El canvas se dimensiona en píxeles reales del dispositivo para que el trazo
+  // no salga pixelado en pantallas HiDPI (tablets, sobre todo).
+  var dpr = window.devicePixelRatio || 1;
+  cv.width = Math.round(caja.width * dpr);
+  cv.height = Math.round(caja.height * dpr);
+  var ctx = cv.getContext("2d");
+  ctx.scale(dpr, dpr);
+  ctx.lineWidth = 2; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#12233f";
+  _firmas[quien] = { cv: cv, ctx: ctx, trazos: (previo && previo.trazos) || 0, timer: null };
+  if (rescate) {
+    var img = new Image();
+    img.onload = function () { ctx.drawImage(img, 0, 0, caja.width, caja.height); };
+    img.src = rescate;
+  }
+
+  var ya = agRecSel && agRecSel.firmas && agRecSel.firmas[quien];
+  cv.classList.toggle("firmada", !!ya);
+  _firmaEstado(quien, ya ? "✓ firmada" : "", false);
+
+  if (cv._enganchada) return;                   // los listeners van una sola vez
+  cv._enganchada = 1;
+  var pintando = false, ultimo = null;
+  var punto = function (e) {
+    var b = cv.getBoundingClientRect();
+    return { x: e.clientX - b.left, y: e.clientY - b.top };
+  };
+  cv.addEventListener("pointerdown", function (e) {
+    e.preventDefault();
+    try { cv.setPointerCapture(e.pointerId); } catch (err) { /* navegador antiguo */ }
+    pintando = true; ultimo = punto(e);
+  });
+  cv.addEventListener("pointermove", function (e) {
+    if (!pintando) return;
+    var f = _firmas[quien], p = punto(e);
+    f.ctx.beginPath(); f.ctx.moveTo(ultimo.x, ultimo.y); f.ctx.lineTo(p.x, p.y); f.ctx.stroke();
+    ultimo = p; f.trazos++;
+  });
+  var soltar = function () {
+    if (!pintando) return;
+    pintando = false;
+    cv.classList.add("firmada");
+    agGuardarFirma(quien);
+  };
+  cv.addEventListener("pointerup", soltar);
+  cv.addEventListener("pointercancel", soltar);
+  cv.addEventListener("pointerleave", soltar);
+}
+
+function _firmaEstado(quien, texto, esError) {
+  var st = document.getElementById("fst-" + quien);
+  if (!st) return;
+  st.textContent = texto;
+  st.classList.toggle("err", !!esError);
+}
+
+// Espera a que el trazo termine de verdad antes de subir (una firma son varios
+// trazos seguidos; sin esto se subiría una versión por cada uno).
+function agGuardarFirma(quien) {
+  var f = _firmas[quien];
+  if (!f || !f.trazos || !agRecSel) return;
+  clearTimeout(f.timer);
+  f.timer = setTimeout(function () { _subirFirma(quien); }, 700);
+}
+
+function _subirFirma(quien) {
+  var f = _firmas[quien];
+  if (!f || !agRecSel) return;
+  var path = agFotoCarpeta() + "/firma-" + quien + ".png";
+  _firmaEstado(quien, "Guardando…", false);
+  f.cv.toBlob(function (blob) {
+    if (!blob) { _firmaEstado(quien, "✕ no se pudo generar", true); return; }
+    webSesion().then(function (s) {
+      if (!s) throw new Error("sin sesión");
+      return fetch(AGW.url + "/storage/v1/object/recepciones/" + encodeURI(path), {
+        method: "POST",
+        headers: {
+          apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+          "Content-Type": "image/png", "x-upsert": "true"
+        },
+        body: blob
+      });
+    }).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      _firmaEstado(quien, "✓ firmada", false);
+      agRecSel.firmas = agRecSel.firmas || {};
+      agRecSel.firmas[quien] = { path: path };
+      save();
+      _reflejarFirmas();
+    }).catch(function () {
+      _firmaEstado(quien, "✕ sin guardar, reintenta", true);
+    });
+  }, "image/png");
+}
+
+function agLimpiarFirma(quien) {
+  var f = _firmas[quien];
+  if (!f) return;
+  clearTimeout(f.timer);
+  var b = f.cv.getBoundingClientRect();
+  f.ctx.clearRect(0, 0, b.width, b.height);
+  f.trazos = 0;
+  f.cv.classList.remove("firmada");
+  _firmaEstado(quien, "", false);
+  if (agRecSel && agRecSel.firmas && agRecSel.firmas[quien]) {
+    delete agRecSel.firmas[quien];
+    save();
+    _reflejarFirmas();
+  }
+}
+
+// Deja las rutas de las firmas en la reserva, para que otra estación (y el
+// futuro acta impresa) sepan que existen y dónde están.
+function _reflejarFirmas() {
+  if (!agRecSel || !agRecSel.webId || typeof webActualizarEstado !== "function") return;
+  var f = {};
+  Object.keys(agRecSel.firmas || {}).forEach(function (k) { f[k] = agRecSel.firmas[k].path; });
+  webActualizarEstado(agRecSel.webId, null, { firmas: f }).catch(function () { });
+}
+
 function agCancelarRecepcion() {
   agRecSel = null;
   document.getElementById("recForm").hidden = true;
@@ -1209,6 +1371,14 @@ function agCancelarRecepcion() {
 }
 function agIngresarTaller() {
   if (!agRecSel) return;
+  // El acta de recepción sin firmas no sirve como respaldo de la entrega. Se
+  // avisa, pero no se bloquea: el taller no puede quedar detenido por esto.
+  var faltan = Object.keys(FIRMAS).filter(function (q) {
+    return !(agRecSel.firmas && agRecSel.firmas[q]);
+  });
+  if (faltan.length && !confirm(
+        "Falta la firma " + (faltan.length === 2 ? "del cliente y del asesor" : "del " + faltan[0]) +
+        ".\nEl acta queda sin ese respaldo. ¿Ingresar igual?")) return;
   var a = agRecSel;
   var itv = null;
   if (a.pautaId && pautaCargada(a.pautaId)) {
@@ -1630,6 +1800,9 @@ function init() {
   // mano entrando con ?demo=1 (los botones siguen enganchados igual).
   var demoTools = document.querySelector(".demo-tools");
   if (demoTools && !/[?&]demo=1(&|$)/.test(location.search)) demoTools.style.display = "none";
+
+  window.addEventListener("resize", agFirmasAlRedimensionar);
+  window.addEventListener("orientationchange", agFirmasAlRedimensionar);
 
   renderCal(); renderSlots(); renderAgendaTable();
   renderPrefillBanner();

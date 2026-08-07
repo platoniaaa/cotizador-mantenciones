@@ -3213,8 +3213,8 @@ function detalle(ro) {
     (val != null ? '<div><span class="lbl">Valor referencial:</span> ' + money(val) + " neto s/IVA</div>" : "") +
     '<div><span class="lbl">Asesor:</span> ' + esc(o.asesor || "—") + ' &nbsp; <span class="lbl">Técnico:</span> ' + esc(nombreTecnico(o.tec) || "(sin asignar)") + "</div>" +
     '<div><span class="lbl">Cita:</span> ' + (o.rec || "—") + ' &nbsp; <span class="lbl">Inicio en taller:</span> ' + (o.ini || "—") + "</div>" +
-    '<div><span class="lbl">Etapa JPCB:</span> ' + etTxt + ' &nbsp; <span class="lbl">Detención:</span> ' + (o.stop ? STOPS.find(function (s) { return s.id === o.stop; }).t : "Ninguna") + "</div>" +
-    '<div><span class="lbl">Pre-picking:</span> ' + (o.picking === "listo" ? "Preparado" : "Pendiente") + "</div>" +
+    '<div><span class="lbl">Etapa:</span> ' + etTxt + ' &nbsp; <span class="lbl">Detención:</span> ' + (o.stop ? STOPS.find(function (s) { return s.id === o.stop; }).t : "Ninguna") + "</div>" +
+    '<div><span class="lbl">Kit en bodega:</span> ' + (o.picking === "listo" ? "Preparado" : "Pendiente") + "</div>" +
     mover +
     acta +
     rep +
@@ -3270,7 +3270,7 @@ function renderReportes() {
     var n = act.filter(function (o) { return o.etapa === e.id; }).length;
     if (n) { etL.push(e.t.replace("En espera por ", "Esp. ").replace("Esperando por ", "Esp. ")); etC.push(n); }
   });
-  html += barChart("Órdenes por etapa JPCB", etL, etC);
+  html += barChart("Órdenes por etapa del taller", etL, etC);
 
   g.innerHTML = html;
 }

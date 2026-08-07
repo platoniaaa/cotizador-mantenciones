@@ -706,3 +706,8 @@ table.grid td.slot.over { background: var(--tint); }
   font-family: var(--font); font-size: 12.5px; background: #fff; color: var(--ink);
 }
 @media (pointer: coarse) { .ot-mover select { min-height: 44px; } }
+
+/* Alias entre paréntesis en los títulos de vista: la jerga interna (JPCB,
+   pre-picking) sigue existiendo para quien ya la usa, pero el nombre que manda
+   es el que se entiende sin explicación. */
+.vtitle__alias { font-size: 14px; font-weight: 600; color: var(--ink-3); }

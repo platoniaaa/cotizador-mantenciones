@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taller y Agendamiento · Curifor</title>
-  <meta name="description" content="Agendamiento de servicio, tablero JPCB, planificador de taller y pre-picking de bodega.">
+  <meta name="description" content="Agendamiento, preparación de repuestos, recepción de vehículos, asignación de técnicos y avance del taller.">
   <!-- guard de acceso interno (redirige a login.html si no hay sesión) -->
-  <script src="js/agenda-config.js?v=229a43e"></script>
-  <script src="js/auth.js?v=229a43e"></script>
-  <link rel="stylesheet" href="css/estilos.css?v=229a43e">
-  <link rel="stylesheet" href="css/taller.css?v=229a43e">
+  <script src="js/agenda-config.js?v=dd90b5b"></script>
+  <script src="js/auth.js?v=dd90b5b"></script>
+  <link rel="stylesheet" href="css/estilos.css?v=dd90b5b">
+  <link rel="stylesheet" href="css/taller.css?v=dd90b5b">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗓</text></svg>">
 </head>
 <body class="taller">
@@ -32,15 +32,21 @@
   <div class="taller-head">
     <div class="taller-head__inner">
       <h1 class="taller-head__title">Sistema de Taller</h1>
-      <p class="taller-head__sub">Agendamiento → Recepción → Planificación → JPCB → Bodega. Modelo Ford (tableros de control visual) + Toyota JPCB.</p>
+      <p class="taller-head__sub">Se agenda la hora, se preparan los repuestos, llega el auto, se asigna al técnico y se sigue su avance hasta la entrega.</p>
+      <!-- El orden cuenta el flujo real: se agenda, se preparan los repuestos
+           ANTES de que llegue el auto, llega, se asigna al técnico y se sigue
+           su avance. Sin numeración: en el módulo Agenda la pestaña Recepción
+           va oculta y la secuencia quedaba 1,3,4,5,6,7, con un hueco que no
+           significa nada. Los data-v NO cambian: los usa agGoTab y el script
+           de módulo. -->
       <div class="tabs">
-        <div class="tab active" data-v="agenda">1 · Agendamiento</div>
-        <div class="tab" data-v="recep">2 · Recepción</div>
-        <div class="tab" data-v="prep">3 · Preparación de citas</div>
-        <div class="tab" data-v="plan">4 · Planificador</div>
-        <div class="tab" data-v="jpcb">5 · JPCB</div>
-        <div class="tab bodegatab" data-v="bodega">6 · Bodega (Pre-picking)</div>
-        <div class="tab" data-v="reportes">7 · Reportes</div>
+        <div class="tab active" data-v="agenda">Agendamiento</div>
+        <div class="tab" data-v="prep">Preparación de repuestos</div>
+        <div class="tab" data-v="recep">Recepción</div>
+        <div class="tab" data-v="plan">Asignación de técnicos</div>
+        <div class="tab" data-v="jpcb">Avance del taller</div>
+        <div class="tab bodegatab" data-v="bodega">Bodega</div>
+        <div class="tab" data-v="reportes">Reportes</div>
       </div>
     </div>
   </div>
@@ -48,7 +54,7 @@
   <!-- ============ 1 · AGENDAMIENTO ============ -->
   <div class="view active" id="v-agenda">
     <h2 class="vtitle">Centro de Agendamiento</h2>
-    <p class="ag-sub">Agenda una hora; el dato fluye a Recepción → Planificación → JPCB → Bodega.</p>
+    <p class="ag-sub">Agenda una hora y el dato sigue solo: prepara los repuestos, la recepción del auto y su avance en el taller.</p>
 
     <div id="prefillBanner" class="prefill-banner" hidden></div>
     <!-- Avisos del flujo (solicitud tomada, cupo que se ocupó, choques). Van
@@ -235,7 +241,7 @@
           </div>
         </div>
       </section>
-      <div class="flow-note">Al <b>Ingresar a Taller</b> se crea la orden de trabajo (RO) y se publica en el JPCB → Citas de hoy, en Preparación de citas y en Bodega (pre-picking). El registro queda guardado en la bandeja de la sucursal y lo ven las demás estaciones; la integración con el ERP está pendiente.</div>
+      <div class="flow-note">Al <b>Ingresar a Taller</b> se crea la orden de trabajo (RO) y aparece en Avance del taller → Citas de hoy y en Bodega. El registro queda guardado en la bandeja de la sucursal y lo ven las demás estaciones; la integración con el ERP está pendiente.</div>
       <div style="display:flex;gap:12px;justify-content:flex-end;padding:10px 0 30px">
         <button class="agbtn agbtn-grey" onclick="agCancelarRecepcion()">Cancelar</button>
         <button class="agbtn agbtn-green" onclick="agIngresarTaller()">Ingresar a Taller</button>
@@ -259,7 +265,7 @@
 
   <!-- ============ 4 · PLANIFICADOR ============ -->
   <div class="view" id="v-plan">
-    <h2 class="vtitle">Planificador / Agenda del taller</h2>
+    <h2 class="vtitle">Asignación de técnicos</h2>
     <p class="sub">Técnico × hora. La ficha se ubica en la hora de inicio; el largo = duración; el color = tipo de trabajo. Arrastra desde “Por asignar” a la grilla.</p>
     <div class="legend" id="legendPlan"></div>
     <div class="agenda-wrap">
@@ -270,7 +276,7 @@
 
   <!-- ============ 5 · JPCB ============ -->
   <div class="view" id="v-jpcb">
-    <h2 class="vtitle">JPCB — Control de progreso del trabajo</h2>
+    <h2 class="vtitle">Avance del taller <span class="vtitle__alias">(JPCB)</span></h2>
     <p class="sub">Flujo normal de izquierda a derecha (Citas de hoy → En espera por pago). Arrastra la orden de columna en columna a medida que avanza.</p>
     <div class="kanban" id="jpcbBoard"></div>
     <div class="stopzone">
@@ -281,7 +287,7 @@
 
   <!-- ============ 6 · BODEGA ============ -->
   <div class="view" id="v-bodega">
-    <h2 class="vtitle" style="color:var(--bodega)">Bodega — Pre-picking de repuestos</h2>
+    <h2 class="vtitle" style="color:var(--bodega)">Bodega — preparación de kits <span class="vtitle__alias">(pre-picking)</span></h2>
     <p class="sub">Lista de recolección por orden, calculada desde la <b>pauta de mantención real</b> (marca/modelo/versión + km) con la <b>disponibilidad de stock</b> del Cotizador. Solo datos del vehículo, sin datos del propietario.</p>
     <div class="legend">
       <div class="it"><span class="badge pend">PENDIENTE</span> por recolectar</div>
@@ -377,8 +383,8 @@
     </div>
   </div>
 
-  <script src="js/taller.js?v=229a43e"></script>
-  <script src="js/autocompletar.js?v=229a43e"></script>
+  <script src="js/taller.js?v=dd90b5b"></script>
+  <script src="js/autocompletar.js?v=dd90b5b"></script>
   <!-- Modo módulo: ?vista=agenda|recepcion.
        · agenda    → todo el taller MENOS Recepción (agendamiento y los tableros).
        · recepcion → solo Recepción, sin pestañas. Acepta &oc=N para abrir de

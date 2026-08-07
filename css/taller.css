@@ -129,6 +129,30 @@ h2.vtitle { margin: 2px 0 4px; color: var(--navy); font-size: 20px; }
   letter-spacing: .4px; text-transform: uppercase; opacity: .85;
 }
 .ag-slot.web:hover { background: #ffeccd; border-style: solid; }
+/* Sin sucursal elegida los cupos no significan nada: son POR sucursal. Se
+   muestran apagados y sin clic, en vez de pintarlos libres y avisar del error
+   recién después de que el asesor eligió una hora. */
+.ag-slot.off { background: var(--bg); color: #c3c9d4; cursor: default; border-style: dotted; font-weight: 400; }
+/* Dos citas a la misma hora. Pasa solo si dos estaciones guardan a la vez sin
+   red; hay que verlo el día antes y no con los dos autos en la puerta. */
+.ag-slot.choque { border: 2px solid #b42318; background: #fdecec; color: #b42318; font-weight: 800; cursor: help; }
+.ag-sin-suc {
+  margin: 0 0 12px; padding: 9px 12px; font-size: 12.5px; line-height: 1.45;
+  background: var(--ambar-bg); color: var(--ambar); border: 1px solid #e8c48d; border-radius: 8px;
+}
+
+/* Avisos del flujo de la agenda. Reemplazan a los alert(), que congelan el
+   sondeo de sincronización y tapan la fila de la que hablan. */
+.ag-aviso {
+  margin: 0 0 12px; padding: 10px 13px; border-radius: 8px;
+  font-size: 13px; line-height: 1.45; border: 1px solid transparent;
+}
+.ag-aviso--info { background: var(--tint); color: var(--navy); border-color: var(--tint-borde); }
+.ag-aviso--ok   { background: var(--verde-bg); color: var(--verde); border-color: rgba(10,125,67,.25); }
+.ag-aviso--warn { background: var(--ambar-bg); color: var(--ambar); border-color: #e8c48d; }
+/* La fila recién creada, en vez del alert de éxito que tapaba la tabla */
+@keyframes filaNueva { from { background: var(--verde-bg); } to { background: transparent; } }
+.fila-nueva > td { animation: filaNueva 4s ease-out; }
 
 table.ag-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 16px; background: var(--blanco); border-radius: var(--radio-sm); overflow: hidden; box-shadow: var(--sombra-sm); }
 table.ag-table th { background: var(--navy); color: #fff; padding: 9px 10px; text-align: left; font-weight: 600; font-size: 12px; }

@@ -437,6 +437,8 @@ function _programarSondeo() {
       // noche amanecería mostrando las citas de ayer como "Hoy". Se cuelga del
       // mismo sondeo, que es lo único que corre siempre.
       .then(function () { if (_prepDia && _prepDia !== hoyISO()) repintarTodo(); })
+      // Solicitudes que alguien tomó y nunca agendó vuelven solas a la cola.
+      .then(function () { return liberarGestionesViejas(); })
       .then(_programarSondeo, _programarSondeo);
   }, SYNC.fallos >= 3 ? 300000 : 15000);
 }
@@ -688,6 +690,24 @@ function agGoTab(v) {
   window.scrollTo(0, 0);
 }
 
+/* Aviso inline de la agenda. Reemplaza a los alert() en el flujo de las
+   solicitudes web: un alert congela el JavaScript —y con él el sondeo de
+   sincronización—, el navegador puede suprimirlo tras el segundo, y tapa
+   justo la fila de la que está hablando. */
+var _avisoTimer = null;
+function avisoAgenda(texto, tipo) {
+  var el = document.getElementById("agAviso");
+  if (!el) return;
+  clearTimeout(_avisoTimer);
+  el.textContent = texto;
+  el.className = "ag-aviso ag-aviso--" + (tipo || "info");
+  el.hidden = false;
+  // los de éxito se van solos; los de advertencia se quedan hasta el siguiente
+  if (tipo === "ok" || tipo === "info") {
+    _avisoTimer = setTimeout(function () { el.hidden = true; }, 6000);
+  }
+}
+
 /* ============================================================
    1 · AGENDAMIENTO — calendario real + slots
    ============================================================ */
@@ -746,6 +766,24 @@ function horasOcupadas() {
   return s;
 }
 
+/* Horas con MÁS DE UNA cita el mismo día en la misma sucursal.
+   La revalidación al guardar ataja casi todo, pero no puede atajar el caso en
+   que dos estaciones guardan al mismo tiempo, offline: ahí la fusión conserva
+   las dos citas porque tienen uid distinto y quedan idénticas a cualquier otra.
+   Detectarlas y marcarlas es la diferencia entre resolverlo por teléfono el día
+   anterior y descubrirlo con los dos autos en la puerta. */
+function horasEnConflicto(fecha) {
+  var cuenta = {}, out = {};
+  DB.agendamientos.forEach(function (a) {
+    if (a.estado === "anulado" || !a.hora) return;
+    if (fecha && a.fecha !== fecha) return;
+    var k = [a.sucursal || "", a.fecha, a.hora].join("|");
+    cuenta[k] = (cuenta[k] || 0) + 1;
+    if (cuenta[k] > 1) out[a.hora] = (out[a.hora] || 1) + 1;
+  });
+  return out;
+}
+
 /* ---- solicitudes del cliente (autoagendas) ----
    Las horas que pidió un cliente por la web se muestran EN la agenda, no
    escondidas tras un botón: si nadie abre ese modal, la solicitud queda
@@ -762,11 +800,16 @@ function webEsDeMiSucursal(r) {
   return !suc || r.sucursal === suc;
 }
 
+/* Pendientes = lo que el SERVIDOR dice que sigue sin atender.
+   Ya no se mira DB.webImp. Esa marca local no se puede revertir de forma
+   confiable: fusionar() hace Object.assign de webImp sin comparar contra la
+   base, así que una marca ya sincronizada resucita en el siguiente choque —
+   una solicitud abandonada quedaba escondida para siempre. El reclamo vive
+   ahora en el servidor ('en_gestion'), que sí se puede soltar. */
 function webPendientes(fecha) {
   var out = [];
   (WEBRES || []).forEach(function (r, i) {
-    var gestionada = (r.estado && r.estado !== "nueva") || !!DB.webImp[r.id];
-    if (!gestionada && (!fecha || r.fecha === fecha)) out.push({ i: i, r: r });
+    if (r && (!r.estado || r.estado === "nueva") && (!fecha || r.fecha === fecha)) out.push({ i: i, r: r });
   });
   return out;
 }
@@ -886,6 +929,19 @@ function renderSlots() {
   var st = document.getElementById("sucSelTxt");
   if (st) st.textContent = sucursalEstacion() ? sucCorta(sucursalEstacion()) : "tu sucursal";
   var ocup = horasOcupadas();
+  var choque = horasEnConflicto(selFecha);
+  // Sin sucursal elegida los cupos no significan nada: son POR sucursal. Antes
+  // se pintaban todos libres y clicables, y el asesor recién se enteraba con un
+  // alert después de haber elegido una hora. Prevenir es mejor que corregir.
+  var suc = sucursalEstacion();
+  var aviso = document.getElementById("agSinSucursal");
+  if (aviso) aviso.hidden = !!suc;
+  // ¿quién ocupa cada hora? para decirlo en el tooltip en vez de solo "ocupado"
+  var quien = {};
+  DB.agendamientos.forEach(function (a) {
+    if (a.fecha !== selFecha || a.estado === "anulado" || !a.hora) return;
+    (quien[a.hora] = quien[a.hora] || []).push((a.pat || "?") + (a.cli ? " · " + a.cli : ""));
+  });
   // hora pedida por un cliente y todavía sin confirmar
   var pedidas = {};
   webPendientes(selFecha).forEach(function (p) { if (p.r.hora) pedidas[p.r.hora] = p.i; });
@@ -895,9 +951,19 @@ function renderSlots() {
       var busy = !!ocup[h];
       var pedida = !busy && pedidas[h] !== undefined;
       var d = document.createElement("div");
-      d.className = "ag-slot " + (busy ? "busy" : pedida ? "web" : "free");
+      d.className = "ag-slot " + (!suc ? "off" : busy ? "busy" : pedida ? "web" : "free") +
+                    (choque[h] ? " choque" : "");
       d.textContent = h;
-      if (pedida) {
+      if (!suc) {
+        d.title = "Elige tu sucursal para ver qué horas están libres";
+      } else if (choque[h]) {
+        d.title = "⚠ " + choque[h] + " citas a la misma hora: " + (quien[h] || []).join(" · ") +
+                  ". Hay que resolverlo con el cliente.";
+      } else if (busy) {
+        d.title = "Ocupado: " + (quien[h] || []).join(" · ");
+      }
+      if (!suc) { /* sin sucursal no se agenda nada */ }
+      else if (pedida) {
         d.title = "Solicitud de un cliente por la web — clic para confirmarla";
         d.onclick = function () { webPasar(pedidas[h]); };
       } else if (!busy) {
@@ -1359,8 +1425,20 @@ function agGuardar() {
 }
 
 function _agGuardarCon(a) {
+  // ÚLTIMO CHEQUEO DEL CUPO, acá y no en agGuardar: entre que el asesor aprieta
+  // Guardar y llega este punto pasan hasta 6 s pidiendo el correlativo, y antes
+  // el modal pudo estar abierto varios minutos. El sondeo corre cada 15 s y
+  // puede haber adoptado una cita de otra estación en esa hora. Sin este
+  // chequeo aparecían dos autos citados a la misma hora y nadie se enteraba
+  // hasta que llegaban los dos.
+  if (a.fecha === selFecha && a.hora && horasOcupadas()[a.hora]) {
+    agCerrarModal();
+    avisoAgenda("Otra estación acaba de tomar las " + a.hora + " del " + fmtFechaCorta(a.fecha) +
+                ". La cita NO se guardó: elige otra hora.", "warn");
+    renderCal(); renderSlots(); renderAgendaTable();
+    return;
+  }
   DB.agendamientos.push(a);
-  if (PREFILL && PREFILL.web && PREFILL.web.id) DB.webImp[PREFILL.web.id] = 1;
   // Agendamiento interno (no vino de solicitud web): TODA cita nace también en
   // reservas_web, que es la única verdad del agendamiento. Antes esto se
   // saltaba si el cliente no dejaba teléfono y esas citas quedaban invisibles
@@ -1386,10 +1464,30 @@ function _agGuardarCon(a) {
     }).catch(function () { /* se reintenta al reconciliar */ });
   }
   save();
+  // La cita ya existe: recién ahora el prellenado se descarta SIN devolver la
+  // solicitud a la cola (eso lo hace descartarPrefill cuando se abandona).
   if (PREFILL) { localStorage.removeItem(PREKEY); PREFILL = null; renderPrefillBanner(); }
   agCerrarModal();
   renderCal(); renderSlots(); renderAgendaTable();
-  alert("Agendamiento " + a.oc + " creado para el " + fmtFechaCorta(a.fecha) + " a las " + a.hora + ".\nUsa el botón “Ingresar” en la tabla de Agendamiento para abrir su recepción.");
+  avisoAgenda("Agendamiento " + a.oc + " creado para el " + fmtFechaCorta(a.fecha) + " a las " + a.hora +
+              ". Cuando llegue el auto, usa “Ingresar” en su fila para abrir la recepción.", "ok");
+  _agResaltarFila(a.oc);
+}
+
+// Resalta un momento la fila recién creada. Reemplaza al alert de éxito, que
+// bloqueaba el hilo y tapaba justo la tabla donde está el botón siguiente.
+function _agResaltarFila(oc) {
+  setTimeout(function () {
+    var t = document.getElementById("tblAgenda");
+    if (!t) return;
+    var fila = Array.prototype.find.call(t.rows, function (tr) {
+      return tr.cells[0] && tr.cells[0].textContent.trim() === String(oc);
+    });
+    if (!fila) return;
+    fila.classList.add("fila-nueva");
+    fila.scrollIntoView({ block: "center", behavior: "smooth" });
+    setTimeout(function () { fila.classList.remove("fila-nueva"); }, 4000);
+  }, 60);
 }
 
 /* ---------------- prellenado desde el cotizador ---------------- */
@@ -1428,9 +1526,23 @@ function renderPrefillBanner() {
     ". Elige una <b>hora libre</b> en el calendario para completar el agendamiento." + descartar;
 }
 function descartarPrefill() {
+  // Si venía de una solicitud del cliente, descartarla la DEVUELVE a la cola.
+  // Antes se borraba el prellenado y la reserva quedaba marcada como atendida
+  // para siempre, con el cliente esperando una llamada que nadie iba a hacer.
+  var w = PREFILL && PREFILL.web;
   localStorage.removeItem(PREKEY);
   PREFILL = null;
   renderPrefillBanner();
+  if (w && w.id) {
+    webSoltar(w.id).then(function (fila) {
+      var r = (WEBRES || []).find(function (x) { return x.id === w.id; });
+      if (fila && r) r.estado = "nueva";
+      avisoAgenda("La solicitud de " + (w.cli || "el cliente") + " volvió a la cola de pendientes.", "info");
+      renderCal(); renderSlots(); renderAgendaTable(); webBadge();
+    }).catch(function () {
+      avisoAgenda("No se pudo devolver la solicitud a la cola (sin conexión). Se libera sola en 30 minutos.", "warn");
+    });
+  }
 }
 function aplicarPrefill() {
   if (!PREFILL || !INDICE) return;
@@ -1710,9 +1822,72 @@ function webActualizarEstado(id, nuevoEstado, extra) {
 
 // texto del pill según el estado del flujo en el servidor
 function webEtiquetaEstado(e) {
-  return { nueva: "Nueva", agendada: "En agenda", recibida: "Recibida",
-           en_taller: "En taller", cerrada: "Cerrada",
+  return { nueva: "Nueva", en_gestion: "La está tomando alguien", agendada: "En agenda",
+           recibida: "Recibida", en_taller: "En taller", cerrada: "Cerrada",
            rechazada: "Rechazada", cancelada: "Cancelada" }[e] || e || "Nueva";
+}
+
+/* ---- reclamo de una solicitud del cliente ----
+   Antes, al pulsar "Confirmar" se marcaba la reserva como 'agendada' de
+   inmediato, ANTES de que existiera la cita. Si el asesor abandonaba el modal
+   —cerraba la pestaña, se distraía, o pulsaba "Descartar"— la solicitud
+   quedaba gestionada para todas las estaciones y desaparecía de pendientes:
+   ese cliente se quedaba sin respuesta y sin rastro de que faltaba atenderlo.
+
+   Ahora hay un estado intermedio 'en_gestion'. Se reclama con un PATCH
+   CONDICIONAL (?estado=eq.nueva): si vuelve vacío es que otra estación se
+   adelantó, y se avisa en vez de abrir dos veces el mismo flujo. Recién al
+   guardar la cita pasa a 'agendada'; si se descarta, vuelve a 'nueva'.
+
+   Va con llamada propia y no con webActualizarEstado(): esa la usan la
+   anulación, la recepción, el acta y la entrega desde estados distintos, y un
+   filtro fijo ahí las rompería todas.                                        */
+function _webPatchCondicional(id, desde, cambios) {
+  return webSesion().then(function (s) {
+    if (!s) return null;
+    var u = AGW.url + "/rest/v1/" + webTabla() +
+            "?id=eq." + encodeURIComponent(id) + "&estado=eq." + encodeURIComponent(desde);
+    return fetch(u, {
+      method: "PATCH",
+      headers: {
+        apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+        "Content-Type": "application/json", Prefer: "return=representation"
+      },
+      body: JSON.stringify(cambios)
+    }).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (filas) { return (filas && filas[0]) || null; });
+  });
+}
+
+// Toma la solicitud. null = alguien se adelantó (o no hay sesión).
+function webReclamar(id) {
+  return _webPatchCondicional(id, "nueva", { estado: "en_gestion", asesor: quienSoy() });
+}
+// La suelta: vuelve a la cola de pendientes para que otro la atienda.
+function webSoltar(id) {
+  return _webPatchCondicional(id, "en_gestion", { estado: "nueva" });
+}
+
+/* Solicitudes que quedaron tomadas y nunca se agendaron (el asesor cerró la
+   pestaña, se cortó la luz). Sin esto, 'en_gestion' sería una trampa peor que
+   la anterior: la solicitud quedaría invisible para siempre. Se devuelven a la
+   cola pasados 30 minutos, usando la columna `actualizado` que ya mantiene el
+   trigger de la tabla. */
+var EN_GESTION_MAX_MS = 30 * 60 * 1000;
+function liberarGestionesViejas() {
+  if (!webCfgOk() || !WEBRES || !WEBRES.length) return Promise.resolve(0);
+  var corte = Date.now() - EN_GESTION_MAX_MS;
+  var viejas = WEBRES.filter(function (r) {
+    if (!r || r.estado !== "en_gestion") return false;
+    var t = Date.parse(r.actualizado || r.creado_en || "");
+    return !isNaN(t) && t < corte;
+  });
+  if (!viejas.length) return Promise.resolve(0);
+  return Promise.all(viejas.map(function (r) {
+    return webSoltar(r.id).then(function (fila) { if (fila) r.estado = "nueva"; }).catch(function () {});
+  })).then(function () { renderCal(); renderSlots(); renderAgendaTable(); return viejas.length; });
 }
 
 // Crea una reserva EN SUPABASE desde el taller (agendamiento interno) y devuelve
@@ -1800,7 +1975,8 @@ function webPintarLista() {
   var hoyStr = hoyISO();
   cont.innerHTML = WEBRES.map(function (r, i) {
     // "gestionada" = ya la tomó alguien (estado del servidor != nueva) o marca local
-    var gestionada = (r.estado && r.estado !== "nueva") || !!DB.webImp[r.id];
+    // el reclamo vive en el servidor: webImp ya no decide si está atendida
+    var gestionada = !!(r.estado && r.estado !== "nueva");
     var vieja = r.fecha < hoyStr;
     var est = gestionada ? '<span class="ag-pill en">' + esc(webEtiquetaEstado(r.estado || "agendada")) + '</span>'
       : vieja ? '<span class="ag-pill ent">Vencida</span>'
@@ -1847,10 +2023,47 @@ function webPasar(i) {
   // Confirmarla la mete en la bandeja de LA SUCURSAL QUE ESTA ESTACIÓN TIENE
   // ABIERTA, no en la que dice la reserva. Si no calzan hay que avisar: si no,
   // la cita "desaparece" de la sucursal donde el cliente la pidió.
+  // Sin sucursal elegida no se sabe en qué agenda caería la cita. El guard va
+  // acá y no solo en los slots: a webPasar se llega también desde el botón
+  // "Confirmar" de la tabla y desde el modal de reservas web.
   var suc = sucursalEstacion();
-  if (r.sucursal && suc && r.sucursal !== suc &&
+  if (!suc) {
+    avisoAgenda("Elige primero tu sucursal: la cita queda en la agenda de la sucursal que tengas abierta.", "warn");
+    var selS = document.getElementById("fComercio");
+    if (selS) { selS.focus(); selS.scrollIntoView({ block: "center" }); }
+    return;
+  }
+  if (r.sucursal && r.sucursal !== suc &&
       !confirm("Esta reserva es de " + r.sucursal + " y tú estás en " + suc + ".\n\n" +
                "Si la confirmas acá, la cita queda en la agenda de " + suc + ".\n¿Continuar?")) return;
+
+  // RECLAMO EN EL SERVIDOR ANTES DE ABRIR EL FLUJO. Es bloqueante a propósito:
+  // sin esto, dos personas de la central podían confirmar la misma solicitud
+  // dentro de la ventana de refresco y nacían dos citas para el mismo cliente.
+  avisoAgenda("Tomando la solicitud…", "info");
+  webReclamar(r.id).then(function (fila) {
+    if (fila === null) {
+      // 0 filas = ya no estaba 'nueva': alguien se adelantó
+      r.estado = "en_gestion";
+      avisoAgenda("Esta solicitud la acaba de tomar otra estación. Se actualizó la lista.", "warn");
+      _resUltima = 0;
+      refrescarReservas();
+      return;
+    }
+    if (fila) r.estado = fila.estado || "en_gestion";
+    _webAbrirFlujo(r);
+  }).catch(function () {
+    // Sin red o sin sesión no se puede reclamar. Se sigue igual —el taller no
+    // puede quedar detenido— pero se dice, porque la solicitud queda sin
+    // reservar y otra estación podría tomarla en paralelo.
+    avisoAgenda("No se pudo reservar la solicitud en el servidor (sin conexión). Sigue, pero avisa si otra estación la toma también.", "warn");
+    _webAbrirFlujo(r);
+  });
+}
+
+// Prellena y salta al calendario. La reserva ya quedó tomada en el servidor;
+// pasa a 'agendada' recién cuando la cita existe (ver _agGuardarCon).
+function _webAbrirFlujo(r) {
   PREFILL = {
     pautaId: r.pauta_id, marcaNombre: r.marca, modelo: r.modelo, version: r.version,
     anio: r.anio || null, revN: r.rev_n != null ? r.rev_n : null, km: r.km || null,
@@ -1859,22 +2072,11 @@ function webPasar(i) {
            fecha: r.fecha, hora: r.hora, comentario: r.comentario }
   };
   try { localStorage.setItem(PREKEY, JSON.stringify(PREFILL)); } catch (e) { /* sin espacio */ }
-  // Marca la reserva como 'agendada' EN SUPABASE (server-side): así cualquier
-  // otra estación la ve tomada y no la duplica. Si falla la red, el flujo local
-  // sigue igual (no bloquea al asesor).
-  // Se marca como tomada de inmediato para que salga al tiro de la lista de
-  // pendientes; si se esperara la respuesta del servidor, la solicitud seguiría
-  // apareciendo como sin atender aunque el asesor ya la agarró.
-  DB.webImp[r.id] = 1;
-  save();
-  var _ses = webSesGuardada();
-  webActualizarEstado(r.id, "agendada", { asesor: (_ses && _ses.email) || null })
-    .then(function () { r.estado = "agendada"; })
-    .catch(function () { /* offline: queda la marca local */ });
-  var p = r.fecha.split("-");
+  var p = String(r.fecha).split("-");
   calY = +p[0]; calM = +p[1] - 1; selFecha = r.fecha;
   webCerrarLista();
   agGoTab("agenda");
+  avisoAgenda("Solicitud de " + (r.nombre || "cliente") + " tomada. Elige una hora libre para confirmarla; si la descartas vuelve a la cola.", "ok");
   renderPrefillBanner();
   renderCal(); renderSlots(); renderAgendaTable();
 }
@@ -1884,7 +2086,8 @@ function webBadge() {
   if (!b) return;
   var hoyStr = hoyISO();
   var n = WEBRES.filter(function (r) {
-    var gestionada = (r.estado && r.estado !== "nueva") || !!DB.webImp[r.id];
+    // el reclamo vive en el servidor: webImp ya no decide si está atendida
+    var gestionada = !!(r.estado && r.estado !== "nueva");
     return !gestionada && r.fecha >= hoyStr;
   }).length;
   b.hidden = !n;

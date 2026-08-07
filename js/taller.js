@@ -42,9 +42,22 @@ var STOPS = [
   { id: "decision", t: "Esperando decisión" }, { id: "aprob", t: "Esperando aprobación" },
   { id: "repuestos", t: "Esperando repuestos" }, { id: "terceros", t: "Esperando terceros (sublet)" }
 ];
-var PREP = [
-  { id: "d3", t: "3 días antes" }, { id: "d2", t: "2 días antes" }, { id: "d1", t: "1 día antes" },
-  { id: "ped", t: "Repuestos pedidos" }, { id: "rec", t: "Repuestos recibidos" }
+/* Estado del kit de repuestos de una CITA.
+   ------------------------------------------------------------
+   Antes el tablero de preparación tenía cinco columnas que mezclaban dos ejes
+   distintos: cuánto falta para la cita (3/2/1 días antes) y en qué va el kit
+   (pedidos / recibidos). El primero es un dato que el sistema conoce EXACTO
+   —está la fecha de la cita— y se le pedía a una persona que lo reflejara
+   arrastrando tarjetas todos los días; si nadie arrastraba, la etiqueta mentía
+   sin que nadie se enterara.
+
+   Ahora el tiempo lo calcula el tablero (columnas por fecha) y este enum se
+   queda solo con lo que el sistema NO puede saber: si alguien ya pidió los
+   repuestos y si ya llegaron.                                                 */
+var KIT = [
+  { id: "por_revisar", t: "Por revisar", cls: "kit-rev" },
+  { id: "pedido",      t: "Pedido",      cls: "kit-ped" },
+  { id: "recibido",    t: "Recibido",    cls: "kit-rec" }
 ];
 var AGAM = ["08:40", "09:00", "09:20", "09:40", "10:00", "10:20", "10:40", "11:00", "11:20", "11:40", "12:00", "12:20", "12:40"];
 var AGPM = ["14:00", "14:20", "14:40", "15:00", "15:20", "15:40", "16:00", "16:20", "16:40", "17:00"];
@@ -419,6 +432,11 @@ function _programarSondeo() {
     refrescarRemoto()
       .then(function () { return refrescarReservas(); })
       .then(function () { return podarBandeja(); })
+      // Las columnas del tablero de preparación se calculan desde la fecha,
+      // pero nada las repinta cuando cambia el día: un tablero abierto toda la
+      // noche amanecería mostrando las citas de ayer como "Hoy". Se cuelga del
+      // mismo sondeo, que es lo único que corre siempre.
+      .then(function () { if (_prepDia && _prepDia !== hoyISO()) repintarTodo(); })
       .then(_programarSondeo, _programarSondeo);
   }, SYNC.fallos >= 3 ? 300000 : 15000);
 }
@@ -2446,7 +2464,10 @@ function _agIngresarTallerCon(a, tipo, dur, ro) {
     vin: a.vin || "—", color: "—", cliente: a.cli, asesor: a.asesor,
     tipo: tipo, dur: dur, rec: a.hora, del: "—",
     tec: null, ini: null, etapa: "citas_hoy", stop: null,
-    prep: "rec", picking: "pendiente",
+    // El pre-picking lo HEREDA de la cita: si Preparación ya marcó el kit como
+    // recibido, bodega lo ve listo. Antes toda orden nacía con prep:"rec", o
+    // sea afirmando una recepción de repuestos que nunca ocurrió.
+    picking: kitDe(a) === "recibido" ? "listo" : "pendiente",
     // el acta viaja con la orden: bodega y JPCB necesitan el km REAL, no el
     // estimado de la cita, y el resto es el respaldo ante un reclamo
     kmReal: a.kmReal != null ? a.kmReal : null,
@@ -2485,11 +2506,9 @@ function _agIngresarTallerCon(a, tipo, dur, ro) {
 /* ============================================================
    Tarjetas + tableros (Prep / JPCB / Planificador)
    ============================================================ */
-function cardHTML(o, ctx) {
+function cardHTML(o) {
   var corner = "";
-  if (ctx === "prep" && getRepuestos(o).length) {
-    corner = '<span class="pick ' + (o.picking === "listo" ? "listo" : "pend") + '">' + (o.picking === "listo" ? "REP. LISTO" : "REP.") + "</span>";
-  } else if (o.stop) {
+  if (o.stop) {
     var st = STOPS.find(function (s) { return s.id === o.stop; });
     corner = '<span class="stopflag">' + st.t.replace("Esperando ", "") + "</span>";
   }
@@ -2531,11 +2550,9 @@ function wireDnD() {
     o.stop = z.dataset.stop;
     anotar(o, "Detención", nombreDe(STOPS, o.stop));
   });
-  bind(".drop[data-prep]", function (o, z) {
-    if (o.prep === z.dataset.prep) return;
-    o.prep = z.dataset.prep;
-    anotar(o, "Preparación", nombreDe(PREP, o.prep));
-  });
+  // Ya no hay drop[data-prep]: el tablero de preparación dejó de ser kanban de
+  // arrastre. Su eje temporal lo calcula la fecha de la cita y el estado del
+  // kit se cambia con botones en la tarjeta, que además funcionan en tablet.
 }
 function renderJPCB() {
   var act = ordersActivas();
@@ -2549,13 +2566,208 @@ function renderJPCB() {
   }).join("");
   wireDnD();
 }
+/* ============================================================
+   3 · PREPARACIÓN DE REPUESTOS
+   ------------------------------------------------------------
+   Se alimenta de las CITAS FUTURAS, no de las órdenes de trabajo. La versión
+   anterior leía DB.orders, y una orden nace recién al apretar "Ingresar a
+   Taller", o sea cuando el auto YA llegó: preparar repuestos "3 días antes"
+   era estructuralmente imposible y el cliente terminaba esperando en el mesón
+   mientras bodega recolectaba.
+
+   El estado del kit vive en el propio agendamiento (a.kit) y NO en un mapa
+   aparte indexado por OC. Dos razones concretas: reconciliarCorrelativos()
+   renumera a.oc cuando dos estaciones chocan, y fusionar() reconstruye el
+   documento solo con agendamientos/orders/ocSeq/roSeq/webImp — cualquier clave
+   nueva del DB se perdería en silencio en la primera fusión. Como campo de la
+   cita viaja gratis por uid en _fusionarLista.
+   ============================================================ */
+var _prepDia = null;      // día del último render, para detectar el cambio de fecha
+
+function kitInfo(id) {
+  return KIT.find(function (x) { return x.id === id; }) || KIT[0];
+}
+function kitDe(a) {
+  var k = a && a.kit;
+  return KIT.some(function (x) { return x.id === k; }) ? k : "por_revisar";
+}
+
+// Avanza o retrocede el estado del kit. Que se pueda RETROCEDER es
+// imprescindible: un ciclo de una sola dirección convierte un clic equivocado
+// en un estado falso sin salida, que es exactamente el defecto del tablero
+// anterior (toda orden nacía en "Repuestos recibidos" sin que nadie recibiera
+// nada).
+function agCambiarKit(oc, dir) {
+  var a = agFind(oc);
+  if (!a) return;
+  var i = KIT.findIndex(function (x) { return x.id === kitDe(a); });
+  var j = Math.min(Math.max(i + (dir < 0 ? -1 : 1), 0), KIT.length - 1);
+  if (j === i) return;
+  a.kit = KIT[j].id;
+  a.kitEn = ahoraISO();
+  a.kitPor = quienSoy();
+  save();
+  renderPrep();
+}
+
+// Semáforo agregado del kit: responde "¿esta cita va a tener problema?" sin
+// abrir nada. Parte en GRIS si el inventario todavía no cargó — nunca en
+// verde: un verde falso es peor que no decir nada, porque nadie va a revisar.
+function semaforoKit(a) {
+  var R = getRepuestos(a);
+  if (!R.length) {
+    return { cls: "sd", ico: "○", txt: "sin kit automático",
+             tit: "Esta cita no genera kit desde la pauta (no es mantención por kilometraje, o falta la pauta)." };
+  }
+  if (!STOCK) {
+    return { cls: "sd", ico: "○", txt: "inventario sin cargar",
+             tit: "Todavía no se carga el inventario; el semáforo aparece cuando llegue." };
+  }
+  var faltan = 0, giro = 0;
+  R.forEach(function (r) {
+    var s = stockDe(r.codigo);
+    if (!s || (!(s.c > 0) && !(s.f > 0))) faltan++;
+    else if (!(s.c > 0)) giro++;
+  });
+  // El stock es una foto del inventario, no disponibilidad en vivo: verde hoy
+  // no garantiza que la pieza siga ahí el día de la cita. Se dice en el tooltip.
+  var foto = STOCK.actualizado ? " · inventario al " + STOCK.actualizado + ", es una foto y no disponibilidad en vivo" : "";
+  if (faltan) return { cls: "no", ico: "✕", txt: "faltan " + faltan + " de " + R.length,
+                       tit: faltan + " código(s) sin stock en ninguna bodega: hay que pedirlos." + foto };
+  if (giro) return { cls: "fro", ico: "!", txt: giro + " en giro Frontera",
+                     tit: giro + " código(s) disponibles solo en giro Frontera: requieren traslado." + foto };
+  return { cls: "ok", ico: "✓", txt: "kit completo",
+           tit: "Los " + R.length + " códigos tienen stock Curifor." + foto };
+}
+
+// Columnas por fecha de la cita, CALCULADAS en cada render. Nadie arrastra
+// nada para que el tiempo avance.
+// "Vencidas" existe a propósito: una cita que pasó sin recibirse es justo la
+// que hay que mirar, y filtrarla con `fecha >= hoy` la haría desaparecer en
+// silencio.
+function _prepColumnas() {
+  var hoy = hoyISO();
+  var d = new Date(); d.setDate(d.getDate() + 1);
+  var manana = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  var cols = [
+    { id: "venc",   t: "Vencidas",      cls: "prep-col--venc" },
+    { id: "hoy",    t: "Hoy",           cls: "prep-col--hoy" },
+    { id: "manana", t: "Mañana",        cls: "prep-col--man" },
+    { id: "luego",  t: "Próximos días", cls: "" }
+  ];
+  cols.forEach(function (c) { c.citas = []; });
+  DB.agendamientos.forEach(function (a) {
+    if (a.estado !== "agendado" || !a.fecha) return;
+    cols[a.fecha < hoy ? 0 : a.fecha === hoy ? 1 : a.fecha === manana ? 2 : 3].citas.push(a);
+  });
+  cols.forEach(function (c) {
+    c.citas.sort(function (x, y) {
+      return (x.fecha + (x.hora || "")) < (y.fecha + (y.hora || "")) ? -1 : 1;
+    });
+  });
+  return cols;
+}
+
+// Tarjeta propia, no cardHTML(): esa es draggable, se identifica por data-ro y
+// su onclick llama detalle(ro), que resuelve con byRo(). Una cita no tiene RO,
+// así que el clic moriría en silencio y el arrastre movería un ro undefined.
+function prepCardHTML(a) {
+  var s = semaforoKit(a);
+  var k = kitDe(a);
+  var i = KIT.findIndex(function (x) { return x.id === k; });
+  var ref = "'" + esc(String(a.oc)).replace(/'/g, "") + "'";
+  var auto = [a.marcaNombre, a.modeloNombre].filter(Boolean).join(" ");
+  var R = getRepuestos(a);
+  var selloKit = a.kitEn ? kitInfo(k).t + " el " + fmtFechaHora(a.kitEn) + (a.kitPor ? " por " + a.kitPor : "") : "Sin registrar todavía";
+  return '<div class="prep-card">' +
+    '<div class="prep-card__cab"><b>' + esc(a.pat || "—") + "</b>" +
+      '<span class="prep-card__cuando">' + esc(fmtFechaCorta(a.fecha)) + (a.hora ? " · " + esc(a.hora) : "") + "</span></div>" +
+    '<div class="prep-card__det">' + esc(auto || "Vehículo por confirmar") +
+      (a.km ? " · " + esc(etiquetaKm(a.km)) : "") + (R.length ? " · " + R.length + " piezas" : "") + "</div>" +
+    '<div class="prep-card__pie">' +
+      '<span class="prep-sem prep-sem--' + s.cls + '" title="' + esc(s.tit) + '">' + s.ico + " " + esc(s.txt) + "</span>" +
+      '<span class="prep-kit" title="' + esc(selloKit) + '">' +
+        (i > 0 ? '<button type="button" class="prep-kit__nav" aria-label="Volver a ' + esc(KIT[i - 1].t) +
+                 '" title="Volver a ' + esc(KIT[i - 1].t) + '" onclick="agCambiarKit(' + ref + ',-1)">‹</button>' : "") +
+        '<span class="prep-kit__st ' + kitInfo(k).cls + '">' + esc(kitInfo(k).t) + "</span>" +
+        (i < KIT.length - 1 ? '<button type="button" class="prep-kit__nav prep-kit__nav--go" aria-label="Marcar ' + esc(KIT[i + 1].t) +
+                 '" title="Marcar ' + esc(KIT[i + 1].t) + '" onclick="agCambiarKit(' + ref + ',1)">›</button>' : "") +
+      "</span>" +
+    "</div>" +
+    (R.length ? '<button type="button" class="prep-card__ver" onclick="prepVerKit(' + ref + ')">Ver las ' + R.length + " piezas</button>" : "") +
+    "</div>";
+}
+
 function renderPrep() {
-  var act = ordersActivas();
-  document.getElementById("prepBoard").innerHTML = PREP.map(function (col) {
-    var l = act.filter(function (o) { return o.prep === col.id; });
-    return '<div class="col"><h3>' + col.t + ' <span class="count">(' + l.length + ')</span></h3><div class="drop" data-prep="' + col.id + '">' + l.map(function (o) { return cardHTML(o, "prep"); }).join("") + "</div></div>";
-  }).join("");
-  wireDnD();
+  var board = document.getElementById("prepBoard");
+  if (!board) return;
+  _prepDia = hoyISO();
+  var nota = document.getElementById("prepNota");
+  var cols = _prepColumnas();
+
+  // Las citas sin kit (diagnóstico, reparación, sin pauta) no se pintan —no hay
+  // repuestos que preparar— pero se CUENTAN y se dicen abajo, para que nadie
+  // crea que se perdieron.
+  var sinKit = 0;
+  cols.forEach(function (c) {
+    c.conKit = c.citas.filter(function (a) {
+      if (getRepuestos(a).length) return true;
+      sinKit++; return false;
+    });
+  });
+
+  var total = cols.reduce(function (n, c) { return n + c.conKit.length; }, 0);
+  if (!total) {
+    board.innerHTML = '<p class="prep-vacio-todo">' +
+      (sucursalEstacion()
+        ? "No hay citas con kit de repuestos por preparar en <b>" + esc(sucCorta(sucursalEstacion())) + "</b>."
+        : "Elige tu sucursal en Agendamiento para ver sus citas.") + "</p>";
+  } else {
+    board.innerHTML = cols.map(function (c) {
+      // la columna de vencidas solo aparece cuando de verdad hay algo atrasado
+      if (c.id === "venc" && !c.conKit.length) return "";
+      return '<div class="col ' + c.cls + '"><h3>' + c.t +
+        ' <span class="count">(' + c.conKit.length + ")</span></h3>" +
+        '<div class="prep-lista">' +
+        (c.conKit.length ? c.conKit.map(prepCardHTML).join("")
+                         : '<p class="prep-vacio">Nada por preparar</p>') +
+        "</div></div>";
+    }).join("");
+  }
+  if (nota) {
+    nota.hidden = !sinKit;
+    nota.textContent = sinKit + " cita" + (sinKit > 1 ? "s" : "") + " de estas fechas no genera" +
+      (sinKit > 1 ? "n" : "") + " kit automático (diagnóstico, reparación, o sin pauta cargada).";
+  }
+}
+
+// Detalle del kit de una cita, con la misma tabla código/repuesto/stock que ya
+// usa Bodega.
+function prepVerKit(oc) {
+  var a = agFind(oc);
+  if (!a) return;
+  var R = getRepuestos(a);
+  var s = semaforoKit(a);
+  document.getElementById("m-title").textContent = "Kit de la cita " + a.oc + (a.pat ? " · " + a.pat : "");
+  document.getElementById("m-body").innerHTML =
+    '<div><span class="lbl">Cita:</span> ' + esc(fmtFechaCorta(a.fecha)) + (a.hora ? " · " + esc(a.hora) : "") + "</div>" +
+    '<div><span class="lbl">Vehículo:</span> ' + esc([a.marcaNombre, a.modeloNombre, a.versionNombre].filter(Boolean).join(" ") || "—") + "</div>" +
+    '<div><span class="lbl">Servicio:</span> ' + esc(a.serv || "—") + (a.km ? " · " + esc(etiquetaKm(a.km)) : "") + "</div>" +
+    '<div><span class="lbl">Cliente:</span> ' + esc(a.cli || "—") + "</div>" +
+    '<div style="margin-top:8px"><span class="lbl">Estado del kit:</span> ' + esc(kitInfo(kitDe(a)).t) +
+      (a.kitEn ? ' <span style="color:var(--ink-3)">· ' + esc(fmtFechaHora(a.kitEn)) + (a.kitPor ? " · " + esc(a.kitPor) : "") + "</span>" : "") + "</div>" +
+    '<div><span class="lbl">Disponibilidad:</span> ' + esc(s.txt) + "</div>" +
+    (R.length
+      ? "<table><thead><tr><th>Código</th><th>Repuesto</th><th>Cant.</th><th>Stock</th></tr></thead><tbody>" +
+        R.map(function (r) {
+          return "<tr><td>" + esc(r.codigo) + "</td><td>" + esc(r.desc) +
+                 '</td><td style="text-align:center">' + r.cant + "</td><td>" + stkHTML(r.codigo) + "</td></tr>";
+        }).join("") + "</tbody></table>"
+      : '<div style="margin-top:8px;color:var(--ink-3)">Esta cita no genera kit automático.</div>') +
+    '<p class="prox" style="margin-top:10px">El stock es una foto del inventario' +
+      (STOCK && STOCK.actualizado ? " al " + esc(STOCK.actualizado) : "") + ", no disponibilidad en vivo.</p>";
+  document.getElementById("m-actions").innerHTML = '<button class="agbtn agbtn-navy" onclick="closeM()">Cerrar</button>';
+  document.getElementById("ov").classList.add("open");
 }
 function renderPlan() {
   document.getElementById("legendPlan").innerHTML = "<b>Tipo de trabajo:</b>" +
@@ -2683,7 +2895,15 @@ function setPick(ro, estado) {
   var o = byRo(ro);
   if (!o) return;
   o.picking = estado;
-  if (estado === "listo") o.prep = "rec";
+  // Un solo estado de kit para las dos vistas. Antes bodega forzaba o.prep pero
+  // preparación nunca tocaba o.picking, así que una tarjeta podía estar en
+  // "Repuestos recibidos" y en Bodega salir PENDIENTE al mismo tiempo.
+  var a = o.oc != null ? agFind(o.oc) : null;
+  if (a) {
+    a.kit = estado === "listo" ? "recibido" : "pedido";
+    a.kitEn = ahoraISO();
+    a.kitPor = quienSoy();
+  }
   anotar(o, "Pre-picking", estado === "listo" ? "preparado" : "reabierto");
   save();
   renderAll();
@@ -2824,13 +3044,21 @@ function cargarDemo() {
   if (DB.agendamientos.length || DB.orders.length) {
     if (!confirm("Ya hay datos registrados. ¿Agregar igualmente los datos de demostración?")) return;
   }
+  // `dias` = días desde hoy. Las citas futuras son las que alimentan el tablero
+  // de preparación, así que la demo trae algunas para que se vea funcionando.
   var specs = [
-    { pautaId: "ford__ranger--limited-4x2-2-5l-ivct-l4", marca: "Ford", modelo: "Ranger", anio: "2022", pat: "VFLP46", cli: "Pedro Soto", hora: "08:40", revIdx: 1, modo: "orden", etapa: "citas_hoy", prep: "rec" },
-    { pautaId: "ford__escape--titanium-2-0l-ecoboost", marca: "Ford", modelo: "Escape", anio: null, pat: "LTCP46", cli: "Ana Reyes", hora: "09:20", revIdx: 0, modo: "orden", etapa: "bajo_serv", prep: "rec", tec: 3, ini: "09:40" },
-    { pautaId: "hyundai__tucson-nx4-fl-2-0-mpi-costo", marca: "Hyundai", modelo: "Tucson", anio: null, pat: "TZKG17", cli: "Luis Peña", hora: "10:20", revIdx: 2, modo: "orden", etapa: "esp_serv", prep: "ped", stop: "repuestos" },
-    { pautaId: "gac__emzoom-1-5t-at-gl", marca: "GAC", modelo: "EMZOOM", anio: null, pat: "RRDD71", cli: "María Díaz", hora: "11:00", revIdx: 1, modo: "agenda" },
-    { pautaId: "ford__territory--trend-1-5l-gtdi", marca: "Ford", modelo: "Territory", anio: null, pat: "KXPL09", cli: "Sofía Rojas", hora: "15:00", revIdx: 0, modo: "agenda" }
+    { pautaId: "ford__ranger--limited-4x2-2-5l-ivct-l4", marca: "Ford", modelo: "Ranger", anio: "2022", pat: "VFLP46", cli: "Pedro Soto", hora: "08:40", revIdx: 1, modo: "orden", etapa: "citas_hoy" },
+    { pautaId: "ford__escape--titanium-2-0l-ecoboost", marca: "Ford", modelo: "Escape", anio: null, pat: "LTCP46", cli: "Ana Reyes", hora: "09:20", revIdx: 0, modo: "orden", etapa: "bajo_serv", tec: 3, ini: "09:40" },
+    { pautaId: "hyundai__tucson-nx4-fl-2-0-mpi-costo", marca: "Hyundai", modelo: "Tucson", anio: null, pat: "TZKG17", cli: "Luis Peña", hora: "10:20", revIdx: 2, modo: "orden", etapa: "esp_serv", stop: "repuestos" },
+    { pautaId: "gac__emzoom-1-5t-at-gl", marca: "GAC", modelo: "EMZOOM", anio: null, pat: "RRDD71", cli: "María Díaz", hora: "11:00", revIdx: 1, modo: "agenda", kit: "recibido" },
+    { pautaId: "ford__territory--trend-1-5l-gtdi", marca: "Ford", modelo: "Territory", anio: null, pat: "KXPL09", cli: "Sofía Rojas", hora: "15:00", revIdx: 0, modo: "agenda" },
+    { pautaId: "ford__ranger--limited-4x4-puma-3-2l-tdci", marca: "Ford", modelo: "Ranger", anio: "2022", pat: "JXTB27", cli: "Los Nobles", hora: "09:40", revIdx: 3, modo: "agenda", dias: 1, kit: "pedido" },
+    { pautaId: "hyundai__tucson-nx4-fl-2-0-mpi-costo", marca: "Hyundai", modelo: "Tucson", anio: null, pat: "BBFK52", cli: "Carla Muñoz", hora: "14:20", revIdx: 1, modo: "agenda", dias: 3 }
   ];
+  function fechaMas(n) {
+    var d = new Date(); d.setDate(d.getDate() + (n || 0));
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
   Promise.all(specs.map(function (s) { return cargarPauta(s.pautaId); })).then(function () {
     specs.forEach(function (s, i) {
       var p = pautaCargada(s.pautaId);
@@ -2842,7 +3070,7 @@ function cargarDemo() {
         itv = conKm[Math.min(s.revIdx, Math.max(conKm.length - 1, 0))] || null;
       }
       var base = {
-        oc: DB.ocSeq++, fecha: hoyISO(), hora: s.hora, sucursal: "CURIFOR TALCA",
+        oc: DB.ocSeq++, fecha: fechaMas(s.dias), hora: s.hora, sucursal: "CURIFOR TALCA",
         serv: "MANTENCIÓN POR KILOMETRAJE", pat: s.pat,
         marcaNombre: s.marca, modeloNombre: s.modelo, versionNombre: versionN,
         pautaId: s.pautaId, anio: s.anio, km: itv ? itv.km : null, revN: itv ? itv.n : null,
@@ -2852,6 +3080,7 @@ function cargarDemo() {
         estado: s.modo === "agenda" ? "agendado" : "en_taller"
       };
       base.creadoEn = ahoraISO(); base.creadoPor = quienSoy();
+      if (s.kit) { base.kit = s.kit; base.kitEn = ahoraISO(); base.kitPor = quienSoy(); }
       if (s.modo === "orden") {
         // llegada simulada unos minutos después de la hora de la cita
         var lleg = new Date(base.fecha + "T" + s.hora + ":00");
@@ -2873,7 +3102,7 @@ function cargarDemo() {
           tec: (s.tec != null && TECNICOS[s.tec % Math.max(TECNICOS.length, 1)])
                  ? TECNICOS[s.tec % TECNICOS.length].rut : null,
           ini: s.ini || null,
-          etapa: s.etapa, stop: s.stop || null, prep: s.prep || "rec", picking: "pendiente",
+          etapa: s.etapa, stop: s.stop || null, picking: kitDe(base) === "recibido" ? "listo" : "pendiente",
           kmReal: base.kmReal, comb: base.comb, acc: base.acc, obs: null,
           recibidoEn: base.recibidoEn, recibidoPor: base.recibidoPor
         };
@@ -2909,6 +3138,12 @@ function renderAll() { renderPrep(); renderPlan(); renderJPCB(); renderBodega();
 function repintarTodo() {
   renderCal(); renderSlots(); renderAgendaTable(); renderAll();
   if (vistaAgenda === "mes") renderMes();
+  // Las pautas se precargaban SOLO en init(). Una cita adoptada o fusionada
+  // después (reconciliarConReservas, refrescarRemoto) no tenía su pauta en
+  // caché, así que getRepuestos() devolvía [] y el tablero la mostraba "sin
+  // kit" siendo una mantención: justo la mentira silenciosa que este rediseño
+  // viene a eliminar. Se precarga y se repinta lo que depende del kit.
+  precargarPautas().then(function () { renderPrep(); renderBodega(); });
 }
 
 function init() {

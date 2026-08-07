@@ -193,6 +193,79 @@ table.ag-table tr:nth-child(even) td { background: var(--tint-2); }
 .col .drop.over { background: var(--tint); outline: 2px dashed var(--navy); }
 .col .count { font-size: 11px; opacity: .85; }
 
+/* ---------- 3 · Preparación de repuestos ----------
+   Tablero propio, no kanban de arrastre. Las columnas son la FECHA de la cita
+   (las calcula el sistema) y el estado del kit se cambia con botones, que
+   además funcionan en la tablet del taller — el drag & drop no.
+   Las reglas van scoped a .kanban--prep para no deformar JPCB, que comparte
+   .kanban / .col / .count. */
+.prep-leyenda {
+  display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center;
+  margin: 0 0 12px; font-size: 12px; color: var(--ink-2);
+}
+.prep-leyenda span { display: flex; align-items: center; gap: 6px; }
+.kanban--prep { align-items: flex-start; }
+.kanban--prep .col { flex: 0 0 258px; min-height: 0; }
+.kanban--prep .col h3 { text-align: left; padding: 9px 11px; font-size: 12.5px; }
+.kanban--prep .prep-col--venc h3 { background: #8a1c12; }
+.kanban--prep .prep-col--hoy h3 { background: var(--navy); }
+.kanban--prep .prep-col--man h3 { background: #2f5aa8; }
+.kanban--prep .col:not(.prep-col--venc):not(.prep-col--hoy):not(.prep-col--man) h3 {
+  background: var(--tint); color: var(--navy); border-bottom: 1px solid var(--linea);
+}
+.prep-lista { padding: 8px; display: flex; flex-direction: column; gap: 8px; }
+.prep-vacio { margin: 4px 2px; font-size: 12px; color: var(--ink-3); font-style: italic; }
+.prep-vacio-todo { color: var(--ink-3); padding: 10px 2px; }
+.prep-nota { margin: 10px 0 0; font-size: 12px; color: var(--ink-3); }
+
+.prep-card {
+  background: #fff; border: 1px solid var(--linea); border-radius: 8px;
+  padding: 9px 10px; box-shadow: var(--sombra-sm);
+}
+.prep-card__cab { display: flex; align-items: baseline; gap: 8px; }
+.prep-card__cab b { color: var(--navy); font-size: 14px; }
+.prep-card__cuando { margin-left: auto; font-size: 11.5px; color: var(--ink-2); font-weight: 700; white-space: nowrap; }
+.prep-card__det { font-size: 11.5px; color: var(--ink-2); margin: 3px 0 8px; }
+.prep-card__pie { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+
+/* Semáforo del kit: la respuesta a "¿esta cita va a tener problema?" */
+.prep-sem { font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+.prep-sem--ok  { color: var(--verde); }
+.prep-sem--fro { color: #b7791f; }
+.prep-sem--no  { color: #b42318; }
+.prep-sem--sd  { color: var(--ink-3); }
+.prep-leyenda .prep-sem { font-size: 13px; }
+
+/* Ciclo del kit: avanza Y retrocede. Un ciclo de una sola dirección convierte
+   un clic equivocado en un estado falso sin salida. */
+.prep-kit { display: inline-flex; align-items: center; gap: 2px; }
+.prep-kit__nav {
+  min-width: 30px; min-height: 30px; padding: 0 6px; cursor: pointer;
+  background: #fff; border: 1px solid var(--ink-3); border-radius: 6px;
+  color: var(--ink-2); font: 700 15px/1 inherit;
+}
+.prep-kit__nav:hover { border-color: var(--navy); color: var(--navy); background: var(--tint); }
+.prep-kit__nav--go { border-color: var(--navy); color: var(--navy); }
+.prep-kit__st {
+  font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 11px; white-space: nowrap;
+}
+.prep-kit__st.kit-rev { background: #f4f4f5; color: #6b6b70; }
+.prep-kit__st.kit-ped { background: var(--ambar-bg); color: var(--ambar); }
+.prep-kit__st.kit-rec { background: var(--verde-bg); color: var(--verde); }
+.prep-card__ver {
+  margin-top: 8px; width: 100%; min-height: 32px; cursor: pointer;
+  background: transparent; border: 1px dashed var(--ink-3); border-radius: 6px;
+  color: var(--ink-2); font: 600 11.5px inherit;
+}
+.prep-card__ver:hover { border-color: var(--navy); color: var(--navy); border-style: solid; }
+
+/* En pantalla angosta el tablero se apila en vertical: las columnas cortadas
+   con scroll horizontal esconden justo lo urgente. */
+@media (max-width: 860px) {
+  .kanban--prep { display: block; overflow-x: visible; }
+  .kanban--prep .col { width: 100%; margin-bottom: 12px; }
+}
+
 .stopzone { margin-top: 16px; border: 2px solid var(--stop); border-radius: 8px; background: var(--blanco); }
 .stopzone .zhead { background: var(--stop); color: #fff; padding: 8px 12px; font-weight: 700; border-radius: 5px 5px 0 0; font-size: 13px; }
 .stopcols { display: flex; gap: 8px; padding: 8px; flex-wrap: wrap; }

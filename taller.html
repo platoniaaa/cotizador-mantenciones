@@ -6,10 +6,10 @@
   <title>Taller y Agendamiento · Curifor</title>
   <meta name="description" content="Agendamiento de servicio, tablero JPCB, planificador de taller y pre-picking de bodega.">
   <!-- guard de acceso interno (redirige a login.html si no hay sesión) -->
-  <script src="js/agenda-config.js?v=9bf6fd1"></script>
-  <script src="js/auth.js?v=9bf6fd1"></script>
-  <link rel="stylesheet" href="css/estilos.css?v=9bf6fd1">
-  <link rel="stylesheet" href="css/taller.css?v=9bf6fd1">
+  <script src="js/agenda-config.js?v=24158d3"></script>
+  <script src="js/auth.js?v=24158d3"></script>
+  <link rel="stylesheet" href="css/estilos.css?v=24158d3">
+  <link rel="stylesheet" href="css/taller.css?v=24158d3">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗓</text></svg>">
 </head>
 <body class="taller">
@@ -232,9 +232,16 @@
 
   <!-- ============ 3 · PREPARACIÓN ============ -->
   <div class="view" id="v-prep">
-    <h2 class="vtitle">Tablero de preparación de citas</h2>
-    <p class="sub">Control de repuestos antes de la cita. Arrastra las tarjetas entre columnas; las órdenes con kit de mantención aparecen también en Bodega.</p>
-    <div class="kanban" id="prepBoard"></div>
+    <h2 class="vtitle">Preparación de repuestos</h2>
+    <p class="sub">Citas que vienen, con el kit que pide su pauta y si hay stock. Las columnas las calcula la fecha de cada cita; tú solo marcas cuándo se pidió y cuándo llegó.</p>
+    <div class="prep-leyenda">
+      <span><b class="prep-sem prep-sem--ok">✓</b> kit completo en bodega</span>
+      <span><b class="prep-sem prep-sem--fro">!</b> hay que traerlo de otra bodega</span>
+      <span><b class="prep-sem prep-sem--no">✕</b> faltan piezas: hay que pedirlas</span>
+      <span><b class="prep-sem prep-sem--sd">○</b> sin dato de stock</span>
+    </div>
+    <div class="kanban kanban--prep" id="prepBoard"></div>
+    <p class="prep-nota" id="prepNota" hidden></p>
   </div>
 
   <!-- ============ 4 · PLANIFICADOR ============ -->
@@ -357,8 +364,8 @@
     </div>
   </div>
 
-  <script src="js/taller.js?v=9bf6fd1"></script>
-  <script src="js/autocompletar.js?v=9bf6fd1"></script>
+  <script src="js/taller.js?v=24158d3"></script>
+  <script src="js/autocompletar.js?v=24158d3"></script>
   <!-- Modo módulo: ?vista=agenda|recepcion.
        · agenda    → todo el taller MENOS Recepción (agendamiento y los tableros).
        · recepcion → solo Recepción, sin pestañas. Acepta &oc=N para abrir de

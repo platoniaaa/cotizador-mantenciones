@@ -588,3 +588,121 @@ table.grid td.slot.over { background: var(--tint); }
 .webres-det { font-size: 12.5px; color: var(--ink-2, #444); }
 .webres-com { font-size: 12.5px; color: var(--ink-3, #777); font-style: italic; margin-top: 3px; }
 .webres-item .agbtn { margin-top: 8px; }
+
+/* ============================================================
+   RESPONSIVE Y ACCESIBILIDAD TÁCTIL
+   ------------------------------------------------------------
+   Escala de cortes del archivo, de mayor a menor:
+     1100  pestañas con scroll        900  planificador apilado
+      860  .ag-grid (ya existía)      820  tabla de agenda
+      720  accesorios / vista mes     700  kanban vertical
+      640  formularios                560  fotos / firmas
+   Todo va al FINAL del archivo para ganar los empates de especificidad
+   contra las reglas base.
+   ============================================================ */
+
+/* ---- tabla de la agenda ----
+   Misma técnica que ya usa .planner: scroll propio en vez de comprimir. */
+.tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tabla-scroll .ag-table { min-width: 880px; }
+
+@media (max-width: 820px) {
+  /* Para la central lo esencial es Hora, Cliente, Patente, Sucursal y Estado.
+     OC es un correlativo interno, el vehículo se deduce de la patente y el
+     servicio es secundario. Ocultarlas deja la tabla legible sin scroll.
+     display:none NO altera los índices nth-child, así que el tachado de la
+     patente en las filas anuladas sigue apuntando a la columna correcta. */
+  .ag-table td:nth-child(1):not([colspan]),
+  .ag-table th:nth-child(1),
+  .ag-table th:nth-child(4), .ag-table td:nth-child(4),
+  .ag-table th:nth-child(6), .ag-table td:nth-child(6) { display: none; }
+  .tabla-scroll .ag-table { min-width: 0; }
+}
+
+/* ---- pestañas ----
+   Quebradas en dos filas rompen la metáfora de carpeta (la fila de arriba
+   queda flotando sin línea base) y destruyen la lectura secuencial del flujo.
+   Mejor una sola fila con scroll: la pestaña cortada a la mitad es el propio
+   indicador de que hay más. */
+@media (max-width: 1100px) {
+  .tabs {
+    flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; scroll-snap-type: x proximity;
+    padding-bottom: 1px; margin-bottom: -1px;
+  }
+  .tab { flex: 0 0 auto; white-space: nowrap; scroll-snap-align: start; }
+}
+
+/* ---- planificador ---- */
+@media (max-width: 900px) {
+  .agenda-wrap { flex-direction: column; }
+  .backlog { flex: none; max-height: 190px; overflow-y: auto; }
+  .backlog .drop { flex-direction: row; flex-wrap: wrap; }
+  .backlog .drop .card-ot { flex: 1 1 200px; }
+}
+
+/* ---- kanban (JPCB y sus detenciones) ----
+   Con 8 etapas el scroll horizontal es inevitable en desktop, así que la
+   columna se ensancha un poco: se gana legibilidad sin perder nada. */
+.kanban .col { flex: 0 0 184px; }
+@media (max-width: 700px) {
+  /* Apilado: cada etapa es una banda y sus tarjetas van en fila. Las cabeceras
+     azules quedan de índice del proceso. */
+  .kanban { flex-direction: column; overflow-x: visible; }
+  .kanban .col { flex: 1 1 auto; min-height: 0; }
+  .kanban .col .drop { min-height: 36px; flex-direction: row; flex-wrap: wrap; }
+  .kanban .col .drop .card-ot { flex: 1 1 210px; }
+}
+
+/* ---- objetivos táctiles ----
+   La recepción se opera en tablet. 44px es el mínimo para el dedo; casi todos
+   los controles quedaban entre 28 y 37. Solo aplica a punteros gruesos, así
+   que el escritorio no cambia. */
+@media (pointer: coarse) {
+  .tab, .agbtn, .ag-slot, .ag-vista-btn, .ag-stabs button { min-height: 44px; }
+  .tab, .agbtn, .ag-vista-btn { display: inline-flex; align-items: center; justify-content: center; }
+  .agbtn-sm { min-height: 38px; }
+  .ag-cal td { padding: 10px 0; }
+  .firma-limpiar { min-height: 38px; display: inline-flex; align-items: center; }
+  .prep-kit__nav { min-width: 44px; min-height: 44px; }
+}
+
+/* ---- contraste ----
+   El gris sobre blanco daba ~3.1:1 y el ámbar del pill "Agendado" ~3.2:1,
+   bajo el mínimo AA de 4.5:1 — y ese pill es justo el estado que la central
+   más necesita distinguir. Los reemplazos salen de la paleta que ya existe. */
+.agbtn-grey { background: #5f6877; }
+.ag-pill.por { color: #8a5a12; }
+
+/* ---- piso tipográfico ----
+   La bandera de detención era el texto más chico del sistema (9px) siendo la
+   alerta más importante del tablero. */
+.stopflag, .pick { font-size: 10px; padding: 2px 5px; font-weight: 800; }
+.gblock .gdur { font-size: 10px; }
+
+/* ---- columnas vacías ----
+   En un tablero de control visual el ojo debe ir a donde hay carga; una
+   columna en (0) pesaba lo mismo que una con cinco tarjetas. */
+.kanban .col:has(.drop:empty) { border-style: dashed; }
+.kanban .col:has(.drop:empty) h3 { background: #6b7280; }
+.col .count { background: rgba(255, 255, 255, .18); border-radius: 9px; padding: 0 6px; opacity: 1; }
+
+/* ---- mover una orden sin arrastrar ----
+   El drag & drop de HTML5 no dispara eventos en pantalla táctil: en la tablet
+   del taller los tableros eran de solo lectura. Estos controles hacen lo mismo
+   que el arrastre y funcionan en cualquier dispositivo. */
+.ot-mover {
+  margin: 10px 0; padding: 11px 13px; border-radius: 8px;
+  background: var(--tint); border: 1px solid var(--tint-borde);
+}
+.ot-mover__tit {
+  font-size: 11.5px; font-weight: 800; color: var(--navy);
+  text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px;
+}
+.ot-mover__fila { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.ot-mover__lbl { font-size: 12px; color: var(--ink-2); font-weight: 600; }
+.ot-mover select {
+  padding: 7px 9px; border: 1px solid var(--ink-3); border-radius: 6px;
+  font-family: var(--font); font-size: 12.5px; background: #fff; color: var(--ink);
+}
+@media (pointer: coarse) { .ot-mover select { min-height: 44px; } }

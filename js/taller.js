@@ -2724,6 +2724,40 @@ function wireCard(el) {
   el.addEventListener("dragstart", function (e) { e.dataTransfer.setData("ro", el.dataset.ro); el.classList.add("dragging"); });
   el.addEventListener("dragend", function () { el.classList.remove("dragging"); });
 }
+/* Mover una orden. Son funciones con nombre y no closures dentro de wireDnD
+   porque el arrastre NO es el único camino: el drag & drop de HTML5 no dispara
+   eventos en pantalla táctil, así que en la tablet del taller los tableros eran
+   de solo lectura. Los mismos cambios se hacen desde el detalle de la orden.
+   Cada movimiento queda anotado: sin eso no hay forma de saber cuánto estuvo
+   una orden detenida ni quién la movió. */
+function _nombreDe(lista, id) {
+  var x = lista.find(function (e) { return e.id === id; });
+  return x ? x.t : id;
+}
+function moverEtapa(o, etapa) {
+  if (!o || o.etapa === etapa) return false;
+  o.etapa = etapa;
+  o.stop = null;              // avanzar de etapa levanta la detención
+  anotar(o, "Etapa", _nombreDe(ETAPAS, etapa));
+  return true;
+}
+function marcarStop(o, stop) {
+  if (!o || o.stop === stop) return false;
+  o.stop = stop || null;
+  anotar(o, "Detención", stop ? _nombreDe(STOPS, stop) : "levantada");
+  return true;
+}
+// Desde el detalle: aplica, guarda y repinta. El drag ya hace eso por su lado.
+function otAplicar(ro, campo, valor) {
+  var o = byRo(ro);
+  if (!o) return;
+  var cambio = campo === "etapa" ? moverEtapa(o, valor) : marcarStop(o, valor);
+  if (!cambio) return;
+  save();
+  renderAll();
+  detalle(ro);                // refresca el modal con el estado nuevo
+}
+
 function wireDnD() {
   document.querySelectorAll(".card-ot").forEach(wireCard);
   function bind(sel, fn) {
@@ -2737,22 +2771,8 @@ function wireDnD() {
       });
     });
   }
-  // Cada movimiento de tarjeta queda anotado: sin esto no había forma de saber
-  // cuánto estuvo una orden detenida ni quién la movió.
-  function nombreDe(lista, id) {
-    var x = lista.find(function (e) { return e.id === id; });
-    return x ? x.t : id;
-  }
-  bind(".drop[data-etapa]", function (o, z) {
-    if (o.etapa === z.dataset.etapa) return;
-    o.etapa = z.dataset.etapa; o.stop = null;
-    anotar(o, "Etapa", nombreDe(ETAPAS, o.etapa));
-  });
-  bind(".drop[data-stop]", function (o, z) {
-    if (o.stop === z.dataset.stop) return;
-    o.stop = z.dataset.stop;
-    anotar(o, "Detención", nombreDe(STOPS, o.stop));
-  });
+  bind(".drop[data-etapa]", function (o, z) { moverEtapa(o, z.dataset.etapa); });
+  bind(".drop[data-stop]",  function (o, z) { marcarStop(o, z.dataset.stop); });
   // Ya no hay drop[data-prep]: el tablero de preparación dejó de ser kanban de
   // arrastre. Su eje temporal lo calcula la fecha de la cita y el estado del
   // kit se cambia con botones en la tarjeta, que además funcionan en tablet.
@@ -3161,6 +3181,29 @@ function detalle(ro) {
       }).join("") + "</ul>";
   }
 
+  // Mover la orden SIN arrastrar. El drag & drop de HTML5 no funciona en
+  // pantalla táctil, así que en la tablet del taller los tableros eran de solo
+  // lectura: se veía el avance pero no se podía registrar.
+  var mover = "";
+  if (o.etapa !== "entregado") {
+    var iEt = ETAPAS.findIndex(function (e) { return e.id === o.etapa; });
+    mover = '<div class="ot-mover">' +
+      '<div class="ot-mover__tit">Mover esta orden</div>' +
+      '<div class="ot-mover__fila">' +
+        (iEt > 0 ? '<button class="agbtn agbtn-ghost agbtn-sm" onclick="otAplicar(\'' + esc(o.ro) + "','etapa','" + ETAPAS[iEt - 1].id + '\')">‹ ' + esc(ETAPAS[iEt - 1].t) + "</button>" : "") +
+        (iEt >= 0 && iEt < ETAPAS.length - 1 ? '<button class="agbtn agbtn-navy agbtn-sm" onclick="otAplicar(\'' + esc(o.ro) + "','etapa','" + ETAPAS[iEt + 1].id + '\')">' + esc(ETAPAS[iEt + 1].t) + " ›</button>" : "") +
+      "</div>" +
+      '<div class="ot-mover__fila">' +
+        '<label class="ot-mover__lbl">Detención</label>' +
+        '<select onchange="otAplicar(\'' + esc(o.ro) + "','stop',this.value)\">" +
+          '<option value=""' + (o.stop ? "" : " selected") + ">Ninguna</option>" +
+          STOPS.map(function (s) {
+            return '<option value="' + s.id + '"' + (o.stop === s.id ? " selected" : "") + ">" + esc(s.t) + "</option>";
+          }).join("") +
+        "</select>" +
+      "</div></div>";
+  }
+
   document.getElementById("m-title").textContent = "Orden de trabajo RO " + o.ro;
   document.getElementById("m-body").innerHTML =
     '<div><span class="lbl">Cliente:</span> ' + o.cliente + "</div>" +
@@ -3172,6 +3215,7 @@ function detalle(ro) {
     '<div><span class="lbl">Cita:</span> ' + (o.rec || "—") + ' &nbsp; <span class="lbl">Inicio en taller:</span> ' + (o.ini || "—") + "</div>" +
     '<div><span class="lbl">Etapa JPCB:</span> ' + etTxt + ' &nbsp; <span class="lbl">Detención:</span> ' + (o.stop ? STOPS.find(function (s) { return s.id === o.stop; }).t : "Ninguna") + "</div>" +
     '<div><span class="lbl">Pre-picking:</span> ' + (o.picking === "listo" ? "Preparado" : "Pendiente") + "</div>" +
+    mover +
     acta +
     rep +
     traza +

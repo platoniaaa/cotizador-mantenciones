@@ -355,6 +355,28 @@ a { color: var(--blue); }
 .btn--agendar { background: var(--navy); color: #fff; font-size: 14px; padding: 11px 18px; box-shadow: 0 8px 18px rgba(0, 27, 108, .22); }
 .btn--agendar:hover { background: var(--navy-hover); transform: translateY(-1px); }
 .topbar__nav { display: flex; gap: 18px; align-items: center; }
+
+/* Badge de sesión (lo llena auth.js con el correo y "Salir").
+   Vive DENTRO del nav a propósito: auth.js tiene un fallback que lo crea con
+   position:fixed cuando no encuentra este contenedor, y ese fallback flotaba
+   sobre la topbar sticky tapando "Uso interno" y "← Inicio" bajo ~900px.
+   Existiendo el span, auth.js lo prefiere y no crea nada flotante. */
+#authUser {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 600 12px/1 var(--font, inherit); color: var(--navy);
+  background: var(--tint); border: 1px solid var(--tint-borde);
+  border-radius: 999px; padding: 6px 11px; white-space: nowrap;
+}
+/* mientras no haya sesión pintada el span está vacío y no debe ocupar lugar */
+#authUser:empty { display: none; }
+#authUser > span {
+  max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+/* en pantalla angosta el correo sobra: lo que hace falta es poder salir */
+@media (max-width: 560px) {
+  #authUser > span { display: none; }
+  #authUser { padding: 6px 10px; }
+}
 .rv__acciones { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 
 /* toggle Particular / Interno */

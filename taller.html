@@ -6,10 +6,10 @@
   <title>Taller y Agendamiento · Curifor</title>
   <meta name="description" content="Agendamiento de servicio, tablero JPCB, planificador de taller y pre-picking de bodega.">
   <!-- guard de acceso interno (redirige a login.html si no hay sesión) -->
-  <script src="js/agenda-config.js?v=e6293d4"></script>
-  <script src="js/auth.js?v=e6293d4"></script>
-  <link rel="stylesheet" href="css/estilos.css?v=e6293d4">
-  <link rel="stylesheet" href="css/taller.css?v=e6293d4">
+  <script src="js/agenda-config.js?v=072757d"></script>
+  <script src="js/auth.js?v=072757d"></script>
+  <link rel="stylesheet" href="css/estilos.css?v=072757d">
+  <link rel="stylesheet" href="css/taller.css?v=072757d">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗓</text></svg>">
 </head>
 <body class="taller">
@@ -23,6 +23,7 @@
         <span class="brand__badge">Uso interno</span>
       </div>
       <nav class="topbar__nav">
+        <span id="authUser"></span>
         <a href="index.html" class="nav-link">← Inicio</a>
       </nav>
     </div>
@@ -120,10 +121,15 @@
           <div><h5>Primera jornada</h5><div class="ag-slots" id="agSlotsAM"></div></div>
           <div><h5>Segunda jornada</h5><div class="ag-slots" id="agSlotsPM"></div></div>
         </div>
-        <table class="ag-table">
-          <thead><tr><th>OC</th><th>Hora</th><th>Cliente</th><th>Vehículo</th><th>Patente</th><th>Servicio</th><th>Sucursal</th><th>Estado</th><th></th></tr></thead>
-          <tbody id="tblAgenda"></tbody>
-        </table>
+        <!-- 9 columnas no caben en pantalla chica y es la herramienta principal
+             de la central. El wrapper da scroll horizontal en vez de comprimir
+             el texto hasta que quiebra en varias líneas. -->
+        <div class="tabla-scroll">
+          <table class="ag-table">
+            <thead><tr><th>OC</th><th>Hora</th><th>Cliente</th><th>Vehículo</th><th>Patente</th><th>Servicio</th><th>Sucursal</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="tblAgenda"></tbody>
+          </table>
+        </div>
 
         <!-- Vehículos ya recibidos: la recepción se hace en su propio módulo,
              pero acá se ve en qué va cada auto que ya llegó. -->
@@ -371,8 +377,8 @@
     </div>
   </div>
 
-  <script src="js/taller.js?v=e6293d4"></script>
-  <script src="js/autocompletar.js?v=e6293d4"></script>
+  <script src="js/taller.js?v=072757d"></script>
+  <script src="js/autocompletar.js?v=072757d"></script>
   <!-- Modo módulo: ?vista=agenda|recepcion.
        · agenda    → todo el taller MENOS Recepción (agendamiento y los tableros).
        · recepcion → solo Recepción, sin pestañas. Acepta &oc=N para abrir de

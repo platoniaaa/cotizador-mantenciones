@@ -49,12 +49,15 @@
         <span class="app__desc">Recibir el vehículo: accesorios, fotos y firmas</span>
       </a>
 
-      <!-- Control de OT NO va aquí. El módulo ya existe y funciona en la app de
-           post venta con sus 13 pestañas; `ots.html` era una reconstrucción mía
-           parcial (3 pestañas) que lo duplicaba. Mismo error que los tableros
-           del taller. El archivo se deja como referencia de cómo leer las
-           tablas nuevas, pero sin enlace: lo que corresponde es migrar el
-           módulo original a Supabase, no rehacerlo. -->
+      <!-- Post Venta reúne los 10 módulos que antes vivían en la app de
+           Streamlit. El acceso es uno solo: adentro se elige el módulo.
+           (`ots.html` quedó sin enlace: fue una reconstrucción parcial mía que
+           duplicaba esto mismo. Se deja como referencia, no como camino.) -->
+      <a class="app app--ots" href="postventa.html">
+        <span class="app__icono" aria-hidden="true">🧾</span>
+        <span class="app__nombre">Post Venta</span>
+        <span class="app__desc">Órdenes de trabajo, cuenta ficha, informes, campañas y producción</span>
+      </a>
     </div>
   </main>
 

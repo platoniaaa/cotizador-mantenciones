@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-auth="require">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control y Gestión Post Venta · Curifor</title>
+  <meta name="description" content="Seguimiento de las órdenes de trabajo pendientes: categoría, notas, avance de gestión, documentos y comentarios.">
+  <script src="js/agenda-config.js"></script>
+  <script src="js/auth.js"></script>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/ots.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>">
+</head>
+<body class="ots">
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <img class="brand__logo" src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
+        <span class="brand__sep"></span>
+        <span class="brand__sub">Control y Gestión Post Venta</span>
+        <span class="brand__badge">Uso interno</span>
+      </div>
+      <nav class="topbar__nav">
+        <span id="authUser"></span>
+        <a href="index.html" class="nav-link">← Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ots-head">
+    <div class="ots-head__inner">
+      <h1 class="ots-head__title">Órdenes de trabajo pendientes</h1>
+      <p class="ots-head__sub" id="otsSub">Cargando…</p>
+      <div class="tabs" id="otsTabs">
+        <div class="tab active" data-v="resumen">Resumen</div>
+        <div class="tab" data-v="detalle">Detalle y gestión</div>
+        <div class="tab" data-v="ficha">Documentos y comentarios</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de filtros: compartida por Resumen y Detalle. Los filtros son el
+       corazón del módulo (la app vieja los tenía en una barra lateral); acá van
+       arriba y colapsables para no comerse la pantalla en el listado. -->
+  <div class="ots-filtros" id="otsFiltros">
+    <div class="ots-filtros__fila">
+      <input type="search" id="fBuscar" class="f-buscar" placeholder="Buscar folio, patente, cliente, asesor, glosa…" autocomplete="off">
+      <button type="button" class="f-toggle" id="fToggle" aria-expanded="false">Más filtros</button>
+      <button type="button" class="f-limpiar" id="fLimpiar" hidden>Limpiar</button>
+      <span class="f-cuenta" id="fCuenta"></span>
+    </div>
+    <div class="ots-filtros__grid" id="fGrid" hidden>
+      <label>Sucursal <select id="fSucursal" multiple size="5"></select></label>
+      <label>Rango de días <select id="fRango" multiple size="5"></select></label>
+      <label>Tipo de venta <select id="fTipoVenta" multiple size="5"></select></label>
+      <label>Marca <select id="fMarca" multiple size="5"></select></label>
+      <label>Asesor <select id="fAsesor" multiple size="5"></select></label>
+      <label>Categoría <select id="fCategoria" multiple size="5"></select></label>
+      <label>Tiene documento <select id="fDocumento" multiple size="5"></select></label>
+      <label class="f-fechas">Fecha OT
+        <span><input type="date" id="fDesde"> a <input type="date" id="fHasta"></span>
+      </label>
+    </div>
+  </div>
+
+  <!-- ============ RESUMEN ============ -->
+  <div class="view active" id="v-resumen">
+    <div class="kpi-grid" id="kpiGrid"></div>
+    <div class="rep-grid" id="resumenGraficos"></div>
+  </div>
+
+  <!-- ============ DETALLE Y GESTIÓN ============ -->
+  <div class="view" id="v-detalle">
+    <p class="vhint">
+      Las cuatro columnas de la derecha son editables. Se guardan por fila, apenas sales del campo:
+      no hay botón de guardar que se pueda olvidar. La OT y sus documentos vienen del ERP y no se tocan acá.
+    </p>
+    <div class="tabla-scroll">
+      <table class="ots-tabla">
+        <thead>
+          <tr>
+            <th class="th-ord" data-ord="folio_ot">Folio</th>
+            <th class="th-ord" data-ord="dias_apertura">Días</th>
+            <th class="th-ord" data-ord="fecha_ot">Fecha OT</th>
+            <th class="th-ord" data-ord="sucursal">Sucursal</th>
+            <th class="th-ord" data-ord="patente">Patente</th>
+            <th>Vehículo</th>
+            <th class="th-ord" data-ord="asesor">Asesor</th>
+            <th class="th-ord num" data-ord="neto">Neto</th>
+            <th>Docs</th>
+            <th class="th-edit">Categoría</th>
+            <th class="th-edit">Observación</th>
+            <th class="th-edit">Notas</th>
+            <th class="th-edit">Avance / gestión</th>
+          </tr>
+        </thead>
+        <tbody id="tblOts"></tbody>
+      </table>
+    </div>
+    <div class="ots-mas">
+      <button type="button" id="btnMas" hidden>Mostrar más</button>
+      <span id="otsMasTxt"></span>
+    </div>
+  </div>
+
+  <!-- ============ DOCUMENTOS Y COMENTARIOS ============ -->
+  <div class="view" id="v-ficha">
+    <div class="ficha-buscar">
+      <label>Folio de la OT
+        <input type="search" id="fichaFolio" list="fichaLista" placeholder="Escribe o pega un folio" autocomplete="off">
+      </label>
+      <datalist id="fichaLista"></datalist>
+      <button type="button" id="fichaVer">Ver</button>
+    </div>
+    <p class="ficha-vacia" id="fichaVacia">Elige una OT para ver sus documentos, sus repuestos y su hilo de comentarios.</p>
+    <div id="fichaCont" hidden></div>
+  </div>
+
+  <div class="ots-aviso" id="otsAviso" role="status" hidden></div>
+
+  <footer class="pie">
+    <p>Curifor S.A · Uso interno · Los datos vienen del consolidado de OTs</p>
+  </footer>
+
+  <script src="js/ots.js"></script>
+</body>
+</html>

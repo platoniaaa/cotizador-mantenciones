@@ -2698,7 +2698,7 @@ function _agIngresarTallerCon(a, tipo, dur, ro) {
   document.getElementById("recVacia").hidden = false;
   alert("Recepción " + a.oc + " registrada.\n• Acta y fotos guardadas\n• Orden de trabajo RO " + o.ro + " creada en el registro\n(El tablero operativo del taller vive en el planificador de post venta)");
   renderAll();
-  // Los tableros ya no están en esta plataforma (decisión 09-08-2026): después
+  // Los tableros ya no están en esta plataforma (decisión 10-08-2026): después
   // del acta se vuelve a la agenda, lista para recibir el auto siguiente. En el
   // módulo Recepción las pestañas van ocultas y se queda donde está.
   if (window.__moduloVista !== "recepcion") agGoTab("agenda");
@@ -3238,7 +3238,7 @@ function renderReportes() {
   var manIso = d2.getFullYear() + "-" + String(d2.getMonth() + 1).padStart(2, "0") + "-" + String(d2.getDate()).padStart(2, "0");
   var agMan = DB.agendamientos.filter(function (a) { return a.fecha === manIso; }).length;
   // Solo indicadores de agenda: los tableros del taller salieron de esta
-  // plataforma el 09-08-2026 (duplicaban el planificador de post venta).
+  // plataforma el 10-08-2026 (duplicaban el planificador de post venta).
   var kpis = [
     ["Agendamientos hoy", String(agHoy)],
     ["Agendamientos mañana", String(agMan)]

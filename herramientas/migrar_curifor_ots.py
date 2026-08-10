@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Migración inicial de curifor-ots (la app Streamlit que guardaba todo en JSON
-dentro de GitHub) a tablas reales de Supabase — Fase 1 del plan del 09-08-2026.
+dentro de GitHub) a tablas reales de Supabase — Fase 1 del plan del 10-08-2026.
 
 Uso:
     python migrar_curifor_ots.py [--origen RUTA_curifor-ots-main]
@@ -182,20 +182,32 @@ def desmoji(s):
 
 
 # ---------------------------------------------------------------- infraestructura
+CONN = None      # la conexión, para poder confirmar/revertir de verdad
+
+
 def conectar():
+    """Conexión SIN autocommit, a propósito.
+
+    Con autocommit encendido, un begin/rollback mandado por el cursor NO
+    revierte nada: cada sentencia se confirma sola. Eso significaba que una
+    carga a medias (por ejemplo, si el JSON trae una sucursal sin mapear en
+    la fila 900) dejaba la tabla con el `delete` hecho y solo parte de las
+    filas puestas, sin aviso. Ahora la transacción la maneja la conexión.
+    """
+    global CONN
     pwd = os.environ.get("PGPASSWORD", "")
     if not pwd:
         raise SystemExit("Falta la variable de entorno PGPASSWORD.")
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
-    c = pg8000.dbapi.connect(
+    CONN = pg8000.dbapi.connect(
         user="postgres.ordgsglujssgzmnlmcus", password=pwd,
         host="aws-0-us-east-1.pooler.supabase.com", port=5432,
         database="postgres", ssl_context=ctx, timeout=90,
     )
-    c.autocommit = True
-    return c
+    CONN.autocommit = False
+    return CONN
 
 
 def aplicar_sql(cur, ruta):
@@ -311,13 +323,12 @@ def cargar_ots(cur, origen):
 
     cols = [c for c, _, _ in CAMPOS_OTS]
     moldes = {c: "%s::jsonb" for c, _, t in CAMPOS_OTS if t == "j"}
-    cur.execute("begin")
     cur.execute("delete from public.ots")
     n = insertar_lote(cur, "ots", cols, filas, moldes, tamano=100)
     cur.execute("delete from public.ots_gestion")
     cols_g = ["folio_ot", "sucursal"] + [c for c, _ in CAMPOS_GESTION]
     ng = insertar_lote(cur, "ots_gestion", cols_g, gestion)
-    cur.execute("commit")
+    CONN.commit()
     print(f"  ots: {n} filas (actualizado: {d.get('fecha_actualizacion')})")
     print(f"  ots_gestion: {ng} filas con trabajo humano")
     if avisos:
@@ -331,10 +342,9 @@ def cargar_comentarios(cur, origen):
         ([texto(c.get("folio_ot")) or "?", texto(c.get("autor")) or "?",
           fecha_hora(c.get("fecha"), avisos, "fecha"), texto(c.get("comentario")) or ""]
          for c in d), key=lambda f: f[2])
-    cur.execute("begin")
     cur.execute("truncate table public.ots_comentarios restart identity")
     n = insertar_lote(cur, "ots_comentarios", ["folio_ot", "autor", "fecha", "comentario"], filas)
-    cur.execute("commit")
+    CONN.commit()
     print(f"  ots_comentarios: {n} filas" + (f" (avisos: {avisos})" if avisos else ""))
 
 
@@ -345,12 +355,11 @@ def cargar_notificaciones(cur, origen):
               texto(x.get("destinatario")) or "?", texto(x.get("folio_ot")),
               texto(x.get("extracto")), fecha_hora(x.get("fecha"), avisos, "fecha"),
               bool(x.get("leida"))] for x in d]
-    cur.execute("begin")
     cur.execute("delete from public.notificaciones")
     n = insertar_lote(cur, "notificaciones",
                       ["id", "remitente", "destinatario", "folio_ot", "extracto", "fecha", "leida"],
                       filas, {"id": "%s::uuid"})
-    cur.execute("commit")
+    CONN.commit()
     print(f"  notificaciones: {n} filas" + (f" (avisos: {avisos})" if avisos else ""))
 
 
@@ -361,10 +370,9 @@ def cargar_auditoria(cur, origen):
         ([fecha_hora(r.get("fecha"), avisos, "fecha"), texto(r.get("usuario")) or "?",
           texto(r.get("accion")) or "?", texto(r.get("detalle")), texto(r.get("folio_ot"))]
          for r in d), key=lambda f: f[0])
-    cur.execute("begin")
     cur.execute("truncate table public.auditoria restart identity")
     n = insertar_lote(cur, "auditoria", ["fecha", "usuario", "accion", "detalle", "folio_ot"], filas)
-    cur.execute("commit")
+    CONN.commit()
     print(f"  auditoria: {n} filas" + (f" (avisos: {avisos})" if avisos else ""))
 
 
@@ -388,13 +396,12 @@ def cargar_stock(cur, origen):
             texto(desmoji(p.get("procedencia"))), texto(desmoji(p.get("categoria"))),
             texto(desmoji(p.get("clasificacion_stock"))),
         ])
-    cur.execute("begin")
     cur.execute("delete from public.stock_repuestos")
     n = insertar_lote(cur, "stock_repuestos",
                       ["producto", "bodega", "descripcion", "stock", "stock_proyectado",
                        "precio_venta", "costo", "familia", "subfamilia", "procedencia",
                        "categoria", "clasificacion_stock"], filas, tamano=800)
-    cur.execute("commit")
+    CONN.commit()
     extra = f", {dupes} duplicados tras reparar codificación" if dupes else ""
     print(f"  stock_repuestos: {n} filas (actualizado: {d.get('fecha_actualizacion')}{extra})"
           + (f" (avisos: {avisos})" if avisos else ""))
@@ -474,22 +481,19 @@ def verificar(cur):
     print(f"\n  join ots<->gestion: {cur.fetchone()[0]} coinciden")
 
     # RLS: anon no ve nada; el personal ve todo
-    cur.execute("begin")
     cur.execute("set local role anon")
     visibles = []
     for t in ["ots", "ots_gestion", "stock_repuestos", "auditoria", "notificaciones"]:
         cur.execute(f"select count(*) from public.{t}")
         visibles.append((t, cur.fetchone()[0]))
-    cur.execute("rollback")
+    CONN.rollback()
     print("  como anon:", ", ".join(f"{t}={n}" for t, n in visibles),
           "(correcto: todo 0)" if not any(n for _, n in visibles) else "<- ¡DEBE SER TODO 0!")
-
-    cur.execute("begin")
     cur.execute("select set_config('request.jwt.claims', '{\"email\":\"icalderon@curifor.com\"}', true)")
     cur.execute("set local role authenticated")
     cur.execute("select count(*) from public.ots")
     n_staff = cur.fetchone()[0]
-    cur.execute("rollback")
+    CONN.rollback()
     print(f"  como personal (@curifor.com): ots={n_staff} <- debe ser el total")
 
 
@@ -517,7 +521,17 @@ def main():
             cargar_stock(cur, args.origen)
             cargar_permitidas(cur, args.origen)
             refrescar_documentos(cur, args.origen)
+            c.commit()          # cierra lo que no confirmó cada carga
         verificar(cur)
+    except Exception:
+        # Si algo revienta a mitad de camino, no dejar tablas con el `delete`
+        # hecho y las filas a medio poner.
+        try:
+            c.rollback()
+            print("\n>>> ERROR: se revirtió todo lo no confirmado.")
+        except Exception:
+            pass
+        raise
     finally:
         c.close()
 

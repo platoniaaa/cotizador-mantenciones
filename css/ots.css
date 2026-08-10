@@ -1,0 +1,294 @@
+/* ============================================================
+   Control y Gestión Post Venta — órdenes de trabajo pendientes.
+   Usa las variables de estilos.css (que se carga antes).
+
+   El módulo es una tabla de trabajo, no una página de lectura: por eso
+   rompe el ancho de --max y usa tipografía más chica que el resto del
+   sitio. Con 13 columnas y 2.000 filas, cada píxel ahorrado es una fila
+   más visible sin scrollear.
+   ============================================================ */
+
+.ots { background: var(--bg); }
+
+/* ---------- cabecera ---------- */
+.ots-head { background: var(--blanco); border-bottom: 1px solid var(--linea); }
+.ots-head__inner { max-width: 1600px; margin: 0 auto; padding: 18px 20px 0; }
+.ots-head__title { margin: 0 0 4px; font-size: 22px; color: var(--navy); }
+.ots-head__sub { margin: 0 0 14px; font-size: 13px; color: var(--ink-2); }
+
+.ots .tabs { display: flex; gap: 4px; overflow-x: auto; }
+.ots .tab {
+  padding: 9px 16px; font-size: 13px; font-weight: 600; color: var(--ink-2);
+  border: 1px solid transparent; border-bottom: none; border-radius: 9px 9px 0 0;
+  cursor: pointer; white-space: nowrap; transition: background .15s, color .15s;
+}
+.ots .tab:hover { background: var(--tint-2); color: var(--navy); }
+.ots .tab.active {
+  background: var(--bg); color: var(--navy);
+  border-color: var(--linea); margin-bottom: -1px; padding-bottom: 10px;
+}
+
+.view { display: none; max-width: 1600px; margin: 0 auto; padding: 18px 20px 40px; }
+.view.active { display: block; }
+
+/* ---------- filtros ---------- */
+.ots-filtros {
+  max-width: 1600px; margin: 14px auto 0; padding: 0 20px;
+}
+.ots-filtros[hidden] { display: none; }
+.ots-filtros__fila { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.f-buscar {
+  flex: 1 1 320px; min-width: 220px; padding: 9px 12px; font: inherit; font-size: 13px;
+  border: 1px solid var(--tint-borde); border-radius: var(--radio-sm); background: var(--blanco);
+}
+.f-buscar:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+.f-toggle, .f-limpiar {
+  padding: 9px 14px; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer;
+  border: 1px solid var(--tint-borde); border-radius: var(--radio-sm);
+  background: var(--blanco); color: var(--navy);
+}
+.f-toggle:hover, .f-limpiar:hover { background: var(--tint); }
+.f-limpiar { color: var(--rojo); border-color: #f0c9c5; }
+.f-cuenta { font-size: 12px; font-weight: 700; color: var(--ink-2); margin-left: auto; }
+
+.ots-filtros__grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px; margin-top: 12px; padding: 14px;
+  background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio);
+  box-shadow: var(--sombra-sm);
+}
+.ots-filtros__grid label {
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 11px; font-weight: 700; color: var(--ink-2); text-transform: uppercase;
+  letter-spacing: .3px;
+}
+.ots-filtros__grid select {
+  font: inherit; font-size: 12px; text-transform: none; letter-spacing: 0;
+  padding: 4px; border: 1px solid var(--tint-borde); border-radius: 7px; background: var(--blanco);
+}
+.f-fechas span { display: flex; align-items: center; gap: 6px; font-size: 12px;
+  text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--ink-2); }
+.f-fechas input { flex: 1; min-width: 0; font: inherit; font-size: 12px; padding: 5px;
+  border: 1px solid var(--tint-borde); border-radius: 7px; }
+
+/* ---------- KPIs ---------- */
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px; margin-bottom: 20px;
+}
+.kpi-card {
+  background: var(--blanco); border: 1px solid var(--linea); border-left: 4px solid var(--blue);
+  border-radius: var(--radio); padding: 14px 16px; box-shadow: var(--sombra-sm);
+}
+.kpi-card.is-alerta { border-left-color: var(--rojo); }
+.kpi-card.is-aviso { border-left-color: var(--ambar); }
+.kpi-card h5 {
+  margin: 0 0 6px; font-size: 11px; font-weight: 700; color: var(--ink-3);
+  text-transform: uppercase; letter-spacing: .4px;
+}
+.kpi-val { font-size: 26px; font-weight: 800; color: var(--navy); line-height: 1.1; }
+.kpi-card.is-alerta .kpi-val { color: var(--rojo); }
+.kpi-card.is-aviso .kpi-val { color: var(--ambar); }
+
+/* ---------- gráficos de barras ---------- */
+.rep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.rep-card {
+  background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio);
+  padding: 16px 18px; box-shadow: var(--sombra-sm);
+}
+.rep-card h5 { margin: 0 0 12px; font-size: 13px; color: var(--navy); }
+.bar-row { display: grid; grid-template-columns: 1fr 2fr auto; gap: 8px; align-items: center; margin-bottom: 6px; }
+.bar-row .bl {
+  font-size: 11px; color: var(--ink-2); overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+.bar-row .bt { background: var(--tint); border-radius: 4px; height: 14px; overflow: hidden; }
+.bar-row .bt i { display: block; height: 100%; background: var(--blue); border-radius: 4px; }
+.bar-row .bn { font-size: 11px; font-weight: 700; color: var(--navy); min-width: 34px; text-align: right; }
+
+/* ---------- tabla ---------- */
+.vhint {
+  margin: 0 0 12px; padding: 10px 14px; font-size: 12px; color: var(--ink-2);
+  background: var(--tint-2); border: 1px solid var(--tint-borde); border-radius: var(--radio-sm);
+}
+.tabla-scroll {
+  overflow-x: auto; background: var(--blanco);
+  border: 1px solid var(--linea); border-radius: var(--radio); box-shadow: var(--sombra-sm);
+}
+.ots-tabla { width: 100%; border-collapse: collapse; font-size: 12px; }
+.ots-tabla th, .ots-tabla td {
+  padding: 7px 9px; text-align: left; border-bottom: 1px solid var(--linea); white-space: nowrap;
+}
+.ots-tabla thead th {
+  position: sticky; top: 0; z-index: 2;
+  background: var(--navy); color: #fff; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .3px;
+}
+.ots-tabla .th-ord { cursor: pointer; user-select: none; }
+.ots-tabla .th-ord:hover { background: var(--navy-hover); }
+.ots-tabla .th-ord.ord-asc::after { content: " ▲"; font-size: 9px; }
+.ots-tabla .th-ord.ord-desc::after { content: " ▼"; font-size: 9px; }
+.ots-tabla .th-edit { background: #0d3f8a; }
+.ots-tabla tbody tr:nth-child(even) { background: var(--tint-2); }
+.ots-tabla tbody tr:hover { background: var(--tint); }
+.ots-tabla .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.folio-link { color: var(--blue); font-weight: 700; text-decoration: none; }
+.folio-link:hover { text-decoration: underline; }
+.com-badge {
+  display: inline-block; min-width: 16px; padding: 1px 5px; font-size: 10px; font-weight: 700;
+  color: #fff; background: var(--ink-3); border-radius: 999px; text-align: center;
+}
+.dias-rojo { color: var(--rojo); font-weight: 800; }
+.dias-naranjo { color: var(--ambar); font-weight: 700; }
+
+.td-docs { white-space: nowrap; }
+.doc-chip {
+  display: inline-block; margin-right: 3px; padding: 1px 5px; font-size: 10px; font-weight: 700;
+  color: var(--navy); background: var(--tint); border: 1px solid var(--tint-borde); border-radius: 4px;
+  cursor: help;
+}
+
+/* Celdas editables: se ven como campo desde el principio. Un input que
+   parece texto plano hace que la gente no sepa que puede escribir. */
+.td-edit { padding: 3px 4px !important; }
+.cel {
+  width: 100%; min-width: 130px; padding: 5px 7px; font: inherit; font-size: 12px;
+  border: 1px solid var(--tint-borde); border-radius: 6px; background: var(--blanco); color: var(--ink);
+}
+.cel:hover { border-color: var(--blue); }
+.cel:focus { outline: 2px solid var(--blue); outline-offset: 0; border-color: var(--blue); }
+.cel.guardando { background: var(--ambar-bg); border-color: var(--ambar-borde); }
+.cel.guardado { background: var(--verde-bg); border-color: var(--verde); }
+.cel.error { background: var(--rojo-bg); border-color: var(--rojo); }
+
+.ots-mas { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+.ots-mas button {
+  padding: 9px 18px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+  color: #fff; background: var(--navy); border: none; border-radius: var(--radio-sm);
+}
+.ots-mas button:hover { background: var(--navy-hover); }
+.ots-mas span { font-size: 12px; color: var(--ink-3); }
+.sin-datos { padding: 22px; text-align: center; color: var(--ink-3); font-size: 13px; }
+.cargando { padding: 22px; text-align: center; color: var(--ink-2); font-size: 13px; }
+
+/* ---------- ficha de una OT ---------- */
+.ficha-buscar { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 18px; flex-wrap: wrap; }
+.ficha-buscar label {
+  display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700;
+  color: var(--ink-2); text-transform: uppercase; letter-spacing: .3px;
+}
+.ficha-buscar input {
+  min-width: 260px; padding: 9px 12px; font: inherit; font-size: 13px; text-transform: none;
+  letter-spacing: 0; border: 1px solid var(--tint-borde); border-radius: var(--radio-sm);
+}
+.ficha-buscar button {
+  padding: 10px 20px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+  color: #fff; background: var(--navy); border: none; border-radius: var(--radio-sm);
+}
+.ficha-buscar button:hover { background: var(--navy-hover); }
+.ficha-vacia { color: var(--ink-3); font-size: 13px; }
+
+#fichaCont > h4 {
+  margin: 26px 0 10px; font-size: 14px; color: var(--navy);
+  padding-bottom: 6px; border-bottom: 2px solid var(--tint-borde);
+}
+#fichaCont > h4 .n, .ficha-coms h4 .n { color: var(--ink-3); font-weight: 400; }
+
+.ficha-cab {
+  background: var(--blanco); border: 1px solid var(--linea); border-left: 5px solid var(--navy);
+  border-radius: var(--radio); padding: 16px 20px; box-shadow: var(--sombra-sm);
+}
+.ficha-cab h3 { margin: 0 0 6px; font-size: 20px; color: var(--navy); }
+.ficha-cab .glosa { margin: 0; font-size: 13px; color: var(--ink-2); }
+
+.ficha-datos {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px; margin: 16px 0 0; padding: 16px 20px;
+  background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio);
+  box-shadow: var(--sombra-sm);
+}
+.ficha-datos dt {
+  font-size: 10px; font-weight: 700; color: var(--ink-3);
+  text-transform: uppercase; letter-spacing: .4px; margin-bottom: 2px;
+}
+.ficha-datos dd { margin: 0; font-size: 13px; color: var(--ink); font-weight: 600; }
+
+.ficha-gestion {
+  margin-top: 16px; padding: 16px 20px; background: var(--blanco);
+  border: 1px solid var(--linea); border-left: 5px solid var(--blue);
+  border-radius: var(--radio); box-shadow: var(--sombra-sm);
+}
+.ficha-gestion h4 { margin: 0 0 4px; font-size: 14px; color: var(--navy); }
+.ficha-gestion .ult { margin: 0 0 12px; font-size: 11px; color: var(--ink-3); }
+.fg-campo {
+  display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px;
+  font-size: 11px; font-weight: 700; color: var(--ink-2);
+  text-transform: uppercase; letter-spacing: .3px;
+}
+.fg-campo .cel { min-width: 0; font-size: 13px; padding: 8px 10px; text-transform: none; letter-spacing: 0; }
+
+.ficha-tabla { width: 100%; border-collapse: collapse; font-size: 12px; }
+.ficha-tabla th, .ficha-tabla td {
+  padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--linea);
+}
+.ficha-tabla thead th {
+  background: var(--tint); color: var(--navy); font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .3px;
+}
+.ficha-tabla .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.ficha-coms { margin-top: 26px; }
+.ficha-coms h4 {
+  margin: 0 0 10px; font-size: 14px; color: var(--navy);
+  padding-bottom: 6px; border-bottom: 2px solid var(--tint-borde);
+}
+.ficha-coms ul { list-style: none; margin: 0 0 16px; padding: 0; }
+.ficha-coms li {
+  background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio-sm);
+  padding: 10px 14px; margin-bottom: 8px;
+}
+.com-cab { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+.com-cab b { font-size: 12px; color: var(--navy); }
+.com-cab time { font-size: 11px; color: var(--ink-3); }
+.ficha-coms li p { margin: 0; font-size: 13px; color: var(--ink); white-space: pre-wrap; }
+.com-nuevo { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.com-nuevo textarea {
+  width: 100%; padding: 10px 12px; font: inherit; font-size: 13px; resize: vertical;
+  border: 1px solid var(--tint-borde); border-radius: var(--radio-sm); background: var(--blanco);
+}
+.com-nuevo textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+.com-nuevo button {
+  padding: 9px 20px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+  color: #fff; background: var(--verde); border: none; border-radius: var(--radio-sm);
+}
+.com-nuevo button:hover { filter: brightness(1.1); }
+.com-nuevo button:disabled { opacity: .5; cursor: default; }
+
+/* ---------- aviso flotante ---------- */
+.ots-aviso {
+  position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 999;
+  max-width: 90vw; padding: 11px 22px; font-size: 13px; font-weight: 600;
+  color: var(--navy); background: var(--blanco);
+  border: 1px solid var(--tint-borde); border-radius: 999px; box-shadow: var(--sombra);
+}
+.ots-aviso.is-ok { color: var(--verde); border-color: var(--verde); background: var(--verde-bg); }
+.ots-aviso.is-warn { color: var(--ambar); border-color: var(--ambar-borde); background: var(--ambar-bg); }
+.ots-aviso.is-error { color: var(--rojo); border-color: var(--rojo); background: var(--rojo-bg); }
+
+/* ---------- pantallas chicas ---------- */
+@media (max-width: 900px) {
+  .ots-head__inner, .view, .ots-filtros { padding-left: 12px; padding-right: 12px; }
+  .ots-head__title { font-size: 19px; }
+  .kpi-val { font-size: 22px; }
+  .f-cuenta { margin-left: 0; width: 100%; }
+}
+
+/* En táctil los objetivos de 12px son inclickeables: se agrandan celdas,
+   pestañas y botones. Mismo criterio que css/taller.css. */
+@media (pointer: coarse) {
+  .ots .tab { padding: 12px 18px; }
+  .cel { min-height: 38px; }
+  .ots-tabla th, .ots-tabla td { padding: 10px 9px; }
+  .f-toggle, .f-limpiar { min-height: 44px; }
+}

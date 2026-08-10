@@ -37,12 +37,15 @@
   color: var(--ink-2);
 }
 
+/* auto-fit y no un número fijo de columnas: al sumar el cuarto módulo
+   (Control de OT) una rejilla de 3 dejaba una tarjeta huérfana abajo.
+   Así se acomodan 4 en fila ancha, 2x2 en pantalla media y 1 en móvil. */
 .apps {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 26px;
   width: 100%;
-  max-width: 940px;
+  max-width: 1180px;
 }
 
 .app {
@@ -94,6 +97,8 @@
 .app--agenda .app__nombre { color: #14684a; }
 .app--recepcion { border-top-color: #b8641a; }
 .app--recepcion .app__nombre { color: #955115; }
+.app--ots { border-top-color: #7a3fb8; }
+.app--ots .app__nombre { color: #63309a; }
 
 @media (max-width: 860px) {
   .apps { grid-template-columns: 1fr; max-width: 420px; gap: 18px; }

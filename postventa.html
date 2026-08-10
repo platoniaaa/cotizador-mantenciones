@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es-CL" data-auth="require">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Control y Gestión Post Venta · Curifor</title>
+  <meta name="description" content="Órdenes de trabajo, cuenta ficha, informes de gestión, campañas, loaners e indicadores.">
+  <script src="js/agenda-config.js?v=11212cf"></script>
+  <script src="js/auth.js?v=11212cf"></script>
+  <link rel="stylesheet" href="css/estilos.css?v=11212cf">
+  <link rel="stylesheet" href="css/pv.css?v=11212cf">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>">
+</head>
+<body class="pv">
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <img class="brand__logo" src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
+        <span class="brand__sep"></span>
+        <span class="brand__sub">Control y Gestión Post Venta</span>
+        <span class="brand__badge">Uso interno</span>
+      </div>
+      <nav class="topbar__nav">
+        <span id="authUser"></span>
+        <a href="index.html" class="nav-link">← Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="pv-layout">
+
+    <!-- Los módulos, en el mismo orden en que están en la app antigua para
+         que nadie tenga que aprender un menú nuevo. -->
+    <aside class="pv-nav" id="pvNav">
+      <button type="button" class="pv-nav__btn is-on" data-mod="ots">
+        <span class="pv-nav__ico">🧾</span> Órdenes de trabajo
+      </button>
+      <button type="button" class="pv-nav__btn" data-mod="cuenta">
+        <span class="pv-nav__ico">💳</span> Cuenta Ficha
+      </button>
+      <button type="button" class="pv-nav__btn" data-mod="informes">
+        <span class="pv-nav__ico">📄</span> Informes de gestión
+      </button>
+      <button type="button" class="pv-nav__btn" data-mod="campanas">
+        <span class="pv-nav__ico">📣</span> Campañas
+      </button>
+      <button type="button" class="pv-nav__btn" data-mod="produccion">
+        <span class="pv-nav__ico">🔧</span> Producción de técnicos
+      </button>
+      <button type="button" class="pv-nav__btn" data-mod="cierres">
+        <span class="pv-nav__ico">🏁</span> Cierres y ranking
+      </button>
+      <button type="button" class="pv-nav__btn" data-mod="loaners">
+        <span class="pv-nav__ico">🚗</span> Loaners
+      </button>
+      <button type="button" class="pv-nav__btn" data-mod="indicadores">
+        <span class="pv-nav__ico">📈</span> Indicadores
+      </button>
+      <button type="button" class="pv-nav__btn" data-mod="auditoria">
+        <span class="pv-nav__ico">🕓</span> Actividad
+      </button>
+    </aside>
+
+    <main class="pv-main">
+      <p id="pvAviso" class="pv-aviso" role="status" hidden></p>
+      <div id="pvVista"></div>
+    </main>
+
+  </div>
+
+  <script src="js/pv-datos.js?v=11212cf"></script>
+  <script src="js/pv-ui.js?v=11212cf"></script>
+  <script src="js/pv-app.js?v=11212cf"></script>
+</body>
+</html>

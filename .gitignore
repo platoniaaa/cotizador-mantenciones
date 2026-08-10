@@ -29,3 +29,4 @@ postventa/github_token.txt
 __pycache__/
 *.pyc
 **/secrets.toml
+__prueba/

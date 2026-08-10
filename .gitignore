@@ -22,3 +22,9 @@ herramientas/logs/
 
 # Datos personales de clientes (RUT/teléfono/mail) — NUNCA al repo público, van a Supabase
 data/clientes.json
+
+# Credenciales locales - NUNCA al repo
+postventa/supabase_pwd.txt
+postventa/github_token.txt
+__pycache__/
+*.pyc

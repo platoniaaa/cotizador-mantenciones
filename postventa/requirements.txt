@@ -1,0 +1,24 @@
+streamlit>=1.35.0
+pandas>=2.0.0
+requests>=2.31.0
+openpyxl>=3.1.0
+python-calamine>=0.2.0
+reportlab>=4.0.0
+matplotlib>=3.7.0
+
+# --- Dependencia indirecta fijada a proposito (05/08/2026) -------------------
+# starlette 1.4.0 se publico el 05/08/2026 y volvio OBLIGATORIO el argumento
+# 'thread_minimum_size' en GZipResponder.__init__(). Streamlit todavia lo llama
+# sin ese argumento, asi que la App dejo de arrancar apenas se hizo un reboot
+# (el reboot reinstala el entorno y bajo la version nueva):
+#
+#   TypeError: GZipResponder.__init__() missing 1 required
+#              keyword-only argument: 'thread_minimum_size'
+#
+# starlette no figura en este archivo, pero entra igual porque Streamlit la usa
+# por debajo. Al no estar fijada, cada reboot podia traer la ultima version.
+# Se deja en la ultima version compatible (1.3.1, del 12/06/2026).
+#
+# Cuando Streamlit publique una version que soporte starlette 1.4, se puede
+# subir este tope (o quitarlo) — antes de hacerlo, probar el arranque.
+starlette<1.4.0

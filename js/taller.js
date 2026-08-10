@@ -2696,14 +2696,12 @@ function _agIngresarTallerCon(a, tipo, dur, ro) {
   agRecSel = null;
   document.getElementById("recForm").hidden = true;
   document.getElementById("recVacia").hidden = false;
-  alert("Recepción " + a.oc + " registrada.\n• Orden de trabajo RO " + o.ro + " creada\n• Publicada en JPCB → Citas de hoy" +
-    (getRepuestos(o).length ? "\n• Kit de repuestos publicado en Bodega (pre-picking)" : "") +
-    "\n(Integración con el ERP: pendiente)");
+  alert("Recepción " + a.oc + " registrada.\n• Acta y fotos guardadas\n• Orden de trabajo RO " + o.ro + " creada en el registro\n(El tablero operativo del taller vive en el planificador de post venta)");
   renderAll();
-  // En el módulo Recepción las pestañas están ocultas: saltar al JPCB dejaba al
-  // asesor mirando un tablero sin forma de volver. Ahí se queda listo para
-  // recibir el auto siguiente, que es lo que va a hacer.
-  if (window.__moduloVista !== "recepcion") agGoTab("jpcb");
+  // Los tableros ya no están en esta plataforma (decisión 09-08-2026): después
+  // del acta se vuelve a la agenda, lista para recibir el auto siguiente. En el
+  // módulo Recepción las pestañas van ocultas y se queda donde está.
+  if (window.__moduloVista !== "recepcion") agGoTab("agenda");
 }
 
 /* ============================================================
@@ -3235,15 +3233,15 @@ function closeM() { document.getElementById("ov").classList.remove("open"); }
 function renderReportes() {
   var g = document.getElementById("repGrid");
   var hoyStr = hoyISO();
-  var act = ordersActivas();
   var agHoy = DB.agendamientos.filter(function (a) { return a.fecha === hoyStr; }).length;
-  var valTotal = 0;
-  act.forEach(function (o) { var v = valorRefDe(o); if (v) valTotal += v; });
+  var d2 = new Date(); d2.setDate(d2.getDate() + 1);
+  var manIso = d2.getFullYear() + "-" + String(d2.getMonth() + 1).padStart(2, "0") + "-" + String(d2.getDate()).padStart(2, "0");
+  var agMan = DB.agendamientos.filter(function (a) { return a.fecha === manIso; }).length;
+  // Solo indicadores de agenda: los tableros del taller salieron de esta
+  // plataforma el 09-08-2026 (duplicaban el planificador de post venta).
   var kpis = [
     ["Agendamientos hoy", String(agHoy)],
-    ["Órdenes activas en taller", String(act.filter(function (o) { return o.etapa; }).length)],
-    ["Kits preparados en bodega", act.filter(function (o) { return o.picking === "listo"; }).length + " de " + act.filter(function (o) { return getRepuestos(o).length; }).length],
-    ["Valor referencial en curso", money(valTotal)]
+    ["Agendamientos mañana", String(agMan)]
   ];
   var html = kpis.map(function (k) {
     return '<div class="rep-card"><h5>' + k[0] + '</h5><div class="kpi">' + k[1] + "</div></div>";
@@ -3263,14 +3261,6 @@ function renderReportes() {
   var servs = {};
   DB.agendamientos.forEach(function (a) { var k = a.serv.split(" ")[0]; servs[k] = (servs[k] || 0) + 1; });
   html += barChart("Agendamientos por tipo de servicio", Object.keys(servs), Object.keys(servs).map(function (k) { return servs[k]; }));
-
-  // órdenes por etapa JPCB
-  var etL = [], etC = [];
-  ETAPAS.forEach(function (e) {
-    var n = act.filter(function (o) { return o.etapa === e.id; }).length;
-    if (n) { etL.push(e.t.replace("En espera por ", "Esp. ").replace("Esperando por ", "Esp. ")); etC.push(n); }
-  });
-  html += barChart("Órdenes por etapa del taller", etL, etC);
 
   g.innerHTML = html;
 }

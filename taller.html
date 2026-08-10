@@ -39,13 +39,14 @@
            va oculta y la secuencia quedaba 1,3,4,5,6,7, con un hueco que no
            significa nada. Los data-v NO cambian: los usa agGoTab y el script
            de módulo. -->
+      <!-- Decisión 09-08-2026 (Ignacio): el tablero operativo del taller es el
+           planificador de la app de post venta; los tableros de aquí lo
+           DUPLICABAN y se quitaron de la vista (Preparación, Asignación de
+           técnicos, Avance del taller y Bodega). El código y los datos quedan
+           dormidos: sus vistas siguen abajo por si hay que revivir algo. -->
       <div class="tabs">
         <div class="tab active" data-v="agenda">Agendamiento</div>
-        <div class="tab" data-v="prep">Preparación de repuestos</div>
         <div class="tab" data-v="recep">Recepción</div>
-        <div class="tab" data-v="plan">Asignación de técnicos</div>
-        <div class="tab" data-v="jpcb">Avance del taller</div>
-        <div class="tab bodegatab" data-v="bodega">Bodega</div>
         <div class="tab" data-v="reportes">Reportes</div>
       </div>
     </div>
@@ -386,7 +387,8 @@
   <script src="js/taller.js?v=403cb06"></script>
   <script src="js/autocompletar.js?v=403cb06"></script>
   <!-- Modo módulo: ?vista=agenda|recepcion.
-       · agenda    → todo el taller MENOS Recepción (agendamiento y los tableros).
+       · agenda    → Agendamiento + Reportes (los tableros se quitaron el
+         09-08-2026: duplicaban el planificador de la app de post venta).
        · recepcion → solo Recepción, sin pestañas. Acepta &oc=N para abrir de
          inmediato la recepción de esa cita (es a donde salta el botón
          "Ingresar" de la agenda). -->

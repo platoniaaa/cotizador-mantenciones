@@ -435,32 +435,29 @@ def cargar_permitidas(cur, origen):
         print(f"    sucursales sin mapa canónico (se dejaron tal cual): {sorted(sin_mapa)}")
 
 
-DOCS_REFRESCAR = [
-    "agenda_hoy.json", "campanas_curifor.json", "control_taller.json",
-    "cuenta_ficha.json", "cuenta_ficha_revisados.json", "historial_cierres.json",
-    "informes_gestion.json", "loaners.json", "prepicking_estados.json",
-    "produccion_tecnicos.json", "ranking_cierres.json",
-    "tecnicos_sucursal_manual.json", "tempario.json",
-]
-# ya modelados como tablas, o muertos con la app vieja
-DOCS_BORRAR = [
-    "datos_dashboard.json", "stock_repuestos.json", "audit_log.json",
-    "comentarios_log.json", "notificaciones.json", "usuarios_curifor.json",
-    "online_users.json", "cotizador_data.json", "taller_data.json",
-]
-
-
 def refrescar_documentos(cur, origen):
-    for nombre in DOCS_REFRESCAR:
+    """Deja en `documentos` TODOS los JSON de la app, sin excepciones.
+
+    Antes esta función borraba los que yo había convertido en tablas
+    (datos_dashboard, comentarios_log, audit_log, notificaciones,
+    usuarios_curifor, stock_repuestos…). Eso venía de un plan equivocado —
+    reconstruir las pantallas— y dejó a la app sin los documentos que lee:
+    `cargar_datos()` devolvía 404 y la tabla de OTs salía vacía.
+
+    La app es la dueña de estos documentos y los quiere completos. Las tablas
+    siguen existiendo, pero **no las usa nadie**: el original es este.
+    """
+    nombres = sorted(f for f in os.listdir(origen) if f.endswith(".json"))
+    for nombre in nombres:
         datos = cargar_json(origen, nombre)
         cur.execute(
             """insert into public.documentos (nombre, data, mensaje)
                values (%s, %s::jsonb, %s)
                on conflict (nombre) do update
                  set data = excluded.data, actualizado = now(), mensaje = excluded.mensaje""",
-            (nombre, json.dumps(datos, ensure_ascii=False), "migración fase 1 (copia local 07-08-2026)"))
-    cur.execute("delete from public.documentos where nombre = any(%s)", (DOCS_BORRAR,))
-    print(f"  documentos: {len(DOCS_REFRESCAR)} refrescados, {cur.rowcount} obsoletos borrados")
+            (nombre, json.dumps(datos, ensure_ascii=False),
+             "migración a Supabase (copia local 07-08-2026)"))
+    print(f"  documentos: {len(nombres)} cargados (todos los JSON de la app)")
 
 
 # ---------------------------------------------------------------- verificación

@@ -78,6 +78,16 @@ VCU_FORD_P2_URL = f"https://raw.githubusercontent.com/Cjerez-curi/curifor-ots/ma
 # ============================================================
 GITHUB_USUARIO        = "Cjerez-curi"
 GITHUB_REPO           = "curifor-ots"
+
+# Supabase para el tablero embebido. La clave `anon` es pública por diseño: sin
+# un vale válido no abre absolutamente nada (todas las tablas tienen RLS y las
+# dos funciones del tablero exigen el vale). Ver herramientas/setup_supabase_tablero.sql.
+SUPABASE_URL      = st.secrets.get("SUPABASE_URL", "https://ordgsglujssgzmnlmcus.supabase.co")
+SUPABASE_ANON_KEY = st.secrets.get(
+    "SUPABASE_ANON_KEY",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
+    "eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yZGdzZ2x1anNzZ3ptbmxtY3VzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzMzM4NTgsImV4cCI6MjEwMDkwOTg1OH0."
+    "n15xGwipVso0hRC9_LuWfFEe34eP9O1J1NC4LlenwUM")
 GITHUB_ARCHIVO        = "datos_dashboard.json"
 GITHUB_COMENTARIOS    = "comentarios_log.json"
 GITHUB_USUARIOS       = "usuarios_curifor.json"
@@ -381,6 +391,42 @@ DOCS_CONFIG = [
 # ============================================================
 #   PLANIFICADOR DE TALLER — HTML Component
 # ============================================================
+def _emitir_vale_tablero(usuario, sucursal, horas=12):
+    """Un permiso mínimo para que el tablero embebido hable con Supabase.
+
+    Antes se le pasaba al navegador el token de GitHub, con permiso de escritura
+    sobre TODO el repositorio: cualquiera que abriera las herramientas del
+    navegador podía reescribir `usuarios_curifor.json` y darse permisos de
+    administrador. El vale solo abre los dos documentos del tablero, dura una
+    jornada y queda registrado a nombre de quien lo pidió.
+
+    Devuelve "" si no hay Supabase, y ahí el tablero sigue con GitHub como antes.
+    """
+    if not _datos.disponible():
+        return ""
+    try:
+        vale = secrets.token_urlsafe(32)
+        conn = _datos._conn()
+        if conn is None:
+            return ""
+        cur = conn.cursor()
+        cur.execute(
+            """insert into public.taller_vales (vale, usuario, sucursal, expira)
+               values (%s, %s, %s, now() + make_interval(hours => %s))""",
+            (vale, usuario or "?", sucursal or "?", int(horas)))
+        # Los vencidos no sirven para nada y no hay proceso que los limpie;
+        # se barren acá, que es donde se sabe que la tabla está en uso.
+        cur.execute("delete from public.taller_vales where expira < now() - interval '1 day'")
+        conn.commit()
+        return vale
+    except Exception:
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+        return ""
+
+
 def _generar_html_planificador(sucursal, usuario, puede_editar, token, github_user, github_repo,
                                agenda_data=None, ctrl_data=None, ctrl_sha="",
                                puede_prepicking=False, prepicking_data=None,
@@ -401,7 +447,12 @@ def _generar_html_planificador(sucursal, usuario, puede_editar, token, github_us
     # Tecnicos, para que esos dias no cuenten como horas disponibles.
     puede_disp_str = "true" if puede_disponibilidad else "false"
     puede_pp_str = "true" if puede_prepicking else "false"
-    token_safe = token or ""
+    # Con Supabase, el navegador NO recibe el token de GitHub: recibe un vale
+    # que solo abre los dos documentos del tablero (ver _emitir_vale_tablero).
+    sb_vale = _emitir_vale_tablero(usuario, sucursal)
+    sb_url  = SUPABASE_URL if sb_vale else ""
+    sb_key  = SUPABASE_ANON_KEY if sb_vale else ""
+    token_safe = "" if sb_vale else (token or "")
     # Serializar datos como JSON para inyectarlos en el JS
     # ensure_ascii=False para que tildes/ñ viajen legibles; se escapa "</" a "<\/"
     # para que un comentario/campo que contenga literalmente "</script" no cierre
@@ -902,6 +953,25 @@ table.pptable tr.pp-tot-desc td{{background:#147a3d;color:#fff;}}
 <script>
 const GITHUB_TOKEN  = "{token_safe}";
 const API_BASE      = "{api_base}";
+// Acceso a Supabase para el tablero. SB_VALE es un permiso mínimo: dura una
+// jornada, es de este usuario, y solo sirve para los dos documentos del
+// tablero. Reemplaza al token de GitHub, que daba escritura sobre TODO el
+// repositorio y viajaba dentro de esta misma página. SB_KEY es la clave
+// pública de Supabase: por sí sola no abre nada (todo tiene RLS).
+const SB_URL        = "{sb_url}";
+const SB_KEY        = "{sb_key}";
+const SB_VALE       = "{sb_vale}";
+const USA_SUPABASE  = !!(SB_URL && SB_KEY && SB_VALE);
+
+async function sbTablero(fn, args){{
+  const r = await fetch(SB_URL + '/rest/v1/rpc/' + fn, {{
+    method: 'POST',
+    headers: {{'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY,
+               'Content-Type': 'application/json'}},
+    body: JSON.stringify(args)}});
+  if(!r.ok) throw new Error('HTTP ' + r.status);
+  return await r.json();
+}}
 const SUCURSAL      = "{sucursal}";
 const USUARIO       = "{usuario}";
 const PUEDE_EDITAR  = {puede_str};
@@ -1448,6 +1518,30 @@ async function _refrescarCtrlSha(){{
   // Relee control_taller.json fresco desde GitHub (SHA + datos actuales) y mezcla los
   // cambios (ver _mergeOrdenesYBloques) — asi no se pisan cambios guardados por otra
   // sesion (ej. Torre Control) mientras esta pestaña estaba abierta.
+  // Camino Supabase: una sola llamada, sin limite de tamano y sin CDN de por
+  // medio, asi que no hace falta el respaldo por Git Data API de mas abajo.
+  if(USA_SUPABASE){{
+    try{{
+      const j = await sbTablero('tablero_leer', {{p_vale: SB_VALE, p_nombre: 'control_taller.json'}});
+      if(!j || j.ok !== true){{ _ctrlLecturaOk=false; return false; }}
+      if(j.existe === false){{ _ctrlLecturaOk=true; return true; }} // aun no existe: es valido crearlo
+      const fresco = j.data;
+      if(!fresco || typeof fresco !== 'object'){{ _ctrlLecturaOk=false; return false; }}
+      ctrlSha = j.sello || ctrlSha;
+      _ctrlLecturaOk=true;
+      _ctrlSucursalesServidor=Object.keys(fresco).filter(k=>fresco[k]&&typeof fresco[k]==='object'&&!Array.isArray(fresco[k]));
+      _ctrlOrdenesServidor=(((fresco[SUCURSAL]||{{}}).ordenes)||[]).length;
+      _ctrlTecnicosServidor=((fresco[SUCURSAL]||{{}}).tecnicos)||[];
+      if(!ctrlData)ctrlData={{}};
+      for(const k of Object.keys(fresco)){{
+        if(k!==SUCURSAL)ctrlData[k]=fresco[k];
+      }}
+      _mergeOrdenesYBloques(fresco);
+      try{{ if(typeof render==='function')render(); }}catch(e){{}}
+      return true;
+    }}catch(e){{ _ctrlLecturaOk=false; return false; }}
+  }}
+
   try{{
     const r=await fetch(API_BASE+'control_taller.json',{{
       headers:{{'Authorization':`token ${{GITHUB_TOKEN}}`,'Accept':'application/vnd.github.v3+json'}}}});
@@ -1542,7 +1636,7 @@ function saveCtrl(){{
   return _ctrlSaveChain;
 }}
 async function _saveCtrlInterno(_reintento){{
-  if(!GITHUB_TOKEN){{setSaveStatus('Sin token');return;}}
+  if(!USA_SUPABASE && !GITHUB_TOKEN){{setSaveStatus('Sin token');return;}}
   setSaveStatus('💾 Guardando...');
   const _okLectura=await _refrescarCtrlSha();
   if(!_okLectura){{
@@ -1595,6 +1689,26 @@ async function _saveCtrlInterno(_reintento){{
   // JSON compacto (sin indentacion): la version indentada pesaba 1.058.920 bytes y
   // cruzo el limite de 1 MB de la Contents API, que es lo que gatillo la perdida de
   // datos del 05/08/2026. Compacto, el mismo contenido pesa ~750 KB.
+  // Camino Supabase. Todas las guardias de arriba siguen valiendo: esto solo
+  // cambia por donde viaja el guardado. El `sello` hace lo que hacia el `sha`
+  // de GitHub, incluido el reintento cuando otro guardo primero.
+  if(USA_SUPABASE){{
+    try{{
+      const j = await sbTablero('tablero_guardar', {{
+        p_vale: SB_VALE, p_nombre: 'control_taller.json',
+        p_data: ctrlData, p_sello: ctrlSha || null}});
+      if(j && j.ok === true){{
+        ctrlSha=j.sello||ctrlSha;_snapshotOrdenes();_snapshotBloques();setSaveStatus('✅ Guardado');
+      }}else if(j && j.motivo==='conflicto' && !_reintento){{
+        ctrlSha=j.sello||ctrlSha;          // alguien guardo primero: releer y reintentar
+        await _saveCtrlInterno(true);
+      }}else{{
+        setSaveStatus('Error: '+((j&&j.motivo)||'desconocido'));
+      }}
+    }}catch(e){{setSaveStatus('Error de red');}}
+    return;
+  }}
+
   const content=btoa(unescape(encodeURIComponent(JSON.stringify(ctrlData))));
   const payload={{message:`Taller ${{SUCURSAL}} - ${{USUARIO}} ${{nowStr}}`,content,...(ctrlSha?{{sha:ctrlSha}}:{{}})}};
   try{{
@@ -1730,8 +1844,30 @@ async function ppCambiarModeloSel(fecha,oc,campo,valor){{
   await setPpOverride(fecha,oc,{{marca,modelo,anio,versionId}});
 }}
 async function savePrepicking(_reintento){{
-  if(!GITHUB_TOKEN){{setSaveStatus('Sin token');return;}}
+  if(!USA_SUPABASE && !GITHUB_TOKEN){{setSaveStatus('Sin token');return;}}
   setSaveStatus('💾 Guardando...');
+
+  // Camino Supabase: se relee para no pisar las otras sucursales y se guarda
+  // con el sello, igual que hacia con el sha.
+  if(USA_SUPABASE){{
+    try{{
+      const j0 = await sbTablero('tablero_leer', {{p_vale: SB_VALE, p_nombre: 'prepicking_estados.json'}});
+      if(j0 && j0.ok === true && j0.existe !== false && j0.data && typeof j0.data === 'object'){{
+        ppSha = j0.sello || ppSha;
+        for(const k of Object.keys(j0.data)){{ if(k!==SUCURSAL) ppData[k]=j0.data[k]; }}
+      }}
+    }}catch(e){{}}
+    try{{
+      const j = await sbTablero('tablero_guardar', {{
+        p_vale: SB_VALE, p_nombre: 'prepicking_estados.json',
+        p_data: ppData, p_sello: ppSha || null}});
+      if(j && j.ok === true){{ ppSha=j.sello||ppSha; setSaveStatus('✅ Guardado'); }}
+      else if(j && j.motivo==='conflicto' && !_reintento){{ ppSha=j.sello||ppSha; await savePrepicking(true); }}
+      else setSaveStatus('Error: '+((j&&j.motivo)||'desconocido'));
+    }}catch(e){{setSaveStatus('Error de red');}}
+    return;
+  }}
+
   try{{
     const r0=await fetch(API_BASE+'prepicking_estados.json',{{
       headers:{{'Authorization':`token ${{GITHUB_TOKEN}}`,'Accept':'application/vnd.github.v3+json'}}}});

@@ -289,3 +289,41 @@
   .pv-tabla td { padding: 12px 10px; }
   .pv-cerrar { width: 44px; height: 44px; }
 }
+
+/* La ficha de cliente lleva dos tablas (movimientos y OT); en una columna de
+   290px quedaban ilegibles. Ocupa el ancho completo de la ficha. */
+.pv-ficha__col--ancha { grid-column: 1 / -1; }
+
+/* ---------- notificaciones ---------- */
+.pv-noti {
+  background: #fff;
+  border: 1px solid var(--borde, #d7dee8);
+  border-left: 4px solid var(--borde, #d7dee8);
+  border-radius: 9px;
+  padding: 10px 13px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+.pv-noti--nueva { border-left-color: var(--azul, #0d2f5a); background: #f5f9ff; }
+.pv-noti b { color: var(--azul, #0d2f5a); }
+.pv-noti__f { color: var(--ink-3, #789); font-size: 11.5px; margin-left: 6px; }
+.pv-noti p { margin: 5px 0 0; color: var(--ink-2, #456); line-height: 1.4; }
+
+/* El número de no leídas en el menú: sin esto, nadie se entera de que lo
+   mencionaron salvo que entre a mirar. */
+.pv-badge {
+  margin-left: auto;
+  min-width: 19px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: #c0392b;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 17px;
+}
+.pv-nav__btn.is-on .pv-badge { background: #fff; color: #c0392b; }
+
+/* El selector de a quién avisar */
+#fiMencion { min-height: 74px; }

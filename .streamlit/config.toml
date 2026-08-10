@@ -1,0 +1,23 @@
+# Configuración de la app de post venta en Streamlit.
+# Los secretos NO van acá: van en secrets.toml, que no se versiona.
+
+[theme]
+# Los mismos colores de la plataforma, para que se sientan un solo sistema.
+primaryColor            = "#0d2f5a"
+backgroundColor         = "#ffffff"
+secondaryBackgroundColor = "#eef3fb"
+textColor               = "#16324f"
+
+[server]
+# La app maneja documentos grandes (stock_repuestos pesa ~9 MB). El límite por
+# defecto de 200 MB es de sobra, pero se deja explícito para que no sorprenda.
+maxUploadSize = 200
+headless      = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+# Que un error no le muestre el detalle técnico a un asesor. Los errores
+# completos quedan igual en los registros de la app, que es donde se miran.
+showErrorDetails = false

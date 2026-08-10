@@ -5,22 +5,22 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Los Excel fuente viven en la carpeta superior; no se versionan aquí.
+# Los Excel fuente viven en la carpeta superior; no se versionan aquÃ­.
 ../*.xlsx
 ../*.xlsm
 ../*.xlsb
 
 # Snapshots de stock descargados de SharePoint (pesados, se refrescan con --descargar).
-# El stock.json generado (chico) SÍ se versiona.
+# El stock.json generado (chico) SÃ se versiona.
 herramientas/stock_fuente/*.xlsx
 
 # Reporte de SKU sin precio y logs de la tarea diaria: se regeneran en cada
-# corrida (el .xlsx cambia de binario aunque el contenido sea igual), así que
-# versionarlos solo produciría un commit vacío cada día.
+# corrida (el .xlsx cambia de binario aunque el contenido sea igual), asÃ­ que
+# versionarlos solo producirÃ­a un commit vacÃ­o cada dÃ­a.
 herramientas/sku_sin_precio.xlsx
 herramientas/logs/
 
-# Datos personales de clientes (RUT/teléfono/mail) — NUNCA al repo público, van a Supabase
+# Datos personales de clientes (RUT/telÃ©fono/mail) â€” NUNCA al repo pÃºblico, van a Supabase
 data/clientes.json
 
 # Credenciales locales - NUNCA al repo
@@ -28,3 +28,4 @@ postventa/supabase_pwd.txt
 postventa/github_token.txt
 __pycache__/
 *.pyc
+**/secrets.toml

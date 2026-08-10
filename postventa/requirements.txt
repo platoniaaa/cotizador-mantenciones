@@ -6,6 +6,13 @@ python-calamine>=0.2.0
 reportlab>=4.0.0
 matplotlib>=3.7.0
 
+# Conexion a Supabase (datos_supabase.py). Sin esto la app arranca igual, pero
+# se queda usando GitHub como antes: el import falla en silencio y
+# disponible() devuelve False. O sea, faltaria sin que nadie se entere.
+# Se elige pg8000 y no psycopg2 porque es Python puro: no necesita compilar
+# nada ni que el sistema traiga libpq.
+pg8000>=1.30.0
+
 # --- Dependencia indirecta fijada a proposito (05/08/2026) -------------------
 # starlette 1.4.0 se publico el 05/08/2026 y volvio OBLIGATORIO el argumento
 # 'thread_minimum_size' en GZipResponder.__init__(). Streamlit todavia lo llama

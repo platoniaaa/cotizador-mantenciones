@@ -780,9 +780,17 @@ function renderCal() {
     });
   });
 }
-function horasOcupadas() {
+/* Horas ya tomadas de un día. `excluirUid` deja fuera una cita puntual: al
+   corregir una cita su propia hora no puede contar como ocupada, si no el
+   sistema le diría al asesor que su propio cupo está tomado. */
+function horasOcupadas(fecha, excluirUid) {
+  var dia = fecha || selFecha;
   var s = {};
-  DB.agendamientos.forEach(function (a) { if (a.fecha === selFecha && a.estado !== "anulado") s[a.hora] = 1; });
+  DB.agendamientos.forEach(function (a) {
+    if (a.fecha !== dia || a.estado === "anulado") return;
+    if (excluirUid && a.uid === excluirUid) return;
+    s[a.hora] = 1;
+  });
   return s;
 }
 
@@ -1044,6 +1052,11 @@ function renderAgendaTable() {
     if (a.estado === "agendado") {
       if (c.propia && (!c.suc || !miSuc || c.suc === miSuc)) {
         acc = '<button class="agbtn agbtn-blue agbtn-sm" onclick="agAbrirRecepcion(' + a.oc + ')">Ingresar</button> ';
+      }
+      // Corregir se puede desde cualquier estación, igual que anular: el error
+      // lo suele detectar quien atiende el teléfono, no la sucursal.
+      if (c.propia) {
+        acc += '<button class="agbtn agbtn-grey agbtn-sm" onclick="agEditarCita(' + a.oc + ')">Editar</button> ';
       }
       acc += '<button class="agbtn agbtn-red agbtn-sm" onclick="agAnular(\'' +
              esc(String(a.webId || a.oc)) + '\')">Anular</button>';
@@ -1339,6 +1352,10 @@ function onMantModal() {
     (itv.horas ? " · " + itv.horas + " h de mano de obra" : "");
 }
 
+/* uid de la cita que se está corrigiendo, o null si se está agendando una
+   nueva. El modal es el mismo; esto es lo que decide qué hace Guardar. */
+var AG_EDITANDO = null;
+
 function agAbrirModal(h) {
   // sin sucursal no se sabe en qué agenda guardar: se avisa antes de que el
   // asesor llene todo el formulario
@@ -1348,6 +1365,8 @@ function agAbrirModal(h) {
     if (s) { s.focus(); s.scrollIntoView({ block: "center" }); }
     return;
   }
+  AG_EDITANDO = null;
+  _agModoModal(false);
   var ov = document.getElementById("agOv");
   ov.dataset.hora = h;
   document.getElementById("agHora").textContent = "· " + h + " · " + fmtFechaCorta(selFecha);
@@ -1360,7 +1379,146 @@ function agAbrirModal(h) {
   if (PREFILL) aplicarPrefill();
   ov.classList.add("open");
 }
-function agCerrarModal() { document.getElementById("agOv").classList.remove("open"); }
+
+function agCerrarModal() {
+  document.getElementById("agOv").classList.remove("open");
+  AG_EDITANDO = null;
+}
+
+/* Cambia el modal entre "agendar" y "corregir". Lo único que cambia es el
+   título, el botón y el bloque para mover día y hora. */
+function _agModoModal(editando) {
+  document.getElementById("agTitulo").innerHTML = editando
+    ? 'Corregir cita <span id="agHora" style="color:var(--ink-3);font-weight:400;font-size:14px"></span>'
+    : 'Agendar hora <span id="agHora" style="color:var(--ink-3);font-weight:400;font-size:14px"></span>';
+  document.getElementById("agBtnGuardar").textContent = editando ? "Guardar cambios" : "Guardar agendamiento";
+  document.getElementById("agMover").hidden = !editando;
+}
+
+/* ---------------- corregir una cita ----------------
+   Existe porque hasta ahora un error de tipeo obligaba a anular y agendar de
+   nuevo: se perdía el número de la cita, el cliente recibía dos avisos y la
+   hora quedaba libre unos segundos, tiempo suficiente para que otra estación
+   se la llevara. */
+function agEditarCita(oc) {
+  var a = agFind(oc);
+  if (!a) { avisoAgenda("No se encontró la cita " + oc + ".", "warn"); return; }
+
+  // Una cita recibida ya quedó impresa en el acta que el cliente firmó.
+  // Cambiarla dejaría el sistema diciendo una cosa y el papel firmado otra.
+  if (a.estado === "en_taller") {
+    avisoAgenda("La cita " + oc + " ya no se puede corregir: el vehículo entró al taller y sus datos " +
+                "quedaron en el acta firmada por el cliente.", "warn");
+    return;
+  }
+  if (a.estado === "anulado") {
+    avisoAgenda("La cita " + oc + " está anulada. Si hay que rehacerla, agenda una nueva.", "warn");
+    return;
+  }
+
+  AG_EDITANDO = a.uid;
+  _agModoModal(true);
+
+  var ov = document.getElementById("agOv");
+  ov.dataset.hora = a.hora || "";
+  document.getElementById("agHora").textContent = "· OC " + a.oc;
+
+  // día y hora, para poder mover la cita
+  var fEd = document.getElementById("agFechaEd");
+  fEd.value = a.fecha || selFecha;
+  fEd.onchange = function () { _agLlenarHorasEd(a); };
+  _agLlenarHorasEd(a);
+
+  // datos del formulario
+  document.getElementById("agServicio").value = a.serv || "MANTENCIÓN POR KILOMETRAJE";
+  document.getElementById("agPatente").value = a.pat || "";
+  document.getElementById("agVin").value = a.vin || "";
+  document.getElementById("agCliente").value = (a.cli && a.cli !== "Cliente") ? a.cli : "";
+  document.getElementById("agRut").value = a.rut || "";
+  document.getElementById("agFono").value = a.fono || "";
+  document.getElementById("agEmail").value = a.email || "";
+  var selAse = document.getElementById("agAsesor");
+  if (selAse) selAse.value = a.asesor || "";
+
+  _agPrecargarVehiculo(a);
+  ov.classList.add("open");
+}
+
+/* Las horas del día elegido, marcando cuáles están tomadas. La propia hora de
+   la cita NO cuenta como ocupada. */
+function _agLlenarHorasEd(a) {
+  var sel = document.getElementById("agHoraEd");
+  var nota = document.getElementById("agMoverNota");
+  var dia = document.getElementById("agFechaEd").value || a.fecha;
+  var ocup = horasOcupadas(dia, a.uid);
+  var horas = (typeof horasDelDia === "function") ? horasDelDia() : _agHorasFijas();
+  sel.innerHTML = horas.map(function (h) {
+    var tomada = !!ocup[h];
+    return '<option value="' + h + '"' + (tomada ? " disabled" : "") +
+           (h === a.hora && dia === a.fecha ? " selected" : "") + ">" +
+           h + (tomada ? " · ocupada" : "") + "</option>";
+  }).join("");
+  if (dia !== a.fecha || sel.value !== a.hora) {
+    // si la hora original ya no existe en el nuevo día, se elige la primera libre
+    if (!sel.value || sel.selectedOptions[0].disabled) {
+      var libre = horas.find(function (h) { return !ocup[h]; });
+      if (libre) sel.value = libre;
+    }
+  }
+  var libres = horas.filter(function (h) { return !ocup[h]; }).length;
+  nota.textContent = libres
+    ? "Quedan " + libres + " horas libres el " + fmtFechaCorta(dia) + "."
+    : "Ese día no queda ninguna hora libre.";
+}
+
+/* Respaldo si la agenda no expone su lista de horas: las mismas franjas que
+   usa el panel de cupos. */
+function _agHorasFijas() {
+  var out = [];
+  for (var m = 8 * 60 + 30; m <= 17 * 60; m += 30) out.push(hhmm(m));
+  return out;
+}
+
+/* Vuelve a armar marca → modelo → versión → año → mantención. Va encadenado
+   porque cada selector depende del anterior, y la pauta se carga por red. */
+function _agPrecargarVehiculo(a) {
+  var selMarca = document.getElementById("agMarca");
+  if (!INDICE || !a.marcaNombre) { selMarca.value = ""; onMarcaModal(); return; }
+  var marca = INDICE.marcas.find(function (m) { return m.nombre === a.marcaNombre; });
+  if (!marca) { selMarca.value = ""; onMarcaModal(); return; }
+  selMarca.value = marca.id;
+  onMarcaModal();
+
+  var iMod = (MSEL._modelos || []).findIndex(function (m) { return m.nombre === a.modeloNombre; });
+  if (iMod < 0) return;
+  document.getElementById("agModeloSel").value = String(iMod);
+  onModeloModal();
+
+  if (!a.pautaId) return;
+  document.getElementById("agVersionSel").value = a.pautaId;
+  MSEL.anioVehiculo = a.anio != null ? a.anio : null;
+  onVersionModal();
+
+  // El año y la mantención dependen de la pauta, que se carga por red: se
+  // esperan a que MSEL.pauta esté lista en vez de adivinar cuánto demora.
+  var intentos = 0;
+  var t = setInterval(function () {
+    if (++intentos > 40) { clearInterval(t); return; }   // ~6 s y se rinde
+    if (!MSEL.pauta) return;
+    clearInterval(t);
+    var selA = document.getElementById("agAnioSel");
+    if (a.anio != null && selA && !selA.disabled) {
+      var op = Array.prototype.find.call(selA.options, function (o) { return o.value === String(a.anio); });
+      if (op) { selA.value = String(a.anio); onAnioModal(); }
+    }
+    llenarMantModal();
+    if (a.revN != null) {
+      var selM = document.getElementById("agMantSel");
+      var opm = Array.prototype.find.call(selM.options, function (o) { return o.value === String(a.revN); });
+      if (opm) { selM.value = String(a.revN); if (typeof onMantModal === "function") onMantModal(); }
+    }
+  }, 150);
+}
 
 /* ---------------- correlativos de OC y RO ----------------
    El número lo entrega la base (una sucursal, un contador, sin repetir), no el
@@ -1397,8 +1555,25 @@ function agGuardar() {
   var esMant = document.getElementById("agServicio").value.indexOf("MANTEN") >= 0;
   var pat = document.getElementById("agPatente").value.trim().toUpperCase();
   if (!pat) { alert("Ingresa la patente del vehículo."); return; }
-  if (!MSEL.marca || !MSEL.modelo) { alert("Selecciona la marca y el modelo del vehículo."); return; }
-  if (esMant && (!MSEL.versionId || document.getElementById("agMantSel").value === "")) {
+
+  /* Al CORREGIR, el vehículo puede no ser re-seleccionable: la cita pudo venir
+     de una solicitud del cliente (que escribe libre) o su modelo pudo salir del
+     catálogo. Exigir marca y modelo ahí dejaba al asesor sin poder arreglar ni
+     un teléfono mal escrito. Si no se puede rearmar, el vehículo se conserva
+     tal como estaba y se corrige lo demás. */
+  var citaEditada = AG_EDITANDO
+    ? DB.agendamientos.find(function (x) { return x.uid === AG_EDITANDO; })
+    : null;
+  var vehiculoIntacto = false;
+  if (!MSEL.marca || !MSEL.modelo) {
+    if (citaEditada && citaEditada.marcaNombre) {
+      vehiculoIntacto = true;
+    } else {
+      alert("Selecciona la marca y el modelo del vehículo.");
+      return;
+    }
+  }
+  if (!vehiculoIntacto && esMant && (!MSEL.versionId || document.getElementById("agMantSel").value === "")) {
     alert("Para una mantención por kilometraje selecciona la versión y la mantención (km)."); return;
   }
   // el año del vehículo respalda al selector: si la pauta no distingue años,
@@ -1414,17 +1589,30 @@ function agGuardar() {
   // Se leen los campos ANTES de pedir el número: entre la petición y la
   // respuesta el formulario sigue en pantalla y podría cambiar.
   var verSel = document.getElementById("agVersionSel");
+  // Con el vehículo intacto se copian los valores que ya tenía la cita, en vez
+  // de leerlos de unos selectores que quedaron vacíos.
+  var veh = vehiculoIntacto ? {
+    marcaNombre: citaEditada.marcaNombre, modeloNombre: citaEditada.modeloNombre,
+    versionNombre: citaEditada.versionNombre, pautaId: citaEditada.pautaId,
+    anio: citaEditada.anio, km: citaEditada.km, revN: citaEditada.revN,
+    valorRef: citaEditada.valorRef
+  } : {
+    marcaNombre: MSEL.marca.nombre, modeloNombre: MSEL.modelo.nombre,
+    versionNombre: MSEL.versionId ? verSel.options[verSel.selectedIndex].text : null,
+    pautaId: MSEL.versionId || null,
+    anio: anio, km: km, revN: revN, valorRef: valorRef
+  };
   var datos = {
     fecha: selFecha,
     hora: document.getElementById("agOv").dataset.hora,
     sucursal: document.getElementById("fComercio").value,
     serv: document.getElementById("agServicio").value,
     pat: pat,
-    marcaNombre: MSEL.marca.nombre,
-    modeloNombre: MSEL.modelo.nombre,
-    versionNombre: MSEL.versionId ? verSel.options[verSel.selectedIndex].text : null,
-    pautaId: MSEL.versionId || null,
-    anio: anio, km: km, revN: revN, valorRef: valorRef,
+    marcaNombre: veh.marcaNombre,
+    modeloNombre: veh.modeloNombre,
+    versionNombre: veh.versionNombre,
+    pautaId: veh.pautaId,
+    anio: veh.anio, km: veh.km, revN: veh.revN, valorRef: veh.valorRef,
     vin: document.getElementById("agVin").value.trim() || null,
     cli: document.getElementById("agCliente").value.trim() || "Cliente",
     rut: document.getElementById("agRut").value.trim() || null,
@@ -1437,6 +1625,10 @@ function agGuardar() {
     estado: "agendado",
     creadoEn: ahoraISO(), creadoPor: quienSoy()
   };
+  // Corregir NO pide correlativo: la cita conserva su número. Cambiárselo
+  // dejaría al cliente con un comprobante que ya no existe.
+  if (AG_EDITANDO) { _agGuardarEdicion(datos); return; }
+
   var desdeOc = Math.max(DB.ocSeq || 0, OC_MINIMO);
   reservarCorrelativo("oc", desdeOc).then(function (numero) {
     datos.oc = Math.max(numero != null ? numero : desdeOc, OC_MINIMO);
@@ -1444,6 +1636,90 @@ function agGuardar() {
     _agGuardarCon(datos);
   });
 }
+
+/* Guarda una corrección sobre la cita existente.
+
+   Conserva lo que identifica a la cita (uid, número, origen, quién la creó) y
+   reemplaza solo lo que el asesor puede cambiar. Deja anotado qué cambió: si
+   mañana el cliente reclama que él pidió otra hora, ahí está la respuesta. */
+function _agGuardarEdicion(datos) {
+  var a = DB.agendamientos.find(function (x) { return x.uid === AG_EDITANDO; });
+  if (!a) { avisoAgenda("La cita que estabas corrigiendo ya no está.", "warn"); agCerrarModal(); return; }
+
+  var nuevaFecha = document.getElementById("agFechaEd").value || a.fecha;
+  var nuevaHora = document.getElementById("agHoraEd").value || a.hora;
+
+  // El cupo se revisa contra el estado de AHORA, no contra el de cuando se
+  // abrió el modal: pudo estar abierto minutos y el sondeo trae citas de otras
+  // estaciones cada 15 s.
+  if ((nuevaFecha !== a.fecha || nuevaHora !== a.hora) &&
+      horasOcupadas(nuevaFecha, a.uid)[nuevaHora]) {
+    avisoAgenda("Las " + nuevaHora + " del " + fmtFechaCorta(nuevaFecha) +
+                " ya están tomadas. La cita NO se movió: elige otra hora.", "warn");
+    _agLlenarHorasEd(a);
+    return;
+  }
+
+  var antes = {
+    fecha: a.fecha, hora: a.hora, pat: a.pat, serv: a.serv,
+    cli: a.cli, rut: a.rut, fono: a.fono, email: a.email,
+    marcaNombre: a.marcaNombre, modeloNombre: a.modeloNombre,
+    versionNombre: a.versionNombre, anio: a.anio, revN: a.revN, asesor: a.asesor
+  };
+
+  // Solo lo editable. uid/oc/webId/estado/creadoEn/creadoPor se conservan.
+  ["serv", "pat", "marcaNombre", "modeloNombre", "versionNombre", "pautaId",
+   "anio", "km", "revN", "valorRef", "vin", "cli", "rut", "fono", "email",
+   "asesor", "sucursal"].forEach(function (k) { a[k] = datos[k]; });
+  a.fecha = nuevaFecha;
+  a.hora = nuevaHora;
+  a.editadoEn = ahoraISO();
+  a.editadoPor = quienSoy();
+
+  var cambios = Object.keys(antes).filter(function (k) {
+    return String(antes[k] == null ? "" : antes[k]) !== String(a[k] == null ? "" : a[k]);
+  });
+  anotar(a, "Cita corregida", cambios.length
+    ? cambios.map(function (k) {
+        return _ETIQ_CITA[k] + ": " + (antes[k] || "—") + " → " + (a[k] || "—");
+      }).join(" · ")
+    : "sin cambios");
+
+  save();
+
+  // La reserva del cliente vive en el servidor: si no se actualiza allá, el
+  // sondeo la volvería a traer con los datos viejos y desharía la corrección.
+  if (a.webId && typeof webActualizarEstado === "function") {
+    webActualizarEstado(a.webId, null, {
+      fecha: a.fecha, hora: a.hora, patente: a.pat,
+      nombre: a.cli, fono: a.fono, email: a.email,
+      servicio: a.serv, sucursal: a.sucursal || null
+    }).catch(function () {
+      avisoAgenda("La cita se corrigió acá, pero no se pudo avisar al servidor. " +
+                  "Revisa la conexión y vuelve a guardar.", "warn");
+    });
+  }
+
+  agCerrarModal();
+  // Si se movió de día, se salta al día nuevo: si no, el asesor la busca donde
+  // ya no está y cree que se perdió.
+  if (a.fecha !== antes.fecha) {
+    selFecha = a.fecha;
+    var p = a.fecha.split("-");
+    calY = +p[0]; calM = +p[1] - 1;
+  }
+  renderAll();
+  avisoAgenda(cambios.length
+    ? "Cita " + a.oc + " corregida (" + cambios.length + " campo" + (cambios.length === 1 ? "" : "s") + ")."
+    : "No hubo cambios que guardar.", cambios.length ? "ok" : null);
+}
+
+var _ETIQ_CITA = {
+  fecha: "fecha", hora: "hora", pat: "patente", serv: "servicio", cli: "cliente",
+  rut: "RUT", fono: "teléfono", email: "e-mail", marcaNombre: "marca",
+  modeloNombre: "modelo", versionNombre: "versión", anio: "año",
+  revN: "mantención", asesor: "asesor"
+};
 
 function _agGuardarCon(a) {
   // ÚLTIMO CHEQUEO DEL CUPO, acá y no en agGuardar: entre que el asesor aprieta

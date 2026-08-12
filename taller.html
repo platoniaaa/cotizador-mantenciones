@@ -333,7 +333,15 @@
   <!-- Modal agendar -->
   <div class="overlay" id="agOv">
     <div class="ag-modal">
-      <h3>Agendar hora <span id="agHora" style="color:var(--ink-3);font-weight:400;font-size:14px"></span></h3>
+      <h3 id="agTitulo">Agendar hora <span id="agHora" style="color:var(--ink-3);font-weight:400;font-size:14px"></span></h3>
+      <!-- Solo al CORREGIR una cita: mover el día y la hora. Al agendar de cero
+           el bloque va oculto, porque la hora ya la eligió al pinchar el cupo y
+           volver a preguntarla invita a equivocarse. -->
+      <div class="ag-mover" id="agMover" hidden>
+        <label>Fecha<input type="date" id="agFechaEd"></label>
+        <label>Hora<select id="agHoraEd"></select></label>
+        <p class="ag-mover__nota" id="agMoverNota"></p>
+      </div>
       <div class="ag-form">
         <label>Tipo de servicio
           <select id="agServicio">
@@ -357,7 +365,7 @@
       </div>
       <div class="ag-foot">
         <button class="agbtn agbtn-grey" onclick="agCerrarModal()">Cancelar</button>
-        <button class="agbtn agbtn-blue" onclick="agGuardar()">Guardar agendamiento</button>
+        <button class="agbtn agbtn-blue" id="agBtnGuardar" onclick="agGuardar()">Guardar agendamiento</button>
       </div>
     </div>
   </div>

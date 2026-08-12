@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confirma tu hora · Curifor</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="img/curifor-logo.png">
+  <link rel="stylesheet" href="css/estilos.css?v=264ed9d">
+  <link rel="stylesheet" href="css/confirmar.css?v=264ed9d">
+</head>
+<!-- Página PÚBLICA: la abre el cliente desde su correo, sin cuenta ni sesión.
+     La credencial es el token del enlace, y por eso la base solo devuelve lo
+     justo para reconocer la cita: nada de RUT, teléfono ni correo. -->
+<body class="conf">
+
+  <main class="conf-caja">
+    <header class="conf-cab">
+      <img src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
+      <span>Post Venta</span>
+    </header>
+
+    <div id="confCuerpo" class="conf-cuerpo">
+      <div class="conf-cargando"><span class="conf-spin"></span> Buscando tu hora…</div>
+    </div>
+
+    <footer class="conf-pie">
+      ¿Dudas? Escríbenos a <a href="mailto:postventa@curifor.com">postventa@curifor.com</a>
+    </footer>
+  </main>
+
+  <script src="js/agenda-config.js?v=264ed9d"></script>
+  <script src="js/confirmar.js?v=264ed9d"></script>
+</body>
+</html>

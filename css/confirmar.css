@@ -1,0 +1,117 @@
+/* ============================================================
+   Confirmar hora — la ve el CLIENTE, casi siempre en el celular y desde su
+   correo. Todo grande, un solo objetivo por pantalla y sin nada que aprender.
+   ============================================================ */
+
+body.conf {
+  margin: 0;
+  min-height: 100vh;
+  background: #eef3fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #16324f;
+}
+
+.conf-caja {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 34px rgba(13, 47, 90, .13);
+  width: min(520px, 100%);
+  overflow: hidden;
+}
+
+.conf-cab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  border-bottom: 1px solid #e3e9f2;
+}
+.conf-cab img { height: 26px; width: auto; }
+.conf-cab span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #789;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.conf-cuerpo { padding: 26px 22px; }
+
+.conf-titulo { margin: 0 0 5px; font-size: 22px; color: #0d2f5a; }
+.conf-sub { margin: 0 0 20px; font-size: 15px; color: #56687e; line-height: 1.5; }
+
+.conf-datos {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 9px 16px;
+  margin: 0 0 22px;
+  font-size: 15px;
+  background: #f6f9fd;
+  border: 1px solid #e3e9f2;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.conf-datos dt { color: #789; font-size: 13.5px; }
+.conf-datos dd { margin: 0; font-weight: 700; }
+
+/* Botones grandes: se aprietan con el pulgar, en la calle, con una mano. */
+.conf-acciones { display: flex; flex-direction: column; gap: 10px; }
+.conf-btn {
+  border: 0;
+  border-radius: 11px;
+  padding: 16px 20px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 54px;
+  transition: transform .1s, box-shadow .15s;
+}
+.conf-btn:active { transform: translateY(1px); }
+.conf-btn--ok { background: #14663a; color: #fff; box-shadow: 0 3px 10px rgba(20,102,58,.28); }
+.conf-btn--no { background: #fff; color: #a8202a; border: 1.5px solid #f0c4c4; }
+.conf-btn--vol { background: #eef3fb; color: #456; }
+
+.conf-msg { text-align: center; padding: 6px 0 14px; }
+.conf-icono {
+  width: 62px; height: 62px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; font-weight: 700; margin: 0 auto 14px;
+}
+.conf-msg--ok .conf-icono { background: #e8f6ed; color: #14663a; }
+.conf-msg--cancel .conf-icono { background: #fdeeee; color: #a8202a; }
+.conf-msg--aviso .conf-icono { background: #fff6e6; color: #8a5600; }
+.conf-msg h1 { margin: 0 0 8px; font-size: 21px; color: #0d2f5a; }
+.conf-msg p { margin: 0; font-size: 15px; line-height: 1.55; color: #56687e; }
+.conf-msg a { color: #0d2f5a; font-weight: 600; }
+
+.conf-cargando {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 34px 0; color: #789; font-size: 15px;
+}
+.conf-spin {
+  width: 20px; height: 20px;
+  border: 2.5px solid #d7dee8; border-top-color: #0d2f5a;
+  border-radius: 50%; animation: confGirar .7s linear infinite;
+}
+@keyframes confGirar { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .conf-spin { animation-duration: 2.4s; } }
+
+.conf-pie {
+  padding: 14px 22px;
+  border-top: 1px solid #e3e9f2;
+  font-size: 12.5px;
+  color: #789;
+  text-align: center;
+}
+.conf-pie a { color: #0d2f5a; }
+
+@media (max-width: 420px) {
+  .conf-cuerpo { padding: 22px 16px; }
+  .conf-datos { grid-template-columns: 1fr; gap: 3px; }
+  .conf-datos dt { margin-top: 8px; }
+}

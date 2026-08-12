@@ -754,3 +754,49 @@ table.grid td.slot.over { background: var(--tint); }
 @media (pointer: coarse) {
   .ag-mover input, .ag-mover select { min-height: 44px; }
 }
+
+/* ---------- comentario del agendamiento ----------
+   En la recepción va arriba y destacado: si aparece al final, quien recibe el
+   auto ya tomó las decisiones sin haberlo leído. */
+.rec-coment {
+  background: #fff8e6;
+  border: 1px solid #f0d9a8;
+  border-left: 4px solid #c87900;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+}
+.rec-coment__t {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  color: #8a5600;
+  margin-bottom: 3px;
+}
+.rec-coment p { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-1, #16324f); }
+
+/* El campo en el formulario de agendar ocupa las dos columnas: un comentario
+   en media línea no se alcanza a leer mientras se escribe. */
+.ag-coment-lbl { grid-column: 1 / -1; }
+.ag-coment-lbl textarea {
+  width: 100%;
+  border: 1px solid var(--borde, #d7dee8);
+  border-radius: 7px;
+  padding: 8px 9px;
+  font: inherit;
+  font-size: 13px;
+  resize: vertical;
+  min-height: 52px;
+}
+.ag-opc { font-weight: 400; color: var(--ink-3, #789); font-size: 11.5px; }
+
+/* Marca en la tabla de la agenda: se ve de una que esa cita trae una nota. */
+.ag-tiene-coment {
+  display: inline-block;
+  margin-left: 5px;
+  cursor: help;
+  font-size: 12px;
+}
+

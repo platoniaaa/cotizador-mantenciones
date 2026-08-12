@@ -197,6 +197,22 @@
     doc.text(nMarcados + " de " + lista.length + " accesorios presentes al ingreso.", M, y);
     y = separador(doc, y + 3);
 
+    /* --- comentario del agendamiento ---
+       Separado de las observaciones a propósito: esto se anotó ANTES de que el
+       auto llegara (o lo escribió el cliente al reservar), mientras que las
+       observaciones son los daños constatados con el vehículo delante. */
+    var coment = String(a.coment || "").trim();
+    if (coment) {
+      y = sitio(doc, y, 22);
+      y = titulo(doc, y, "Comentario del agendamiento");
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9);
+      doc.setTextColor.apply(doc, TINTA);
+      var lc = doc.splitTextToSize(coment, COL);
+      doc.text(lc, M, y);
+      y = separador(doc, y + lc.length * 4.4 + 2);
+    }
+
     /* --- observaciones --- */
     y = sitio(doc, y, 26);
     y = titulo(doc, y, "Observaciones · daños previos y faltantes declarados");

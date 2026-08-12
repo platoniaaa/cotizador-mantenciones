@@ -1068,7 +1068,11 @@ function renderAgendaTable() {
     return '<tr class="' + (a.estado === "anulado" ? "fila-anulada " : "") +
       (ajena ? "fila-otra-suc" : "") + '"><td>' +
       esc(String(a.oc == null ? "—" : a.oc)) + "</td><td>" + esc(a.hora || "—") +
-      "</td><td>" + esc(a.cli || "—") + "</td><td>" + esc(auto || "—") +
+      "</td><td>" + esc(a.cli || "—") +
+      // Si la cita trae comentario se avisa acá: es lo que hay que leer ANTES
+      // de que llegue el auto, y en la tabla no cabe entero.
+      (a.coment ? ' <span class="ag-tiene-coment" title="' + esc(a.coment) + '">💬</span>' : "") +
+      "</td><td>" + esc(auto || "—") +
       "</td><td>" + esc(a.pat || "—") + "</td><td>" + esc(a.serv || "—") +
       '</td><td><span class="celda-suc" title="' + esc(c.suc || "sin sucursal asignada") + '">' +
       esc(c.suc ? sucCorta(c.suc) : "—") + "</span></td><td>" + est + "</td><td>" + acc + "</td></tr>";
@@ -1371,7 +1375,7 @@ function agAbrirModal(h) {
   ov.dataset.hora = h;
   document.getElementById("agHora").textContent = "· " + h + " · " + fmtFechaCorta(selFecha);
   // limpiar formulario
-  ["agPatente", "agVin", "agCliente", "agRut", "agFono", "agEmail"].forEach(function (id) { document.getElementById(id).value = ""; });
+  ["agPatente", "agVin", "agCliente", "agRut", "agFono", "agEmail", "agComent"].forEach(function (id) { document.getElementById(id).value = ""; });
   document.getElementById("agServicio").value = "MANTENCIÓN POR KILOMETRAJE";
   document.getElementById("agMarca").value = "";
   onMarcaModal();
@@ -1437,6 +1441,7 @@ function agEditarCita(oc) {
   document.getElementById("agRut").value = a.rut || "";
   document.getElementById("agFono").value = a.fono || "";
   document.getElementById("agEmail").value = a.email || "";
+  document.getElementById("agComent").value = a.coment || "";
   var selAse = document.getElementById("agAsesor");
   if (selAse) selAse.value = a.asesor || "";
 
@@ -1619,6 +1624,7 @@ function agGuardar() {
     fono: document.getElementById("agFono").value.trim() || null,
     email: document.getElementById("agEmail").value.trim() || null,
     asesor: document.getElementById("agAsesor").value || null,
+    coment: document.getElementById("agComent").value.trim() || null,
     // id de la reserva web (Supabase) si este agendamiento vino de una solicitud
     // del cliente: permite cerrar el ciclo (estado) en el servidor al recibir.
     webId: (PREFILL && PREFILL.web && PREFILL.web.id) || null,
@@ -1664,13 +1670,14 @@ function _agGuardarEdicion(datos) {
     fecha: a.fecha, hora: a.hora, pat: a.pat, serv: a.serv,
     cli: a.cli, rut: a.rut, fono: a.fono, email: a.email,
     marcaNombre: a.marcaNombre, modeloNombre: a.modeloNombre,
-    versionNombre: a.versionNombre, anio: a.anio, revN: a.revN, asesor: a.asesor
+    versionNombre: a.versionNombre, anio: a.anio, revN: a.revN, asesor: a.asesor,
+    coment: a.coment
   };
 
   // Solo lo editable. uid/oc/webId/estado/creadoEn/creadoPor se conservan.
   ["serv", "pat", "marcaNombre", "modeloNombre", "versionNombre", "pautaId",
    "anio", "km", "revN", "valorRef", "vin", "cli", "rut", "fono", "email",
-   "asesor", "sucursal"].forEach(function (k) { a[k] = datos[k]; });
+   "asesor", "sucursal", "coment"].forEach(function (k) { a[k] = datos[k]; });
   a.fecha = nuevaFecha;
   a.hora = nuevaHora;
   a.editadoEn = ahoraISO();
@@ -1693,7 +1700,8 @@ function _agGuardarEdicion(datos) {
     webActualizarEstado(a.webId, null, {
       fecha: a.fecha, hora: a.hora, patente: a.pat,
       nombre: a.cli, fono: a.fono, email: a.email,
-      servicio: a.serv, sucursal: a.sucursal || null
+      servicio: a.serv, sucursal: a.sucursal || null,
+      comentario: a.coment || null
     }).catch(function () {
       avisoAgenda("La cita se corrigió acá, pero no se pudo avisar al servidor. " +
                   "Revisa la conexión y vuelve a guardar.", "warn");
@@ -1718,7 +1726,7 @@ var _ETIQ_CITA = {
   fecha: "fecha", hora: "hora", pat: "patente", serv: "servicio", cli: "cliente",
   rut: "RUT", fono: "teléfono", email: "e-mail", marcaNombre: "marca",
   modeloNombre: "modelo", versionNombre: "versión", anio: "año",
-  revN: "mantención", asesor: "asesor"
+  revN: "mantención", asesor: "asesor", coment: "comentario"
 };
 
 function _agGuardarCon(a) {
@@ -2012,6 +2020,7 @@ function reconciliarConReservas() {
       });
       // El acta que haya cargado otra estación (accesorios, combustible, km).
       if (r.km_real != null && a.kmReal == null) { a.kmReal = r.km_real; cambios++; }
+      if (r.comentario && !a.coment) { a.coment = r.comentario; cambios++; }
       if (r.comb && !a.comb) { a.comb = r.comb; cambios++; }
       if (r.acc && !a.acc) { a.acc = r.acc; cambios++; }
       if (r.obs && !a.obs) { a.obs = r.obs; cambios++; }
@@ -2065,6 +2074,10 @@ function _agDesdeReserva(r, oc) {
     fono: r.fono || null, email: r.email || null, asesor: r.asesor || null,
     kmReal: r.km_real != null ? r.km_real : null, comb: r.comb || null,
     acc: r.acc || null, obs: r.obs || null,
+    // Lo que escribió el cliente al reservar por la web. Se guardaba en la base
+    // desde el principio, pero la agenda nunca lo leía: llegaba el auto y nadie
+    // sabía lo que el cliente había pedido.
+    coment: r.comentario || null,
     recibidoEn: r.recibido_en || null, recibidoPor: r.recibido_por || null,
     creadoEn: r.creado_en || null, creadoPor: r.asesor || null,
     // El ciclo del servidor traducido al de la agenda. Sin esta tabla, todo lo
@@ -2454,6 +2467,7 @@ function agPintarRecepcion() {
   document.getElementById("rcKm").textContent = agRecSel.km ? etiquetaKm(agRecSel.km) : "—";
   document.getElementById("rcServ").textContent = (agRecSel.serv || "Recepción") + (agRecSel.km ? " · " + etiquetaKm(agRecSel.km) : "");
   document.getElementById("rcValor").textContent = agRecSel.valorRef != null ? money(agRecSel.valorRef) + " neto s/IVA" : "—";
+  _recPintarComentario();
   agPintarActa();
   agRenderFotos();
   agGoTab("recep");
@@ -2475,6 +2489,21 @@ function agPintarRecepcion() {
    Todo lo que el asesor marca se persiste al instante en la bandeja y se
    refleja en la fila de reservas_web, que es la que ven las demás estaciones.
    ============================================================ */
+/* El comentario del agendamiento, arriba de la recepción.
+
+   No se mezcla con "Observaciones": eso son los daños que se constatan CON el
+   auto delante. Esto es lo que se sabía antes de que llegara, y quien recibe
+   necesita leerlo antes de decidir nada. */
+function _recPintarComentario() {
+  var el = document.getElementById("recComent");
+  if (!el) return;
+  var txt = (agRecSel && agRecSel.coment || "").trim();
+  if (!txt) { el.hidden = true; el.textContent = ""; return; }
+  el.hidden = false;
+  el.innerHTML = '<span class="rec-coment__t">Comentario del agendamiento</span>' +
+                 "<p>" + esc(txt) + "</p>";
+}
+
 function agPintarActa() {
   if (!agRecSel) return;
   var marcados = agRecSel.acc || {};
@@ -3138,6 +3167,9 @@ function _agIngresarTallerCon(a, tipo, dur, ro) {
     // estimado de la cita, y el resto es el respaldo ante un reclamo
     kmReal: a.kmReal != null ? a.kmReal : null,
     comb: a.comb || null, acc: a.acc || null, obs: a.obs || null,
+    // viaja con la orden: el técnico que la reciba necesita saber lo que pidió
+    // el cliente, no solo lo que se constató en el mesón
+    coment: a.coment || null,
     recibidoEn: a.recibidoEn || ahoraISO(), recibidoPor: a.recibidoPor || quienSoy()
   };
   anotar(o, "Recepción registrada", a.pat);

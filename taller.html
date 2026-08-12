@@ -178,6 +178,10 @@
       <!-- Sello real de la recepción: quién la abrió y a qué hora llegó de
            verdad el vehículo. La hora de la cita no sirve como respaldo. -->
       <div class="rec-sello" id="recSello" hidden></div>
+      <!-- Lo que se anotó al agendar (o lo que escribió el cliente al reservar
+           por la web). Va ARRIBA del todo: si aparece al final, quien recibe el
+           auto ya tomó las decisiones sin haberlo leído. -->
+      <div class="rec-coment" id="recComent" hidden></div>
       <section class="blk"><h3>Datos del cliente</h3><div class="grid2">
         <div class="field-r"><span class="lab">Cliente</span><span class="val" id="rcCliente"></span></div>
         <div class="field-r"><span class="lab">RUT</span><span class="val" id="rcRut"></span></div>
@@ -362,6 +366,14 @@
         <label>Teléfono móvil<input id="agFono" placeholder="9 0000 0000"></label>
         <label>E-mail<input id="agEmail" placeholder="correo@cliente.cl"></label>
         <label>Asesor<select id="agAsesor"><option value="">— Seleccione —</option></select></label>
+        <!-- Lo que hay que saber ANTES de que llegue el auto: que el cliente
+             pidió que lo llamen, que viene con un ruido, que deja el auto todo
+             el día. Se muestra en la recepción y va al acta. Es el mismo campo
+             `comentario` que el cliente puede escribir al reservar por la web. -->
+        <label class="ag-coment-lbl">Comentario <span class="ag-opc">(opcional · lo verá quien reciba el vehículo)</span>
+          <textarea id="agComent" rows="2" maxlength="500"
+                    placeholder="Ej: el cliente pide que lo llamen antes de cualquier trabajo adicional."></textarea>
+        </label>
       </div>
       <div class="ag-foot">
         <button class="agbtn agbtn-grey" onclick="agCerrarModal()">Cancelar</button>

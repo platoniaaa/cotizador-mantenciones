@@ -2413,6 +2413,47 @@ function agRenderFotos() {
   }).join("");
 }
 
+/* Prepara la foto ANTES de subirla: la reduce y la convierte a JPEG.
+
+   El bucket acepta hasta 10 MB y solo jpeg/png/webp. Una foto de celular
+   moderno pasa los 10 MB, y un iPhone entrega HEIC, que no está en la lista:
+   las dos cosas hacían fallar la subida sin explicar por qué. Convirtiendo acá
+   entra cualquier formato que el navegador sepa abrir, pesa una fracción y
+   sube mucho más rápido en el wifi del taller.
+
+   Si el navegador no pudiera procesarla, se sube el archivo original: es mejor
+   intentarlo que negarse. */
+function agPrepararFoto(file) {
+  var LADO_MAX = 1600, CALIDAD = 0.82;
+  return new Promise(function (listo) {
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () {
+      try {
+        var w = img.naturalWidth, h = img.naturalHeight;
+        var esc = Math.min(1, LADO_MAX / Math.max(w, h));
+        var cv = document.createElement("canvas");
+        cv.width = Math.max(1, Math.round(w * esc));
+        cv.height = Math.max(1, Math.round(h * esc));
+        cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height);
+        cv.toBlob(function (blob) {
+          URL.revokeObjectURL(url);
+          if (!blob) { listo({ blob: file, tipo: file.type || "image/jpeg", ext: "jpg", url: URL.createObjectURL(file) }); return; }
+          listo({ blob: blob, tipo: "image/jpeg", ext: "jpg", url: URL.createObjectURL(blob) });
+        }, "image/jpeg", CALIDAD);
+      } catch (e) {
+        listo({ blob: file, tipo: file.type || "image/jpeg", ext: "jpg", url: url });
+      }
+    };
+    img.onerror = function () {
+      // formato que este navegador no abre (HEIC en un PC, por ejemplo)
+      URL.revokeObjectURL(url);
+      listo(null);
+    };
+    img.src = url;
+  });
+}
+
 // Sube una foto a Supabase Storage (bucket recepciones) y la asocia a la reserva.
 function agSubirFoto(input, i) {
   var file = input.files && input.files[0];
@@ -2420,38 +2461,77 @@ function agSubirFoto(input, i) {
   var vista = AGFOTOS[i];
   var slot = document.getElementById("slot_" + i);
   var st = document.getElementById("fst_" + i);
-  var url = URL.createObjectURL(file);           // preview inmediato
-  if (slot) { slot.style.backgroundImage = "url(" + url + ")"; slot.classList.add("has-photo"); }
-  if (st) st.textContent = "Subiendo…";
-  var carpeta = agFotoCarpeta();
-  var slug = vista.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  var ext = ((file.type || "image/jpeg").split("/")[1] || "jpg").replace("jpeg", "jpg");
-  var path = carpeta + "/" + slug + "_" + Date.now() + "." + ext;
-  webSesion().then(function (s) {
-    if (!s) throw new Error("sin sesión");
-    return fetch(AGW.url + "/storage/v1/object/recepciones/" + encodeURI(path), {
-      method: "POST",
-      headers: {
-        apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
-        "Content-Type": file.type || "image/jpeg", "x-upsert": "true"
-      },
-      body: file
+  if (st) st.textContent = "Preparando…";
+
+  agPrepararFoto(file).then(function (prep) {
+    if (!prep) {
+      return Promise.reject(new Error(
+        "este navegador no puede abrir ese archivo (¿es HEIC?). Cámbialo a JPG o sácala con la cámara."));
+    }
+    if (slot) {
+      slot.style.backgroundImage = "url(" + prep.url + ")";
+      slot.classList.add("has-photo");
+      slot.classList.remove("photo-err");
+    }
+    if (st) st.textContent = "Subiendo…";
+
+    var carpeta = agFotoCarpeta();
+    var slug = vista.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    var path = carpeta + "/" + slug + "_" + Date.now() + "." + prep.ext;
+
+    return webSesion().then(function (s) {
+      if (!s) throw new Error("no hay sesión iniciada; vuelve a entrar con tu correo @curifor.com");
+      return fetch(AGW.url + "/storage/v1/object/recepciones/" + encodeURI(path), {
+        method: "POST",
+        headers: {
+          apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+          "Content-Type": prep.tipo, "x-upsert": "true"
+        },
+        body: prep.blob
+      }).then(function (r) {
+        if (r.ok) return { path: path, url: prep.url };
+        // El motivo importa: antes todo terminaba en "reintentar" y nadie sabía
+        // si era la sesión, el tamaño o el formato.
+        return r.text().then(function (t) {
+          var motivo = r.status === 401 || r.status === 403
+              ? "tu sesión no tiene permiso (vuelve a entrar)"
+            : r.status === 413 ? "la foto pesa demasiado"
+            : r.status === 415 ? "ese formato de imagen no se acepta"
+            : "el servidor respondió " + r.status + (t ? " · " + t.slice(0, 90) : "");
+          throw new Error(motivo);
+        });
+      });
     });
-  }).then(function (r) {
-    if (!r.ok) throw new Error("HTTP " + r.status);
+  }).then(function (ok) {
     if (st) st.textContent = "✓";
     agRecSel.fotos = agRecSel.fotos || {};
-    agRecSel.fotos[vista] = { path: path, preview: url, en: ahoraISO(), por: quienSoy() };
+    agRecSel.fotos[vista] = { path: ok.path, preview: ok.url, en: ahoraISO(), por: quienSoy() };
     save();
     // refleja las fotos en Supabase si la reserva existe allá
     if (agRecSel.webId && typeof webActualizarEstado === "function") {
       var paths = Object.keys(agRecSel.fotos).map(function (k) { return agRecSel.fotos[k].path; });
       webActualizarEstado(agRecSel.webId, null, { fotos: paths }).catch(function () {});
     }
-  }).catch(function () {
+  }).catch(function (e) {
     if (st) st.textContent = "✕ reintentar";
     if (slot) slot.classList.add("photo-err");
+    var motivo = String((e && e.message) || "error desconocido").replace(/\.\s*$/, "");
+    avisoRecepcion("No se pudo guardar la foto de " + vista + ": " + motivo + ".", "warn");
   });
+}
+
+/* Aviso de la recepción. Va a su propio elemento y no al de la agenda: en el
+   módulo Recepción la vista de agenda está oculta, así que un mensaje puesto
+   allá no lo ve nadie — que es justo lo que pasaba cuando fallaba una foto. */
+var _avisoRecTimer = null;
+function avisoRecepcion(texto, tipo) {
+  var el = document.getElementById("recAviso");
+  if (!el) { avisoAgenda(texto, tipo); return; }
+  el.textContent = texto;
+  el.className = "ag-aviso" + (tipo ? " ag-aviso--" + tipo : "");
+  el.hidden = false;
+  clearTimeout(_avisoRecTimer);
+  _avisoRecTimer = setTimeout(function () { el.hidden = true; }, 12000);
 }
 /* ============================================================
    FIRMAS DIGITALES (acta de recepción)

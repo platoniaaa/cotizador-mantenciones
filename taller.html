@@ -206,7 +206,13 @@
           <button type="button" class="firma-limpiar" onclick="agAccNinguno()">Desmarcar todo</button>
         </div>
       </section>
-      <section class="blk"><h3>Inspección fotográfica <span class="prox">(toca cada recuadro para tomar la foto)</span></h3><div class="photo-wrap" id="photoWrap"></div></section>
+      <section class="blk"><h3>Inspección fotográfica <span class="prox">(toca cada recuadro para tomar la foto)</span></h3>
+        <div class="photo-wrap" id="photoWrap"></div>
+        <!-- Los avisos de la recepción NO pueden usar #agAviso: ese vive dentro
+             de la vista Agendamiento, que en el módulo Recepción está oculta, y
+             el mensaje nunca se veía. Por eso la recepción tiene el suyo. -->
+        <p id="recAviso" class="ag-aviso" role="status" hidden></p>
+      </section>
       <!-- Los radios no tenían value ni manejador: el nivel de combustible se
            marcaba en pantalla y no se guardaba en ninguna parte. -->
       <section class="blk"><h3>Combustible <b class="req" title="dato obligatorio del acta">*</b></h3>

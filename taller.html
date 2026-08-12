@@ -334,6 +334,27 @@
     </div>
   </div>
 
+  <!-- Detalle de una recepción ya hecha. Se abre al pinchar una tarjeta de
+       RECIBIDOS: muestra todo lo que se completó en el mesón, incluidas las
+       fotos y las firmas, que viven en el bucket privado y se piden con un
+       enlace firmado al momento de abrir. -->
+  <div class="overlay" id="recDetOv">
+    <div class="rec-det">
+      <div class="rec-det__cab">
+        <div>
+          <h3 id="recDetTitulo"></h3>
+          <p id="recDetSub"></p>
+        </div>
+        <button type="button" class="rec-det__x" onclick="agCerrarDetalle()" aria-label="Cerrar">×</button>
+      </div>
+      <div class="rec-det__cuerpo" id="recDetCuerpo"></div>
+      <div class="rec-det__pie">
+        <button class="agbtn agbtn-grey" onclick="agCerrarDetalle()">Cerrar</button>
+        <button class="agbtn agbtn-blue" id="recDetPdf">Descargar acta en PDF</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal agendar -->
   <div class="overlay" id="agOv">
     <div class="ag-modal">

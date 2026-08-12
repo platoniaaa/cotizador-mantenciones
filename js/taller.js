@@ -1116,7 +1116,10 @@ function renderRecepDia() {
     // Estado del acta: los tres datos que respaldan al taller si hay reclamo.
     var nAcc = o.acc ? Object.keys(o.acc).length : 0;
     var actaOk = (o.kmReal != null) && !!o.comb;
-    return '<div class="recep-item' + (detenido ? " recep-item--stop" : "") + '">' +
+    return '<div class="recep-item' + (detenido ? " recep-item--stop" : "") +
+      '" role="button" tabindex="0" title="Ver el detalle de la recepción"' +
+      ' onclick="agVerRecepcion(\'' + esc(String(o.ro)) + '\')"' +
+      ' onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();agVerRecepcion(\'' + esc(String(o.ro)) + '\');}">' +
       '<div class="recep-item__cab"><b>' + esc(o.pat || "—") + "</b>" +
         '<span class="recep-item__ro">RO ' + esc(o.ro) + "</span>" +
         (llegada.txt
@@ -1135,6 +1138,251 @@ function renderRecepDia() {
           '">📋 ' + (actaOk ? "✓" : "!") + "</span>" +
       "</div></div>";
   }).join("");
+}
+
+/* ============================================================
+   Detalle de una recepción ya hecha
+
+   La tarjeta de RECIBIDOS resume en cuatro íconos lo que se llenó en el mesón.
+   Cuando alguien pregunta "¿con cuánta bencina llegó?" o "¿le sacaron foto al
+   tablero?", eso no se responde con un ícono. Acá está todo, incluidas las
+   fotos y las firmas, que viven en el bucket privado.
+   ============================================================ */
+
+/* Enlace temporal para ver un archivo del bucket privado. Sin esto las fotos
+   no se pueden mostrar: `recepciones` no es público a propósito. */
+function webUrlFirmada(path, segundos) {
+  if (!path || !webCfgOk()) return Promise.resolve(null);
+  return webSesion().then(function (s) {
+    if (!s) return null;
+    return fetch(AGW.url + "/storage/v1/object/sign/recepciones/" + encodeURI(path), {
+      method: "POST",
+      headers: {
+        apikey: AGW.anonKey, Authorization: "Bearer " + s.access,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ expiresIn: segundos || 3600 })
+    }).then(function (r) { return r.ok ? r.json() : null; });
+  }).then(function (j) {
+    return j && j.signedURL ? AGW.url + "/storage/v1" + j.signedURL : null;
+  }).catch(function () { return null; });
+}
+
+var _recDetActual = null;
+
+function agVerRecepcion(ro) {
+  var o = byRo(String(ro));
+  if (!o) { avisoAgenda("No se encontró la orden RO " + ro + ".", "warn"); return; }
+  var a = o.oc != null ? agFind(o.oc) : null;
+  _recDetActual = { o: o, a: a };
+
+  document.getElementById("recDetTitulo").textContent =
+    (o.pat || "—") + " · RO " + o.ro;
+  document.getElementById("recDetSub").textContent =
+    [o.cliente, [o.marca, o.modelo].filter(Boolean).join(" "),
+     o.oc != null ? "cita " + o.oc : null].filter(Boolean).join(" · ");
+
+  document.getElementById("recDetCuerpo").innerHTML = _recDetHTML(o, a);
+  document.getElementById("recDetOv").classList.add("open");
+  document.getElementById("recDetPdf").onclick = function () { _recDetPDF(o, a); };
+
+  // Las fotos y firmas se piden después de pintar: cada una necesita su enlace
+  // firmado y no tiene sentido dejar la pantalla en blanco esperándolas.
+  _recDetCargarImagenes(a);
+}
+
+function agCerrarDetalle() {
+  document.getElementById("recDetOv").classList.remove("open");
+  _recDetActual = null;
+}
+
+function _recDetHTML(o, a) {
+  var acc = o.acc || (a && a.acc) || {};
+  var presentes = AGACC.filter(function (x) { return acc[x]; });
+  var ausentes = AGACC.filter(function (x) { return !acc[x]; });
+  var coment = (o.coment || (a && a.coment) || "").trim();
+  var obs = (o.obs || (a && a.obs) || "").trim();
+  var kmReal = o.kmReal != null ? o.kmReal : (a && a.kmReal != null ? a.kmReal : null);
+  var comb = o.comb || (a && a.comb) || null;
+  var fotos = (a && a.fotos) || {};
+  var firmas = (a && a.firmas) || {};
+
+  function fila(t, v, falta) {
+    return "<dt>" + esc(t) + "</dt><dd" + (falta ? ' class="falta"' : "") + ">" +
+           (v == null || v === "" ? "—" : esc(String(v))) + "</dd>";
+  }
+
+  var h = "";
+
+  // Lo que se sabía antes de que llegara
+  if (coment) {
+    h += '<div class="rec-coment"><span class="rec-coment__t">Comentario del agendamiento</span><p>' +
+         esc(coment) + "</p></div>";
+  }
+
+  h += '<section class="rec-det__blk"><h4>Recepción</h4><dl class="rec-det__datos">' +
+    fila("Llegada real", o.recibidoEn ? fmtFechaHora(o.recibidoEn) : null, !o.recibidoEn) +
+    fila("Recibió", o.recibidoPor) +
+    fila("Hora de la cita", o.rec || (a && a.hora)) +
+    fila("Etapa", (ETAPAS.find(function (e) { return e.id === o.etapa; }) || {}).t || o.etapa) +
+    fila("Asesor", o.asesor || (a && a.asesor)) +
+    "</dl></section>";
+
+  h += '<section class="rec-det__blk"><h4>Vehículo</h4><dl class="rec-det__datos">' +
+    fila("Patente", o.pat) + fila("VIN", o.vin) +
+    fila("Marca / Modelo", [o.marca, o.modelo].filter(Boolean).join(" ")) +
+    fila("Versión", o.version) + fila("Año", o.anio) +
+    fila("Km de la cita", o.km ? etiquetaKm(o.km) : null) +
+    // El km real es el que define qué mantención corresponde: si falta, se marca
+    fila("Kilometraje real", kmReal != null ? kmReal.toLocaleString("es-CL") + " km" : "sin registrar", kmReal == null) +
+    fila("Combustible", comb || "sin registrar", !comb) +
+    fila("Servicio", o.serv || (a && a.serv)) +
+    "</dl></section>";
+
+  h += '<section class="rec-det__blk"><h4>Accesorios <span class="rec-det__n">' +
+       presentes.length + " de " + AGACC.length + "</span></h4>" +
+    '<div class="rec-det__acc">' +
+      AGACC.map(function (x) {
+        return '<span class="rec-acc' + (acc[x] ? " si" : " no") + '">' +
+               (acc[x] ? "✓" : "·") + " " + esc(x) + "</span>";
+      }).join("") +
+    "</div>" +
+    (ausentes.length
+      ? '<p class="rec-det__nota">No venían: ' + esc(ausentes.join(", ")) + ".</p>"
+      : '<p class="rec-det__nota">Venían todos.</p>') +
+    "</section>";
+
+  h += '<section class="rec-det__blk"><h4>Observaciones</h4>' +
+    (obs ? "<p>" + esc(obs) + "</p>"
+         : '<p class="rec-det__vacio">Sin observaciones: se recibió sin daños ni faltantes declarados.</p>') +
+    "</section>";
+
+  // Fotos: los recuadros se pintan ya, las imágenes llegan después
+  h += '<section class="rec-det__blk"><h4>Inspección fotográfica <span class="rec-det__n">' +
+       Object.keys(fotos).length + " de " + AGFOTOS.length + "</span></h4>" +
+    '<div class="rec-det__fotos">' +
+      AGFOTOS.map(function (v) {
+        var f = fotos[v];
+        return '<figure class="rec-foto' + (f ? "" : " vacia") + '" data-vista="' + esc(v) + '">' +
+               (f ? '<div class="rec-foto__img" id="rf_' + esc(v.replace(/[^a-zA-Z0-9]/g, "")) + '">' +
+                    '<span class="rec-foto__cargando">cargando…</span></div>'
+                  : '<div class="rec-foto__img"><span class="rec-foto__no">sin foto</span></div>') +
+               "<figcaption>" + esc(v) + "</figcaption></figure>";
+      }).join("") +
+    "</div>" +
+    (Object.keys(fotos).length < AGFOTOS.length
+      ? '<p class="rec-det__nota falta">Faltaron ' + (AGFOTOS.length - Object.keys(fotos).length) + " fotos.</p>"
+      : "") +
+    "</section>";
+
+  h += '<section class="rec-det__blk"><h4>Firmas</h4><div class="rec-det__firmas">' +
+    ["cliente", "asesor"].map(function (q) {
+      var f = firmas[q];
+      return '<figure class="rec-firma' + (f ? "" : " vacia") + '">' +
+             '<div class="rec-firma__img" id="rfi_' + q + '">' +
+             (f ? '<span class="rec-foto__cargando">cargando…</span>' : '<span class="rec-foto__no">sin firmar</span>') +
+             "</div><figcaption>Firma " + q +
+             (f && f.en ? " · " + fmtHora(f.en) : "") + "</figcaption></figure>";
+    }).join("") + "</div></section>";
+
+  // La bitácora responde "quién hizo qué y cuándo", que es la otra mitad de
+  // las preguntas que llegan después.
+  var hist = (o.hist || []).slice().reverse();
+  if (hist.length) {
+    h += '<section class="rec-det__blk"><h4>Historial</h4><ul class="rec-det__hist">' +
+      hist.map(function (x) {
+        return "<li><b>" + esc(x.q) + "</b>" + (x.d ? " · " + esc(x.d) : "") +
+               '<span>' + esc(fmtFechaHora(x.en)) + (x.por ? " · " + esc(x.por) : "") + "</span></li>";
+      }).join("") + "</ul></section>";
+  }
+  return h;
+}
+
+/* Pide un enlace firmado por cada imagen y las va colocando a medida que
+   llegan. Si una falla, ese recuadro lo dice en vez de quedar cargando. */
+function _recDetCargarImagenes(a) {
+  if (!a) return;
+  var fotos = a.fotos || {}, firmas = a.firmas || {};
+  AGFOTOS.forEach(function (v) {
+    var f = fotos[v];
+    if (!f || !f.path) return;
+    var cont = document.getElementById("rf_" + v.replace(/[^a-zA-Z0-9]/g, ""));
+    if (!cont) return;
+    webUrlFirmada(f.path).then(function (url) {
+      if (!document.getElementById("recDetOv").classList.contains("open")) return;
+      cont.innerHTML = url
+        ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">' +
+          '<img src="' + esc(url) + '" alt="' + esc(v) + '" loading="lazy"></a>'
+        : '<span class="rec-foto__no">no se pudo cargar</span>';
+    });
+  });
+  ["cliente", "asesor"].forEach(function (q) {
+    var f = firmas[q];
+    if (!f || !f.path) return;
+    var cont = document.getElementById("rfi_" + q);
+    if (!cont) return;
+    webUrlFirmada(f.path).then(function (url) {
+      if (!document.getElementById("recDetOv").classList.contains("open")) return;
+      cont.innerHTML = url
+        ? '<img src="' + esc(url) + '" alt="firma ' + q + '">'
+        : '<span class="rec-foto__no">no se pudo cargar</span>';
+    });
+  });
+}
+
+/* Vuelve a generar el acta de una recepción ya hecha. Las imágenes ya no están
+   en el navegador: se traen del bucket con enlaces firmados. Si alguna no se
+   puede leer, el acta sale igual sin ella y se avisa — es mejor un acta sin
+   una foto que ningún acta. */
+function _recDetPDF(o, a) {
+  if (!window.ActaPDF || !window.ActaPDF.disponible()) {
+    avisoAgenda("No se pudo generar el PDF del acta.", "warn"); return;
+  }
+  var btn = document.getElementById("recDetPdf");
+  var txt = btn.textContent;
+  btn.disabled = true; btn.textContent = "Generando…";
+
+  var datos = Object.assign({}, a || {}, {
+    pat: o.pat, cli: o.cliente, marcaNombre: o.marca, modeloNombre: o.modelo,
+    anio: o.anio, vin: o.vin, km: o.km, serv: o.serv,
+    kmReal: o.kmReal != null ? o.kmReal : (a && a.kmReal),
+    comb: o.comb || (a && a.comb), acc: o.acc || (a && a.acc) || {},
+    obs: o.obs || (a && a.obs), coment: o.coment || (a && a.coment),
+    oc: o.oc, sucursal: (a && a.sucursal) || sucursalEstacion(),
+    recibidoEn: o.recibidoEn, recibidoPor: o.recibidoPor, asesor: o.asesor
+  });
+
+  var fotos = (a && a.fotos) || {}, firmas = (a && a.firmas) || {};
+  var tareasF = AGFOTOS.filter(function (v) { return fotos[v] && fotos[v].path; })
+    .map(function (v) {
+      return webUrlFirmada(fotos[v].path)
+        .then(function (u) { return u ? _reducirImagen(u, 620) : null; })
+        .then(function (img) { return img ? { t: v, img: img } : null; });
+    });
+  var tareasFi = ["cliente", "asesor"].filter(function (q) { return firmas[q] && firmas[q].path; })
+    .map(function (q) {
+      return webUrlFirmada(firmas[q].path)
+        .then(function (u) { return u ? _reducirImagen(u, 500, "image/png") : null; })
+        .then(function (img) { return { q: q, img: img }; });
+    });
+
+  Promise.all([Promise.all(tareasF), Promise.all(tareasFi), _actaLogo()])
+    .then(function (r) {
+      var fs = {};
+      r[1].forEach(function (x) { if (x && x.img) fs[x.q] = x.img; });
+      var listaF = r[0].filter(Boolean);
+      var doc = window.ActaPDF.generar(datos, o.ro, { fotos: listaF, firmas: fs, logo: r[2] || null });
+      if (!doc) throw new Error("no se pudo armar el documento");
+      doc.save(window.ActaPDF.nombreArchivo(datos, o.ro));
+      var faltan = Object.keys(fotos).length - listaF.length;
+      if (faltan > 0) {
+        avisoAgenda("El acta se generó, pero " + faltan + " foto(s) no se pudieron traer del servidor.", "warn");
+      }
+    })
+    .catch(function (e) {
+      avisoAgenda("No se pudo generar el acta: " + ((e && e.message) || e), "warn");
+    })
+    .then(function () { btn.disabled = false; btn.textContent = txt; });
 }
 
 // `ref` es el número de OC si la cita está en esta bandeja, o el id de la
@@ -3088,18 +3336,30 @@ function _actaFirmas() {
 }
 
 /* Reduce una imagen a lo que se ve en el acta. Sin esto, ocho fotos de cámara
-   de celular dejan un PDF de decenas de MB que nadie puede mandar por correo. */
-function _reducirImagen(url, anchoMax) {
+   de celular dejan un PDF de decenas de MB que nadie puede mandar por correo.
+
+   `formato` permite PNG para las firmas: un trazo negro sobre blanco en JPEG
+   sale con halos alrededor. `crossOrigin` es necesario para las imágenes que
+   vienen del bucket por enlace firmado: sin eso el canvas queda "manchado" y
+   leerlo lanza excepción. */
+function _reducirImagen(url, anchoMax, formato) {
   return new Promise(function (listo) {
     var img = new Image();
+    // Solo para las que no son del mismo origen; en un blob: local estorba.
+    if (/^https?:/i.test(url)) img.crossOrigin = "anonymous";
     img.onload = function () {
       try {
         var esc = Math.min(1, anchoMax / (img.naturalWidth || anchoMax));
         var cv = document.createElement("canvas");
         cv.width = Math.round((img.naturalWidth || anchoMax) * esc);
         cv.height = Math.round((img.naturalHeight || anchoMax) * esc);
-        cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height);
-        listo(cv.toDataURL("image/jpeg", 0.72));
+        var ctx = cv.getContext("2d");
+        if (formato === "image/png") {   // fondo blanco: las firmas son transparentes
+          ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, cv.width, cv.height);
+        }
+        ctx.drawImage(img, 0, 0, cv.width, cv.height);
+        listo(formato === "image/png" ? cv.toDataURL("image/png")
+                                      : cv.toDataURL("image/jpeg", 0.72));
       } catch (e) { listo(null); }
     };
     img.onerror = function () { listo(null); };

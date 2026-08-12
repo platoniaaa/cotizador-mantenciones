@@ -2657,6 +2657,88 @@ function _enumerar(xs) {
   return xs.slice(0, -1).join(", ") + " ni " + xs[xs.length - 1];
 }
 
+/* ============================================================
+   Material para el acta en PDF
+
+   Se toma de la pantalla, en el instante de ingresar: las firmas están en sus
+   canvas y las fotos tienen una vista previa local (blob del mismo origen, así
+   que se puede leer sin ensuciar el canvas). Pedirlas de vuelta al
+   almacenamiento obligaría a generar enlaces firmados y a esperar la red justo
+   cuando el asesor tiene al cliente esperando.
+   ============================================================ */
+function _actaFirmas() {
+  var out = {};
+  Object.keys(FIRMAS).forEach(function (q) {
+    var f = _firmas[q];
+    if (f && f.cv && f.trazos) {
+      try { out[q] = f.cv.toDataURL("image/png"); } catch (e) { /* sin firma en el PDF */ }
+    }
+  });
+  return out;
+}
+
+/* Reduce una imagen a lo que se ve en el acta. Sin esto, ocho fotos de cámara
+   de celular dejan un PDF de decenas de MB que nadie puede mandar por correo. */
+function _reducirImagen(url, anchoMax) {
+  return new Promise(function (listo) {
+    var img = new Image();
+    img.onload = function () {
+      try {
+        var esc = Math.min(1, anchoMax / (img.naturalWidth || anchoMax));
+        var cv = document.createElement("canvas");
+        cv.width = Math.round((img.naturalWidth || anchoMax) * esc);
+        cv.height = Math.round((img.naturalHeight || anchoMax) * esc);
+        cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height);
+        listo(cv.toDataURL("image/jpeg", 0.72));
+      } catch (e) { listo(null); }
+    };
+    img.onerror = function () { listo(null); };
+    img.src = url;
+  });
+}
+
+function _actaFotos(a) {
+  var fotos = (a && a.fotos) || {};
+  var tareas = AGFOTOS.filter(function (v) {
+    return fotos[v] && fotos[v].preview;
+  }).map(function (v) {
+    return _reducirImagen(fotos[v].preview, 620).then(function (img) {
+      return img ? { t: v, img: img } : null;
+    });
+  });
+  return Promise.all(tareas).then(function (xs) {
+    return xs.filter(Boolean);
+  });
+}
+
+var _logoActa = null;
+function _actaLogo() {
+  if (_logoActa !== null) return Promise.resolve(_logoActa);
+  return _reducirImagen("img/curifor-logo.png", 420).then(function (img) {
+    _logoActa = img || "";
+    return _logoActa;
+  });
+}
+
+/* Genera y descarga el acta. Nunca lanza: el PDF es un respaldo, y una
+   recepción ya guardada no puede quedar en rojo porque falló un dibujo. */
+function agDescargarActa(a, ro) {
+  if (!window.ActaPDF || !window.ActaPDF.disponible()) {
+    avisoAgenda("La recepción quedó guardada, pero no se pudo generar el PDF del acta.", "warn");
+    return Promise.resolve(false);
+  }
+  var firmas = _actaFirmas();
+  return Promise.all([_actaFotos(a), _actaLogo()]).then(function (r) {
+    var doc = window.ActaPDF.generar(a, ro, { fotos: r[0], firmas: firmas, logo: r[1] || null });
+    if (!doc) return false;
+    doc.save(window.ActaPDF.nombreArchivo(a, ro));
+    return true;
+  }).catch(function () {
+    avisoAgenda("La recepción quedó guardada, pero no se pudo generar el PDF del acta.", "warn");
+    return false;
+  });
+}
+
 function _agIngresarTallerCon(a, tipo, dur, ro) {
   var o = {
     ro: ro,
@@ -2693,10 +2775,17 @@ function _agIngresarTallerCon(a, tipo, dur, ro) {
     }).catch(function () { /* offline: no bloquea la recepción local */ });
   }
   save();
+
+  // El acta en PDF se arma ANTES de soltar la recepción: necesita las firmas
+  // que están en los canvas y las vistas previas de las fotos, y ambas se
+  // pierden al limpiar el formulario. No se espera a que termine para avisar:
+  // la recepción ya está guardada y el auto puede entrar.
+  agDescargarActa(a, o.ro);
+
   agRecSel = null;
   document.getElementById("recForm").hidden = true;
   document.getElementById("recVacia").hidden = false;
-  alert("Recepción " + a.oc + " registrada.\n• Acta y fotos guardadas\n• Orden de trabajo RO " + o.ro + " creada en el registro\n(El tablero operativo del taller vive en el planificador de post venta)");
+  alert("Recepción " + a.oc + " registrada.\n• Acta firmada descargada en PDF\n• Fotos guardadas\n• Orden de trabajo RO " + o.ro + " creada en el registro");
   renderAll();
   // Los tableros ya no están en esta plataforma (decisión 10-08-2026): después
   // del acta se vuelve a la agenda, lista para recibir el auto siguiente. En el

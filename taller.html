@@ -242,7 +242,10 @@
           </div>
         </div>
       </section>
-      <div class="flow-note">Al <b>Ingresar a Taller</b> se crea la orden de trabajo (RO) y aparece en Avance del taller → Citas de hoy y en Bodega. El registro queda guardado en la bandeja de la sucursal y lo ven las demás estaciones; la integración con el ERP está pendiente.</div>
+      <!-- El texto anterior mandaba a "Avance del taller → Citas de hoy y en
+           Bodega", pestañas que ya no existen acá: el tablero quedó en el
+           planificador de post venta. -->
+      <div class="flow-note">Al <b>Ingresar a Taller</b> se crea la orden de trabajo (RO) y se descarga el <b>acta de recepción en PDF</b>, con los accesorios, las observaciones, las fotos y las dos firmas. El registro queda en la bandeja de la sucursal y lo ven las demás estaciones; la integración con el ERP está pendiente.</div>
       <div style="display:flex;gap:12px;justify-content:flex-end;padding:10px 0 30px">
         <button class="agbtn agbtn-grey" onclick="agCancelarRecepcion()">Cancelar</button>
         <button class="agbtn agbtn-green" onclick="agIngresarTaller()">Ingresar a Taller</button>
@@ -384,6 +387,10 @@
     </div>
   </div>
 
+  <!-- jsPDF, para el acta de recepción. Va vendorizado (no CDN) igual que el
+       visor de Excel: el sitio no carga nada de terceros en caliente. -->
+  <script src="js/vendor/jspdf.umd.min.js?v=26c038f"></script>
+  <script src="js/acta-pdf.js?v=26c038f"></script>
   <script src="js/taller.js?v=26c038f"></script>
   <script src="js/autocompletar.js?v=26c038f"></script>
   <!-- Modo módulo: ?vista=agenda|recepcion.

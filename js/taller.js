@@ -119,14 +119,32 @@ function anotar(o, que, detalle) {
    tiene sesión del personal, se sincroniza con la bandeja compartida de su
    sucursal en Supabase. Ver el bloque "estado compartido" más abajo.
    La copia local se guarda por sucursal: cada bandeja es independiente.      */
-var DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
+/* Formato de los correlativos: 7 dígitos, y el primero dice de qué se trata.
+   El agendamiento (OC) parte con 1 y la orden de trabajo (RO) con 2, así se
+   distinguen de un vistazo y no se confunde una con otra al buscarlas.
+
+   Son PISOS, no solo valores iniciales: al pedir un número siempre se manda el
+   mayor entre el contador guardado y este mínimo. Sin eso, una estación que ya
+   tenía su bandeja seguiría entregando los números viejos (iba en 61), porque
+   el contador se lee de lo guardado y no del valor inicial de acá. */
+var OC_MINIMO = 1190001;
+var RO_MINIMO = 2000001;
+var RO_DIGITOS = 7;
+
+var DB = { agendamientos: [], orders: [], ocSeq: OC_MINIMO, roSeq: RO_MINIMO, webImp: {} };
+
+/* El número tal como se muestra y se guarda: 7 dígitos. El relleno con ceros
+   solo actúa sobre los números antiguos; los nuevos ya nacen con 7. */
+function formatearRO(n) {
+  return String(n).padStart(RO_DIGITOS, "0");
+}
 
 function tkeyDe(suc) { return TKEY + "::" + (suc || ""); }
 
 function cargarDB() {
   var suc = sucursalEstacion();
   if (!suc) {   // todavía no eligió sucursal: se parte en blanco, sin leer nada
-    DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
+    DB = { agendamientos: [], orders: [], ocSeq: OC_MINIMO, roSeq: RO_MINIMO, webImp: {} };
     return;
   }
   var raw = null;
@@ -145,7 +163,7 @@ function cargarDB() {
       }
     }
   } catch (e) { /* almacenamiento no disponible */ }
-  DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
+  DB = { agendamientos: [], orders: [], ocSeq: OC_MINIMO, roSeq: RO_MINIMO, webImp: {} };
   try {
     if (raw) { var d = JSON.parse(raw); if (d && d.agendamientos && d.orders) DB = d; }
   } catch (e) { /* estado corrupto: se parte de cero */ }
@@ -292,8 +310,10 @@ function reconciliarCorrelativos(mio, suyo) {
   (suyo.agendamientos || []).forEach(function (a) { if (a && a.oc != null) ocServidor[String(a.oc)] = a.uid; });
   (suyo.orders || []).forEach(function (o) { if (o && o.ro != null) roServidor[String(o.ro)] = o.uid; });
 
-  var sigOc = Math.max(mio.ocSeq || 0, suyo.ocSeq || 0);
-  var sigRo = Math.max(mio.roSeq || 0, suyo.roSeq || 0);
+  // Los pisos también valen acá: al renumerar por un choque, el número nuevo
+  // tiene que respetar el formato, no volver a la numeración antigua.
+  var sigOc = Math.max(mio.ocSeq || 0, suyo.ocSeq || 0, OC_MINIMO);
+  var sigRo = Math.max(mio.roSeq || 0, suyo.roSeq || 0, RO_MINIMO);
   var movidos = 0;
 
   (mio.agendamientos || []).forEach(function (a) {
@@ -307,7 +327,7 @@ function reconciliarCorrelativos(mio, suyo) {
   });
   (mio.orders || []).forEach(function (o) {
     var duenio = roServidor[String(o.ro)];
-    if (duenio && duenio !== o.uid) { o.ro = String(sigRo++).padStart(4, "0"); movidos++; }
+    if (duenio && duenio !== o.uid) { o.ro = formatearRO(sigRo++); movidos++; }
   });
 
   mio.ocSeq = sigOc; mio.roSeq = sigRo;
@@ -1417,9 +1437,10 @@ function agGuardar() {
     estado: "agendado",
     creadoEn: ahoraISO(), creadoPor: quienSoy()
   };
-  reservarCorrelativo("oc", DB.ocSeq).then(function (numero) {
-    datos.oc = numero != null ? numero : DB.ocSeq;
-    DB.ocSeq = numero != null ? Math.max(DB.ocSeq, numero + 1) : DB.ocSeq + 1;
+  var desdeOc = Math.max(DB.ocSeq || 0, OC_MINIMO);
+  reservarCorrelativo("oc", desdeOc).then(function (numero) {
+    datos.oc = Math.max(numero != null ? numero : desdeOc, OC_MINIMO);
+    DB.ocSeq = Math.max(desdeOc, datos.oc + 1);
     _agGuardarCon(datos);
   });
 }
@@ -2352,9 +2373,10 @@ function agRecepcionPorPatente(pat) {
         };
         // Número propio: sin OC la recepción no se puede referenciar en el resto
         // del taller (JPCB, bodega, reportes).
-        return reservarCorrelativo("oc", DB.ocSeq).then(function (numero) {
-          nueva.oc = numero != null ? numero : DB.ocSeq;
-          DB.ocSeq = numero != null ? Math.max(DB.ocSeq, numero + 1) : DB.ocSeq + 1;
+        var desdeOc2 = Math.max(DB.ocSeq || 0, OC_MINIMO);
+        return reservarCorrelativo("oc", desdeOc2).then(function (numero) {
+          nueva.oc = Math.max(numero != null ? numero : desdeOc2, OC_MINIMO);
+          DB.ocSeq = Math.max(desdeOc2, nueva.oc + 1);
           DB.agendamientos.push(nueva);
           if (r.id) DB.webImp[r.id] = 1;
           agRecSel = nueva;
@@ -2723,10 +2745,13 @@ function agIngresarTaller() {
   }
   var tipo = mapTipo(a.serv);
   var dur = (itv && horasAMin(itv.horas)) || (tipo === "mant" ? 60 : tipo === "rep" ? 90 : 60);
-  reservarCorrelativo("ro", DB.roSeq).then(function (numero) {
-    var ro = numero != null ? numero : DB.roSeq;
-    DB.roSeq = numero != null ? Math.max(DB.roSeq, numero + 1) : DB.roSeq + 1;
-    _agIngresarTallerCon(a, tipo, dur, String(ro).padStart(4, "0"));
+  // Se pide desde el PISO, no desde el contador guardado: las bandejas que ya
+  // existían iban en 61 y habrían seguido entregando números de dos cifras.
+  var desdeRo = Math.max(DB.roSeq || 0, RO_MINIMO);
+  reservarCorrelativo("ro", desdeRo).then(function (numero) {
+    var ro = Math.max(numero != null ? numero : desdeRo, RO_MINIMO);
+    DB.roSeq = Math.max(desdeRo, ro + 1);
+    _agIngresarTallerCon(a, tipo, dur, formatearRO(ro));
   });
 }
 
@@ -3499,7 +3524,7 @@ function cargarDemo() {
       DB.agendamientos.push(base);
       if (s.modo === "orden") {
         var od = {
-          ro: String(DB.roSeq++).padStart(4, "0"), oc: base.oc, fecha: base.fecha,
+          ro: formatearRO(DB.roSeq++), oc: base.oc, fecha: base.fecha,
           pat: s.pat, marca: s.marca, modelo: s.modelo, version: versionN,
           anio: s.anio, km: base.km, revN: base.revN, pautaId: s.pautaId, valorRef: base.valorRef,
           vin: "—", color: "—", cliente: base.cli, asesor: base.asesor,
@@ -3529,7 +3554,7 @@ function borrarTodo() {
   var suc = sucursalEstacion();
   if (!confirm("Esto borra TODOS los agendamientos y órdenes de " + suc +
                ", en esta y en las demás estaciones de la sucursal. ¿Continuar?")) return;
-  DB = { agendamientos: [], orders: [], ocSeq: 1190001, roSeq: 60, webImp: {} };
+  DB = { agendamientos: [], orders: [], ocSeq: OC_MINIMO, roSeq: RO_MINIMO, webImp: {} };
   save();
   repintarTodo();
 }

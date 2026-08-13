@@ -42,6 +42,13 @@
        aceite pero el filtro de aire no lo cambie". Se guarda por revisión
        (clave "n") porque cambiar de kilometraje es empezar otra cotización. */
     excluidos: {},        // n de revisión -> { idxItem: true, __mo: true }
+    /* Para quién es la cotización. Se llena solo al buscar la patente (la base
+       de Curifor liga vehículo → RUT → cliente) y, si esa patente no está
+       registrada, lo escribe el asesor. Va en el PDF y viaja a la agenda.
+       { nombre, rut, fono, email, fuente: "registro" | "manual" } */
+    cliente: null,
+    clientePat: null,     // patente de la que salió; si cambia, el cliente ya no aplica
+    vehReg: null,         // { vin, km } del registro, para la ficha del PDF
   };
 
   // ---- referencias DOM ----
@@ -60,7 +67,13 @@
     modoBtns: document.querySelectorAll(".modo-btn"),
     detOperaciones: $("#detOperaciones"), detDesglose: $("#detDesglose"),
     stockResumen: $("#stockResumen"), btnExcel: $("#btnExcel"), btnAgendar: $("#btnAgendar"),
-    btnImprimir: $("#btnImprimir"), printDatos: $("#printDatos"),
+    btnPDF: $("#btnPDF"), printDatos: $("#printDatos"),
+    clienteBox: $("#clienteBox"), cliNombreTxt: $("#cliNombreTxt"),
+    cliDetalleTxt: $("#cliDetalleTxt"), btnCliente: $("#btnCliente"),
+    cliModal: $("#cliModal"), cliModalSub: $("#cliModalSub"),
+    cliNombre: $("#cliNombre"), cliRut: $("#cliRut"),
+    cliFono: $("#cliFono"), cliEmail: $("#cliEmail"), cliError: $("#cliError"),
+    cliCancelar: $("#cliCancelar"), cliGuardar: $("#cliGuardar"), cliSinDatos: $("#cliSinDatos"),
     adicionalesBox: $("#adicionalesBox"), detAdicionales: $("#detAdicionales"),
     extrasVenta: $("#extrasVenta"),
     totalConAdicionales: $("#totalConAdicionales"), adicionalesTotalBox: $("#adicionalesTotalBox"),
@@ -150,8 +163,21 @@
     el.navPrev.addEventListener("click", () => moverActivo(-1));
     el.navNext.addEventListener("click", () => moverActivo(1));
     el.btnExcel.addEventListener("click", exportarExcel);
-    el.btnImprimir.addEventListener("click", imprimir);
+    el.btnPDF.addEventListener("click", pedirPDF);
     el.btnAgendar.addEventListener("click", agendarEnTaller);
+    el.btnCliente.addEventListener("click", () => abrirCliente(false));
+    el.cliCancelar.addEventListener("click", cerrarCliente);
+    el.cliGuardar.addEventListener("click", guardarCliente);
+    el.cliSinDatos.addEventListener("click", () => { cerrarCliente(); descargarPDF(); });
+    // clic fuera y Escape cierran, como cualquier modal
+    el.cliModal.addEventListener("click", (e) => { if (e.target === el.cliModal) cerrarCliente(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !el.cliModal.hidden) cerrarCliente();
+    });
+    el.cliRut.addEventListener("blur", () => {
+      const f = formatearRut(el.cliRut.value);
+      if (f) el.cliRut.value = f;
+    });
     el.modoBtns.forEach((btn) => btn.addEventListener("click", () => {
       state.modo = btn.dataset.modo;
       el.modoBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
@@ -160,34 +186,298 @@
     }));
   }
 
-  function imprimir() {
+  // ============================================================
+  //  Datos del cliente
+  //  Vienen de la base al buscar la patente (vehiculos → rut → clientes) o los
+  //  escribe el asesor. NO se guardan en Supabase: `clientes` es el padrón de
+  //  la empresa y es de solo lectura para la plataforma; el cliente nuevo se da
+  //  de alta al agendar, que es donde corresponde. Acá el dato vive mientras
+  //  dure la cotización y viaja con ella al PDF y a la agenda.
+  // ============================================================
+
+  // RUT chileno: normaliza, valida el dígito verificador (módulo 11) y formatea.
+  // Vale la pena validarlo: este número termina en la factura, y un dígito
+  // cambiado se descubre recién cuando el cliente reclama el documento.
+  const normRut = (s) => (s || "").toUpperCase().replace(/[^0-9K]/g, "");
+  function rutValido(s) {
+    const r = normRut(s);
+    if (r.length < 7) return false;
+    const cuerpo = r.slice(0, -1), dv = r.slice(-1);
+    if (!/^\d+$/.test(cuerpo)) return false;
+    let suma = 0, mul = 2;
+    for (let i = cuerpo.length - 1; i >= 0; i--) {
+      suma += +cuerpo[i] * mul;
+      mul = mul === 7 ? 2 : mul + 1;
+    }
+    const resto = 11 - (suma % 11);
+    const esperado = resto === 11 ? "0" : resto === 10 ? "K" : String(resto);
+    return dv === esperado;
+  }
+  function formatearRut(s) {
+    const r = normRut(s);
+    if (r.length < 2) return "";
+    const cuerpo = r.slice(0, -1), dv = r.slice(-1);
+    return cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "-" + dv;
+  }
+
+  function pintarCliente() {
+    const c = state.cliente;
+    const hay = !!(c && (c.nombre || c.rut));
+    el.clienteBox.classList.toggle("cliente-box--vacia", !hay);
+    el.btnCliente.textContent = hay ? "Editar" : "Agregar datos";
+    if (!hay) {
+      el.cliNombreTxt.textContent = "Sin datos del cliente";
+      el.cliDetalleTxt.textContent = state.clientePat
+        ? `La patente ${state.clientePat} no está registrada. Escríbelos para que salgan en el PDF.`
+        : "Busca la patente arriba o escríbelos a mano para que salgan en el PDF.";
+      return;
+    }
+    el.cliNombreTxt.textContent = c.nombre || "(sin nombre)";
+    const partes = [c.rut, c.fono, c.email].filter(Boolean);
+    partes.push(c.fuente === "manual" ? "escrito a mano" : "del registro de Curifor");
+    el.cliDetalleTxt.textContent = partes.join(" · ");
+  }
+
+  // trasPDF: si se abrió porque faltaban datos para el PDF, al guardar se
+  // descarga solo. Obligar a apretar el botón de nuevo, después de tipear todo,
+  // es el tipo de paso extra que hace que la gente deje de usar la función.
+  let cliTrasPDF = false;
+  function abrirCliente(paraPDF) {
+    cliTrasPDF = !!paraPDF;
+    const c = state.cliente || {};
+    el.cliNombre.value = c.nombre || "";
+    el.cliRut.value = c.rut || "";
+    el.cliFono.value = c.fono || "";
+    el.cliEmail.value = c.email || "";
+    el.cliError.hidden = true;
+    el.cliModalSub.textContent = paraPDF
+      ? "Esta cotización todavía no tiene cliente. Completa lo que tengas y sale en el PDF."
+      : "Salen en la orden en PDF y viajan a la agenda si agendas desde aquí.";
+    el.cliGuardar.textContent = paraPDF ? "Guardar y descargar PDF" : "Guardar";
+    el.cliSinDatos.hidden = !paraPDF;
+    el.cliModal.hidden = false;
+    el.cliNombre.focus();
+  }
+  function cerrarCliente() {
+    el.cliModal.hidden = true;
+    cliTrasPDF = false;
+  }
+
+  function guardarCliente() {
+    const nombre = el.cliNombre.value.trim();
+    const rut = el.cliRut.value.trim();
+    const fono = el.cliFono.value.trim();
+    const email = el.cliEmail.value.trim();
+
+    // El RUT se valida porque termina en la factura. El resto no: un teléfono
+    // anotado a medias sigue sirviendo para llamar, y rechazarlo solo lograría
+    // que el asesor deje el campo vacío.
+    if (rut && !rutValido(rut)) {
+      el.cliError.textContent = "Ese RUT no es válido: revisa el dígito verificador.";
+      el.cliError.hidden = false;
+      el.cliRut.focus();
+      return;
+    }
+    if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      el.cliError.textContent = "Ese correo no tiene un formato válido.";
+      el.cliError.hidden = false;
+      el.cliEmail.focus();
+      return;
+    }
+    if (!nombre && !rut && !fono && !email) {
+      el.cliError.textContent = "Escribe al menos el nombre del cliente.";
+      el.cliError.hidden = false;
+      el.cliNombre.focus();
+      return;
+    }
+
+    state.cliente = {
+      nombre, rut: rut ? formatearRut(rut) : "", fono, email, fuente: "manual"
+    };
+    const veniaDelPDF = cliTrasPDF;
+    cerrarCliente();
+    pintarCliente();
+    if (veniaDelPDF) descargarPDF();
+  }
+
+  // ============================================================
+  //  Orden de mantención en PDF
+  // ============================================================
+
+  /* El logo se lee una vez y se guarda: se dibuja en cada PDF y volver a
+     decodificar el PNG en cada descarga no aporta nada. */
+  let _logoPDF;
+  function logoPDF() {
+    if (_logoPDF !== undefined) return Promise.resolve(_logoPDF);
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        try {
+          const c = document.createElement("canvas");
+          const escala = Math.min(1, 420 / img.width);
+          c.width = Math.round(img.width * escala);
+          c.height = Math.round(img.height * escala);
+          c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+          _logoPDF = c.toDataURL("image/png");
+        } catch (e) { _logoPDF = null; }
+        resolve(_logoPDF);
+      };
+      img.onerror = () => { _logoPDF = null; resolve(null); };
+      img.src = "img/curifor-logo.png";
+    });
+  }
+
+  /* Arma el documento con lo que hay en pantalla. Recorre los items igual que
+     pintarDesglose(), incluidos los destildados: en el PDF esos van a la
+     sección "no incluido", porque el cliente tiene que ver qué NO se le va a
+     hacer. El total, en cambio, es el mismo que muestra la pantalla. */
+  function datosOrden() {
     const p = state.pauta, itv = state.plan[state.activo];
-    if (!p || !itv) return;
-    const filas = [
-      ["Marca / Modelo", `${p.marcaNombre} · ${p.modelo}`],
-      ["Versión", p.version],
-    ];
-    if (state.anio) filas.push(["Año", state.anio]);
-    filas.push(["Tipo", state.modo === "particular" ? "Cliente particular" : "Interno"]);
-    filas.push(["Mantención", `Revisión ${itv.n} — ${itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega")}${itv.meses ? " · " + itv.meses + " meses" : ""}`]);
+    if (!p || !itv) return null;
+
+    const grupos = [];
+    const titulos = { repuesto: "Repuestos", lubricante: "Lubricantes", material: "Materiales" };
+    const items = itv.items || [];
+    for (const g of ["repuesto", "lubricante", "material"]) {
+      const idxs = items.map((it, i) => [it, i]).filter(([it]) => (it.tipo || "repuesto") === g);
+      if (!idxs.length) continue;
+      grupos.push({
+        titulo: titulos[g],
+        items: idxs.map(([it, idx]) => {
+          const sku = skuActivo(it, idx);
+          const selIdx = state.seleccion[idx] || 0;
+          return {
+            nombre: it.nombre,
+            codigo: (selIdx === 0 || !sku) ? (it.codigo || "") : sku.cod,
+            codBodega: (sku && selIdx === 0 && it.codigo && normCod(sku.cod) !== normCod(it.codigo))
+                       ? sku.cod : "",
+            cantidad: it.cantidad || "",
+            subtotal: subtotalItem(it, idx),
+            incluido: !estaExcluido(itv, idx),
+          };
+        }),
+      });
+    }
+
     const base = itv.gratis ? 0 : (state.totalCalc || 0);
-    if (itv.gratis) {
+    // adicionales de la pauta marcados + extras de venta cruzada
+    const adic = [];
+    el.detAdicionales.querySelectorAll("input:checked").forEach((c) => {
+      adic.push({ nombre: c.closest("li").querySelector("span").textContent, precio: +c.dataset.precio });
+    });
+    adic.push(...extrasElegidos());
+    const netoAdic = base + adic.reduce((t, a) => t + a.precio, 0);
+
+    const c = state.cliente || {};
+    return {
+      cliente: { nombre: c.nombre, rut: c.rut, fono: c.fono, email: c.email },
+      vehiculo: {
+        patente: normPat(el.inpPatente.value) || null,
+        marca: p.marcaNombre, modelo: p.modelo, version: p.version,
+        motor: p.motor || null,
+        anio: state.anio || state.anioRegistro || null,
+        vin: (state.vehReg && state.vehReg.vin) || null,
+        km: (state.vehReg && state.vehReg.km) != null ? state.vehReg.km : null,
+      },
+      mantencion: {
+        n: itv.n, km: itv.km || null, meses: itv.meses || null,
+        etiqueta: itv.km ? etiquetaKm(itv.km) : (itv.etiqueta || "Entrega"),
+        gratis: !!itv.gratis, modo: state.modo,
+      },
+      grupos,
+      manoObra: itv.manoObra
+        ? { valor: itv.manoObra, horas: itv.horas || null, incluido: !estaExcluido(itv, "__mo") }
+        : null,
+      totales: { neto: base, iva: conIva(base) - base, total: conIva(base) },
+      adicionales: adic,
+      totalAdic: adic.length ? { neto: netoAdic, total: conIva(netoAdic) } : null,
+      operaciones: itv.operaciones || [],
+      notas: p.notas || [],
+      fuente: p.fuente ? "Fuente: " + p.fuente : "",
+      stockActualizado: state.stock ? state.stock.actualizado : "",
+      asesor: null,     // lo completa descargarPDF(), que sí puede esperar la nómina
+    };
+  }
+
+  /* Quién está cotizando. La sesión solo guarda el correo, así que se busca el
+     nombre en la nómina: en el PDF va el NOMBRE y nunca "mfigueroa@curifor.com".
+     Este documento lo recibe el cliente, y un correo no le dice con quién habló.
+     Si la nómina no responde o la persona no está, se omite la línea entera
+     antes que mostrar el correo. Se resuelve una vez por sesión. */
+  let _asesor;
+  async function cargarAsesor() {
+    if (_asesor !== undefined) return _asesor;
+    _asesor = null;
+    try {
+      const s = JSON.parse(localStorage.getItem("curiforTallerWebSes_v1") || "null");
+      const email = s && s.email;
+      const CFG = window.CURIFOR_AGENDA || {};
+      if (!email || !s.access || !CFG.url || !CFG.anonKey) return _asesor;
+      const r = await fetch(`${CFG.url}/rest/v1/personal?email=eq.${encodeURIComponent(email)}&select=nombre,corto&limit=1`,
+                            { headers: { apikey: CFG.anonKey, Authorization: "Bearer " + s.access } });
+      if (!r.ok) return _asesor;
+      const filas = await r.json();
+      const p = filas && filas[0];
+      if (p) _asesor = { nombre: p.corto || p.nombre || null };
+    } catch (e) { /* sin nómina, el PDF sale sin la línea */ }
+    return _asesor;
+  }
+
+  // El botón: si todavía no hay cliente, primero lo pide.
+  function pedirPDF() {
+    const c = state.cliente;
+    if (!c || !(c.nombre || c.rut)) { abrirCliente(true); return; }
+    descargarPDF();
+  }
+
+  async function descargarPDF() {
+    const d = datosOrden();
+    if (!d) return;
+
+    // El encabezado de impresión del navegador (Ctrl+P) se llena con lo mismo,
+    // para que no se quede contando otra historia que el PDF.
+    pintarEncabezadoImpresion(d);
+
+    if (!window.OrdenPDF || !window.OrdenPDF.disponible()) {
+      alert("No se pudo cargar el generador de PDF. Revisa que la plataforma esté abierta desde el servidor y vuelve a intentar.");
+      return;
+    }
+    el.btnPDF.disabled = true;
+    try {
+      const [logo, asesor] = await Promise.all([logoPDF(), cargarAsesor()]);
+      d.logo = logo;
+      d.asesor = asesor;
+      const doc = window.OrdenPDF.generar(d);
+      if (doc) doc.save(window.OrdenPDF.nombreArchivo(d));
+    } catch (e) {
+      alert("No pudimos generar el PDF: " + (e && e.message ? e.message : "error inesperado"));
+    } finally {
+      el.btnPDF.disabled = false;
+    }
+  }
+
+  function pintarEncabezadoImpresion(d) {
+    const filas = [];
+    if (d.cliente.nombre) filas.push(["Cliente", d.cliente.nombre]);
+    if (d.cliente.rut) filas.push(["RUT", d.cliente.rut]);
+    if (d.vehiculo.patente) filas.push(["Patente", d.vehiculo.patente]);
+    filas.push(["Marca / Modelo", `${d.vehiculo.marca} · ${d.vehiculo.modelo}`]);
+    filas.push(["Versión", d.vehiculo.version]);
+    if (d.vehiculo.anio) filas.push(["Año", d.vehiculo.anio]);
+    filas.push(["Tipo", d.mantencion.modo === "particular" ? "Cliente particular" : "Interno"]);
+    filas.push(["Mantención", `Revisión ${d.mantencion.n} — ${d.mantencion.etiqueta}` +
+                              (d.mantencion.meses ? " · " + d.mantencion.meses + " meses" : "")]);
+    if (d.mantencion.gratis) {
       filas.push(["Valor", "Sin costo"]);
     } else {
-      filas.push(["Valor neto (sin IVA)", money(base)]);
-      filas.push(["IVA 19%", money(conIva(base) - base)]);
-      filas.push(["TOTAL con IVA", money(conIva(base))]);
+      filas.push(["Valor neto (sin IVA)", money(d.totales.neto)]);
+      filas.push(["IVA 19%", money(d.totales.iva)]);
+      filas.push(["TOTAL con IVA", money(d.totales.total)]);
     }
-    const extras = extrasElegidos();
-    if (extras.length) {
-      let netoTot = base;
-      extras.forEach((x) => { netoTot += x.precio; filas.push([x.nombre, `${money(x.precio)} neto (${money(conIva(x.precio))} con IVA)`]); });
-      filas.push(["TOTAL con adicionales (con IVA)", money(conIva(netoTot))]);
-    }
-    if (state.stock) filas.push(["Inventario al", state.stock.actualizado]);
-    filas.push(["Fecha impresión", new Date().toLocaleDateString("es-CL")]);
+    if (d.totalAdic) filas.push(["TOTAL con adicionales (con IVA)", money(d.totalAdic.total)]);
+    if (d.stockActualizado) filas.push(["Inventario al", d.stockActualizado]);
+    filas.push(["Fecha", new Date().toLocaleDateString("es-CL")]);
     el.printDatos.innerHTML = filas.map((f) => `<tr><td>${f[0]}</td><td>${f[1]}</td></tr>`).join("");
-    window.print();
   }
 
   // ============================================================
@@ -571,6 +861,16 @@
       return;
     }
 
+    /* Otra patente es otro auto y, casi siempre, otro dueño: arrastrar el
+       cliente anterior terminaría con una cotización a nombre de quien no es.
+       Si es la MISMA patente se conserva, para no borrar lo que el asesor
+       acaba de escribir a mano solo porque volvió a apretar Buscar. */
+    if (state.clientePat && state.clientePat !== placa) {
+      state.cliente = null;
+      state.vehReg = null;
+    }
+    state.clientePat = placa;
+
     el.btnPatente.disabled = true;
     el.inpPatente.disabled = true;
     estadoPatente("info", "Consultando el registro…");
@@ -580,14 +880,31 @@
         datos = await consultarPatente(placa);
         cachePatente.set(placa, datos);
       }
+      state.vehReg = { vin: datos.vin || null, km: datos.km != null ? datos.km : null };
+      // Lo que el asesor escribió a mano manda sobre el registro: si está
+      // corrigiendo un dato viejo, la corrección es el dato bueno.
+      if (datos.cliente && (!state.cliente || state.cliente.fuente !== "manual")) {
+        state.cliente = {
+          nombre: datos.cliente.nombre || "",
+          rut: datos.cliente.rut ? formatearRut(datos.cliente.rut) : "",
+          fono: datos.cliente.fono || "",
+          email: datos.cliente.email || "",
+          fuente: "registro",
+        };
+      }
+      pintarCliente();
       await aplicarDatosRegistro(datos);
     } catch (e) {
+      pintarCliente();
       if (e && e.codigo === "SIN_KEY") {
         estadoPatente("error", "La consulta por patente no está configurada en esta instalación (falta la API key). Elige el vehículo del catálogo.");
       } else if (e && (e.codigo === "MISSING_API_KEY" || e.codigo === "INVALID_API_KEY")) {
         estadoPatente("error", "La API key del registro no es válida o está vencida. Avisa a Sistemas.");
       } else if (e && (e.codigo === "NOT_FOUND" || e.codigo === "PLATE_NOT_FOUND")) {
-        estadoPatente("warn", `No encontramos el vehículo con patente <b>${placa}</b>.`);
+        // Pasa siempre con autos nuevos y con primeras visitas. Se dice qué
+        // hacer, porque cotizar igual es lo normal, no la excepción.
+        estadoPatente("warn", `La patente <b>${placa}</b> no está en el registro de Curifor. ` +
+          `Elige el vehículo del catálogo; los datos del cliente los escribes al descargar el PDF.`);
       } else {
         estadoPatente("error", "No pudimos consultar el registro en este momento. Elige el vehículo del catálogo.");
       }
@@ -616,6 +933,7 @@
     }
     cargarPlan();
     pintarNotas();
+    pintarCliente();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -1043,6 +1361,12 @@
     el.selMarca.value = "";
     el.inpPatente.value = "";
     el.patenteEstado.hidden = true;
+    // "Nueva consulta" es otro cliente en el mesón: se va todo, incluido lo que
+    // se escribió a mano. Dejarlo pegado sería peor que perderlo.
+    state.cliente = null;
+    state.clientePat = null;
+    state.vehReg = null;
+    pintarCliente();
     marcarPendiente(el.selVersion, false);
     marcarPendiente(el.selAnio, false);
     el.vehiculoMeta.hidden = true;
@@ -1182,6 +1506,12 @@
          discutiendo un cobro que nadie le hizo. Van los NOMBRES y no los
          índices porque al otro lado no existe esta lista de items. */
       excluidos: excluidosNombres(itv),
+      /* Solo el cliente ESCRITO A MANO. El que sale del registro no hace falta
+         mandarlo: la agenda lo busca sola por patente y lo trae igual. El que
+         se tipeó acá, en cambio, no existe en ninguna base, y sin esto el
+         asesor tendría que escribir el mismo nombre y el mismo teléfono dos
+         veces con dos minutos de diferencia. */
+      cliente: (state.cliente && state.cliente.fuente === "manual") ? state.cliente : null,
       ts: Date.now(),
     };
     try { localStorage.setItem("curiforTallerPrefill", JSON.stringify(pre)); } catch (e) { /* sin storage */ }

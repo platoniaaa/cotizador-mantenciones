@@ -2139,6 +2139,19 @@ function aplicarPrefill() {
       mo.versiones.forEach(function (v) { if (v.id === PREFILL.pautaId) found = { m: m, mo: mo, v: v }; });
     });
   });
+  /* Cliente escrito a mano en el cotizador: pasa cuando la patente no está en
+     el padrón (auto nuevo, primera visita, cambio de dueño). Se rellena ANTES
+     de disparar el autocompletado, que solo toca los campos vacíos: así lo que
+     el asesor tipeó recién manda sobre lo que pueda encontrar la base. */
+  var pc = PREFILL.cliente;
+  if (pc) {
+    [["agCliente", pc.nombre], ["agRut", pc.rut],
+     ["agFono", pc.fono], ["agEmail", pc.email]].forEach(function (par) {
+      var e = document.getElementById(par[0]);
+      if (e && !e.value.trim() && par[1]) e.value = par[1];
+    });
+  }
+
   // La patente ya viene escrita desde el cotizador: se pone y se dispara el
   // autocompletado en modo "solo cliente", para traer nombre, RUT, teléfono,
   // e-mail y VIN sin tocar la versión, que el cotizador ya eligió con precisión.

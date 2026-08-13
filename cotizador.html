@@ -145,8 +145,8 @@
             <button type="button" class="modo-btn is-active" data-modo="particular">Cliente particular</button>
             <button type="button" class="modo-btn" data-modo="interno">Interno</button>
           </div>
-          <button id="btnImprimir" class="btn btn--print" type="button">
-            <span aria-hidden="true">🖨</span> Imprimir orden
+          <button id="btnPDF" class="btn btn--pdf" type="button">
+            <span aria-hidden="true">⬇</span> Descargar PDF
           </button>
           <button id="btnExcel" class="btn btn--excel" type="button">
             <span aria-hidden="true">⬇</span> Excel
@@ -155,6 +155,19 @@
             <span aria-hidden="true">🗓</span> Agendar
           </button>
         </div>
+      </div>
+
+      <!-- Para quién es la cotización. Se llena solo cuando la patente está en
+           la base de Curifor; si no, queda el botón para escribirlo a mano.
+           Va acá arriba y no escondido en el PDF: el asesor tiene que ver a
+           quién le está cotizando ANTES de mandarlo, no descubrirlo después. -->
+      <div id="clienteBox" class="cliente-box">
+        <div class="cliente-box__datos">
+          <span class="cliente-box__label">Cliente</span>
+          <strong id="cliNombreTxt" class="cliente-box__nombre"></strong>
+          <span id="cliDetalleTxt" class="cliente-box__detalle"></span>
+        </div>
+        <button id="btnCliente" class="btn btn--ghost btn--sm" type="button">Agregar datos</button>
       </div>
 
       <!-- carrusel de revisiones -->
@@ -225,6 +238,44 @@
 
   </main>
 
+  <!-- Datos del cliente a mano. Hace falta siempre que la patente no esté en la
+       base: autos nuevos, primera visita, o el cliente que cambió de dueño y
+       todavía figura el anterior. Sin esto la orden en PDF sale sin destinatario
+       y el asesor la anota a lápiz. -->
+  <div id="cliModal" class="modal" hidden>
+    <div class="modal__caja" role="dialog" aria-modal="true" aria-labelledby="cliModalTitulo">
+      <h3 id="cliModalTitulo" class="modal__titulo">Datos del cliente</h3>
+      <p id="cliModalSub" class="modal__sub">Salen en la orden en PDF y viajan a la agenda si agendas desde aquí.</p>
+
+      <div class="modal__grid">
+        <label class="field">
+          <span class="field__title">Nombre o razón social</span>
+          <input id="cliNombre" class="input" type="text" autocomplete="off" spellcheck="false">
+        </label>
+        <label class="field">
+          <span class="field__title">RUT</span>
+          <input id="cliRut" class="input" type="text" placeholder="12.345.678-9" autocomplete="off" spellcheck="false">
+        </label>
+        <label class="field">
+          <span class="field__title">Teléfono</span>
+          <input id="cliFono" class="input" type="tel" placeholder="+56 9 1234 5678" autocomplete="off">
+        </label>
+        <label class="field">
+          <span class="field__title">Correo</span>
+          <input id="cliEmail" class="input" type="email" autocomplete="off" spellcheck="false">
+        </label>
+      </div>
+
+      <p id="cliError" class="modal__error" role="alert" hidden></p>
+
+      <div class="modal__acciones">
+        <button id="cliCancelar" class="btn btn--ghost" type="button">Cancelar</button>
+        <button id="cliSinDatos" class="btn btn--ghost" type="button" hidden>Descargar sin cliente</button>
+        <button id="cliGuardar" class="btn btn--primary" type="button">Guardar</button>
+      </div>
+    </div>
+  </div>
+
   <footer class="foot">
     <div class="foot__inner">
       <span>Curifor S.A. · Cotizador de Mantenciones</span>
@@ -233,6 +284,11 @@
   </footer>
 
   <script src="js/vendor/xlsx.full.min.js"></script>
+  <!-- jsPDF va local y no por CDN: el taller trabaja con la red del concesionario
+       y una cotización que no se puede entregar porque no cargó un script de
+       terceros no es una opción. Mismo archivo que usa el acta de recepción. -->
+  <script src="js/vendor/jspdf.umd.min.js?v=8843b32"></script>
+  <script src="js/orden-pdf.js?v=8843b32"></script>
   <!-- Reemplaza la consulta por patente (API externa descartada) por la tabla
        `vehiculos` de Curifor. Se engancha en window.__cotizConsultarPatente,
        que app.js ya consulta: por eso va DESPUÉS y no hay que tocar app.js. -->

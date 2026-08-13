@@ -350,8 +350,10 @@ a { color: var(--blue); }
 .btn--ghost:hover { background: var(--tint); border-color: var(--navy); }
 .btn--excel { background: #107c41; color: #fff; font-size: 14px; padding: 11px 18px; }
 .btn--excel:hover { background: #0b5c30; transform: translateY(-1px); }
-.btn--print { background: #fff; color: var(--navy); border-color: var(--tint-borde); font-size: 14px; padding: 11px 16px; }
-.btn--print:hover { background: var(--tint); border-color: var(--navy); }
+.btn--pdf { background: #fff; color: var(--navy); border-color: var(--tint-borde); font-size: 14px; padding: 11px 16px; }
+.btn--pdf:hover:not(:disabled) { background: var(--tint); border-color: var(--navy); }
+.btn--pdf:disabled { color: var(--ink-3); border-color: var(--linea); cursor: progress; }
+.btn--sm { font-size: 13px; padding: 8px 15px; }
 .btn--agendar { background: var(--navy); color: #fff; font-size: 14px; padding: 11px 18px; box-shadow: 0 8px 18px rgba(0, 27, 108, .22); }
 .btn--agendar:hover { background: var(--navy-hover); transform: translateY(-1px); }
 .topbar__nav { display: flex; gap: 18px; align-items: center; }
@@ -699,6 +701,64 @@ a { color: var(--blue); }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
+/* ---------------- Ficha del cliente (paso 2) ----------------
+   Una franja discreta cuando el dato ya está, y una llamada visible cuando
+   falta: sin cliente el PDF sale sin destinatario, y eso hay que verlo antes
+   de mandarlo, no después. */
+.cliente-box {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin: 0 0 16px;
+  padding: 12px 18px;
+  background: var(--tint);
+  border: 1px solid var(--tint-borde);
+  border-radius: var(--radio-sm);
+}
+.cliente-box--vacia { background: #fff8ea; border-color: #f0d9a8; border-style: dashed; }
+.cliente-box__datos { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 2px; }
+.cliente-box__label {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.cliente-box--vacia .cliente-box__label { display: none; }
+.cliente-box__nombre { font-size: 15px; font-weight: 700; color: var(--navy); }
+.cliente-box--vacia .cliente-box__nombre { color: #8a6314; }
+.cliente-box__detalle { font-size: 12.5px; color: var(--ink-2); }
+
+/* ---------------- Modal ---------------- */
+.modal {
+  position: fixed; inset: 0; z-index: 60;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  background: rgba(4, 16, 70, .38);
+  backdrop-filter: blur(2px);
+}
+.modal[hidden] { display: none; }
+.modal__caja {
+  width: 100%; max-width: 520px;
+  max-height: calc(100vh - 40px); overflow-y: auto;
+  background: #fff; border-radius: var(--radio);
+  padding: 26px;
+  box-shadow: 0 24px 60px rgba(4, 16, 70, .3);
+}
+.modal__titulo { margin: 0 0 4px; font-size: 20px; font-weight: 800; color: var(--navy); }
+.modal__sub { margin: 0 0 18px; font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+.modal__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.modal__grid .field:first-child { grid-column: 1 / -1; }
+.modal__error {
+  margin: 14px 0 0; padding: 9px 12px;
+  font-size: 13px; color: #8a1c24;
+  background: #fdf0f0; border: 1px solid #f0c4c8;
+  border-radius: var(--radio-sm);
+}
+.modal__acciones { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.modal__acciones .btn { font-size: 14px; padding: 11px 20px; }
+
+@media (max-width: 560px) {
+  .modal__grid { grid-template-columns: 1fr; }
+  .modal__acciones { justify-content: stretch; }
+  .modal__acciones .btn { flex: 1; justify-content: center; }
+}
+
 /* ---------------- Encabezado de impresión (orden de trabajo) ---------------- */
 .print-header { display: none; }
 .print-header__top { display: flex; align-items: center; gap: 14px; border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 8px; }
@@ -715,6 +775,7 @@ a { color: var(--blue); }
   /* el encabezado de impresión ya trae los datos del vehículo -> se oculta la barra.
      el stock (badge, bodegas y resumen) NO se imprime: la orden de taller va limpia. */
   .topbar, .hero, .foot, .carrusel, .stepbar, .selector, .resumen-vehiculo,
+  .cliente-box, .modal,
   .detalle__eyebrow, .adicionales__list input, .nav-link,
   .extra:not(.is-on), .extra__cta, .extra__detalle,
   .stock-resumen, .dg-stock, .dg-bodega, .dg-alt, .dg-aplica, .dg-reemplazo { display: none !important; }

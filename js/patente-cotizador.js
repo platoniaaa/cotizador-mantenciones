@@ -59,6 +59,16 @@
     return e;
   }
 
+  function pedir(path, t) {
+    return fetch(CFG.url + "/rest/v1/" + path,
+                 { headers: { apikey: CFG.anonKey, Authorization: "Bearer " + t } })
+      .then(function (r) {
+        if (r.status === 401 || r.status === 403) throw error("SIN_SESION", "sesión vencida");
+        if (!r.ok) throw error("ERROR", "HTTP " + r.status);
+        return r.json();
+      });
+  }
+
   window.__cotizConsultarPatente = function (placa) {
     var pat = String(placa || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
     if (!CFG.url || !CFG.anonKey) return Promise.reject(error("SIN_KEY"));
@@ -66,28 +76,44 @@
     var t = token();
     if (!t) return Promise.reject(error("SIN_SESION", "sin sesión del personal"));
 
-    var url = CFG.url + "/rest/v1/vehiculos?patente=eq." + encodeURIComponent(pat) +
-              "&select=modelo,anio,km,vin&limit=1";
-
-    return fetch(url, { headers: { apikey: CFG.anonKey, Authorization: "Bearer " + t } })
-      .then(function (r) {
-        if (r.status === 401 || r.status === 403) throw error("SIN_SESION", "sesión vencida");
-        if (!r.ok) throw error("ERROR", "HTTP " + r.status);
-        return r.json();
-      })
+    return pedir("vehiculos?patente=eq." + encodeURIComponent(pat) +
+                 "&select=modelo,anio,km,vin,rut&limit=1", t)
       .then(function (rows) {
         var v = rows && rows[0];
         if (!v || !v.modelo) throw error("NOT_FOUND");
-        return pMarcas.then(function (marcas) {
+
+        /* El vehículo trae el RUT de su dueño; el nombre y el contacto viven en
+           `clientes`. Se encadenan las dos consultas igual que en la agenda
+           (js/autocompletar.js) para que la orden en PDF salga a nombre de
+           alguien y el asesor no tenga que ir a buscarlo a otro sistema.
+
+           Si el cliente no está o la consulta falla, se sigue con el vehículo:
+           cotizar es lo que el asesor vino a hacer, y quedarse sin pauta porque
+           faltó un teléfono sería absurdo. Los datos se completan a mano. */
+        var pCliente = v.rut
+          ? pedir("clientes?rut=eq." + encodeURIComponent(v.rut) +
+                  "&select=nombre,rut,cel,fono,mail&limit=1", t)
+              .then(function (cs) { return cs && cs[0]; })
+              .catch(function () { return null; })
+          : Promise.resolve(null);
+
+        return Promise.all([pMarcas, pCliente]).then(function (r) {
+          var marcas = r[0], c = r[1];
           var p = partir(v.modelo, marcas);
           return {
             make: p.make,
             model: p.model,
             year: v.anio || null,
-            // el resto no lo usa app.js, pero queda disponible para quien lo
-            // necesite sin repetir la consulta
+            // el resto no lo usa app.js para resolver la pauta, pero sí para
+            // llenar la orden en PDF sin repetir la consulta
             km: v.km || null,
-            vin: v.vin || null
+            vin: v.vin || null,
+            cliente: c ? {
+              nombre: c.nombre || null,
+              rut: c.rut || v.rut || null,
+              fono: c.cel || c.fono || null,
+              email: c.mail || null
+            } : (v.rut ? { rut: v.rut } : null)
           };
         });
       });

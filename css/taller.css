@@ -908,3 +908,25 @@ table.grid td.slot.over { background: var(--tint); }
   .rec-det__x { width: 44px; height: 44px; }
 }
 
+
+/* ---------- control de las fotos de la inspección ---------- */
+.foto-resumen {
+  margin: 0 0 10px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.foto-resumen.falta { background: #fff6e6; border: 1px solid #f0d9a8; color: #8a5600; }
+.foto-resumen.ok    { background: #e8f6ed; border: 1px solid #b9e2c8; color: #14663a; }
+
+/* Los recuadros que faltan se ven distintos desde el principio, no recién
+   cuando el sistema se niega a ingresar el vehículo. */
+.photo-slot.photo-req { border-style: dashed; border-color: #e0b872; background: #fffdf7; }
+.photo-slot.photo-falta {
+  border-color: #c0392b !important;
+  border-style: solid !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, .16);
+}
+.photo-opc { font-style: normal; font-weight: 400; color: var(--ink-3, #789); font-size: 10.5px; }
+

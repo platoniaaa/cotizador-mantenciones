@@ -64,6 +64,13 @@ var AGPM = ["14:00", "14:20", "14:40", "15:00", "15:20", "15:40", "16:00", "16:2
 var AGACC = ["Tag", "Sello verde", "Llaves", "Cono/tapas", "Patentes", "Gata", "Manivela", "Rueda Rpto.", "Extintor", "Documentos", "Pisos", "Encendedor", "Llave rueda", "Botiquín", "Antena", "Radio", "Parlantes", "Triángulos", "Herramientas", "CD"];
 var AGFOTOS = ["Frente Izq", "Frente Der", "Posterior Izq", "Posterior Der", "Tapiz", "Parabrisas", "Tablero", "Adicional"];
 
+/* Las fotos que SÍ o SÍ tienen que estar. "Adicional" queda fuera a propósito:
+   es el recuadro para lo que aparezca —un daño puntual, algo que el cliente
+   quiere dejar registrado— y muchas veces no hay nada que fotografiar.
+   Exigirlo obligaría al asesor a sacar una foto de relleno solo para poder
+   seguir, que es exactamente el problema que se está tratando de resolver. */
+var AGFOTOS_OBLIGATORIAS = AGFOTOS.filter(function (v) { return v !== "Adicional"; });
+
 function hhmm(m) { return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); }
 function parseHM(t) { var a = t.split(":"); return (+a[0]) * 60 + (+a[1]); }
 function etiquetaKm(km) { return km >= 1000 ? (km / 1000).toLocaleString("es-CL") + ".000 km" : km + " km"; }
@@ -2977,15 +2984,34 @@ function agRenderFotos() {
   var fotos = (agRecSel && agRecSel.fotos) || {};
   pw.innerHTML = AGFOTOS.map(function (fo, i) {
     var sub = fotos[fo];
-    return '<label class="photo-slot' + (sub ? " has-photo" : "") + '" id="slot_' + i + '"' +
+    var obligatoria = AGFOTOS_OBLIGATORIAS.indexOf(fo) >= 0;
+    return '<label class="photo-slot' + (sub ? " has-photo" : "") +
+        (!sub && obligatoria ? " photo-req" : "") + '" id="slot_' + i + '"' +
         (sub ? ' style="background-image:url(' + esc(sub.preview || "") + ')"' : "") + '>' +
       '<input type="file" accept="image/*" capture="environment" ' +
         'onchange="agSubirFoto(this,' + i + ')">' +
       '<span class="photo-cam">📷</span>' +
-      '<span class="photo-lbl">' + esc(fo) + '</span>' +
+      '<span class="photo-lbl">' + esc(fo) +
+        (obligatoria ? '' : ' <i class="photo-opc">opcional</i>') + '</span>' +
       '<span class="photo-st" id="fst_' + i + '">' + (sub ? "✓" : "") + '</span>' +
     '</label>';
   }).join("");
+  _agResumenFotos();
+}
+
+/* Cuántas faltan, arriba del todo. Sin esto el asesor cuenta recuadros a ojo
+   y recién se entera de que le falta una cuando aprieta Ingresar. */
+function _agResumenFotos() {
+  var el = document.getElementById("fotoResumen");
+  if (!el) return;
+  var fotos = (agRecSel && agRecSel.fotos) || {};
+  var listas = AGFOTOS_OBLIGATORIAS.filter(function (v) { return fotos[v]; }).length;
+  var total = AGFOTOS_OBLIGATORIAS.length;
+  var faltan = total - listas;
+  el.className = "foto-resumen" + (faltan ? " falta" : " ok");
+  el.textContent = faltan
+    ? listas + " de " + total + " fotos · faltan " + faltan + " para poder ingresar el vehículo"
+    : "Las " + total + " fotos obligatorias están listas.";
 }
 
 /* Prepara la foto ANTES de subirla: la reduce y la convierte a JPEG.
@@ -3043,6 +3069,28 @@ function agSubirFoto(input, i) {
       return Promise.reject(new Error(
         "este navegador no puede abrir ese archivo (¿es HEIC?). Cámbialo a JPG o sácala con la cámara."));
     }
+
+    /* Revisión ANTES de subir. Rechazar acá y no después es lo que hace que
+       el asesor repita la foto con el auto todavía delante; descubrirlo al
+       día siguiente no sirve de nada. */
+    if (!window.FotoControl) return { prep: prep, rev: { ok: true } };
+    var otras = Object.keys(agRecSel.fotos || {})
+      .filter(function (v) { return v !== vista && agRecSel.fotos[v].huella; })
+      .map(function (v) { return { vista: v, huella: agRecSel.fotos[v].huella }; });
+    if (st) st.textContent = "Revisando…";
+    return window.FotoControl.revisar(prep.url, otras).then(function (rev) {
+      return { prep: prep, rev: rev };
+    });
+  }).then(function (r) {
+    var prep = r.prep, rev = r.rev;
+    if (!rev.ok) {
+      // Se descarta el archivo: dejarlo puesto haría creer que quedó guardado.
+      if (slot) { slot.style.backgroundImage = ""; slot.classList.remove("has-photo"); }
+      if (input) input.value = "";
+      return Promise.reject(new Error(rev.motivo));
+    }
+    prep.huella = rev.huella || null;
+
     if (slot) {
       slot.style.backgroundImage = "url(" + prep.url + ")";
       slot.classList.add("has-photo");
@@ -3064,7 +3112,7 @@ function agSubirFoto(input, i) {
         },
         body: prep.blob
       }).then(function (r) {
-        if (r.ok) return { path: path, url: prep.url };
+        if (r.ok) return { path: path, url: prep.url, huella: prep.huella };
         // El motivo importa: antes todo terminaba en "reintentar" y nadie sabía
         // si era la sesión, el tamaño o el formato.
         return r.text().then(function (t) {
@@ -3080,8 +3128,12 @@ function agSubirFoto(input, i) {
   }).then(function (ok) {
     if (st) st.textContent = "✓";
     agRecSel.fotos = agRecSel.fotos || {};
-    agRecSel.fotos[vista] = { path: ok.path, preview: ok.url, en: ahoraISO(), por: quienSoy() };
+    // La huella se guarda con la foto: es lo que permite pillar la repetida
+    // aunque el asesor cierre la recepción y la retome más tarde.
+    agRecSel.fotos[vista] = { path: ok.path, preview: ok.url, huella: ok.huella || null,
+                              en: ahoraISO(), por: quienSoy() };
     save();
+    agRenderFotos();
     // refleja las fotos en Supabase si la reserva existe allá
     if (agRecSel.webId && typeof webActualizarEstado === "function") {
       var paths = Object.keys(agRecSel.fotos).map(function (k) { return agRecSel.fotos[k].path; });
@@ -3281,6 +3333,29 @@ function agIngresarTaller() {
   // Un acta incompleta no sirve como respaldo frente a un reclamo. Se avisa
   // enumerando QUÉ falta, pero no se bloquea: el taller no puede quedar
   // detenido porque el asesor no alcanzó a llenar un campo.
+  /* Las fotos NO son negociables (decisión de Ignacio, 13-08-2026): son la
+     única prueba del estado en que llegó el auto. Sin ellas, un rayón que ya
+     venía se vuelve palabra contra palabra, y esa discusión la pierde siempre
+     el taller. Se bloquea el ingreso y se dice exactamente cuáles faltan. */
+  var sinFoto = AGFOTOS_OBLIGATORIAS.filter(function (v) {
+    return !(agRecSel.fotos && agRecSel.fotos[v]);
+  });
+  if (sinFoto.length) {
+    avisoRecepcion("Faltan " + sinFoto.length + " foto" + (sinFoto.length === 1 ? "" : "s") +
+                   " de la inspección: " + sinFoto.join(", ") +
+                   ". Sin ellas no se puede ingresar el vehículo.", "warn");
+    var pw = document.getElementById("photoWrap");
+    if (pw) pw.scrollIntoView({ behavior: "smooth", block: "center" });
+    // Se marcan los recuadros que faltan, para no tener que buscarlos.
+    AGFOTOS.forEach(function (v, i) {
+      var slot = document.getElementById("slot_" + i);
+      if (slot) slot.classList.toggle("photo-falta", sinFoto.indexOf(v) >= 0);
+    });
+    return;
+  }
+
+  // El resto sí se puede saltar avisando: el taller no puede quedar detenido
+  // porque el asesor no alcanzó a anotar un dato que se completa después.
   var faltan = [];
   if (agRecSel.kmReal == null) faltan.push("el kilometraje real");
   if (!agRecSel.comb) faltan.push("el nivel de combustible");

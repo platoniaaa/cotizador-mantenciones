@@ -211,6 +211,7 @@
         </div>
       </section>
       <section class="blk"><h3>Inspección fotográfica <span class="prox">(toca cada recuadro para tomar la foto)</span></h3>
+        <p id="fotoResumen" class="foto-resumen"></p>
         <div class="photo-wrap" id="photoWrap"></div>
         <!-- Los avisos de la recepción NO pueden usar #agAviso: ese vive dentro
              de la vista Agendamiento, que en el módulo Recepción está oculta, y
@@ -438,6 +439,8 @@
        visor de Excel: el sitio no carga nada de terceros en caliente. -->
   <script src="js/vendor/jspdf.umd.min.js?v=2d26039"></script>
   <script src="js/acta-pdf.js?v=2d26039"></script>
+  <!-- Revisa cada foto antes de subirla: repetidas, planas o desenfocadas. -->
+  <script src="js/foto-control.js?v=2d26039"></script>
   <script src="js/taller.js?v=2d26039"></script>
   <script src="js/autocompletar.js?v=2d26039"></script>
   <!-- Modo módulo: ?vista=agenda|recepcion.

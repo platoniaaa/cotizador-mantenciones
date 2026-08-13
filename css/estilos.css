@@ -739,3 +739,54 @@ a { color: var(--blue); }
   .desglose tr, .ops-list li { break-inside: avoid; }
   a[href]:after { content: ""; }
 }
+
+/* ---------- cotización parcial ----------
+   El cliente pide la mantención sin alguno de sus items. Se destilda y el
+   total se rehace. */
+.dg-chk {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 9px;
+  vertical-align: top;
+  cursor: pointer;
+}
+.dg-chk input {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  accent-color: #0d2f5a;
+}
+.dg-txt { display: inline-block; vertical-align: top; }
+
+/* Lo excluido no se esconde: sigue a la vista, apagado y tachado, para poder
+   volver atrás si el cliente cambia de opinión mientras habla. */
+.dg-fuera .dg-txt { opacity: .45; text-decoration: line-through; }
+.dg-fuera td:last-child { opacity: .45; text-decoration: line-through; }
+
+.dg-parcial td {
+  background: #fff6e6;
+  border-top: 1px solid #f0d9a8;
+  font-size: 13px;
+  color: #8a5600;
+  padding: 10px 12px !important;
+}
+.dg-parcial b { color: #7a4c00; }
+.dg-todos {
+  margin-left: 10px;
+  border: 1px solid #e0b872;
+  background: #fff;
+  color: #8a5600;
+  border-radius: 7px;
+  padding: 5px 11px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.dg-todos:hover { background: #fffaf0; }
+
+@media (pointer: coarse) {
+  .dg-chk input { width: 22px; height: 22px; }
+  .dg-todos { min-height: 44px; }
+}
+

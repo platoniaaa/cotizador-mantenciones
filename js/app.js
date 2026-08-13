@@ -36,6 +36,12 @@
     modo: "particular",   // "particular" (precio lista) | "interno" (costo/0.8)
     seleccion: {},        // idx de item -> idx de SKU elegido (0 = principal)
     totalCalc: 0,         // total calculado desde stock (modo activo)
+    /* Items que el cliente NO quiere. Vacío = la mantención completa, que es
+       lo que corresponde por pauta y lo que hay que ofrecer siempre primero.
+       Se destildan uno a uno cuando el cliente pide solo una parte: "hágame el
+       aceite pero el filtro de aire no lo cambie". Se guarda por revisión
+       (clave "n") porque cambiar de kilometraje es empezar otra cotización. */
+    excluidos: {},        // n de revisión -> { idxItem: true, __mo: true }
   };
 
   // ---- referencias DOM ----
@@ -772,6 +778,33 @@
     if (unit != null && it.cantidad) return Math.round(unit * it.cantidad);
     return it.subtotal || 0;   // respaldo: precio de la pauta (materiales, sin cantidad, o s/d)
   }
+
+  /* ---- cotización parcial ----
+     El cliente pide "la mantención de 40 mil, pero sin cambiar el filtro de
+     aire". Hasta ahora eso obligaba a cotizar mentalmente y decirle un número
+     a mano; acá se destilda el item y el total se rehace solo. */
+  function excluidosDe(itv) {
+    const k = String(itv && itv.n);
+    if (!state.excluidos[k]) state.excluidos[k] = {};
+    return state.excluidos[k];
+  }
+  function estaExcluido(itv, clave) {
+    return !!excluidosDe(itv)[clave];
+  }
+  function alternarItem(itv, clave, incluir) {
+    const ex = excluidosDe(itv);
+    if (incluir) delete ex[clave]; else ex[clave] = true;
+    pintarDetalle();
+  }
+  // cuántos items tiene la revisión y cuántos quedaron dentro
+  function conteoItems(itv) {
+    const items = (itv && itv.items) || [];
+    const ex = excluidosDe(itv);
+    let dentro = items.filter((_, i) => !ex[i]).length;
+    let total = items.length;
+    if (itv && itv.manoObra) { total++; if (!ex.__mo) dentro++; }
+    return { dentro, total, parcial: dentro < total };
+  }
   // total de un intervalo con SKU principal (para el carrusel), según modo
   function totalIntervalo(itv) {
     if (itv.gratis) return 0;
@@ -799,7 +832,8 @@
       filas.push(`<tr><td class="dg-cat" colspan="3">${titulos[g]}</td></tr>`);
       for (const [it, idx] of idxs) {
         const sub = subtotalItem(it, idx);
-        total += sub;
+        const fuera = estaExcluido(itv, idx);
+        if (!fuera) total += sub;
         const skus = skusDe(it);
         const sku = skuActivo(it, idx);
         const selIdx = state.seleccion[idx] || 0;
@@ -837,19 +871,43 @@
           const apl = (sku && sku.aplica) || b.aplica;
           if (apl) extra += `<span class="dg-aplica" title="Modelos a los que aplica esta pieza">Aplica: ${apl}</span>`;
         }
-        filas.push(`<tr><td class="dg-nombre">${it.nombre}${cod}${extra}</td>${celdaStock}<td>${money(sub)}</td></tr>`);
+        // La casilla va primero: es lo que el asesor busca con el cliente al
+        // teléfono, y tenerla al final de la fila obliga a leer todo antes.
+        const chk = `<label class="dg-chk"><input type="checkbox" class="chk-item" data-clave="${idx}"` +
+                    `${fuera ? "" : " checked"} title="Incluir en la cotización"></label>`;
+        filas.push(`<tr class="${fuera ? "dg-fuera" : ""}"><td class="dg-nombre">${chk}` +
+                   `<span class="dg-txt">${it.nombre}${cod}${extra}</span></td>` +
+                   `${celdaStock}<td>${money(sub)}</td></tr>`);
       }
     }
     if (itv.manoObra) {
-      total += itv.manoObra;
+      const moFuera = estaExcluido(itv, "__mo");
+      if (!moFuera) total += itv.manoObra;
       filas.push(`<tr><td class="dg-cat" colspan="3">Mano de obra</td></tr>`);
-      filas.push(`<tr><td class="dg-nombre">Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}</td><td></td><td>${money(itv.manoObra)}</td></tr>`);
+      // La mano de obra viene de la pauta para la revisión COMPLETA, así que no
+      // se prorratea al sacar items: inventar una fracción sería peor que
+      // dejarla y que el asesor decida sacarla entera si corresponde.
+      filas.push(`<tr class="${moFuera ? "dg-fuera" : ""}"><td class="dg-nombre">` +
+        `<label class="dg-chk"><input type="checkbox" class="chk-item" data-clave="__mo"` +
+        `${moFuera ? "" : " checked"} title="Incluir en la cotización"></label>` +
+        `<span class="dg-txt">Mano de obra${itv.horas ? " (" + itv.horas + " h)" : ""}` +
+        `<span class="dg-cod">valor de la pauta para la revisión completa</span></span></td>` +
+        `<td></td><td>${money(itv.manoObra)}</td></tr>`);
     }
     if (!filas.length) {
       filas.push(`<tr><td class="dg-nombre" colspan="3" style="color:var(--ink-3);font-style:italic">El valor corresponde al precio total sugerido de la mantención.</td></tr>`);
       total = itv.gratis ? 0 : (itv.totalConIva || 0);
     }
     const modoTxt = state.modo === "particular" ? "particular" : "interno";
+    // Si se sacó algo, se dice ANTES del total: un número más bajo sin
+    // explicación es lo que después se convierte en un reclamo.
+    const cuenta = conteoItems(itv);
+    if (cuenta.parcial) {
+      filas.push(`<tr class="dg-parcial"><td colspan="3">` +
+        `<b>Cotización parcial:</b> ${cuenta.dentro} de ${cuenta.total} items. ` +
+        `Los destildados no se cobran y no se preparan.` +
+        `<button type="button" class="dg-todos">Volver a la mantención completa</button></td></tr>`);
+    }
     filas.push(`<tr class="dg-total"><td>Total neto (${modoTxt}) · sin IVA</td><td></td><td>${itv.gratis ? "Sin costo" : money(total)}</td></tr>`);
     if (!itv.gratis) {
       filas.push(`<tr class="dg-iva"><td>IVA 19%</td><td></td><td>${money(conIva(total) - total)}</td></tr>`);
@@ -862,6 +920,18 @@
         state.seleccion[+sel.dataset.idx] = +sel.value;
         pintarDetalle();
       });
+    });
+    // casillas de la cotización parcial
+    el.detDesglose.querySelectorAll(".chk-item").forEach((chk) => {
+      chk.addEventListener("change", () => {
+        const c = chk.dataset.clave;
+        alternarItem(itv, c === "__mo" ? "__mo" : +c, chk.checked);
+      });
+    });
+    const btnTodos = el.detDesglose.querySelector(".dg-todos");
+    if (btnTodos) btnTodos.addEventListener("click", () => {
+      state.excluidos[String(itv.n)] = {};
+      pintarDetalle();
     });
 
     // resumen de disponibilidad (3 estados claros para el mecánico)
@@ -1107,10 +1177,24 @@
       revN: itv.n,
       valor: itv.gratis ? sumaExtras() : ((state.totalCalc || 0) + sumaExtras()) || null,
       extras: extrasElegidos().map((x) => x.nombre),
+      /* Lo que el cliente NO quiso. Viaja a la agenda y de ahí a la recepción:
+         sin esto, bodega prepararía el kit completo y el cliente terminaría
+         discutiendo un cobro que nadie le hizo. Van los NOMBRES y no los
+         índices porque al otro lado no existe esta lista de items. */
+      excluidos: excluidosNombres(itv),
       ts: Date.now(),
     };
     try { localStorage.setItem("curiforTallerPrefill", JSON.stringify(pre)); } catch (e) { /* sin storage */ }
     location.href = "taller.html";
+  }
+
+  // Nombres de lo que quedó fuera, para que se entienda en el taller.
+  function excluidosNombres(itv) {
+    const ex = excluidosDe(itv);
+    const items = itv.items || [];
+    const out = items.filter((_, i) => ex[i]).map((it) => it.nombre);
+    if (ex.__mo) out.push("Mano de obra");
+    return out;
   }
 
   // ---- utilidades ----

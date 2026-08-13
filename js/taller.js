@@ -2106,6 +2106,20 @@ function descartarPrefill() {
 }
 function aplicarPrefill() {
   if (!PREFILL || !INDICE) return;
+
+  /* Si el cliente pidió solo una parte de la mantención, eso tiene que quedar
+     escrito donde lo lea quien prepara los repuestos y quien recibe el auto.
+     Se deja en el comentario de la cita: es el campo que ya viaja a la
+     recepción y al acta, así que no hay que inventar un camino nuevo. */
+  if (PREFILL.excluidos && PREFILL.excluidos.length) {
+    var ta = document.getElementById("agComent");
+    if (ta) {
+      var nota = "Mantención PARCIAL. El cliente NO quiere: " +
+                 PREFILL.excluidos.join(", ") + ".";
+      ta.value = ta.value ? nota + "\n" + ta.value : nota;
+    }
+  }
+
   // datos de contacto de la reserva web (si vino de ahí)
   var w = PREFILL.web;
   if (w) {

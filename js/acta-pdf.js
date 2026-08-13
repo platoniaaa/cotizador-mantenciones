@@ -143,6 +143,30 @@
     doc.text("Recibido: " + fmtFecha(a.recibidoEn) , A4.ancho - M, y, { align: "right" });
     y += 6;
 
+    /* --- quién atendió ---
+       Va ARRIBA, junto al cliente y no perdido al pie: cuando alguien reclama
+       tres semanas después, la primera pregunta es siempre quién recibió el
+       auto. Se distingue el asesor ASIGNADO a la cita de quien realmente hizo
+       la recepción, porque no siempre son la misma persona (turnos, colación,
+       el que estaba libre en el mesón). */
+    var ase = opciones.asesor || {};
+    var filasAse = [
+      ["Asesor", ase.nombre || a.asesor],
+      ["Correo", ase.email]
+    ];
+    if (ase.rol) filasAse.push(["Cargo", ase.rol]);
+    if (ase.sucursal || a.sucursal) filasAse.push(["Sucursal", ase.sucursal || a.sucursal]);
+    var recibio = opciones.recibio || {};
+    var mismoQueRecibe = !recibio.email || !ase.email ||
+                         recibio.email.toLowerCase() === ase.email.toLowerCase();
+    if (!mismoQueRecibe) {
+      filasAse.push(["Recibió el vehículo", recibio.nombre || a.recibidoPor]);
+      filasAse.push(["Correo de quien recibió", recibio.email]);
+    }
+    y = titulo(doc, y, "Atendido por");
+    y = datos(doc, y, filasAse);
+    y = separador(doc, y);
+
     /* --- cliente --- */
     y = titulo(doc, y, "Datos del cliente");
     y = datos(doc, y, [
@@ -262,8 +286,13 @@
     y = sitio(doc, y, 46);
     y = titulo(doc, y, "Firmas");
     var anchoFirma = (COL - 10) / 2, altoFirma = 24;
+    // Bajo la firma va el NOMBRE de la persona, no su correo: el acta la lee
+    // un cliente, y "mfigueroa@curifor.com" no le dice a quién le entregó el auto.
+    var firmaAsesor = (opciones.recibio && opciones.recibio.nombre) ||
+                      (opciones.asesor && opciones.asesor.nombre) ||
+                      a.recibidoPor || a.asesor;
     [["cliente", "Firma del cliente", a.cli],
-     ["asesor", "Firma del asesor", a.recibidoPor || a.asesor]].forEach(function (par, i) {
+     ["asesor", "Firma del asesor", firmaAsesor]].forEach(function (par, i) {
       var x = M + i * (anchoFirma + 10);
       doc.setDrawColor.apply(doc, LINEA);
       doc.setLineWidth(0.3);

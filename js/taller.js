@@ -1378,7 +1378,11 @@ function _recDetPDF(o, a) {
       var fs = {};
       r[1].forEach(function (x) { if (x && x.img) fs[x.q] = x.img; });
       var listaF = r[0].filter(Boolean);
-      var doc = window.ActaPDF.generar(datos, o.ro, { fotos: listaF, firmas: fs, logo: r[2] || null });
+      var doc = window.ActaPDF.generar(datos, o.ro, {
+        fotos: listaF, firmas: fs, logo: r[2] || null,
+        asesor: _personaDe(o.asesor || (a && a.asesor)),
+        recibio: _personaDe(o.recibidoPor)
+      });
       if (!doc) throw new Error("no se pudo armar el documento");
       doc.save(window.ActaPDF.nombreArchivo(datos, o.ro));
       var faltan = Object.keys(fotos).length - listaF.length;
@@ -3470,6 +3474,31 @@ function _actaFotos(a) {
   });
 }
 
+/* Datos de una persona de la nómina, a partir de lo que guarda la cita.
+
+   La cita guarda el nombre corto del asesor ("Matías Figueroa") y la recepción
+   guarda el correo de quien la hizo. Los dos apuntan a la misma nómina, así
+   que se busca por cualquiera de los dos y se devuelve la ficha completa para
+   el acta. Si no se encuentra, se devuelve lo que había: mejor el correo solo
+   que un campo vacío. */
+function _personaDe(ref) {
+  if (!ref) return null;
+  var r = String(ref).trim().toLowerCase();
+  var p = (PERSONAL || []).find(function (x) {
+    return (x.email || "").toLowerCase() === r ||
+           (x.corto || "").toLowerCase() === r ||
+           (x.nombre || "").toLowerCase() === r;
+  });
+  if (!p) return { nombre: ref, email: /@/.test(ref) ? ref : null };
+  return {
+    nombre: p.corto || p.nombre,
+    email: p.email || null,
+    rol: p.rol === "asesor" ? "Asesor de servicio"
+       : p.rol === "tecnico" ? "Técnico" : (p.rol || null),
+    sucursal: p.sucursal || null
+  };
+}
+
 var _logoActa = null;
 function _actaLogo() {
   if (_logoActa !== null) return Promise.resolve(_logoActa);
@@ -3488,7 +3517,11 @@ function agDescargarActa(a, ro) {
   }
   var firmas = _actaFirmas();
   return Promise.all([_actaFotos(a), _actaLogo()]).then(function (r) {
-    var doc = window.ActaPDF.generar(a, ro, { fotos: r[0], firmas: firmas, logo: r[1] || null });
+    var doc = window.ActaPDF.generar(a, ro, {
+      fotos: r[0], firmas: firmas, logo: r[1] || null,
+      asesor: _personaDe(a.asesor),
+      recibio: _personaDe(a.recibidoPor || quienSoy())
+    });
     if (!doc) return false;
     doc.save(window.ActaPDF.nombreArchivo(a, ro));
     return true;

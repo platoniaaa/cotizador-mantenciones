@@ -237,6 +237,18 @@
         <textarea id="rcObs" class="rc-obs" rows="3" oninput="agObs()"
                   placeholder="Detalle de lo marcado arriba, o lo que declara el cliente…"></textarea>
       </section>
+      <!-- Autorización comercial. Va SEPARADA de las condiciones generales y
+           del servicio: los avisos del estado de la OT son necesarios para
+           atender al cliente, la publicidad no. Un solo "acepto todo" es lo
+           que después vuelve la autorización discutible. Nace DESMARCADA: una
+           casilla premarcada no es consentimiento. -->
+      <section class="blk"><h3>Autorización de datos <span class="prox">(léesela al cliente antes de firmar)</span></h3>
+        <label class="cons-linea">
+          <input type="checkbox" id="rcMarketing" onchange="agMarketing()">
+          <span>El cliente <b>autoriza</b> recibir ofertas, promociones y recordatorios de mantención por WhatsApp, correo o teléfono.</span>
+        </label>
+        <p class="cons-nota">Es voluntaria y no condiciona el servicio. Los avisos del estado de su vehículo se envían igual, los autorice o no. Lo que marques acá queda impreso en el acta.</p>
+      </section>
       <section class="blk"><h3>Firmas <span class="prox">(firma con el dedo o el mouse; se guarda sola)</span></h3>
         <div class="firmas">
           <div class="firma-col">
@@ -443,6 +455,7 @@
        visor de Excel: el sitio no carga nada de terceros en caliente. -->
   <script src="js/vendor/jspdf.umd.min.js?v=11afc9c"></script>
   <script src="js/acta-pdf.js?v=11afc9c"></script>
+  <script src="js/acta-condiciones.js?v=11afc9c"></script>
   <script src="js/dano-mapa.js?v=11afc9c"></script>
   <!-- Revisa cada foto antes de subirla: repetidas, planas o desenfocadas. -->
   <script src="js/foto-control.js?v=11afc9c"></script>

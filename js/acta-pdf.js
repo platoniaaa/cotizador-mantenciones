@@ -310,6 +310,108 @@
       y = separador(doc, y);
     }
 
+    /* --- condiciones generales y datos personales ---
+       Van ANTES de las firmas y no al final del documento: lo que se firma es
+       esto, y un anexo que aparece después de la firma no lo leyó nadie.
+
+       Cuerpo chico (6.6 pt) porque son ~2.400 caracteres y el acta ya trae
+       fotos y el mapa de daños; a tamaño normal se llevaría una hoja entera
+       ella sola. Es el mismo tamaño que usa la orden de trabajo actual. */
+    var cnd = window.ActaCondiciones;
+    if (cnd) {
+      y = sitio(doc, y, 40);
+      y = titulo(doc, y, cnd.titulo);
+      /* A DOS COLUMNAS. A ancho completo el bloque medía 133 mm y empujaba las
+         firmas a una hoja aparte, donde quedaban solas y —lo que importa— en
+         una página distinta del texto que el cliente está firmando. En dos
+         columnas ocupa la mitad y la firma va inmediatamente debajo de las
+         condiciones. */
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(6.6);
+      var sangriaN = 4;
+      var anchoCol = (COL - 8) / 2;
+      var alturaLin = 2.9, separaClau = 1.6;
+
+      var clau = cnd.generales.map(function (txt, i) {
+        var ls = doc.splitTextToSize(txt, anchoCol - sangriaN);
+        return { n: i + 1, ls: ls, alto: ls.length * alturaLin + separaClau };
+      });
+      // se reparten buscando dos columnas de alto parecido
+      var altoTotal = clau.reduce(function (t, c) { return t + c.alto; }, 0);
+      var corte = 0, acum = 0;
+      while (corte < clau.length && acum + clau[corte].alto <= altoTotal / 2) {
+        acum += clau[corte].alto; corte++;
+      }
+      var cols = [clau.slice(0, corte), clau.slice(corte)];
+      var altoBloque = Math.max(
+        cols[0].reduce(function (t, c) { return t + c.alto; }, 0),
+        cols[1].reduce(function (t, c) { return t + c.alto; }, 0)
+      );
+      // el bloque entero cabe o se va completo a la hoja siguiente: partir las
+      // condiciones a la mitad de una columna las vuelve ilegibles
+      y = sitio(doc, y, altoBloque + 4);
+
+      cols.forEach(function (col, ci) {
+        var x = M + ci * (anchoCol + 8);
+        var yy = y;
+        col.forEach(function (c) {
+          doc.setFont("helvetica", "bold");
+          doc.setTextColor.apply(doc, TINTA);
+          doc.text(String(c.n) + ".", x, yy);
+          doc.setFont("helvetica", "normal");
+          doc.text(c.ls, x + sangriaN, yy);
+          yy += c.alto;
+        });
+      });
+      y += altoBloque + 1;
+
+      /* Datos personales: bloque aparte y no una cláusula más. Es materia
+         distinta y es nueva; escondida como "cláusula 12" pasa inadvertida, y
+         una autorización que nadie vio no sirve de autorización. */
+      y = sitio(doc, y, 26);
+      y += 2;
+      y = titulo(doc, y, cnd.datosTitulo);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(6.6);
+      doc.setTextColor.apply(doc, TINTA);
+      cnd.datos.forEach(function (txt) {
+        var ls = doc.splitTextToSize(txt, COL);
+        y = sitio(doc, y, ls.length * 2.9 + 2);
+        doc.text(ls, M, y);
+        y += ls.length * 2.9 + 2;
+      });
+
+      /* Lo que el cliente decidió sobre publicidad, marcado y visible. Va en
+         recuadro porque es lo único de todo este bloque que cambia de un
+         cliente a otro, y lo que después hay que poder mostrar si alguien
+         reclama que le llegó publicidad sin pedirla. */
+      var acepta = !!a.marketing;
+      y = sitio(doc, y, 16);
+      y += 1.5;
+      doc.setDrawColor.apply(doc, acepta ? AZUL : LINEA);
+      doc.setLineWidth(0.4);
+      var altoC = 12.5;
+      doc.rect(M, y, COL, altoC);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(7.4);
+      doc.setTextColor.apply(doc, acepta ? AZUL : TINTA);
+      doc.text(cnd.comercialEtiqueta + ": " + (acepta ? "SÍ" : "NO"), M + 3, y + 4.6);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(6.6);
+      doc.setTextColor.apply(doc, TINTA);
+      doc.text(doc.splitTextToSize(acepta ? cnd.comercialSi : cnd.comercialNo, COL - 6), M + 3, y + 8);
+      doc.setTextColor.apply(doc, GRIS);
+      doc.text(doc.splitTextToSize(cnd.comercialNota, COL - 6), M + 3, y + 11);
+      y += altoC + 3;
+
+      doc.setFont("helvetica", "italic");
+      doc.setFontSize(6.4);
+      doc.setTextColor.apply(doc, GRIS);
+      doc.text("Condiciones generales versión " + cnd.version +
+               ". Al firmar, el cliente declara haberlas leído y aceptado.", M, y);
+      y = separador(doc, y + 2);
+    }
+
     /* --- firmas --- */
     y = sitio(doc, y, 46);
     y = titulo(doc, y, "Firmas");

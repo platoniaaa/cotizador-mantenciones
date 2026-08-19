@@ -1264,6 +1264,11 @@ function _recDetHTML(o, a) {
          : '<p class="rec-det__vacio">Sin observaciones: se recibió sin daños ni faltantes declarados.</p>') +
     "</section>";
 
+  h += '<section class="rec-det__blk"><h4>Autorización de datos</h4>' +
+    "<p>Comunicaciones comerciales: <b>" + ((a && a.marketing) ? "SÍ" : "NO") + "</b> autorizadas." +
+    ((a && a.condVersion) ? ' <span class="rec-det__n">condiciones ' + esc(a.condVersion) + "</span>" : "") +
+    "</p></section>";
+
   /* Los daños marcados en el diagrama. Van como lista y no como dibujo: acá se
      está revisando una recepción pasada, casi siempre para responder "¿esto ya
      venía?", y la respuesta se lee más rápido en texto. El dibujo con los
@@ -2766,6 +2771,8 @@ function agPintarRecepcion() {
   document.getElementById("rcServ").textContent = (agRecSel.serv || "Recepción") + (agRecSel.km ? " · " + etiquetaKm(agRecSel.km) : "");
   document.getElementById("rcValor").textContent = agRecSel.valorRef != null ? money(agRecSel.valorRef) + " neto s/IVA" : "—";
   _recPintarComentario();
+  var chkMk = document.getElementById("rcMarketing");
+  if (chkMk) chkMk.checked = !!agRecSel.marketing;
   agMontarDanos();
   agPintarActa();
   agRenderFotos();
@@ -2865,6 +2872,20 @@ function agAcc() {
 function agAccNinguno() {
   document.querySelectorAll("#accGrid input[type=checkbox]").forEach(function (c) { c.checked = false; });
   agAcc();
+}
+
+/* Autorización comercial del cliente. Se guarda igual que el resto del acta y
+   se imprime en el PDF. Lo que importa es que quede el registro de lo que el
+   cliente dijo: si mañana reclama que le llegó publicidad sin pedirla, la
+   respuesta está en el acta que firmó. */
+function agMarketing() {
+  if (!agRecSel) return;
+  var c = document.getElementById("rcMarketing");
+  agRecSel.marketing = !!(c && c.checked);
+  // La versión del texto que se le mostró: si Legal cambia una cláusula, hay
+  // que poder decir cuál firmó este cliente, no cuál está vigente hoy.
+  if (window.ActaCondiciones) agRecSel.condVersion = window.ActaCondiciones.version;
+  save();
 }
 
 function agComb() {

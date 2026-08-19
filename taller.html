@@ -230,8 +230,12 @@
         </div>
       </section>
       <section class="blk"><h3>Observaciones <span class="prox">(daños previos, faltantes, lo que declara el cliente)</span></h3>
+        <!-- El mapa va ANTES del texto: marcar el punto es lo rápido, y el
+             texto queda para lo que un punto no puede decir (profundidad del
+             rayón, quién lo declara). El diagrama dice DÓNDE, el texto QUÉ. -->
+        <div id="danoMapa" class="dm"></div>
         <textarea id="rcObs" class="rc-obs" rows="3" oninput="agObs()"
-                  placeholder="Ej: rayón en puerta trasera derecha, falta tapa de rueda delantera izquierda…"></textarea>
+                  placeholder="Detalle de lo marcado arriba, o lo que declara el cliente…"></textarea>
       </section>
       <section class="blk"><h3>Firmas <span class="prox">(firma con el dedo o el mouse; se guarda sola)</span></h3>
         <div class="firmas">
@@ -439,6 +443,7 @@
        visor de Excel: el sitio no carga nada de terceros en caliente. -->
   <script src="js/vendor/jspdf.umd.min.js?v=f8dae47"></script>
   <script src="js/acta-pdf.js?v=f8dae47"></script>
+  <script src="js/dano-mapa.js?v=f8dae47"></script>
   <!-- Revisa cada foto antes de subirla: repetidas, planas o desenfocadas. -->
   <script src="js/foto-control.js?v=f8dae47"></script>
   <script src="js/taller.js?v=f8dae47"></script>

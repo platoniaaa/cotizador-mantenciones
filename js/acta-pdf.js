@@ -256,6 +256,34 @@
     }
     y = separador(doc, y + 1);
 
+    /* --- mapa de daños ---
+       Va JUNTO a las observaciones y antes de las fotos: es la versión
+       inequívoca de lo mismo que el texto describe. Una foto muestra el rayón
+       pero no dice de qué lado del auto es; el diagrama sí. */
+    var dn = opciones.danos;
+    if (dn && dn.img) {
+      var altoMapa = COL * (dn.prop || 0.12);
+      y = sitio(doc, y, altoMapa + 14 + (dn.lista || []).length * 4);
+      y = titulo(doc, y, "Mapa de daños");
+      try { doc.addImage(dn.img, "PNG", M, y, COL, altoMapa); }
+      catch (e) {
+        doc.setDrawColor.apply(doc, LINEA);
+        doc.rect(M, y, COL, altoMapa);
+      }
+      y += altoMapa + 3;
+      // La leyenda no es decorativa: sin ella un punto en el dibujo no dice si
+      // es un rayón o una abolladura, y el acta deja de servir como respaldo.
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.setTextColor.apply(doc, TINTA);
+      (dn.lista || []).forEach(function (t) {
+        y = sitio(doc, y, 6);
+        doc.text(String(t), M + 2, y);
+        y += 4.2;
+      });
+      y = separador(doc, y + 1);
+    }
+
     /* --- fotos: las que alcanzaron a quedar en pantalla. Van reducidas; el
            original queda en el almacenamiento, esto es la referencia visual. --- */
     var fotos = (opciones.fotos || []).filter(function (f) { return f && f.img; });

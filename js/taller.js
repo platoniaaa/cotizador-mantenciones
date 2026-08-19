@@ -1264,6 +1264,18 @@ function _recDetHTML(o, a) {
          : '<p class="rec-det__vacio">Sin observaciones: se recibió sin daños ni faltantes declarados.</p>') +
     "</section>";
 
+  /* Los daños marcados en el diagrama. Van como lista y no como dibujo: acá se
+     está revisando una recepción pasada, casi siempre para responder "¿esto ya
+     venía?", y la respuesta se lee más rápido en texto. El dibujo con los
+     puntos está en el acta en PDF, a un botón de distancia. */
+  var dns = (a && a.danos) || [];
+  if (dns.length && window.DanoMapa) {
+    h += '<section class="rec-det__blk"><h4>Daños marcados al recibir ' +
+      '<span class="rec-det__n">' + dns.length + "</span></h4><ul class=\"rec-det__danos\">" +
+      window.DanoMapa.resumen(dns).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") +
+      "</ul></section>";
+  }
+
   // Fotos: los recuadros se pintan ya, las imágenes llegan después
   h += '<section class="rec-det__blk"><h4>Inspección fotográfica <span class="rec-det__n">' +
        Object.keys(fotos).length + " de " + AGFOTOS.length + "</span></h4>" +
@@ -1373,13 +1385,13 @@ function _recDetPDF(o, a) {
         .then(function (img) { return { q: q, img: img }; });
     });
 
-  Promise.all([Promise.all(tareasF), Promise.all(tareasFi), _actaLogo()])
+  Promise.all([Promise.all(tareasF), Promise.all(tareasFi), _actaLogo(), _actaDanos(datos)])
     .then(function (r) {
       var fs = {};
       r[1].forEach(function (x) { if (x && x.img) fs[x.q] = x.img; });
       var listaF = r[0].filter(Boolean);
       var doc = window.ActaPDF.generar(datos, o.ro, {
-        fotos: listaF, firmas: fs, logo: r[2] || null,
+        fotos: listaF, firmas: fs, logo: r[2] || null, danos: r[3] || null,
         asesor: _personaDe(o.asesor || (a && a.asesor)),
         recibio: _personaDe(o.recibidoPor)
       });
@@ -2754,6 +2766,7 @@ function agPintarRecepcion() {
   document.getElementById("rcServ").textContent = (agRecSel.serv || "Recepción") + (agRecSel.km ? " · " + etiquetaKm(agRecSel.km) : "");
   document.getElementById("rcValor").textContent = agRecSel.valorRef != null ? money(agRecSel.valorRef) + " neto s/IVA" : "—";
   _recPintarComentario();
+  agMontarDanos();
   agPintarActa();
   agRenderFotos();
   agGoTab("recep");
@@ -2872,6 +2885,24 @@ function agKmReal() {
   inp.classList.toggle("falta", agRecSel.kmReal == null);
   save();
   _reflejarActa();
+}
+
+/* Mapa de daños. Vive en agRecSel.danos y se guarda en cada marca, igual que
+   los accesorios: el asesor marca con el cliente al lado y no vuelve a pasar
+   por acá, así que no hay un momento posterior en que guardar. */
+var _danoUI = null;
+function agMontarDanos() {
+  var caja = document.getElementById("danoMapa");
+  if (!caja || !window.DanoMapa || !agRecSel) return;
+  if (!Array.isArray(agRecSel.danos)) agRecSel.danos = [];
+  _danoUI = window.DanoMapa.montar(caja, {
+    danos: agRecSel.danos,
+    onCambio: function (ds) {
+      agRecSel.danos = ds;
+      save();
+      _reflejarActa();
+    }
+  });
 }
 
 var _obsTimer = null;
@@ -3521,6 +3552,16 @@ function _actaLogo() {
   });
 }
 
+/* El mapa de daños como imagen, más su leyenda. Sin marcas devuelve null y el
+   acta simplemente no trae la sección. */
+function _actaDanos(a) {
+  if (!window.DanoMapa || !a || !a.danos || !a.danos.length) return Promise.resolve(null);
+  return window.DanoMapa.imagen(a.danos, 1400).then(function (r) {
+    if (!r) return null;
+    return { img: r.img, prop: r.prop, lista: window.DanoMapa.resumen(a.danos) };
+  });
+}
+
 /* Genera y descarga el acta. Nunca lanza: el PDF es un respaldo, y una
    recepción ya guardada no puede quedar en rojo porque falló un dibujo. */
 function agDescargarActa(a, ro) {
@@ -3529,9 +3570,9 @@ function agDescargarActa(a, ro) {
     return Promise.resolve(false);
   }
   var firmas = _actaFirmas();
-  return Promise.all([_actaFotos(a), _actaLogo()]).then(function (r) {
+  return Promise.all([_actaFotos(a), _actaLogo(), _actaDanos(a)]).then(function (r) {
     var doc = window.ActaPDF.generar(a, ro, {
-      fotos: r[0], firmas: firmas, logo: r[1] || null,
+      fotos: r[0], firmas: firmas, logo: r[1] || null, danos: r[2] || null,
       asesor: _personaDe(a.asesor),
       recibio: _personaDe(a.recibidoPor || quienSoy())
     });

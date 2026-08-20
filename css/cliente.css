@@ -470,3 +470,8 @@ button { font-family: inherit; }
 .agw-datos[open] .agw-datos__mas::after { content: " (ocultar)"; text-decoration: none; }
 .agw-datos p { margin: 9px 0 0; font-size: 12px; line-height: 1.55; }
 .agw-datos__ver { color: #8a97a8; font-style: italic; }
+
+/* Marca que se agenda en el sitio del fabricante (Ford). Se distingue de las
+   demás para que el salto no tome por sorpresa. */
+.marca--externa { border-style: dashed; }
+.marca--externa .marca__n { color: #1f5fb4; font-weight: 600; }

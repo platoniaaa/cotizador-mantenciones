@@ -97,6 +97,22 @@
     }
   }
 
+  /* ---- marcas con agenda propia ----
+     Ford no se agenda en Curifor: tiene su propio sistema y ahi es donde la
+     hora queda tomada de verdad. Pedirle la hora al cliente aca y despues
+     tener que re-agendarla alla es prometerle algo que no se cumple.
+
+     El aviso va en la tarjeta ANTES del clic. Un salto silencioso a un sitio
+     de otra empresa, con pantalla de login incluida, se lee como un error de
+     la pagina. */
+  var AGENDA_EXTERNA = {
+    ford: {
+      nombre: "Ford",
+      url: "https://web.agenda.ford.com/#/login",
+      nota: "Agenda en el sitio de Ford"
+    }
+  };
+
   // ============================================================
   //  Paso 1 — el auto
   // ============================================================
@@ -104,9 +120,10 @@
     const marcas = [...state.indice.marcas].sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
     el.gridMarcas.innerHTML = marcas.map((m) => {
       const n = m.modelos.length;
-      return `<button type="button" class="marca" data-marca="${m.id}">
+      const ext = AGENDA_EXTERNA[m.id];
+      return `<button type="button" class="marca${ext ? " marca--externa" : ""}" data-marca="${m.id}">
           <span class="marca__nombre">${m.nombre}</span>
-          <span class="marca__n">${n} ${n === 1 ? "modelo" : "modelos"}</span>
+          <span class="marca__n">${ext ? ext.nota + " &#8599;" : `${n} ${n === 1 ? "modelo" : "modelos"}`}</span>
         </button>`;
     }).join("");
     el.gridMarcas.querySelectorAll(".marca").forEach((b) =>
@@ -114,6 +131,13 @@
   }
 
   function elegirMarca(id) {
+    /* Antes de cualquier otra cosa: si la marca se agenda afuera, se va para
+       alla. Va en la misma pestaña porque el cliente esta yendo a AGENDAR, no
+       a consultar algo de paso; dejarlo con dos pestañas abiertas que hacen lo
+       mismo es como se termina con la hora pedida dos veces. */
+    const ext = AGENDA_EXTERNA[id];
+    if (ext) { location.href = ext.url; return; }
+
     state.marca = state.indice.marcas.find((m) => m.id === id) || null;
     state.modelo = state.version = state.pauta = state.anio = null;
     el.gridMarcas.querySelectorAll(".marca").forEach((b) =>

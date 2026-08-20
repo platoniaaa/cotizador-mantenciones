@@ -19,7 +19,7 @@
   "use strict";
 
   window.ActaCondiciones = {
-    version: "2026-08",
+    version: "2026-08.2",
 
     titulo: "Condiciones generales de la recepción y reparación de vehículos",
 
@@ -50,7 +50,7 @@
        discutible. */
     datosTitulo: "Tratamiento de datos personales",
     datos: [
-      "Curifor S.A. trata los datos personales del cliente —nombre, RUT, teléfono, correo electrónico, dirección y los datos de su vehículo— para gestionar la recepción, reparación y entrega del vehículo, emitir los documentos tributarios que correspondan y comunicarse con el cliente sobre el estado de esta Orden de Trabajo. Esas comunicaciones pueden hacerse por llamada telefónica, mensaje de texto, correo electrónico o WhatsApp, al teléfono y al correo registrados en este documento.",
+      "Curifor S.A., RUT 92.909.000-4, trata los datos personales del cliente —nombre, RUT, teléfono, correo electrónico, dirección y los datos de su vehículo— para gestionar la recepción, reparación y entrega del vehículo, emitir los documentos tributarios que correspondan y comunicarse con el cliente sobre el estado de esta Orden de Trabajo. Esas comunicaciones pueden hacerse por llamada telefónica, mensaje de texto, correo electrónico o WhatsApp, al teléfono y al correo registrados en este documento.",
       "Los datos se conservan mientras dure la relación comercial y por los plazos que exija la normativa aplicable. No se entregan a terceros, salvo a los prestadores necesarios para ejecutar el servicio (por ejemplo, talleres externos o servicios de traslado) y a quienes la ley obligue.",
       "El cliente puede pedir en cualquier momento acceder a sus datos, rectificarlos, cancelarlos u oponerse a su tratamiento, y revocar la autorización comercial, escribiendo a postventa@curifor.com. El tratamiento se rige por la Ley N° 19.628 sobre Protección de la Vida Privada y, desde su entrada en vigencia, por la Ley N° 21.719."
     ],

@@ -2,6 +2,12 @@
 <html lang="es-CL" data-auth="require">
 <head>
   <meta charset="utf-8">
+  <!-- Pages sirve el HTML con max-age=600. Sin esto el navegador sigue
+       pidiendo el ?v= anterior durante diez minutos y se responde solo con
+       el JS viejo: se publica un cambio y el usuario jura que no funciona.
+       cliente.html ya lo traia; el resto no. -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Control y Gestión Post Venta · Curifor</title>
   <meta name="description" content="Órdenes de trabajo, cuenta ficha, informes de gestión, campañas, loaners e indicadores.">

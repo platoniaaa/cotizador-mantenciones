@@ -449,3 +449,24 @@ button { font-family: inherit; }
 @media print {
   .agw-overlay, #btnAgendar { display: none !important; }
 }
+
+/* Aviso de datos personales en el formulario de agendamiento.
+   Desplegable: la frase corta se lee siempre, el texto completo está para
+   quien lo quiera. Un muro de texto legal sobre el botón hace que nadie lea
+   ninguna de las dos cosas. */
+.agw-datos {
+  margin: 4px 0 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #5b6b7f;
+  background: #f5f7fb;
+  border: 1px solid #e2e8f2;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.agw-datos summary { cursor: pointer; list-style: none; }
+.agw-datos summary::-webkit-details-marker { display: none; }
+.agw-datos__mas { color: #1f5fb4; font-weight: 600; text-decoration: underline; white-space: nowrap; }
+.agw-datos[open] .agw-datos__mas::after { content: " (ocultar)"; text-decoration: none; }
+.agw-datos p { margin: 9px 0 0; font-size: 12px; line-height: 1.55; }
+.agw-datos__ver { color: #8a97a8; font-style: italic; }

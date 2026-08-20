@@ -220,6 +220,18 @@
       </div>
       <label class="agw-coment">Comentario (opcional)<textarea id="agwComent" maxlength="500" rows="2" placeholder="Ej: necesito el auto para el mismo día"></textarea></label>
       <input id="agwWeb" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- Aviso de datos personales, en el momento en que se piden y no
+           escondido en un pie de pagina: acá el cliente entrega nombre,
+           teléfono y correo antes siquiera de pisar el taller.
+
+           El texto sale de js/acta-condiciones.js, el MISMO que firma en el
+           acta de recepción. Con dos copias, un día una queda vieja y el
+           cliente termina leyendo dos versiones distintas de lo mismo. -->
+      <details class="agw-datos" id="agwDatos">
+        <summary>Al enviar, Curifor S.A. usará tus datos para contactarte por esta solicitud,
+          por teléfono, correo o WhatsApp. <span class="agw-datos__mas">Cómo tratamos tus datos</span></summary>
+        <div id="agwDatosTexto"></div>
+      </details>
       <p class="agw-err" id="agwErr" hidden></p>
       <button class="btn btn--acento btn--block" id="agwEnviar" type="submit">Solicitar la hora</button>
       <p class="agw-nota">Es una solicitud: te confirmamos la hora y el valor por WhatsApp o teléfono.</p>
@@ -234,6 +246,7 @@
 </div>
 
 <script src="js/agenda-config.js?v=8f02d75"></script>
-<script src="js/cliente.js?v=8f02d75"></script>
+<script src="js/acta-condiciones.js?v=8f02d75"></script>
+  <script src="js/cliente.js?v=8f02d75"></script>
 </body>
 </html>

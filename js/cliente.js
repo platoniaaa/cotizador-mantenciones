@@ -379,6 +379,22 @@
   //  Agendamiento web (Supabase)
   //  La reserva es una SOLICITUD de hora: queda guardada y el
   //  taller la confirma (la disponibilidad real vive allá).
+  /* Aviso de datos personales. El texto viene de js/acta-condiciones.js, el
+     mismo que el cliente firma después en el acta de recepción: si acá dijera
+     una cosa y allá otra, la autorización no valdría en ninguno de los dos
+     lados. Se pinta una sola vez; si el archivo no cargó, el bloque queda
+     oculto en vez de mostrar un desplegable vacío. */
+  function pintarAvisoDatos() {
+    const caja = document.getElementById("agwDatosTexto");
+    const det = document.getElementById("agwDatos");
+    if (!caja || caja.dataset.listo) return;
+    const C = window.ActaCondiciones;
+    if (!C || !C.datos) { if (det) det.hidden = true; return; }
+    caja.innerHTML = C.datos.map((t) => `<p>${t}</p>`).join("") +
+      `<p class="agw-datos__ver">Texto vigente, versión ${C.version}.</p>`;
+    caja.dataset.listo = "1";
+  }
+
   // ============================================================
   function abrirAgenda() {
     const p = state.pauta, itv = state.itv;
@@ -399,6 +415,7 @@
         `<optgroup label="Mañana">${HORAS_AM.map((h) => `<option>${h}</option>`).join("")}</optgroup>` +
         `<optgroup label="Tarde">${HORAS_PM.map((h) => `<option>${h}</option>`).join("")}</optgroup>`;
     }
+    pintarAvisoDatos();
     el.agwErr.hidden = true;
     el.agwForm.hidden = false;
     el.agwOk.hidden = true;

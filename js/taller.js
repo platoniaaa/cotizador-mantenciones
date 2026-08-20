@@ -2874,6 +2874,96 @@ function agAccNinguno() {
   agAcc();
 }
 
+/* ---- corregir los datos del cliente ----
+   La recepción es el único momento del flujo en que el cliente está al frente
+   para confirmar su teléfono y su correo. Hasta ahora esos campos eran de solo
+   lectura: si venían mal, el asesor lo veía, no podía arreglarlo, y el error
+   seguía viaje. Un teléfono equivocado se descubre cuando el auto está listo y
+   nadie contesta; un correo malo, cuando rebota el aviso.
+
+   Se corrige la CITA, no el padrón. La tabla `clientes` es de solo lectura
+   para la plataforma (ver setup_supabase_dominios.sql), así que la próxima vez
+   que se busque esa patente va a volver el dato viejo. Está avisado en
+   pantalla para que nadie crea que quedó arreglado para siempre. */
+function agEditarCliente() {
+  if (!agRecSel) return;
+  document.getElementById("rcCliIn").value = agRecSel.cli || "";
+  document.getElementById("rcRutIn").value = agRecSel.rut || "";
+  document.getElementById("rcFonoIn").value = agRecSel.fono || "";
+  document.getElementById("rcEmailIn").value = agRecSel.email || "";
+  document.getElementById("rcCliError").hidden = true;
+  document.getElementById("rcCliVista").hidden = true;
+  document.getElementById("rcCliEdit").hidden = false;
+  document.getElementById("rcCliEditar").hidden = true;
+  document.getElementById("rcCliIn").focus();
+}
+
+function agCancelarCliente() {
+  document.getElementById("rcCliEdit").hidden = true;
+  document.getElementById("rcCliVista").hidden = false;
+  document.getElementById("rcCliEditar").hidden = false;
+}
+
+function _cliError(msg, foco) {
+  var e = document.getElementById("rcCliError");
+  e.textContent = msg; e.hidden = false;
+  var f = document.getElementById(foco);
+  if (f) f.focus();
+}
+
+function agGuardarCliente() {
+  if (!agRecSel) return;
+  // Se limpia el error de un intento anterior: si no, tras corregir el campo
+  // queda en pantalla un mensaje rojo que ya no corresponde a nada.
+  document.getElementById("rcCliError").hidden = true;
+  var nombre = document.getElementById("rcCliIn").value.trim();
+  var rut = document.getElementById("rcRutIn").value.trim();
+  var fono = document.getElementById("rcFonoIn").value.trim();
+  var email = document.getElementById("rcEmailIn").value.trim();
+
+  /* Los mismos límites que tiene la tabla en Supabase (nombre 3-80, fono 8-20,
+     correo con formato). Validarlos acá y no dejar que falle el PATCH es la
+     diferencia entre decir qué está mal y que el dato se pierda en silencio. */
+  if (nombre.length < 3 || nombre.length > 80) {
+    return _cliError("El nombre del cliente debe tener entre 3 y 80 caracteres.", "rcCliIn");
+  }
+  var soloDig = fono.replace(/[^0-9]/g, "");
+  if (soloDig.length < 8 || fono.length > 20) {
+    return _cliError("El teléfono debe tener al menos 8 dígitos.", "rcFonoIn");
+  }
+  if (rut && window.Rut && !window.Rut.valido(rut)) {
+    return _cliError("Ese RUT no es válido: revisa el dígito verificador.", "rcRutIn");
+  }
+  if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    return _cliError("Ese correo no tiene un formato válido.", "rcEmailIn");
+  }
+
+  agRecSel.cli = nombre;
+  agRecSel.rut = rut ? (window.Rut ? window.Rut.formatear(rut) : rut) : null;
+  agRecSel.fono = fono;
+  agRecSel.email = email || null;
+  save();
+  _reflejarCliente();
+
+  agCancelarCliente();
+  agPintarRecepcion();
+  avisoRecepcion("Datos del cliente actualizados en esta cita. El padrón de la " +
+                 "empresa no cambia: si vuelves a buscar la patente, aparecerá el dato antiguo.", "ok");
+}
+
+/* Los datos del cliente en la fila de reservas_web. Va aparte de
+   _reflejarActa() y sin freno: esto se guarda una vez, cuando el asesor aprieta
+   Guardar, no en cada tecla. */
+function _reflejarCliente() {
+  if (!agRecSel || !agRecSel.webId || typeof webActualizarEstado !== "function") return;
+  webActualizarEstado(agRecSel.webId, null, {
+    nombre: agRecSel.cli || null,
+    rut: agRecSel.rut || null,
+    fono: agRecSel.fono || null,
+    email: agRecSel.email || null
+  }).catch(function () { /* queda local; se sincroniza con el documento */ });
+}
+
 /* Autorización comercial del cliente. Se guarda igual que el resto del acta y
    se imprime en el PDF. Lo que importa es que quede el registro de lo que el
    cliente dijo: si mañana reclama que le llegó publicidad sin pedirla, la

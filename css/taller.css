@@ -991,3 +991,18 @@ table.grid td.slot.over { background: var(--tint); }
 .cons-linea { display: flex; gap: 11px; align-items: flex-start; font-size: 14px; line-height: 1.45; cursor: pointer; }
 .cons-linea input { width: 20px; height: 20px; margin: 1px 0 0; flex: none; cursor: pointer; }
 .cons-nota { margin: 9px 0 0; font-size: 12.5px; color: #6e7d91; line-height: 1.5; }
+
+/* Botón de acción dentro del título de un bloque (editar datos del cliente). */
+.blk-accion {
+  margin-left: 10px; vertical-align: middle;
+  font: 600 12px/1 inherit; color: #1f5fb4;
+  background: none; border: 1px solid #cfdcef; border-radius: 999px;
+  padding: 5px 12px; cursor: pointer;
+}
+.blk-accion:hover { background: #eef3fb; border-color: #1f5fb4; }
+.rc-cli-error {
+  grid-column: 1 / -1; margin: 2px 0 0; padding: 8px 11px;
+  font-size: 13px; color: #8a1c24;
+  background: #fdf0f0; border: 1px solid #f0c4c8; border-radius: 8px;
+}
+.rc-cli-acciones { grid-column: 1 / -1; display: flex; gap: 9px; justify-content: flex-end; margin-top: 4px; }

@@ -182,12 +182,38 @@
            por la web). Va ARRIBA del todo: si aparece al final, quien recibe el
            auto ya tomó las decisiones sin haberlo leído. -->
       <div class="rec-coment" id="recComent" hidden></div>
-      <section class="blk"><h3>Datos del cliente</h3><div class="grid2">
-        <div class="field-r"><span class="lab">Cliente</span><span class="val" id="rcCliente"></span></div>
-        <div class="field-r"><span class="lab">RUT</span><span class="val" id="rcRut"></span></div>
-        <div class="field-r"><span class="lab">Teléfono</span><span class="val" id="rcFono"></span></div>
-        <div class="field-r"><span class="lab">E-mail</span><span class="val" id="rcEmail"></span></div>
-      </div></section>
+      <!-- Los datos del cliente se pueden corregir acá: es el unico momento en
+           que el cliente esta al frente para confirmarlos. Un telefono mal
+           tipeado se descubre cuando el auto esta listo y nadie contesta, y un
+           correo malo se descubre cuando rebota el aviso.
+
+           Va con boton y no siempre editable: en modo lectura nadie cambia un
+           RUT sin querer al apoyar la mano en el tablet. -->
+      <section class="blk"><h3>Datos del cliente
+          <button type="button" class="blk-accion" id="rcCliEditar" onclick="agEditarCliente()">Editar</button>
+        </h3>
+        <div class="grid2" id="rcCliVista">
+          <div class="field-r"><span class="lab">Cliente</span><span class="val" id="rcCliente"></span></div>
+          <div class="field-r"><span class="lab">RUT</span><span class="val" id="rcRut"></span></div>
+          <div class="field-r"><span class="lab">Teléfono</span><span class="val" id="rcFono"></span></div>
+          <div class="field-r"><span class="lab">E-mail</span><span class="val" id="rcEmail"></span></div>
+        </div>
+        <div class="grid2" id="rcCliEdit" hidden>
+          <div class="field-r field-r--edit"><span class="lab">Cliente</span>
+            <input class="val-input" id="rcCliIn" type="text" autocomplete="off" maxlength="80"></div>
+          <div class="field-r field-r--edit"><span class="lab">RUT</span>
+            <input class="val-input" id="rcRutIn" type="text" autocomplete="off" placeholder="12.345.678-9"></div>
+          <div class="field-r field-r--edit"><span class="lab">Teléfono</span>
+            <input class="val-input" id="rcFonoIn" type="tel" autocomplete="off" placeholder="+56 9 1234 5678"></div>
+          <div class="field-r field-r--edit"><span class="lab">E-mail</span>
+            <input class="val-input" id="rcEmailIn" type="email" autocomplete="off"></div>
+          <p id="rcCliError" class="rc-cli-error" role="alert" hidden></p>
+          <div class="rc-cli-acciones">
+            <button type="button" class="agbtn agbtn-grey agbtn-sm" onclick="agCancelarCliente()">Cancelar</button>
+            <button type="button" class="agbtn agbtn-blue agbtn-sm" onclick="agGuardarCliente()">Guardar</button>
+          </div>
+        </div>
+      </section>
       <section class="blk"><h3>Datos del vehículo</h3><div class="grid2">
         <div class="field-r"><span class="lab">Patente</span><span class="val" id="rcPatente"></span></div>
         <div class="field-r"><span class="lab">Marca / Modelo</span><span class="val" id="rcModelo"></span></div>
@@ -459,6 +485,7 @@
   <script src="js/dano-mapa.js?v=66f6b5d"></script>
   <!-- Revisa cada foto antes de subirla: repetidas, planas o desenfocadas. -->
   <script src="js/foto-control.js?v=66f6b5d"></script>
+  <script src="js/rut.js?v=66f6b5d"></script>
   <script src="js/taller.js?v=66f6b5d"></script>
   <script src="js/autocompletar.js?v=66f6b5d"></script>
   <!-- Modo módulo: ?vista=agenda|recepcion.

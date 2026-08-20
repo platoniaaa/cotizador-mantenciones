@@ -195,30 +195,11 @@
   //  dure la cotización y viaja con ella al PDF y a la agenda.
   // ============================================================
 
-  // RUT chileno: normaliza, valida el dígito verificador (módulo 11) y formatea.
-  // Vale la pena validarlo: este número termina en la factura, y un dígito
-  // cambiado se descubre recién cuando el cliente reclama el documento.
-  const normRut = (s) => (s || "").toUpperCase().replace(/[^0-9K]/g, "");
-  function rutValido(s) {
-    const r = normRut(s);
-    if (r.length < 7) return false;
-    const cuerpo = r.slice(0, -1), dv = r.slice(-1);
-    if (!/^\d+$/.test(cuerpo)) return false;
-    let suma = 0, mul = 2;
-    for (let i = cuerpo.length - 1; i >= 0; i--) {
-      suma += +cuerpo[i] * mul;
-      mul = mul === 7 ? 2 : mul + 1;
-    }
-    const resto = 11 - (suma % 11);
-    const esperado = resto === 11 ? "0" : resto === 10 ? "K" : String(resto);
-    return dv === esperado;
-  }
-  function formatearRut(s) {
-    const r = normRut(s);
-    if (r.length < 2) return "";
-    const cuerpo = r.slice(0, -1), dv = r.slice(-1);
-    return cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "-" + dv;
-  }
+  // RUT: la regla vive en js/rut.js, compartida con la recepción del taller.
+  // Se conservan los nombres locales para no tocar el resto del archivo.
+  const normRut = (s) => window.Rut.norm(s);
+  const rutValido = (s) => window.Rut.valido(s);
+  const formatearRut = (s) => window.Rut.formatear(s);
 
   function pintarCliente() {
     const c = state.cliente;

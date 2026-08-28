@@ -439,12 +439,11 @@
       alert(C.datosTitulo + "\n\n" + C.datos.join("\n\n"));
     });
 
-    var globo = $("globoAyuda");
-    globo.hidden = false;
-    globo.addEventListener("click", function () {
-      window.open("https://wa.me/" + WSP + "?text=" +
-        encodeURIComponent("Hola, tengo una duda para agendar una hora en el taller."), "_blank");
-    });
+    /* Es un enlace y no un botón con window.open: así el navegador lo abre
+       como cualquier link -clic medio, "abrir en pestaña nueva", copiar la
+       dirección- y no lo frena ningún bloqueador de ventanas emergentes. */
+    $("globoAyuda").href = "https://wa.me/" + WSP + "?text=" +
+      encodeURIComponent("Hola, tengo una duda para agendar una hora en el taller.");
   }
 
   function arrancar() {

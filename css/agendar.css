@@ -201,17 +201,43 @@ body { margin: 0; background: var(--fondo); color: var(--tinta); font: 16px/1.6 
   background: #e6f6ed; color: var(--ok); font-size: 32px;
   display: flex; align-items: center; justify-content: center; }
 
-/* ---------- globo de ayuda ----------
-   Reemplaza al botón grande de WhatsApp que antes competía con el
-   agendamiento en medio del formulario. Está, pero no estorba. */
-.globo { position: fixed; right: 16px; bottom: 16px; z-index: 50;
-  font: 600 14px var(--f); color: var(--navy); background: #fff;
-  border: 1.5px solid var(--linea); border-radius: 999px;
-  padding: 12px 18px; cursor: pointer; box-shadow: 0 8px 22px rgba(4,16,70,.16);
-  display: inline-flex; align-items: center; gap: 8px; }
-.globo:hover { border-color: var(--navy); }
-.globo__ico { font-size: 16px; }
-@media (max-width: 560px) { .globo { right: 12px; bottom: 12px; font-size: 13px; padding: 11px 15px; } }
+/* ---------- WhatsApp flotante ----------
+   Reemplaza al botón grande que antes competía con el agendamiento en medio
+   del formulario. Va con el logo y el verde de la marca porque así se
+   reconoce sin leerlo; el texto es un extra que aparece al pasar el mouse.
+   En el teléfono queda solo el círculo, que ocupa menos y es el patrón que la
+   gente ya tiene aprendido. */
+.wsp {
+  position: fixed; right: 20px; bottom: 20px; z-index: 50;
+  display: inline-flex; align-items: center; gap: 0;
+  height: 58px; padding: 0; overflow: hidden;
+  background: #25d366; color: #fff;
+  border-radius: 999px; text-decoration: none;
+  box-shadow: 0 6px 20px rgba(37,211,102,.42), 0 2px 6px rgba(0,0,0,.14);
+  transition: gap .18s ease, padding .18s ease, background .18s ease;
+}
+.wsp__ico { width: 30px; height: 30px; flex: none; margin: 0 14px; }
+.wsp__txt {
+  font: 700 15px/1 var(--f);
+  max-width: 0; opacity: 0; white-space: nowrap;
+  transition: max-width .22s ease, opacity .18s ease, margin .22s ease;
+}
+.wsp:hover { background: #1fb857; }
+.wsp:hover .wsp__txt, .wsp:focus-visible .wsp__txt {
+  max-width: 160px; opacity: 1; margin-right: 20px;
+}
+.wsp:focus-visible { outline: 3px solid #0b3d1f; outline-offset: 3px; }
+
+/* En el teléfono no hay hover, así que el texto nunca aparecería: se deja el
+   círculo solo, algo más chico para no tapar el botón de continuar. */
+@media (max-width: 640px) {
+  .wsp { right: 14px; bottom: 14px; height: 54px; }
+  .wsp__ico { width: 28px; height: 28px; margin: 0 13px; }
+  .wsp__txt { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wsp, .wsp__txt { transition: none; }
+}
 
 .pie { border-top: 1px solid var(--linea); background: #fff; }
 .pie__inner { max-width: 720px; margin: 0 auto; padding: 18px 20px 26px;

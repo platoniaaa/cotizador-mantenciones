@@ -35,18 +35,64 @@ body { margin: 0; background: var(--fondo); color: var(--tinta); font: 16px/1.6 
 .cab__link:hover { text-decoration: underline; }
 
 /* ---------- banner ----------
-   La fotografía la entrega diseño. Mientras no llegue, el degradado sostiene
-   el bloque: una imagen de relleno se vería peor que no tener imagen. */
+   Lleva la fotografía de fondo con un velo degradado encima. El velo NO es
+   decorativo: el texto va sobre la mitad izquierda de la foto y sin él queda
+   blanco sobre pared gris clara, ilegible.
+
+   Las tres capas van en este orden -velo, foto, degradado de marca-. Si la
+   foto todavía no está en img/, el navegador descarta esa capa y queda el
+   degradado: el banner se ve terminado igual, en vez de mostrar un hueco.
+
+   El foco horizontal está corrido a la derecha porque ahí están las personas.
+   En pantalla angosta la foto se recorta por los costados, y anclarla al
+   centro dejaba a los protagonistas fuera del encuadre. */
 .banner {
-  background: linear-gradient(135deg, #001b6c 0%, #16309a 60%, #2a49c9 100%);
+  background-color: #001b6c;
+  background-image:
+    linear-gradient(90deg,
+      rgba(0,14,48,.93) 0%,
+      rgba(0,14,48,.86) 38%,
+      rgba(0,14,48,.55) 62%,
+      rgba(0,14,48,.12) 84%,
+      rgba(0,14,48,0) 100%),
+    url("../img/banner-taller.jpg"),
+    linear-gradient(135deg, #001b6c 0%, #16309a 60%, #2a49c9 100%);
+  background-size: cover, cover, cover;
+  background-position: center, 72% center, center;
+  background-repeat: no-repeat;
   color: #fff;
 }
-.banner__inner { max-width: 720px; margin: 0 auto; padding: 46px 20px 50px; }
+.banner__inner { max-width: 720px; margin: 0 auto; padding: 62px 20px 66px; }
 .banner__eyebrow { margin: 0 0 8px; font-size: 12px; font-weight: 700;
-  letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.66); }
+  letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.72); }
 .banner__titulo { margin: 0 0 10px; font-size: clamp(27px, 5.4vw, 40px);
-  line-height: 1.12; font-weight: 800; letter-spacing: -.02em; }
-.banner__bajada { margin: 0 0 24px; font-size: 17px; color: rgba(255,255,255,.85); max-width: 30em; }
+  line-height: 1.12; font-weight: 800; letter-spacing: -.02em;
+  max-width: 14em; text-shadow: 0 1px 12px rgba(0,10,40,.45); }
+.banner__bajada { margin: 0 0 24px; font-size: 17px; color: rgba(255,255,255,.9);
+  max-width: 26em; text-shadow: 0 1px 10px rgba(0,10,40,.4); }
+
+/* En el teléfono la foto aporta poco y compite con el texto: se acerca el
+   encuadre a las personas y se sube la densidad del velo. */
+@media (max-width: 700px) {
+  .banner { background-position: center, 78% center, center; }
+  .banner__inner { padding: 44px 20px 48px; }
+  .banner::after { content: none; }
+}
+
+/* ---------- franja de marcas ----------
+   Va inmediatamente bajo el banner y antes del formulario a propósito: quien
+   tiene un auto que no atendemos tiene que enterarse ANTES de completar tres
+   pasos, no al final. */
+.marcas { background: #fff; border-bottom: 1px solid var(--linea); }
+.marcas__inner { max-width: 720px; margin: 0 auto; padding: 14px 20px;
+  display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; }
+.marcas__t { font-size: 11.5px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--tinta-3); flex: none; }
+.marcas__l { list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.marcas__l li { font: 600 13px/1 var(--f); color: var(--tinta-2);
+  background: var(--tenue); border-radius: 999px; padding: 7px 12px; white-space: nowrap; }
+.marcas__nota { flex-basis: 100%; margin: 2px 0 0; font-size: 12.5px; color: var(--tinta-3); }
 
 /* ---------- botones ---------- */
 .btn { font: 600 16px/1 var(--f); border: 1.5px solid transparent; border-radius: 999px;

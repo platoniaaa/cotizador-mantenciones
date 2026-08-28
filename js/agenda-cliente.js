@@ -446,12 +446,26 @@
       encodeURIComponent("Hola, tengo una duda para agendar una hora en el taller.");
   }
 
+  /* La franja de marcas sale del MISMO catálogo que usa el cotizador. Escribir
+     la lista a mano en el HTML garantizaba que algún día quedara desfasada:
+     entra una marca nueva al catálogo y la página pública sigue diciendo que
+     no la atendemos. */
+  function pintarMarcas() {
+    if (!INDICE || !INDICE.marcas || !INDICE.marcas.length) return;
+    var nombres = INDICE.marcas.map(function (m) { return m.nombre; })
+      .sort(function (a, b) { return a.localeCompare(b, "es"); });
+    $("marcasLista").innerHTML = nombres.map(function (n) {
+      return "<li>" + esc(n) + "</li>";
+    }).join("");
+    $("marcas").hidden = false;
+  }
+
   function arrancar() {
     pintarServicios();
     enlazar();
     fetch("data/indice.json")
       .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (j) { INDICE = j; })
+      .then(function (j) { INDICE = j; pintarMarcas(); })
       .catch(function () { INDICE = null; });
   }
 

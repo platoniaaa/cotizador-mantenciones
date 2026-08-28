@@ -32,6 +32,18 @@
   </div>
 </section>
 
+<!-- Marcas que se atienden. Se llena desde el catálogo (data/indice.json) para
+     que no haya dos listas que se contradigan cuando entre o salga una marca.
+     Queda oculta hasta que el catálogo carga: una franja vacía se ve peor que
+     ninguna franja. -->
+<section class="marcas" id="marcas" hidden>
+  <div class="marcas__inner">
+    <span class="marcas__t">Atendemos</span>
+    <ul class="marcas__l" id="marcasLista"></ul>
+    <p class="marcas__nota">¿Tu marca no está? Escríbenos y lo revisamos.</p>
+  </div>
+</section>
+
 <main class="wrap" id="agenda">
 
   <ol class="pasos" id="pasos">

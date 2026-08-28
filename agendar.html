@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda tu hora · Curifor</title>
+  <meta name="description" content="Agenda mantención, desabolladura y pintura, diagnóstico técnico o garantía en cualquiera de nuestros talleres.">
+  <link rel="icon" href="img/curifor-logo.png">
+  <link rel="stylesheet" href="css/agendar.css">
+</head>
+<body>
+
+<header class="cab">
+  <div class="cab__inner">
+    <img class="cab__logo" src="img/curifor-logo.png" alt="Curifor" width="704" height="158">
+    <a class="cab__link" href="confirmar.html">Reagendar o anular</a>
+  </div>
+</header>
+
+<!-- Banner principal. La fotografía la entrega el equipo de diseño; mientras
+     no llegue, el degradado de marca sostiene el bloque sin verse a medio
+     hacer. El llamado a la acción baja directo al formulario. -->
+<section class="banner" id="banner">
+  <div class="banner__inner">
+    <p class="banner__eyebrow">Servicio y Postventa</p>
+    <h1 class="banner__titulo">Agenda tu hora en el taller</h1>
+    <p class="banner__bajada">Mantención, desabolladura y pintura, diagnóstico o garantía.
+      En dos minutos y sin llamar por teléfono.</p>
+    <a class="btn btn--cta" href="#agenda">Agendar ahora</a>
+  </div>
+</section>
+
+<main class="wrap" id="agenda">
+
+  <ol class="pasos" id="pasos">
+    <li class="pasos__i is-on" data-p="1"><span>1</span> Tus datos</li>
+    <li class="pasos__i" data-p="2"><span>2</span> Tu auto y el servicio</li>
+    <li class="pasos__i" data-p="3"><span>3</span> Día y hora</li>
+  </ol>
+
+  <!-- ============ PASO 1 · DATOS ============ -->
+  <section class="tarjeta" id="p1">
+    <h2 class="tarjeta__t">Comencemos con tus datos</h2>
+    <p class="tarjeta__s">Escribe tu RUT y, si ya te hemos atendido, completamos el resto.</p>
+
+    <div class="campos">
+      <label class="campo campo--rut">
+        <span>RUT</span>
+        <input id="fRut" type="text" inputmode="text" autocomplete="off" placeholder="12.345.678-9">
+        <small class="campo__ayuda" id="rutEstado"></small>
+      </label>
+      <label class="campo">
+        <span>Nombre y apellido</span>
+        <input id="fNombre" type="text" maxlength="80" autocomplete="name" placeholder="Tu nombre">
+      </label>
+      <label class="campo">
+        <span>Correo</span>
+        <input id="fCorreo" type="email" maxlength="80" autocomplete="email" placeholder="tucorreo@ejemplo.cl">
+      </label>
+      <label class="campo">
+        <span>Celular</span>
+        <div class="campo__tel">
+          <span class="campo__pre">+56</span>
+          <input id="fFono" type="tel" inputmode="numeric" maxlength="12" autocomplete="tel" placeholder="9 1234 5678">
+        </div>
+      </label>
+    </div>
+
+    <!-- Los dos consentimientos van SEPARADOS: aceptar el servicio no es
+         aceptar publicidad, y juntarlos vuelve discutible la autorización. -->
+    <div class="consent">
+      <label class="consent__l">
+        <input type="checkbox" id="fTerminos">
+        <span>Acepto los <a href="#" id="verTerminos">términos y condiciones</a> y el tratamiento
+          de mis datos personales para gestionar esta atención.</span>
+      </label>
+      <label class="consent__l">
+        <input type="checkbox" id="fMarketing">
+        <span>Quiero recibir ofertas, promociones y recordatorios de mantención por WhatsApp,
+          correo o teléfono. <i>Es voluntario y puedes revocarlo cuando quieras.</i></span>
+      </label>
+    </div>
+
+    <p class="err" id="err1" hidden></p>
+    <div class="acciones">
+      <button class="btn btn--pri" id="btn1" type="button" disabled>Continuar</button>
+    </div>
+  </section>
+
+  <!-- ============ PASO 2 · AUTO Y SERVICIO ============ -->
+  <section class="tarjeta" id="p2" hidden>
+    <h2 class="tarjeta__t">¿Cuál es tu auto?</h2>
+
+    <div id="misAutos" hidden>
+      <p class="tarjeta__s">Estos son los autos que tenemos registrados a tu nombre.</p>
+      <div class="autos" id="autosLista"></div>
+    </div>
+
+    <div id="porPatente">
+      <p class="tarjeta__s" id="patenteSub">Escribe la patente y cargamos la marca y el modelo.</p>
+      <div class="patente">
+        <input id="fPatente" type="text" maxlength="8" autocomplete="off" spellcheck="false" placeholder="BBCC12">
+        <button class="btn btn--ghost" id="btnPatente" type="button">Buscar</button>
+      </div>
+      <small class="campo__ayuda" id="patenteEstado"></small>
+      <button class="enlace" id="sinPatente" type="button">No recuerdo mi patente</button>
+    </div>
+
+    <!-- Elegir marca y modelo a mano, para quien no tiene la patente a la vista -->
+    <div id="manual" hidden>
+      <div class="campos">
+        <label class="campo"><span>Marca</span>
+          <select id="fMarca"><option value="">Elige la marca</option></select></label>
+        <label class="campo"><span>Modelo</span>
+          <select id="fModelo" disabled><option value="">Elige el modelo</option></select></label>
+      </div>
+      <button class="enlace" id="conPatente" type="button">Prefiero escribir la patente</button>
+    </div>
+
+    <div class="sep"></div>
+
+    <h3 class="tarjeta__t2">Kilometraje actual</h3>
+    <p class="tarjeta__s">Es el número que marca el tablero hoy. Lo pedimos siempre: define
+      qué corresponde hacerle a tu auto.</p>
+    <label class="campo campo--km">
+      <input id="fKm" type="text" inputmode="numeric" autocomplete="off" placeholder="Ej: 45.000">
+      <span class="campo__suf">km</span>
+    </label>
+    <small class="campo__ayuda" id="kmEstado"></small>
+
+    <div class="sep"></div>
+
+    <h3 class="tarjeta__t2">¿Qué necesitas?</h3>
+    <div class="servicios" id="servicios"></div>
+
+    <p class="err" id="err2" hidden></p>
+    <div class="acciones">
+      <button class="btn btn--ghost" id="atras2" type="button">Atrás</button>
+      <button class="btn btn--pri" id="btn2" type="button">Continuar</button>
+    </div>
+  </section>
+
+  <!-- ============ PASO 3 · SUCURSAL, DIA Y HORA ============ -->
+  <section class="tarjeta" id="p3" hidden>
+    <h2 class="tarjeta__t">¿Dónde y cuándo?</h2>
+    <p class="tarjeta__s" id="sucSub">Estos son los talleres que atienden lo que necesitas.</p>
+
+    <div class="sucursales" id="sucursales"></div>
+
+    <div id="cuando" hidden>
+      <div class="sep"></div>
+      <h3 class="tarjeta__t2">Elige el día</h3>
+      <input id="fFecha" type="date" class="fecha">
+      <div id="horas" hidden>
+        <h3 class="tarjeta__t2">Elige la hora</h3>
+        <div class="jornada"><h4>Mañana</h4><div class="bloques" id="horasAM"></div></div>
+        <div class="jornada"><h4>Tarde</h4><div class="bloques" id="horasPM"></div></div>
+      </div>
+    </div>
+
+    <div class="resumen" id="resumen" hidden></div>
+
+    <p class="err" id="err3" hidden></p>
+    <div class="acciones">
+      <button class="btn btn--ghost" id="atras3" type="button">Atrás</button>
+      <button class="btn btn--confirmar" id="btn3" type="button" disabled>Confirmar mi agenda</button>
+    </div>
+  </section>
+
+  <!-- ============ LISTO ============ -->
+  <section class="tarjeta tarjeta--ok" id="pOk" hidden>
+    <div class="ok__marca">✓</div>
+    <h2 class="tarjeta__t">Tu hora quedó agendada</h2>
+    <div class="resumen" id="resumenOk"></div>
+    <p class="tarjeta__s">Te enviamos la confirmación por correo. Si necesitas cambiarla,
+      puedes hacerlo desde el enlace que va en ese mensaje.</p>
+    <!-- El WhatsApp aparece RECIÉN acá: antes competía con el agendamiento y
+         se llevaba clientes a mitad del formulario. -->
+    <a class="btn btn--wsp" id="okWsp" href="#" target="_blank" rel="noopener">
+      ¿Alguna duda? Escríbenos por WhatsApp
+    </a>
+  </section>
+
+</main>
+
+<!-- Globo de ayuda, discreto y siempre disponible, en vez del botón grande de
+     WhatsApp que antes estaba en medio del flujo. -->
+<button class="globo" id="globoAyuda" type="button" hidden>
+  <span class="globo__ico">💬</span> ¿Tienes dudas? Escríbenos
+</button>
+
+<footer class="pie">
+  <div class="pie__inner">
+    <span>Curifor S.A. · Servicio y Postventa</span>
+  </div>
+</footer>
+
+<script src="js/agenda-config.js"></script>
+<script src="js/rut.js"></script>
+<script src="js/agenda-servicios.js"></script>
+<script src="js/acta-condiciones.js"></script>
+<script src="js/agenda-cliente.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+/* ============================================================
+   Agendamiento del cliente · tres pasos.
+
+   Pensado para el teléfono antes que para el escritorio: la mayoría agenda
+   desde el celular, parado en el estacionamiento o mirando el tablero del
+   auto. De ahí los objetivos grandes, una sola columna y el botón de
+   confirmar con jerarquía muy por encima del resto.
+   ============================================================ */
+:root {
+  --navy:   #001b6c;
+  --navy-2: #16309a;
+  --tinta:  #16233a;
+  --tinta-2:#4a566e;
+  --tinta-3:#8794a8;
+  --linea:  #dde4f0;
+  --fondo:  #f4f6fb;
+  --tenue:  #eef2fb;
+  --ok:     #0a7d43;
+  --mal:    #a8202a;
+  --cta:    #0a7d43;
+  --cta-2:  #086535;
+  --radio:  14px;
+  --f: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); color: var(--tinta); font: 16px/1.6 var(--f); }
+
+/* ---------- cabecera ---------- */
+.cab { background: #fff; border-bottom: 1px solid var(--linea); }
+.cab__inner { max-width: 720px; margin: 0 auto; padding: 12px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.cab__logo { height: 30px; width: auto; }
+.cab__link { font-size: 13.5px; color: var(--navy); text-decoration: none; font-weight: 600; }
+.cab__link:hover { text-decoration: underline; }
+
+/* ---------- banner ----------
+   La fotografía la entrega diseño. Mientras no llegue, el degradado sostiene
+   el bloque: una imagen de relleno se vería peor que no tener imagen. */
+.banner {
+  background: linear-gradient(135deg, #001b6c 0%, #16309a 60%, #2a49c9 100%);
+  color: #fff;
+}
+.banner__inner { max-width: 720px; margin: 0 auto; padding: 46px 20px 50px; }
+.banner__eyebrow { margin: 0 0 8px; font-size: 12px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.66); }
+.banner__titulo { margin: 0 0 10px; font-size: clamp(27px, 5.4vw, 40px);
+  line-height: 1.12; font-weight: 800; letter-spacing: -.02em; }
+.banner__bajada { margin: 0 0 24px; font-size: 17px; color: rgba(255,255,255,.85); max-width: 30em; }
+
+/* ---------- botones ---------- */
+.btn { font: 600 16px/1 var(--f); border: 1.5px solid transparent; border-radius: 999px;
+  padding: 15px 26px; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn--cta { background: #fff; color: var(--navy); }
+.btn--cta:hover { background: #eaefff; }
+.btn--pri { background: var(--navy); color: #fff; }
+.btn--pri:hover:not(:disabled) { background: var(--navy-2); }
+.btn--pri:disabled { background: #c6cede; color: #fff; cursor: not-allowed; }
+.btn--ghost { background: transparent; color: var(--tinta-2); border-color: var(--linea); }
+.btn--ghost:hover { background: #fff; border-color: var(--tinta-3); color: var(--tinta); }
+/* El de confirmar manda sobre todo lo demás: es la única acción que importa
+   en esa pantalla. Verde, más grande y a todo el ancho en el teléfono. */
+.btn--confirmar {
+  background: var(--cta); color: #fff; font-size: 17.5px; font-weight: 700;
+  padding: 18px 34px; box-shadow: 0 8px 20px rgba(10,125,67,.28);
+}
+.btn--confirmar:hover:not(:disabled) { background: var(--cta-2); }
+.btn--confirmar:disabled { background: #c6cede; box-shadow: none; cursor: not-allowed; }
+.btn--wsp { background: #25d366; color: #0b3d1f; width: 100%; margin-top: 18px; }
+.btn--wsp:hover { background: #1fb857; }
+.btn:focus-visible, .servicio:focus-visible, .suc:focus-visible, .bloque:focus-visible,
+.auto:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+
+/* ---------- estructura ---------- */
+.wrap { max-width: 720px; margin: 0 auto; padding: 26px 20px 70px; }
+
+.pasos { display: flex; gap: 6px; list-style: none; margin: 0 0 18px; padding: 0; }
+.pasos__i { flex: 1; display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; color: var(--tinta-3);
+  padding: 10px 12px; background: #fff; border: 1px solid var(--linea);
+  border-radius: 10px; }
+.pasos__i span { width: 22px; height: 22px; flex: none; border-radius: 50%;
+  background: var(--linea); color: #fff; display: inline-flex;
+  align-items: center; justify-content: center; font-size: 12px; }
+.pasos__i.is-on { color: var(--navy); border-color: var(--navy); }
+.pasos__i.is-on span { background: var(--navy); }
+.pasos__i.is-listo { color: var(--ok); border-color: #bfe3cf; }
+.pasos__i.is-listo span { background: var(--ok); }
+@media (max-width: 600px) {
+  .pasos__i { font-size: 0; padding: 10px; justify-content: center; }
+  .pasos__i span { font-size: 12px; }
+}
+
+.tarjeta { background: #fff; border: 1px solid var(--linea); border-radius: var(--radio);
+  padding: 26px 24px; }
+.tarjeta__t { margin: 0 0 6px; font-size: 22px; font-weight: 800; color: var(--navy); letter-spacing: -.01em; }
+.tarjeta__t2 { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+.tarjeta__s { margin: 0 0 18px; color: var(--tinta-2); font-size: 15px; }
+.sep { height: 1px; background: var(--linea); margin: 24px 0; }
+
+/* ---------- campos ---------- */
+.campos { display: grid; gap: 14px; }
+@media (min-width: 620px) { .campos { grid-template-columns: 1fr 1fr; } }
+.campo { display: flex; flex-direction: column; gap: 5px; }
+.campo > span { font-size: 13.5px; font-weight: 600; color: var(--tinta-2); }
+.campo input, .campo select, .fecha {
+  font: 16px var(--f); color: var(--tinta);
+  padding: 13px 14px; border: 1.5px solid var(--linea); border-radius: 10px;
+  background: #fff; width: 100%;
+}
+.campo input:focus, .campo select:focus, .fecha:focus { outline: none; border-color: var(--navy); }
+.campo__ayuda { font-size: 13px; color: var(--tinta-3); min-height: 18px; display: block; }
+.campo__ayuda.ok { color: var(--ok); }
+.campo__ayuda.mal { color: var(--mal); }
+.campo__tel { display: flex; align-items: stretch; }
+.campo__pre { display: flex; align-items: center; padding: 0 12px;
+  background: var(--tenue); border: 1.5px solid var(--linea); border-right: 0;
+  border-radius: 10px 0 0 10px; font-size: 15px; color: var(--tinta-2); }
+.campo__tel input { border-radius: 0 10px 10px 0; }
+.campo--km { flex-direction: row; align-items: center; gap: 0; max-width: 260px; }
+.campo--km input { border-radius: 10px 0 0 10px; font-size: 18px; font-weight: 600; }
+.campo__suf { padding: 13px 14px; background: var(--tenue);
+  border: 1.5px solid var(--linea); border-left: 0; border-radius: 0 10px 10px 0;
+  font-size: 15px; color: var(--tinta-2); }
+.fecha { max-width: 260px; }
+
+.patente { display: flex; gap: 10px; }
+.patente input { flex: 1; font: 700 20px var(--f); letter-spacing: 2px; text-transform: uppercase;
+  text-align: center; padding: 13px 14px; border: 1.5px solid var(--linea); border-radius: 10px; }
+.patente input:focus { outline: none; border-color: var(--navy); }
+.enlace { background: none; border: 0; padding: 6px 0; cursor: pointer;
+  font: 600 14px var(--f); color: var(--navy); text-decoration: underline; }
+
+/* ---------- consentimientos ---------- */
+.consent { margin-top: 20px; display: grid; gap: 12px;
+  background: var(--tenue); border-radius: 10px; padding: 16px 18px; }
+.consent__l { display: flex; gap: 11px; align-items: flex-start;
+  font-size: 14px; line-height: 1.5; color: var(--tinta-2); cursor: pointer; }
+.consent__l input { width: 20px; height: 20px; margin: 1px 0 0; flex: none; cursor: pointer; }
+.consent__l a { color: var(--navy); }
+.consent__l i { color: var(--tinta-3); font-style: italic; }
+
+/* ---------- servicios ---------- */
+.servicios { display: grid; gap: 10px; }
+@media (min-width: 560px) { .servicios { grid-template-columns: 1fr 1fr; } }
+.servicio { text-align: left; background: #fff; border: 1.5px solid var(--linea);
+  border-radius: 12px; padding: 16px 16px; cursor: pointer; display: grid; gap: 2px; }
+.servicio:hover { border-color: var(--tinta-3); }
+.servicio.is-on { border-color: var(--navy); background: var(--tenue); box-shadow: inset 0 0 0 1px var(--navy); }
+.servicio__ico { font-size: 22px; }
+.servicio__n { font: 700 15.5px var(--f); color: var(--tinta); }
+.servicio__d { font-size: 13.5px; color: var(--tinta-2); }
+
+/* ---------- autos y sucursales ---------- */
+.autos, .sucursales { display: grid; gap: 10px; }
+@media (min-width: 560px) { .sucursales { grid-template-columns: 1fr 1fr; } }
+.auto, .suc { text-align: left; background: #fff; border: 1.5px solid var(--linea);
+  border-radius: 12px; padding: 14px 16px; cursor: pointer; display: grid; gap: 2px; }
+.auto:hover, .suc:hover { border-color: var(--tinta-3); }
+.auto.is-on, .suc.is-on { border-color: var(--navy); background: var(--tenue); box-shadow: inset 0 0 0 1px var(--navy); }
+.suc__n { font: 700 15.5px var(--f); }
+.suc__d { font-size: 13px; color: var(--tinta-2); }
+
+/* ---------- horas ---------- */
+.jornada { margin-top: 16px; }
+.jornada h4 { margin: 0 0 8px; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-3); }
+.bloques { display: flex; flex-wrap: wrap; gap: 8px; }
+.bloque { font: 600 15px var(--f); background: #fff; border: 1.5px solid var(--linea);
+  border-radius: 999px; padding: 11px 18px; cursor: pointer; min-width: 84px; }
+.bloque:hover { border-color: var(--tinta-3); }
+.bloque.is-on { background: var(--navy); border-color: var(--navy); color: #fff; }
+.vacio { font-size: 14px; color: var(--tinta-3); font-style: italic; margin: 0; }
+
+/* ---------- resumen ----------
+   Dice en una frase QUÉ se está agendando, con quién, dónde y cuándo. Es lo
+   último que el cliente lee antes de confirmar. */
+.resumen { margin-top: 22px; background: var(--tenue); border-radius: 12px; padding: 18px 20px; }
+.resumen__t { margin: 0 0 12px; font-size: 16.5px; line-height: 1.5; }
+.resumen__t b { color: var(--navy); }
+.resumen__l { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px;
+  border-top: 1px solid #dbe3f4; padding-top: 12px; font-size: 14.5px; }
+.resumen__l li { display: flex; gap: 10px; }
+.resumen__l span { min-width: 108px; color: var(--tinta-3); }
+
+/* ---------- pie de tarjeta ---------- */
+.acciones { display: flex; gap: 10px; justify-content: flex-end;
+  flex-wrap: wrap; margin-top: 24px; }
+@media (max-width: 560px) {
+  .acciones { flex-direction: column-reverse; }
+  .acciones .btn { width: 100%; }
+}
+.err { margin: 18px 0 0; padding: 12px 14px; font-size: 14.5px; color: #8a1c24;
+  background: #fdf0f0; border: 1px solid #f0c4c8; border-radius: 10px; }
+
+/* ---------- listo ---------- */
+.tarjeta--ok { text-align: center; }
+.tarjeta--ok .resumen { text-align: left; }
+.ok__marca { width: 60px; height: 60px; margin: 0 auto 14px; border-radius: 50%;
+  background: #e6f6ed; color: var(--ok); font-size: 32px;
+  display: flex; align-items: center; justify-content: center; }
+
+/* ---------- globo de ayuda ----------
+   Reemplaza al botón grande de WhatsApp que antes competía con el
+   agendamiento en medio del formulario. Está, pero no estorba. */
+.globo { position: fixed; right: 16px; bottom: 16px; z-index: 50;
+  font: 600 14px var(--f); color: var(--navy); background: #fff;
+  border: 1.5px solid var(--linea); border-radius: 999px;
+  padding: 12px 18px; cursor: pointer; box-shadow: 0 8px 22px rgba(4,16,70,.16);
+  display: inline-flex; align-items: center; gap: 8px; }
+.globo:hover { border-color: var(--navy); }
+.globo__ico { font-size: 16px; }
+@media (max-width: 560px) { .globo { right: 12px; bottom: 12px; font-size: 13px; padding: 11px 15px; } }
+
+.pie { border-top: 1px solid var(--linea); background: #fff; }
+.pie__inner { max-width: 720px; margin: 0 auto; padding: 18px 20px 26px;
+  font-size: 13px; color: var(--tinta-3); }

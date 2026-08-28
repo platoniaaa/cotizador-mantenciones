@@ -46,10 +46,14 @@
 
 <main class="wrap" id="agenda">
 
+  <!-- Los pasos son botones de verdad, no adornos: se puede volver a cualquiera
+       que ya se haya recorrido. Van deshabilitados los que aún no se alcanzan,
+       porque saltar al final sin los datos de más atrás no lleva a ninguna
+       parte. Al ser <button> funcionan también con teclado. -->
   <ol class="pasos" id="pasos">
-    <li class="pasos__i is-on" data-p="1"><span>1</span> Tus datos</li>
-    <li class="pasos__i" data-p="2"><span>2</span> Tu auto y el servicio</li>
-    <li class="pasos__i" data-p="3"><span>3</span> Día y hora</li>
+    <li><button type="button" class="pasos__i is-on" data-p="1"><span>1</span> Tus datos</button></li>
+    <li><button type="button" class="pasos__i" data-p="2" disabled><span>2</span> Tu auto y el servicio</button></li>
+    <li><button type="button" class="pasos__i" data-p="3" disabled><span>3</span> Día y hora</button></li>
   </ol>
 
   <!-- ============ PASO 1 · DATOS ============ -->

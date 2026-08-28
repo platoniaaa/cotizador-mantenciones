@@ -58,7 +58,11 @@ body { margin: 0; background: var(--fondo); color: var(--tinta); font: 16px/1.6 
     url("../img/banner-taller.jpg"),
     linear-gradient(135deg, #001b6c 0%, #16309a 60%, #2a49c9 100%);
   background-size: cover, cover, cover;
-  background-position: center, 72% center, center;
+  /* El 72% horizontal es donde estan las personas. El 12% VERTICAL no es
+     capricho: el banner es una franja baja y la foto se recorta por arriba y
+     por abajo. Centrada, en una pantalla de 1920 la ventana visible empieza en
+     el 22% de la foto y les corta la cabeza -las cabezas estan al 8%-. */
+  background-position: center, 72% 12%, center;
   background-repeat: no-repeat;
   color: #fff;
 }
@@ -74,7 +78,7 @@ body { margin: 0; background: var(--fondo); color: var(--tinta); font: 16px/1.6 
 /* En el teléfono la foto aporta poco y compite con el texto: se acerca el
    encuadre a las personas y se sube la densidad del velo. */
 @media (max-width: 700px) {
-  .banner { background-position: center, 78% center, center; }
+  .banner { background-position: center, 78% 10%, center; }
   .banner__inner { padding: 44px 20px 48px; }
   .banner::after { content: none; }
 }
@@ -122,10 +126,16 @@ body { margin: 0; background: var(--fondo); color: var(--tinta); font: 16px/1.6 
 .wrap { max-width: 720px; margin: 0 auto; padding: 26px 20px 70px; }
 
 .pasos { display: flex; gap: 6px; list-style: none; margin: 0 0 18px; padding: 0; }
-.pasos__i { flex: 1; display: flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 600; color: var(--tinta-3);
+.pasos > li { flex: 1; display: flex; }
+.pasos__i { width: 100%; display: flex; align-items: center; gap: 8px; text-align: left;
+  font: 600 13px/1.3 var(--f); color: var(--tinta-3);
   padding: 10px 12px; background: #fff; border: 1px solid var(--linea);
-  border-radius: 10px; }
+  border-radius: 10px; cursor: pointer; }
+/* Los pasos ya recorridos invitan a volver; los que no se han alcanzado no
+   fingen ser apretables. */
+.pasos__i:not(:disabled):hover { border-color: var(--tinta-3); }
+.pasos__i:disabled { cursor: default; opacity: .72; }
+.pasos__i:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
 .pasos__i span { width: 22px; height: 22px; flex: none; border-radius: 50%;
   background: var(--linea); color: #fff; display: inline-flex;
   align-items: center; justify-content: center; font-size: 12px; }

@@ -77,17 +77,44 @@
     e.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
+  /* Hasta dónde llegó el cliente. Los pasos hasta acá se pueden volver a
+     abrir; los de más allá no, porque saltar al final sin los datos de atrás
+     no lleva a ninguna parte. */
+  var maxPaso = 1;
+
   function irAPaso(n) {
     F.paso = n;
+    if (n > maxPaso) maxPaso = n;
     [1, 2, 3].forEach(function (i) { $("p" + i).hidden = (i !== n); });
     $("pOk").hidden = true;
-    [].forEach.call(document.querySelectorAll(".pasos__i"), function (li) {
-      var p = +li.dataset.p;
-      li.classList.toggle("is-on", p === n);
-      li.classList.toggle("is-listo", p < n);
+    [].forEach.call(document.querySelectorAll(".pasos__i"), function (b) {
+      var p = +b.dataset.p;
+      b.classList.toggle("is-on", p === n);
+      b.classList.toggle("is-listo", p < n);
+      b.disabled = p > maxPaso;
     });
     $("pasos").hidden = false;
     window.scrollTo({ top: $("agenda").offsetTop - 12, behavior: "smooth" });
+  }
+
+  /* Salto desde la barra de pasos.
+
+     Hacia atrás es libre. Hacia adelante -volver a un paso que ya se había
+     completado- se revalida el paso actual antes de moverse: el cliente pudo
+     retroceder a corregir algo y dejarlo peor, y sin revalidar ese dato viejo
+     viajaría igual a la solicitud. */
+  function saltarA(n) {
+    if (n === F.paso || n > maxPaso) return;
+    if (n < F.paso) { irAPaso(n); return; }
+
+    if (F.paso === 1) {
+      var mal = valida1(datos1());
+      if (mal) { error("err1", mal); return; }
+      error("err1", null);
+      Object.assign(F, datos1());
+    }
+    if (F.paso === 2 && n === 3) { seguir2(); return; }
+    irAPaso(n);
   }
 
   /* ============================================================
@@ -414,6 +441,10 @@
     $("fKm").addEventListener("blur", revisarKm);
     $("atras2").addEventListener("click", function () { irAPaso(1); });
     $("btn2").addEventListener("click", seguir2);
+
+    [].forEach.call(document.querySelectorAll(".pasos__i"), function (b) {
+      b.addEventListener("click", function () { saltarA(+b.dataset.p); });
+    });
 
     var hoy = new Date(); hoy.setDate(hoy.getDate() + 1);
     var tope = new Date(); tope.setDate(tope.getDate() + 60);

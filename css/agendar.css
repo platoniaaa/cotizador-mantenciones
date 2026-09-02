@@ -84,19 +84,44 @@ body { margin: 0; background: var(--fondo); color: var(--tinta); font: 16px/1.6 
 }
 
 /* ---------- franja de marcas ----------
-   Va inmediatamente bajo el banner y antes del formulario a propósito: quien
-   tiene un auto que no atendemos tiene que enterarse ANTES de completar tres
-   pasos, no al final. */
+   Va bajo el banner y ANTES del formulario a propósito: quien tiene un auto
+   que no atendemos tiene que enterarse al principio, no despues de completar
+   tres pasos.
+
+   Los logos van en cajas parejas y en su color original. Nada de pasarlos a
+   gris "para que combinen": la mayoria de los fabricantes lo prohibe en su
+   manual de marca, y a un concesionario oficial eso le importa. */
 .marcas { background: #fff; border-bottom: 1px solid var(--linea); }
-.marcas__inner { max-width: 720px; margin: 0 auto; padding: 14px 20px;
-  display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; }
-.marcas__t { font-size: 11.5px; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--tinta-3); flex: none; }
+.marcas__inner { max-width: 720px; margin: 0 auto; padding: 20px; }
+.marcas__t { display: block; margin: 0 0 16px; font-size: 11.5px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-3);
+  text-align: center; }
 .marcas__l { list-style: none; margin: 0; padding: 0;
-  display: flex; flex-wrap: wrap; gap: 6px 8px; }
-.marcas__l li { font: 600 13px/1 var(--f); color: var(--tinta-2);
-  background: var(--tenue); border-radius: 999px; padding: 7px 12px; white-space: nowrap; }
-.marcas__nota { flex-basis: 100%; margin: 2px 0 0; font-size: 12.5px; color: var(--tinta-3); }
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 18px 26px; }
+
+/* Cada marca ocupa una CAJA del mismo tamaño, tenga el logo alto (Hyundai) o
+   alargado (Omoda, Jaecoo). El logo se ajusta dentro con contain, así la fila
+   queda pareja aunque los logotipos tengan proporciones muy distintas. */
+.marca { display: flex; align-items: center; justify-content: center;
+  width: 140px; height: 40px; }
+.marca__logo { max-height: 32px; max-width: 100%; width: auto; height: auto;
+  object-fit: contain; display: block; }
+
+/* Sin archivo de logo (p. ej. BAIC, GAC), el nombre en versalitas espaciadas,
+   en el azul de marca para que no desentone junto a los logotipos. */
+.marca__txt { font: 700 16px/1 var(--f); letter-spacing: .04em;
+  color: var(--navy); white-space: nowrap; }
+
+.marcas__nota { margin: 18px 0 0; font-size: 12.5px; color: var(--tinta-3);
+  text-align: center; }
+
+@media (max-width: 560px) {
+  .marcas__l { gap: 14px 16px; justify-content: center; }
+  .marca { width: 132px; height: 34px; }
+  .marca__logo { max-height: 27px; }
+  .marca__txt { font-size: 15px; }
+}
 
 /* ---------- botones ---------- */
 .btn { font: 600 16px/1 var(--f); border: 1.5px solid transparent; border-radius: 999px;

@@ -483,12 +483,42 @@
      no la atendemos. */
   function pintarMarcas() {
     if (!INDICE || !INDICE.marcas || !INDICE.marcas.length) return;
-    var nombres = INDICE.marcas.map(function (m) { return m.nombre; })
-      .sort(function (a, b) { return a.localeCompare(b, "es"); });
-    $("marcasLista").innerHTML = nombres.map(function (n) {
-      return "<li>" + esc(n) + "</li>";
+    var marcas = INDICE.marcas.slice().sort(function (a, b) {
+      return a.nombre.localeCompare(b.nombre, "es");
+    });
+
+    /* Cada marca intenta cargar su logo de img/marcas/<id>.svg y, si no está,
+       cae al nombre en texto. Así los logos se pueden ir agregando de a uno sin
+       tocar código, y una marca sin archivo no deja un hueco en la franja.
+
+       Se prueba primero .svg y después .png: el SVG se ve nítido en pantalla
+       retina, donde un PNG de 30 px queda borroso. */
+    $("marcasLista").innerHTML = marcas.map(function (m) {
+      return '<li class="marca" data-id="' + esc(m.id) + '">' +
+        '<span class="marca__txt">' + esc(m.nombre) + "</span></li>";
     }).join("");
     $("marcas").hidden = false;
+
+    marcas.forEach(function (m) {
+      probarLogo(m, ["svg", "png"]);
+    });
+  }
+
+  function probarLogo(m, formatos) {
+    if (!formatos.length) return;                 // sin archivo: queda el texto
+    var ext = formatos[0];
+    var img = new Image();
+    img.onload = function () {
+      var li = document.querySelector('.marca[data-id="' + m.id + '"]');
+      if (!li) return;
+      img.className = "marca__logo";
+      img.alt = m.nombre;
+      li.innerHTML = "";
+      li.appendChild(img);
+      li.classList.add("marca--logo");
+    };
+    img.onerror = function () { probarLogo(m, formatos.slice(1)); };
+    img.src = "img/marcas/" + m.id + "." + ext;
   }
 
   function arrancar() {

@@ -1,0 +1,23 @@
+LOGOS DE LAS MARCAS
+===================
+
+Deja aca un archivo por marca, con el ID del catalogo como nombre:
+
+    baic.svg      ford.svg      gac.svg       hyundai.svg
+    jac.svg       jaecoo.svg    jim.svg       mahindra.svg
+    omoda.svg     shineray.svg  swm.svg
+
+Sirve .svg o .png. SVG es preferible: la franja los muestra a 30 px de alto
+pero en una pantalla retina se ven al doble, y un PNG chico se ve borroso.
+
+Requisitos:
+  · fondo transparente (no el logo sobre un cuadrado blanco);
+  · el logo solo, sin el nombre del concesionario ni marcos;
+  · si el logo es muy claro, avisar: la franja es blanca y se pierde.
+
+De donde sacarlos: el kit de marca que entrega cada fabricante a sus
+concesionarios oficiales. NO servirlos desde el sitio del fabricante ni
+copiarlos del sitio de otro concesionario.
+
+Mientras un archivo no exista, la franja muestra el nombre de la marca en
+texto. Se pueden ir agregando de a uno.

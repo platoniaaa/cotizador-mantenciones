@@ -5,7 +5,7 @@
 #
 # Se dispara de tres formas:
 #   · repository_dispatch -> la base avisa al crear una reserva (~30 s)
-#   · schedule            -> cada 15 min, para los recordatorios
+#   · schedule            -> cada 5 min (lo mas frecuente que permite GitHub)
 #   · workflow_dispatch   -> a mano, desde la pestaña Actions
 name: Avisos de agenda
 
@@ -13,7 +13,7 @@ on:
   repository_dispatch:
     types: [aviso_nuevo]
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       modo:

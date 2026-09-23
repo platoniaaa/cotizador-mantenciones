@@ -104,7 +104,31 @@ def armar(aviso):
     return msg
 
 
+def diagnostico():
+    """Cuenta lo que se enviaria, sin mandar nada. Sirve para saber que pasaria
+    al encender el sistema, antes de encenderlo."""
+    pend = rpc("avisos_pendientes", {}) or []
+    print(f"Avisos en cola ahora mismo: {len(pend)}")
+    if not pend:
+        print("Nada pendiente: encender no dispara ningun correo.")
+        return 0
+    from collections import Counter
+    for tipo, n in Counter(p["tipo"] for p in pend).most_common():
+        print(f"  {tipo}: {n}")
+    print("Destinatarios (parcial, por privacidad):")
+    for p in pend[:15]:
+        e = p.get("destinatario") or ""
+        m = (e[:2] + "***@" + e.split("@")[-1]) if "@" in e else "(sin correo)"
+        print(f"    {p['tipo']:<18} {m}")
+    if len(pend) > 15:
+        print(f"    ... y {len(pend)-15} mas")
+    return 0
+
+
 def main():
+    if os.environ.get("MODO", "normal").lower() == "diagnostico":
+        return diagnostico()
+
     avisos = rpc("avisos_tomar", {"p_limite": LIMITE}) or []
     if not avisos:
         print("No hay avisos pendientes.")

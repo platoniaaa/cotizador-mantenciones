@@ -15,6 +15,12 @@ on:
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
+    inputs:
+      modo:
+        description: 'normal = envia los correos; diagnostico = solo cuenta lo que saldria'
+        type: choice
+        options: [normal, diagnostico]
+        default: normal
 
 # Si entran dos disparos juntos (el inmediato y el del reloj), se ejecuta uno
 # después del otro en vez de en paralelo. La base ya impide el correo repetido,
@@ -47,4 +53,5 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           SMTP_FROM_NAME: Curifor Servicio y Postventa
+          MODO: ${{ github.event.inputs.modo || 'normal' }}
         run: python herramientas/enviar_avisos.py

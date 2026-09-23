@@ -125,9 +125,93 @@ def diagnostico():
     return 0
 
 
+def conectar_smtp():
+    """Abre la sesion SMTP ya autenticada. 587 va con STARTTLS."""
+    srv = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=30)
+    srv.ehlo()
+    srv.starttls(context=ssl.create_default_context())
+    srv.ehlo()
+    srv.login(SMTP_USER, SMTP_PASS)
+    return srv
+
+
+def prueba(destino):
+    """Manda UN correo de prueba. No toca la base ni las reservas: sirve para
+    comprobar que la casilla autentica y que el mensaje llega de verdad."""
+    if not destino:
+        print("Falta indicar a que direccion mandar la prueba.")
+        return 1
+    msg = EmailMessage()
+    msg["Subject"] = "Prueba del sistema de avisos · Curifor Postventa"
+    msg["From"] = formataddr((REMITENTE_NOM, REMITENTE))
+    msg["To"] = destino
+    msg.set_content("Prueba del sistema de avisos de la agenda de Curifor. "
+                    "Si lees esto, el envio quedo funcionando.")
+    msg.add_alternative(
+        '<div style="font-family:Segoe UI,Arial,sans-serif;max-width:520px;margin:0 auto;'
+        'border:1px solid #dfe6f2;border-radius:14px;overflow:hidden">'
+        '<div style="background:#001b6c;color:#fff;padding:20px 24px">'
+        '<div style="font-size:11px;letter-spacing:2px;color:#9fb2ff;font-weight:700">'
+        'SERVICIO Y POSTVENTA</div>'
+        '<div style="font-size:22px;font-weight:800;letter-spacing:2px">CURIFOR</div></div>'
+        '<div style="padding:24px;color:#16233a;font-size:15px;line-height:1.55">'
+        '<p style="margin:0 0 12px"><b>Prueba del sistema de avisos.</b></p>'
+        '<p style="margin:0 0 12px">Si recibiste este correo, el envio automatico '
+        'de la agenda quedo funcionando: la casilla autentica y los mensajes llegan.</p>'
+        '<p style="margin:0;color:#5a6880;font-size:13px">Este correo es de prueba. '
+        'No corresponde a ninguna hora agendada.</p></div></div>', subtype="html")
+    try:
+        srv = conectar_smtp()
+    except Exception as e:
+        print(f"NO se pudo autenticar en {SMTP_HOST}:{SMTP_PORT}")
+        print(f"  motivo: {e}")
+        return 1
+    try:
+        srv.send_message(msg)
+        print(f"Correo de prueba enviado a {destino}.")
+        print("Revisa la bandeja (y la carpeta de spam, por si acaso).")
+        return 0
+    except Exception as e:
+        print(f"Autentico bien, pero fallo al entregar: {e}")
+        return 1
+    finally:
+        try:
+            srv.quit()
+        except Exception:
+            pass
+
+
+def interruptor(encender_lo):
+    """Enciende o apaga el envio, escribiendo avisos_config.activo."""
+    import urllib.request as _u
+    cuerpo = json.dumps({"activo": bool(encender_lo)}).encode()
+    req = _u.Request(f"{SUPABASE_URL}/rest/v1/avisos_config?id=eq.true",
+                     data=cuerpo, method="PATCH",
+                     headers={"apikey": SERVICE_KEY,
+                              "Authorization": f"Bearer {SERVICE_KEY}",
+                              "Content-Type": "application/json",
+                              "Prefer": "return=representation"})
+    try:
+        with _u.urlopen(req, timeout=30) as r:
+            fila = json.loads(r.read().decode() or "[]")
+        estado = fila[0].get("activo") if fila else None
+        print(f"Sistema de avisos: {'ENCENDIDO' if estado else 'APAGADO'}")
+        return 0
+    except Exception as e:
+        print(f"No se pudo cambiar el interruptor: {e}")
+        return 1
+
+
 def main():
-    if os.environ.get("MODO", "normal").lower() == "diagnostico":
+    modo = os.environ.get("MODO", "normal").lower()
+    if modo == "diagnostico":
         return diagnostico()
+    if modo == "prueba":
+        return prueba(os.environ.get("DESTINO", "").strip())
+    if modo == "encender":
+        return interruptor(True)
+    if modo == "apagar":
+        return interruptor(False)
 
     avisos = rpc("avisos_tomar", {"p_limite": LIMITE}) or []
     if not avisos:

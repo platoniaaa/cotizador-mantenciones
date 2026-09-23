@@ -19,8 +19,12 @@ on:
       modo:
         description: 'normal = envia los correos; diagnostico = solo cuenta lo que saldria'
         type: choice
-        options: [normal, diagnostico]
+        options: [normal, diagnostico, prueba, encender, apagar]
         default: normal
+      destino:
+        description: 'solo para modo prueba: a que correo mandarla'
+        type: string
+        default: ''
 
 # Si entran dos disparos juntos (el inmediato y el del reloj), se ejecuta uno
 # después del otro en vez de en paralelo. La base ya impide el correo repetido,
@@ -54,4 +58,5 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           SMTP_FROM_NAME: Curifor Servicio y Postventa
           MODO: ${{ github.event.inputs.modo || 'normal' }}
+          DESTINO: ${{ github.event.inputs.destino }}
         run: python herramientas/enviar_avisos.py

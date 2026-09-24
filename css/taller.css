@@ -1006,3 +1006,27 @@ table.grid td.slot.over { background: var(--tint); }
   background: #fdf0f0; border: 1px solid #f0c4c8; border-radius: 8px;
 }
 .rc-cli-acciones { grid-column: 1 / -1; display: flex; gap: 9px; justify-content: flex-end; margin-top: 4px; }
+
+/* ---------- exportar agendamientos a Excel ----------
+   Va dentro del panel de reservas web, separado por una linea: es una accion
+   de gestion, no parte de la lista que se pasa a la agenda.
+   Los colores llevan respaldo por si la variable no esta, igual que el resto
+   de este archivo. */
+.webres-export {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid var(--linea, #e3e7f0);
+}
+.webres-export__t { font-weight: 600; font-size: 13px; color: var(--navy, #001b6c); }
+.webres-export label {
+  font-size: 12.5px; color: var(--ink-3, #777);
+  display: flex; align-items: center; gap: 6px;
+}
+.webres-export input[type="date"] {
+  font-size: 13px; font-family: inherit; padding: 7px 9px;
+  border: 1px solid var(--linea, #e3e7f0); border-radius: 6px;
+  color: var(--ink-2, #444); background: #fff;
+}
+.webres-export__msg { font-size: 12.5px; color: var(--ink-3, #777); }
+.webres-export__msg.ok { color: #0a7d43; font-weight: 600; }
+.webres-export__msg.mal { color: #c62828; font-weight: 600; }

@@ -476,6 +476,18 @@
     <div class="ag-modal" style="max-width:720px">
       <h3>Reservas web <span id="webResInfo" style="color:var(--ink-3);font-weight:400;font-size:13px"></span></h3>
       <div id="webResLista" class="webres-lista"></div>
+
+      <!-- Exportar a Excel. El rango va por FECHA DE LA CITA y no por cuándo se
+           agendó: para gestión importa qué días de taller se cubren. Por eso
+           acepta fechas futuras, que la lista de arriba no muestra. -->
+      <div class="webres-export">
+        <span class="webres-export__t">Exportar a Excel</span>
+        <label>Desde <input type="date" id="expDesde"></label>
+        <label>Hasta <input type="date" id="expHasta"></label>
+        <button class="agbtn agbtn-blue agbtn-sm" id="btnExportarAg" type="button">Descargar</button>
+        <span id="expEstado" class="webres-export__msg"></span>
+      </div>
+
       <div class="ag-foot">
         <button class="agbtn agbtn-ghost agbtn-sm" onclick="webDesconectar()">Desconectar</button>
         <button class="agbtn agbtn-grey" onclick="webCerrarLista()">Cerrar</button>
@@ -486,6 +498,8 @@
   <!-- jsPDF, para el acta de recepción. Va vendorizado (no CDN) igual que el
        visor de Excel: el sitio no carga nada de terceros en caliente. -->
   <script src="js/vendor/jspdf.umd.min.js?v=18f8a33"></script>
+  <!-- Generador de Excel, el mismo que ya usa el cotizador. -->
+  <script src="js/vendor/xlsx.full.min.js?v=18f8a33"></script>
   <script src="js/acta-pdf.js?v=18f8a33"></script>
   <script src="js/acta-condiciones.js?v=18f8a33"></script>
   <script src="js/dano-mapa.js?v=18f8a33"></script>

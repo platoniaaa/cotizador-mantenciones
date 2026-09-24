@@ -2564,6 +2564,7 @@ function webCargarLista() {
   var cont = document.getElementById("webResLista");
   cont.innerHTML = '<p style="color:var(--ink-3);padding:8px 0">Cargando reservas…</p>';
   document.getElementById("webResOv").classList.add("open");
+  expPreparar();
   webSesion().then(function (s) {
     if (!s) { webCerrarLista(); webAbrirLogin(); return; }
     document.getElementById("webResInfo").textContent = "· " + (s.email || "");
@@ -4531,3 +4532,135 @@ function init() {
   });
 }
 document.addEventListener("DOMContentLoaded", init);
+
+/* ============================================================
+   Exportar los agendamientos a Excel.
+
+   El rango filtra por FECHA DE LA CITA, no por cuándo se agendó: lo que se
+   necesita para gestión es qué días de taller se cubren, incluidos los que
+   todavía no llegan. La lista de arriba solo muestra lo reciente; esto permite
+   sacar un mes completo, pasado o futuro.
+
+   Se consulta la base en el momento y no se exporta lo que hay en pantalla:
+   así el archivo trae TODAS las columnas (correo, teléfono, kilometraje,
+   consentimiento) y no solo las ocho que caben en la tabla.
+   ============================================================ */
+function expFmtFecha(iso) {
+  if (!iso) return "";
+  var p = String(iso).slice(0, 10).split("-");
+  return p.length === 3 ? p[2] + "-" + p[1] + "-" + p[0] : iso;
+}
+function expFmtMomento(iso) {
+  if (!iso) return "";
+  var d = new Date(iso);
+  if (isNaN(d)) return "";
+  var dd = function (n) { return (n < 10 ? "0" : "") + n; };
+  return dd(d.getDate()) + "-" + dd(d.getMonth() + 1) + "-" + d.getFullYear() +
+         " " + dd(d.getHours()) + ":" + dd(d.getMinutes());
+}
+function expServicio(id) {
+  return ({ mantencion: "Mantención por kilometraje", dip: "Desabolladura y pintura",
+            diagnostico: "Diagnóstico técnico", garantia: "Garantía" })[id] || (id || "");
+}
+
+function webExportarExcel() {
+  var est = document.getElementById("expEstado");
+  var desde = document.getElementById("expDesde").value;
+  var hasta = document.getElementById("expHasta").value;
+  if (!desde || !hasta) { est.textContent = "Elige las dos fechas."; est.className = "webres-export__msg mal"; return; }
+  if (desde > hasta) { est.textContent = "La fecha de inicio es posterior a la de término."; est.className = "webres-export__msg mal"; return; }
+  if (typeof XLSX === "undefined") { est.textContent = "No se pudo cargar el generador de Excel."; est.className = "webres-export__msg mal"; return; }
+
+  est.textContent = "Buscando…"; est.className = "webres-export__msg";
+  webSesion().then(function (s) {
+    if (!s) { webAbrirLogin(); throw new Error("sin sesión"); }
+    var u = AGW.url + "/rest/v1/" + webTabla() +
+      "?select=*&fecha=gte." + desde + "&fecha=lte." + hasta +
+      "&order=fecha.asc%2Chora.asc";
+    return fetch(u, { headers: { apikey: AGW.anonKey, Authorization: "Bearer " + s.access } })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
+  }).then(function (filas) {
+    filas = filas || [];
+    if (!filas.length) {
+      est.textContent = "No hay agendamientos en ese rango.";
+      est.className = "webres-export__msg";
+      return;
+    }
+    var A = [["Fecha", "Hora", "Estado", "Sucursal", "Servicio", "Kilometraje",
+              "Cliente", "RUT", "Teléfono", "Correo",
+              "Patente", "Marca", "Modelo", "Año",
+              "Asesor", "Confirmada", "Confirmada el", "Acepta publicidad",
+              "Agendada el", "Cancelada el", "Cancelada por"]];
+    filas.forEach(function (r) {
+      A.push([
+        expFmtFecha(r.fecha),
+        (r.hora && r.hora !== "indiferente") ? r.hora : "",
+        r.estado || "",
+        r.sucursal || "",
+        expServicio(r.servicio),
+        (r.km_declarado != null ? r.km_declarado : ""),
+        r.nombre || "",
+        r.rut || "",
+        r.fono || "",
+        r.email || "",
+        (r.patente || "").toUpperCase(),
+        r.marca || "",
+        r.modelo || "",
+        (r.anio != null ? r.anio : ""),
+        r.asesor || "",
+        r.confirmado_en ? "Sí" : "No",
+        expFmtMomento(r.confirmado_en),
+        r.marketing === true ? "Sí" : (r.marketing === false ? "No" : ""),
+        expFmtMomento(r.creado_en),
+        expFmtMomento(r.cancelado_en),
+        r.cancelado_por || ""
+      ]);
+    });
+
+    var hoja = XLSX.utils.aoa_to_sheet(A);
+    // Anchos pensados para que no haya que ajustar columnas al abrirlo.
+    hoja["!cols"] = [{ wch: 11 }, { wch: 7 }, { wch: 11 }, { wch: 22 }, { wch: 26 }, { wch: 12 },
+                     { wch: 26 }, { wch: 13 }, { wch: 15 }, { wch: 28 },
+                     { wch: 10 }, { wch: 14 }, { wch: 16 }, { wch: 7 },
+                     { wch: 24 }, { wch: 11 }, { wch: 17 }, { wch: 16 },
+                     { wch: 17 }, { wch: 17 }, { wch: 24 }];
+    hoja["!autofilter"] = { ref: "A1:U" + A.length };
+    hoja["!freeze"] = { xSplit: "0", ySplit: "1" };
+
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, hoja, "Agendamientos");
+    XLSX.writeFile(wb, "agendamientos_" + desde + "_a_" + hasta + ".xlsx");
+
+    est.textContent = filas.length + " agendamiento(s) exportado(s).";
+    est.className = "webres-export__msg ok";
+  }).catch(function (e) {
+    if (String(e && e.message) === "sin sesión") return;
+    est.textContent = "No se pudo exportar. Reintenta.";
+    est.className = "webres-export__msg mal";
+  });
+}
+
+
+/* Deja el rango en el mes en curso, que es lo que se pide casi siempre, y
+   engancha el boton una sola vez. */
+function expPreparar() {
+  var b = document.getElementById("btnExportarAg");
+  if (!b) return;
+  if (!b.dataset.listo) {
+    b.addEventListener("click", webExportarExcel);
+    b.dataset.listo = "1";
+  }
+  var d = document.getElementById("expDesde"), h = document.getElementById("expHasta");
+  if (d && !d.value) {
+    var hoy = new Date();
+    var ini = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+    var fin = new Date(hoy.getFullYear(), hoy.getMonth() + 1, 0);
+    var iso = function (x) {
+      return x.getFullYear() + "-" + ("0" + (x.getMonth() + 1)).slice(-2) + "-" + ("0" + x.getDate()).slice(-2);
+    };
+    d.value = iso(ini);
+    h.value = iso(fin);
+  }
+  var e = document.getElementById("expEstado");
+  if (e) { e.textContent = ""; e.className = "webres-export__msg"; }
+}

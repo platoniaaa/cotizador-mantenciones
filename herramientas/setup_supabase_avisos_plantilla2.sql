@@ -152,11 +152,21 @@ begin
   '<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" ' ||
     'style="width:600px;max-width:600px;background-color:#ffffff;border:1px solid #dfe6f2">' ||
 
-    '<tr><td style="background-color:#001b6c;padding:22px 26px">' ||
-      '<div style="font:bold 11px Arial,Helvetica,sans-serif;letter-spacing:2px;color:#9fb2ff;' ||
-        'padding-bottom:6px">SERVICIO Y POSTVENTA</div>' ||
-      '<div style="font:bold 23px Arial,Helvetica,sans-serif;letter-spacing:2px;color:#ffffff">' ||
-        'CURIFOR</div>' ||
+    -- Cabecera con el logotipo real. Va sobre BLANCO porque el logo es azul
+    -- marino: sobre la banda azul de antes no se veria.
+    --
+    -- El alt lleva estilo propio a proposito. Outlook y Gmail bloquean las
+    -- imagenes hasta que el lector las autoriza, y sin eso la cabecera quedaria
+    -- vacia; asi, mientras no cargue, se lee CURIFOR en azul y el correo sigue
+    -- teniendo identidad.
+    '<tr><td align="center" style="background-color:#ffffff;padding:26px 26px 20px;' ||
+      'border-bottom:3px solid #001b6c">' ||
+      '<img src="https://platoniaaa.github.io/cotizador-mantenciones/img/curifor-logo.png" ' ||
+        'alt="CURIFOR" width="180" height="40" ' ||
+        'style="display:block;margin:0 auto;border:0;width:180px;height:40px;' ||
+        'font:bold 24px Arial,Helvetica,sans-serif;color:#001b6c;letter-spacing:2px">' ||
+      '<div style="font:bold 11px Arial,Helvetica,sans-serif;letter-spacing:2px;color:#4a566e;' ||
+        'padding-top:12px">SERVICIO Y POSTVENTA</div>' ||
     '</td></tr>' ||
 
     '<tr><td style="padding:26px 26px 0">' ||

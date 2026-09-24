@@ -110,25 +110,33 @@
     <h2 class="tarjeta__t">¿Cuál es tu auto?</h2>
 
     <div id="porPatente">
-      <p class="tarjeta__s">Escribe la patente y cargamos la marca y el modelo.</p>
+      <p class="tarjeta__s">Escribe la patente y cargamos la marca y el modelo.
+        Si no la tienes a mano, escríbelos tú más abajo.</p>
       <div class="patente">
         <input id="fPatente" type="text" maxlength="8" autocomplete="off" spellcheck="false" placeholder="BBCC12">
         <button class="btn btn--ghost" id="btnPatente" type="button">Buscar</button>
       </div>
       <small class="campo__ayuda" id="patenteEstado"></small>
-      <button class="enlace" id="sinPatente" type="button">No recuerdo mi patente</button>
     </div>
 
-    <!-- Elegir marca y modelo a mano, para quien no tiene la patente a la vista -->
-    <div id="manual" hidden>
-      <div class="campos">
-        <label class="campo"><span>Marca</span>
-          <select id="fMarca"><option value="">Elige la marca</option></select></label>
-        <label class="campo"><span>Modelo</span>
-          <select id="fModelo" disabled><option value="">Elige el modelo</option></select></label>
-      </div>
-      <button class="enlace" id="conPatente" type="button">Prefiero escribir la patente</button>
+    <!-- Marca y modelo SIEMPRE a la vista. Antes se escondían y solo aparecían
+         si la patente fallaba: el cliente quedaba sin saber qué se había
+         cargado, y sin poder corregirlo. Ahora la patente los rellena y quedan
+         editables, que es lo que el cliente puede confirmar mirando su auto. -->
+    <div class="campos campos--auto">
+      <label class="campo">
+        <span>Marca</span>
+        <input id="fMarca" type="text" list="listaMarcas" autocomplete="off"
+               maxlength="40" placeholder="Ej: Hyundai">
+      </label>
+      <label class="campo">
+        <span>Modelo</span>
+        <input id="fModelo" type="text" list="listaModelos" autocomplete="off"
+               maxlength="40" placeholder="Ej: Accent">
+      </label>
     </div>
+    <datalist id="listaMarcas"></datalist>
+    <datalist id="listaModelos"></datalist>
 
     <div class="sep"></div>
 

@@ -202,9 +202,9 @@
       .then(function (filas) {
         var v = filas && filas[0];
         if (!v || !v.modelo) {
-          est.textContent = "No encontramos esa patente. Elige la marca y el modelo a mano.";
+          est.textContent = "No encontramos esa patente. Escribe la marca y el modelo aquí abajo.";
           est.className = "campo__ayuda";
-          mostrarManual(true);
+          $("fMarca").focus();
           return;
         }
         /* La base guarda el vehículo como un texto único ("FORD RANGER"), pero
@@ -214,47 +214,51 @@
         F.marca = partes.shift() || null;
         F.modelo = partes.join(" ") || v.modelo;
         F.anio = v.anio || null;
-        est.textContent = "Es tu " + v.modelo + (v.anio ? " " + v.anio : "") + ".";
+        // Se escriben en los campos: el cliente ve qué se cargó y puede corregirlo.
+        $("fMarca").value = F.marca || "";
+        $("fModelo").value = F.modelo || "";
+        sugerirModelos();
+        est.textContent = "Es tu " + v.modelo + (v.anio ? " " + v.anio : "") +
+                          ". Si no es correcto, corrígelo abajo.";
         est.className = "campo__ayuda ok";
       })
       .catch(function () {
         /* La función puede no estar creada todavía. No se bloquea: se le pide
            el auto a mano, que es lo que el cliente sabe igual. */
-        est.textContent = "No pudimos cargar tu auto. Elígelo a mano y seguimos.";
+        est.textContent = "No pudimos cargar tu auto. Escríbelo aquí abajo y seguimos.";
         est.className = "campo__ayuda";
-        mostrarManual(true);
       });
   }
 
-  function mostrarManual(si) {
-    $("manual").hidden = !si;
-    $("porPatente").hidden = si;
-    if (si && INDICE && !$("fMarca").dataset.listo) llenarMarcas();
-  }
-
+  /* Las sugerencias salen del catálogo, pero el campo es de texto libre: si
+     alguien tiene un modelo que no está en la lista, igual puede agendar. */
   function llenarMarcas() {
+    if (!INDICE || !INDICE.marcas || $("listaMarcas").dataset.listo) return;
     var marcas = INDICE.marcas.slice().sort(function (a, b) {
       return a.nombre.localeCompare(b.nombre, "es");
     });
-    $("fMarca").innerHTML = '<option value="">Elige la marca</option>' +
-      marcas.map(function (m) { return '<option value="' + esc(m.id) + '">' + esc(m.nombre) + "</option>"; }).join("");
-    $("fMarca").dataset.listo = "1";
-    $("fMarca").addEventListener("change", function () {
-      var m = INDICE.marcas.find(function (x) { return x.id === $("fMarca").value; });
-      F.marca = m ? m.nombre : null;
-      F.modelo = null;
-      var sel = $("fModelo");
-      if (!m) { sel.innerHTML = '<option value="">Elige el modelo</option>'; sel.disabled = true; return; }
-      var mods = m.modelos.slice().sort(function (a, b) { return a.nombre.localeCompare(b.nombre, "es"); });
-      sel.innerHTML = '<option value="">Elige el modelo</option>' +
-        mods.map(function (x) { return "<option>" + esc(x.nombre) + "</option>"; }).join("");
-      sel.disabled = false;
+    $("listaMarcas").innerHTML = marcas.map(function (m) {
+      return '<option value="' + esc(m.nombre) + '">';
+    }).join("");
+    $("listaMarcas").dataset.listo = "1";
+    sugerirModelos();
+  }
+
+  /* Los modelos sugeridos siguen a la marca escrita. Si la marca no está en el
+     catálogo, se ofrecen todos: vale más sugerir de más que dejar el campo sin
+     ayuda. */
+  function sugerirModelos() {
+    if (!INDICE || !INDICE.marcas) return;
+    var escrita = ($("fMarca").value || "").trim().toLowerCase();
+    var m = INDICE.marcas.find(function (x) {
+      return x.nombre.toLowerCase() === escrita;
     });
-    /* Solo el modelo: la marca viaja en su propia columna y concatenarlas dejaba
-       "Hyundai Hyundai Accent" al armar la cita en el taller. */
-    $("fModelo").addEventListener("change", function () {
-      F.modelo = $("fModelo").value || null;
-    });
+    var mods = m ? m.modelos.slice()
+                 : INDICE.marcas.reduce(function (t, x) { return t.concat(x.modelos); }, []);
+    mods.sort(function (a, b) { return a.nombre.localeCompare(b.nombre, "es"); });
+    $("listaModelos").innerHTML = mods.map(function (x) {
+      return '<option value="' + esc(x.nombre) + '">';
+    }).join("");
   }
 
   /* El kilometraje se valida contra el último que registramos. La comprobación
@@ -436,8 +440,13 @@
     $("fPatente").addEventListener("keydown", function (e) {
       if (e.key === "Enter") { e.preventDefault(); buscarPatente(); }
     });
-    $("sinPatente").addEventListener("click", function () { mostrarManual(true); });
-    $("conPatente").addEventListener("click", function () { mostrarManual(false); });
+    $("fMarca").addEventListener("input", function () {
+      F.marca = $("fMarca").value.trim() || null;
+      sugerirModelos();
+    });
+    $("fModelo").addEventListener("input", function () {
+      F.modelo = $("fModelo").value.trim() || null;
+    });
     $("fKm").addEventListener("blur", revisarKm);
     $("atras2").addEventListener("click", function () { irAPaso(1); });
     $("btn2").addEventListener("click", seguir2);
@@ -526,7 +535,7 @@
     enlazar();
     fetch("data/indice.json")
       .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (j) { INDICE = j; pintarMarcas(); })
+      .then(function (j) { INDICE = j; pintarMarcas(); llenarMarcas(); })
       .catch(function () { INDICE = null; });
   }
 

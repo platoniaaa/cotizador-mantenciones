@@ -206,6 +206,9 @@ body { margin: 0; background: var(--fondo); color: var(--tinta); font: 16px/1.6 
   font-size: 15px; color: var(--tinta-2); }
 .fecha { max-width: 260px; }
 
+/* Marca y modelo van pegados al buscador de patente: son el resultado de
+   esa busqueda, o el reemplazo si no la encuentra. */
+.campos--auto { margin-top: 16px; }
 .patente { display: flex; gap: 10px; }
 .patente input { flex: 1; font: 700 20px var(--f); letter-spacing: 2px; text-transform: uppercase;
   text-align: center; padding: 13px 14px; border: 1.5px solid var(--linea); border-radius: 10px; }

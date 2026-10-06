@@ -67,6 +67,23 @@
     return authPost("password", { email: email, password: password }).then(guardarDesdeToken);
   }
 
+  /* Pide a Supabase el correo con el enlace para definir una contraseña nueva.
+     redirectTo manda al usuario a clave-nueva.html de ESTE mismo sitio, sin
+     importar donde este publicado: si el repositorio cambia de cuenta, el
+     enlace sigue llegando donde corresponde. */
+  function recuperar(email) {
+    var base = location.href.replace(/[^/]*$/, "");
+    return fetch(CFG.url + "/auth/v1/recover", {
+      method: "POST",
+      headers: { apikey: CFG.anonKey, "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, gotrue_meta_security: {} })
+    }).then(function (r) {
+      // Supabase responde 200 aunque el correo no exista, y asi debe quedar.
+      if (!r.ok && r.status !== 422) throw new Error("HTTP " + r.status);
+      return true;
+    });
+  }
+
   function registrar(nombre, email, password) {
     return fetch(CFG.url + "/auth/v1/signup", {
       method: "POST",
@@ -139,7 +156,8 @@
   }
 
   window.CURIFOR_AUTH = {
-    login: login, registrar: registrar, sesion: sesion, logout: logout,
+    login: login, registrar: registrar, recuperar: recuperar,
+    sesion: sesion, logout: logout,
     dominioOk: dominioOk, dominio: DOMINIO, dominios: DOMINIOS, cfgOk: cfgOk, guard: guard,
     pintarUsuario: pintarUsuario
   };

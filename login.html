@@ -48,6 +48,10 @@
     .msg{font-size:13px;line-height:1.5;padding:10px 12px;border-radius:var(--radio-sm);margin:0 0 14px;border:1px solid transparent}
     .msg--err{color:var(--rojo);background:var(--rojo-bg);border-color:rgba(180,35,24,.25)}
     .msg--ok{color:var(--verde);background:var(--verde-bg);border-color:rgba(10,125,67,.25)}
+    .olvide{text-align:center;margin:12px 0 0}
+    .olvide button{background:none;border:0;padding:0;cursor:pointer;
+      font:600 13px var(--font);color:var(--navy);text-decoration:underline}
+    .olvide button:hover{color:var(--navy-hover)}
     .hint{font-size:12px;color:var(--ink-3);margin:-8px 0 14px}
     .pie{font-size:12px;color:var(--ink-3);text-align:center;margin:18px 0 0}
     .pie a{color:var(--blue);text-decoration:none;font-weight:600}
@@ -78,6 +82,9 @@
       <label>Contraseña</label>
       <input id="inPass" type="password" autocomplete="current-password" placeholder="••••••••">
       <button class="btn" id="btnEntrar" type="submit">Entrar</button>
+      <!-- Sin esto, cada clave olvidada obligaba a que alguien con acceso a la
+           base la cambiara a mano. Ahora el propio usuario se recupera. -->
+      <p class="olvide"><button type="button" id="btnOlvide">¿Olvidaste tu contraseña?</button></p>
     </form>
 
     <!-- Crear cuenta -->
@@ -155,6 +162,28 @@
     });
 
     // Crear cuenta
+    /* ---- recuperar la contraseña ----
+       Antes, una clave olvidada obligaba a que alguien con acceso a la base la
+       cambiara a mano. Ahora el usuario se recupera solo.
+
+       La respuesta es la MISMA exista o no la cuenta: si dijera "ese correo no
+       existe", cualquiera podria averiguar quien tiene acceso a la plataforma. */
+    document.getElementById("btnOlvide").addEventListener("click", function () {
+      var correo = (document.getElementById("inEmail").value || "").trim().toLowerCase();
+      if (!correo || correo.indexOf("@") < 0) {
+        showMsg("Escribe tu correo arriba y vuelve a tocar el enlace.", "err");
+        document.getElementById("inEmail").focus();
+        return;
+      }
+      showMsg("Enviando…", "ok");
+      A.recuperar(correo).then(function () {
+        showMsg("Si ese correo tiene cuenta, le llegara un enlace para definir una " +
+                "contraseña nueva. Revisa tambien la carpeta de spam.", "ok");
+      }).catch(function () {
+        showMsg("No pudimos enviar el correo. Intentalo de nuevo en un momento.", "err");
+      });
+    });
+
     formC.addEventListener("submit", function (e) {
       e.preventDefault(); clearMsg();
       var nombre = document.getElementById("crNombre").value.trim();
@@ -185,6 +214,7 @@
       });
     });
   })();
-  </script>
+  
+</script>
 </body>
 </html>

@@ -55,7 +55,15 @@ transferir el repositorio. En *Settings → General → Danger Zone → Transfer
 ownership*. Se conserva el historial completo.
 
 Al transferir, **la dirección del sitio cambia** (deja de ser
-`platoniaaa.github.io/...`). Hay que avisar a quien tenga el enlace publicado.
+`platoniaaa.github.io/...`) y **GitHub no redirige los sitios de Pages**: la
+dirección vieja deja de existir. Esa dirección está escrita en la plantilla del
+correo (el logo), en `avisos_config.url_confirmar` (el botón «confirmar») y en
+`GITHUB_REPO` de Vault. Los correos ya enviados quedarían con el logo y el enlace
+rotos.
+
+**Decidir la dirección definitiva antes de transferir** (una propia de Curifor;
+hoy `agendamiento.curifor.cl` existe en el DNS, pero sirve la agenda anterior) y
+actualizar esos tres lugares el mismo día.
 
 ### 3.2 La cuenta de Supabase
 
@@ -80,9 +88,11 @@ SMTP_USER              SMTP_PASS
 ```
 
 Los valores no se pueden leer desde GitHub una vez guardados, solo reemplazar.
-**Quien reciba la plataforma debe tener a mano la contraseña de
-serviciotecnico@curifor.cl y la clave de servicio de Supabase**, porque si se
-transfiere el repositorio hay que volver a cargarlos.
+Al transferir el repositorio **los secretos viajan con él** (así lo indica la
+documentación de GitHub): no hay que volver a cargarlos. **Quien reciba la
+plataforma sí debe tener a mano la contraseña de serviciotecnico@curifor.cl y la
+clave de servicio de Supabase**, porque conviene rotar las dos (sección 3.4) y al
+rotarlas hay que reemplazar el secreto.
 
 > La contraseña de la casilla la entrega TI (la tiene Jhomny Rodríguez). La clave
 > de servicio de Supabase está en el panel del proyecto, en *Settings → API*.
@@ -161,19 +171,53 @@ golpes.
 
 | Pendiente | Estado | Impacto |
 |---|---|---|
-| **Los correos llegan tarde** | El reloj de GitHub debería correr cada 5 min pero se demora hasta 4 horas | Un cliente agenda y su comprobante puede tardar |
-| **El disparo inmediato no funciona** | Se configuró un token para que el correo salga en segundos; GitHub lo rechaza con error 403 por permisos | Es la causa de lo anterior |
 | **Hospedaje sin definir** | El sitio vive en GitHub Pages, bajo una cuenta personal; estaba en conversación con TI apuntar `agendamiento.curifor.cl` | El sitio actual y el nuevo conviven |
 | **Conexión con el ERP** | Se preparó un conector para registrar la orden de trabajo en Flexline, pero el usuario `Postventa` no tiene permiso de *Documentos* en el ambiente de prueba | La recepción no llega al ERP |
 | **Logos de BAIC y GAC** | Los demás están; esos dos salen como texto | Cosmético |
 | **Servicios por sucursal** | En `js/agenda-servicios.js` está la lista de qué atiende cada taller y qué asesor cubre cada uno; la cargó el desarrollador con un supuesto | **El negocio debe revisarla**: si está mal, se ofrecen horas donde no se puede atender |
 
-### Para destrabar el disparo inmediato
+### El disparo inmediato (resuelto el 09-10-2026)
 
-El token de GitHub guardado en Supabase necesita más permisos. Hay que editarlo
-(*Settings → Developer settings → Personal access tokens*) y agregarle **Actions:
-Read and write**, o bien reemplazarlo por un token clásico con permiso `repo`,
-que es el camino que la documentación de GitHub garantiza.
+**Por qué importa.** El reloj de GitHub Actions está configurado cada 5 minutos,
+pero en la práctica corre cada 3 a 7 horas. Sin el disparo inmediato, el
+comprobante de una reserva puede llegar con horas de atraso. Con él, el correo
+sale en segundos: al crearse una reserva, la base le avisa a GitHub y este
+arranca el envío. El reloj queda solo como respaldo.
+
+**Cómo está armado hoy.**
+
+- El token vive en Supabase, en Vault, con el nombre `GITHUB_DISPATCH_TOKEN`.
+  **No está en los Secrets del repositorio**, que son los seis de la sección 3.3.
+- Es un token **clásico** (empieza con `ghp_`) con el permiso `repo`, creado desde
+  la cuenta `curiforsa10`, que es de la empresa. No depende de ninguna cuenta
+  personal.
+- `curiforsa10` es colaborador del repositorio con permiso de escritura. Sin eso
+  GitHub contesta 404.
+- El nombre del repositorio está en Vault como `GITHUB_REPO`. **Si el repositorio
+  se transfiere o cambia de nombre, hay que actualizar ese valor**, o el disparo
+  falla sin avisar y los correos vuelven a salir con el reloj.
+
+**Probado el 09-10-2026:** el disparo de prueba desde la base respondió 204 y
+GitHub inició la corrida en unos 3 segundos. Falta la prueba con una reserva real.
+
+**Si vuelven los atrasos**, ejecutar en el editor SQL de Supabase:
+
+```sql
+select status_code, left(content, 160) as respuesta, created
+from net._http_response order by created desc limit 5;
+```
+
+| Código | Qué significa |
+|---|---|
+| `204` | Funciona |
+| `404` | La cuenta dueña del token no tiene acceso al repositorio, o `GITHUB_REPO` está mal escrito |
+| `401` | El token está mal copiado, venció o fue revocado |
+| `403` | El token es del tipo *fine-grained* (`github_pat_...`). GitHub no lo acepta en este servicio: usar uno clásico |
+
+**Para cambiar el token:** crearlo en GitHub (*Settings → Developer settings →
+Personal access tokens → Tokens (classic)*, sin vencimiento, solo el permiso
+`repo`) y ejecutar `herramientas/arreglo_token_disparo.sql` en Supabase. El
+archivo valida que el token sea clásico antes de guardarlo.
 
 ---
 
@@ -203,7 +247,7 @@ poder repetirse sin romper nada.
 - [ ] Crear organización de GitHub a nombre de Curifor
 - [ ] Transferir el repositorio a esa organización
 - [ ] Dar acceso de administrador en Supabase a alguien de la empresa
-- [ ] Recargar los seis secretos en el repositorio ya transferido
+- [ ] Verificar que los seis secretos sigan en el repositorio transferido (viajan con él)
 - [ ] Cambiar la contraseña de serviciotecnico@curifor.cl y la clave de servicio de Supabase
 - [ ] Verificar que el flujo de correos siga corriendo tras la transferencia
 - [ ] Avisar la nueva dirección del sitio a quien tenga el enlace publicado

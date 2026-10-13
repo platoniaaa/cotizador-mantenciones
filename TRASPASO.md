@@ -171,6 +171,7 @@ golpes.
 
 | Pendiente | Estado | Impacto |
 |---|---|---|
+| **Inventario del cotizador congelado** | Lo actualizaba una tarea de Windows en el PC del desarrollador; apunta a una carpeta que ya no existe y falla (error `0x8007010B`). El cotizador muestra «inventario al 07-08-2026». Si se repara, correr `actualizar_diario.py --solo-datos`: sin eso también publica en el repositorio de otra persona | Disponibilidad y precios de repuestos desactualizados |
 | **Hospedaje sin definir** | El sitio vive en GitHub Pages, bajo una cuenta personal; estaba en conversación con TI apuntar `agendamiento.curifor.cl` | El sitio actual y el nuevo conviven |
 | **Conexión con el ERP** | Se preparó un conector para registrar la orden de trabajo en Flexline, pero el usuario `Postventa` no tiene permiso de *Documentos* en el ambiente de prueba | La recepción no llega al ERP |
 | **Logos de BAIC y GAC** | Los demás están; esos dos salen como texto | Cosmético |
@@ -230,6 +231,7 @@ Archivos que conviene leer antes de tocar algo:
 
 | Archivo | Qué explica |
 |---|---|
+| `CLAUDE.md` | El contexto técnico completo: arquitectura, el flujo de la reserva y de la recepción (estados, número de orden de trabajo, acta), reglas y trampas conocidas. Quien trabaje con Claude lo carga solo |
 | `herramientas/enviar_avisos.py` | Por qué el envío corre fuera de Supabase |
 | `herramientas/setup_supabase_avisos_smtp.sql` | Cómo se evita mandar correos repetidos |
 | `herramientas/setup_supabase_avisos_plantilla2.sql` | El diseño del correo y por qué va armado en tablas |

@@ -162,6 +162,40 @@ tocar nada más y sin perder información.
 3. Si dice "No hay avisos pendientes", la base no encontró nada que mandar: puede
    que el sistema esté apagado o que esa reserva ya tenía su correo enviado.
 
+### Qué tiene que estar para que salgan
+
+Si falta una de estas piezas no sale nada, y el flujo dice «No hay avisos
+pendientes» o termina en verde sin enviar:
+
+1. **En Supabase:** los SQL de los correos aplicados y `avisos_config.activo` en
+   `true` (los modos `encender` y `apagar` lo cambian).
+2. **En Supabase, Vault:** `GITHUB_DISPATCH_TOKEN` y `GITHUB_REPO` (sección 6,
+   «El disparo inmediato»).
+3. **En GitHub:** el flujo `avisos.yml` y los seis secretos de la sección 3.3.
+4. **La casilla** `serviciotecnico@curifor.cl`, con su contraseña vigente.
+
+Cuándo sale cada correo, el orden de los SQL y las consultas para revisar el
+estado están en `CLAUDE.md`.
+
+### Reenviar un correo que falló
+
+Un correo con error **no se reintenta solo**. Para reenviarlo: en el editor SQL de
+Supabase, borrar su fila de `avisos_enviados` y correr el flujo en modo `normal`.
+Para ver cuáles fallaron:
+
+```sql
+select reserva_id, tipo, detalle from avisos_enviados where estado = 'error';
+```
+
+### Cuidado: los SQL de los correos no se repiten
+
+No ejecutar `setup_correos_todo.sql` otra vez sobre la base en producción: trae
+versiones antiguas de dos funciones (el diseño del correo y la regla del
+comprobante) y las devuelve a como estaban antes de las correcciones, **sin
+avisar**. Sirve solo para una base nueva, y después hay que aplicar
+`setup_supabase_avisos_plantilla2.sql` y `arreglo_estado_avisos.sql` (solo su
+función). Los archivos ya tienen un aviso en el encabezado.
+
 ---
 
 ## 6. Pendientes conocidos
@@ -239,8 +273,8 @@ Archivos que conviene leer antes de tocar algo:
 | `js/taller.js` | La agenda interna y la exportación a Excel |
 
 Los archivos `herramientas/setup_supabase_*.sql` son las migraciones de la base.
-Se aplican pegándolos en el editor SQL de Supabase. Todos están escritos para
-poder repetirse sin romper nada.
+Se aplican pegándolos en el editor SQL de Supabase. La mayoría se puede repetir
+sin romper nada, **pero los del sistema de correos no** (ver la sección 5).
 
 ---
 

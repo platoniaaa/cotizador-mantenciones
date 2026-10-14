@@ -1,4 +1,11 @@
 -- ============================================================
+--  ATENCION: NO LO REPITAS ENTERO EN PRODUCCION.
+--
+--  El bloque que inserta avisos 'omitido' (mas abajo) tapa todas las reservas que aun
+--  no recibieron su comprobante: una reserva recien hecha, con el correo todavia en
+--  cola, quedaria sin recibirlo. En produccion corre SOLO el bloque
+--  'create or replace function public.avisos_pendientes()'.
+--
 --  ARREGLO 2 · el comprobante nunca se habria enviado
 --
 --  Sintoma: se agenda una hora y el sistema dice "No hay avisos pendientes".

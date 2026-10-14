@@ -1,4 +1,20 @@
 -- ============================================================
+--  ATENCION: ESTE ARCHIVO ES SOLO PARA UNA BASE NUEVA. NO LO REPITAS EN PRODUCCION.
+--
+--  Trae versiones ANTIGUAS de dos funciones que despues se corrigieron:
+--    · aviso_html()         el diseno viejo del correo: sin charset (los acentos salen
+--                           rotos) y desarmado en Outlook. Lo reemplaza
+--                           setup_supabase_avisos_plantilla2.sql.
+--    · avisos_pendientes()  solo mira las reservas en 'agendada', asi que el comprobante
+--                           de una reserva nueva no sale. Lo corrige
+--                           arreglo_estado_avisos.sql.
+--
+--  Si lo corres sobre la base en produccion, esas dos funciones vuelven a la version
+--  vieja y los correos fallan SIN AVISAR. En una base nueva, despues de correrlo,
+--  aplicar en este orden: setup_supabase_avisos_plantilla2.sql y la funcion de
+--  arreglo_estado_avisos.sql (el resto de ese archivo es de una sola vez).
+--  Requiere antes: setup_supabase_dominios.sql y la tabla reservas_web.
+--
 --  TODO EL SISTEMA DE CORREOS, EN UN SOLO ARCHIVO
 --
 --  Pegar completo en el editor SQL de Supabase y ejecutar.
@@ -871,7 +887,9 @@ grant execute on function public.aviso_html(uuid, text)                to servic
 --    que se traga cualquier error.
 --
 --    Requiere en Vault:
---      GITHUB_DISPATCH_TOKEN -> token fino con permiso Contents: read/write
+--      GITHUB_DISPATCH_TOKEN -> token CLASICO (ghp_) con el permiso repo, de una cuenta
+--                               con escritura en el repo. El fine-grained (github_pat_)
+--                               NO sirve en este servicio: GitHub responde 403.
 --      GITHUB_REPO           -> "platoniaaa/cotizador-mantenciones"
 -- ---------------------------------------------------------------
 create or replace function public.avisos_disparar_github()

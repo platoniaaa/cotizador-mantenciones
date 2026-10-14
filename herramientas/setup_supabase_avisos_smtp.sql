@@ -154,7 +154,9 @@ grant execute on function public.aviso_html(uuid, text)                to servic
 --    que se traga cualquier error.
 --
 --    Requiere en Vault:
---      GITHUB_DISPATCH_TOKEN -> token fino con permiso Contents: read/write
+--      GITHUB_DISPATCH_TOKEN -> token CLASICO (ghp_) con el permiso repo, de una cuenta
+--                               con escritura en el repo. El fine-grained (github_pat_)
+--                               NO sirve en este servicio: GitHub responde 403.
 --      GITHUB_REPO           -> "platoniaaa/cotizador-mantenciones"
 -- ---------------------------------------------------------------
 create or replace function public.avisos_disparar_github()

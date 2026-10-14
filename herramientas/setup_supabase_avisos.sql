@@ -1,4 +1,12 @@
 -- ============================================================
+--  ATENCION: OBSOLETO. NO LO APLIQUES.
+--
+--  Es el motor original (pg_cron + Brevo). El envio vigente es por GitHub Actions y
+--  SMTP, y el sistema completo esta en setup_correos_todo.sql (base nueva) mas
+--  setup_supabase_avisos_plantilla2.sql y arreglo_estado_avisos.sql. Este archivo trae
+--  aviso_html() y avisos_pendientes() antiguos: aplicarlo sobre produccion los
+--  devuelve a la version vieja y reprograma el cron que ya no se usa.
+--
 --  Avisos por correo al cliente
 --
 --  Tres correos, sin que nadie apriete un botón:

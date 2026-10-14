@@ -91,6 +91,68 @@ Los SQL que definen todo esto: `setup_supabase_reservas.sql`, `setup_supabase_fl
 `setup_supabase_acta_archivo.sql`, `setup_supabase_danos.sql`, `setup_supabase_firmas.sql`,
 `setup_supabase_storage.sql`, `setup_supabase_correlativos.sql` y `setup_supabase_taller_estado.sql`.
 
+## Correos: qué tiene que estar para que salgan
+
+Si falta una sola de estas piezas no sale nada, y el flujo dice «No hay avisos pendientes» o termina
+en verde sin enviar.
+
+**En Supabase**
+- La extensión `pg_net` y las tablas `avisos_config` (una sola fila) y `avisos_enviados` (un aviso por
+  reserva y tipo, `unique (reserva_id, tipo)`; estados `pendiente`, `enviado`, `error`, `omitido`).
+- Las funciones `avisos_pendientes()`, `aviso_html()`, `avisos_tomar()`, `avisos_marcar()` y
+  `avisos_disparar_github()`, y el trigger `reservas_web_avisar`.
+- **`avisos_config.activo = true`.** Con `false`, `avisos_tomar()` no devuelve nada. Los modos
+  `encender` y `apagar` del workflow lo cambian.
+- Las columnas que el formulario envía a `reservas_web` (`servicio`, `km_declarado`, `marketing`,
+  `cond_version`): sin ellas la reserva ni se guarda (`arreglo_columnas_agenda.sql`).
+- En Vault: `GITHUB_DISPATCH_TOKEN` y `GITHUB_REPO`.
+
+**En GitHub:** el workflow `avisos.yml`, los 6 *Secrets* y, para el disparo, que la cuenta dueña del
+token tenga permiso de escritura en el repo.
+
+**La casilla:** `serviciotecnico@curifor.cl` por SMTP en el puerto 587; la contraseña la maneja TI. El
+remitente sale de los Secrets `SMTP_FROM` (o `SMTP_USER`) y de `SMTP_FROM_NAME`, que `avisos.yml` fija
+en «Curifor Servicio y Postventa».
+
+**Los botones del correo** apuntan a `avisos_config.url_confirmar` + `?t=` + el `token_aviso` de la
+reserva. `confirmar.html` los resuelve con `cita_por_token()`, `cita_confirmar()` y `cita_cancelar()`.
+
+**Cuándo sale cada correo** (según `avisos_pendientes()`; la hora de la cita es `fecha` + `hora` en
+horario de Chile, y 09:00 si la hora es «indiferente»):
+- *Comprobante* (`agendada`): apenas existe la reserva, si la cita es futura y tiene correo.
+- *Recordatorio de 7 días*: cuando faltan entre 6 y 7 días y el cliente no confirmó.
+- *Recordatorio de 24 horas*: cuando faltan entre 20 y 28 horas y el cliente no confirmó.
+- Solo reservas en `nueva` o `agendada`: una reserva cancelada, o ya recibida en el taller, no recibe más.
+
+**Qué campos de `avisos_config` tienen efecto:** solo `activo` y `url_confirmar`. `remitente`,
+`remitente_nom`, `responder_a` y `copia_interna` quedaron del diseño anterior (Brevo) y hoy no hacen
+nada: cambiarlos no cambia el correo.
+
+**Ver el estado y reenviar**
+- Todo: `select tipo, estado, count(*) from avisos_enviados group by 1, 2;`
+- Los que fallaron: `select reserva_id, tipo, detalle from avisos_enviados where estado = 'error';`
+  Un correo con error **no se reintenta solo**.
+- Para reenviar uno: borrar su fila de `avisos_enviados` (la reserva vuelve a quedar pendiente) y
+  correr el workflow en modo `normal`. El comprobante solo se reenvía si la cita aún es futura.
+- El modo `prueba` valida solo la casilla y el SMTP: manda un correo genérico, no la plantilla. Para
+  ver el diseño real hace falta una reserva de prueba (patente `ZZ…`) con tu correo.
+
+**Por qué los SQL de correos NO se repiten.** `setup_correos_todo.sql` sirve para una base **nueva** y
+trae versiones antiguas de `aviso_html()` (diseño viejo, sin charset y desarmado en Outlook) y de
+`avisos_pendientes()` (solo miraba `agendada`, así que el comprobante no salía). Repetirlo en
+producción las devuelve a esa versión **sin avisar**. `setup_supabase_avisos.sql` es el motor original
+(Brevo) y está obsoleto. El orden correcto en una base nueva:
+
+1. `setup_supabase_dominios.sql` (define `es_personal_curifor()`, que usa `avisos_enviados`) y
+   `setup_supabase_reservas.sql`, más los SQL de la agenda que agregan columnas a `reservas_web`
+   (`setup_supabase_flujo.sql`, `arreglo_columnas_agenda.sql`).
+2. `setup_correos_todo.sql`.
+3. `setup_supabase_avisos_plantilla2.sql`: la plantilla vigente.
+4. La función de `arreglo_estado_avisos.sql`. El resto de ese archivo es de una sola vez: marca como
+   `omitido` los comprobantes de las reservas que ya existían, y repetirlo en producción tapa los de
+   las reservas que aún no los reciben.
+5. Vault con `arreglo_token_disparo.sql`, y al final `update public.avisos_config set activo = true;`.
+
 ## Reglas que no se rompen
 
 1. **Ninguna credencial en el repo ni en el chat.** El repo es público. Las claves van en los
@@ -124,10 +186,10 @@ versión anterior. Pages tarda entre 30 segundos y 2 minutos en reflejar el camb
 Para ver el sitio en tu PC: `python -m http.server 8532` y abrir `http://localhost:8532`. Con doble
 clic en el HTML el navegador bloquea la carga de los JSON.
 
-Los SQL de `herramientas/setup_supabase_*.sql` se aplican pegándolos en el editor SQL de Supabase y
-están escritos para poder repetirse. `setup_correos_todo.sql` reúne el sistema de correos. Los
-`arreglo_*.sql` son correcciones puntuales; `arreglo_token_disparo.sql` sirve cada vez que haya que
-cambiar el token del disparo.
+Los SQL de `herramientas/setup_supabase_*.sql` se aplican pegándolos en el editor SQL de Supabase. La
+mayoría se puede repetir sin romper nada, **pero los del sistema de correos no**: ver la sección
+*Correos*. Los `arreglo_*.sql` son correcciones puntuales; `arreglo_token_disparo.sql` sirve cada vez
+que haya que cambiar el token del disparo.
 
 ## Trampas conocidas
 

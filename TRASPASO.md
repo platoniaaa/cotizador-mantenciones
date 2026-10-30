@@ -65,6 +65,28 @@ rotos.
 hoy `agendamiento.curifor.cl` existe en el DNS, pero sirve la agenda anterior) y
 actualizar esos tres lugares el mismo día.
 
+**Alternativa: montarlo de nuevo desde el zip, en una cuenta de Curifor.** Sirve si
+no se transfiere. Son unas 2 horas con Claude, más lo que tarden los accesos:
+
+1. Crear el repositorio en la cuenta u organización de Curifor, **público** (GitHub
+   Pages gratis lo exige), y subir el contenido del zip. Si GitHub dice que el
+   nombre ya está tomado, usar otro: el sitio no depende del nombre.
+2. *Settings → Pages*: publicar desde la rama `main`, carpeta raíz. Comprobar que
+   abre `https://<cuenta>.github.io/<repo>/agendar.html`.
+3. *Settings → Secrets and variables → Actions*: cargar los seis secretos de la
+   sección 3.3. La clave de servicio sale de Supabase (*Settings → API*) y la
+   contraseña de la casilla la entrega TI.
+4. *Actions → Avisos de agenda → Run workflow*: correr `diagnostico` y después
+   `prueba` con un correo propio.
+5. Crear un token clásico (`ghp_`, permiso `repo`) en la cuenta dueña del
+   repositorio nuevo y guardarlo en Supabase con `herramientas/arreglo_token_disparo.sql`.
+6. Correr `herramientas/cambio_direccion_sitio.sql` en Supabase, con la cuenta y
+   el repositorio nuevos escritos en su primera línea.
+7. En Supabase, *Authentication → URL Configuration*: poner la dirección nueva
+   como Site URL y en Redirect URLs.
+8. Cambiar el link de la agenda donde esté publicado y pedir que se apague el
+   repositorio anterior, para que no queden dos sitios funcionando.
+
 ### 3.2 La cuenta de Supabase
 
 Ahí están **todos los datos de clientes**: nombres, RUT, teléfonos, correos,

@@ -19,6 +19,29 @@ Supabase.
 | `login.html`, `clave-nueva.html` | Acceso interno y definición de clave | Personal |
 | `index.html` | Portal de entrada interno | Personal |
 
+## Dónde está cada módulo
+
+No hay una carpeta por módulo: las páginas están en la raíz y comparten carpetas por tipo de
+archivo. Todas cargan `js/agenda-config.js`, que tiene la conexión a Supabase.
+
+| Módulo | Página | Scripts (`js/`) | Estilos (`css/`) |
+|---|---|---|---|
+| Agenda del cliente | `agendar.html` | `agenda-cliente.js`, `agenda-servicios.js` (servicios y asesores por sucursal), `rut.js`, `acta-condiciones.js` | `agendar.css` |
+| Confirmación desde el correo | `confirmar.html` | `confirmar.js` | `estilos.css`, `confirmar.css` |
+| Cotizador interno | `cotizador.html` | `app.js`, `patente-cotizador.js`, `orden-pdf.js`, `rut.js` | `estilos.css` |
+| Cotizador para el cliente | `cliente.html` | `cliente.js`, `acta-condiciones.js` | `cliente.css` |
+| Taller: agenda interna y recepción | `taller.html` | `taller.js`, `acta-pdf.js`, `acta-condiciones.js`, `dano-mapa.js`, `foto-control.js`, `autocompletar.js`, `rut.js` | `estilos.css`, `taller.css` |
+| Control y Gestión Post Venta | `ots.html` · `postventa.html` | `ots.js` · `pv-app.js`, `pv-datos.js`, `pv-ui.js` | `ots.css` · `pv.css` |
+| Portal y acceso | `index.html`, `login.html`, `clave-nueva.html` | `auth.js` | `estilos.css`, `inicio.css` |
+
+Lo que no es una página:
+- `data/`: el catálogo del cotizador (`indice.json`, las 273 pautas en `data/pautas/` y `stock.json`).
+- `img/`: logos; los de las marcas, en `img/marcas/`.
+- `js/vendor/`: las librerías de Excel (`xlsx`) y de PDF (`jspdf`).
+- `.github/workflows/avisos.yml` y `herramientas/enviar_avisos.py`: el envío de correos.
+- `herramientas/*.sql`: la base de datos en Supabase; `herramientas/*.py`: scripts de apoyo.
+- `postventa/`: la app Streamlit de Control y Gestión, que corre aparte del sitio.
+
 ## Cómo está armado
 
 - **Sin servidor propio.** GitHub Pages sirve los archivos y el navegador habla directo con
@@ -215,7 +238,9 @@ Cosas que ya costaron tiempo y no se ven en el código.
   por última vez.
 - **La dirección del sitio está escrita en tres lugares de la base:** la plantilla del correo (el
   logo), `avisos_config.url_confirmar` y `GITHUB_REPO` en Vault. GitHub no redirige los sitios de
-  Pages si el repo se transfiere o se renombra: cambiar la dirección exige actualizar los tres.
+  Pages si el repo se transfiere, se renombra o se monta en otra cuenta: cambiar la dirección exige
+  actualizar los tres, y `herramientas/cambio_direccion_sitio.sql` lo hace. Los pasos para montarlo
+  desde el zip en una cuenta de Curifor están en `TRASPASO.md`, sección 3.1.
 - **Pruebas en producción.** Usar patentes `ZZ…` y borrarlas después con
   `herramientas/limpiar_pruebas_agenda.sql` (editar la lista de patentes).
 - **El envío no avisa si faltan los secretos:** el flujo termina en verde. Revisar con el modo
